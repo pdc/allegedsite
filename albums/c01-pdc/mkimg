@@ -1,0 +1,97 @@
+#!/usr/bin/python
+# -*-python-*-
+
+import os
+
+renumbers = { }
+pnmflips = { }
+
+def readData(fileName):
+    inp = open(fileName, 'rt')
+    for line in inp.readlines():
+        line = line.strip()
+        if not line or line[0] == '#':
+            continue
+        es = line.strip().split()
+        if es[0][:2] == '-r':
+            for e in es[1:]:
+                pnmflips[e] = es[0]
+        else:
+            # This is a sequence number. It may start with a letter.
+            n = int(es[0][1:])
+            for e in es[1:]:
+                pos = e.find('-')
+                if pos > 0:
+                    beg = int(e[:pos])
+                    end = int(e[pos+1:])
+                    for i in range(beg, end + 1):
+                        renumbers["%03d" % i] = "%s%03d" % (es[0][0], n)
+                        n += 1                        
+                else:
+                    renumbers[e] = "%s%03d" % (es[0][0], n)
+                    n += 1
+    inp.close()
+    print 'Read', len(pnmflips), 'flips from', fileName
+
+nFiles = 0
+
+def processFile(fileName):
+    """Make a half-size copy of the named file.
+If it has an entry in pnmflips, also rotate it.
+If it is 960 pixels in size, slice in to nine parts --
+it must be a 'multifile'."""
+    global pnmflips
+    global renumbers
+    global nFiles
+
+    # s = os.system('djpeg -greyscale -fast -scale 1/8 raw/' + fileName
+    #+ ' | pnmfile')
+    b = fileName[:-4].lower()
+    n = b[-4:-1]
+    if renumbers.has_key(n):
+        n = renumbers[n]
+        print b[-4:-1], '->', n
+    else:
+        n += '0' # multiply by 10 to make 4 figures
+
+    if noExplode and b[-1] == 'm':
+        return
+    elif b[-1] == 'm':
+        # Multipicture -- 3x3 grid of frames.
+        print fileName, ' -- split'
+        os.system('djpeg raw/' + fileName + ' >tmp.ppm')
+        i = 0
+        for y in [0, 240, 480]:
+            for x in [0, 320, 640]:
+                os.system('pnmcut  %d %d 320 240 tmp.ppm' % (x, y)
+                          + ' | pnmtopng '
+                          '>' + b + '.f' + str(i) + '.png')
+                i += 1
+                nFiles += 1
+    elif explodeOnly:
+        return
+    elif pnmflips.has_key(fileName[4:7]):
+        flip = pnmflips[fileName[4:7]]
+        print fileName, '-- flip', flip
+        os.system('djpeg raw/' + fileName
+              + ' | pnmflip ' + flip
+              + ' | cjpeg -prog >' + n + '.' + b + 'r.jpg')
+        # removed   + ' | pnmscale 0.5'
+        nFiles += 1
+    else:
+        print fileName
+        os.system('djpeg raw/' + fileName
+              + ' | cjpeg -prog >' + n + '.' + b + 'r.jpg')
+        nFiles += 1
+
+if __name__ == '__main__':
+    print 'This is Caption 2001 image maker.'
+    readData('mkimg.data')
+
+    explodeOnly = 0
+    noExplode = 0
+
+    for name in os.listdir('raw'):
+        if name[-4:].lower() == '.jpg':
+            processFile(name)
+    print 'Wrote', nFiles, 'files.'

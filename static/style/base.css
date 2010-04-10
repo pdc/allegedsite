@@ -1,0 +1,338 @@
+@font-face {
+    font-family: "League Gothic";
+    src: url(League%20gothic.otf) format(opentype);
+}
+
+@font-face {
+    font-family: "Chunk Five";
+    src: url(Chunkfive.otf) format(opentype);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Garamond", "Hoefler Text", serif;
+    line-height: 1.25;
+    background-color: #555;
+    color: #AAA;
+}
+
+a:link {
+    color: #99B;
+}
+a:visited {
+    color: #AAB;
+}
+
+h1 {
+    font-size: 2em;
+    width: 940px;
+    margin: 20px auto;
+    padding: 10px;
+    
+    font-family: "Chunk Five", serif;
+    font-weight: normal;
+}
+
+#middle {
+    margin: 0 auto;
+    width: 960px;
+}
+
+.hasnt-sidebar #content {
+    width: 960px;
+}
+
+.has-sidebar #content {
+    width: 720px;
+    float: left;
+}
+
+.has-sidebar #content.nav-below {
+    width: 960px;
+}
+
+#nav {
+    width: 240px;
+    float: left;
+}
+
+.nav-below #nav {
+    width: 480px;
+}
+
+#content h2 {
+    font-size: 2em;
+    margin: 1em 10px 0; 
+    
+    font-family: "League Gothic", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+ul.album-list {
+    float: left;   
+}
+
+.album-list li {
+    float: left;
+    width: 140px;
+    margin: 10px;
+    
+    list-style-type: none;
+}
+
+.album-list a {
+    position: relative;
+    display: block;
+    padding: 14px;
+    
+    text-decoration: none;
+    border: 1px outset #CCC;
+    background-color: #DDD;
+    color: #333;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-box-shadow: #000 1px 1px 5px;
+    -webkit-box-shadow: #000 1px 1px 5px;
+}
+
+.album-list a:hover {
+    background-color: #EEE;
+    -moz-box-shadow: #000 2px 2px 7px;
+    -webkit-box-shadow: #000 2px 2px 7px;
+}
+
+.album-list b {
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 30px;
+    display: block;
+    width: 100px;
+    margin: 0;
+    padding: 10px;
+    
+    font-family: "League Gothic", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-shadow: #000 1px 1px 3px;
+    color: #EEE;
+}
+
+.photo-list li {
+    float: left;
+    width: 220px;
+    margin: 10px;
+    
+    list-style-type: none;
+    background-color: #DDD;
+    color: #333;
+}
+
+.photo-list a {
+    display: block;
+    padding: 9px;
+    
+    text-decoration: none;
+    border: 1px outset #EEE;
+    color: inherit;
+    -moz-box-shadow: #000 1px 1px 5px;
+    -webkit-box-shadow: #000 1px 1px 5px;
+}
+
+.photo-list a:hover {
+    background-color: #EEE;
+    -moz-box-shadow: #000 2px 2px 7px;
+    -webkit-box-shadow: #000 2px 2px 7px;
+}
+.photo-list a:active {
+    background-color: #EEE;
+    -moz-box-shadow: #000 0px 0px 3px;
+    -webkit-box-shadow: #000 0px 0px 3px;
+}
+
+.photo-list img {
+    display: block;
+    border: none;
+}
+
+.photo-list .description {
+    display: block;
+    margin: 1em 0;
+}
+
+.photo-list .people {
+    display: block;
+    margin: 0;
+}
+
+#content p {    
+    margin: 1.25em 10px;
+}
+
+#content p+p {
+    margin-top: 1.25em;
+}
+
+#content p.img {
+    margin: 0 10px;
+}
+
+#content p img {
+    display: block;
+    
+    -moz-box-shadow: #000 1px 1px 5px;
+    -webkit-box-shadow: #000 1px 1px 5px;
+}
+
+.nav-below #about-the-image {
+    width: 480px;
+    float: left;
+}
+
+.nav-below p#description {
+    float: left;
+    margin: 2em 10px;
+    width: 220px;
+}
+
+.nav-below #people {
+    float: left;
+    width: 240px;
+}
+    
+
+ul.people {
+    width: 100%;
+    float: left;
+}
+
+ul.people li {
+    float: left;
+    list-style-type: none;
+    margin: 0 10px;
+}
+
+ul.people a {
+    display: block;
+    float: left;
+    padding: 0.25em 10px;
+    
+    color: inherit;
+    text-decoration: none;
+}
+
+ul.people a:hover,
+ul.people a:active {
+    background-color: #667;
+}
+
+.nav-below #other-albums {
+    float: left;
+    width: 240px;
+}
+
+#other-albums:hover {
+    background-color: #444;
+}
+
+#other-albums h2 {
+    background: url(collapsed-AAA-16.png) right 50% no-repeat;
+}
+
+#other-albums:hover h2 {
+    background-image: url(expanded-AAA-16.png);
+}
+
+#other-albums li {
+    list-style-type: none;
+}
+
+#other-albums a,
+#other-albums strong {
+    display: block;
+    padding: 0.25em 10px;
+}
+
+#other-albums strong {
+    color: #EEE;
+}
+
+#other-albums a {    
+    color: inherit;
+    text-decoration: none;
+}
+
+#other-albums a:hover,
+#other-albums a:active {
+    color: #DDE;
+    background-color: #667;    
+    -moz-box-shadow: #000 1px 1px 5px;
+    -webkit-box-shadow: #000 1px 1px 5px;
+}
+
+#other-albums a:hover b,
+#other-albums a:active b {
+    text-decoration: underline;
+}
+
+#nav h2 {
+    font-size: 2em;
+    margin: 0 10px; 
+    
+    font-family: "League Gothic", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.nav-below #nav h2 {
+    margin-top: 1em;
+}
+
+.nav-below #next-prev {
+    float: left;
+    width: 240px;
+}
+
+#next-prev ul {
+    display: block;
+    float: left;
+    width: 220px;
+    margin: 0 10px;
+}
+
+#next-prev li {
+    display: block;
+    float: left;
+}
+
+#next-prev a {
+    display: block;
+    width: 110px;
+    height: 140px;
+    
+    text-decoration: none;
+}
+
+#next-prev  span {
+    display: block;
+    width: 90px;
+    height: 100px;
+    padding: 19px 9px;
+    border: 1px solid #999;
+}
+
+#next-prev img {
+    display: block;
+    border: none;
+}
+    
+#nav p {
+    margin: 0.625em 10px;
+}
+
+        
+    

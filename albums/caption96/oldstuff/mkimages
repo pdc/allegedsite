@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# get the images in place
+
+bitmaps="aa ab"
+images="ac ad ae af ag ah ai aj ak al am an ao ap aq ar as at au av aw ax ay az ba bb bc bd be"
+
+pre=19970601
+gamma=1.6
+res=75
+scale=`(echo scale=5; echo $res/200) | bc`
+echo $scale
+
+cutsfile=cuts.txt
+tmp=/tmp/mkimage$$
+trap 'rm -f $tmp.*' 0
+
+
+
+for i in $images; do
+
+    cutparams=`grep $i: $cutsfile | sed 's/.*://'`
+    if [ -z "$cutparams" ]; then
+	cutparams="12 0 1400 976"
+    fi
+    echo $i: $cutparams
+
+    getimage $pre$i-200dpi |
+    pnmcut $cutparams |
+    pnmscale $scale | 
+    pnmgamma $gamma > $tmp.ppm
+
+    cat $tmp.ppm | cjpeg -progressive -optimize > $pre$i-${res}dpi.jpeg
+
+    cat $tmp.ppm | pnmscale -height 64 |
+    ppmquant -fs -map ../netscape-cmap.ppm |
+    ppmtogif -int > thumbnails/$pre$i-thumb.gif
+done
+
+

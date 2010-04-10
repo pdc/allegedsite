@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# generate index.html
+
+date=`date +%Y-%m-%d`
+
+index=index.html
+
+pre=19970601
+res=75
+
+bitmaps="aa ab"
+images="ac ad ae af ag ah ai aj ak al am an ao ap aq ar as at au av aw ax ay az ba bb bc bd be"
+
+cat >$index <<@EOF
+<html><head><title>Damian's CAPTION96 photo album</title></head>
+<body bgcolor="#FFFFCC" text="660000" link="006600" vlink="000066"
+    background="19960626a.gif">
+<h1>Damian's CAPTION96 photo album</h1>
+@EOF
+
+
+for i in $images; do
+    echo -n "$i"
+    file=$pre$i-${res}dpi.jpeg
+    thumb=thumbnails/$pre$i-thumb.gif
+    size=`ls -s $file | sed 's/ *\([0-9]*\) .*$/\1/'`
+    echo -n " (${size}K"
+    attr=`giftopnm $thumb | head -2 | tail +2 |
+	sed 's/ *\([0-9]*\) *\([0-9]*\) *$/width=\1 height=\2/'`
+    echo -n ", $attr), "
+    echo >>$index "<a href=\"$file\"><img src=\"$thumb\""
+    echo >>$index "   alt=\"$file\" $attr><small>${size}K</small></a>"
+done
+
+cat >>$index <<@EOF
+<p><hr noshade>
+<address>
+    <a href="http://www.oxfordcc.co.uk/pdc/people/pdc.html">pdc
+    $date</a>
+</address>
+</body>
+@EOF
+
+echo done

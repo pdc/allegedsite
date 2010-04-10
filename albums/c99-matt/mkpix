@@ -1,0 +1,24 @@
+#!/bin/sh
+# -*-tcl-*- \
+	exec tclsh "$0" ${1+"$@"}
+
+set srcDir "/cd/Photos/72dpi JPEGs"
+set dstDir "/home/pdc/albums/c99-matt"
+
+proc munge {text} {
+    regsub -all "\[ '()]" $text "" text
+    regsub -all -- --+ $text - text
+    regsub -all "^-|-\$" $text "" text
+    regsub -all -- "-\\&-" $text "-and-" text
+    regsub -all -- "\\&" $text "" text
+    return [string tolower $text]
+}
+
+foreach d [glob $srcDir/*] {
+    set prefix [munge [file tail $d]]
+    foreach f [glob $d/*.jpg] {
+	set name $prefix-[munge [file tail $f]]
+	puts $name
+	file copy $f [file join $dstDir $name]
+    }
+}

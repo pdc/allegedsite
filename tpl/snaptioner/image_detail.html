@@ -1,0 +1,60 @@
+{% extends "snaptioner/base.html" %}
+{% block title %}{{ image.name }} - {{ album.title }}{% endblock %}
+{% block heading %}Photo {{ image.name }} in {{ album.title }} Album{% endblock %}
+
+{% block content %}
+    <p id="the-image" class="img">
+      <img src="{{ image.src }}" alt="" >
+    </p>
+    <div id="about-the-image">
+      <p id="description">
+        {{ image.description|safe }}
+      </p>
+      {% if image.people %}
+      <div id="people">
+        <h2>People in this photo</h2>
+        <ul class="people">
+          {% for person in image.people %}
+          <li>
+            <i>{{ person }}</i>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+{% endblock %}
+
+{% block localnav %}
+      <div id="next-prev">
+        <h2>More in this album</h2>
+        <ul>
+          <li>
+            {% if image.prev %}
+            <a href="{{ image.prev.href }}" rel="prev">
+              <img src="{{ image.prev.small_thumbnail_src }}" alt="Prev">
+            </a>
+            {% else %}
+            <span>This is the first photo</span>
+            {% endif %}
+          </li>
+          <li>
+            {% if image.next %}
+            <a href="{{ image.next.href }}" rel="next">
+              <img src="{{ image.next.small_thumbnail_src }}" alt="Next">
+            </a>
+            {% else %}
+            <span>This is the last photo</span>
+            {% endif %}
+          </li>
+        </ul>
+        <p>
+          <a href="{% url album_detail album_name=album.name %}">Photo list</a>
+        </p>      
+      </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="{{ settings.STATIC_URL }}js/snaptioner.js"></script>    
+{% endblock %}

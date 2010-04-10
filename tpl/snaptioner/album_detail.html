@@ -1,0 +1,34 @@
+{% extends "snaptioner/base.html" %}
+{% load markup %}
+
+{% block title %}{{ album.title }} Album{% endblock %}
+{% block heading %}{{ album.title }} Album <small>({{ album.photographer }})</small>{% endblock %}
+  
+{% block content %}
+    <ul class="photo-list">
+      {% for image in album %}
+      <li id="{{ album.name }}-{{ image.name }}">
+        <a href="{{ image.href }}">
+          <img src="{{ image.thumbnail_src }}" alt="">
+          <span class="description">{{ image.description|safe }}</span>
+          <span class="people">
+            {% for person in image.people %} 
+            <i>{{ person }}</i>
+            {% endfor %}
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block localnav %}
+    {{ album.description|markdown }}
+    
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="{{ settings.STATIC_URL }}js/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="{{ settings.STATIC_URL }}js/snaptioner.js"></script>    
+{% endblock %}

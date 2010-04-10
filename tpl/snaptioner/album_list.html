@@ -1,0 +1,23 @@
+{% extends "snaptioner/base.html" %}
+
+{% block title %}Album List{% endblock %}
+{% block heading %}Ancient Photo Albums{% endblock %}
+
+{% block classes %}hasnt-sidebar{% endblock %}
+
+{% block content %}
+    <ul class="album-list">
+      {% for album in albums %}
+      <li>
+        <a href="{{ album.href }}">
+          <img src="{{ album.0.small_thumbnail_src }}" alt="">
+          <b>{{ album.title }}</b> 
+          <small>{{ album.photographer }}</small>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

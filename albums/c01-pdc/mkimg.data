@@ -1,0 +1,65 @@
+# Which pictures need rotation
+-r270 009 010 011 012 047 048 064 067 068 071 072 075 076 078
+-r270 081 083 086 105 144 191 193 209
+-r90 207
+-r180 190
+
+# group b -- making badges
+# Hand, printing
+b000 002 010
+b010 008 013
+# Collating
+b100 029
+
+
+# group g -- gophers
+g001 028 033 034 074 123
+
+# group e -- exhibition
+#  e001 -- general
+#  e101 -- Rachael House
+e001 030-032 034-040 043-046 048 049 
+e101 091 092 093 094 095 
+
+# group w -- workshop
+#  w001 -- andy's
+#  w101 -- woodrow's
+#  w201 -- Jeremy's
+#  w301 -- scribble pads
+w001 062 063 064 065 066 075 076 077 078 
+w101 079 080 081 082 083 084 085 086 087 088 089 090 
+w201 041 042 124 125 128-160 162-188 193-198 201-204
+w301 189-192 212
+
+# group a -- auction
+#  a001 -- exhibition of items
+#  a101 -- the auction proper
+a001 050 051 067 068 
+a101 113 114 
+
+# group s -- stalls
+#  s001
+#  s401 -- Caption table
+s001 052 053 054 056 
+s401 072 073
+
+# group p -- people
+p001 015-027 056 057 069-071 096 115 126 127 161 199 200 205-211 213-216 218-223
+
+# group h -- home
+h000 000-001 003-007 009 011 012 014 017
+
+# group d -- discussion panels
+#  d001 -- modern romance or whatever it was
+d001 058 059 060 061 
+
+# group t -- theatre!
+#  t201 -- prep for James Kochalha Puppet Theatre
+#  t401 -- remnants aftter JKPT
+t201 097 098 099 100 101 102 103 104 105 106 107 108 109 110 111 112 
+t401 116 117 118 119 120 121 122 
+
+x001 217
+
+
+

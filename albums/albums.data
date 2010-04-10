@@ -1,0 +1,15 @@
+array set albumTitles {
+    caption.org/2000/action "CAPTION2000 (Action Man's album)"
+    caption.org/2000/matt "CAPTION2000 (Matt's album)"
+    caption.org/1999/gideon "spacecaption1999 (Gideon's album)"
+    caption.org/1999/matt "spacecaption1999 (Matt's album)"
+    caption.org/1998/matt "CAPTION98 (Matt Brooker's album)"
+    caption.org/1997/pdc "CAPTION97 (Damian's album)"
+    caption.org/1996/pdc "CAPTION96 (Damian's album)"
+    tuschin/pdc/roch "Roch Castle (Damian's album)"
+    tuschin/pdc/aviemore "Aviemore (Damian's album)"
+    tuschin/pdc/bologna "Bologna (Damian's album)"
+    tuschin/pdc/2002/maymorning "May Morning 2002 (Damian's Album)"
+    tuschin/pdc/2004/springy "Springy weather (Damian's Album)"
+    tuschin/jrd/2004/ukwebcomix "UK Web Comix Thing (Jeremy's album)"
+}

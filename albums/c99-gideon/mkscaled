@@ -1,0 +1,44 @@
+#!/bin/sh
+# -*-tcl-*- \
+	exec tclsh8.1 "$0" ${1+"$@"}
+
+proc log text {
+    puts stderr $text
+}
+
+proc emit text {
+    puts stdout $text
+}
+
+foreach file [glob orig/998p??.jpg] {
+    log $file:
+
+    set b [file tail [file root $file]]
+    set tmp /tmp/tmp.ppm
+    exec djpeg $file > $tmp
+    
+    set line [exec pnmfile $tmp]
+    set wd [lindex $line 3]
+    set ht [lindex $line 5]
+    log $wd×$ht
+
+    if {$wd > 640} {
+	set scale 0.5
+    } else {
+	set scale 0.75
+    }
+
+    switch $b {
+	998p09 - 998p12 - 998p17 - 998p18 - 998p44 - 998p51 - 998p64 {
+	    exec pnmflip -r270 $tmp | pnmscale -xysize 400 400\
+		    | cjpeg -progressive > ${b}a.jpg
+	}
+	998p30 - 998p43 - 998p57 - 998p58 {
+	    exec pnmflip -r90 $tmp | pnmscale -xysize 400 400 \
+		    | cjpeg -progressive > ${b}a.jpg
+	}
+	default {
+	    exec pnmscale -xysize 400 400 $tmp | cjpeg -progressive > ${b}a.jpg
+	}
+    }
+}
