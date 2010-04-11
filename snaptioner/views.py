@@ -40,6 +40,8 @@ def get_album_with_srcs(library_url, albums, album_name):
 @render_with('snaptioner/album_list.html')
 def album_list(request, library_dir, library_url):
     albums = get_albums_with_hrefs(library_dir, library_url)
+    for album_name in albums:
+        get_album_with_srcs(library_url, albums, album_name)
     return {
         'albums': sorted(albums.values(), key=lambda album: album.name),
     }
