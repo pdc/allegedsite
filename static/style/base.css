@@ -1,11 +1,18 @@
+
+
 @font-face {
-    font-family: "League Gothic";
-    src: url(league_gothic.otf) format(opentype);
+	font-family: 'LeagueGothicRegular';
+	src: url('League_Gothic.eot');
+	src: local('League Gothic'), local('LeagueGothic'),
+	    url('League_Gothic.woff') format('woff'),
+	    url('League_Gothic.ttf') format('truetype'), 
+	    url('league_gothic.otf') format('opentype'), 
+	    url('League_Gothic.svg#LeagueGothic') format('svg');
 }
 
 @font-face {
     font-family: "Chunk Five";
-    src: url(Chunkfive.otf) format(opentype);
+    src: local("Chunk Five"), url(Chunkfive.otf) format(opentype);
 }
 
 * {
@@ -25,6 +32,10 @@ a:link {
 }
 a:visited {
     color: #AAB;
+}
+
+a img {
+    border: none;
 }
 
 h1 {
@@ -68,9 +79,9 @@ h1 {
     font-size: 2em;
     margin: 1em 10px 0; 
     
-    font-family: "League Gothic", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
     font-weight: normal;
-    text-transform: uppercase;
+    text-transform: uppercase;    
+    font-family: "LeagueGothicRegular", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", "Helvetica", "Arial", sans-serif;
 }
 
 ul.album-list {
@@ -115,7 +126,7 @@ ul.album-list {
     margin: 0;
     padding: 10px;
     
-    font-family: "League Gothic", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-family: "LeagueGothicRegular", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
     font-weight: normal;
     text-transform: uppercase;
     text-shadow: #000 1px 1px 3px;
@@ -283,7 +294,7 @@ ul.people a:active {
     font-size: 2em;
     margin: 0 10px; 
     
-    font-family: "League Gothic", "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif;
+    font-family: LeagueGothicRegular, "Helvetica Compressed", "Helvetica Condensed" "Helvetica Narrow", "Arial Narrow", sans-serif; */
     font-weight: normal;
     text-transform: uppercase;
 }
