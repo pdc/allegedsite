@@ -1,0 +1,98 @@
+# -*-tcl-*-
+
+source specDefs.tcl
+
+beginDocument {
+    title "Latin-1p nonstandard - Alleged Literature"
+    stylesheet spec.css
+}
+
+beginBody
+
+h1 "Latin-1p specification"
+
+p "Revision 1
+(P. Damian Cugley,
+[a ../01.html#e20030121 "2003-01-21"])"
+
+
+
+p " This note describes an encoding that pragmatically allows access
+to English punctuation characters, at the expense of the
+typewriter-inspired characters used in computer programming, and
+without requiring new keyboards or even new text editors.  It is not
+endorsed by any standards body and does not define an official
+standard of any kind.  "
+
+p "Latin-1p is defined to be identical to ISO&nbsp;8859-1 (Latin-1), except
+for the character positions 0x27 and 0x60, which are defined as
+follows: "
+
+table class=table border=0 {
+    thead {
+	tr {
+	    th Position
+	    th "ISO&nbsp;8859-1"
+	    th "Latin-1p"
+	}
+    }
+    tbody {
+	tr {
+	    td [code 0x27]
+	    td "U+0027 '<br /> APOSTROPHE"
+	    td "U+2019 &rsquo;<br /> RIGHT SINGLE QUOTATION MARK"
+	}
+	if {0} {
+	    tr {
+		td [code 0x2D]
+		td "U+002D -<br /> HYPHEN-MINUS"
+		td "U+2010 &#x2010;<br /> HYPHEN"
+	    }
+	}
+	tr {
+	    td [code 0x60]
+	    td "U+0060 `<br /> SPACING GRAVE ACCENT"
+	    td "U+2018 &lsquo;<br /> LEFT SINGLE QUOTATION MARK"
+	}
+}   }
+
+p " This encoding does not allow the generation of other punctuation
+marks, like double quotation characters (but clever display systems
+could display <samp>``</samp> and <samp>''</samp> using
+double-quotation mark glyphs, using the same logic that displays fi as
+a single fi ligature in some systems) or the dashes.  "
+
+p " This encoding can be used as a <code>charset</code> or
+<code>encoding</code> parameter where <code>Latin-1</code> or
+<code>ISO&nbsp;8859-1</code> can.  Here is an example, displayed as if with USASCII encoding:"
+
+blockquote* {
+    p "<samp>Content-type: text/plain; charset=Latin-1p</samp>"
+    p "<samp>She said `He said ``Foo''.'</samp>"
+}
+
+p "
+By labelling it as Latin-1p, the reader is instructed to read it in as
+"
+
+blockquote* {
+    p "
+    <samp>She said &lsquo;He said &lsquo;&lsquo;Foo&rsquo;&rsquo;.&rsquo;</samp>"
+}
+
+p " [img scr-01.png alt=(screenshot) align=right "style=border: 1px solid black"]
+The irony is that on my Linux box, (1) the X11 fonts use glyphs for
+the ASCII characters that resemble the Latin-1p equivalent, and (2)
+Mozilla and Gecko map U+2018 on to U+0027 because Linux lacks Unicode
+fonts, and so the ersatz punctuation in the Latin-1p text actually
+looks better than the text using HTML escapes!  "
+
+
+endBody
+endDocument
+
+
+
+
+
+

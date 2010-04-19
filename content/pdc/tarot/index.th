@@ -1,0 +1,49 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 "[img title@600x60.gif "alt=Alleged Tarot 2002"]"
+
+table align=center id=twoDoors {
+    tr align=center {
+	td  "[svg vi-lovers-card3.svgz width=200 height=290 \
+		"alt=VI. Lovers in SVG"]" 
+	td "[img vi-lovers-100w.png width=200 height=274 \
+		"alt=VI. Lovers in PNG"]"
+    }
+    tr align=center {
+	td  "SVG (Scalable Vector Graphics)"
+	td  "PNG (Portable Network Graphics)"
+    }
+    tr align=center {
+	td  [a index-svg.html "Enter"]
+	td  [a index-png.html "Enter"]
+}   }
+	
+p "
+This virtual tarot deck is available in two formats.
+The two pictures above show you which, if any, your web
+browser has support for.
+"
+
+p "
+[a about.html About the project]
+&middot; [a technical.html Technical info], 
+&middot; [a references.html References]
+&middot; [a ../2003/tarot.html Work log]"
+
+br clear=all
+
+endBody
+endDocument
+
+
+

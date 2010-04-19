@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:51 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Reportlab - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>reportlab</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Reportlab</h1>
+      <div class="entry">
+        <h2><a name="e20031009" id="e20031009">ASP&rsquo;s Response.Write disaster</a></h2>
+        <p class="details">9 October 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="python.html">Python</a></li>
+            <li><a href="pdf.html"><abbr title="Portable Document Format">PDF</abbr></a></li>
+            <li><a href="asp.html"><abbr title="Microsoft ActiveX Server Pages">ASP</abbr></a></li>
+            <li><a href="utf8.html">utf8</a></li>
+            <li><strong>reportlab</strong></li>
+            <li><a href="elementtree.html">elementtree</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2003/10/09.html#e20031009" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.microsoft.com/asp/"><img src="../2003/web-server.png" class="initial" alt="" align="left" width="100" height="52" border="0" /></a></div><p class="first">
+      Were you foolish enough to be creating a web application with <a
+      href="http://www.microsoft.com/asp/"><abbr title="Microsoft
+      ActiveX Server pages">ASP</abbr></a>, then you will be used to
+      using the <code>Write</code> method of the <code>Response</code>
+      object to stream HTML to the web browser of your client.  Today
+      I got caught out by a serious limitation of the implementation
+      of <code>Response.Write</code>.  (And this is not the first time
+      it has leapt out and bit me, either.)
+    </p>
+    <p>
+      The fundamental problem is caused by a decision made when
+      designing <abbr title="Microsoft Common Object Model">COM</abbr>
+      all those years ago.  Micrsoft intended, sensibly enough, that
+      all character data processed by COM objects should use Unicode,
+      which, at the time, could be all represented correctly using
+      16-bit integers (Unicode version 3 breaks this, but that is
+      another story).  The COM convention is that all strings are
+      passed as UTF-16LE.  Most software still represented strings as
+      byte sequences; Europeans with one byte per character, the
+      Asians using variable-length multi-byte sequences.  Calling COM
+      methods always requires transcoding between the legacy encoding
+      and UTF-16.  
+    </p>
+    <p>
+      Thus the <code>Response.Write</code> method is designed to
+      consume character data (supplied as UTF-16), even though it
+      immediately encodes as whatever single-byte (or <abbr
+      title="multi-byte character set">MBCS</abbr>) encoding
+      is the default on your computer.  Thus an ASP page served by a
+      British computer, say, will convert the character data to the <a
+      href="http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP1252.TXT">Windows-1252
+      encoding</a>:
+    </p>
+    <table>
+        <tr>
+			<th align="left">Characters</th>
+			<td>‘</td>
+			<td>Z</td>
+			<td>o</td>
+			<td>&euml;</td>
+			<td>’</td>
+		</tr>
+        <tr>
+			<th align="left">Unicode</th>
+			<td>2018</td>
+			<td>005A</td>
+			<td>006F</td>
+			<td>00CB</td>
+			<td>2019</td>
+		</tr>
+        <tr>
+			<th align="left">Windows-1252</th>
+			<td>0x91</td>
+			<td>0x5A</td>
+			<td>0x6F</td>
+			<td>0xCB</td>
+			<td>0x92</td>
+		</tr>
+    </table>
+    <p>
+      So long as you
+      only want to generate character data in Windows-1252 then that
+      is OK.  But there are times when this is not what you want.
+    </p>
+    <p>
+      On a European Union web site one may want to be able to generate
+      text that includes both Greek and Latin scripts.  The only
+      sensible way to do this is to use <a
+      href="http://www.utf-8.com/">UTF-8</a>.  Writing a function to
+      convert Unicode character data to a byte sequence is simple
+      enough (in fact, recent versions of the Win32 API have a
+      function that does it for you):
+    </p>
+    <table>
+        <tr><th align="left">Characters</th><td>‘</td><td>Z</td><td>o</td><td>&euml;</td><td>’</td></tr>
+        <tr><th align="left">Unicode</th><td>2018</td><td>005A</td><td>006F</td><td>00CB</td><td>2019</td></tr>
+        <tr><th align="left">UTF-8</th><td>E2 80
+        98</td><td>5A</td><td>6F</td><td>C3 8B</td><td>E2 80 98</td></tr>
+    </table>
+    <p>
+      But, having generated a byte
+      sequence, how do you make the <code>Response</code> object pass
+      the bytes unchanged to the recipient?
+    </p>
+    <p>
+      Theoretically you can transmit data verbatim by passing it to
+      <code>Response.BinaryWrite</code>.  For this, you need to create
+      data of type ‘variant containing array of byte’,
+      which is something of a tall order in VBScript.  By writing a
+      COM component in a language like C++, one can create a
+      <code>VARIANT</code>, and a <code>SAFEARRAY</code> and copy
+      buffers around and generally write about 25 lines of code in
+      order to create a byte sequence you can pass to VBScript, which
+      it can then pass to <code>Response.BinaryWrite</code>.
+      I&nbsp;have done this in the past, and it really is an
+      unreasonable amount of work.  What’s more, the <abbr
+      title="Microsoft Visual Basic">VB</abbr> programmers will not
+      thank you for it, because working with byte arrays is even more
+      inconvenient in VB than working with strings.
+    </p>
+    <p>
+      In practice I have used a trick that works fairly well.
+      Remember that <code>Response.Write</code> applies the Win32 encoding
+      routine (called <code>WideCharToMultiByte</code>) to the data
+      you pass to it.  So we convert our byte sequence to character
+      data using the reverse function,
+      <code>MultiByteToWideChar</code>:
+    </p>
+    <table>
+        <tr><th align="left">Windows-1252</th><td>E2</td><td>80</td><td>
+        98</td><td>5A</td><td>6F</td><td>C3</td><td>8B</td><td>E2</td><td>80</td><td>99</td></tr>
+        <tr><th align="left">Unicode</th><td>00E2</td><td>20AC</td><td>
+        02DC</td><td>005A</td><td>006F</td><td>00C3</td><td>2039</td><td>00E2</td><td>20AC</td><td>2122</td></tr>
+        <tr><th align="left">Characters</th><td>&#x00E2;</td><td>&#x20AC;</td><td>
+        &#x02DC;</td><td>&#x005A;</td><td>&#x006F;</td><td>&#x00C3;</td><td>&#x2039;</td><td>&#x00E2;</td><td>&#x20AC;</td><td>&#x2122;</td></tr>
+    </table>
+    <p>
+      When this is run through the transcoder again, the UTF-8 byte
+      sequence is restored.  The web browser will decode it to
+      generate the original character data.  Or, if it does not
+      realize the data is in UTF-8 format, it may display the
+      gibberish characters shown above.
+    </p>
+    <p>
+      In general, if you have a byte sequence you have to pass over a
+      COM boundary, you will end up using this kludge.  Mostly this
+      works and no-one notices the continual transcodings back and
+      forth between MBCS and Unicode.  <a
+      href="http://starship.python.org/crew/mhammond/">Mark
+      Hammond’s Win32 extensions for Python</a> use the same
+      technique when passing Python strings (= byte sequences) through
+      the COM barrier (Unicode strings get passed unchanged).
+    </p>
+    <p>
+      To extend ASP to generate <abbr title="Portable Document Format">PDF</abbr>,
+      I&nbsp;wanted to create the COM component in <a
+      href="http://www.python.org/">Python</a>, partly because that
+      way we can use <a
+      href="http://www.reportlab.com/">ReportLab</a>’s excellent
+      <a href="http://www.reportlab.org/">PDF toolkit</a>.
+      After some frustration before I worked out that the
+      <code>_reg_clsctx_</code> attribute of the Python class needs to
+      be set to <code>pythoncom.CLSCTX_LOCAL_SERVER</code>.  The
+      default value causes ASP to display an error message, which is,
+      as usual, meaningless.  Apart from that, <a title="Chapter 12 of
+      Python Programming in Win32" href="http://www.oreilly.com/catalog/pythonwin32/chapter/ch12.html">creating COM servers in
+      Python</a> is pretty straightforward.  Having written COM servers in
+      C++ before now, I&nbsp;am very impressed at how easy Mark
+      Hammond makes it look.   
+    </p>
+    <p>
+      I spent a day, more or less, on working out how to do two apparently
+      trivial things: <a
+      href="../2003/10/08.html#e20031008">intercept the  XML data
+      stream</a> and pass it to my Python code (via COM).  That done,
+      it was pretty smooth sailing for a bit, using <a href="http://effbot.org/zone/element-index.htm">Fredrik
+      Lundh’s elementtree package</a> to parse the XML and
+      ReportLab’s PLATYPUS to render it as PDF.  Everthing was
+      going swimmingly.  
+    </p>
+    <p>
+      Then suddenly it all went wrong again.  First ASP errors
+      (probably caused by a typo) but then I discovered that whenever
+      I visited the PDF page, Adobe Acrobat Reader complaied that the
+      file was corrupt.  Oh no!  I changed the script to set its
+      content-type to <code>text/plain</code>, so I could see the raw
+      PDF data.  It was strangely short. 
+      I changed the script so that it
+      printed the number of characters (representing bytes) returned
+      by my COM object.  The total was still correct.  Somehow I was
+      feeding 52K of data in to <code>Response.Write</code> and only
+      2K was coming out.    My best guess is that PDF files can
+      contain zero bytes, and that <code>Response.Write</code> treats
+      its argument as a 0-terminated string
+      (even though it is a <code>BSTR</code>, which includes a
+      character count).  Amateurs.  I am going to have to come up with
+      a new way of getting my bytes out of Python and on to the WWW.
+    </p>
+    <p>
+      In conclusion, the trick I described above works OK, so long as
+      your byte sequence contains noi zeros.  When your bytes
+      originate as some form of character data that will definitely be
+      the case, so don’t worry.  Just do not expect ASP to be
+      any good for binary formats like PDF.
+    </p>
+    <p>
+      Next time I could try writing the whole server from scratch in
+      Python and hope my bossess don’t notice.
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

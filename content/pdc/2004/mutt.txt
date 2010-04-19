@@ -1,0 +1,17 @@
+
+MUTT: Treeification
+-------------------
+
+The MUTT transform turns an almost-tree-like MU document in to one with
+no overlapping ranges, suitable to expressing as a an HTML-style DOM.
+The detailed algorithm is outlined on the [LMNL site][7] but the gist is
+that when you meet an end-tag, you insert (or imply) end-tags for the
+unmatched start-tags, and remember them so they can be reinserted after
+the end tag (or after a sequence of consecutive end-tags).
+
+For example, when scanning `<b><i>bi</b>it</i>`, we insert `</i>` before
+the `</b>`, and remember that we have to insert a fresh `<i>` tag after
+it, giving `<b><i>bi</i></b><i>it</i>`.
+  
+
+    [prev]: 17.html "MU: A notation for mark-up"

@@ -1,0 +1,81 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+source ../entryDefs.tcl
+
+beginDocument {
+    title "List of topics - Alleged Literature"
+    pdcMetadata
+}
+beginBody
+
+h1 "List of topics"
+
+p "This is my attempt at a <s>categories</s> <s>topics</s> tags page; it needs some work to be
+made useful, I&#x2019;m afraid."
+
+foreach fileName [glob ../*/*.e] {
+    set in [open $fileName r]
+    while {[gets $in line] >= 0} {
+	if {[regexp "<dc:subject>(\[^<>\]*)</dc:subject>"\
+		$line dummy topic]} {
+	    set topic [string trim $topic]
+	    lappend topicFiles($topic) $fileName
+	} elseif {[regexp "Topics:(.*)" $line dummy topics]} {
+            foreach topic $topics {
+                lappend topicFiles($topic) $fileName
+            }
+        }
+    }
+    close $in
+}
+
+dl class=topics {
+    foreach topic [lsort [array names topicFiles]] {
+	if {[info exists Log::topicTitles($topic)]} {
+	    set topicTitle $Log::topicTitles($topic)
+	} else {
+	    set topicTitle $topic
+	}
+	dt "[a $topic.html $topicTitle] ([llength $topicFiles($topic)])"
+    }
+}
+
+emitReferrers
+
+endBody
+endDocument
+
+foreach topic [array names topicFiles] {
+    if {[info exists Log::topicTitles($topic)]} {
+	set topicTitle $Log::topicTitles($topic)
+    } else {
+	set topicTitle $topic
+    }
+    regsub -all "<\[^<>]*>" $topicTitle "" topicTitle
+    
+    # Capitalize the title.
+    set ws [split $topicTitle]
+    set xs {}
+    foreach {w} $ws {
+        set x [string toupper [string index $w 0]][string range $w 1 end]
+        lappend xs $x
+    }
+    set topicTitle [join $xs]
+    
+    beginDocument -file $topic.html {
+	title "$topicTitle - Topics - Alleged Literature"
+	pdcMetadata
+    }
+    beginBody "[a subjects.html topics]"
+
+    h1 "Alleged Topic: $topicTitle"
+
+    set entries [lsort -dec $topicFiles($topic)]
+    Log::arNameEmitEntryList $entries
+
+    emitReferrers
+
+    endBody
+    endDocument
+}

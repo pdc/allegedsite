@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2005-04-09 12:43 BST -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2005/04;
+  /usr/local/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2005/01 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Redesign for my moribund web site - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/lod.css" rel="stylesheet" type="text/css" arg0="title=Light" on="on" Dark="Dark" title="Light on Dark" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2005</a> &gt;&gt;
+      <a href="./">01</a> &gt;&gt;
+      <strong>22</strong>
+    </p>
+    <div id="body">
+      <h1>Redesign for my moribund web site</h1>
+      <div class="entry">
+        <p class="details">22 January 2005</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/css.html"><abbr title="Cascading Stylesheets">CSS</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20050122redesign" title="Permanent URL for this entry">#</a>
+        </p>
+  <p><img src="../../2005/../icon-64x64.png" alt="" align="right" width="64" height="64" border="0" />
+   After months of apparent inactivity, you may have noticed that I have
+   redesigned my site. At least, I have changed the visual design: the
+   navigation is unchanged for now. Mostly the changes are in the CSS.
+   </p>
+  <p>
+   I had two things I wanted to do.
+   First, to create a light-on-dark design (I have long been impressed by
+   John Gruber&#x2019;s pleasingly simple design for <a href="http://daringfireball.net/">Daring Fireball</a>), and,
+   second, to work out a proper grid-based layout, one with a
+   minimum of lines and graphics, focussing on the text. The latter is something
+   I&#x2019;ve had in mind for a while, but my interest was rekindled by <a href="http://www.subtraction.com/about/">Khoi
+   Vinh</a>&#x2019;s web site <a href="http://www.subtraction.com/">Subtraction</a>, which has a visual design based
+   purely on typography, with almost no graphics or even colour.
+   </p>
+  <h2>
+   Grid design
+   </h2>
+  <p>
+   I know what little I know
+   about grids from when was reading up about typography back when I was a
+   student, and later, as I worked for the University. I did my best to
+   realize magazine-style layouts in <a href="http://www.tug.org/" title="TeX Users' Group">TeX</a> by writing my own output
+   routines. I even designed a font family, <a href="http://www.tug.org/tex-archive/fonts/malvern/">Malvern</a> (<a href="http://www.tug.org/tex-archive/fonts/malvern/doc/maman.tex">documentation
+   in TeX format</a>). The folly of youth, eh?
+   </p>
+  <p>
+   There are plenty of ways to lay out information on a page that do not
+   use an explicit grid.  Making the results harmonious and readable can be
+   a fine art and it probably helps to be a properly trained graphical
+   designer using a decent typesetting package like InDesign or Quark
+   XPress. Since I&#x2019;m not, and I don&#x2019;t, I need a system.
+   The point of grids is that it is a system for creating page layouts
+   quickly without going too far wrong -- important when designing
+   magazine pages, where deadlines are always snapping at one&#x2019;s heels, or
+   when you&#x2019;re an amateur like me.
+   </p>
+  <p>
+   The first step is changing the layout so that horizontal positions
+   respect a grid of 9-em-wide cells with 1 em of space between
+   them. (All the measurements are in em so that if you change the font
+   size, the layout expands or contracts accordingly.) For example, the
+   date to the left of the article fits in to the box that extends from 1
+   em to 10 em (measured from the left edge). The article text is three
+   cells wide, ranging from 11 em to 40 em. Depending on the width of your
+   browser window and the size of the font, there may be additional columns
+   in cells 4, 5 and 6.
+   </p>
+  <p>
+   Achieving this in CSS turned out to be simple enough once I had decided
+   to do it all through floats (there is no absolute positioning). The body
+   is 40 em wide and floated left; within the body, most paragraphs have 11
+   em of left margin, so that the text lines up with the correct imaginary
+   grid line. The contents of the left column are floats within the body
+   text; in the original layout, the date was a paragraph with class
+   <code>details</code>, and was shown flush-right and in a small font. Now the same
+   paragraph class is set to float left and given the correct width.
+   Because the font size is 0&middot;75 em, I have to give the width as 12
+   em to have the effect setting it to 9 em, my cell width.
+   </p>
+  <p>
+   The auxiliary info to the right of the main article automatically adapts
+   to your window width by forming one, two, or three columns. This works
+   by the simple expedient of dividing it in to bite-sized chunks and
+   making each of them the correct width and floated left. Because each of
+   the pieces is one cell wide, if they all end up being shunted to the
+   bottom of the page (which happens if you expand the type size enough),
+   they should line up tidily with the main article. This is the essence of
+   the grid system.
+   </p>
+  <h2>
+   Colour scheming
+   </h2>
+  <p>
+   Blue has always been my signature colour (I have three brothers and
+   sisters, so our possessions were colour-coded to prevent arguments). The
+   particular dark blue I ended up using for the background is #123 (meaning the same as
+   #112233, i.e., red 17, green 34, blue 51). This isn&#x2019;t web-safe in the
+   old-fashioned sense, which is something of a departure for me, but it is
+   <a href="http://www.ficml.org/jemimap/style/color/wheel.html">web-smart</a>, meaning suitable for any display with thousands of
+   colours or better.
+   Originally the text was
+   also a blue colour (#CCF), but this ended up looking a little to
+   purplish because of the background it was on, so in the end I switched
+   to using pale grey for the text.
+   </p>
+  <p>
+   Colour scheme systems (mono, contrast, triads, etc.) are the equivalent
+   for colour of the grid system. The simplest (apart from monochrome) is for most of the page to be shades or tints of one colour,
+   and to use a single contrasting colour for highlights.
+   My contrast colour (used for links) is my old favourite
+   #F90, which is close enough to being the mathematical complement of #123.
+   Visited links are the bleached-out version #FC9. For the banner at the
+   top of the main body of the page, I took a photo by <a href="http://www.comixminx.net/">Jenni Scott</a> and
+   cropped it to approximately the right proportions and then colourized it
+   with a paler shade of orange (paler to allow for the darker parts of the
+   photo). I had to do a little slicing and dicing to change the
+   composition so that my face is turned towards the text rather than away
+   from it!
+   </p>
+  <h2>
+   HTML changes
+   </h2>
+  <p>
+   I did not quite do all this without touching the HTML. First of all, I
+   created this as a new CSS file rather than replacing the old one; in
+   Mozilla Firefox, use the View &rarr; Page Style menu to see how the page
+   looks in the old theme.
+   </p>
+  <p>
+   Second, in order to move the list of categories from the bottom of the
+   article to the left column, I had to move it in the HTML as well. I also
+   changed it from a paragraph with [...] wrapped around it to a set of
+   paragraphs and (in the case of categories) a <code>ul</code> (list). (As a result,
+   it looks a little odd in the old style.) I also changed the order of the
+   chunks that go in the right-hand side of the page, so that the Flickr
+   badge does not appear first: this way it does not clash with the picture
+   introduced at the top of the main text.
+   </p>
+  <p>
+   There are still a few details to sort out but I think I like the new
+   look so far.
+   </p>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2003/subjects.html">by topic</a></li>
+        <li><a href="../../2005/04/">April 2005</a></li>
+        <li><a href="../../2005/02/">February 2005</a></li>
+        <li><a href="../../2005/01/">January 2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

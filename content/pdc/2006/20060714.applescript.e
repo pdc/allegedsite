@@ -1,0 +1,253 @@
+Title: Cannot convert Corel Painter RIFF to GIF (or any other format, for that matter)
+Date: 20060714
+Icon: ../icon-64x64.png
+Topics: corelpainter futility stupid
+
+I want to convert some images to GIFs.  Why do Corel want me not to be
+able to do this?
+
+The problem
+-----
+
+I have several dozen files in Corel Painter's format RIFF. I can use
+Painter to convert images one at a time to GIF by opening the image and
+doing File &rarr; Clone followed by File &rarr; Save As.  But with
+several dozen images this gets tedious.  Why can't I automate this? 
+
+
+How it should work
+-----
+
+Suppose my images were PNGs and I wanted GIFs.  Then I could write a
+Python program to do this along these lines:
+
+    for name in os.listdir(inDir):
+        im = Image.open(os.path.join(inDir, name))
+        im.save(os.path.join(outDir, name[:-4] + '.gif'), 'GIF')
+
+Too bad [PIL][] does not support RIFF, because RIFF is a closed,
+proprietary format (NOTE: not to be confused with [other formats called RIFF][next]).
+
+Too bad there is no standard format for images that includes layers and
+suchlike that Corel could have Painter support.  (Actually you could
+represent images with layers pretty well using [SVG][] if you wanted.)
+
+Corel could supply a library for working with RIFF images. Failing that, Corel
+could publish a description of the format so someone else could write a library
+for working with RIFF images. Sadly there is no commerical reason for Corel to
+do this. All it would do is make their software more useful; since usefulness is
+not what really sells software, there is no reason for them to do this.
+
+Another solution that would have been lousy but better than nothing
+-----
+
+Corel could have made Painter scriptable.  On the Mac, 'scriptable'
+means it exposes a dictionary of commands to AppleScript's voodoo.
+Writing programs in AppleScript is  about the worst imaginable
+way to spend my time I can actually imagine doing;  AppleScript is one
+of the worst-designed programming languages I have ever tried to do
+actual work in.  I mean, I hate Visual Basic, but AppleScript is worse. 
+
+Despite this, if Corel *had* exposed `open file` and `save as` commands, I
+could probably have cobbled together a script that  did one coversion.
+From there you can plug in to Automater and folder actions to make it
+keep your GIFs up-to-date with respect to the master copies in RIFF
+format.  Automated workflow!  It would be great.  Too bad I can't have
+it.
+
+What Corel's software does expose is a command cryptically named
+`DoScript`.  What does it do?  I don't know.  It takes a parameter that
+is a string.  A string of what?  Special Corel commands?  I have done
+some digging, and it appears that when you save what Painter calls a
+script to a file, it is in some sort of text format.  Perhaps these can
+be fed in to the `DoScript` command, but if so I have yet to make it
+work.  Maybe it is supposed to be a file name?  Who knows?  Nobody
+knows, that's who.
+
+Digression on the subject of file names in AppleScript
+-----
+
+I started writing this article after attempting to make an AppleScript
+program that opens a file in Corel Painter.  The following works
+
+    tell application "Finder"
+        open file "Macintosh HD:Users:pdc:foo:bar:baz.riff"
+    end tell
+
+Note the use of the obsolete 'file path' notation (using colons).  I can
+also make it work with the file name as a variable:
+
+    tell application "Finder"
+		set file_name to "Macintosh HD:Users:pdc:foo:bar:baz.riff"
+		open file file_name
+    end tell
+
+Fine.  But what if I want to use a Unix file name rather than a Mac OS 9
+file path?  It turns out that if I type this in to a script:
+  
+    tell application "Finder"
+        open POSIX file "/Users/pdc/foo/bar/baz.riff"
+    end tell
+
+then the AppleScript compiler *rewrites it as a file path!*  It replaces
+my code with
+
+    tell application "Finder"
+        open file "Macintosh HD:Users:pdc:foo:bar:baz.riff"
+    end tell
+
+That is seriously fucked up.  If I try using a variable to hold the file
+name, it fails: I get an error message
+
+> Finder got an error: Can't get POSIX file "/Users/pdc/foo/bar/baz.riff"
+
+So opening files via the Finder also seems to be out, unless I fancy learning
+enough about AppleScript's crappy string manipulation expressions to convert my
+file names in to file paths myself.
+
+The light at the end of the tunnel is an illusion caused by excessive blood pressure
+-----
+
+There is another emergency backup approach to scripting non-scriptable
+applications: [GUI scripting][].  This is so great that Apple devote a
+couple of paragraphs to it on the web site.  The idea is that you can
+send events direct to the buttons and text fields of the application,
+driving it more or less as the user would.  Here is an example:
+
+    tell application "Corel Painter 8"
+        activate
+    end tell
+	
+    tell application "System Events"
+		tell process "Corel Painter 8"
+			tell menu 1 of menu bar item "File" of menu bar 1
+				click menu item "Clone"
+			end tell
+		end tell
+    end tell
+
+This clicks the File &rarr; Clone menu item, creating a flattened
+version of the frontmost image.  Since the user interface of Painter is
+undocumented, producing even the above script takes hours of fiddling
+with Apple's GUI spy program and guessing what the names of this
+actually are (since it does not go so far as telling you).
+
+With a similar incantation I can make the Save As dialogue box appear.
+Now I want to change the file type from RIFF to GIF in the drop-down
+list.  Unfortunately its expression in AppleScript is
+
+    pop up button 1 of ??? of window "Open"
+
+where the question marks need to be replaced with a name I cannot type: the GUI
+element that is a child of `window "Open"` and a parent of the `pop up button`
+is listed as 'Unknown', but `unknown` is an AppleScript keyword of some sort. In
+the end I could not find a way to make this work. After spotting something in
+one of Apple's code samples, I came up with a different appoach:
+
+    repeat 14 times
+	    keystroke tab
+    end repeat
+    keystroke space
+    keystroke "g"
+    delay 1
+    keystroke return
+
+The existence of the `keystroke` command I had to infer from one of the
+code samples on Apple's page; it is not documented anywhere.
+
+These seven lines do the same work as the seven characters
+
+    , "GIF"
+
+in my hypothetical Python program. 
+
+
+String manipulation by drunken fairy trolls
+-----
+
+The expression
+
+    name[:-4] + '.gif'
+
+replaces the file-name suffix.  This happens automatically when yoiu
+change file types in the Save As dialogue, but you do also need to strip
+off the words `Clone of` from the front of the name (added because you
+are saving a clone of the original image).  Here's the AppleScript
+equivalent:
+
+    set the_file_name to value of text field 1
+    if the_file_name starts with "Clone of " then
+	    set the_file_name to text 10 thru (length of the_file_name) of the_file_name
+    end if
+    set the value of text field 1 to the_file_name
+
+The `text ... thru ...` expression comes from the  [O'Reilly AppleScript
+book][1].  I can't think how someone is supposed to guess it.  The
+array-slicing notation used in Python is also something you have to
+learn, of course, but the difference is that, in Python, you will use it
+often, and for many different things, because slices apply to lists, and
+lists are used for listing things in Python, instead of haveing unique
+and special keywords to learn for every object in the system.
+
+Now for the output directory
+-----
+
+The Python program uses 
+
+    os.path.join(outDir, ...)
+
+to arrange that the GIF files are stored in a different directory from
+where they came from.   To set the directory the file will be saved to
+in the Save As dialogue, I ended up (after an eternity of hacking) with
+this monstrosity:
+
+    keystroke "/" using control down
+    delay 1
+    
+    repeat with the_char in every character of the_dir_name
+	    keystroke the_char
+    end repeat
+    keystroke return
+
+The first part invokes an obscure feature of Mac OS X file dialogues: Ctrl `/`
+shows a sheet that lets you enter the directory name using your keyboard. The
+sample code I nicked this idea from sets a text field to the directory name;
+Corel's pop-up window unhelpfully is nameless, so I can't work out how to get at
+its fields. So I resorted to feeding it the characters one at a time.
+
+I would also like to point out that 'repeat with the_char in every character of
+the_dir_name' is no more English-like than 'for char in name' would be. I hate
+the way every review of AppleScript manuals says something like
+
+> AppleScript is a scripting language that mimics the syntax of English. 
+> As such, it's extremely similar to how sentences are structured and, 
+> as a result, is very intuitive and simple to use.
+
+AppleScript is *not* intuitive. Its syntax mimics English in the same way a
+cargo cultist mimics an airport. The supposedly English-like syntax is more
+complex, and therefore *harder* to use, than almost any other programming
+language apart from Perl. 
+
+
+Status
+-----
+
+So far I have managed to get Corel Painter to save a file as a GIF, once it is
+loaded.   The bit where I set the directiory name sort of works, but seems to be
+flakey; luckily I don't need it if I don't mind all my files going to the same
+directory.  I am still stuck when it comes to opening all the files in a
+directory.  Maybe I should look in to how Automater does its stuff; perhaps I
+can get it to take care of the file names for me...
+
+
+
+
+
+
+  [next]: 15.html "The RIFF that is known is not the true RIFF"
+  [1]: http://www.oreilly.com/catalog/aplscptian/
+  [PIL]: http://www.pythonware.com/products/pil/
+  [SVG]: http://www.w3.org/Graphics/SVG/
+  [GUI scripting]: http://www.apple.com/applescript/uiscripting/
+
+

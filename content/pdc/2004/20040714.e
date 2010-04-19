@@ -1,0 +1,54 @@
+Title: Australian flag variation
+Date: 20040714
+Image: ../2002/flags/ausflag2000-92-var-64h.png
+Topics: ausflag australia
+
+I already mentioned [Ausflag][1] and their mission to persuade the
+powers that be that retaining the British Union flag in the Australian
+flag is a little out of date given that Australia has been an
+independent nation since 1986.  They ran [a competition for a
+replacement flag][1a] with [results announced in 2000][1b].  I have
+added my version of Franck Gentil's competition winner to my SVG-based
+flag collection. This is it in PNG format:
+
+<img src="../2002/flags/ausflag2000-92-var-240h.png" width="480"
+height="240" class="bigflag" alt="(Flag)" />
+
+If you are using a sufficiently old web browser, you should also be
+able to see the SVG version:
+
+<embed src="../2002/flags/ausflag2000-92-var.svg" 
+type="image/svg+xml" width="480" height="240" class="bigflag" alt="(Flag)" />
+
+My version of the design differs from the version shown in the
+competition in that (a) I have retained the 2:1 width-to-height ratio,
+and (b) the stars are all the same size as in the existing flag,
+whereas Mr Gentil's version increases their sizes slightly.
+
+Compared with the existing 1908 flag, the differences are as follows.
+Apart from the obvious omission of the British flag from the top left,
+I found that I needed to adjust the positions of the federation star
+and the Southern Cross to make the the flag look reasonably balanced.
+If you imagine the flag split in to one-third and two-thirds sections,
+the federation star is defined by a circle centred in the left third,
+and the Southern Cross has been moved to be centred in the right
+two-thirds.
+
+<img src="../2002/flags/au1908-64h.png" width="128" height="64" alt="1908 flag" />
+<br />
+<img src="../2002/flags/ausflag2000-92-var-64h.png" width="128" height="64" alt="Ausflag competition 2000 number 92" />
+
+The division in to thirds pleases me because it is consistent with the
+'Australian pale', a [uniquely Australian vexillological style][2]
+(_vexilology_ means the study of flags, and _per pale_ being the
+heraldry term for dividing the field in two vertically).
+
+**Edit** (2004-07-19).  I started this entry a few days ago but ended
+up debugging my home network settings rather than finishing it.  So
+most of the above text was actually written today.
+
+
+  [1]: http://www.ausflag.com.au/
+  [1a]: http://www.ausflag.com.au/ausflag/pfdc.html
+  [1b]: http://www.ausflag.com.au/new/pfdc/winner.html
+  [2]: http://members.optusnet.com.au/~brendan.jones/flags/ "Brendan Jones's proposals for national and state flags"

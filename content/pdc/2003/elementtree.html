@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:23 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Elementtree - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>elementtree</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Elementtree</h1>
+      <div class="entry">
+        <h2><a name="e20041030" id="e20041030">Migrating my website workspace, part 1</a></h2>
+        <p class="details">30 October 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="yaml.html">yaml</a></li>
+            <li><a href="tclhtml.html">TclHTML</a></li>
+            <li><strong>elementtree</strong></li>
+            <li><a href="python.html">Python</a></li>
+            <li><a href="svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+            <li><a href="debian.html">debian</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2004/10/30.html#e20041030" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">My website is maintained by a rather complex amalgamation of software,
+   accreted over generations. Having migrated it from my old desktop
+   <code>lickity</code> to my new(ish) PowerBook Ariel, I now want to migrate it
+   again to my new server Tranq (a <a href="http://www.tranquilpc.co.uk/Nonflash/T2.htm">Tranquil PC T2</a>); this will allow me to use <code>cron</code> to keep
+   some parts up-to-date automatically.
+</p>
+<p>So what software do I need to install to do this?
+</p>
+<ul>
+ <li>
+      <a href="http://tclhtml.sourceforge.net/">TclHTML</a>, my quirky Tcl-based HTML-generating system; I ended up
+using the version from CVS, which suggests I should create a new
+distribution some day. Spent some time trying to infer from the
+tutorial information on <a href="http://sourcefourge.net/">SourceForge</a> what the host name of the CVS
+server is; it has changed since I last needed to connect.
+ </li>
+
+ <li>
+     CVS, since I had not previously installed it.
+ </li>
+
+ <li>
+     the <a href="http://effbot.org/zone/element-index.htm">elementtree</a> package for Python, used to generate SVG for the <a href="http://flickr.com/">Flickr</a> icons.
+ </li>
+
+ <li>
+     The Debian package <code>python-dev</code>, because Debian  does not include the
+<code>distutils</code> package in their standard Python install (another evening annoyingly spent on Google
+to discover what this package-fragment was called).
+ </li>
+
+ <li>
+      <a href="http://www.pyyaml.org/cgi-bin/trac.cgi">PyYaml</a>, which I use in the program that downloads things like
+my Flickr badge. 
+ </li>
+
+ <li>
+     even though <a href="http://xmlsoft.org/XSLT/">libxml2</a> is already installed, I
+have to install a Debian ackage <code>xsltproc</code> to get the <code>xsltproc</code> command
+that I have recently started using to generate some 
+recent additions to the site (like the Flickr badge, which is in SVG
+generated from XML cobbled together from the JavaScript code used to
+make the standard Flash-based Flickr badge).
+ </li>
+
+ <li>
+     Something to render SVG as PNG. This turns out to be something of a
+     blocker – see below.
+ </li>
+</ul>
+<p>This is as far as I have got since I started earlier this week
+   (Wednesday).
+</p>
+
+<h3> For the love of SVG</h3>
+<p> <a href="http://flickr.org/photos/pdc/"> <img src="../2004/flickr.png"
+width="100" height="50" align="right" alt="" /> </a>
+   <a href="http://www.w3.org/Graphics/SVG/">SVG</a> is a standard for vector graphics. It is relatively easy to generate
+   graphics files – you can even use a plain old text editor at a pinch –
+   and there is a fairly detailed spec for how to render them.  I use SVG on
+   my web site to do a lot of the graphics, including the Flickr icons.
+   Because web browsers have trouble displaying SVG graphics in the same
+   way they display PNG, GIF and JPEG, I have been converting them to PNG
+   using <a href="http://xml.apache.org/batik/">Batik</a>.
+</p>
+<p>Batik requires Java, which is installed as standard on Mac OS X. 
+   On Tranq, running Debian GNU/Linux things are more complicated.
+   Debian’s package lists three different JVMs with (as usual) no guidance
+   as to which I might want to install. This is a common problem with
+   package-based systems: they concentrate more on ensuring that every
+   possible variation is available than on helping users determine which
+   packages they actually want. None of the JVM websites can tell me at a
+   glance whether they implement all of Java (or at least all of it that I
+   need), and there is a nasty implication that I have to acquire the class
+   library as a whole separate package (probably several packages). In short, installing all the
+   prerequisites of Batik looks like a difficult job. What other SVG
+   renderers are there?<br/>
+</p>
+<p>So far as I can ascertain there are two strands of development of SVG as
+   conventional Unix programs (written in C or C++ as opposed to Java):
+   <code>librsvg2</code> (used by GNOME) and <code>libsvg-cairo</code>, part of <a href="http://cairographics.org/">Cairo</a>, which is
+   hosted on <a href="http://freedesktop.org/">Freedesktop.org</a>.<br/>
+</p>
+<p>On Debian it turns out that installing <code>librsvg2</code> does not get you the
+   command-line utilities;
+   one needs to install an additional <code>librsvg2-bin</code>
+   package to get the program <code>rsvg</code>. Having done all this, I have
+   discovered that <code>librsvg2</code> does not
+   understand HTTP URLs. Since I refer to the images on Flickr’s server
+   directly, it cannot process my Flickr icons.  I need to change my
+   program that makes the badges to download the image files itself.
+</p>
+<p>The Cairo-based SVG package is not yet part of
+   Debian proper (although <code>libcairo</code> itself is, according to <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=216196">Debian bug
+216196</a>). There is a repository of Debian package files in
+   <a href="http://cairographics/packages/debian/">http://cairographics/packages/debian/</a>, but (not being a Debian wizard
+   yet) I have not found a way to get APT to exploit them; it expects them
+   to have a more complicated directory structure.  Maybe I am supposed to
+   download and install the <code>.deb</code> files individually and install them
+   myself, but that is an adventure for another day: the tinkering time I
+   had to spare today is exhausted.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2003/10/09.html#e20031009" title="Permanent URL for this entry">ASP&rsquo;s Response.Write disaster</a>
+          9 October 2003
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

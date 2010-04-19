@@ -1,0 +1,146 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "SVG: object or embed? - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "SVG: object or embed?"
+
+p " There are five elements for embedding objects in HTML.
+Leaving aside [code img], [code iframe], and [code applet], 
+there are two tags that look plausible for [SVG]:"
+
+ul {
+    li "
+    [code "&lt;[a http://developer.netscape.com/docs/manuals/htmlguid/tags14.htm#tags:EMBED embed] src=\"...\" /&gt;"],
+    the old-style plug-in syntax; and
+    "
+    li "
+    [code "&lt;[a http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.3 object]\
+    data=\"...\" &gt;...&lt;/object&gt;"],
+    the HTML&nbsp;4 syntax.
+    "
+}
+
+p " The [code embed] syntax was introduced with Netscape
+Navigator&nbsp;2, but has never been part of any [HTML] standard.
+This is partly because it cannot fit in to [XML] (or [SGML]) because
+its syntax depends on the type of the embedded content.  The 
+
+[code object] tag is much better thought out, 
+
+<del>and 
+
+works with all modern browsers (such as Microsoft Internet Explorer
+3.0 and later, Mozilla, Netscape Navigator 6.x, Opera, et al.).</del>
+<ins>but sadly can crash Apple&rsquo;s Safari&nbsp;1.0 (released
+2003), so should not be used web sites designed for a general audience
+until 2008.</ins>
+
+[a http://developer.netscape.com/docs/manuals/htmlguid/tags14.htm#tags:OBJECT\
+"According to  Netscape&rsquo;s documentaion"], 
+it also works for [NN]&nbsp;4.x, but in tests it seems to get
+confused if there is no [code embed] within it.
+"
+
+p "Does this mean that, as [a* "title=Embedding SVG in HTML"\
+href=http://www.protocol7.com/svg-wiki/?EmbedingSvgInHTML \
+"suggested by the [SVG] Wiki"],
+one must choose which tag to use according to what browsers will be used?
+Well, no.  The [code object] tag 
+<del>allows us</del>
+<ins>will allow us</ins> to embed an [code embed]
+tag within it, to be rendered if the [code object] tag is 
+not understood:"
+
+pre -encode {<object data="foo.svgz" type="image/svg+xml"
+    width="400" height="300">
+  <embed src="foo.svgz" type="image/svg+xml"
+      width="400" height="300"
+      pluginspage="http://www.adobe.com/svg/viewer/install/" />
+</object>}
+
+p "Netscape Navigator&nbsp;2.0 and&nbsp;3.0  will ignore the [code object]
+tags (because they do not understand them),
+and instead attempt to render its contents (the [code embed] tag).
+Newer browsers will render the [code object] element
+(if they think they know how to), and fall back on the
+inner tag if they cannot."
+
+p "Remember that this only applies if you want to support really quite
+old web browsers&mdash;didn&rsquo;t [NN]&nbsp;4 come out in 1996?<ins>&mdash;and will not work in Safari 1.0</ins>.
+"
+
+
+h2 "Well-formed vs. valid (X)HTML"
+
+p "
+The [code embed] tag can be made 
+[em well-formed]
+by inserting a space and a slash before the closing [code [gt]],
+(as described in [a http://www.w3.org/TR/xhtml1/#guidelines \
+Appendix C of the XHTML Recommendation]):
+"
+
+pre -encode {<embed ... />}
+
+p "For many applications (and existing web browsers), being
+well-formed is good enough.  It is, however, not [em valid] [HTML] or
+[XHTML].  This is because [code embed] is not included in the [DTD]s
+that specify standard [HTML]&nbsp;4.  "
+
+p "
+Of course one can supply one&rsquo;s own [DTD] and thus
+change the definition of [q valid]:
+either by 
+[a* href=http://www.pinkjuice.com/howto/RubySVG/#tips_embedding \
+"title=Embedding in HTML/XHTML (Pinkjuice.com)"\
+"editing the [DTD]"], or by
+adding definitions in the internal [DTD] subset
+(outlined in the 
+[a* "title=Embedding SVG in HTML"\
+	href=http://www.protocol7.com/svg-wiki/?EmbedingSvgInHTML\
+	"SVGWiki entry cited above"]).
+"
+
+p "
+Neither of these are  necessary for current web browsers;
+they do not validate [HTML] against its [DTD] explicitly.
+In the future, when [XHTML] validity matters more,
+<del>the [code embed] tag is probably best consigned to the
+dustbin of history.</del>
+<ins>we need to settle on a standard  XHTML-1
+module that defines  an
+[code embed] tag with a reasonable collection of attributes.</ins>
+"
+
+h2 "On this site..."
+
+p "<del>My readers will have noticed I&nbsp;often use [code object]
+without anything inside it except a petulant message; I&nbsp;did this
+because that way my friends will be able to tell whether their browser
+groks [SVG] by seeing if an image appears at all...  Some time
+I&nbsp;should change it to use an inner [code embed]&mdash;or possibly
+content in a different format entirely, such as [PNG].</del>"
+
+p "[strong Update (14 February 2004).] Safari 1.0 [em crashes] when I&nbsp;use
+[SVG] embedded with the [code object] tag.  For this reason, 
+
+[a ../2003/11/23.html "I have removed [code object] tags from this
+site"]; I&nbsp;will reconsider this decision in 2008, when we can
+assume that the vast majority of Safari users will have upgraded their
+Macs beyond Mac OS X 10.2 (you cannot get Safari 1.1 or 1.2 for 10.2).
+In the meantime, the
+
+[code embed] tag works fine in Safari, and in all other browsers.  "
+
+
+
+endBody
+
+endDocument

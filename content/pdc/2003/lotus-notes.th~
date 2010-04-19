@@ -1,0 +1,73 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Lotus Notes Really Screws You Up - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Lotus Notes Really Screws You Up"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+
+emit {
+    <p>
+      We have a client who decided that a shared &lsquo;document
+      library&rsquo; was the way to collaborate on a bug list. They
+      gave me a URL and said to log in with my full name.
+    </p>
+
+    <p>
+      Obviously they did not really mean my full name, which they do
+      not even know. I&nbsp;tried every combination of <samp>p</samp>,
+      <samp>d</samp>, <samp>damian</samp>, <samp>cugley</samp> and the
+      more obvious misspellings I&nbsp;could think of, to no
+      avail. Eventually I&nbsp;logged in using a colleague&rsquo;s
+      name. This was not really <a title="Lotus Notes Domino server - look at the length of the URL"
+       href="http://www.lotus.com/products/rnext.nsf/22B8141882825B598525693700485E2A/69656A4A3306747885256C31006E5FB6?OpenDocument&cwesite=notes">Lotus Notes</a>&rsquo;s fault.
+    </p>
+    <p>
+      The next thing I&nbsp;saw was a frameset. What&rsquo;s bad about framesets is
+      that they make it difficult to bookmark documents, or to link to them
+      from other web documents (such as my work log). In this case the
+      frameset served to present navigation links which were present at the
+      bottom of every page anyway. 
+    </p>
+    <p>
+      Actually I&nbsp;lied&mdash;there were no navigation
+      links. Instead there was a grey rectangle (a Java applet) and a
+      1997-style Photoshopped backdrop.  The other frame held two grey
+      rectangles. After some hefty disc activity, they all displayed
+      error messages about missing classes. Feh. I&nbsp;did not see
+      the proper layout until I&nbsp;tried it again in <a
+      href="http://www.mozilla.org/projects/phoenix/phoenix-release-notes.html">Phoenix</a>. (I&rsquo;m
+      impressed that Gecko&rsquo;s Java support is now more stable
+      than MSIE&rsquo;s!)
+    </p>
+    <p>
+      So: a fancy Java applet in order to display a list of
+      links. Someone should have told Lotus that HTML can already do
+      that. The content frame is another list of links. Thanks to
+      their clever Java applet (a)&nbsp;I&nbsp;must double-click the links
+      to make them work, and (b)&nbsp;I&nbsp;cannot copy &amp; paste text from
+      the page.
+    </p>
+    <p>
+      The links to the document pages are truly horrible&mdash;dozens of
+      hexadecimal digits followed by <samp>?openDocument</samp>, which
+      ensures it cannot be cached (since our proxy does not trust URLs
+      containing question marks to be idempotent and safe).
+    </p>
+    <p>
+      I&nbsp;spent the rest of the morning copying their bug reports in to my
+      schedule so I&nbsp;can consult them without visiting Lotusland.
+    </p>
+}
+
+p [a 01.html#e20030114a 14 January 2003]
+endBody
+endDocument

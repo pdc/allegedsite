@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from picky-zeo-cgi.th on 2006-10-29 09:50 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2002;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2002 picky-zeo-cgi.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Picky Picky Game: ZEO + CGI - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2002</a> &gt;&gt;
+      <strong>picky-zeo-cgi</strong>
+    </p>
+    <div id="body">
+      <h1>Picky Picky Game: ZEO + CGI</h1>
+      
+      <p>
+      Even in a toy web application like the Picky Picky Game, it is
+      possible (but unlikely) that two people will want to upload a
+      picture at (nearly) the exact same moment.  If two processes try
+      to write the same file at the same time, the results could be a
+      mess.  It follows that we need to include something to
+      co-ordinate the changes.
+      </p>
+      <p>
+      If this application were all running
+      as a single-process, multi-threaded web server (as <a
+      href="http://www.zope.org/"><abbr title="the Z Object
+      Programming Environment">ZOPE</abbr></a> does), then this would
+      be easily done with <a href="http://zodb.sourceforge.net/"><abbr
+      title="the Z Object Database">ZODB</abbr></a>, but, alas!
+      I&nbsp;am still stubbornly trying to implement this as a
+      <a href="http://hoohoo.ncsa.uiuc.edu/cgi/interface.html"><abbr title="Common Gateway Interface">CGI</abbr></a>
+      script, and <abbr title="the Z Object Database">ZODB</abbr>
+      cannot co-ordinate transactions between different processes.
+      </p>
+      <p>
+      I thought that <abbr title="ZOPE Enterprise Objects">ZEO</abbr>
+      might fix this&mdash;it manages a <abbr title="the Z Object
+      Database">ZODB</abbr> database that can be shared between many
+      servers, which should make it more than adequate for monitoring
+      separate processes on the same server.  And everything works
+      fine when I&nbsp;run test scripts at the command line, but, at
+      first it failed when the script is invoked as a <abbr
+      title="Common Gateway Interface">CGI</abbr>.
+      </p>
+      <p>
+      At this point
+      I&nbsp;was wondering what to try next&mdash;stop using <abbr
+      title="Common Gateway Interface">CGI</abbr> (write my sever
+      using Python&rsquo;s own HTTPServer module, or as a <a
+      href="http://www.twistedmatrix.com/">Twisted</a> application, or
+      ...), write my own co-ordination server, etc.  Then it occurred
+      to me that my <abbr title="ZOPE Enterprise Objects">ZEO</abbr>
+      instance was bound to a Unix-domain socket, and since <abbr
+      title="Common Gateway Interface">CGI</abbr> runs using the
+      <code>nobody</code> <abbr title="user identifier">uid</abbr>, it
+      could not connect to that socket (because of file-system
+      permissions).  So I&nbsp;tried switching to using a <a href="http://ietf.org/rfc/rfc793.txt"><abbr
+      title="Transmission-Control Protocol">TCP</abbr></a> socket instead,
+      and it works!  Yay!
+      </p>
+      
+      <p><a href="11.html#e20021117">17 November 2002</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/">2003</a></li>
+        <li><a href="../2002/12.html">December 2002</a></li>
+        <li><a href="../2002/11.html">November 2002</a></li>
+        <li><a href="../2002/10.html">October 2002</a></li>
+        <li><a href="../2002/09.html">September 2002</a></li>
+        <li><a href="../2002/08.html">August 2002</a></li>
+        <li><a href="../2002/07.html">July 2002</a></li>
+        <li><a href="../2002/06.html">June 2002</a></li>
+        <li><a href="../2002/05.html">May 2002</a></li>
+        <li><a href="../2002/04.html">April 2002</a></li>
+        <li><a href="../2002/03.html">March 2002</a></li>
+        <li><a href="../2002/02.html">February 2002</a></li>
+        <li><a href="../2002/01.html">January 2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

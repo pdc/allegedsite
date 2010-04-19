@@ -1,0 +1,31 @@
+# -*-Tcl-*-
+
+set albumsDir ../../../albums
+source $albumsDir/albumDefs.tcl
+source ../pdcDefs.tcl
+source $albumsDir/peopleUrls.tcl
+
+initializeAlbum tuschin/pdc/bologna \
+	$albumsDir/bologna \
+	"Bologna photos - Damian Cugley" \
+	Bologna \
+	"" \
+	{"Bologna" "photography" "Damian Cugley"} \
+	../pdc.css \
+	[list beginBody] \
+	endBody
+	
+
+emitPictureIndexPage index.html {	
+p  "
+    The first project meeting of the SEAHORSE 2 project was held in Bologna, 
+    in northen Italy, on 22 and 23 October 1998.  I took with me the
+    disposable camera that [a ../../jrd/index.html Jeremy] gave me
+    to take pictures of [a ../roch/index.html Roch Castle].
+    I took some snaps hastily on the free afternoon before the meeting,
+    and some while hurrying to the second day's meeting.
+    "
+}
+
+emitPeoplePages
+emitPicturePages

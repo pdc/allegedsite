@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from svg-object.th on 2006-10-29 09:50 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2002;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2002 svg-object.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>SVG: object or embed? - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2002</a> &gt;&gt;
+      <strong>svg-object</strong>
+    </p>
+    <div id="body">
+      <h1>SVG: object or embed?</h1>
+      <p>
+        There are five elements for embedding objects in HTML.
+        Leaving aside <code>img</code>, <code>iframe</code>, and <code>applet</code>,
+        there are two tags that look plausible for <a href="http://www.w3.org/Graphics/SVG/"><abbr title="Scalable Vector Graphics">SVG</abbr></a>:
+      </p>
+      <ul>
+        <li>
+          <code>&lt;<a href="http://developer.netscape.com/docs/manuals/htmlguid/tags14.htm#tags:EMBED">embed</a> src="..." /&gt;</code>,
+          the old-style plug-in syntax; and
+        </li>
+        <li>
+          <code>&lt;<a href="http://www.w3.org/TR/REC-html40/struct/objects.html#h-13.3">object</a> data="..." &gt;...&lt;/object&gt;</code>,
+          the HTML&nbsp;4 syntax.
+        </li>
+      </ul>
+      <p>
+        The <code>embed</code> syntax was introduced with Netscape
+        Navigator&nbsp;2, but has never been part of any <a href="http://www.w3.org/MarkUp/"><abbr title="Hypertext Mark-up Language">HTML</abbr></a> standard.
+        This is partly because it cannot fit in to <a href="http://www.w3.org/XML/"><abbr title="Extensible Mark-up Language">XML</abbr></a> (or <abbr title="Standardized Generalized Mark-up Language">SGML</abbr>) because
+        its syntax depends on the type of the embedded content.  The
+        
+        <code>object</code> tag is much better thought out,
+        
+        <del>and
+        
+        works with all modern browsers (such as Microsoft Internet Explorer
+        3.0 and later, Mozilla, Netscape Navigator 6.x, Opera, et al.).</del>
+        <ins>but sadly can crash Apple&rsquo;s Safari&nbsp;1.0 (released
+        2003), so should not be used web sites designed for a general audience
+        until 2008.</ins>
+        
+        <a href="http://developer.netscape.com/docs/manuals/htmlguid/tags14.htm#tags:OBJECT">According to  Netscape&rsquo;s documentaion</a>,
+        it also works for <abbr title="Netscape Navigator">NN</abbr>&nbsp;4.x, but in tests it seems to get
+        confused if there is no <code>embed</code> within it.
+      </p>
+      <p>
+        Does this mean that, as <a title="Embedding SVG in HTML" href="http://www.protocol7.com/svg-wiki/?EmbedingSvgInHTML">suggested by the <abbr title="Scalable Vector Graphics">SVG</abbr> Wiki</a>,
+        one must choose which tag to use according to what browsers will be used?
+        Well, no.  The <code>object</code> tag
+        <del>allows us</del>
+        <ins>will allow us</ins> to embed an <code>embed</code>
+        tag within it, to be rendered if the <code>object</code> tag is
+        not understood:
+      </p>
+      <pre>
+&lt;object data="foo.svgz" type="image/svg+xml"
+    width="400" height="300"&gt;
+  &lt;embed src="foo.svgz" type="image/svg+xml"
+      width="400" height="300"
+      pluginspage="http://www.adobe.com/svg/viewer/install/" /&gt;
+&lt;/object&gt;</pre>
+      <p>
+        Netscape Navigator&nbsp;2.0 and&nbsp;3.0  will ignore the <code>object</code>
+        tags (because they do not understand them),
+        and instead attempt to render its contents (the <code>embed</code> tag).
+        Newer browsers will render the <code>object</code> element
+        (if they think they know how to), and fall back on the
+        inner tag if they cannot.
+      </p>
+      <p>
+        Remember that this only applies if you want to support really quite
+        old web browsers&mdash;didn&rsquo;t <abbr title="Netscape Navigator">NN</abbr>&nbsp;4 come out in 1996?<ins>&mdash;and will not work in Safari 1.0</ins>.
+      </p>
+      <h2>Well-formed vs. valid (X)HTML</h2>
+      <p>
+        The <code>embed</code> tag can be made
+        <em>well-formed</em>
+        by inserting a space and a slash before the closing <code>&gt;</code>,
+        (as described in <a href="http://www.w3.org/TR/xhtml1/#guidelines">Appendix C of the XHTML Recommendation</a>):
+      </p>
+      <pre>
+&lt;embed ... /&gt;</pre>
+      <p>
+        For many applications (and existing web browsers), being
+        well-formed is good enough.  It is, however, not <em>valid</em> <abbr title="Hypertext Mark-up Language">HTML</abbr> or
+        <a href="http://www.w3.org/TR/xhtml1/"><abbr title="XML Hypertext Mark-up Language">XHTML</abbr></a>.  This is because <code>embed</code> is not included in the <abbr title="XML Document-Type Definition">DTD</abbr>s
+        that specify standard <abbr title="Hypertext Mark-up Language">HTML</abbr>&nbsp;4.
+      </p>
+      <p>
+        Of course one can supply one&rsquo;s own <abbr title="XML Document-Type Definition">DTD</abbr> and thus
+        change the definition of ‘valid’:
+        either by
+        <a href="http://www.pinkjuice.com/howto/RubySVG/#tips_embedding" title="Embedding in HTML/XHTML (Pinkjuice.com)">editing the <abbr title="XML Document-Type Definition">DTD</abbr></a>, or by
+        adding definitions in the internal <abbr title="XML Document-Type Definition">DTD</abbr> subset
+        (outlined in the
+        <a title="Embedding SVG in HTML" href="http://www.protocol7.com/svg-wiki/?EmbedingSvgInHTML">SVGWiki entry cited above</a>).
+      </p>
+      <p>
+        Neither of these are  necessary for current web browsers;
+        they do not validate <abbr title="Hypertext Mark-up Language">HTML</abbr> against its <abbr title="XML Document-Type Definition">DTD</abbr> explicitly.
+        In the future, when <abbr title="XML Hypertext Mark-up Language">XHTML</abbr> validity matters more,
+        <del>the <code>embed</code> tag is probably best consigned to the
+        dustbin of history.</del>
+        <ins>we need to settle on a standard  XHTML-1
+        module that defines  an
+        <code>embed</code> tag with a reasonable collection of attributes.</ins>
+      </p>
+      <h2>On this site...</h2>
+      <p>
+        <del>My readers will have noticed I&nbsp;often use <code>object</code>
+        without anything inside it except a petulant message; I&nbsp;did this
+        because that way my friends will be able to tell whether their browser
+        groks <abbr title="Scalable Vector Graphics">SVG</abbr> by seeing if an image appears at all...  Some time
+        I&nbsp;should change it to use an inner <code>embed</code>&mdash;or possibly
+        content in a different format entirely, such as <a href="http://www.w3.org/TR/REC-png-multi.html"><abbr title="Portable Network Graphics">PNG</abbr></a>.</del>
+      </p>
+      <p>
+        <strong>Update (14 February 2004).</strong> Safari 1.0 <em>crashes</em> when I&nbsp;use
+        <abbr title="Scalable Vector Graphics">SVG</abbr> embedded with the <code>object</code> tag.  For this reason,
+        
+        <a href="../2003/11/23.html">I have removed <code>object</code> tags from this
+        site</a>; I&nbsp;will reconsider this decision in 2008, when we can
+        assume that the vast majority of Safari users will have upgraded their
+        Macs beyond Mac OS X 10.2 (you cannot get Safari 1.1 or 1.2 for 10.2).
+        In the meantime, the
+        
+        <code>embed</code> tag works fine in Safari, and in all other browsers.
+      </p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/">2003</a></li>
+        <li><a href="../2002/12.html">December 2002</a></li>
+        <li><a href="../2002/11.html">November 2002</a></li>
+        <li><a href="../2002/10.html">October 2002</a></li>
+        <li><a href="../2002/09.html">September 2002</a></li>
+        <li><a href="../2002/08.html">August 2002</a></li>
+        <li><a href="../2002/07.html">July 2002</a></li>
+        <li><a href="../2002/06.html">June 2002</a></li>
+        <li><a href="../2002/05.html">May 2002</a></li>
+        <li><a href="../2002/04.html">April 2002</a></li>
+        <li><a href="../2002/03.html">March 2002</a></li>
+        <li><a href="../2002/02.html">February 2002</a></li>
+        <li><a href="../2002/01.html">January 2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

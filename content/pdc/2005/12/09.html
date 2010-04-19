@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:29 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2005/12;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2005/12 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>More on Firefox SVG - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2005</a> &gt;&gt;
+      <a href="./">12</a> &gt;&gt;
+      <strong>09</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20051209-svg" id="e20051209-svg">More on Firefox SVG</a></h2>
+        <p class="details">9 December 2005</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+            <li><a href="../../2003/firefox.html">Mozilla Firefox</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20051209-svg" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">Since I wrote my <a href="../../2005/09/09.html" title="First Impressions of Firefox 1.5 BETA1">‘First Impressions of Firefox 1.5B1’</a>, <a href="http://blog.codedread.com/" title="Jeff Schiller’s blog">Jeff
+Schiller</a> has written a <a href="http://blog.codedread.com/archives/2005/12/01/guide-to-deploying-svg-with-html/">‘Guide to Deploying SVG with HTML’</a>, with
+   some workarounds for differences between the Firefox and Adobe views of
+   how compound documents work. He has also <a href="http://blog.codedread.com/archives/2005/11/22/compound-document-formats-third-working-draft/" title="Compound Document Formats - Third Working Draft">linked</a> to the <a href="http://www.w3.org/2004/CDF/">Compound
+Document Formats</a> working group at the W3C, whose mission is to sort
+   out some of the confusion caused by the glib assumption that we can just
+   mix XML document formats together and Namespaces will sort it out.
+</p>
+<p>He also mailed me a pointer to <a href="http://www.vectoreal.com/smilscript/" title="Vectoreal :: SmilScript">SmilScript</a>, a JavaScript library
+   (available under the Artistic licence from <a href="http://www.vectoreal.com/">Vectoreal</a>) that scans
+   your SVG file for SMIL declarations and then goes the specified
+   animation itself using the time-honoured JavaScript methods involving
+   timers and mutating the DOM. Alas! for at least some of my existing SVG
+   files (such as the Flickr badge shown on my home page), this will not
+   yet provide the whole answer—I use features like the <code>keyTimes</code>
+   attribute that SmilScript does not understand (yet).
+</p>
+<p>In the meantime, I have belatedly changed my Flickr badge so that in the
+   absence of any declarative animation, it shows the most recent image.
+   This is way better than just showing a black square!
+</p>
+<blockquote>
+ <embed src="../../2005/../2004/flickr-badge.svg" type="image/svg+xml" width="120" height="120" />
+</blockquote>
+
+<p> <strong>Update (10 Dec.).</strong> To get rid of the gratuitous scrollbars
+   (Mozilla bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=288276">288276</a>), 
+   I have munged the SVG for the Flickr badge so that
+   it starts with
+</p>
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    viewBox="0 0 200 200" width="100%" height="100%"&gt;
+</code></pre><p>in other words, its natural height and width are both 100%. This causes
+   it to display correctly in Firefox 1.5, and hopefully won’t break it in
+   Adobe SVG Viewer. It also means that if you right-click and choose
+   This Frame &rarr; Show Only This Frame (Firefox) or View SVG (Adobe),
+   then you see a gigantic badge (full window size) rather than a more
+   reasonable size. But that is not much of a problem.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

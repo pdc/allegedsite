@@ -1,0 +1,33 @@
+# -*-Tcl-*-
+
+set albumsDir ../../../../albums
+source $albumsDir/albumDefs.tcl
+source ../../pdcDefs.tcl
+source $albumsDir/peopleUrls.tcl
+
+initializeAlbum tuschin/pdc/2002/maymorning \
+	$albumsDir/20020501 \
+	"May Morning 2002 - Damian Cugley" \
+	"May Morning 2002" \
+	"" \
+	{"May Morning" "Beltane" "Oxford" "Magdalen Bridge" "photography" "Damian Cugley"} \
+	../../pdc.css \
+	[list beginBody] \
+	endBody
+	
+
+emitPictureIndexPage index.html { 
+
+
+p " There is long tradition of celebrating the First of May, called
+Beltane by pagan types.  In Oxford, choirboys greet the rising sun by
+singing from Magdalen College tower, while the townsfolk gather below
+on Magdalen Bridge.  For the last few years the bridge has been closed
+to the public (citing structural weakness in the bridge).  This year
+we were allowed back on the bridge again."
+
+
+}
+
+emitPicturePages
+emitPeoplePages

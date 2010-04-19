@@ -1,0 +1,43 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Happy Christmas - Alleged Literature"
+    pdcMetadata
+    style type=text/css {
+	#body {
+	    width: 520px;
+	    max-width: none;
+	}
+    }
+}
+
+beginBody
+
+
+div align=center {
+	emit [svg xmas.svgz width=512 height=640 [img xmas-3.gif]]
+}
+
+p "If the animation is jerky, try the
+[a xmas-simpler.html simpler version];
+if you see nothing, 
+[a xmas-3.gif "try the GIF version"]."
+
+p " This card uses [a http://www.w3.org/Graphics/SVG/ SVG], a new
+standard, animatable, interactive vector-graphics format.  From the
+above link you can reach their list of implementations.  In
+particular, for Microsoft Internet Explorer 4.x or later (Windows or
+Mac), and Netscape Navigator 4.x (Windows or Mac), 
+
+[a http://www.adobe.com/ Adobe] supply 
+
+[a http://www.adobe.com/svg/ a plug-in gratis].  
+
+[del There's even a beta version available for Linux.]
+Mozilla has a programme for adding SVG
+to their browser, but it is still at an early stage.  "
+
+endBody
+endDocument

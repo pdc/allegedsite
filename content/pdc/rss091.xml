@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+ <channel>
+  <title>Alleged News</title>
+  <link>http://www.alleged.org.uk/pdc/</link>
+  <description>Damian Cugley&#x2019;s personal web site</description>
+  <language>en-gb</language>
+  <managingEditor>webmaster@alleged.demon.co.uk</managingEditor>
+  <webMaster>webmaster@alleged.demon.co.uk</webMaster>
+  <docs>http://backend.userland.com/rss</docs>
+  <copyright>© 2007 P. Damian Cugley</copyright>
+  <lastBuildDate>Wed, 13 Jun 2007 22:50:06 +0000</lastBuildDate>
+  <pubDate>Thu, 15 Mar 2007 00:00:00 +0000</pubDate>
+  <item>
+   <title>Jack Bauer Wrecks Trek</title>
+   <link>http://www.alleged.org.uk/pdc/2007/03/15.html#e20070315_trek</link>
+   <guid isPermaLink="true">http://www.alleged.org.uk/pdc/2007/03/15.html#e20070315_trek</guid>
+   <pubDate>Thu, 15 Mar 2007 00:00:00 +0000</pubDate>
+   <description>It is a truth universally acknowledged that Star Trek tells us more about American foreign
+   policy than it does about the future. I have recently had occasion to read a couple of
+   Trek novels for the first time in years and I find that ...</description>
+  </item>
+  <item>
+   <title>My Mate V-Mate?</title>
+   <link>http://www.alleged.org.uk/pdc/2007/03/10.html#e20070310_vmate</link>
+   <guid isPermaLink="true">http://www.alleged.org.uk/pdc/2007/03/10.html#e20070310_vmate</guid>
+   <pubDate>Sat, 10 Mar 2007 00:00:00 +0000</pubDate>
+   <description>How do you get video from your old VHS tapes to your ultra-modern digital gadgets?
+   SanDisk’s solution is a little gadget called a V-Mate: a little box with
+   card-reader slots in the front and analogue TV connectors in the back.</description>
+  </item>
+  <item>
+   <title>Refactor, Redesign, Restyle</title>
+   <link>http://www.alleged.org.uk/pdc/2007/03/04.html#e20070304_redesign</link>
+   <guid isPermaLink="true">http://www.alleged.org.uk/pdc/2007/03/04.html#e20070304_redesign</guid>
+   <pubDate>Sun, 04 Mar 2007 00:00:00 +0000</pubDate>
+   <description>Yes, I have redesigned my archive pages—that is, the ones where all the entries apart
+   from the most recent live, and the index pages for navigating between them.  To see the new look you can visit the archive page for this entry.</description>
+  </item>
+  <item>
+   <title>OpenID in a WSGI filter</title>
+   <link>http://www.alleged.org.uk/pdc/2007/02/18.html#e20070218_wsgi_openid</link>
+   <guid isPermaLink="true">http://www.alleged.org.uk/pdc/2007/02/18.html#e20070218_wsgi_openid</guid>
+   <pubDate>Sun, 18 Feb 2007 00:00:00 +0000</pubDate>
+   <description>With all this buzz about OpenID all of a sudden I have been reminded
+   of how a while back I was tinkering with a TurboGears-based web game
+   using OpenID (see parts 1, 2, 3). Having learned more
+   about WSGI and Python Paste I am ...</description>
+  </item>
+  <item>
+   <title>Birds of a Feather</title>
+   <link>http://www.alleged.org.uk/pdc/2007/02/08.html#e20070208_geeknights</link>
+   <guid isPermaLink="true">http://www.alleged.org.uk/pdc/2007/02/08.html#e20070208_geeknights</guid>
+   <pubDate>Thu, 08 Feb 2007 00:00:00 +0000</pubDate>
+   <description>I’m still abuzz after the Oxford Geeks Nights #1 last night. Working as I do in the slime pits of Microsoft Windows ASP.NET, it was exciting just seeing so many Macs lined up on the stage, their little apple logos glowing in the ...</description>
+  </item>
+  <item>
+   <title>Desktop Web Server in .Net</title>
+   <link>http://www.alleged.org.uk/pdc/2006/11/13.html#e20061113-desktop-web</link>
+   <guid isPermaLink="true">http://www.alleged.org.uk/pdc/2006/11/13.html#e20061113-desktop-web</guid>
+   <pubDate>Mon, 13 Nov 2006 00:00:00 +0000</pubDate>
+   <description>Web servers started as a solution to getting information from other sites. Then
+   it became convenient to use HTML and HTTP on one’s local-area network, and for
+   some reason we had to call that idea an ‘intranet’ to make people pay ...</description>
+  </item>
+ </channel>
+</rss>
+

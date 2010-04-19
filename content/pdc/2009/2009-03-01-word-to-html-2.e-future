@@ -1,0 +1,14 @@
+Title: Pasting from Microsoft Word 2003 in to a Rich-Text Editor on a Drupal Web Page, part 2
+Date: 2009-02-20
+Icon: ../2008/drupal-64x64.png
+
+
+
+Munging HTML before it is Saved
+------
+
+To try to reduce confusion I have chosen the term **munger** to refer to the changes made  on the way in to the database, distinct from *filters* used on the way *out*.
+
+<div class="wide_photo_left"><img src="word-to-HTML-2.png" alt="(diagram)" /></div>
+
+How do we arrange for our munging to be performed? The usual routes, like using [hook_nodeapi][], don’t apply to all the situations where the wysiwyg magic is activated. 

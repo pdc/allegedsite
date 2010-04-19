@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2004-03-22 23:16 GMT -->
+  <!-- with command: cd /hda6/home/pdc/th/tuschin/pdc/2004/01;
+  /home/pdc/bin/thc -r /home/pdc/public_html/tuschin/ -s pdc/2004/01 index.th -->
+  <!-- htmlProcs.tcl version 5.1.7 -->
+  <head>
+    <title>2004 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../..">Alleged Literature</a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <strong>01</strong>
+    </p>
+    <div id="body">
+      <h1>Archives for January 2004</h1>
+      <div class="entry">
+        <h2><a name="e20040131" id="e20040131">Saved by the DAO</a></h2>
+        <p class="details">31 January 2004</p>
+    <p><a href="http://support.microsoft.com/support/kb/articles/Q233/0/02.ASP"></a>
+      I learned to use one of Microsoft’s many abandoned <abbr
+      title="application-programming interface">API</abbr>s this week:
+      <a
+      title="Migration from DAO to ADO (MSDN Library)"
+      href="http://support.microsoft.com/support/kb/articles/Q233/0/02.ASP">DAO,
+      the Data Access Object</a> library.
+    </p>
+    <p>
+      It happened like this.  At work we have a client with an
+      existing application that uses a Microsoft Access database.  He
+      also has the interesting habit of specifying additions not in
+      English but by creating sketchy database schemas in Access.  Our
+      work on the next version will be using Microsoft SQL Server,
+      with which I have some familiarity—unlike Microsoft Access
+      of which I know nothing.  So naturally I was given the task of
+      devising the new database definition.
+    </p>
+    <p>
+      My first couple of weeks were very frustrating.  With SQL
+      databases one can type questions in the SQL language to explore
+      the relationships between database entities (they even store the
+      database schema in its own database tables).  The ‘easy to
+      use’ query creator in Access I personally find
+      bewildering.  It is possible to write queries in SQL, but it
+      makes it plain that it does not like you to do this, and offers
+      less support than, for example, Microsoft SQL Server Query
+      Analyzer.  Access often fails with truly inscrutable error
+      messages.
+    </p>
+    <p>
+      I wanted to use a mini-program to do some of the schema
+      manipulation for me.  Thus I needed extract information about the database definition in
+      a form my program could process.  Access has a nice visual
+      interface for  exploring the relationships between database
+      tables, but no discernible way to extract the information in
+      textual form.  There is an Upsizing Wizard for converting
+      Microsoft Access files in to Microsoft SQL Server databases, but
+      I never got it to work—supposedly installing some service
+      packs should have fixed it, but no dice.  
+    </p>
+    <p>
+      I had a <a href="http://python.org/">Python</a> program
+      using the <abbr title="Open Database Connectivity">ODBC</abbr>
+      support bundled with <a
+      href="http://starship.python.net/crew/mhammond/">Mark
+      Hammond’s</a> Win32 extensions.  With this one can
+      discover the columns defined for a given table.  With some blind
+      poking about I discovered how to get a list of tables using
+      <s>OLE</s> <s>ActiveX</s> <s>COM</s> Automation to talk direct
+      to the Access program.  The programmer had used fairly
+      consistent, stylized column names, from which my program could
+      deduce a lot of the database structure.  But something in the
+      combination of ODBC, Automation, Access and Python caused a lot
+      of crashes, which was annoying.  Then a colleague suggested
+      using DAO.
+    </p>
+    <p>
+      DAO is one of many database libraries for windows, coming after
+      ODBC and <abbr
+      title="Microsoft Remote Data Objects">RDO</abbr> and before
+      OLE-DB, <abbr title="Microsoft ActiveX DataObjects">ADO</abbr>,
+      and ADO .NET.  It was created to allow users of Microsoft
+      Access Basic, and then <abbr title="Microsoft Visual Basic for
+      Applications">VBA</abbr>, <abbr title="Microsoft Visual Basic
+      Scripting Edition">VBScript</abbr> and also <abbr
+      title="Microsoft Visual Basic">VB</abbr> to manipulate Microsoft
+      Access database files (they like to call it the Jet database
+      engine), and extended to allow connection to any ODBC data
+      source.  Nowadays a VB programmer would use a more recent
+      library like ADO.  But DAO, being Jet-specific, sees all when it
+      comes to Access databases.  
+    </p>
+    <p>
+      The <a
+      href="http://www.oreilly.com/catalog/progacdao/">O’Reilly
+      book</a> makes it all straightforward—there’s a list
+      of tables, and a list of ‘relations’, and it pretty
+      much works as it should.  I’m using Python with the
+      Win32com support for Automation to talk to the DAO subsystem,
+      without any bother and with no more crashes.  It also gives more
+      precise info on the data types (ODBC says NUMBER; DAO can
+      distinguish (Short) Integer, Long, Byte, etc).  Equipped with
+      this information, I can begin analysing the database layout
+      in earnest.
+    </p>
+
+<p class="endnotes">
+          [
+          <a href="../../2003/vb6-n.html"><abbr title="Microsoft Visual Basic 6">VB 6</abbr></a>, <a href="../../2003/dao-n.html"><abbr title="Microsoft Data Access Objects">DAO</abbr></a>, <a href="../../2003/python-n.html">Python</a>
+          |
+          <a href="../../2004/01/31.html#e20040131" title="Permanent URL for this entry">#</a>
+          ]
+        </p>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../../2004/01/04.html#e20040104" title="Permanent URL for this entry">Happy New Calendar Day</a>
+          4 January 2004
+        </li>
+      </ul>
+    </div>
+    <dl class="links">
+      <dt class="FirstChild">Archives</dt>
+      <dd><a href="../../2003/subjects-n.html">by topic</a></dd>
+      <dd><a href="../../2004/02/">February 2004</a></dd>
+      <dd><a href="../../2004/01/">January 2004</a></dd>
+      <dd><a href="../../2003/">2003</a></dd>
+      <dd><a href="../../2002/">2002</a></dd>
+      <dd><a href="../../2001/">2001</a></dd>
+      <dd><a href="../../2000/">2000</a></dd>
+      <dd><a href="../../1999/">1999</a></dd>
+      <dd><a href="../../1998/">1998</a></dd>
+      <dd><a href="../../1997/">1997</a></dd>
+      <dt>Entertainments</dt>
+      <dd><a href="../../2003/picky/">Picky Picky Game</a></dd>
+      <dd><a href="../../tarot/">Alleged Tarot 2002</a></dd>
+      <dd><a href="../../2001/xmas-n.html">2001 Xmas card (SVG)</a></dd>
+      <dd><a href="../../how-tall-are-you/">How tall are you? quiz</a></dd>
+      <dd><a href="http://caption.org/2000/pdc/">My Fabulous Life (2000)</a></dd>
+      <dt>Photo albums</dt>
+      <dd><a href="../../2003/mull/">Mull (2003)</a></dd>
+      <dd><a href="../../2002/maymorning/">May Morning (2002)</a></dd>
+      <dd><a href="../../aviemore/">Aviemore (1999)</a></dd>
+      <dd><a href="../../bologna/">Bologna (1998)</a></dd>
+      <dd><a href="../../roch/">Roch Castle (1998)</a></dd>
+      <dd><a href="http://caption.org/1997/pdc/">CAPTION97</a></dd>
+      <dd><a href="http://caption.org/1996/pdc/">CAPTION96</a></dd>
+      <dt><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml">XML</a></dt>
+      <dt><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer">Valid XHTML 1.0!</a></dt>
+    </dl>
+  </body>
+</html>
+

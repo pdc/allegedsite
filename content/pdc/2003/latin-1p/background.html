@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from background.th on 2005-12-07 23:31 GMT -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2003/latin-1p;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2003/latin-1p background.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Character Encoding #1 - Alleged Literature</title>
+    <link href="spec.css" rel="stylesheet" type="text/css" arg0="" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../../">Alleged Literature</a>
+      : <a href="../../">Damian Cugley</a>
+      : <a href="../">2003</a>
+      : <a href="./">Latin-1p</a>
+    </p>
+    <div id="body">
+      <h1>About character encodings</h1>
+      <p>
+        Modern text-processing software is described in terms of Unicode
+        (or, equivalently, ISO&nbsp;10646).  That is, operations are described
+        in terms of <em>character data</em>, where characters are the code
+        points defined in the Unicode universal character set.  Examples of
+        Unicode code points include U+0041 <samp>A</samp> (latin capital
+        letter A), U+00C1 <samp>&#x00C1;</samp> (latin capital letter A with
+        acute), U+2014 &mdash; (em dash)
+      </p>
+      <p>
+        These numbers must be <em>encoded</em> as sequences of bytes
+        if they are to be stored in files on disc, or transmitted over
+        networks, or passed as parameters to library functions.  The simplest
+        encodings use one byte to represent one character; this obviously
+        limits them to at most 256 Unicode code points.  Examples of
+        single-byte encoding-schemes are ASCII, which encodes the first 128
+        code points of Unicode one-for-one (code 0x41 encodes U+0041, and so
+        on), and cannot encode characters beyond U+007F, and ISO 8859-1 (also
+        called Latin-1), which encodes the first 256 code points of Unicode.
+      </p>
+      <p>
+        Other single-byte encodings map bytes on to different Unicode
+        characters&mdash;for example, ISO 8859-7 (Greek) maps characters in
+        the range 0xC0 to 0xFF on to Greek letters (Unicode U+0370 onwards).
+      </p>
+      <h2>About English punctuation</h2>
+      <p>
+        In typeset books, quoted words and phrases may be distinguished
+        from the rest of the text through a change of typeface (from upright
+        to italic, for example), or through quotation marks.  In English the
+        marks of quotation are the apostrophe <samp>&rsquo;</samp> (Unicode
+        U+2019 RIGHT SINGLE QUOTATION MARK) and the inverted comma
+        <samp>&lsquo;</samp> (Unicode U+2018 LEFT SINGLE QUOTATION MARK).  In
+        the days of hot-metal printing, the inverted (or turned) comma was
+        literally a comma that was turned upside-down.
+      </p>
+      <p>
+        Note that Unicode uses the name APOSTROPHE for U+0027
+        <samp>'</samp>, a typewriter-inspired character that combines the
+        roles of apostrophe, opening quotation mark, prime, and even acute
+        accent.  It is often called <em>quote</em> or <em>tick</em> and is
+        important in writing in computer languages.
+      </p>
+      <p>
+        The glyphs for these characters vary according to the operating
+        system your fonts were designed for.  On many systems using the X11
+        window system, and many terminals, the glyphs for U+0027 and U+0060
+        look more appropriate for U+2018 and U+2019, reflecting the common
+        convention of using the former as substitutes for the latter.
+      </p>
+    </div>
+  </body>
+</html>

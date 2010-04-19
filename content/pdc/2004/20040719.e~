@@ -1,0 +1,277 @@
+Title: MU part 2: Clear as MUD 
+Date: 20040719
+Image: ../icon-64x64.png
+Topics: mu mud xml html yaml mime
+
+This is a continuation of [my pointless musing about a hypothetical
+alternative to XML called MU][prev].
+
+The importance of metadata
+--------------------------
+
+A MU instance cannot stand entirely alone -- no text file can, because
+you need to know the encoding used to convert the character data to a
+the sequence of bytes actually stored on disc or transmitted over the
+network.  (As discussed in the previous entry, the MU data does not
+describe its own encoding.)
+
+I will describe two ways to store metadata for MU documents, one using
+MIME media-type parameters and the other as a separate resource in a
+format called MUD.  A MUD-savvy web servers will use the metadata in
+the MUD to construct the `Content-type` headers.  
+
+MIME-type parameters
+--------------------
+
+In the fantasy world in which MU exists, the Internet media-type for
+MU is `text/mu`, with variations like `text/html+mu`
+permitted in a manner similar to the `+xml` convention.
+
+There is some discussion as to where XML data should be
+`application/xml` or `text/xml`.  I am pretty sure that the reasons
+for preferring the former is that (a) not all XML data is supposed to
+be a document for reading by human beings, and (b) media-types
+starting with `text/` are subject to transcoding, and that would break
+XML documents that mention their own encoding.  MU is not intended as
+a general-purpose serialization format, and can be transcoded (because
+the program doing the transcoding will emend the metadata), so I think
+that makes `text/mu` OK.  I might be wrong, though.
+
+The `charset` parameter specifies how to convert the bytes in to
+characters.  Thus one can have things like
+
+  * `text/mu; charset=ISO8859-1`
+  * `text/mu; charset=UTF-8`
+  * `text/mu; charset=UTF-16LE`
+
+And for compatibility with other RFCs I am too lazy to look up,
+
+  * an omitted `charset` means the MU document is in strict US-ASCII; 
+  * if the charset is UTF-16, then the data may be (a) a byte-order
+    mark 0xFF 0xFE followed by UTF-16LE data, (b) a BOM
+    0xFE 0xFF followed by UTF-16BE data, or (c) UTF-16BE data with no BOM.
+
+The first point diverges from HTML, which vaguely assumes ISO 8859-1
+in the absence of a charset but then requires increasingly
+hair-raising guesses depending on the byte values the parser
+encounters.  But MU documents must always be accompanied by a valid
+media-type, and that MUST include a `charset` if the encoding is not
+US-ASCII.
+
+Another parameter is `mud`.  This gives one or more URIs for MUD
+resources to be used when interpreting this MU resource.  This is a
+list of one or more URIs separated by whitespace.  For example,
+
+<pre>
+text/mu; charset=UTF-8; mud="http://example.org/muds/formz.mud"
+</pre>
+
+Note that MUDs for popular formats will of course be cached, so the
+standard URI should be used wherever possible.
+
+MUD units
+---------
+
+In this document I am not describing MUD features in complete
+detail as would be required by a real spec.
+The underlying format of the MUD unit is [YAML][yaml].  A formal
+specification of MUD, if such a thing extsited, might define a syntax
+that is a subset or profile of the full YAML syntax.  For example:
+
+<pre>
+media type: text/html+mu
+charset: UTF-8
+features:
+  - tag:alleged.org,2004:mu:link/1.0
+  - tag:alleged.org,2004:mu:object/1.0
+namespaces:
+  html: http://www.w3.org/1999/xhtml
+  dc: http://purl.org/dc/1.0
+</pre>
+
+The `media type` property is MIME type and subtype, sans parameters.  
+The key `charset` gives the character encoding of the MU.  A MUD-savvy web
+server would use these to generate a complete MIME media-type for the
+MU resource, with a `mud` parameter pointing at the MUD unit.  Note
+that the media type from the web server takes precedence over any
+`media type` and `charset` parameters in the MUD (to allow for
+transcoding).
+
+The connection of MU to MUD for files on a computer's file system will
+depend partly on the underlying operating system.  On a Macintosh with
+HFS, the MUD unit might conceivably be a `MUD!` resource of the MU
+document.  Ditto for other operating systems which allow multipart
+files natively -- although if I were to point out that this includes
+NTFS it would probably suprise a lot of Windows NT developers!
+
+Otherwise processors could automatically expect that a document
+`foo/bar.mu` will have a MUD resource available as `foo/bar.mud`, or,
+failing that, `foo/DEFAULT.mud`.
+
+MUD imports
+-----------
+
+The key `imports` has as its value a list if URIs, each on a separate
+line, introduced with a hyphen-space (YAML list syntax).  For example:
+
+<pre>
+imports:
+  - http://www.example.org/2004/html.mud
+  - http://www.example.org/2004/formz.mud
+  - http://www.example.org/2004/mathml.mud
+</pre>
+
+Imports means reading in the extra MUD files and merging their
+properties.  
+
+The key `base` can be used to specify the base for partial URIs (same
+idea as `xml:base`).
+
+The use of imports allows for a MUD embedded in a file (as a Macintosh
+resource, say) to be very short, limited to a `charset` and an
+`imports` parameter).
+
+Namespaces
+----------
+
+The purpose of namespaces is to allow sets of tags defined by
+different organizations to be mixed without prior arrangement.
+Namespaces are not intended to be used to indicate the
+*interpretation* of the tags; for that, see the `features` property
+described below.
+
+The `namespaces` parameter is a mapping from prefixes to URIs.  In the
+MUD this is represented as namespace-colon-URI pairs, one per line,
+indented (the YAML syntax for maps).  For example:
+
+<pre>
+namespaces:
+  html: http://www.w3.org/1999/xhtml
+  form: tag:example.org,2004:formz
+</pre>
+
+Each of these maps a namespace prefix to the subject indicator for its
+namespace.  No implication is made that there is a downloadable
+resource at this URI; they are used merely to supply a globally unique
+identifier.  
+
+There is no default namespace.  Tags with no prefix are promiscuous so
+far as special meanings (specified by features, below) are concerned.
+
+MU namespaces are simpler than XML namespaces in a couple of ways:
+they are specified outside the MU document (not on individual
+elements), and so apply uniformly throughout the document.  A MU
+editor that is assembling a document from arbitrary fragments can
+collect together their namespaces and if necessary munge the prefixes
+to make them unique.
+
+Mixed-namespace documents should not be needed as much with MU as with
+XML, because MU does not need to use namespaces to trigger special
+features.  For example, MU can use `href` for links (using the
+`features` property described below), rather than having to have
+`xlink:href` or `xml:href` as separately namespaced  attributes.
+
+Also, inclusion of data in different formats is expected to be done
+through links rather than in-line.
+
+Features
+--------
+
+The key `features` introduces a list of URIs that are subject
+indicators for features required in the MU processor to correctly
+render this document.  
+
+The term `subject indicator` means a URI that does not refer to actual
+downloadable resources, but is used as a token for a software feature
+the processor must support to make sense of this document.  The URIs
+may well be compiled in to the plug-in implementing the feature.
+
+For example, we might define the URI
+`tag:alleged.org.uk,2004:mu:link/1.0` to mean that `href` and `src`
+attributes have the same meanings as `xml:href` and `xml:src` in
+[Skunklink][skunklink].  
+
+Features will generally be associated with a namespace, but that does
+not mean that the tags that are recognized by a feature must always
+have a namespace prefix: tags are offered to all
+feature implementations and features should match tags (a) with their
+namespace prefix, and (b) with no prefix. 
+
+For example, we might define a `switch` tag in a namespace
+`tag:alleged.org,2004:mu:switch` and include the  URI
+`tag:alleged.org,2004:mu:switch/1.0` amongst the features.
+This allows us to have a MU fragment like the following:
+
+<pre>
+&lt;p>
+    This is HTML with an image:
+    &lt;switch>
+        &lt;img feature="tag:alleged.org,2004:mu:svg/1.0" 
+              src="foo.svg"/>
+        &lt;img feature="tag:alleged.org,2004:mu:png/1.0" 
+	      implementation="msie/5.5" src="foo-noalpha.png"/>
+        &lt;img feature="tag:alleged.org,2004:mu:png/1.0" 
+              src="foo.png"/>
+        &lt;span>FOO&lt;/span>
+    &lt;/switch>
+    And on with the text.
+&lt;/p>
+</pre>
+
+The `p`, `span` and `img` tags are recognized by the HTML feature,
+say, so implicitly in the `http://www.w3.org/1999/xhtml` namespace,
+whereas the `switch` tag, and `feature` and `implementation`
+attributes are recognized by the switch feature and are implicitly in
+its namespace.  
+
+The idea here is to allow modularization of HTML but to only require
+namespace prefixes when there is ambiguity.  This reduces the load on
+the MU author, which is just as well because we have seen that most
+HTML developers are terrified of XML namespaces!
+
+If a tag is not recognized by any feature, then the default behaviour
+is to strip the tags and display its content.  This includes the case
+where a feature is not supported by the application.  
+
+Finally, one of the feature URIs would be (say) `tag:alleged.org,2004:css/3`,
+and would mean that CSS 3 is used to describe how tags are displayed
+(in the absence of other applicable features).  I imagine that much of
+the HTML compatibility could be expressed in CSS 3.
+
+
+Title
+-----
+
+Does this belong in the MUD or the MU?  I think the MUD but this
+implies that every document needs a separate MUD resource.
+
+Links 
+---------
+
+Links to other resources.  Each link is itself a mapping:
+
+<pre>
+links:
+  - rel: stylesheet
+    type: text/css
+    href: foo.css
+  - rel: alternate
+    type: application/atom+xml
+    href: bar.atom
+</pre>
+
+I think I have gone on about my hypothetical MUD for long enough now.
+
+
+    [prev]: 17.html "MU: A notation for mark-up"
+    [yaml]: http://yaml.org "Yaml Ain't Mark-up Language"
+    [mime1]: http://www.ietf.org/rfc/rfc2045.txt "RFC 2045 (MIME part 1)"
+    [mime2]: http://www.ietf.org/rfc/rfc2046.txt "RFC 2046 (MIME part 2)"
+    [skunklink]: http://dubinko.info/writing/skunklink/
+
+    [1]: http://www.unicode.org/faq/unicode_iso.html "Unicode and ISO 10646 (unicode.org)"
+    [2]: http://www.ietf.org/rfc/rfc2234.txt "RFC 2234 ABNF"
+    [4]: http://xml.coverpages.org/sgml.html "Standard Generalized Markup Language (Cover Pages)"
+    [6]: http://www.ietf.org/rfc/rfc2387.txt "RFC 2387 The MIME Multipart/Related Content-type"
+    [7]: http://www.lmnl.net/ "The Layered Mark-up and aNnotation Language"
+    [8]: http://www.xml.com/pub/a/2004/05/26/totag.html "To Tag or Not to Tag: The New Variorum Shakespeare and XML (xml.com)"

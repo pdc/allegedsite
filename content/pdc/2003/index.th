@@ -1,0 +1,16 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+source ../entryDefs.tcl
+
+namespace import Log::*
+ 
+# Create index files for the entries in the year this directory is named for.
+set thisYear [file tail [htmlOption subDir]]
+
+foreach arName [array names Log::arEntries $thisYear/0\[1-4\]] {
+    puts stderr "--$arName--"
+    arNameGenerate $arName
+}
+
+yearGenerate $thisYear

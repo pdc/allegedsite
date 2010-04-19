@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:51 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Java - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>java</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Java</h1>
+      <div class="entry">
+        <h2><a name="e20041105" id="e20041105">Death to Java! Death! Death! Death!</a></h2>
+        <p class="details">5 November 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><strong>java</strong></li>
+            <li><a href="python.html">Python</a></li>
+            <li><a href="pyana.html">pyana</a></li>
+            <li><a href="cocoon.html">cocoon</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2004/11/05.html#e20041105" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">At work I keep my work-log and my work plan in one big XML document
+   (actually one per client, for the sake of limiting the enormity of the
+   files). This single document is then sliced and diced through various
+   XSL transforms to create different views: for example, when you look at
+   the entry for one task, you see all the notes describing that task and
+   the work I did on it, and when you look at the log for a particular day,
+   you see the notes for that day regardless of which task they belong to. 
+</p>
+<p>I kept all this organized using <img src="../2004/cocoon-logo.gif" width="220" height="51" align="left" alt="" />
+   <a href="http://cocoon.apache.org/">Apache Cocoon</a>, a web-application
+   framework from the Apache project. This was really overkill – I used
+   the simplest kind of pipeline, sucking in XML files at one end and
+   choosing a particular XSLT to render it based on parts of the URL. Installing it was a bit of an
+   adventure (installing a new version of Java on to my old Windows 2000
+   machine, copying JAR files around,and so on), but
+   it worked well enough (except for running our of memory when I tried to
+   render pages as PDF using <a href="http://xml.apache.org/fop/">FOP</a>). 
+</p>
+<p>On Thursday, I made a foolish mistake: I decided to upgrade <img src="../2004/tomcat.gif" 
+width="130" height="92" align="right" alt="" /> <a href="http://jakarta.apache.org/tomcat/">Apache
+Jakarta Tomcat</a>, the web server that hosts Cocoon. The original
+   impetus was that I wanted to install <a href="http://veryquickwiki.croninsolutions.com/">VeryQuickWiki</a>, and that was
+   because I am not content with having specifications passed around as long and unweildy Microsoft Word
+   documents. VeryQuickWiki is very quick to install, assuming that your
+   JSP compilations do not fail with a 200-line error message, which is
+   what happened to me. Google’s wisdom suggested reinstalling Tomcat in a
+   directory whose name does not contain spaces (amateurs!!), and I thought I might as
+   well switch from version 4.1 to 5.0 while I was at it.
+</p>
+<p>Needless to say the usual shennanigans of installing Java software
+   ensued. On <img src="../2004/debian-openlogo-75.jpg" width="75" height="92" align="left" alt="" /> <a href="http://www.uk.debian.org/index.eo.html" title="Libera mastruma sistemo (OS) por komputilo">Debian GNU/Linux</a>, I have been spoiled by APT, where the
+   most difficult part is often guessing the name of the package; after
+   that, you type <code>apt-get install xalan</code> and lo! Xalan-C++ <em>and other
+packages it depends on</em> are downloaded, installed, and configured.
+   Installing on
+   Microsoft Windows systems is not this slick at the best of times
+   (you have to do your own downloading, step through interminable wizards,
+   and so on), and Java adds a whole new level of not-quite-workingness.
+   (The server is at work and so is running Microsoft Windows.)
+   Apache tends to assume that people installing Tomcat are Java
+   enthusiasts with infinite knowlege and patience regarding Java’s special
+   conventions; all I want is software that will make Cocoon and
+   VeryQuickWiki work. 
+</p>
+<p>So what went wrong? My first attempts at visiting the Tomcat front page
+   just got ‘connection refused’ (which translates as, ‘the server has
+   failed to open the listener socket’). Rebooting the server fixed this. I ended up
+   doing the usual random rearrangements of JAR files (Tomcat has three
+   places to store JARs, and a lot of places that seem plausible at first),
+   rebooting the server each time because merely restarting the service did
+   not work). Eventually I got it to display the Tomcat documentation and
+   example JSPs. Fine. But when I dropped the Cocoon or VeryQuickWiki WAR files in to its
+   <code>webapps</code> directory, the files were unpacked but something prevented
+   them from working – all I got was a strangely terse message saying the
+   URL was ‘unavailable’. I say strangely terse, because I am used to the
+   more usual Java error messages including a 200-line stack dump. After
+   wasting a couple more hours fruitlessly tring to work out where in the
+   configuration files I might be expected to fix this, I gave up.
+</p>
+<p> <a href="http://www.python.org/"> <img src="../2004/python-powered.gif" width="110" height="44" align="right"
+alt="" /> </a>
+   I gave up not because I don’t think the problem was solveable, and not
+   because I don’t think that eventually I could have worked it out or got
+   advice from some Cocoon mailing list. I gave up because I decided that
+   it would take me less time to <em>write my own web server from scratch</em>
+   than to fix my Tomcat/Cocoon problem. That may seem a
+   bold claim, but remember two things:
+</p>
+<ul>
+ <li><p>I was really using Cocoon to do no more
+   than parse the URI, choose one of the XSLT scripts, set some parameters,
+   and set it running (all the ‘smarts’ of the server are in the XML and XSLT), and 
+</p>
+
+ </li>
+
+ <li><p> <a href="http://www.python.org/">Python</a>.
+</p>
+
+ </li>
+</ul>
+<p>I already know how to throw together a web server in Python using <code>BaseHTTPServer</code>: I’ve
+   used it as one of the implementations of the <a href="http://www.uk.debian.org/index.eo.html" title="Libera mastruma sistemo (OS) por komputilo">Picky Picky Game</a> (the deployed version
+   uses CGI instead). The main trick was running the XSLT transforms (something that should
+   have been absorbed in to the standard Python library long ago). Google found me a Python
+   wrapper for the <img src="../2004/apache-xml-group-logo.gif" width="220" height="65"
+align="left" alt="" /> <a href="http://xml.apache.org/xalan-c/">Apache Xalan-C++ library</a>, called <a href="http://pyana.sourceforge.net/examples/">Pyana</a> for some reason.
+   On Windows, the Pyana installer comes with the required libraries: you just run the
+   installer and it works. By the end of the afternoon I had sorted out a working
+   replacement work-log server (with a bug in the formatting of dates, which I will fix
+   later). The most time-consuming part was rearranging the directory structure of the
+   source files, since they no longer lived in Cocoon’s directory tree (this boiled down to
+   judiciously adding <code>../</code> to various relative URLs).
+</p>
+<p>What are the lessons here (apart from ‘Don’t write your own work-log
+   web server in the first place’)? First, XSLT makes your formatting more mobile between platforms:
+   switching from Java to Python
+   would have been tough had the HTML layouts been mixed in with Java code (or
+   ASP or PHP for that matter). Second, <a href="http://www.panix.com/userdirs/jdw/javasucks.html">Java Sucks for Sysadmins</a>.
+   Third, Python excels at providing simple interfaces to complex
+   libraries, which makes it possible to write sophisticated applications
+   in a hurry.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

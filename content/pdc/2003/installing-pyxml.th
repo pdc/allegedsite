@@ -1,0 +1,72 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Processing XML with Python on Mac OS X - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Processing XML with Python on Mac OS X"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+emit {
+		<p>
+			I’ve been amusing myself by concocting an 
+			<abbr title="Really Simple Syndication">RSS</abbr>
+			reader using <abbr title="XSL (Extensible Style-sheet
+			Language) Transform">XSLT</abbr> to do the processing.
+			XSLT can even handle the downloading of the RSS
+			files, but this does not allow for caching or
+			aggregating—so I&nbsp;thought I&nbsp;would knock
+			something together in Python.
+		</p>
+		<p>
+			Python is installed on Mac OS 
+			&nbsp;X out of the box. But
+			I&nbsp;discovered to my dismay that it has no XML
+			parsers! Since I&nbsp;wanted to store my list
+			of RSS feeds as XML, this was something of a bother. Not
+			to worry—I&nbsp;visited the XML Topic Guide on the
+			Python web site and downloaded 
+			<a href="http://pyxml.sourceforge.net/">pyxml</a>&nbsp;0.8.2. This then
+			failed to install. I fixed this little problem by
+			editing <code>setup.py</code>. In the imports I added
+			<code>get_config_var</code> to the line
+		</p>
+		<blockquote>
+			<p><code>from distutils.sysconfig import
+			get_config_vars</code></p>
+		</blockquote>
+		<p>
+			And I&nbsp;deleted <code>distutils.sysconfig</code> from
+			the line
+		</p>
+		<blockquote>
+			<p><code>if sys.platform[:6] == "darwin" and \<br />
+			distutils.sysconfig.get_config_var("LDSHARED").find("-flat_namespace") ==
+			-1:</code></p>
+		</blockquote>
+		<p>
+			This line would have worked if the <code>import</code>
+			line had just said <code>import
+			distutils.sysconfig</code> (and if other references to
+			<code>get_code_vars</code> had been fully qualified
+			names).   
+			I&nbsp;generally prefer to avoid the
+			<code>from ... import</code> style of imports for just
+			this sort of reason.
+		</p>
+		<p>
+			Now all I&nbsp;have to do is persuade the SAX2 parser to
+			grok XML namespaces...
+		</p>
+}
+
+p [a 05/01.html#e20030501 1 May 2003]
+
+endBody
+endDocument

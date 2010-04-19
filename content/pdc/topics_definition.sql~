@@ -1,0 +1,32 @@
+create table Topics (
+	id integer
+		not null 
+		primary key 
+		autoincrement,
+	name text -- The short, name used to identify this topic
+		not null,
+	label text,	-- HTML text used to display this label
+	parent integer -- The topic that this topic is a subtopic of, or (more usually) null.
+);
+
+create table Docs (
+	id integer
+		not null
+		primary key
+		autoincrement,
+	source text -- Names the `.e` file the document is stored in.
+		not null,
+	scanned datetime -- When we last scanned this file.
+		not null
+		default current_timestamp
+);
+
+create table Doc_Topics ( -- Which topics a document refers to.
+	doc integer
+		not null,
+	topic integer
+		not null,
+	primary key (doc, topic)
+);
+		
+

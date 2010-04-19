@@ -1,0 +1,42 @@
+# -*-tcl-*-
+
+source ../../pdcDefs.tcl
+
+beginDocument {
+    title "Copyright - Picky Picky Game - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Copyright information"
+
+p DRAFT
+
+p "
+The following is addressed to
+players who upload pictures to the Picky Picky Game:
+"
+
+ol {
+    li "
+    By uploading a picture to the game you assert that you have
+    the copyright for this picture, or that you are acting on behalf of
+    the person who does.
+    "
+
+    li "
+    You also grant us a non-exclusive, world-wide licence to reproduce
+    the
+    picture in the Picky Picky Game itself and in supporting materials and
+    exhibitions.
+    "
+}
+    
+
+endBody
+endDocument
+
+
+
+

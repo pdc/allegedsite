@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:51 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Csv - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>csv</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Csv</h1>
+      <div class="entry">
+        <h2><a name="e20040716" id="e20040716">Bizarre fantasies of an Extensible Mark-Up Language</a></h2>
+        <p class="details">16 July 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="html.html">html</a></li>
+            <li><strong>csv</strong></li>
+            <li><a href="lmnl.html"><abbr title="Layered Markup and Annotation Language">LMNL</abbr></a></li>
+            <li><a href="yaml.html">yaml</a></li>
+            <li><a href="sql.html">sql</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2004/07/16.html#e20040716" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I’m awake at 05:00 unable to sleep and instead working on migrating the
+   working copy of my web site to my laptop so that I can eventually retire
+   my old desktop. One of the importunate thoughts bouncing about in my
+   sleep-deprived brain is something someone at work said about some
+   weirdos he’d heard of who actually (ab)use XML as some sort of
+   <a href="http://xml.coverpages.org/sgml.html" title="Standard Generalized Markup Language (Cover Pages)">(standard) generalized mark-up language</a>. This bizarre (to him)
+   concept involves one choosing a set of XML tags to express the structure
+   of the text (as if text could have structure!), which is ludicrous
+   because how would anyone be able to read it? One would have to use XSLT
+   to transform it in to HTML, so why not use HTML in the first place, eh?
+</p>
+<p>In a way this shows just how much the data-heads have beaten the the
+   document-processing crowd when it comes to managers’ mind-share.  By
+   data-heads I mean those people who cannot see or understand anything
+   unless it is expressible as relational database tables. Nothing else
+   exists: Object-oriented analysis and design is merely a complex
+   variation on entity-relationship diagrams, themselves an affectation
+   when you should just be diving in to a wysiwyg schema-designer;
+   windows and dialogue boxes and GUIs in general only make sense as
+   views of a database table (or occasionally of the results of a query);
+   XML exists purely as a serialization format for database tables.
+</p>
+<p>The last of these is particularly annoying. XML is a lousy
+   serialization format.  If XML had been designed as a text-based
+   serialization of data, then it would look more like <a href="http://yaml.org" title="Yaml Ain’t Mark-up Language">YAML</a> than
+   SGML. In fact, for database programmers’ needs, even YAML is
+   overqualified; for expressing collections of tabular data, you could
+   just use comma-separated values for each table, packaged as a unit
+   using <a href="http://www.ietf.org/rfc/rfc2387.txt" title="RFC 2387 The MIME Multipart/Related Content-type">multipart MIME</a>:
+</p>
+<pre>
+Content-Type: multipart/related; boundary=foobar;
+    type=application/tables
+<span></span>
+–foobar
+Content-type: application/tables+csv; charset=Windows-1252
+<span></span>
+Employees,cid:employees.12345@example.com
+Managers,cid:managers.12345@example.com
+–foobar
+Content-type: application/csv; charset=Windows-1252; headerrows=1
+Content-id: &lt;cid:employees.12345@example.com>
+<span></span>
+id,name,salary,loyalty,quirks,height,eyes,hair,manager
+56789,Bill,57,5,2,179,blue,grey,34567
+56781,Julian,45,3,182,brown,black,34567
+[... 45000 more rows ...]
+–foobar
+Content-type: application/csv; charset=Windows-1252; headerrows=1
+Content-id: &lt;cid:managers.12345@example.com>
+<span></span>
+id,name,cars,suit cost
+34567,Sue,4,500
+12345,Graeme,2,600
+–foobar–
+</pre>
+
+<p>This would have the advantage of recycling a lot of existing code:
+   database programs already understand how to write and read CSV, and if
+   you are functioning on the internet you need a MIME processor. The
+   <code>application/tables+csv</code> section is a bit dull, and might be extended
+   to include schema information for the tables (a subset of ANSI SQL
+   DDL). All in all, <em>if</em> all the world needs is a way to exchange the
+   contents of relational databases, then this is a zillion times better
+   a solution than XML.
+</p>
+<p>On the other hand, there is more to life than RDBMSs, and as a mark-up
+   language, XML is ... well ... adequate. There are bits I would
+   personally have omitted, such as <code>NOTATION</code> declarations and those
+   features of DTDs that prevent XML documents from being stand-alone
+   (namely declaration of <code>&amp;</code>-entitites, and default attributes). But its
+   main asset is its openness to recursive nesting of elements and
+   mixed-content elements (those combining text with nested elements),
+   features that dataheads loathe because they do not fit in to
+   relational database concepts at all.
+</p>
+<p>And no, people should not need to invent their own tag-sets in order
+   to write a note for the milkman; that is what we have committees
+   thrashing out XML formats like DOCBOOK and XHTML for. But <a href="http://www.xml.com/pub/a/2004/05/26/totag.html" title="To Tag or Not to Tag: The New Variorum Shakespeare and XML (xml.com)">when you
+want to do a critical edition of Shakespeare</a>, the extra effort of
+   hammering out a new XML format makes sense. Of course you then find
+   you need overlapping elements, and end up wishing for <a href="http://www.lmnl.net/" title="The Layered Mark-up and aNnotation Language">LMNL</a>.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+I am pretty sure that surrounding an embedded SVG image with an HTML
+anchor will not work on browsers that display SVG via a plug-in (e.g.,
+MSIE with Adobe SVG Viewer).      
+
+I think there is a pholosophical problem here.  There are two ways
+images are embedded in an HTML document: `img` produces an inert image,
+so click events are handled by a surrounding `a` element, whereas
+`embed` produce active images that handle mouse-click events
+themselves.  The question is, is `object` like `img` or is `object`
+like `embed`?       
+
+Perhaps we can generalize the idea of embedding so that events bubble
+out of the embedded document (if the embedded document can handle mouse
+events in teh first place).  Then an SVG image that has its own links
+and `onclick` handlers will capture the events first, whereas an SVG
+image that happens not to capture events lets them escape to its
+container.  I don't know enough of how the frame abstractions work
+internally to know if this is easy or hard to fit in to how Mozilla works.       
+
+I recently upgraded to Mac Os X 10.4, and Safari 2 does not
+automatically use the ASV plug-in already installed. I’ve tried to
+reinstall it but Stuffit Expander is no longer bundled with Mac OS, so
+it can’t open the file! Argh!    
+
+Date: 20051211
+Title: How to Put Page Links in Embedded SVG Images
+Topics: svg, html, firefox
+Icon: ../icon-64x64.png
+
+
+As a completely irrelevant asided, reading some of the above comments,
+I wonder if Mozilla developers are aware that SVG is a format for
+expressing 2d graphics, and not merely a way to demonstrate the
+cleverness of Mozilla’s XML infrastructure!     
+
+
+My prediction for the future is that within, say, fifty years or so,
+people will expect to be able to use arbitrary-resolution displays
+with scalable graphics, much as researchers did *twenty* *years*
+*ago* with Display PostScript and NeWS.  At this point people will
+either be using SVG, and XML will still be a big thing, or else they
+will be using Adobemedia PDFFlash and XML will be an obscure format
+used by database junkies.        
+
+**Update (2005-12-10).** You can't wrap an embedded SVG image in an
+HTML `a` tag (bug [294932][]). and you can't put event handlers on the SVG `a`
+tag (bug [267664][]
+
+  [307813]: https://bugzilla.mozilla.org/show_bug.cgi?id=307813 "Stop
+  inflexibly requiring namespace declarations for SVG" 

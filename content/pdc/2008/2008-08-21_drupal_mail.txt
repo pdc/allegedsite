@@ -1,0 +1,40 @@
+Date: 2008-08-21
+Topics: drupal php mail 
+Title: Drupal and email
+Image: ../icon-64x64.png
+Href: http://drupal.org/
+
+for once something I am learnong at work is useful in real life: I am using [Drupal][] (which I have been working on [since last month][2]) to implement [a new version of the CAPTION web site][1]. So far it has been plain sailing, more or less, except I hit a roadblock with user self-registration: Drupal could not send mail. It seems this is a known problem with Drupal that has not been fixed in years.
+
+That fifth parameter
+====================
+
+As you search the [dozens of plaintive questions][3] on the Drupal forums and issue tracker, you often hear of the mythical Fifth Parameter. Administrators of newly installed Drupal systems are often told by their ISPs that mail cannot be sent unless they supply the Fifth Parameter. ‘What is the Fifth Parameter, and how can I set it?’ they ask. Often the response is ‘set the from address in the administration pages’, which unfortunately is wrong.
+
+The question is fairly easily answered if you have twenty years experience with [RFC 2822][] (né [RFC 822][]) mail, SMTP ([RFC 2821][]), Unix `sendmail`, PHP, and and fairly well-equipped text editor. It goes something like this.
+
+A lot of email gateways nowadays reject mail if it does not have a  a plausible from-address (this is intended as an anti-spam measure). So why does setting the From address setting not help?  Because there are *two* sorts of from address:
+
+- The `From` header in the message itself, and
+
+- The from address on the  envelope, used in the SMTP protocol (also called the *return-path* or the *sender* address).
+
+The former is set from the _From address_  setting in Drupal’s administration interface. What about the envelope from-address?
+
+On Unix systems, mail is sent using a program `sendmail`. It takes an option `-f` to set the envelope from-address; if it is omitted, the logged-in user’s login name and the hostname of the computer are used to make the email address (which made sense in the days when  everybody at a site shared a single Unix machine which also handled their mail).
+
+In a PHP program, you invoke the `sendmail` program through a function called <code>[mail][]</code>. it has parameters for recipient, subject line, message body, optional additional headers and optional additional parameters for the `sendmail` program. The last of these is the Fifth Parameter that your ISP has mentioned. they expect you to set it to `-fuser@example.com`.
+
+The Drupal system provides a wrapper function [drupal_mail][] that massages the input parameters before invoking the `mail` function. This allows them to add some checks for common security problems, and also to substitute the from-address from Drupal’s settings.  
+
+
+
+  [Drupal]: http://drupal.org/
+  [1]: http://caption.org/2/
+  [2]: 07/30.html
+  [3]: http://drupal.org/search/node/mail+fifth+parameter
+  [RFC 2821]: http://tools.ietf.org/html/rfc2821
+  [RFC 2822]: http://tools.ietf.org/html/rfc2822
+  [RFC 822]: http://tools.ietf.org/html/rfc822
+  [nail]: http://uk3.php.net/manual/en/function.mail.php
+  [drupal_mail]: http://api.drupal.org/api/function/drupal_mail/6

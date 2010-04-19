@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from background.th on 2005-11-30 18:53 GMT -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2002/xss;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2002/xss background.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>RSS vs. RSS</title>
+    <link href="main.css" rel="stylesheet" type="text/css" arg0="" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p id="Trail">
+      <a href="../../../">Alleged Literature</a> ::
+      <a href="../../">Damian Cugley</a> ::
+      <a href="./">XSS</a> ::
+    </p>
+    <div id="Page">
+      <h1>RSS vs. RSS</h1>
+      <p>
+        One of the strange things about  the weblogging world is that there are
+        <em>two</em> <a href="http://www.w3.org/XML/"><abbr title="Extensible Mark-up Language">XML</abbr></a> formats with the same initials:
+        <a href="http://backend.userland.com/rss092">Really Simple Syndication</a>, and
+        <a href="http://www.purl.org/rss/1.0/">RDF Site Summary</a>.
+      </p>
+      <p>
+        Both ultimately derive from a format from
+        Netscape called
+        <a href="http://my.netscape.com/publish/formats/rss-0.9.dtd">RDF Site Summary&nbsp;0.9</a>
+        
+        (although it was not technically
+        <abbr title="Resource-Description Framework">RDF</abbr>-compatible).
+        
+        The first revision 0.91
+        is not backwards compatible, in the sense
+        that an RSS-0.9 document
+        isn&rsquo;t an RSS-0.91 document:
+      </p>
+      <ul>
+        <li>
+          The 0.91 root element is
+          <code>rss</code> rather than <code>rdf:RDF</code>
+          (abandonning the pretence of <abbr title="Resource-Description Framework">RDF</abbr> compatbility).
+        </li>
+        <li>
+          In 0.91, the
+          channel&rsquo;s <code>item</code> elements are nested inside the
+          <code>channel</code> element (rather than following it).
+        </li>
+        <li>In 0.9 the elements are in the namespace <code>http://my.netscape.com/rdf/simple/0.9/</code>.  In 0.91 the elements have no namespace.</li>
+      </ul>
+      <p>
+        Many elements were added based on the
+        
+        <a href="http://davenet.userland.com/1997/12/15/scriptingNewsInXML">Scripting News</a>
+        
+        format, adding per-item metadata beyond the bare headline and <abbr title="Uniform Resource Identifier">URI</abbr>.
+      </p>
+      <p>
+        The 0.9x series continues with <abbr title="RSS">RSS</abbr>&nbsp;0.92 and <abbr title="Really Simple Syndication">RSS</abbr>&nbsp;2.0, which
+        are upwards-compatible (0.91 documents are 0.92 documents, etc.).
+        <abbr title="RSS">RSS</abbr>&nbsp;0.92 is the format with the largest number of feeds
+        on the syndic8 web site (as of September 2002).
+      </p>
+      <p>
+        <abbr title="RDF Site Summary">RSS</abbr>&nbsp;1.0 is the product of the RSS-DEV mailing list.
+        It is a successor to <abbr title="RDF Site Summary">RSS</abbr>&nbsp;0.9 (retaining the <code>rdf:RDF</code>
+        root element and the positioning of <code>item</code>s following the
+        <code>channel</code>), which has had additions made to make it valid <abbr title="Resource-Description Framework">RDF</abbr>,
+        and a system of extension through modules.
+        It is <em>not</em> a successor to 0.91 or 0.92
+        (with their <code>rss</code> root element etc.), although most of the
+        elements added in 0.92 are also incorporated in 1.0.  Neither is it
+        <em>technically</em> upward-compatible with 0.9 (the XML
+        namespace used is different, etc.).
+        Not that this matters much, since 0.9 is no longer deployed.
+      </p>
+      <p>
+        There was <a href="http://diveintomark.org/archives/2002/09/06.html#history_of_the_rss_fork">some discussion at the time</a> as to whether the
+        
+        1.0 format should have a different name.
+        In the end the drivers of both formats each stuck with the initials RSS.
+        Luckily there is a slight tendency to use different file-name extensions
+        (<abbr title="Really Simple Syndication">RSS</abbr>&nbsp;0.9x tends to use <code>.xml</code> or <code>.rss</code>,
+        whereas <abbr title="RDF Site Summary">RSS</abbr>&nbsp;1.0 tends to use <code>.rdf</code>).
+      </p>
+    </div>
+  </body>
+</html>

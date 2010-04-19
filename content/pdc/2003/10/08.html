@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:26 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003/10;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003/10 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Capturing XML output from ADO using a Stream object - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2003</a> &gt;&gt;
+      <a href="./">10</a> &gt;&gt;
+      <strong>08</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20031008" id="e20031008">Capturing XML output from ADO using a Stream object</a></h2>
+        <p class="details">8 October 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/pdf.html"><abbr title="Portable Document Format">PDF</abbr></a></li>
+            <li><a href="../../2003/asp.html"><abbr title="Microsoft ActiveX Server Pages">ASP</abbr></a></li>
+            <li><a href="../../2003/ado.html"><abbr title="Microsoft ActiveX Data Objects">ADO</abbr></a></li>
+            <li><a href="../../2003/sqlserver.html">Microsoft SQL Server</a></li>
+            <li><a href="../../2003/xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="../../2003/xslt.html">xslt</a></li>
+            <li><a href="../../2003/work.html">work</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20031008" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://msdn.microsoft.com/library/en-us/xmlsql/ac_openxml_1hd8.asp"><img src="../../2003/web-server.png" class="initial" alt="" align="left" width="100" height="52" border="0" /></a></div><p class="first">
+      I&nbsp;will describe here the solution to a problem that taxed me at
+      work this week, in the faint hope that it will prove useful to
+      someone else who needs to do the same strange thing.
+    </p>
+    <p>
+      The web application I&nbsp;am working on uses <abbr
+      title="Standard Query Language">SQL</abbr> stored procedures to
+      do all the work.  I&nbsp;use the <a
+      href="http://msdn.microsoft.com/library/en-us/xmlsql/ac_openxml_1hd8.asp"><code>FOR
+      XML</code> extension</a> of <a
+      href="http://www.microsoft.com/sql/">Microsoft SQL Server
+      2000</a> so that the results emerge in <abbr title="Extensible
+      Mark-up Language">XML</abbr> format rather than the usual
+      collection of records.
+    </p>
+    <p>
+      This is all mediated through <a href="http://www.microsoft.com/ado/">Microsoft’s <abbr
+      title="Microsoft ActiveX Data Objects">ADO</abbr> conventions</a>.
+      The way this works is that you create an ADO
+      <code>Command</code> object as usual, and use the special
+      property called <code>Properties</code> to set certain special
+      parameters.  (It is not obvious why these are not implemented as
+      regular properties.)  One of the special properties is
+      <code>XSL</code>, which names an <abbr title="Extensible
+      Stylesheet Language: Transform">XSLT</abbr> resource that is
+      used to convert the raw XML emitted by SQL Server in to
+      something more useful, such as HTML.  Another special property
+      called <code>Output Stream</code> is used to plumb the output
+      straight to the <abbr title="Microsoft ActiveX Server
+      Pages">ASP</abbr> <code>Response</code> object:
+    </p>
+    <pre>cmd.Properties("XML Root") = "foo"
+cmd.Properties("XSL") = xslDir &amp; theme &amp; "/foo.xslt"
+cmd.Properties("Output Stream") = Response</pre>
+    <p>
+      You then execute the command passing the
+      <code>adExecuteStream</code> flag and all is well.  We can
+      describe this with a <a
+      href="http://cocoon.apache.org/">Cocoon</a>-style pipeline:
+    </p>
+    <blockquote><div><img src="../../2003/pipeline-1.png" width="390" height="94"
+    alt="(diagram)" /></div></blockquote>
+    <p>
+      The advantage of this set-up is that it reduces the <a
+      href="http://www.microsoft.com/vbscript/"><abbr title="Microsoft
+      Visual Basic Scripting Edition">VBScript</abbr></a> portion of
+      the application to the bare minimum needed to marshal the form
+      parameters in to data that can be fed in to a SQL procedure and
+      then execute the proc with its output transformed in to the HTML
+      page.  The ASP pages actually contain no HTML at all: the
+      application logic (such as it is) is all in SQL, and the
+      appearance entirely controlled by the XSLT.
+    </p>
+    <p>
+      Things got tricky when suddenly I&nbsp;wanted to have one page
+      generate several flavours of output beyond the usual HTML, such as
+      <abbr title="Portable Document Format">PDF</abbr>.
+      I&nbsp;would need a software component to do this, and since
+      ASP/VBScript was being used as the application glue, the
+      component would have to be a 
+      <abbr title="Microsoft Common Object Model">COM</abbr> 
+      <abbr title="component class">coclass</abbr>.  But how to get
+      the XML in to the component?  On the face of it there are three
+      obvious ways to do this:
+    </p>
+    <ul>
+      <li>
+        The <code>Output Stream</code> property is set to my
+        component, and it implements the stream
+        interface that the ADO command object expects.
+      </li>
+      <li>
+        The ADO command might be persuaded to expose the XML as a
+        <em>readable</em> stream (client pull rather than server
+        push).  The new component would then read its data from this.  
+      </li>
+      <li>
+        Find the equivalent of a C++ <code>stringstream</code> or
+        Python <code>StringIO</code>—something that pretends to
+        be an output stream but instead buffers the XML data in
+        memory.  The XML is then sent to the new component as a string
+        parameter.
+      </li>
+    </ul>
+    <p>
+      In theory the first option is the best from the point of view of
+      pipelining:
+    </p>
+    <blockquote><div><img src="../../2003/pipeline-2.png" width="390" height="94"
+    alt="(diagram)" /></div></blockquote>
+    <p> 
+      Unfortunately the documentation was maddeningly vague as to
+      how to implement the stream interface.  The SQL Server
+      documentation said ‘<abbr title="Microsoft Object Linking
+      and Embedding Database">OLEDB</abbr> stream’, the OLEDB
+      documentation alluded to <code>IStream</code>, which turns out
+      to mean a bundle of half-a-dozen custom COM interfaces...
+      Blurk.  No way to do <em>this</em> in five minutes.  (This
+      contrasts badly with Python’s use of ‘file-like
+      objects’ which just need to implement a few simple methods
+      like <code>write</code>.)
+    </p>
+    <p>
+      The second option, where my program reads from the ADO object,
+      rather than it writing to stream, does not seem possible.  With
+      ADO&nbsp;.NET you can execute a command in a fashion that
+      returns a reader object, but I&nbsp;could not crack this with ADO.
+      Oh, well.
+    </p>
+    <p>
+      The last of these has the advantage of conceptual simplicity at
+      the expense of storing the whole XML document in memory at once:
+    </p>
+    <blockquote><div><img src="../../2003/pipeline-3.png" width="435" height="226"
+    alt="(diagram)" /></div></blockquote>
+    <p>    
+      In practice this should not be a problem, since the data would
+      not be over-large.  So all I&nbsp;needed was the buffer object.  The
+      SQL Server documentation mentions an ADO class
+      <code>Stream</code>.  It has no information about the methods or
+      properties of the <code>Stream</code> class, but  something like
+      this should work, right?:
+    </p>
+    <pre>Dim strm
+Set strm = Server.CreateObject("ADODB.Stream")
+cmd.Properties("Output Stream") = strm
+cmd.Execute ,, adCmdStoredProc Or adExecuteStream
+... read stream somehow ...</pre>
+    <p>
+      Unfortunately this causes the script to fail with the usual
+      frustratingly ambiguous error message from ADO.  I&nbsp;spent
+      ages trying different variations, Googling for hints, and
+      retrying the discarded ideas from earlier, before I&nbsp;found a
+      page that mentioned that you have to call <code>strm.Open</code>
+      before it will work.  Why?  You just do.
+    </p>
+    <pre>Dim strm
+Set strm = Server.CreateObject("ADODB.Stream")
+<strong>strm.Open</strong>
+cmd.Properties("Output Stream") = strm
+cmd.Execute ,, adCmdStoredProc Or adExecuteStream
+strm.Position = 0
+text = strm.ReadText
+strm.Close</pre>
+    <p>
+      Now all that remains is the minor task of writing a COM
+      component that exposes a method <code>MakePdfWriteToStream</code>
+      along the following lines:
+    </p>
+    <pre>Dim pdfMaker
+Set pdfMaker = Server.CreateObject("myproject.PdfMaker")
+pdfMaker.MakePdfWriteToStream(Response)</pre>
+    <p>
+      But that’s another story.
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

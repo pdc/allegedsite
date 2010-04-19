@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from graphics-the-hard-way.th on 2006-10-29 09:49 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2002;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2002 graphics-the-hard-way.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Colour graphics the hard way - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2002</a> &gt;&gt;
+      <strong>graphics-the-hard-way</strong>
+    </p>
+    <div id="body">
+      <h1>Colour graphics the hard way</h1>
+      
+      <p>
+      On my badly broken Linux desktop,
+      the Gimp is missing its file-saving plug-ins, so it cannot save
+      files except in a format I&nbsp;cannot use.  XPaint does not
+      exist, for some reason.  The venerable <code>bitmap</code>
+      program does work, but can only produce
+      X11 bitmap files (which are black and white only).  How then to produce colour icons for my
+      <a href="../2003/picky.html">Picky Picky Game</a> mock-ups?
+      </p>
+      <p>
+      The answer is, of course, to use Jef Poskanzer&rsquo;s <a
+      href="http://www.acme.com/software/pbmplus/">PBMPlus
+      Toolkit</a> (as extended over the years by other people to make
+      NetPBM).
+      I&nbsp;used this in the
+      distant  past to get around the lack of graphics editors on
+      Unix in the olden days (we are talking circa 1992, here).
+      Using <code>bitmap</code>, you make masks for the colours you want,
+      and combine them using <code>pnmarith</code>.
+      
+      There was a slight hiccup when I&nbsp;discovered that
+      <code>pgmtoppm</code> seems to go strange when presented with a
+      <abbr title="portable bitmap">PBM</abbr>: it generates a depth-1
+      pixmap, therefore losing the very colours you have just used it
+      to add.  No doubt my decrepit compuer has out-of-date PBMPlus
+      software, just like everything else...
+      </p>
+      <p>
+      Anyway, the PBMPlus method for colour graphics is as follows.
+      For each colour (including the white background), you create a
+      bitmap that is the mask for that colour:
+      </p>
+      
+      <blockquote>
+      <div>
+      <img src="warning-white.png" width="32" height="32"
+      alt="(white mask)" />
+      <img src="warning-red.png" width="32" height="32"
+      alt="(red mask)" />
+      </div>
+      </blockquote>
+      
+      <p>
+      The first one is the white mask.  The second is white where
+      I&nbsp;want the picture to be red, and black otherwise.  If
+      there were several colours there would be several of these.  In
+      <code>bitmap</code> producing these masks is relatively
+      easy&mdash;start with the white mask, press Invert, and then
+      Flood Fill the parts you don&rsquo;t want.
+      Convert these to PBM files using <code>xbmtopbm</code>.
+      </p>
+      
+      <p>
+      Now we start creating the image, one colour at a time.  The
+      first layer, white,  is easy: just copy
+      <code>warning-white.pbm</code> to <code>warning.ppm</code>.  For
+      other colours, you use <code>ppmmake</code> to create a block of
+      the colour, <code>pnmarith -m</code> to mask out the area you
+      want, and <code>pnmarith -a</code> to combine this with the main
+      image:
+      </p>
+      
+      <pre>mv warning.ppm tmp.ppm &amp;&amp; ppmmake '#990000' 32 32 |
+      pnmarith -m - warning-red.pbm |
+      pnmarith -a - tmp.ppm &gt; warning.ppm</pre>
+      
+      <p>
+      The result is a picture with several colours in it, created
+      using only a bitmap editor:
+      </p>
+      
+      <blockquote>
+      <div>
+      <img src="warning.png" width="32" height="32"
+      alt="(warning icon)" />
+      </div>
+      </blockquote>
+      
+      <p>
+      All in all this is a lot more bother than using
+      a proper
+      <abbr title="what you see is what you get">WYSIWYG</abbr>
+      graphics editor.
+      (You also cannot sensibly create images with  a large number of
+      colours, since each colour needs its own mask.)
+      When Jeremy&rsquo;s not using her
+      <abbr title="Microsoft Windows NT">NT</abbr> box I&nbsp;might
+      borrow that to produce nicer graphics.
+      </p>
+      
+      <p><a href="11.html#e20021125a">25 November 2002</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/">2003</a></li>
+        <li><a href="../2002/12.html">December 2002</a></li>
+        <li><a href="../2002/11.html">November 2002</a></li>
+        <li><a href="../2002/10.html">October 2002</a></li>
+        <li><a href="../2002/09.html">September 2002</a></li>
+        <li><a href="../2002/08.html">August 2002</a></li>
+        <li><a href="../2002/07.html">July 2002</a></li>
+        <li><a href="../2002/06.html">June 2002</a></li>
+        <li><a href="../2002/05.html">May 2002</a></li>
+        <li><a href="../2002/04.html">April 2002</a></li>
+        <li><a href="../2002/03.html">March 2002</a></li>
+        <li><a href="../2002/02.html">February 2002</a></li>
+        <li><a href="../2002/01.html">January 2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

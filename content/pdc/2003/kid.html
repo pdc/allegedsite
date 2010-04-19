@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:24 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Kid - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>kid</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Kid</h1>
+      <div class="entry">
+        <h2><a name="e20060820.kid" id="e20060820.kid">Maintain Static HTML with Kid Templating</a></h2>
+        <p class="details">20 August 2006</p>
+        <p class="details ljComment">
+          <a href="http://syndicated.livejournal.com/pdc/9528.html">Comment on LiveJournal</a>
+        </p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><strong>kid</strong></li>
+            <li><a href="tclhtml.html">TclHTML</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2006/08/20.html#e20060820.kid" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div><img src="../2006/../wp/icon-64x64.png" alt="" align="left" width="64" height="64" border="0" /></div><p class="first">I have redesigned the <a href="http://www.alleged.org.uk/">Alleged Literature</a> front page. This isn’t
+   just a visual change, though: I have changed the way I generate the HTML
+   so that I am using <a href="http://kid-templating.org/">Kid templating</a> rather than <a href="http://tclhtml.sourceforge.net/">TclHTML</a>.  So
+   here’s a brief introduction to using Kid to maintain static HTML pages.
+</p>
+
+<h2> What is this Thing You Call Static HTML?</h2>
+<p> <a href="http://www.flickr.com/photos/pdc/214858669/" title="Photo Sharing"> <img src="http://static.flickr.com/97/214858669_ef81ede53f_m.jpg" width="240" height="160" alt="Ceasefire Now! (1)" align="left"  /> </a>
+   Computer folks use <em>static</em> versus <em>dynamic</em> to describe different sorts of
+   document. Static means the contents of the document are inert: all you can do is
+   display it. Dynamic documents contains programs that can change the document in
+   response to something: each time you look at it it might be different. There is
+   an extra complexity on the web, because there are actually <em>two</em> places where a
+   web page might be static or dynamic: the copy in your web browser, and the
+   original it is a copy of, which lives on the web server. It is the second of
+   these meanings that I am interested in in this article.
+</p>
+<p>When you buy web-server space from an ISP (such as <a href="http://blackcatnetworks.co.uk/">Black Cat Networks</a>, in my
+   case), static web sites are cheaper than dynamic ones. Partly this is because
+   dynamic web sites are require more processing power to make them work: each time
+   someone requests <code>/hobbit.aspx?who=frodo</code>, a program is run that calculates what
+   the page should look like and writes the HTML out; on a static web site, the
+   page <code>/hobbits/frodo.html</code> is just a file on disc that is copied to the reader’s
+   computer without further processing. The <a href="http://www.alleged.org.uk/">Alleged Literature</a> web site works
+   this way.
+</p>
+<p> <a href="../2006/../aviemore/992sab-75d.html"> <img src="../2006/../aviemore/992sab-75d-thumb.jpg" width="45" height="64" alt="" align="right" /> </a>
+   On a static site, a photo gallery (such as <a href="../2006/../aviemore/">Aviemore 1999</a>) is a bunch of
+   separate files, each with lots of elements the same as one another (e.g., the
+   navigation). Creating these all by hand would be tedious and error-prone;
+   instead I have a collection of programs that generate these pages for me,
+   converting a list of photos in to all the separate pages required to represent
+   the gallery. The upshot of this is that a lot of this site is generated by
+   software very similar to what would go in a dynamic web server; the difference
+   is that I run it on my computer here to create the HTML files that get deployed
+   on the web server.
+</p>
+
+<h2> Generating Web Sites with TclHTML</h2>
+<p>A lot of the generation of pages on my site uses an HTML-generating
+   solution I concocted some years back called <a href="http://tclhtml.sourceforge.net/">TclHTML</a> (inspired by <a href="http://expect.nist.gov/cgi.tcl/">cgi.tcl</a> by Don Libes).  This works by
+   extending the programming language <a href="http://www.tcl.tk/" title="Tcl Developer Exchange">Tcl</a> with commands for generating
+   HTML.  Tcl code looks like this:
+</p>
+<pre><code>for {set i 0} {$i &lt; 10} {incr i} {
+    puts "$i squared is [expr $i * $i]"
+}
+</code></pre><p>Using the TclHTML library you can generate an HTML table of the squares from 0 to 9 pretty easily:
+</p>
+<pre><code>table {
+    tr {
+        th x
+        th "x[sup 2]"
+    }
+    for {set i 0} {$i &lt; 10} {incr i} {
+        tr {
+            td "$i"
+            td "[expr $i * $i]"
+        }
+    }
+}
+</code></pre><p>The HTML commands <code>table</code>, <code>tr</code>, <code>td</code>, and <code>th</code> work like regular Tcl
+   commands like <code>for</code> and <code>puts</code>.  Neat.  If you dislike regular HTML
+   syntax, this can even be an attractive syntax for writing documents in
+   general.
+</p>
+<p>One downside of embedding HTML in another programming language’s syntax
+   is that you have to be aware of two different syntaxes both at the same
+   time: you need to keep in the back of your mind an idea of what HTML you
+   want to generate, and you have to avoid tripping over places where Tcl
+   requires you to escape <code>[...]</code>, wheras HTML requires you to know to
+   escape <code>&amp;</code> and <code>&lt;...&gt;</code>.  It also means that whenever someone wants to
+   suggest an HTML fragment to include in a page, you have to translate it
+   from the HTML supplied to the Tcl that will generate it.  This gets annoying.
+</p>
+<p>There is another problem that lots of HTML-generating solutions suffer
+   from—including ASP and PHP—which is that the HTML that determines the visual
+   appearance of the web site is tangled up in the code that creates it. Changing a
+   list of stuff from a table to a <code>ul</code> list or whatever becomes a non-trivial
+   programming task.
+</p>
+
+<h2> XML Templating using  Python with Kid</h2>
+<p> <a href="http://www.python.org/"> <img src="../2006/../python-logo.png" align="right"
+alt="" /> </a>
+   Since creating TclHTML I have switched from Tcl to <a href="http://www.python.org/">Python</a> as my favourite
+   programming language—to the extent that the only time I use Tcl nowadays is
+   working on the site.    I am also less convinced by the idea of embedding HTML
+   in a programming language than I was ten years ago.  The whole XML ecosystem has
+   grown up in the meantime, and it makes a lot of sense if your document is XML,
+   especially if you have an XML-savvy editor like <a href="http://jedit.org/">jEdit</a>.
+</p>
+<p>Kid is an XML-based templating language that stands TclHTML on its head: instead
+   of valid Tcl with HTML embedded in it, it has a well-formed XML document with
+   Python fragments embedded therein.  For example:
+</p>
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;x&lt;/th&gt;&lt;th&gt;x&lt;sup&gt;2&lt;/sub&gt;&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr py:for="i in range(10)"&gt;
+        &lt;td py:content="i"&gt;5&lt;/td&gt;
+        &lt;td py:content="i * i"&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><p>Because your Kid template is itself XML, you can display it in a browser to see
+   how your layout is (so it becomes more or less wysiwyg). You can embed as much
+   Python as you like, but it will be easier to have most of your Python code in a
+   separate file and just include the minimum in the template.
+</p>
+<p>I first used Kid templates in <a href="http://www.turbogears.org/">TurboGears</a>, a dynamic web-application
+   framework, but for this weekend’s experiment, I was using Kid stand-alone.  The
+   command 
+</p>
+<pre><code>kid index.kid &gt; index.html
+</code></pre><p>runs my template called <code>index.kid</code> to create <code>index.html</code>.  The template  can
+   use all of Python’s methods of extracting data from the various files I keep
+   stuff in to generate the index page, such as:
+</p>
+<ul>
+ <li>
+      <code>projects.data</code> (the little badges for old projects),
+ </li>
+
+ <li>
+      <code>tws.data</code> (all about Jeremy Dennis’s <em>Weekly Strip</em>),
+ </li>
+
+ <li>
+      <code>percy.yml</code> (all about Leckford’s <em>Percy Street</em> comic), and even
+ </li>
+
+ <li>
+      <code>index.yml</code> (text for the index page).
+ </li>
+</ul>
+<p>the file <code>index.yml</code> I created for this. The idea is to leave as much of the
+   content of the page out of <code>index.kid</code> as I can.  Even the list of style sheets
+   is controlled by <code>index.yml</code>, not <code>index.kid</code>.  In the Yaml file I can have things
+   like this:
+</p>
+<pre><code>title: Alleged Literature
+style sheets:
+- css: 2006/main.css
+- css: 2006/print.css
+  media: print
+</code></pre><p>(amongst other stuff).  This is read in and used by the Kid template:
+</p>
+<pre><code>&lt;?python
+import syck
+...
+doc = syck.load(open(’index.yml’, ‘r’))
+...
+?&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://purl.org/kid/ns#"&gt;
+    &lt;head&gt;
+        &lt;title py:content="doc[’title’]"&gt;Some Title Goes Here&lt;/title&gt;
+        &lt;link py:for="ss in doc[’style sheets’]" 
+                rel="stylesheet" type="text/css" media="${ss.get(’media’)}" href="../2006/${ss[’css’]}"/&gt;
+    &lt;/head&gt;
+</code></pre><p>the logic behind this split is to make it so that a lot of editing jobs can be
+   achieved by editing the YAML file, which is more readable than the HTML version.
+   (In the case of style sheets this is a bit of a stretch, but this is, after all,
+   something of an experiment.)
+</p>
+
+<h2> Projects List</h2>
+<div>
+    <img src="../2006/markover-projects.png" width="257" height="154" alt="" align="right" />
+</div>
+
+<p>As a more interesting example there are the <em>Weekly Strip</em> (<a href="http://www.jeremydennis.co.uk/tws.html">TWS</a>) and projects listings.
+   Projects are defined by a URL, the title, and the URL of the little image to use for the
+   link; <em>TWS</em> strips similarly have the URL of the big picture, the URL of the
+   detail picture, the title of the strip, and, optionally, the number of a
+   LiveJournal page mentioning the strip.  These are both listed in text files called
+   <code>projects.data</code> and <code>tws.data</code>, that look like this:
+</p>
+<pre><code>2006-06-12.jpeg 2006-06-12.80.jpeg "Black Markers" 327226
+20060119.gif 20060119-detail.gif "Snow Queen" 328276
+20060624.jpg 20060624-detail.jpg "The Face that You Wear"
+2006-07-07.jpeg 2006-07-07.80.png "Unexpressed Distress" 330855
+</code></pre><p>except there are over 200 lines in the <em>TWS</em> file. The format is designed to
+   work well with Tcl, but I use the same data file in the new Kid-based version.
+   To do this, I created a small Python module <code>datafiles.py</code> that understands how
+   to read this format and make it easy to use in the Kid code. In fact, all that
+   happens in the template is the following few lines:
+</p>
+<pre><code>&lt;?python
+import random
+import datafiles
+
+projects = datafiles.Projects(doc[’projects data’])
+random.shuffle(projects.lines)
+?&gt;
+...
+&lt;div py:for="project in projects" class="project"&gt;
+    &lt;p&gt;
+        &lt;a href="../2006/${project.href}" title="${project.title}"&gt;
+            &lt;img src="../2006/${project.icon_src}" width="100" height="50" alt="${project.title}"/&gt;
+        &lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>The actual appearance is created with CSS. 
+</p>
+<p>This keeps the amount of Python code in the <code>.kid</code> file to a minimum. The
+   <code>datafiles</code> module should be reusable in future (assuming the future involves
+   doing more work with TWS data). This gives me a better separation between the
+   programing code and the presentation (the HTML), which should make it easier to
+   change things in future.
+</p>
+
+<h2> Slight Quibble for HTML Support</h2>
+<p>Kid generates well-formed XML, but if I want my XHTML badge I need to generate
+   <em>valid</em> XHTML; for that I need to add a doctype declaration to the top of the
+   file. So the actual rule in the Makefile is as follows:
+</p>
+<pre><code>.kid.html:
+    kid $&lt; | sed -f xmltohtml.sed &gt; $@.new
+    mv $@.new $@
+</code></pre><p>Where the file <code>xmltohtml.sed</code> contains the following:
+</p>
+<pre><code>1i\
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" \
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+/&lt;\?xml/d
+s, */&gt;, /&gt;,g
+</code></pre><p>This is a <code>sed</code> program that inserts the doctype at the front of the file, deletes
+   the XML declaration (which is, as always, redundant), and also ensures there is
+   a space before the slash in empty elements (although as it turns out, Kid
+   already inserts a space before the slash).
+</p>
+
+<h2> Status</h2>
+<p>The task I set myself was to see if I could replace the old TclHTML <code>index.th</code>
+   with one based on Kid. After about a day and a half’s work, I have a working
+   replacement for the old system that works. The separation of code,
+   data, and presentation is better and the code is tidier; I think this will make
+   it easier for me to modify the design in future, if only because Kid, Python,
+   and XML are skills I practise almost every working day, whereas I am losing my
+   fluency in Tcl through lack of exercise.
+</p>
+<p>My intention now is to work towards slowly replacing TclHTML with Kid in those
+   parts of the site I am still working on (some of the older galleries can just
+   stay as they are, since I don’t plan to work on them anyway). The next Caption
+   web site will probably be done in the same way as well.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

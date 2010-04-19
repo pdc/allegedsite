@@ -1,0 +1,69 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 [img title@600x60.gif "alt=Alleged Tarot 2002"]
+
+p "
+[a about.html About the project]
+"
+
+
+div id=picturemenu {
+    p "Browse the deck from one of these starting points"
+    
+    div {
+	p "[a 0-fool-png.html \
+		"[img 0-fool-100w.png alt=]\
+		[br]Trumps"]
+	"
+    }
+    div {
+	p "[a wands-ace-png.html  \
+		"[img wands-ace-100w.png alt=]\
+		[br]Wands"]"
+    }
+    div {
+	p "[a cups-ace-png.html "[img cups-ace-100w.png alt=]\
+		[br]Cups"]"
+    }
+    div {
+	p "[a swords-ace-png.htnl "[img swords-ace-100w.png alt=]\
+		[br]Swords"]"
+    }
+    div {
+	p "[a coins-ace-png.html "[img coins-ace-100w.png alt=]\
+		[br]Coins"]"
+    }
+}
+
+br* clear=both
+
+p "[a png.html "Index page of all 78 cards"].  This is one page
+with 78 small cards on it, each linking linking to a page with a large
+illustration of the card with commentary.  "
+
+
+p "[a aboutDealer.html Technical info about the dealer]"
+
+p "[a technical.html Technical info] about these pages,
+including a little about [SVG], the graphics format I&nbsp;used."
+
+p "[a references.html References]
+&middot; [a ../2003/tarot.html Work log]"
+
+br clear=all
+
+endBody
+endDocument
+
+
+

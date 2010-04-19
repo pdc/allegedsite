@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:51 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>CGI - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>cgi</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: CGI</h1>
+      <div class="entry">
+        <h2><a name="e20030519a" id="e20030519a">CGI vs. If-Modified-Since and other stories</a></h2>
+        <p class="details">19 May 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="picky.html">Picky Picky Game</a></li>
+            <li><strong><abbr title="Common Gateway Interface">CGI</abbr></strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2003/05/19.html#e20030519a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://caption.org/caption-cgi/hello.cgi/sample/"><img src="../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+	I demonstrated the 
+	<a href="http://caption.org/caption-cgi/hello.cgi/sample/">Picky Picky Game prototype</a>
+	to the
+	<a href="http://caption.org/">CAPTION</a> committee.  The
+	main trouble was picture resources not being
+	downloaded, or, oddly, vanishing when one refreshed the
+	page. It worked better on
+	the dial-up than the broadband connection (though Jo
+	blames that on
+	<abbr title="Microsoft Internet Explorer (Windows)">IE</abbr>&nbsp;6
+	being set up to cache nothing). 
+	I&nbsp;resolved to make an effort to sort out
+	caching—or at least, the things my server needs to
+	do to enable caching to work smoothly.
+    </p>
+    <p>
+	So, in my development system at home,
+	I&nbsp;added <code>If-Modified-Since</code> and
+	<code>If-None-Match</code> (etag) support to the routine
+	that fetches picture data out of the database. I&nbsp;also
+	added an <code>Expires</code> header set, as 
+	<a
+	href="http://ietf.org/rfc/rfc2616.txt">RFC&nbsp;2616</a>
+	demands, approximately one year in to the future.
+	Result: none of the pictures appear.
+    </p>
+    <p>
+	The problem is 
+	that the web server I&nbsp;am using at home always
+	returns status code 200 for <abbr title="common gateway
+	interface">CGI</abbr> scripts (it ignores the
+	<code>Status</code> pseudo-header). As a result, my clever
+	304  (‘Not modified’)  responses result in
+	apparently zero-length data. Argh!
+    </p>
+    <p>
+	When I&nbsp;worked this out, I&nbsp;though I&nbsp;would
+	demonstrate to Jeremy that it worked in the stand-alone server (which
+	does not use CGI). But Lo! all the pictures failed to
+	appear once more. So did the page itself. What gives?
+    </p>
+    <p>
+	This time the trouble was its logging
+	function—it tried to resolve the client <abbr
+	title="internet protocol">IP</abbr>
+	address. Now, I&nbsp;thought that the address used by my
+	PowerBook did have reverse look-up in my local 
+	<abbr title="Domain Naming-Service">DNS</abbr>, but
+	in any case, the server should not be indulging in DNS
+	look-ups given that on my system that is a blocking
+	operation that tends to mean the program locks up for 75
+	seconds. Luckily <code>BaseHTTPServer</code> makes it
+	easy to override the function that indulges in DNS
+	queries and it all now runs smoothly.
+    </p>
+    <p>
+	On the positive side, I have made one cache-enhancing
+	change that has worked, albeit only for the old panels
+	(which saved their images as separate disc files rather
+	than in <abbr title="Z Object Database">ZODB</abbr>). 
+	Simply put, there is another base <abbr title="Uniform
+	Resource-Locator">URL</abbr>
+	used (in addition to the base of the web application and
+	the base URL for static files), and this one is for
+	picture files. This means that these old pictures are
+	now, once again, served as static files, with etags
+	and caching the responsibility of my host
+	<abbr title="Hypertext Transfer Protocol">HTTP</abbr> server,
+	not me.
+    </p>
+  
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2003/05/04.html#e20030504" title="Permanent URL for this entry">Picky Picky Game: No writing files</a>
+          4 May 2003
+        </li>
+        <li>
+          <a href="../2003/04.html#e20030429" title="Permanent URL for this entry">Serving my own damn files</a>
+          29 April 2003
+        </li>
+        <li>
+          <a href="../2003/04.html#e20030414a" title="Permanent URL for this entry">More trouble with uploads and CGI</a>
+          14 April 2003
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021117" title="Permanent URL for this entry">Picky Picky Game: ZEO + CGI</a>
+          17 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021114b" title="Permanent URL for this entry">More on Opera&rsquo;s boundaries</a>
+          14 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021114a" title="Permanent URL for this entry">CGI upload woes</a>
+          14 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021111" title="Permanent URL for this entry">Picky Picky Game: Upload pictures, EAGAIN</a>
+          11 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021108" title="Permanent URL for this entry">Things your mother didn&rsquo;t tell you</a>
+          8 November 2002
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

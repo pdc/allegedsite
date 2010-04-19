@@ -1,0 +1,101 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Referrers - Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+beginBody
+
+h1 "Referrers"
+
+h2 Linkers
+
+p "People linking to this page, that I know of."
+
+dl {
+    dt [a http://www.timboucher.com/more/tarot_resources.html \
+	    "Tim Boucher: Occult Investigator"]
+    dd "
+    &lsquo;A nice cartoony deck, which I think does an excellent job
+    of giving you shorthand insight into the cards meanings and
+    relationships to one another.&rsquo;
+    "
+
+    dt [a http://www.aeclectic.net/tarot/others.html \
+	    "Aeclectic Tarot: Other Tarot Decks on the Internet"]
+    dd "A big, well-organized web site with descriptions and quotes from
+    hundreds of tarot decks and other oracle decks.
+    And on its tarot forums:
+    [a http://www.tarotforum.net/showthread.php?threadid=17948 \
+	    "a list of sites that show the whole deck"]
+    [a http://www.tarotforum.net/showthread.php?postid=108219 \
+	    "Aeclectic tarot forums"].
+    "
+
+    dt [a http://www.hktarot.com/Forum/viewtopic.php?t=93 HK Tarot forums]
+    dd "
+    &lsquo;The site is very cute but definitely dont
+    take it serious as a learning of tarot bor!&rsquo;
+    "
+}
+
+
+
+h2 "Random appearances"
+
+p " My images have been used on a surprising variety of other
+people&rsquo;s web pages...  "
+
+dl {
+    dt "
+    [a http://www.xanga.com/item.aspx?user=kaitokeikako&tab=weblogs&uid=44805494\
+	    "[img xiii-death-100w.png align=right alt=]\
+	    Kaito Keikako&rsquo;s Xanga Site"]
+    "
+    dd "
+    Jessica Pope does a reading on-line, illustrated with the Alleged Tarot&mdash;starting with the Devil and ending with Death!
+    
+    "
+
+    dt "[a http://www.livejournal.com/users/androkles/137662.html \
+	    "androkles: Make a wish"] (LiveJournal)"
+    dd "
+    Strength used as a get-well card.
+    "
+
+    dt "    [img viii-justice-100w.png alt= align=right] Userpics"
+    dd "
+
+    Some guy on a Spanish-language message-board is using Justice as a
+    userpic.
+	Some [a http://avidgamers.com/Dsquad/ "posse of MMORPG players"]
+ (I assume) uses the Eight of Swords as their logo.
+But the favourite Alleged Tarot picture to steal  for user
+    pics is the Devil.
+Teenaged guys anywhere from Idaho to [a http://groups.msn.com/p-clan/duivels.msnw Portugal] to Toronto to [a "http://www.thats-me.nl/show.php?id=13270" the Netherlands]
+    seem to like the Devil, whether the topic of discussion is a
+fantasy novel hilariously titled <cite>The Alabaster Staff</cite> or
+adjusting the suspension of their fancy cars.
+    "
+
+    dt "Persian Dreams"
+    dd "
+
+    The most popular page using this image is 
+    [a http://mydreams.persianblog.com/ "a weblog in Farsi"]
+    (a Persian language) that I can&rsquo;t read a word of...  
+    <br>[a ../2003/persian.gif [img ../2003/persian-detail.gif alt=(screenshot)]]
+    "
+
+    dt "[a http://www.yesand.com/phpBB2/viewtopic.php?t=9219&start=15 \
+	    "Counting to 1000 in pictures"]"
+    dd "A discussion forum where they are counting to 1000 in stolen
+pictures.  The Moon (XVIII) appears between the cover of
+<cite>Seventeen</cite> magazine and what looks like a record cover."
+}
+
+endBody
+endDocument

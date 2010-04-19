@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:28 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2004/08;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2004/08 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Why XML is bad for data serialization - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">08</a> &gt;&gt;
+      <strong>25</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20040825" id="e20040825">Why XML is bad for data serialization</a></h2>
+        <p class="details">24 August 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="../../2003/yaml.html">yaml</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20040825" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">A lot of people use XML to serialize data structures; with the XML
+   parsers bundled with many programming environments it is easier than
+   writing one’s own parser. But XML was not designed with this in mind and
+   contains too many traps causzed by the mismatch between the XML object
+   model and that of your application. A text format designed expressly for
+   for the purpose (my favourite is <a href="http://yaml.org/">YAML</a>) would be more convenient
+   and safer.
+</p>
+<p>The application I am developing at work uses a lot of metadata stored as
+   XML; some as <a href="http://topicmaps.org/">topic maps</a>, some as plain XML. In dot-Net, using XML
+   for configuration files is the path of least resistance. I use a text
+   editor, <a href="http://www.jedit.org/">jEdit</a>, that checks the XML files against their DTDs and
+   so makes writing valid files easier. But I still spent an afternoon
+   trying to work out why adding a single element to my file caused it to
+   no longer validate.
+</p>
+<pre>
+... several hundred lines omitted ...
+&lt;mumble>
+    &lt;foo>Westminster&lt;/foo>
+    &lt;bar>
+        &lt;baz>&lt;foo>Whitehall&lt;/foo>&lt;goo>Wellington&lt;/goo>&lt;/baz>
+    &lt;/bar>.
+    &lt;quux>
+        &lt;wibble>&lt;wobble/>&lt;/wibble>
+    &lt;/quux>
+&lt;/mumble>
+... several hundred lines omitted ...
+</pre>
+
+<p>The error message was something insane like <code>Content of mumble must match
+((foo|foofoo)?,(((bar|barbar)?,(bim|bam|bo)?,quux?)|quux+))</code>. I can’t imagine what a normal person would make of this.
+   Fortunately I wrote the DTD, so I had some idea of what that hideous expression was meant to mean. I spent
+   what seemed like an eternity trying to figure out in what way my XML did
+   not match that schema. Maybe my readers will spot my blunder immediately.
+</p>
+<p>Let’s try the same thing again, assuming a plausible YAML format:
+</p>
+<pre>
+mumbles:
+    ...
+  - foo: Westminster
+    bar:
+        baz:
+        foo: Whitehall
+        goo: Wellington
+    .
+    quux:
+        wibble: wobble
+    ...
+</pre>
+
+<p>Here the more lightweight syntax means that the extraneous full stop is
+   a little easier to spot. YAML would report this as a syntax error. 
+</p>
+<p>This is an unrealistic error for YAML, of course, because 
+   without all those <code>&lt;</code>, <code>/</code>, and <code>&gt;</code> keystrokes flying about
+   I would be less likely to accidentally type an extra stop.
+   In YAML – at least, with pyYAML – the equivalent invisible error
+   would be an extra space after the colon ending a line;
+   but then the error message is ‘extra space after colon at end of line
+   57’, which makes it easier to work out what is wrong!
+</p>
+<p>So why can’t the error message I got when validating the XML be
+   something as clear as ‘unexpected <code>.</code> at line 99’? The reason is that
+   the extra character does not prevent the file from being well-formed;
+   character data is allowed between elements, which makes perfect sense
+   for marking up text, but is not what you want for serializing a data
+   structure. By allowing character data between elements, this error
+   cannot be caught until the (optional) schema-checking step, and this results in
+   very abstract and difficult-to-interpret error messages.
+</p>
+<p>Remember that at bottom XML is a mark-up notation. The fragment above is
+   conceptually equivalent to the text 
+</p>
+<embed src="../../2004/westminster.svg" type="image/svg+xml"
+        width="360" height="128" />
+
+<p>with the different words underlined in different colours and squiggles (corresponding to elements).
+   Viewed this way, my configuration data is obviously <em>not</em> a document, and using XML
+   for configuration files is obviously a silly hack.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

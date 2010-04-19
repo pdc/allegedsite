@@ -1,0 +1,147 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Technical - Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 "Technical info"
+
+h2 Format
+
+p " 
+[a* href=viiii-hermit-svg.html "title=Link to VIIII. The Hermit (SVG)"\
+	[img viiii-hermit-100w.png align=left \
+	"alt=(Link to VIIII. The Hermit)" \
+]]
+The cards are published as [SVG], a newish vector-graphics
+standard from the [W3C].  In the fullness of time this will be the
+commonly supported format for drawings on-line (as opposed to raster
+images, for which [PNG] and [JPEG] will remain the standard choice).
+In the meantime, you may need to download a plug-in to view [SVG]
+files.
+"
+
+p " Why [SVG]?  Because [SVGZ] is a more compact format for the sorts
+of images I&nbsp;am creating even than [PNG]&mdash;and in addition
+supports higher resolution, zoom and pan, and interactivity.  For
+example, the 360-pixel-high [PNG] of 
+
+[a v-pope-svg.html [img v-pope-64x64.png align=right alt=] The Pope] is
+14237&nbsp;bytes; the compressed [SVG] version is 8725&nbsp;bytes
+
+and includes the title and keywords,
+[em and] you can zoom in see a tiny stick man I&nbsp;included as a joke.
+"
+
+p "The pips cards (like the 
+
+[a coins-6-svg.html [img coins-6-64x64.png align=left alt=] \
+Six of Coins]) exploit
+the intrinsic animation features of the [SVG] format ([SMIL]
+Animation).  When you click on the button at the bottom of the card,
+the &lsquo;interpretation&rsquo; (an illustration, and the title of
+the card) is made visible.  Clicking it again hides the
+interpretation, leaving just the pips.  I&nbsp;did this so that
+I&nbsp;could indulge my preference for unadorned pips cards, while not
+disappointing people who like their minor arcana to be illustrated!
+
+"
+
+p "
+What&rsquo;s more,
+the scalable resolution means that when you print the page, the [SVG]
+graphics print at the resolution of the printer, not the resolution of
+your screen (as is the case with [PNG] or [JPEG] graphics on a web
+page).  "
+
+
+h2 Availability
+
+p " [a wands-5-svg.html [img wands-5-64x64.png align=left\
+"alt=(Link to Five of Wands)"]] A the time
+of writing, the easiest way to view [SVG] files if you are using
+Netscape Navigator, Microsoft Internet Explorer, or Mozilla 0.9.x (on Linux)
+is 
+
+[a http://www.adobe.com/ Adobe]&rsquo;s
+
+[a http://www.adobe.com/svg/ [SVG] Viewer plug-in].  I&nbsp;recommend
+version 3.0, although I&nbsp;have reports that my graphics also work
+in version 2.0.
+"
+
+
+p id=notmozilla "Note that, alas!
+SVG Viewer 3.0 is [em not] compatible with Mozilla&nbsp;1.0
+because of a change to the plug-in architecture of
+the  0.9.x series that was introduced 
+when the [API] was frozen for 1.0 
+(Bugzilla [a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=133567#c30 \
+"title=Crash because Adobe SVG plugin used an unfrozen interface which changed its prototype"\
+133567],
+[a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=115528#c8\
+"title=Adobe needs frozen interfaces for its SVG plugin to be able to expose methods to scripts" 115528]
+), 
+
+and Mozilla&rsquo;s built-in [SVG] support is not ready for serious use 
+([a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=85803 \
+"title=SVG should print as vector graphics" 85803],
+[a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=111152 \
+"title=SVG doesn't render in all pixel formats" 111152],
+[a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=111317 \
+"title=Need to implement SVG presentation attributes" 111317],
+[a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=157514 \
+"title=SVGZ Gzipped SVG (as seen in Adobe Illustrator 10)" 157514], ...).
+"
+
+p "
+Another option is 
+[a* "href=http://xml.apache.org/batik/" \
+"title=Batik SVG Toolkit&mdash;Apache.org" Batik],
+the Java-based [SVG] tool kit being developed by the 
+[a http://www.apache.org/ Apache]   Project.
+Batik 1.1.1 includes a simple interactive viewer for [SVG]
+files (amongst other things).
+I&nbsp;hear the upcoming version 1.5 
+includes support for scripting and animation.
+To use it to view the tarot cards on this site,
+visit [a wands.svgz [code http://www.alleged.org.uk/pdc/tarot/wands.svgz]].
+This has links to [SVG] pages for the other suits
+and for trumps.
+"
+
+
+
+p "
+These are the options I&nbsp;have tried out myself,
+or friends have told me work for them.
+There are other [SVG] viewing options 
+
+[a http://www.w3.org/Graphics/SVG/SVG-Implementations.htm8#viewer listed]
+ on the [W3C]&rsquo;s site.
+"
+
+h2 Changes
+
+p " 
+[a xiii-death-svg.html [img xiii-death-64x64.png align=left]]
+
+As of 5 March 2002, 
+[strong "I have removed the &lsquo;simple&rsquo; versions of the
+cards"] This is because I&nbsp;have run out of space on the site.  If
+you were in fact relying on the &lsquo;simple&rsquo; files, then
+please let me know and I&rsquo;ll see if anything can be done.  
+Also, the <strong>SVG files are stored as compressed SVG</strong>
+(<code>.svgz</code>), a convention understood by Adobe&rsquo;s viewer,
+and, I&nbsp;hope, other viewers.  
+Given this reduces the disc space required typically from  69&nbsp;K to 16&nbsp;K, this is a reduction I&nbsp;cannot ignore.
+"
+
+endBody
+endDocument

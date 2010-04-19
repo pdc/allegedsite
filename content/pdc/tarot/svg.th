@@ -1,0 +1,325 @@
+# -*-tcl-*-
+# Time-stamp: <pdc 2003-12-01>
+
+source tarotDefs.tcl
+source descs.tcl
+
+set modes {svg png}
+
+array set modeTitles {
+    svg "SVG"
+    png "PNG"
+}
+
+# Generate the image 
+proc ii {name {big 0}} {
+    global mode uprightKeywords reversedKeywords
+
+    set fileName $name
+
+    switch $mode {
+	svg {
+	    if {$big} {
+		return [svg $fileName-card3.svgz width=300 height=435 \
+			"alt=You need the SVG plug-in"]
+	    } else {
+		return [svg $fileName-card3.svgz width=100 height=145 \
+			"alt=You need the SVG plug-in"]
+	    }
+	}
+	png {
+	    # We want tp ut the title of the card undeneath
+	    regexp (0|x*v*i*)-(.*) $name dummy num text
+
+	    set text [join [split $text -] " "]
+	    set text [string toupper [string index $text 0]][string range $text 1 end]
+	    set title "[string toupper $num]. $text"
+
+
+	    if {$big} {
+		return [img $fileName-360h.png width=262 height=360 \
+			"alt=$title"]
+	    } else {
+		return [img $fileName-100w.png width=100 height=137 \
+			"alt=$title"]
+	    }
+	}
+    }
+}
+
+# emitPrevNextTr --
+#  Emit a table row with links to previous and next cards.
+proc emitPrevNextTr {name mode} {
+    global prevs nexts
+
+    tr valign=baseline class=nav {
+	td* width=50% align=left {
+	    if {[info exists prevs($name)]} {
+		set prev $prevs($name)
+		emit [a $prev-$mode.html "&laquo; [titleFor $prev]"]
+	    }
+	}
+	td* width=50% align=right {
+	    if {[info exists nexts($name)]} {
+		set next $nexts($name)
+		emit [a $next-$mode.html "[titleFor $next] &raquo;"]
+	    }
+	}
+    }
+}
+
+# emitPrevSuitTr --
+proc emitSuitPrevTr {name mode} {
+    global allSuits
+    if {[regexp "(cups|swords|coins)-(ace|\[0-9\]+|ten|page|knight|queen|king)"\
+	    $name dummy suit rank]} {
+	set n [lsearch -exact $allSuits $suit]
+	emitSuitTr [lrange $allSuits 0 [expr $n - 1]] $rank $mode "&uarr;" ""
+    }
+}
+
+proc emitSuitNextTr {name mode} {
+    global allSuits
+    if {[regexp "(wands|cups|swords)-(ace|\[0-9\]+|ten|page|knight|queen|king)"\
+	    $name dummy suit rank]} {
+	set n [lsearch -exact $allSuits $suit]
+	emitSuitTr [lrange $allSuits [expr $n + 1] end] $rank $mode "" "&darr;"
+    }
+}
+
+proc emitSuitPrevNextTr {name mode} {
+    global allSuits
+    if {[regexp "(wands|cups|swords|coins)-(ace|\[0-9\]|ten|page|knight|queen|king)"\
+	    $name dummy suit rank]} {
+	set n [lsearch -exact $allSuits $suit]
+	set someSuits [lreplace $allSuits $n $n]
+	emitSuitTr $someSuits $rank $mode 
+    }
+}
+
+proc emitSuitTr {someSuits rank mode {bef {}} { aft {}}} {
+    global names
+    tr valign=baseline class=nav {
+	td* align=center colspan=2 {
+	    if {[string length $bef] > 0} {
+		emit $bef[br]
+	    }
+	    foreach suit $someSuits {
+		set other $suit-$rank
+		if {[lsearch $names $other]} {
+		    emit [a $other-$mode.html [titleFor $other]][br]
+		}
+	    }
+	    if {[string length $aft] > 0} {
+		emit $aft
+	    }
+	}
+    }
+}
+
+proc cardNumber {card} {
+    set xs [split $card -]
+    set x [lindex $xs 0]
+    switch $x {
+	wands {
+	    set base 21
+	}
+	cups {
+	    set base 35
+	}
+	swords {
+	    set base 49
+	}
+	coins {
+	    set base 63
+	}
+	default {
+	    set base 0
+	}
+    }
+    if {$base == 0} {
+	# Trumps start with the number in roman numerals.
+	for {set i 0} {$i < [string length $x]} {incr i} {
+	    switch [string index $x $i] {
+		x {
+		    incr base 10
+		}
+		v {
+		    incr base 5
+		}
+		i {
+		    incr base 1
+		}
+	    }
+	}
+    } else {
+	# Pips are followed with a word or number.
+	switch [lindex $xs 1] {
+	    ace {
+		incr base 1
+	    }
+	    ten {
+		incr base 10
+	    }
+	    page {
+		incr base 11
+	    }
+	    knight {
+		incr base 12
+	    }
+	    queen {
+		incr base 13
+	    }
+	    king {
+		incr base 14
+	    }
+	    default {
+		incr base [lindex $xs 1]
+	    }
+	}
+    }
+    return $base
+}
+	
+
+proc cardCompare {a b} {
+    return [expr [cardNumber $a] - [cardNumber $b]]
+} 
+
+set svgFiles  [concat [glob "\[ivx0\]*-card3.svg"] \
+	[glob "{wands,cups,swords,coins}-*-card3.svg"]]
+set names {}
+foreach svgFile $svgFiles {
+    set name [string range $svgFile 0 [expr [string length $svgFile] - 11]] 
+    lappend names $name
+}
+set names [lsort -command cardCompare $names] 
+
+set nCols 3
+
+# set up arrays of next/pref
+foreach name $names {
+    if {[info exists prev]} {
+	set nexts($prev) $name
+	set prevs($name) $prev
+    }
+    set prev $name
+}
+set nexts([lindex $names end]) [lindex $names 0]
+set prevs([lindex $names 0]) [lindex $names end]
+
+foreach name $names {
+    foreach mode $modes {
+	beginDocument -file $name-$mode.html {
+	    title "Alleged Tarot ($modeTitles($mode)) - Alleged Literature"
+	    stylesheet tarot.css
+	}
+
+	beginBody [a $mode.html $mode]
+
+	####surTitle  "Alleged Tarot ($modeTitles($mode))"
+	h1 [titleFor $name]
+	
+	table class=layout width=100% border=0 cellspacing=4 {
+	    emitPrevNextTr $name $mode
+	    tr {
+		td align=center valign=top colspan=3 [ii $name 1]
+	    }
+	    emitSuitPrevNextTr $name $mode
+ 	}
+
+	if {[string compare $mode svg] != 0} {
+	    p class=keywords "
+	    [strong Upright:] $uprightKeywords($name)
+	    "
+	    p class=keywords "
+	    [strong Reversed:] $reversedKeywords($name)
+	    "
+	    if {[info exists cardDescs($name)]} {
+		eval $cardDescs($name)
+	    }
+	} else {
+	    if {[info exists cardDescs($name)]} {
+		p "
+		Click the orange button in the card to see the commentary.
+		"
+	    }
+	}
+
+	if {[info exists qopLinks($name)]} {
+	    p "
+	    See also [a $qopUri/$qopLinks($name).html \
+		    "the description on the Queen of Pentacles Tarot site"]
+	    "
+	}
+	if {[info exists thirteenLinks($name)]} {
+	    p "
+	    See also [a $thirteenUri/$thirteenLinks($name).html \
+		    "Thirteen&rsquo;s description on the Aeclectic Tarot site"]
+	    "
+	}
+
+
+	if {[string compare $mode svg] == 0} {
+	    p "
+	    If you do not see the graphics on this page, please try instead the 
+	    [a $name-png.html PNG version].
+	    "
+	} else {
+	    p "
+	    If your browser supports 
+	    [SVG], then you should visit the 
+	    [a $name-svg.html SVG version] of this page.
+	    It is so much more cool!
+	    "
+	}		
+
+
+	endBody
+	endDocument
+    }
+}
+
+foreach mode $modes {
+    beginDocument -file $mode.html {
+	title "Alleged Tarot ($modeTitles($mode)) - Alleged Literature"
+	stylesheet tarot.css
+    }
+
+    beginBody
+
+    h1 "Index of all the cards  ($modeTitles($mode))"
+
+    p "
+    Each of the small images on this page links to a larger 
+    picture of the complete card with commentary.  
+    "
+
+    push table border=0 cellspacing=4 align=center
+
+    set iCol 0
+    set nCols 4
+    foreach name $names {
+	if {$iCol == 0} {
+	    push tr align=center 
+	    set iCol 1
+	} elseif {[incr iCol] > $nCols} {
+	    pop
+	    push tr align=center 
+	    set iCol 1
+	}
+	set title [titleFor $name]
+	td [a $name-$mode.html "[img $name-100w.png]<br><small>$title</small>"]
+    }
+    pop
+    pop
+
+    p "These index images are in 
+    [acronym* "title=Portable Network Graphics" PNG] format.
+    The pages for the cards are in 
+    [acronym* "title=Scalable Vector Graphics" SVG]."
+
+    endBody
+    endDocument
+
+}

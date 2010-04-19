@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:cc="http://web.resource.org/cc/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:admin="http://webns.net/mvcb/"
+>
+
+<channel rdf:about="http://del.icio.us/pdc">
+<title>del.icio.us/pdc</title>
+<link>http://del.icio.us/pdc</link>
+<description></description>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="http://www.americanstate.org/vonnegut.html" />
+  <rdf:li rdf:resource="http://www.devthought.com/cssjavascript-true-power-fancy-menu/" />
+  <rdf:li rdf:resource="http://www.fontshop.com/index.cfm?fuseaction=verity.search&amp;searchstr=granby" />
+  <rdf:li rdf:resource="http://www.markboulton.co.uk/journal/comments/five_simple_steps_to_better_typography/" />
+  <rdf:li rdf:resource="http://webtypography.net/sxsw2007/" />
+  <rdf:li rdf:resource="http://www.marksimonson.com/" />
+  <rdf:li rdf:resource="http://www.fontbros.com/cgi-bin/commerce.cgi?preadd=action&amp;key=MASS-MEFA" />
+  <rdf:li rdf:resource="http://www.ms-studio.com/FontSales/proximanova.html" />
+  <rdf:li rdf:resource="http://www.fontshop.com/index.cfm?fuseaction=catalog.fontpackage&amp;displayfontid=MSF.123353.0.0" />
+  <rdf:li rdf:resource="https://bugzilla.mozilla.org/show_bug.cgi?id=70132" />
+  <rdf:li rdf:resource="http://www.webmonkey.com/webmonkey/98/01/index3a_page4.html?tw=design" />
+  <rdf:li rdf:resource="http://www.microsoft.com/typography/web/embedding/weft3/default.htm" />
+  <rdf:li rdf:resource="http://msdn.microsoft.com/workshop/author/fontembed/font_embed.asp" />
+  <rdf:li rdf:resource="http://feedparser.org/" />
+  <rdf:li rdf:resource="http://www.underware.nl/site2/index.php3?id1=underware&amp;id2=general&amp;id3=general" />
+  <rdf:li rdf:resource="http://www.isnotmagazine.org/" />
+  <rdf:li rdf:resource="http://mezzoblue.com/" />
+  <rdf:li rdf:resource="http://mezzoblue.com/archives/2007/02/21/icon_design/" />
+  <rdf:li rdf:resource="http://www.macalope.com/" />
+  <rdf:li rdf:resource="http://genshi.edgewall.org/" />
+  <rdf:li rdf:resource="http://www.matthewkroeker.com/splinter.htm" />
+  <rdf:li rdf:resource="http://www.roughlydrafted.com/RD/RDM.Tech.Q1.07/2A351C60-A4E5-4764-A083-FF8610E66A46.html" />
+  <rdf:li rdf:resource="http://vllg.com/Underware/Fakir/mudTyper+Weights/" />
+  <rdf:li rdf:resource="http://vllg.com/Thirstype/Kaas/mudTyper+Weights/" />
+  <rdf:li rdf:resource="http://vllg.com/Lux/LuxSans/mudTyper+Weights/" />
+  <rdf:li rdf:resource="http://www.ft.com/cms/s/11ba213e-bf7e-11db-9ac2-000b5df10621.html" />
+  <rdf:li rdf:resource="http://garrettdimon.com/" />
+  <rdf:li rdf:resource="http://bitworking.org/news/125/REST-and-WS" />
+  <rdf:li rdf:resource="http://bitworking.org/projects/atom/" />
+  <rdf:li rdf:resource="http://www.macinhack.com/arch/feb/getting_the_most_out_of_your_laptop_battery.php" />
+  <rdf:li rdf:resource="http://media.joyent.com/GridAccelerators-Whitepaper.pdf" />
+ </rdf:Seq>
+</items>
+</channel>
+
+<item rdf:about="http://www.americanstate.org/vonnegut.html">
+<title>Eight rules for writing fiction (Kurt Vonnegut)</title>
+<link>http://www.americanstate.org/vonnegut.html</link>
+<description>George Orwell had five rules for better writing. Vonnegut has eight! EIGHT!</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-23T14:44:41Z</dc:date>
+<dc:subject>advice writing</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/advice" />
+    <rdf:li resource="http://del.icio.us/tag/writing" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.devthought.com/cssjavascript-true-power-fancy-menu/">
+<title>CSS+Javascript power. Fancy menu</title>
+<link>http://www.devthought.com/cssjavascript-true-power-fancy-menu/</link>
+<description>A nice example of a fancy menu that uses JavaScript to add sparkle to a plain old HTML list in a fashion that does not require contorted HTML in your document.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-21T15:26:17Z</dc:date>
+<dc:subject>animation css html javascript pretty programming tutorial</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/animation" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/html" />
+    <rdf:li resource="http://del.icio.us/tag/javascript" />
+    <rdf:li resource="http://del.icio.us/tag/programming" />
+    <rdf:li resource="http://del.icio.us/tag/tutorial" />
+    <rdf:li resource="http://del.icio.us/tag/pretty" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.fontshop.com/index.cfm?fuseaction=verity.search&amp;searchstr=granby">
+<title>Granby (FontShop)</title>
+<link>http://www.fontshop.com/index.cfm?fuseaction=verity.search&amp;searchstr=granby</link>
+<description>A sanserif typeface designed in metal in the 1930s as a competitor to Gill Sans but actually closer to the original Johnston Underground font. Five weights, but no italics.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-19T15:52:26Z</dc:date>
+<dc:subject>font sanserif wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/sanserif" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.markboulton.co.uk/journal/comments/five_simple_steps_to_better_typography/">
+<title>Five simple steps to better typography (Mark Boulton)</title>
+<link>http://www.markboulton.co.uk/journal/comments/five_simple_steps_to_better_typography/</link>
+<description>Some fundamental typographical conventions translated in to HTML+CSS.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-16T18:28:34Z</dc:date>
+<dc:subject>blog-entry css html layout tutorial typography</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/html" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/blog-entry" />
+    <rdf:li resource="http://del.icio.us/tag/layout" />
+    <rdf:li resource="http://del.icio.us/tag/tutorial" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://webtypography.net/sxsw2007/">
+<title>Web Typography Sucks (Slides and notes from SxSW 2007)</title>
+<link>http://webtypography.net/sxsw2007/</link>
+<description>Many of the conventions of traditional typography are forgotten or ignored by people creating web pages. This slide show from SXSW discusses some points of typography and how to achive them in HTML+CSS.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-16T17:48:23Z</dc:date>
+<dc:subject>css html presentation typography web</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/web" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/presentation" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/html" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.marksimonson.com/">
+<title>Mark Simonson Studio / Notebook</title>
+<link>http://www.marksimonson.com/</link>
+<description>Weblog of s type designer. ‘I have frequently done lettering as part of design projects I'm working on. This has always been my favorite part, so in 2000 I opened my own shop specializing in lettering, typography and identity design.’</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-15T17:47:35Z</dc:date>
+<dc:subject>blog design graphics lettering type-design typography weblog</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/blog" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/lettering" />
+    <rdf:li resource="http://del.icio.us/tag/graphics" />
+    <rdf:li resource="http://del.icio.us/tag/type-design" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/weblog" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.fontbros.com/cgi-bin/commerce.cgi?preadd=action&amp;key=MASS-MEFA">
+<title>Metallophile Sp 8 Family by Mark Simonson Studio (Font Bros)</title>
+<link>http://www.fontbros.com/cgi-bin/commerce.cgi?preadd=action&amp;key=MASS-MEFA</link>
+<description>A faithful facsimile of an 8-point sans serif typeface as set on a 1940s-vintage hot metal typesetting machine.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-15T15:35:32Z</dc:date>
+<dc:subject>font futura hot-metal sanserif wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+    <rdf:li resource="http://del.icio.us/tag/sanserif" />
+    <rdf:li resource="http://del.icio.us/tag/futura" />
+    <rdf:li resource="http://del.icio.us/tag/hot-metal" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.ms-studio.com/FontSales/proximanova.html">
+<title>Proxima Nova (Mark Simonson's web site)</title>
+<link>http://www.ms-studio.com/FontSales/proximanova.html</link>
+<description>A sanserif font that I like the look of, combining geomertic and humanist influences, it looks clean and ultra-modern.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-15T15:09:56Z</dc:date>
+<dc:subject>font sanserif typography wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/sanserif" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.fontshop.com/index.cfm?fuseaction=catalog.fontpackage&amp;displayfontid=MSF.123353.0.0">
+<title>Proxima Nova Complete OT</title>
+<link>http://www.fontshop.com/index.cfm?fuseaction=catalog.fontpackage&amp;displayfontid=MSF.123353.0.0</link>
+<description>Mark Simonson's clean and elegant sanserif is a geometric-humanist blend.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-14T19:06:15Z</dc:date>
+<dc:subject>font wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="https://bugzilla.mozilla.org/show_bug.cgi?id=70132">
+<title>Support @font-face (Mozilla Bug 70132)</title>
+<link>https://bugzilla.mozilla.org/show_bug.cgi?id=70132</link>
+<description>Discussion of whether and how to add embeddable fonts to Mozilla Firefox.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-14T17:11:00Z</dc:date>
+<dc:subject>bugzilla firefox font-embedding fonts futile mozilla typography</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font-embedding" />
+    <rdf:li resource="http://del.icio.us/tag/fonts" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/mozilla" />
+    <rdf:li resource="http://del.icio.us/tag/firefox" />
+    <rdf:li resource="http://del.icio.us/tag/bugzilla" />
+    <rdf:li resource="http://del.icio.us/tag/futile" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.webmonkey.com/webmonkey/98/01/index3a_page4.html?tw=design">
+<title>Embedded fonts in Netscape Navigator 4 (Webmonkey)</title>
+<link>http://www.webmonkey.com/webmonkey/98/01/index3a_page4.html?tw=design</link>
+<description>Ancient scrolls describe how Bitstream and Netscape joined forces to make a system for embedding fonts in web pages to parallel Microsoft's TrueType-based WEFT system.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-14T16:44:35Z</dc:date>
+<dc:subject>bitstream font-embedding fonts netscape past typography</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font-embedding" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/netscape" />
+    <rdf:li resource="http://del.icio.us/tag/past" />
+    <rdf:li resource="http://del.icio.us/tag/bitstream" />
+    <rdf:li resource="http://del.icio.us/tag/fonts" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.microsoft.com/typography/web/embedding/weft3/default.htm">
+<title>Microsoft WEFT 3 (web font-embedding tool)</title>
+<link>http://www.microsoft.com/typography/web/embedding/weft3/default.htm</link>
+<description>Microsoft's program for creating embedded fonts tailored to your web pages. (Windows only, and the embedded fonts work in MSIE only.)</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-14T16:24:08Z</dc:date>
+<dc:subject>css embed font-embedding font-face fonts microsoft msie typography weft</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/msie" />
+    <rdf:li resource="http://del.icio.us/tag/microsoft" />
+    <rdf:li resource="http://del.icio.us/tag/fonts" />
+    <rdf:li resource="http://del.icio.us/tag/font-embedding" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/embed" />
+    <rdf:li resource="http://del.icio.us/tag/font-face" />
+    <rdf:li resource="http://del.icio.us/tag/weft" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://msdn.microsoft.com/workshop/author/fontembed/font_embed.asp">
+<title>Font Embedding in MSIE4</title>
+<link>http://msdn.microsoft.com/workshop/author/fontembed/font_embed.asp</link>
+<description>In 1997, embedding special compressed, subsetted fonts in your web pages was all the rage. This is Microsoft's version of the idea, using the @font-face CSS rule and a program called WEFT.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-14T16:19:08Z</dc:date>
+<dc:subject>1990s css css2 font-embedding font-face fonts forgotten-html html microsoft msie typography web</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/fonts" />
+    <rdf:li resource="http://del.icio.us/tag/font-embedding" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/web" />
+    <rdf:li resource="http://del.icio.us/tag/html" />
+    <rdf:li resource="http://del.icio.us/tag/microsoft" />
+    <rdf:li resource="http://del.icio.us/tag/msie" />
+    <rdf:li resource="http://del.icio.us/tag/1990s" />
+    <rdf:li resource="http://del.icio.us/tag/forgotten-html" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/css2" />
+    <rdf:li resource="http://del.icio.us/tag/font-face" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://feedparser.org/">
+<title>Universal Feed Parser</title>
+<link>http://feedparser.org/</link>
+<description>Mark Pilgrim’s parse-at-all-costs reader for RSS and Atom feeds in Python. 3000 unit tests. Open source.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-13T12:20:21Z</dc:date>
+<dc:subject>atom library parser python rss syndication xml</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/library" />
+    <rdf:li resource="http://del.icio.us/tag/parser" />
+    <rdf:li resource="http://del.icio.us/tag/syndication" />
+    <rdf:li resource="http://del.icio.us/tag/python" />
+    <rdf:li resource="http://del.icio.us/tag/xml" />
+    <rdf:li resource="http://del.icio.us/tag/atom" />
+    <rdf:li resource="http://del.icio.us/tag/rss" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.underware.nl/site2/index.php3?id1=underware&amp;id2=general&amp;id3=general">
+<title>Underware</title>
+<link>http://www.underware.nl/site2/index.php3?id1=underware&amp;id2=general&amp;id3=general</link>
+<description>A graphic design studio which specializes in designing and producing typefaces (e.g., Fakir, a blackletter, and Auto, a sanserif with 3 italics). Based in Den Haag, Helsinki and Amsterdam.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-12T19:12:04Z</dc:date>
+<dc:subject>design fonts type-design typography</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/type-design" />
+    <rdf:li resource="http://del.icio.us/tag/fonts" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.isnotmagazine.org/">
+<title>Is Not Magazine</title>
+<link>http://www.isnotmagazine.org/</link>
+<description>A magazine in the form of a 1.5m x 2m bill poster. It is the work of five young Melburnians, and from April 9, 2005, it has been on display at 50 outdoor poster sites in inner-city Melbourne.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-12T15:57:51Z</dc:date>
+<dc:subject>2d design magazine printing typography vllg.com zine</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/2d" />
+    <rdf:li resource="http://del.icio.us/tag/zine" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/printing" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/vllg.com" />
+    <rdf:li resource="http://del.icio.us/tag/magazine" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://mezzoblue.com/">
+<title>mezzoblue (Dave Shea's weblog)</title>
+<link>http://mezzoblue.com/</link>
+<description>&quot;I’m a Vancouver local and a freelance designer. I’m happiest when designing, building, or creating something that didn’t previously exist; this has taken many forms over the years.&quot;</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-12T14:07:55Z</dc:date>
+<dc:subject>2d blog css design mezzoblue typography weblog</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/2d" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/blog" />
+    <rdf:li resource="http://del.icio.us/tag/weblog" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/mezzoblue" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://mezzoblue.com/archives/2007/02/21/icon_design/">
+<title>Icon Design: Sizing (mezzoblue)</title>
+<link>http://mezzoblue.com/archives/2007/02/21/icon_design/</link>
+<description>Using vectors does not solve all your resizing problems: you need to tweak the small-scale versions to avoid fuzzy anti-aliasing. Similar issues to font-hinting at small sizes.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-12T13:59:27Z</dc:date>
+<dc:subject>2d blog-entry design graphics mezzoblue vector</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/graphics" />
+    <rdf:li resource="http://del.icio.us/tag/2d" />
+    <rdf:li resource="http://del.icio.us/tag/vector" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/blog-entry" />
+    <rdf:li resource="http://del.icio.us/tag/mezzoblue" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.macalope.com/">
+<title>The Macalope (weblog)</title>
+<link>http://www.macalope.com/</link>
+<description>Born of the earth, forged in fire, the Macalope was branded by the IT world “non-standard” and “proprietary.” A freak of nature. Part man, part Mac, part antelope, the Macalope set forth on a quest to save his beloved platform.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-01T10:39:02Z</dc:date>
+<dc:subject>apple blog mac weblog</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/weblog" />
+    <rdf:li resource="http://del.icio.us/tag/blog" />
+    <rdf:li resource="http://del.icio.us/tag/mac" />
+    <rdf:li resource="http://del.icio.us/tag/apple" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://genshi.edgewall.org/">
+<title>Genshi: Generate Content for the Web</title>
+<link>http://genshi.edgewall.org/</link>
+<description>A Python library that provides components for parsing, generating and filtering HTML, XML and text content for output on the web. Includes a template language heavily inspired by Kid.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-03-01T08:39:48Z</dc:date>
+<dc:subject>genshi html kid templating xml</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/genshi" />
+    <rdf:li resource="http://del.icio.us/tag/kid" />
+    <rdf:li resource="http://del.icio.us/tag/xml" />
+    <rdf:li resource="http://del.icio.us/tag/html" />
+    <rdf:li resource="http://del.icio.us/tag/templating" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.matthewkroeker.com/splinter.htm">
+<title>splinter (matthew.kroeker      industrial design)</title>
+<link>http://www.matthewkroeker.com/splinter.htm</link>
+<description>Two chairs join neatly along a jagged line of displaed wooden slats to form a small bench.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-27T14:55:18Z</dc:date>
+<dc:subject>chair design furniture</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/chair" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/furniture" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.roughlydrafted.com/RD/RDM.Tech.Q1.07/2A351C60-A4E5-4764-A083-FF8610E66A46.html">
+<title>How FairPlay Works: Apple's iTunes DRM Dilemma</title>
+<link>http://www.roughlydrafted.com/RD/RDM.Tech.Q1.07/2A351C60-A4E5-4764-A083-FF8610E66A46.html</link>
+<description>Pretty good summary of how Apple's DRM system works, and why the 'simple' changes outsiders have suggested (such as licensing to third parties, or selling non-DRM tunes alongside encumbered ones) would not be simple or even feasible.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-27T14:33:11Z</dc:date>
+<dc:subject>apple drm fairplay ipod itunes</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/apple" />
+    <rdf:li resource="http://del.icio.us/tag/drm" />
+    <rdf:li resource="http://del.icio.us/tag/fairplay" />
+    <rdf:li resource="http://del.icio.us/tag/itunes" />
+    <rdf:li resource="http://del.icio.us/tag/ipod" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://vllg.com/Underware/Fakir/mudTyper+Weights/">
+<title>Fakir (village /// vllg.com)</title>
+<link>http://vllg.com/Underware/Fakir/mudTyper+Weights/</link>
+<description>A modern font based on broad-nibbed blackletter forms, but then reverse-engineered in to a normal-weight font with a curious, twisty, broken-line character.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-23T15:27:35Z</dc:date>
+<dc:subject>blackletter font wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+    <rdf:li resource="http://del.icio.us/tag/blackletter" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://vllg.com/Thirstype/Kaas/mudTyper+Weights/">
+<title>Kaas (village /// vllg.com)</title>
+<link>http://vllg.com/Thirstype/Kaas/mudTyper+Weights/</link>
+<description>Amazingly chunky font based on traditional Germanic blackletter (Fraktur, Textura).</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-22T18:54:45Z</dc:date>
+<dc:subject>font wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://vllg.com/Lux/LuxSans/mudTyper+Weights/">
+<title>Lux Sans (village /// vllg.com)</title>
+<link>http://vllg.com/Lux/LuxSans/mudTyper+Weights/</link>
+<description>A sanserif font family with all the OpenType stuff and an amusing treatment of the top of the counter of D, P, B, and friends.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-22T18:53:24Z</dc:date>
+<dc:subject>font vllg.com wishlish</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/font" />
+    <rdf:li resource="http://del.icio.us/tag/wishlish" />
+    <rdf:li resource="http://del.icio.us/tag/vllg.com" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.ft.com/cms/s/11ba213e-bf7e-11db-9ac2-000b5df10621.html">
+<title>Study sees harmful hunt for extra oil (FT.com / In depth)</title>
+<link>http://www.ft.com/cms/s/11ba213e-bf7e-11db-9ac2-000b5df10621.html</link>
+<description>A stark prediciton of future energy shortages. The transition to expensive and polluting reliance on 'unconventional oil' (like Canadian tar sands) could come sooner than most oil analysts had expected.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-20T16:13:14Z</dc:date>
+<dc:subject>carbon energy future oil politics via:reddit.com</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/energy" />
+    <rdf:li resource="http://del.icio.us/tag/oil" />
+    <rdf:li resource="http://del.icio.us/tag/carbon" />
+    <rdf:li resource="http://del.icio.us/tag/politics" />
+    <rdf:li resource="http://del.icio.us/tag/future" />
+    <rdf:li resource="http://del.icio.us/tag/via:reddit.com" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://garrettdimon.com/">
+<title>Garrett Dimon’s weblog</title>
+<link>http://garrettdimon.com/</link>
+<description>Blog of yet another web designer with an emphasis on simple, clean, and vivid typographical presnetation.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-20T12:14:44Z</dc:date>
+<dc:subject>blog design typography usability weblog</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/typography" />
+    <rdf:li resource="http://del.icio.us/tag/weblog" />
+    <rdf:li resource="http://del.icio.us/tag/blog" />
+    <rdf:li resource="http://del.icio.us/tag/usability" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://bitworking.org/news/125/REST-and-WS">
+<title>REST and WS-* (Joe Gregorio | BitWorking)</title>
+<link>http://bitworking.org/news/125/REST-and-WS</link>
+<description>Outlines how WS-* and REST are appropriate at different levels of scalability, and how to go about designing a REST protocol.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-17T13:16:04Z</dc:date>
+<dc:subject>blog-entry rest soap web-serivces</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/rest" />
+    <rdf:li resource="http://del.icio.us/tag/soap" />
+    <rdf:li resource="http://del.icio.us/tag/web-serivces" />
+    <rdf:li resource="http://del.icio.us/tag/blog-entry" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://bitworking.org/projects/atom/">
+<title>Atom Publishing Protocol project page (Joe Gregorio)</title>
+<link>http://bitworking.org/projects/atom/</link>
+<description>Links to the latest draft of the APP, and to the IETF status page for the project.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-15T09:18:00Z</dc:date>
+<dc:subject>atom atompub draft ietf protocol syndication web web-services xml</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/atom" />
+    <rdf:li resource="http://del.icio.us/tag/atompub" />
+    <rdf:li resource="http://del.icio.us/tag/draft" />
+    <rdf:li resource="http://del.icio.us/tag/ietf" />
+    <rdf:li resource="http://del.icio.us/tag/protocol" />
+    <rdf:li resource="http://del.icio.us/tag/syndication" />
+    <rdf:li resource="http://del.icio.us/tag/web-services" />
+    <rdf:li resource="http://del.icio.us/tag/xml" />
+    <rdf:li resource="http://del.icio.us/tag/web" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.macinhack.com/arch/feb/getting_the_most_out_of_your_laptop_battery.php">
+<title>Getting the msut out of your laptop battery</title>
+<link>http://www.macinhack.com/arch/feb/getting_the_most_out_of_your_laptop_battery.php</link>
+<description>Tips for calibrating PowerBook and MacBook batteries, and monitoring their effectiveness.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-14T17:48:08Z</dc:date>
+<dc:subject>advice battery blog-entry hardware powerbook tip</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/hardware" />
+    <rdf:li resource="http://del.icio.us/tag/powerbook" />
+    <rdf:li resource="http://del.icio.us/tag/battery" />
+    <rdf:li resource="http://del.icio.us/tag/advice" />
+    <rdf:li resource="http://del.icio.us/tag/blog-entry" />
+    <rdf:li resource="http://del.icio.us/tag/tip" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://media.joyent.com/GridAccelerators-Whitepaper.pdf">
+<title>GridAccelerators-Whitepaper.pdf (application/pdf Object)</title>
+<link>http://media.joyent.com/GridAccelerators-Whitepaper.pdf</link>
+<description>How Joyent's acellerators-by-the-yard system can make deploying your massive web application less of a hassle.</description>
+<dc:creator>pdc</dc:creator>
+<dc:date>2007-02-12T18:54:24Z</dc:date>
+<dc:subject>deployment joyent web-applications work</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/work" />
+    <rdf:li resource="http://del.icio.us/tag/deployment" />
+    <rdf:li resource="http://del.icio.us/tag/web-applications" />
+    <rdf:li resource="http://del.icio.us/tag/joyent" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+</rdf:RDF>

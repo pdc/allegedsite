@@ -1,0 +1,32 @@
+# Generate redirtects from the old home of Percy Street to the new one.
+
+beginDocument {
+	title "Percy Street has moved"
+        meta http-equiv=Refresh "content=1; http://www.alleged.org.uk/2005/percy/"
+        stylesheet main.css
+}
+
+p id=trail [a http://www.alleged.org.uk/ Alleged Literature]
+h1 "Percy Street has moved"
+p id=author "to [a http://www.alleged.org.uk/2005/percy/ "
+[em http://www.alleged.org.uk/2005/percy/]"]"
+
+# p [img ../../../2005/percy/16/16b1.gif align=right alt=]
+endDocument
+
+for {set i 1} {$i < 25} {incr i} {
+    
+    beginDocument -file percy-$i.html {
+            title "Percy Street has moved"
+            meta http-equiv=Refresh "content=1; http://www.alleged.org.uk/2005/percy/$i/"
+            stylesheet main.css
+    }
+    
+    p id=trail [a http://www.alleged.org.uk/ Alleged Literature]
+    h1 "Percy Street has moved"
+    p id=author "to [a http://www.alleged.org.uk/2005/percy/ "
+    [em http://www.alleged.org.uk/2005/percy/]"]"
+    
+    # p [img ../../../2005/percy/16/16b1.gif align=right alt=]
+    endDocument
+}

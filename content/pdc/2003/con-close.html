@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from con-close.th on 2006-11-02 08:49 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 con-close.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>ZODB: don&rsquo;t forget to close connections - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>con-close</strong>
+    </p>
+    <div id="body">
+      <h1>ZODB: don&rsquo;t forget to close connections</h1>
+      <p id="tagline">Damian Cugley’s Weblog</p>
+      
+      <p class="article">
+      I have converted the Picky Picky Game so that it can run as a
+      <a
+      href="http://www.python.org/doc/current/lib/module-BaseHTTPServer.html"><code>BaseHTTPServer</code></a>
+      server as an alternative to as a
+      <abbr title="Common Gateway Interface">CGI</abbr> script, in
+      order to avoid the performance penalty caused by starting up
+      fresh Python processes for each request.  But I&nbsp;discovered
+      that the sevrer would lock up from time to time.
+      </p>
+      <p>
+      It was no ordinary lock-up: it could not be interrupted with
+      Ctrl-<kbd>C</kbd> (but Ctrl-<kbd>\</kbd> worked).  After an
+      abortive attempt to use GDB to debug Python itself, I added the
+      usual plethora of <code>print</code> statements to narrow down
+      the place where it went wrong, and it seemed to be in connecting
+      to the ZODB database.  In the end I&nbsp;changed my code to keep
+      track of the connection object it gets from the database and to
+      explicitly call <code>con.close()</code> (rather than assuming
+      this would happen automatically when the variable goes out of
+      scope).  The problem now appears to have gone away.
+      </p>
+      <p>
+      Thus it is I&nbsp;can run the Picky Picky Game as a
+      free-standing web server (running as
+      <code>http://caption.org:8005/a/</code>, for example) as an
+      alternative to running it via CGI.  At least, I&nbsp;can so long
+      as I&nbsp;remain connected to the sevrer with SSH; I&nbsp;need
+      to persuade Adrian to run the free-standing server as a daemon.
+      In the meantime,
+      you can visit the CGI version at <a
+      href="http://caption.org/caption-cgi/hello.cgi/sample/"><code>http://caption.org/caption-cgi/hello.cgi/sample/</code></a>.
+      </p>
+      <p>
+      My link for <a
+      href="http://bcn.boulder.co.us/government/approvalvote/center.html">Approval
+      Voting</a> has rotted and needs to be updated.  Sigh.  <a
+      href="http://www-personal.umich.edu/~bpl/approval-vote.htm">Another
+      description of Approval Vote</a>
+      </p>
+      <p>
+      The next thing to do is to separate out the base URL for static
+      files (such as the style sheet) so that these files need no
+      longer be tangled up with the resources served by the CGI script
+      (or by the free-standing server).
+      </p>
+      
+      <p><a href="05/14.html#e20030514">14 May 2003</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+# -*-tcl-*-
+
+source xssDefs.tcl
+
+beginDocument {
+    title "XSS (XML Site Syndication)"
+    stylesheet main.css 
+}
+
+p id=Trail "
+[a ../../../ Alleged Literature] ::
+[a ../../ Damian Cugley] ::
+"
+
+push div id=Page
+
+h1 "XSS (XML Site Syndication)"
+
+p "This page describes some ideas I had for a progression from
+[RSS 0.9x].  I&nbsp;dubbed it [XSS] in order to distinguish it from
+the related but distinct format [RSS 1.0]."
+
+dl {
+    dt [a letter.html Two suggestions for RSS 2.0 ]
+    dd "An email I sent to Dave Winer and Mark Pilgrim
+    (since they were both discussing successors to [RSS 0.92]
+    on their respective weblogs at the time).  Now obsolete."
+
+    dt [a background.html RSS vs. RSS]
+    dd "My attempt to summarize for my own benefits
+    the relationship between the two RSS branches."
+
+    dt [a references.html References]
+    dd "Summarize the links to RSS specifications and discussions."
+}
+
+
+pop;				# div id=page
+
+endDocument

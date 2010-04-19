@@ -1,0 +1,102 @@
+# -*-tcl-*-
+
+source specDefs.tcl
+
+beginDocument {
+    title "Character Encoding #1 - Alleged Literature"
+    stylesheet spec.css
+}
+
+beginBody
+
+h1 "Latin-1p: Latin-1 with English punctuation"
+
+p " This is a character encoding designed to be useful for Unix
+systems and other ASCII-centric operating systems.  It addresses a
+widespread defect in computer operating systems whereby characters
+derived from ASCII (or one of the ISO 646 encodings) are given
+priority over those needed to write in the English language. "
+
+p " Note.  This document assumes your web browser (or whatever display
+software you are using) understands and can display Unicode
+punctuation characters.  For many browsers, such as Opera or Mozilla
+on Linux, this is not the case at the time of writing.  Please use
+your imagination..."
+
+ul {
+    li "
+    [a background.html Background]&mdash;Unicode encodings and English punctuation
+    "
+    li "
+    [a spec.html Specification of Latin-1p]
+    "
+}
+
+
+h2  "Do I need to use Latin-1p?"
+
+p "On windoes systems with recent HTML-writing software so-called
+&lsquo;smart quotes&rsquo; should work as they appear on the screen.
+[a http://www.fourmilab.ch/webtools/demoroniser/ Older versions get it wrong]
+because they label documents saved  using the
+Windows-1252 encoding as if they were in ISO-8859&ndash;1.
+This worked if documents prepared on Windows were only viewed on
+Windows systems using sloppily written browsers.
+Modern editions of Microsoft FrontPage
+encode quotation marks as numeric entities in HTML, which works well
+enough.  "
+
+p "If you use a text editor that does not have &lsquo;smart&rsquo;
+quotes then you are stuck entering the character codes (in
+Windows-1252, in decimal) on your numeric keypad, or else using
+Character Map.  In this case you may find that using the Latin-1p
+conventions is more convenient."
+
+p " On Macintosh systems you can type English punctuation amrks
+directly (using the Option key).  Again old text editors and even old
+HTML editors blithely write the MacRoman character codes to the text
+files and then present them as if they were in ISO&nbsp;8859&ndash;1,
+with even more ugly results, since the MacRoman punctuation characters
+become accented letters on non-Macintosh systems.  Again, more modern
+software gets it right, and so Latin-1p may be irrelevant to you."
+
+p "Most Unix and Linux systems have patchy support for Unicode and
+Unicode encodings at best, and entering punctuation marks in to your
+favourite text editor may be simply impossible.  Latin-1p may be an
+attractive alternative to typing character entities for every mark of
+punctuation in a document.  "
+
+h2 "Further reading"
+
+dl {
+    dt "[a ../marks-of-quotation.html "Marks of quotation"]"
+    dd "Damian Cugley. My original rant on quotation marks, January 2003."
+
+    dt "
+    [a http://www.cl.cam.ac.uk/~mgk25/ucs/quotes.html "ASCII and Unicode Quotation Marks"]
+    "
+    dd "Markus Kuhn.  &lsquo;Summary: Please do not use the ASCII grave accent (0x60) as
+    a left quotation mark together with the ASCII apostrophe (0x27) as
+    the corresponding right quotation mark&rsquo; 
+    Apparently
+    [a http://www.cl.cam.ac.uk/~mgk25/ucs/apostrophe.html \
+	    "it&rsquo;s even worse for people typing English on German keyboards"]"
+
+    dt "[a http://diveintomark.org/archives/2002/08/14/the_q_tag_revisited.html\
+	    "The Q Tag Revisited"]"
+    dd "Mark Pilgrim.  &lsquo;I just retired my use of the Q tag.&rsquo;
+    Patchy implementation of the <code>q</code> tag makes it useless,
+    so ignore it.
+    "
+}
+ 
+
+
+p [a ../01.html#e20030121 21 January 2003]
+
+endBody
+endDocument
+
+
+
+

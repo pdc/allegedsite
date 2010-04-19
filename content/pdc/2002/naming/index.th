@@ -1,0 +1,179 @@
+# -*-tcl-*-
+
+beginDocument {
+    title "XSS (XML Site Syndication)"
+    stylesheet main.css 
+}
+
+p id=Trail "
+[a ../../../ Alleged Literature] ::
+[a ../../ Damian Cugley] ::
+"
+
+push div id=Page
+
+h1 "Suggestions for names in programs"
+
+p "
+Names used in programs should be consistent enough that one programmer
+can guess what the names used by another will probably be,
+and to reduce the mnemonic burden of keeping track of the
+many names. 
+For example, it annoys me to have to remember to write
+"
+
+pre {WHERE DocRepMap.repId = Repositories.repositoryId}
+
+p "
+and not
+"
+
+pre {WHERE DocRepMap.repId = Reps.repId}
+
+p "or the other possible combinations.  I also find compound names
+like [code User.userName] annoying&mdash;why not just have
+[code User.name]?"
+
+h2 "Abbreviations"
+
+p " Programs are full of nouns used as class names and variable names."
+
+
+p "
+For any given noun, there should be at most three spellings:
+"
+
+ul {
+    li "Full form: programme, module, repository, iterator, index"
+    li "Short form: prog, mod, rep, iter, i"
+    li "One or two letters: p, m, r, it, i"
+}
+
+p " We can divide the categories of things being named according to
+longevity and how widely references are scattered throughout the
+programme.  Exactly what goes in which category depends on the
+programming language in question.  For example: "
+
+ul {
+    li "classes, global functions (these are used widely and last a long time)"
+    li "member functions"
+    li "member variables"
+    li "local variables  (these are short-lived)"
+    li "loop counters   (these are even more short-lived)"
+}
+
+
+p "
+The rules are as follows:
+"
+
+ol {
+    li "Things higher in this categorization should have longer (or equal length) names"
+    li "Things at the same level must use the same abbreviation for the same word"
+}
+
+p " For example, if you have a member function [code programme], then
+the class name must be [code Programme] not [code Prog], since class
+names are in a higher category.  My preference is to use the 1-letter
+forms for loop variables, the abbreviated form for locals and for
+member variables, and the full forms for member functions and class
+names.  For example:  "
+
+pre -encode {class Programme:
+    ...
+    def modules(self):
+        if not self.mods:
+            mods = []
+            for m in db.allModules():
+                if m.programme == self:
+                    mods.append(m)
+            self.mods = mods 
+        return self.mods}
+
+p "
+(This is a lousy way to interrogate a database, but illustrates different spellings of the words <em>module</em>.)
+
+"
+
+p " In many cases the short form and the full name are identical.  In
+some cases it makes sense for the 1-letter form and the short form to
+be the same.  There is a school of thought that rejects all
+abbreviations: "
+    
+pre -encode {class Programme:
+    ...
+    def modules(self):
+        if not self.cachedModules:
+            modules = []
+            for module_ in db.allModules():
+                if module_.programme == self:
+                    modules.append(module_)
+            self.cachedModules = modules 
+        return self.cachedModules}
+
+p "
+(The trailing underscore is required to avoid a clash with a keyword.)
+This still obeys the above rules, of course, and saves one from having
+to decide which spelling to use.  On the other hand, I prefer
+to use shorter names as a hint that something is a temporary.
+"
+
+p "The second rule tells us that if we abbreviate
+[em expression] as [code expr] in one place, we should stick
+with that spelling, and not switch randomly between
+[code exp] and [code expr].   Note that XML abbreviates
+[em attribute] as [code ATT] in [code ATTLIST],
+thereby inconveniencing the hoards of programmers used to spelling it
+[code attr].
+"
+
+p " These rules apply within one domain.  When combining libraries or
+protocols from different domains, we come in to positions where the
+same word means different things and is conventionally abbreviated
+differently.  There&rsquo;s not much we can do about this except to
+try to keep consitent within domains.  "
+
+h2 "Collections"
+
+p "
+By collection I mean all the various data structures that contain lots of objects&mdash;lists, sets, bags, arrays, vectors, dictionaries, tables, etc.  Collections should always have plural names:
+"
+
+pre {mod = mods[i] # Python
+Dim mod_ As Module_ = mods(i) ' VB .Net
+Module mod = mods[i]; // C++ and its parodies}
+
+p "
+When I&nbsp;was a lad, functional programmers conventionally
+used <code>x</code> to an object of arbitrary type,
+[code xs] for a list of whatever <code>x</code> was,
+<code>xss</code> for a list of <code>xs</code>, and so on.
+This makes sense when using the single-letter abbreviations of names.
+Thus
+"
+
+pre {ps = [m.Programme for m in mods] # list of programmes
+tss = [m.Topics for m in mods] # list of list of topics}
+
+p "
+When naming the types of collections (in languiages with explicit
+typing, like Java), 
+"
+
+
+
+pop;				# div id=page
+
+endDocument
+
+
+
+
+
+
+
+
+
+
+
+

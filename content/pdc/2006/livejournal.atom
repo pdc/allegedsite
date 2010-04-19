@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- If you are running a bot please visit this policy page outlining rules you must respect. http://www.livejournal.com/bots/ -->
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>urn:lj:livejournal.com:atom1:damiancugley</id>
+  <title>Damian writes</title>
+  <subtitle>Nobody understands me</subtitle>
+  <author>
+    <name>Damian Cugley</name>
+  </author>
+  <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/"/>
+  <link rel="self" type="text/xml" href="http://www.livejournal.com/users/damiancugley/data/atom"/>
+  <updated>2007-03-26T17:23:19Z</updated>
+  <link rel="service.feed" type="application/x.atom+xml" href="http://www.livejournal.com/users/damiancugley/data/atom" title="Damian writes"/>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:50023</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/50023.html"/>
+    <issued>2007-03-26T18:18:00</issued>
+    <title>Control your music maker with your wii</title>
+    <published>2007-03-26T17:23:19Z</published>
+    <updated>2007-03-26T17:23:19Z</updated>
+    <category term="wiimote"/>
+    <category term="music"/>
+    <category term="video"/>
+    <category term="wii"/>
+    <category term="cult of mac"/>
+    <category term="link"/>
+    <content type="html">If all goes well there will be an embedded movie viewer here:&lt;br /&gt;
+&lt;object width="400" height="300"&gt;
+    &lt;param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=155978"&gt;&lt;/param&gt;
+    &lt;embed src="http://www.vimeo.com/moogaloop.swf?clip_id=155978" type="application/x-shockwave-flash" width="400" height="300"   allowScriptAccess="never"&gt;&lt;/embed&gt;
+&lt;/object&gt;
+    &lt;br /&gt;&lt;br /&gt;Otherwise, you could try going direct to the page for &lt;a href="http://www.vimeo.com/clip:155978"&gt;Wii Loop Machine Demo&lt;/a&gt; on &lt;a href="http://www.vimeo.com/"&gt;Vimeo&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;Found on the &lt;a href="http://blog.wired.com/cultofmac/2007/03/doing_a_wii_lit.html"&gt;Cult of Mac Blog&lt;/a&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:49675</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/49675.html"/>
+    <issued>2007-03-26T16:52:00</issued>
+    <title>Equinox Duly Observed</title>
+    <published>2007-03-26T15:52:40Z</published>
+    <updated>2007-03-26T15:52:40Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/433914879/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/149/433914879_a681a93631_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/433914879/"&gt;Non-optimal Barbecue Conditions&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Thanks to the hardy souls who helped us run our barbecues in the wind-blasted concrete wasteland outside our back door, the change of the seasons has been duly celebrated once again.&lt;br /&gt;&lt;br /&gt;See also &lt;a href="http://www.flickr.com/photos/motodraconis/sets/72157600026356646/"&gt;Photos of the party people by Motodraconis&lt;/a&gt;&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:49525</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/49525.html"/>
+    <issued>2007-03-22T10:43:00</issued>
+    <title>Getting Ready for our Barbecue</title>
+    <published>2007-03-22T10:43:11Z</published>
+    <updated>2007-03-22T10:44:57Z</updated>
+    <category term="photos"/>
+    <category term="weather"/>
+    <category term="flickr"/>
+    <category term="garden"/>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/430144154/" title="photo sharing"&gt;&lt;img alt="" src="http://farm1.static.flickr.com/149/430144154_a329dc9d3e_m.jpg" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/430144154/"&gt;Shed Snow&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Woke up this morning to discover the garden full of falling snow. This is not quite the perfect weather for having a barbecue, but perhaps things will have warmed up by the weekend.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:49160</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/49160.html"/>
+    <issued>2007-03-18T18:59:00</issued>
+    <title>Broad Street on Fire! (Yes, more photos.)</title>
+    <published>2007-03-18T18:59:12Z</published>
+    <updated>2007-03-18T18:59:12Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/425033703/" title="photo sharing"&gt;&lt;img alt="" src="http://farm1.static.flickr.com/146/425033703_b1dffa74a6_m.jpg" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/425033703/"&gt;02 Artists Wear Hats&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;I came away from Luminox with a bunch of photos and some video clips that I don’t have enough disc space to do any processing of. Some of the photos have come out looking good, but it’s noticeable that even a pretty sensitive camera like mine (ASA 1600) is not a patch on the miraculous ability of the human eye to pick out details in a mixture of darkness and flickering firelight: at the risk of stating the obvious, you really had to be there to get the full effect.  I can’t wait to see what professional photographers have made of this spectacle.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:48958</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/48958.html"/>
+    <issued>2007-03-13T11:38:00</issued>
+    <title>Broad Street Prep</title>
+    <published>2007-03-13T11:38:33Z</published>
+    <updated>2007-03-13T11:38:33Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/419298303/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/174/419298303_732c02ba33_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/419298303/"&gt;Broad Street Prep 1&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Mysterious goings-on in the Broad as I walked home yesterday evening.  Half the street is roped off and filled with mysterious metal sculptures. Judging from the non-decorative finish on the equipment, it seems they are part of some pyrotechnic display.&lt;br /&gt;&lt;br /&gt;The street has become one-way for the interim, which is slightly inconvenient as this means I need to come up with a new commute route.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:48787</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/48787.html"/>
+    <issued>2007-03-11T22:45:00</issued>
+    <title>Time to put on your spring legs</title>
+    <published>2007-03-11T22:45:39Z</published>
+    <updated>2007-03-11T22:45:39Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/417558903/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/147/417558903_51841360ef_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/417558903/"&gt;Springs Legs 2&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;The crocus we planted last autumn (or was it early winter?) have appeared and opened and generally looked lovely and it has been so warm I had to pack my coat in my rucksack to cycle home from town.  I felt a little odd wearing my heavy winter gloves with short sleeves, so for once I cycled with with naked hands.&lt;br /&gt;&lt;br /&gt;Before that I had been chasing after a bunch of guys on spring-loaded stilts (presumably promoting a brand of spring-loaded stilts, or perhaps a company that provides spring-loaded-stilt-related services). As is usually the case with mad phenomena dancing through the streets of Oxford, most of my shots are of them leaving.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:48486</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/48486.html"/>
+    <issued>2007-03-10T17:27:00</issued>
+    <title>When Baby Sloths Attack</title>
+    <published>2007-03-10T18:27:36Z</published>
+    <updated>2007-03-10T18:27:36Z</updated>
+    <content type="html">
+&lt;object width="425" height="350"&gt;
+    &lt;param name="movie" value="http://www.youtube.com/v/4kTkOgHO4pA"&gt;&lt;/param&gt;
+    &lt;embed src="http://www.youtube.com/v/4kTkOgHO4pA" type="application/x-shockwave-flash" width="425" height="350"   allowScriptAccess="never"&gt;&lt;/embed&gt;
+&lt;/object&gt;
+    &lt;br&gt;Clip found via Reddit.com</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:48334</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/48334.html"/>
+    <issued>2007-03-07T07:56:00</issued>
+    <title>RvD2: Ryan vs. Dorkman 2</title>
+    <published>2007-03-07T08:56:59Z</published>
+    <updated>2007-03-07T09:20:15Z</updated>
+    <category term="youtube"/>
+    <category term="link"/>
+    <category term="fan film"/>
+    <category term="star wars"/>
+    <content type="html">
+&lt;object width="425" height="350"&gt;
+    &lt;param name="movie" value="http://www.youtube.com/v/-is63goeBgc"&gt;&lt;/param&gt;
+    &lt;embed src="http://www.youtube.com/v/-is63goeBgc" type="application/x-shockwave-flash" width="425" height="350"   allowScriptAccess="never"&gt;&lt;/embed&gt;
+&lt;/object&gt;
+    &lt;br&gt;Virtuoso lightsaber dueling from  the people who I would imagine  brought us &lt;cite&gt;Ryan vs Dorkman&lt;/cite&gt; at some point in the past.  (Via &lt;a href="http://www.korvar.pwp.blueyonder.co.uk/2007/03/ryan-vs-dorkman-ii.php"&gt;my baby brother&lt;/a&gt;.)&lt;br /&gt;&lt;br /&gt;This is fan filmdom stripped to the bare essentials: there are no attempts to tie it in with the plot or characters of &lt;cite&gt;Star Wars&lt;/cite&gt;, or even to emulate their costuming: the opening scene is the two combatants striding in to an ordinary-looking factory floor in their ordinary-looking clothes.  Who are they?  Why do they fight?  We aren’t told.  &lt;br /&gt;&lt;br /&gt;Given my usual complaint about the prequels was that you don’t care about the duels because you don’t particularly care about the characters, my first thought was that I would find this even sparser story uninvolving, but actually it was really entertaining—thrilling in places and with a couple of scenes that made me laugh out loud at their clever use of the Jedi conventions. It’s like seeing your favourite indy band playing unplugged, bringing the  skills of the performers to the fore because there are no distractions.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:48067</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/48067.html"/>
+    <issued>2007-02-23T11:43:00</issued>
+    <title>I want BBC on my Nokia and on my PowerBook</title>
+    <published>2007-02-23T13:13:27Z</published>
+    <updated>2007-02-23T14:27:50Z</updated>
+    <category term="drm"/>
+    <category term="bbc"/>
+    <content type="html">British residents and British subjects can sign &lt;a href="http://petitions.pm.gov.uk/iplayer/"&gt;e-Petition to tell the BBC not to dig itself any deeper in to the mire of proprietary DRM&lt;/a&gt;.  Bad enough they use REAL player already.  &lt;br /&gt;&lt;br /&gt;If the BBC really must have time-limited copy-prevention on its output then it has the resources to commission a good-enough system that it can make publicly available: this would allow anyone (such as new bands) to make their own time-limited demos for diffusion over the internet.  Using a system under the control of a foreign power is failing in their duty to make content available to British people.&lt;br /&gt;&lt;br /&gt;I have been trying to undestand the BBC Trust's &lt;a href="http://www.bbc.co.uk/bbctrust/research/iplayer_public_value_test.html"&gt;BBC iPlayer Public Value Test&lt;/a&gt; but without spending some days reading through the many thick documents I can't be sure what, if anything, I am supposed to do to send them comments or even what their plans actually are.  The summary of the summary of the Provisional Conclusions does mention that a non-Microsoft-specific solution would cause less damage to the market. Does this imply they already are aware of the issue?&lt;br /&gt;&lt;br /&gt;Update: This &lt;a href="http://www.bbc.co.uk/bbctrust/news/press_releases/31_01_2007.html"&gt;press release from the BBC Trust&lt;/a&gt; says they will have to work towards a platform-agnostic system within a reasonable timeframe (whatever that means).  So this e-petition may be behind the times.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:47765</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/47765.html"/>
+    <issued>2007-02-22T21:23:00</issued>
+    <title>What, more hardware?</title>
+    <published>2007-02-22T21:23:37Z</published>
+    <updated>2007-02-22T21:23:37Z</updated>
+    <category term="photos"/>
+    <category term="unboxing"/>
+    <category term="airport"/>
+    <category term="hardware"/>
+    <category term="battery"/>
+    <category term="flickr"/>
+    <category term="powerbook"/>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/399024089/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/141/399024089_d1b2cca72e_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/399024089/"&gt;02 Box Contains Two Boxes&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;This is the second instalment of my end-of-holiday-year technology binge: a replacement battery for my cute little 12" PowerBook (after four years the battery can’t really hold a charge at all). I can now type away upstairs with not a single cable plugged in.&lt;br /&gt;&lt;br /&gt;I also got myself an AirPort Extreme. This is intended to replace three existing things: my existing AirPort Express, the LinkSys router that sits between my network and the cable modem, and the not-entirely-working NAS. So far results are mixed—it works with the PowerBook as a wireless router and also lets Jeremy’s borrowed laptop to access the Internet, but I am having trouble getting my Nokia N800 Internet Tablet to connect to it. Argh!&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:47500</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/47500.html"/>
+    <issued>2007-02-21T20:04:00</issued>
+    <title>Today must be Ash Wednesday</title>
+    <published>2007-02-21T20:06:49Z</published>
+    <updated>2007-02-21T20:06:49Z</updated>
+    <category term="culture"/>
+    <content type="html">I know this because as I left the Noodle Bar noodle bar I passed three young women with the sign of the cross on their foreheads in ash, something I have hitherto only read about.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:47260</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/47260.html"/>
+    <issued>2007-02-20T10:33:00</issued>
+    <title>Kitchen Adventures</title>
+    <published>2007-02-20T10:33:43Z</published>
+    <updated>2007-02-20T10:33:43Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/396263413/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/134/396263413_799eb13496_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/396263413/"&gt;Red Toaster&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Our old round yellow toaster recnetly acquired the ability to turn the' lights off when it was plugged in. We have replaced it with a bright red model (the last red toaster Debenhams had for less than &amp;pound;110).&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:46908</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/46908.html"/>
+    <issued>2007-02-16T10:44:00</issued>
+    <title>Enough of the Valentine's Day livery already!</title>
+    <published>2007-02-16T10:52:38Z</published>
+    <updated>2007-02-16T10:52:38Z</updated>
+    <category term="commercialization"/>
+    <category term="gaolers daughter"/>
+    <category term="excessive cuteness"/>
+    <content type="html">The header I get at the top of LiveJournal switched to pink with hearts for &lt;a href="http://www.fao.org/english/newsroom/news/2002/3789-en.html"&gt;Kenyan Rose Harvest Day&lt;/a&gt;. Very cute. &lt;br /&gt;&lt;br /&gt;It is no longer VD day.  Can we stop now?</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:46608</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/46608.html"/>
+    <issued>2007-02-16T00:20:00</issued>
+    <title>Spaceheroesofthepeople is in my dictionary</title>
+    <published>2007-02-16T00:09:05Z</published>
+    <updated>2007-02-16T00:09:05Z</updated>
+    <category term="gig"/>
+    <category term="spaceheroesofthepeople"/>
+    <category term="n800"/>
+    <content type="html">During lunch &lt;span class='ljuser' lj:user='cleanskies' style='white-space: nowrap;'&gt;&lt;a href='http://cleanskies.livejournal.com/profile'&gt;&lt;img src='http://stat.livejournal.com/img/userinfo.gif' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0;' /&gt;&lt;/a&gt;&lt;a href='http://cleanskies.livejournal.com/'&gt;&lt;b&gt;cleanskies&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; and I ventured into French Connection, drawn in by their red tee-shirt with little birdies on it. After almost buying it we found a much cooler grey variation that happened to be a better fit. Very convenient, especially since she was to appear on stage tonight!&lt;br /&gt;&lt;br /&gt;After work I sloped down to the Cellar to watch the latest Space Heroes of the People gig. Seeing the same tunes performed several different times is making me more aware of how having a sound engineer who knows his onions makes it sound infinitly more awsomer.  Jo´s electric double bass was clearer in the mix this time so I could follow her part and watch her hands as she played the fiddly bits. &lt;br /&gt;&lt;br /&gt;Witches (if that´s the right spelling) followed and were pretty cool: four guitars, drums, plus a trumpet for that hint of Ennio Moriconi. It being a school night, I snuck off before Rock of Travolta.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:46460</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/46460.html"/>
+    <issued>2007-02-15T10:31:00</issued>
+    <title>Guyou's Projection and its Twisty Friends</title>
+    <published>2007-02-15T10:31:51Z</published>
+    <updated>2007-02-15T10:38:07Z</updated>
+    <category term="photos"/>
+    <category term="mathematics"/>
+    <category term="link"/>
+    <category term="projections"/>
+    <category term="flickr"/>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/sbprzd/390272486/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/170/390272486_ece0401337_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/sbprzd/390272486/"&gt;Guyou's Projection&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/sbprzd/"&gt;Seb Przd&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Sébastien Perez-Duarte is an amateur photographer specialising in spherical panoramas (also known as equirectangular images) and conformal mappings. It's sort of like the thing that you do to put the surface of the earth on a 2D mappemonde, except turned inside out.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:46226</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/46226.html"/>
+    <issued>2007-02-09T11:18:00</issued>
+    <title>New Shiny Thing</title>
+    <published>2007-02-09T11:18:38Z</published>
+    <updated>2007-02-09T11:18:38Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/383911456/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/155/383911456_b7c7506458_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/383911456/"&gt;New Shiny Thing&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;This is my new gadget, and, oddly enough, my first Nokia and it’s not a phone: it’s an internet browser and feed reader and media player that uses Wi-Fi networks to get its data (or it can work via my Sony Ericson  K700 phone via Bluetooth, if I can’t find a wireless network to exploit).&lt;br /&gt;&lt;br /&gt;It arrived on Wednesday morning, and I had my lunch in the new Pie Minister shop in trhe Covered Market, where they serve up free Wi-Fi with their pies. I spent my lunch hour attempting to eat my pie with one hand while trying to remember URLs of my favourite web sites so I could see how they cope on the pocket-sized 800x480-pixel screen.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:45724</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/45724.html"/>
+    <issued>2007-02-03T15:26:00</issued>
+    <title>Nephew's birthday</title>
+    <published>2007-02-03T15:29:12Z</published>
+    <updated>2007-02-03T15:29:12Z</updated>
+    <category term="personal"/>
+    <category term="family"/>
+    <content type="html">It's my nephew Darren's birthday today.  He was born on 2001-02-03, so he's just turned 6 years.  But I forgot to send him a card.  Sorry, Darren.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:45488</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/45488.html"/>
+    <issued>2007-01-29T15:47:00</issued>
+    <title>iMac wall</title>
+    <published>2007-01-29T15:47:02Z</published>
+    <updated>2007-01-29T15:47:02Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/soyburger/209372679/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/83/209372679_a157d4f56d_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/soyburger/209372679/"&gt;iMac wall&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/soyburger/"&gt;soyburger&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Linked to from &lt;a href="http://daringfireball.net/linked/2007/january#fri-26-basement_collection"&gt;Daring Fireball&lt;/a&gt; and &lt;a href="http://blog.wired.com/cultofmac/2007/01/most_amazing_am.html"&gt;Cult of Mac&lt;/a&gt;: a video editor has turned his basement living room and office in to a temple dedicated to his favourite family of computers.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:45254</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/45254.html"/>
+    <issued>2007-01-07T21:29:00</issued>
+    <title>Two reasons why your next PC should be a Mac</title>
+    <published>2007-01-07T21:29:53Z</published>
+    <updated>2007-01-07T21:29:53Z</updated>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/94382714@N00/344568665/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/157/344568665_8a402b732c_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/94382714@N00/344568665/"&gt;Parallels Coherence + WindowBlinds&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/94382714@N00/"&gt;xportz&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;The photo shows a Mac running software called parallels Coherence, which allows you to boot a copy of Windows XP on your Mac and have its applications run at the same time and on the same screen as your Mac OS X apps. In this case, Xportz has also gone to the trouble of theming the Windows apps to have a similar look to the Mac OS X apps, but some people may prefer to keep them visually distinct. So: switching to a Mac no longer means you have to abandon your business-critical Windows-only applications.&lt;br /&gt;&lt;br /&gt;In other news the next version of Microsoft Windows &lt;a href="http://www.cs.auckland.ac.nz/~pgut001/pubs/vista_cost.txt"&gt;will be hobbled with copy-prevention features&lt;/a&gt; that will cost a lot to implement and will reduce the usefulness of Windows Vista as a video and music player.&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:44849</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/44849.html"/>
+    <issued>2007-01-03T08:30:00</issued>
+    <title>Thwarted by design</title>
+    <published>2007-01-03T08:30:41Z</published>
+    <updated>2007-01-03T08:30:41Z</updated>
+    <category term="printer"/>
+    <category term="rant"/>
+    <category term="stupid"/>
+    <content type="html">I have a printer that I am unable to plug in to any of my computers because it requires a  Centronics (parallel) connector and modern computers do not bother with such bulky legacy connectors.  So I bought a print server: a little box a little larger than a box of matches that contains a tiny computer complete with printer queue, web server, and IPP service, which turns your wired printer into a network printer.  &lt;br /&gt;&lt;br /&gt;After spending an hour rearranging the junk in the studio to allow the printer to be placed on the desk, I have discovered that I cannot plug it in, because of a gratuitous flange built in to the printer’s tidy outer enclosure.  I cannot use one of my two printer cables to join the server and the printer via a cable, because printer cables—in common with USB cables—have different types of connector at each end (in contrast to serial cables, which have male and female versions of the same connector, and FireWire cables, which are the same at each end, which is a fantastic design accomplishment).  &lt;br /&gt;&lt;br /&gt;My choices are either to buy a gender changer or non-standard Centronics cable with two ‘printer-side’ connectors, or to take a hacksaw to my venerable laser printer.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:44555</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/44555.html"/>
+    <issued>2006-12-31T00:10:00</issued>
+    <title>Fun with unimaginative icons</title>
+    <published>2006-12-31T00:10:58Z</published>
+    <updated>2006-12-31T00:14:11Z</updated>
+    <category term="link"/>
+    <category term="games"/>
+    <category term="flickr"/>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/iconfactory/268617364/" title="photo sharing"&gt;&lt;img src="http://farm1.static.flickr.com/117/268617364_b0993f0df9_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/iconfactory/268617364/"&gt;Spongebob's Dock&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/iconfactory/"&gt;The Iconfactory&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;&lt;p&gt;Many graphical designers designing application icons give up on representing what the application does as a picture, and instead settle for a jazzy rendition of the initials of the application in question. &lt;br /&gt;&lt;br /&gt;So on your Mac you can try to arrange the application icons in the dock so that they spell words...&lt;/p&gt;&lt;p&gt;More in the &lt;a href="http://www.flickr.com/groups/icon_words/pool/"&gt;Icon Words Pool on Flickr&lt;/a&gt;&lt;br clear="all" /&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:44343</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/44343.html"/>
+    <issued>2006-12-19T10:24:00</issued>
+    <title>My legacy</title>
+    <published>2006-12-19T10:24:06Z</published>
+    <updated>2006-12-19T10:24:06Z</updated>
+    <category term="retcon"/>
+    <category term="too geeky for some"/>
+    <category term="legacy"/>
+    <category term="vindication"/>
+    <category term="immortality"/>
+    <category term="torchwood"/>
+    <content type="html">In 1988 I was posting to the rec.arts.comics newsgroup and Alan Moore had written a comic that revealed that Swamp Thing was not a man transformed in to a monster after all -- he was a monster who merely thought he had been a man once.  All the old &lt;cite&gt;Swamp Thing&lt;/cite&gt; stories still happened, but their interpretation had suddenly altered.  I suggested the term &lt;cite&gt;retcon&lt;/cite&gt; for this use of retroactive contiinuity to change the interpretation of a character wile leaving the old stories standing.&lt;br /&gt;&lt;br /&gt;Twenty-odd years later, and I have been added to &lt;a href="http://en.wikipedia.org/wiki/Retcon"&gt;the  entry for &lt;cite&gt;retcon&lt;/cite&gt; in Wikipedia&lt;/a&gt;, and &lt;cite&gt;retcon&lt;/cite&gt; has appeared in print in comics like &lt;a href="http://www.darkhorse.com/profile/profile.php?sku=13-851"&gt;&lt;cite&gt;The Escapists&lt;/cite&gt;&lt;/a&gt; and on television in &lt;cite&gt;Torchwood&lt;/cite&gt;.&lt;br /&gt;&lt;br /&gt;The &lt;cite&gt;Torchwood&lt;/cite&gt; reference is kind of amusing.  In the first episode, Jack says vaguely that they protect their secrets (what secrets?) with a bit of misdirection, a bit of retcon, a bit of miso soup or something to that effect.  Plainly he is using retcon figuratively in the comic-booky sense of the word: revising someone's backstory.  In the ep in which someone kills several people so she can comes back from the dead and kill her dad, we learn that Retcon is the name of the drug they use to adjust people's memories.  This is a change from episode 1, added to explain away Jack's use of an overly geeky vocabulary.  &lt;em&gt;They retconned 'retcon'!&lt;/em&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:44106</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/44106.html"/>
+    <issued>2006-12-18T10:26:00</issued>
+    <title>Outlook and its obsession with time zones</title>
+    <published>2006-12-18T10:26:03Z</published>
+    <updated>2006-12-18T10:26:03Z</updated>
+    <category term="microsoft"/>
+    <category term="stupid"/>
+    <category term="work"/>
+    <content type="html">&lt;p&gt;When someone at work arranges a lunch date via Microsoft Outlook, I get an email with the date of the rendezvous presented as follows:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;
+When: 19 December 2006 12:00-13:00 (GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London.
+&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;
+It is an 'interesting' design decision that it tells me which parts of the world are subject to the GMT time zone, which I happen to know already, but neglects to mention something I would have found more immediately useful, which is the day of the week of the meeting.  Luckily I own a dektop calculating device called a calendar which tells me the meeting is schedulded for a Tuesday.
+&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:43844</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/43844.html"/>
+    <issued>2006-12-16T11:58:00</issued>
+    <title>Audio question and link</title>
+    <published>2006-12-16T11:58:52Z</published>
+    <updated>2006-12-16T12:01:13Z</updated>
+    <category term="music"/>
+    <category term="collaboration"/>
+    <category term="community"/>
+    <category term="jamglue"/>
+    <category term="audio"/>
+    <category term="link"/>
+    <category term="sound"/>
+    <content type="html">
+
+&lt;p&gt;&lt;a href="http://www.jamglue.com/"&gt;Jamglue&lt;/a&gt; is a new on-line remixing community: you can upload tracks, remix them in a snazzy-looking Flash-based mixing desk, and, they claim, Rock Out.  If LiveJournal suppresses the embedded player above this paragraph, visit &lt;a href="http://www.jamglue.com/mixes/642"&gt;the remix page for ‘Help Me Sombody’&lt;/a&gt; to see how neatly they present the mix and list the tracks it is made from.  Highly educational! :-)&lt;/p&gt;
+
+&lt;p&gt;And now a quick stupid audio tech question.  Suppose someone, let’s call her Alice, has a bunch of 3-minute clips recorded at telphone quality (8 kHz sample rate, 8-bit samples, mono), and wants to embed them in &lt;s&gt;Macromedia&lt;/s&gt; Adobe Flash, which requires that audio clips have a sample rate of 11.025 kHz, 22.05 kHz or 44.1 kHz.  Is it possible to resample to 11.025 kHz without totally losing the sound in aliasing artefacts?  So far her attempts to save it at 44.1 kHz sound much worse than the original 8 kHz audio—there are spiky glitchy noises which I assume are because of aliasing.  I don’t know much about this stuff, but I suspect that clever filtering is required because there is no simple ratio between the two sample rates.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:43701</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/43701.html"/>
+    <issued>2006-12-13T01:13:00</issued>
+    <title>All Tomorrow’s Parties</title>
+    <published>2006-12-13T01:13:24Z</published>
+    <updated>2006-12-13T01:14:57Z</updated>
+    <category term="photos"/>
+    <category term="gig"/>
+    <category term="iggy pop"/>
+    <category term="flickr"/>
+    <content type="html">&lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt; &lt;a href="http://www.flickr.com/photos/pdc/320858132/" title="photo sharing"&gt;&lt;img src="http://static.flickr.com/128/320858132_4fd2bef4ed_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt; &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;  &lt;a href="http://www.flickr.com/photos/pdc/320858132/"&gt;Iggy and the Stooges 2&lt;/a&gt;  &lt;br /&gt;  Originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;. &lt;/span&gt;&lt;/div&gt;Downsides; lots of queuing in the cold—all the stages are separate venues within the Butlins camp, so required door staff and blah—and some of the music was not unlike the wall-of-sound performances I have attended here in Oxford, so perhaps some of the novelty was lost on us. On the other hand, there is a certain amusement value to hanging out in Butlins drinking champagne coctails, staring at the rain-swept amusements, and trying to track down the last copy of the &lt;i&gt;Guardian&lt;/i&gt; in Minehead—and we got to got to a Iggy Pop performance, which was just amazing.&lt;br clear="all" /&gt;</content>
+  </entry>
+</feed>

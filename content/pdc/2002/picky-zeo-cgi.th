@@ -1,0 +1,66 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Picky Picky Game: ZEO + CGI - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Picky Picky Game: ZEO + CGI"
+
+emit {
+    <p>
+      Even in a toy web application like the Picky Picky Game, it is
+      possible (but unlikely) that two people will want to upload a
+      picture at (nearly) the exact same moment.  If two processes try
+      to write the same file at the same time, the results could be a
+      mess.  It follows that we need to include something to
+      co-ordinate the changes.  
+    </p>
+    <p>
+      If this application were all running
+      as a single-process, multi-threaded web server (as <a
+      href="http://www.zope.org/"><abbr title="the Z Object
+      Programming Environment">ZOPE</abbr></a> does), then this would
+      be easily done with <a href="http://zodb.sourceforge.net/"><abbr
+      title="the Z Object Database">ZODB</abbr></a>, but, alas!
+      I&nbsp;am still stubbornly trying to implement this as a 
+      <a href="http://hoohoo.ncsa.uiuc.edu/cgi/interface.html"><abbr title="Common Gateway Interface">CGI</abbr></a>
+      script, and <abbr title="the Z Object Database">ZODB</abbr>
+      cannot co-ordinate transactions between different processes.
+    </p>
+    <p>
+      I thought that <abbr title="ZOPE Enterprise Objects">ZEO</abbr>
+      might fix this&mdash;it manages a <abbr title="the Z Object
+      Database">ZODB</abbr> database that can be shared between many
+      servers, which should make it more than adequate for monitoring
+      separate processes on the same server.  And everything works
+      fine when I&nbsp;run test scripts at the command line, but, at
+      first it failed when the script is invoked as a <abbr
+      title="Common Gateway Interface">CGI</abbr>.  
+    </p>
+    <p>
+	At this point
+      I&nbsp;was wondering what to try next&mdash;stop using <abbr
+      title="Common Gateway Interface">CGI</abbr> (write my sever
+      using Python&rsquo;s own HTTPServer module, or as a <a
+      href="http://www.twistedmatrix.com/">Twisted</a> application, or
+      ...), write my own co-ordination server, etc.  Then it occurred
+      to me that my <abbr title="ZOPE Enterprise Objects">ZEO</abbr>
+      instance was bound to a Unix-domain socket, and since <abbr
+      title="Common Gateway Interface">CGI</abbr> runs using the
+      <code>nobody</code> <abbr title="user identifier">uid</abbr>, it
+      could not connect to that socket (because of file-system
+      permissions).  So I&nbsp;tried switching to using a <a href="http://ietf.org/rfc/rfc793.txt"><abbr
+      title="Transmission-Control Protocol">TCP</abbr></a> socket instead,
+      and it works!  Yay!
+    </p>
+}
+
+p [a 11.html#e20021117 "17 November 2002"]
+
+endBody
+endDocument

@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from rec.th on 2005-11-30 18:53 GMT -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2002/xss;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2002/xss rec.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>XSS Revision 1 DRAFT - Alleged Literature</title>
+    <link href="main.css" rel="stylesheet" type="text/css" arg0="" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p id="Trail">
+      <a href="../../../">Alleged Literature</a> ::
+      <a href="../../">Damian Cugley</a> ::
+      <a href="./">XSS</a> ::
+    </p>
+    <div id="Page">
+      <h1>XML Site Syndication description (DRAFT)</h1>
+      <p>Revision 1 DRAFT (P. Damian Cugley, 12 September 2002)</p>
+      <h2><a id="s1" name="s1">1</a>. Intent <a href="#s1" class="Permalink">#</a></h2>
+      <p>
+        The aim of XSS is to create guidelines for consumers and
+        producers of syndication data for web sites.
+        That includes interoperability with existing
+        Really Simple Syndication and RDF Site Summary feeds,
+        if possible.
+      </p>
+      <p>
+        XSS should function like a module (in the sense of modules in
+        XHTML 1.1 and SVG 1.1): XSS elements can in principle be mixed in with
+        other content.  This is how we approach compatibilty with RSS
+        documents&mdash;we classify the non-XSS elements as &lsquo;other
+        content&rsquo;.
+      </p>
+      <p>
+        In this document we use terms like <em class="ShouldMust">should </em> and <em class="ShouldMust">must </em> in the
+        usual way.  Of course, this document is not the product of any
+        standards committee as such, so you should probably use your own
+        judgement!
+      </p>
+      <h2><a id="s2" name="s2">2</a>. XML details <a href="#s2" class="Permalink">#</a></h2>
+      <h3><a id="s2.1" name="s2.1">2.1</a>. Namespaces <a href="#s2.1" class="Permalink">#</a></h3>
+      <p>
+        XSS is hosted in a well-formed XML document.  The XSS elements
+        will therefore have qnames that are defined in some namespace or
+        other.  XSS producers <em class="ShouldMust">should </em> use the URI
+        
+        <code>http://backend.userland.com/rss2/</code>.  This means there must be
+        an <code>xmlns</code> attribute on each element, or an element
+        containing the XSS data:
+      </p>
+      <pre>
+&lt;rss xmlns="http://backend.userland.com/rss2/"&gt;
+  &lt;channel&gt;
+    <em>XSS content</em>
+  &lt;/channel&gt;
+&lt;/rss&gt;</pre>
+      <p>
+        Note that the <code>rss</code> and <code>channel</code> elements
+        are not XSS elements, even though they are in the same namespace.
+        (Not everything in a given namespace has to be defined in the same spec! )
+      </p>
+      <p>
+        For compatibility, XSS consumers <em class="ShouldMust">should </em>
+        be prepared to detect XSS content using any the following namespaces URLs:
+      </p>
+      <ul>
+        <li>no namespace</li>
+        <li><code>http://my.netscape.com/rdf/simple/0.9/</code></li>
+        <li><code>http://purl.org/rss/1.0/</code></li>
+        <li><code>http://purl.org/rss/1.0/modules/rss091#</code></li>
+        <li><code>http://backend.userland.com/rss2/</code></li>
+      </ul>
+      <p>
+        For compatibility, producers <em class="ShouldMust">should </em> use the default namespace for XSS content
+        (so that item elements appear as <code>&lt;item&gt;</code> rather than,
+        say, <code>&lt;xss:item&gt;</code>.
+        Consumers <em class="ShouldMust">should </em> use XML-savvy means to locate XSS data,
+        which means they should not care whether the XSS elements are
+        specially prefixed or not.
+      </p>
+      <h3><a id="s2.2" name="s2.2">2.2</a>. Text elements <a href="#s2.2" class="Permalink">#</a></h3>
+      <p>
+        We describe no mixed-mode elements&mdash;all XSS elements contain either
+        more elements, or character data, but not both.  In particular,
+        producers <em class="ShouldMust">must </em> strip HTML tags from text when generating <code>title</code>
+        and <code>description</code> elements.
+        For example, given this HTML title:
+      </p>
+      <pre>
+I found &lt;a href="http://example.com/"&gt;this&lt;/a&gt; on foo.com</pre>
+      <p>the XSS title should be rendered as</p>
+      <pre>
+&lt;title&gt;I found this on foo.com&lt;/title&gt;</pre>
+      <p>
+        To make this well-formed XML, the characters
+        <code>&lt;</code> and <code>&amp;</code> <em class="ShouldMust">must </em>
+        be escaped, either as <code>&amp;lt;</code>, <code>&amp;amp;</code> or using numeric escapes (<code>&5<em>nnn</em>;</code>).
+        Also, the characters <code>&gt;</code> and <code>"</code> <em class="ShouldMust">may </em> be encoded as
+        <code>&amp;gt;</code> and <code>&amp;quot;</code>.
+        On the other hand, for compatibility with simple
+        processors, apostrophes <code>'</code> <em class="ShouldMust">should not</em> be
+        escaped as <code>&amp;apos;</code>, which is defined in XML but not HTML.
+      </p>
+      <p>
+        For characters outside the ASCII repertoire, producers
+        <em class="ShouldMust">should </em> simply use UTF-8 encoding.  They <em class="ShouldMust">may </em> use the Latin-1
+        entities described in HTML 3.2
+        (<code>&amp;egrave;</code> for <code>&egrave;</code>, etc.).
+      </p>
+      <h3><a id="s2.3" name="s2.3">2.3</a>. Dublin Core elements <a href="#s2.3" class="Permalink">#</a></h3>
+      <p>
+        <abbr title="RDF Site Summary">RSS</abbr>&nbsp;1.0 defines a mapping from the
+        Dublin Core in to XML elements in the namespace
+        <code>http://purl.org/dc/elements/1.1/</code> with conventional
+        prefix <code>dc</code>.
+      </p>
+      <p>
+        In the following tables, some XSS elements have an  equivalent Dublin Core
+        element.   :
+        Generators <em class="ShouldMust">may </em> include DC elements that have XSS equivalents,
+        but if so it <em class="ShouldMust">must </em>
+        contain equal content to the XSS element.
+      </p>
+      <p>
+        The Dublin Core specification says that each of the
+        elements may appear more than once, whereas
+        the optional elements of XSS may appear at most once.
+        DC elements <em class="ShouldMust">may </em> appear more than once in XSS data.
+        The second and subsequent instance express additional facets
+        of the metadata beyond that captured by the XSS element.
+        For example, an item may have many <code>dc:title</code> elements,
+        prehaps reflecting
+        translations or alternative working titles, but only one
+        XSS <code>title</code> element.
+      </p>
+      <h2><a id="s3" name="s3">3</a>. Channel-description elements <a href="#s3" class="Permalink">#</a></h2>
+      <p>These describe the feed as a whole.</p>
+      <h3><a id="s3.1" name="s3.1">3.1</a>. Required elements <a href="#s3.1" class="Permalink">#</a></h3>
+      <p>
+        Required elements: <code>title</code>, <code>link</code> and <code>description</code>,
+        <a href="http://backend.userland.com/rss#requiredChannelElements">as in RSS 2.0</a>.
+      </p>
+      <p>
+        In <abbr title="RSS">RSS</abbr>&nbsp;0.92 and <abbr title="RDF Site Summary">RSS</abbr>&nbsp;1.0 these appear as children of the
+        <code>channel</code> element.  XSS generators <em class="ShouldMust">should </em> follow suit.
+      </p>
+      <table>
+        <thead>
+          <tr valign="bottom">
+            <th align="left">XSS</th>
+            <th align="left">Dublin Core</th>
+            <th align="left">Comments</th>
+            <th align="left">Version</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr valign="baseline">
+            <td><code>title</code></td>
+            <td><a title="title in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:title</code></a></td>
+            <td>
+              The name of the channel. It's how people refer to your
+              service. If you have an HTML website that contains the
+              same information as your RSS file, the title of your
+              channel should be the same as the title of your website.
+            </td>
+            <td><abbr title="RDF Site Summary">RSS</abbr>&nbsp;0.9</td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>link</code></td>
+            <td>...</td>
+            <td>
+              The URL of the web site described by the channel.
+              This <em class="ShouldMust">should </em> be an <code>http://...</code> URL that
+              links to an HTML web page.
+            </td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>description</code></td>
+            <td><a title="description in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:description</code></a></td>
+            <td>
+              A paragraph describing this
+              channel&mdash;the position statement for
+              your site.
+            </td>
+            <td><abbr title="RSS">RSS</abbr>&nbsp;0.91</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3><a id="s3.2" name="s3.2">3.2</a>. Optional channel metadata <a href="#s3.2" class="Permalink">#</a></h3>
+      <p>
+        Future revisions of this note may or may not attempt to organize the
+        optional elements of <abbr title="RSS">RSS</abbr>&nbsp;0.92 in to separate modules.
+        For now the
+        <a href="http://backend.userland.com/rss#optionalChannelElements">list in the RSS 2.0 documentation</a> will suffice.
+      </p>
+      <table>
+        <thead>
+          <tr valign="bottom">
+            <th align="left">XSS</th>
+            <th align="left">Dublin Core</th>
+            <th align="left">Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr valign="baseline">
+            <td><a href="http://backend.userland.com/rss#ltcategorygtSubelementOfLtitemgt"><code>category</code></a></td>
+            <td><a title="subject in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:subject</code></a></td>
+            <td>
+              A member of a published taxonomy that describes this channel.
+              The XSS element has an optional attribute <code>domain</code> that identifies the taxonomy&mdash;this <em class="ShouldMust">should </em> be a URL.  The DC element takes the complete URL.  <a href="#n3">Note 3</a>
+            </td>
+          </tr>
+          <tr valign="baseline">
+            <td><a href="http://backend.userland.com/rss#ltcloudgtSubelementOfLtchannelgt"><code>cloud</code></a></td>
+            <td>none</td>
+            <td>XML-RPC publisher interface.</td>
+            <td><abbr title="RSS">RSS</abbr>&nbsp;0.92</td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>copyright</code></td>
+            <td><a title="rights in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:rights</code></a></td>
+            <td>
+              The DC element theoretically
+              covers copyright, trade mark, patent,
+              and other &quot;intellectual property&quot; rights.
+            </td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>generator</code></td>
+            <td>...</td>
+            <td>Software used to generate this resource.</td>
+            <td><abbr title="Really Simple Syndication">RSS</abbr>&nbsp;2.0</td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>language</code></td>
+            <td><a title="language in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:language</code></a></td>
+            <td>
+              DC and <abbr title="RDF Site Summary">RSS</abbr>&nbsp;1.0 cite RFC 1766.
+              <abbr title="RSS">RSS</abbr>&nbsp;0.91 and <abbr title="RSS">RSS</abbr>&nbsp;0.92 have an explicit subset of
+              RFC 1766 codes.
+            </td>
+            <td><abbr title="RSS">RSS</abbr>&nbsp;0.91</td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>lastBuildDate</code></td>
+            <td><a title="date in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:date</code></a></td>
+            <td>
+              The time this XSS resource was generated from whatever
+              its source data is.
+              <a href="#n1">Note 1</a>, <a href="#n2">Note 2</a>
+            </td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>managingEditor</code></td>
+            <td><a title="creator in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:creator</code></a></td>
+            <td>The person resposible for this channel as a whole.</td>
+            <td><abbr title="RSS">RSS</abbr>&nbsp;0.92</td>
+          </tr>
+          <tr valign="baseline">
+            <td><code>pubDate</code></td>
+            <td><a title="date in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:date</code></a></td>
+            <td>
+              The official publication date of this channel.
+              For example, a newspaper might have an XSS feed
+              containing articles from one day only.
+              <a href="#n1">Note 1</a>, <a href="#n2">Note 2</a>
+            </td>
+          </tr>
+          <tr valign="baseline">
+            <td><a href="http://backend.userland.com/rss#ltttlgtSubelementOfLtchannelgt"><code>ttl</code></a></td>
+            <td>none</td>
+            <td>
+              Number of minutes before thus resource goes out-of-date,
+              for when the XSS data is not being served by a protocol like HTTP
+              (which already has the <code>Expires</code> header and sundry cache-control headers.
+            </td>
+            <td><abbr title="Really Simple Syndication">RSS</abbr>&nbsp;2.0</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Notes</p>
+      <ol>
+        <li id="n1">
+          DC specifies that dates are written as per the
+          <a href="http://www.w3.org/TR/NOTE-datetime">W3C date and time note</a>,
+          in other words, in ISO order
+          (2002-11-16T23:46).  Whereas RSS dates are written
+          in <a href="http://ietf.org/rfc/rfc2822.txt">RFC 2822</a> stye
+          (<code>Mon, 16 Sep 2002 23:46 +0100</code>).
+        </li>
+        <li id="n2">
+          The DC date elements can be used for either of the
+          XSS date-valued elements, or you could have two <code>dc:date</code>
+          elements, each corresponding to a different XSS element.
+        </li>
+        <li id="n3">If the XSS element has no <code>domain</code> attribute, a corresponding DC element might as well be the same.  If there is a domain, the XSS attribute and content will need to be combined to make a complete URL for a corresponding DC element.</li>
+      </ol>
+      <p>The following Dublin Core elements do not have corresponding XSS elements.</p>
+      <table>
+        <thead>
+          <tr valign="bottom">
+            <th align="left">Dublin Core</th>
+            <th align="left">Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr valign="baseline">
+            <td><a title="publisher in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:publisher</code></a></td>
+            <td>...</td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="contributor in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:contributor</code></a></td>
+            <td>...</td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="type in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:type</code></a></td>
+            <td>...</td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="format in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:format</code></a></td>
+            <td><code>application/rss+xml</code></td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="identifier in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:identifier</code></a></td>
+            <td>...</td>
+            <td>Should be identical to the URL for this resource.</td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="source in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:source</code></a></td>
+            <td>...</td>
+            <td>The URL of a resource from which this resource is derived.</td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="relation in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:relation</code></a></td>
+            <td>...</td>
+          </tr>
+          <tr valign="baseline">
+            <td><a title="coverage in the Dublin Core spec" href="http://dublincore.org/documents/1999/07/02/dces"><code>dc:coverage</code></a></td>
+            <td>...</td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr valign="bottom">
+            <th align="left">Dublin Core</th>
+            <th align="left">XSS</th>
+            <th align="left">Comments</th>
+          </tr>
+        </thead>
+      </table>
+      <h2><a id="s4" name="s4">4</a>. Categories, subjects, and taxonomies <a href="#s4" class="Permalink">#</a></h2>
+      <p>
+        It seems that usual practice for the <code>dc:subject</code> element
+        is a semicolon-separate list of natural-language keywords:
+      </p>
+      <pre>
+&lt;dc:subject&gt;Apples; Pears; Elks&lt;/dc:subject&gt;</pre>
+      <p></p>
+    </div>
+  </body>
+</html>

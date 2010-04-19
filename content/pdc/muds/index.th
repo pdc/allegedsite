@@ -1,0 +1,68 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+	title  "Damian's mud room"
+	pdcMetadata
+}
+
+beginBody
+h1 "Damian&rsquo;s mud room" 
+
+p "(ca. April 1998)"
+
+
+p "
+	What&rsquo;s a mud? 
+	A mud is a text-based, mult-player, shared-world game.
+	Depending on the mud, the emphasis may be on
+	solving puzzles (like in
+	PC adventure games) or social interaction with other
+	players.  
+	there are several flavours of mud (different because
+	they are supported by different software)
+	with names like mucks, mushes and moos.
+	If you&rsquo;re curious about the word [q mud],
+	it originally stood for [q multi-user dungeon]
+	([q dungeon] being an old term from role-playing games).
+	
+"
+
+p "
+	I used to spend more time playing on Muds (specifically
+	[a http://www.furry.com/ FurryMuck] and
+	[a http://www.fur.com/tapestries/ Tapestries]) than I do
+	nowadays.  When I find time I will add some stuff about my
+	FurryMuck character, Slate.  For now we have, by popular
+	demand, a copy of a program I wrote.
+"
+
+p "
+	(WARNING.  
+	This paragraph will make no sense to people who aren&rsquo;t muck
+	builders.)  Here&rsquo;s a dump ([code @archive]) of 
+	[a pdc-morph.muck.txt [code pdc-morph.muf]], a
+	popular morphing program I wrote on FurryMuck.  It takes the
+	form of commands you would need to type to re-create the
+	program object.  [em You will need to make a few minor edits \
+	to use it on another system.] For example, instances of
+	its dbref ([code #8813]) will need to be changed to its new dbref.
+"
+
+## p "
+# 	If you are [em very] interested in FurryMuck, there are
+# 	some [a http://www.furry.com/lycos/cugledam.html sketches of my \
+# 	FurryMuck characters (and some others)] on the Avatar
+# 	archive.
+# "
+
+endBody
+
+endDocument
+
+
+
+
+
+

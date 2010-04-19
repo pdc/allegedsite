@@ -1,0 +1,30 @@
+	<div1 type="act" n="2">
+<page pg="139">
+		<div2 type="scene" n="1">
+			<head type="scene"><l id="tln.583">Actus Secundus. Scena Prima.</head>
+			<note type="asn">2.1</note></l>
+			
+			<stage type="enter">
+				<l id="tln.584">Enter Hermione, Mamillius, Ladies: Leontes,</l>
+				<l id="tln.585" n="585">Antigonus, Lords.</l>
+			</stage>
+</page>
+<page pg="140">
+			<sp who="Hermione">
+				<l id="tln.586"><speaker>Her.</speaker> 
+				<p>Take the Boy to you: he so troubles me,</l>
+				<l id="tln.587">'Tis past enduring.</p></l>
+			</sp>
+			<sp>
+				<l id="tln.588"><speaker>Lady.</speaker> 
+				<p>Come (my gracious Lord)</l>
+				<l id="tln.589">Shall I be your play-fellow?</p></l>
+			</sp>
+			<sp who="Mamillus">
+				<l id="tln.590" n="590"><speaker>Mam.</speaker>
+				<p>No, Ile none of you. </p></l>
+			</sp>
+</page>
+		</div2>
+	</div1>
+

@@ -1,0 +1,191 @@
+Title: TurboGears and Uploading Pictures
+Date: 20060307
+Topics: turbogears forms 
+Icon: ../icon-64x64.png
+
+[TurboGears][] and the [Python Imaging Library][] make writing
+applications that allow the reader to upload
+pictures a snap---which is a refreshing change.
+
+About the Problem
+-----
+
+Handling picture uploads in a web application used to be
+complicated---most frameworks handled file-upload forms as an
+afterthought, or in some cases, not at all (ASP required third-party
+extensions, I seem to recall).  Often conventional form parameters are offered as
+strings in a dictionary that cannot handle other datatypes; an entirely
+separate mechanism must be used to handle uploads.
+
+Capturing Uploads the TurboGears Way
+-----
+
+TurboGears, through CherryPy, makes uploads easy, and uses the same
+mechanism to pass uploaded files as any other form parameter:
+
+    @turbogears.expose(html="picky2.templates.addpicture",
+                    validators={'id': validators.Int()})
+    def filepic(self, id, pic):
+    
+The important difference is in the page that contains the add-picture
+form:
+
+    <h2>Add a picture</h2>
+    <form action="filepic?id=${panel.id}" method="post" 
+            enctype="multipart/form-data" id="filepic">
+        ...
+        <label for="pic">Picture file:</label> ...
+        <input type="file" name="pic" id="pic"/>
+       ...
+    </form> 
+    
+The essential differences are (1) the `enctype` attribute on the `form` element,
+and (2) an `input` element with `type="file"` and (in this case) name `pic`. You
+can have other form parameters, and so far as your controller method is
+concerned they work as normal.
+
+These changes mean that the `pic` argument passed to my `filepic` method is a
+file-upload object, sketchily  documented as part of Python's [cgi module][] and
+in section 3.1.6 of [Chapter 3 the CherryPy book][].  It has three interesting
+member variables:
+
+  - `file`: a file-like object from which we can read the data;
+  - `filename`: the name used for this file on the user's computer; and
+  - `type`: the MIME media-type of the file, as reported by the user's computer.
+  
+The file-name offered can be used, but we have to be cautious because we don't
+know whether the file-name conventions on the user's computer are suitable for
+our purposes: it might be something arcane like `/Users/pdc/Pictures/kitten.jpg` or
+something 'easy to use' like  `C:\Documents and Settings\pdc.OCC\My
+Documents\My Pictures\kitten.jpg`.
+
+Storing the Picture Once it Has Arrived
+-----
+  
+Let's step through the `filepic` method in order. In the Picky2 game, pictures
+are uploaded as candidates for a panel.  Our database model includes `Panel` and
+`Picture` classes, and we pass the identifier of the current panel as one of the
+parameters. The first thing we do is retrieve our person and panel info from the
+database:
+
+    def filepic(self, id, pic):
+        pers = authentication.getLoggedInUser()
+        panel = model.Panel.get(id)
+        ...
+
+We could store the picture directly in the database. At work, we always end up
+doing that, because we a re terrified that one day we might need to migrate the
+application to a different server, and would have to remember to copy the files
+as well as the database itself, which apparently is an easy thing for database
+admins to forget. Nevertheless for Picky2, I intend to keep metadata in the
+database and store the picture data on disc. So I need to generate a file name
+for it.  
+
+We concoct the file name on the web server from a combination of the following:
+
+  - The date of upload (turned in to a directory name like `2006/03/07/`);
+  
+  - The identity of the uploader (munged into a directory  name,so that
+    `http://example.org/jsmith` becomes `example.org-jsmith`);
+  
+  - The last component of the file name from the user's home computer (so each
+    of the examples I gave above end up with `kitten.jpg`).
+        
+This gives something like `static/2006/03/07/example.org-jsmith/kitten.jpg`. The
+reason for the directory structure is that eventually we might have hundreds or
+thousands of pictures, and keeping them all in one directory might make looking
+up files inefficient. (This is a little silly because I am anticipating
+scaleability issues that are unlikely to manifest given how obscure my game will
+be, and besides, [ReiserFS][] has BTree-based directories that do not degrade in
+performance when they have enormous numbers of files.)
+
+It also helps to avoid
+assigning the same file name to pictures from different people. It does expect a
+given person to avoid choosing the same name on the same day for different
+pictures, though I ought to add something to cope with that case, in order to make the
+program more robust.
+
+We want to cap files saved on our system to a given maximum
+size (say 50K bytes).  We do this by carefully only reading 1 byte more than the
+maximum size, and rejecting files that completely fill the buffer:
+
+        output = open(fileName, 'wb')
+        try:				
+            size = 0
+            bytes = pic.file.read(1 + MAX_FILE_SIZE)
+            while bytes:
+                size += len(bytes)	
+                if size > MAX_FILE_SIZE:
+                    raise BadPictureException('Sorry, that file is too big: maximum size is %dK.' 
+                            % (MAX_FILE_SIZE // 1024))
+                output.write(bytes)
+                bytes = pic.file.read(1 + MAX_FILE_SIZE - size)
+        finally:
+            output.close()     
+            
+This code assumes that `pic.file.read` may not read all the bytes in the file in
+one gulp---I have not checked whether this caution is actually required. the
+important thing, though, is that if the file is too big, we throw an exception
+`BadPictureException`. The above code is actually wrapped in a `try`...`except`
+block. Anywhere we need to reject the uploade we raise a `BadPictureException`
+with an appropriate error message. The handler for the exception cleans up the
+unwanted file and redirects back to the page with the form on it:
+    
+    try:
+        ... read in the file as above ...
+        ... process the file ... 
+        return dict(...)
+    except BadPictureException, err:
+        # The uploaded picture was unsatisfactory; issue a message and try again.
+        os.unlink(fileName)
+        turbogears.flash(str(err))
+        raise cherrypy.HTTPRedirect('panel?id=%d' % id)
+        
+This is an example of a function that throws exceptions that it catches itself
+(so that the clean-up code need only be written once). This is a cleaner
+structure than endlessly nested `if` statements.
+
+Processing Images
+-----
+
+Another constraint on images is that they have a certain maximum size. We can
+check this by using [PIL][], the Python Imaging Library.
+            
+        im = Image.open(fileName)
+        width, height = im.size
+        if width > MAX_WIDTH:
+            raise BadPictureException('Sorry, that picture is too wide: maximum is %d pixels.' 
+                    % MAX_WIDTH)
+        if height > MAX_HEIGHT:
+            raise BadPictureException('Sorry, that picture is too tall: maximum is %d pixels.' 
+                    % MAX_HEIGHT)
+        
+If we wanted to generate thumbnails, this is where we would do it.
+
+What we do do is save a pointer to the newly created file in the database.
+Having added some extra classes to `model.py`, the code to do this is quite
+short, because [SQLObject][] magically adds them to the database when
+we create the obejcts:
+
+    picture = model.Picture(uri=PICS_BASE_URI + picDir + name, 
+            width=width, height=height, panel=panel, score=1, person=pers)
+    model.Vote(picture=picture, person=pers, value=1)
+        
+The second statement adds a vote from this user for their picture. Like Reddit, we
+assume that people only upload panels if they think they are good enough to be
+worth voting for. (They can unvote for their panel later if they really want
+to.)
+
+Finally, like all CherryPy methods, we return a dictionary that is used by the template to
+create the HTML page:
+        
+    return dict(picture=picture, panel=panel)
+
+    
+
+  [ReiserFS]: http://www.namesys.com/
+  [SQLObject]: http://sqlobject.org/
+  [CherryPy]: http://www.cherrypy.org/
+  [TurboGears]: http://turbogears.org/
+  [Chapter 3 the CherryPy book]: http://www.cherrypy.org/cherrypy-2.1.0/docs/book/chunk/ch03.html
+  [cgi module]: http://docs.python.org/lib/node471.html

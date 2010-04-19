@@ -1,0 +1,32 @@
+# -*-tcl-*-
+
+source ../../pdcDefs.tcl
+
+beginDocument {
+    title "Picky Picky Game - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Picky Picky Game"
+
+p " An experimental on-line collaborative comic-strip writing game.  "
+
+ul {
+    li "
+    [a http://caption.org/picky/ Play the game on the CAPTION web site]
+    "
+    li "
+    [a ../picky.html Read the work log]
+    "
+
+    li "
+    [a mspaint.html Using Microsoft Paint to create panels].
+    The advantage of MSPAINT is that it is available on all Microsoft
+    Windows computers.
+    "
+}
+
+endBody
+endDocument

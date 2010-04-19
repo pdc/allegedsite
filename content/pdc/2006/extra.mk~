@@ -1,0 +1,25 @@
+$(htmlFiles): ../pdcDefs.tcl ../entryDefs.tcl
+
+badgeSrc		= ../2004/flickr-badge.svg
+badgePng		= flickr-100x100.png
+SVGTOPNG	= svgtopng
+
+install: install-badge
+
+index.html: *.e ../lj.data $(badgePng)
+
+install-badge: $(badgePng)
+	cp -p $(badgePng) $(htmlDir)
+
+flickr-raw.png: $(badgeSrc)
+	$(SVGTOPNG) $(badgeSrc) flickr-raw.png
+	
+$(badgePng): flickr-raw.png
+	pngtopnm flickr-raw.png | pnmscale -width 100 -height 100 > tmp.scaled.ppm
+	pnmcolormap -spreadluminosity -meanpixel 256 tmp.scaled.ppm> tmp.palette
+	pnmremap -mapfile tmp.palette tmp.scaled.ppm | pnmtopng -comp 9 -v > $(badgePng)
+	rm -f tmp.scaled.ppm tmp.palette
+	
+livejournal.inc: livejournal.atom ljAtomToInc.xslt
+	xsltproc ljAtomToInc.xslt livejournal.atom > livejournal.inc
+

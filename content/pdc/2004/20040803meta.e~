@@ -1,0 +1,180 @@
+Title: META files for HTML + XML encoding happiness
+Image: ../icon-64x64.png
+Date: 20040803
+Topics: meta web xml mime
+
+There has been all sorts of trouble with web developers being unable to
+cause their web servers to issue the correct `Content-type` headers. 
+Most recent fallout was [Mark Pilgrim's essay on XML.com][1]. 
+
+The problem
+-----
+
+Suppose I have several  HTML files, some in ISO 8859-1 and the newer ones saved as UTF-8.
+How do I arrange for my web server to serve them tagged
+as `text/html; charset=ISO8859-1` and `text/html; charset=UTF-8` respectively?
+
+Most web servers guess the media-type based on the file name suffix
+(so `.html` &rarr; `text/html`, and so on).
+I have seen sites where different suffixes are used for
+different encodings (`index.htm8`), but that seems kind of a kludge. You
+could mandate the server to parse the file looking for `meta` tags with
+attribute `http-equiv="content-type"`, but that presumes that the server
+can understand subtleties of HTML parsing, and it will take up extra resources on the
+server.
+
+To address this problem I am proposing a
+simple resource format called META (for metadata). 
+
+The format (which I shall
+not define in detail here) is essentially the same as RFC 822 headers:
+
+<pre>
+Content-type: text/html; charset=ISO8859-1
+Title: My plan for world peace
+</pre>
+
+Processors should scan this file considered as an octet-sequence
+(i.e., as bytes, not characters), in the fashion mandated by MIME and RFC 822
+and the rest. Keywords are therefore always US-ASCII. The
+permitted keywords include:
+
+  * `Content-type`, the MIME media type, with parameters;
+  * `Title`: the title to use for this resource; and
+  * `Link`: links to other documents, with `rel`, `title`, `type`
+  attributes corresponding to the HTML equivalents.
+
+The point of the META is that it is very simple and it can be used to
+supply the correct MIME `content-type` header. 
+I am assuming that if I (or my web-page editing program) can I upload
+`peace-plan.html` to my web server, I can  
+also upload `peace-plan.meta`. 
+
+META-savvy
+Web servers use the
+META files associated with a resource to tell them how to serve said
+resources. This should not be too hard; code for
+scanning RFC-822 headers exists and is available as a library for most
+platforms.
+
+As a convenience, they might, if the file-specific metadata
+file is missing, look for `html.meta` in (a) the directory that the
+HTML file is in, and (b) in a server-wide set of defaults. (Obviously
+these META files should not contain titles.) There might be
+operating-system-specific options, such as  
+resource forks on HFS+ file systems.
+
+This implies two file-system accesses per request, at least the first
+time a file is served. I would suggest that the META files are small
+enough that caching them (or the information extracted from them)
+should not be difficult. Servers could also 'compile' metadata ahead of
+time in to an in-memory database.
+
+Application outside of HTML and HTTP
+-----
+
+This is not intended to be limited to HTML files; on the contrary, METAs are
+are designed to be format-neutral:
+
+<pre>
+Content-type: image/jpeg
+Title: Kittens and string
+Link: &lt;kitten46.jpg&gt;; rel=next
+Link: &lt;kitten44.jpg&gt;; rel=prev
+</pre>
+
+Pictures can have titles, and links
+(I was going to link to the HTTP/1.1 definition of
+`Link` and `Title`, but then discovered that HTTP/1.1 does not have them any more!
+The syntax above is modelled on the examples in [HTML 4.0 &sect;14.6][6].)
+
+The web server thus does not have to understand JPEG text annotations to
+serve JPEGs with metadata; on the other hand, a separate program might be used to scan
+JPEGs for metadata and spit out META files for the server to absorb.
+
+
+On the file system
+-----
+
+All the above is not restricted to web servers. When one opens a
+document by double-clicking in your file browser, it should be able to
+use META information to decide how to display the file. This might go
+some what to reduce the annoyance caused when the GUI's understanding of
+file-types is wrong.
+
+There is the worry that now there are two files where once there was one
+-- won't those hapless users get them confused, split them up, delete
+one and not the other, forget to copy both of them, etc.? Actally HTML
+documents already have this problem, since all their included images,
+CSS files, and so on are also separate files.
+Microsoft have
+gone to great lengths to address this problem by adding extra complexity
+to Windows Explorer -- all the extra files go in a specially named
+directory that the Explorer windows may hide from you and may copy about
+automatically. There are some obvious alternatives if you really want to treat a
+collection of HTML pages as a single document:
+
+  * treat a specially named directory of HTML pages in a fashion similar to an
+  application directory (app dirs are a concept used in [ROX][3], called an application
+  bundles in [Mac OS X][4]);
+  * combine HTML and its resources as [MIME `multipart/related`][5] with a
+  document file name ending `.mht` (in this case the META resources might be 
+  folded in with the MIME headers);
+  * combine HTML and its resources as a ZIP archive (like a JAR or WAR).
+
+Applicability to XML served as `text/xml`
+-----
+
+This also would permit XML to use `text/xml` as a media-type:
+
+<pre>
+Content-type: text/xml; charset=ISO8859-7
+Title: =?ISO-8859-7?B?...greek text...?=
+</pre>
+
+The web server does not have to be XML-savvy to generate correct
+headers; it only needs to understand the META file and then serve the
+file unaltered. In many cases the META file can be dropped in to the
+HTTP
+headers unaltered.
+
+If XML files did not have the `encoding` pseudo-attribute in the
+`<?xml...?>` pseudo-processing-instruction at the start, then transcoding would now
+be a non-issue: a transcoding proxy server transcodes the character data
+and rewrites the MIME `content-type`, neither of which are XML-specific.
+A program that transcodes a file on disc must also know to locate and
+alter the META file, but, again, this is not an XML-specific task.
+(These
+utilities might have to be written specially for your XML work, but
+would be generally applicable.)
+
+I do not want to dismiss lightly the clever scheme the XML committee
+came up with for having a file describe its own encoding in a standard
+way. But, speaking purely in the context of counterfactual historical fiction,
+I do think that there would have been advantages to instead
+taking the following approach:
+
+  * Create a separate RFC for the META files outlined in this
+  note and recommend it as best practice foe web servers;
+  * Insist that XML files be processed as character data, with the
+  encoding specified via a META file, or HTTP or MIME headers, or
+  application-specific and
+  operating-system-specific alternatives (such as command-line
+  arguments, Windows' use of byte-order marks to distinguish MCBS and 
+  UTF-16 files, 
+  and Mac OS resources);
+  * Forbid a document from referring to its own encoding.
+  
+The intention being to oblige applications to handle character encodings
+and media-types properly in general, rather than working around their
+existing failings in a fashion that works for XML only.
+
+
+
+    [1]: http://www.xml.com/pub/a/2004/07/21/dive.html "XML on the Web Has Failed"
+    [2]: http://www.ietf.org/rfc/rfc2047.txt "RFC 2047: Mime pt. 3: Message Header Extensions for Non-ASCII Text"
+    [3]: http://rox.sourceforge.net/phpwiki/ "ROX desktop system"
+    [4]: http://www.apple.com/uk/macosx/ "Apple Mac OS X"
+    [5]: http://www.ietf.org/rfc/rfc2387.txt "RFC 2387"
+    [6]: http://www.w3.org/TR/REC-html40/present/styles.html#h-14.6 "14.6 Linking to style sheets with HTTP headers"
+  

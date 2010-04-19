@@ -1,0 +1,31 @@
+Title: Stolen tabs!
+Date: 20040617
+Image: ../../img/caption94-64x64.png
+Topics: caption
+
+Having taken a week off work, I have belatedly updated the [CAPTION
+2004][1] web site.  It includes tabbed sections using a technique
+taken from the article [Sliding Doors of CSS][2] on the [A List
+Apart][3] web site.
+
+In fact I did not just steal the technique, I stole the exact same
+graphics (rather than drawing up my own) since   the colour and shape were
+right anyway.  
+
+The backgrounds use a picture by Carla plus Eric Meyer's '[Complex
+Spiral][4]' technique for creating the illusion of translucent
+backgrounds to the text (the text should look like it is printed on
+translucent rectangles hovering over the background drawing; this will
+not work properly in Microsoft Internet Explorer, however, so I might
+have to take it out).
+
+I have also shamelessly switched to using Unicode's
+typographically-correct quotation marks: 'thus' rather than
+ASCII-era ersatz punctuation
+&apos;thus&apos;.  I am hoping that this will not attract too much
+approbium.
+
+  [1]: http://caption.org/2004/
+  [2]: http://www.alistapart.com/articles/slidingdoors/
+  [3]: http://www.alistapart.com/
+  [4]: http://www.meyerweb.com/eric/css/edge/complexspiral/demo.html

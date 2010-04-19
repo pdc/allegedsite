@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:25 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>DAO - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>dao</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: DAO</h1>
+      <div class="entry">
+        <h2><a name="e20040131" id="e20040131">Saved by the DAO</a></h2>
+        <p class="details">31 January 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="vb6.html"><abbr title="Microsoft Visual Basic 6">VB&nbsp;6</abbr></a></li>
+            <li><strong><abbr title="Microsoft Data Access Objects">DAO</abbr></strong></li>
+            <li><a href="python.html">Python</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2004/01/31.html#e20040131" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://support.microsoft.com/support/kb/articles/Q233/0/02.ASP"><img src="../2004/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I learned to use one of Microsoft’s many abandoned <abbr
+      title="application-programming interface">API</abbr>s this week:
+      <a
+      title="Migration from DAO to ADO (MSDN Library)"
+      href="http://support.microsoft.com/support/kb/articles/Q233/0/02.ASP">DAO,
+      the Data Access Object</a> library.
+    </p>
+    <p>
+      It happened like this.  At work we have a client with an
+      existing application that uses a Microsoft Access database.  He
+      also has the interesting habit of specifying additions not in
+      English but by creating sketchy database schemas in Access.  Our
+      work on the next version will be using Microsoft SQL Server,
+      with which I&nbsp;have some familiarity—unlike Microsoft Access
+      of which I&nbsp;know nothing.  So naturally I&nbsp;was given the task of
+      devising the new database definition.
+    </p>
+    <p>
+      My first couple of weeks were very frustrating.  With SQL
+      databases one can type questions in the SQL language to explore
+      the relationships between database entities (they even store the
+      database schema in its own database tables).  The ‘easy to
+      use’ query creator in Access I&nbsp;personally find
+      bewildering.  It is possible to write queries in SQL, but it
+      makes it plain that it does not like you to do this, and offers
+      less support than, for example, Microsoft SQL Server Query
+      Analyzer.  Access often fails with truly inscrutable error
+      messages.
+    </p>
+    <p>
+      I&nbsp;wanted to use a mini-program to do some of the schema
+      manipulation for me.  Thus I&nbsp;needed extract information about the database definition in
+      a form my program could process.  Access has a nice visual
+      interface for  exploring the relationships between database
+      tables, but no discernible way to extract the information in
+      textual form.  There is an Upsizing Wizard for converting
+      Microsoft Access files in to Microsoft SQL Server databases, but
+      I&nbsp;never got it to work—supposedly installing some service
+      packs should have fixed it, but no dice.  
+    </p>
+    <p>
+      I&nbsp;had a <a href="http://python.org/">Python</a> program
+      using the <abbr title="Open Database Connectivity">ODBC</abbr>
+      support bundled with <a
+      href="http://starship.python.net/crew/mhammond/">Mark
+      Hammond’s</a> Win32 extensions.  With this one can
+      discover the columns defined for a given table.  With some blind
+      poking about I&nbsp;discovered how to get a list of tables using
+      <s>OLE</s> <s>ActiveX</s> <s>COM</s> Automation to talk direct
+      to the Access program.  The programmer had used fairly
+      consistent, stylized column names, from which my program could
+      deduce a lot of the database structure.  But something in the
+      combination of ODBC, Automation, Access and Python caused a lot
+      of crashes, which was annoying.  Then a colleague suggested
+      using DAO.
+    </p>
+    <p>
+      DAO is one of many database libraries for windows, coming after
+      ODBC and <abbr
+      title="Microsoft Remote Data Objects">RDO</abbr> and before
+      OLE-DB, <abbr title="Microsoft ActiveX DataObjects">ADO</abbr>,
+      and ADO&nbsp;.NET.  It was created to allow users of Microsoft
+      Access Basic, and then <abbr title="Microsoft Visual Basic for
+      Applications">VBA</abbr>, <abbr title="Microsoft Visual Basic
+      Scripting Edition">VBScript</abbr> and also <abbr
+      title="Microsoft Visual Basic">VB</abbr> to manipulate Microsoft
+      Access database files (they like to call it the Jet database
+      engine), and extended to allow connection to any ODBC data
+      source.  Nowadays a VB programmer would use a more recent
+      library like ADO.  But DAO, being Jet-specific, sees all when it
+      comes to Access databases.  
+    </p>
+    <p>
+      The <a
+      href="http://www.oreilly.com/catalog/progacdao/">O’Reilly
+      book</a> makes it all straightforward—there’s a list
+      of tables, and a list of ‘relations’, and it pretty
+      much works as it should.  I’m using Python with the
+      Win32com support for Automation to talk to the DAO subsystem,
+      without any bother and with no more crashes.  It also gives more
+      precise info on the data types (ODBC says NUMBER; DAO can
+      distinguish (Short) Integer, Long, Byte, etc).  Equipped with
+      this information, I&nbsp;can begin analysing the database layout
+      in earnest.
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

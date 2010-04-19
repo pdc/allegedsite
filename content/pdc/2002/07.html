@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-02-28 21:34 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2002;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2002 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>July 2002 - Damian Cugley - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2002</a> &gt;&gt;
+      <strong>07</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20020725" id="e20020725">No text-transform in SVG</a></h2>
+        <p class="details">25 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020725" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/"><img src="../2002/../tarot/xii-hanged-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Because my <a href="../2002/01.html#e20020106">font</a> is
+      all-lower-case, I tried using the <code>text-transform</code> 
+      property of <abbr title="Cascading Style Sheets">CSS</abbr> to
+      convert card titles in the <a
+      bref="../tarot/wands.svgz"><abbr title="Scalable Vector
+      Graphics">SVG</abbr>-powered index page</a>.  This proeprty does
+      not exist in SVG, which causes Batik 1.1 to balk (Adobe SVG
+      Viewer merely ignored it).  So I have posted revised versions of
+      the files that hopefully will work better. 
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020723" id="e20020723">Alleged Tarot: SVG index</a></h2>
+        <p class="details">23 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020723" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/wands.svgz"><img src="../2002/../tarot/xxi-world-100w.png" class="initial" alt="" align="left" width="100" height="137" border="0" /></a></div><p class="first">
+      After several half-baked attempts, I&nbsp;have a working 
+      <a href="../2002/../tarot/wands.svgz">visual index
+      page</a> to the <a href="../2002/../tarot/">Alleged Tarot 2002</a> 
+      using <abbr title="Scalable Vector Graphics">SVG</abbr>
+      that uses only static SVG features (no 
+      animation or JavaScript), so hopefully should work in specialist SVG
+      browsers that do not grok HTML, such as Batik or XSMILES.
+      (I&nbsp;have not actually tried it in either of these yet.)
+      It actually looks quite pretty, but on the 
+      Windows <abbr title="New Technology">NT</abbr>
+      box we have here it loads worryingly slowly considering the
+      pages are not very complicated
+      (it does work faster on the bigger box at work).
+    </p>
+    <p>
+      In this case I&nbsp;gave the root element a <code>viewBox</code>
+      attribute but no <code>width</code> and <code>height</code>.  As
+      a result—at least with Adobe SVG Viewer on Microsoft
+      Internet Explorer 5.5—the page automatically 
+      expands to fill the browser window.  Nifty!
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020722" id="e20020722">SVG-powered index page attempt 3</a></h2>
+        <p class="details">22 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020722" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/index-svg.html#a3"><img src="../2002/../tarot/vii-chariot-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Here’s my <a href="../2002/../tarot/index-svg.html#a3">third
+      attempt</a> at a pure-<abbr title="Scalable Vector
+      Graphics">SVG</abbr> index page for the <a
+      href="../2002/../tarot/">virtual tarot deck</a>.  Rather than trying to
+      do it all in one page, this one more conventionally has a set of
+      links to the cards; you must press your browser’s Back
+      button to return to the index page.  So far this prototype
+      covers the minor arcana, and needs to be extended to cover the
+      trumps...
+    </p>
+
+    <p>
+      This might be a good time to mention that from the HTML page, if
+      you are using Adobe’s SVG Viewer,
+      you can right-click on the graphic and choose View SVG to show
+      the graphic full-size in its own window, whichmakes it easier to
+      read.  If you zoom in, you will see that the card images are
+      just raster images (and look fuzzy when magnified);  click on
+      them to see the scalable SVG versions.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020718" id="e20020718">SVG index attempt 2</a></h2>
+        <p class="details">18 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020718" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/attempt-2.svgz"><img src="../2002/../tarot/wands-5-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Still trying to come up with a clever way to offer an index to
+      78 images that uses pure 
+      <abbr title="Scalar Vector Graphics">SVG</abbr>
+      (and no <abbr title="Hypertext Mark-Up Language">HTML</abbr>).
+      <a href="../2002/../tarot/attempt-2.svgz">This one</a>
+      (also linked to from 
+      <a href="../2002/../tarot/index-svg.html#a2">this page</a>) has the SVG for the card images embedded within itself,
+      and uses 
+      <abbr title="Document Object Model">DOM</abbr>
+      manipulation to bring them to the front.
+      Promising?
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020716" id="e20020716">Mozilla doesn&rsquo;t do SVG yet</a></h2>
+        <p class="details">16 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020716" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/technical.html#notmozilla"><img src="../2002/../tarot/xvi-tower-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Added <a href="../2002/../tarot/technical.html#notmozilla">a
+      paragraph</a> to my Tarot section about how Mozilla does not
+      support <abbr title="Scalar Vector Graphics">SVG</abbr>.
+      This is not news, exactly, but it is disapointing that there are
+      no new development on the plug-in fiasco—apart from a
+      succession of duplicate reports of the bug (which I&nbsp;have
+      discovered is difficult to locate if you don’t memorize
+      its number).
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020714" id="e20020714">SVG slideshow, attempt 1</a></h2>
+        <p class="details">14 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020714" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/attempt-1.svg"><img src="../2002/../tarot/i-magician-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      My <a href="../2002/../tarot/">virtual tarot deck</a> is published in
+      <abbr title="Scalar Vector Graphics">SVG</abbr>, but the index
+      pages are still in 
+      <abbr title="Hypertext Mark-Up Language">HTML</abbr>,
+      which is a problem for people trying to visit 
+      using an SVG-only browser like Batik.  So I&nbsp;intend to make
+      an SVG-powered index page.  
+      <a href="../2002/../tarot/attempt-1.svg">My first attempt</a> 
+      uses the SVG <code>image</code> tag and intrinsic animation
+      to switch between cards.  This turns out to be unsatisfactory on
+      two counts.  First, it works by rendering the card and then
+      displaying the result as if it were a raster image—on my
+      computer that leaves the screen blank for some seconds while the
+      off-screen rendring takes place.  Second,  the resulting image
+      is not interactive—you lose the feature of the pips cards
+      where the illustration can be switched on and off.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020708" id="e20020708">Alleged Tarot (25): The Court of Coins</a></h2>
+        <p class="details">8 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020708" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/"><img src="../2002/../tarot/coins-king-100w.png" class="initial" alt="" align="left" width="100" height="137" border="0" /></a></div><p class="first">
+      This is the final tranche of the
+      <a href="../2002/../tarot/">on-going tarot project</a>:
+      the court cards of the suit of Coins
+      (often called Pentacles):
+      <a href="../2002/../tarot/coins-page-svg.html">Page</a>,
+      <a href="../2002/../tarot/coins-knight-svg.html">Knight</a>,
+      <a href="../2002/../tarot/coins-queen-svg.html">Queen</a>, and
+      <a href="../2002/../tarot/coins-king.html">King</a>.
+      This means that I&nbsp;now have all 78 cards drawn—or at
+      least a first draft thereof (there is a slight temptation to go
+      back over some of the earlier designs).  Now I&nbsp;have to work
+      out what the next step is.  I&nbsp;think I&nbsp;need to start
+      with an index page designed in 
+      <abbr title="scalable vector graphics">SVG</abbr>,
+      so that you can view the deck in       <abbr title="scalable
+      vector graphics">SVG</abbr>-only browsers like Batik.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020701" id="e20020701">Alleged Tarot (24): The Court of Swords</a></h2>
+        <p class="details">1 July 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/tarot.html">Alleged Tarot 2002</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020701" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../tarot/"><img src="../2002/../tarot/swords-king-100w.png" class="initial" alt="" align="left" width="100" height="137" border="0" /></a></div><p class="first">
+      This penultimate installment in my <a href="../2002/../tarot/">on-going
+      tarot project</a> was delayed a week—but it turns out that
+      the extra week gave me a chance to solve the problem of what
+      famous chairs to give the Queen and King to sit on.   So here
+      they are at last: the
+      <a href="../2002/../tarot/swords-page-svg.html">Page</a>,
+      <a href="../2002/../tarot/swords-knight-svg.html">Knight</a>,
+      <a href="../2002/../tarot/swords-queen-svg.html">Queen</a>, and 
+      <a href="../2002/../tarot/swords-king-svg.html">King</a> of Swords.
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/">2003</a></li>
+        <li><a href="../2002/12.html">December 2002</a></li>
+        <li><a href="../2002/11.html">November 2002</a></li>
+        <li><a href="../2002/10.html">October 2002</a></li>
+        <li><a href="../2002/09.html">September 2002</a></li>
+        <li><a href="../2002/08.html">August 2002</a></li>
+        <li><a href="../2002/07.html">July 2002</a></li>
+        <li><a href="../2002/06.html">June 2002</a></li>
+        <li><a href="../2002/05.html">May 2002</a></li>
+        <li><a href="../2002/04.html">April 2002</a></li>
+        <li><a href="../2002/03.html">March 2002</a></li>
+        <li><a href="../2002/02.html">February 2002</a></li>
+        <li><a href="../2002/01.html">January 2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

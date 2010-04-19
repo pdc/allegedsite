@@ -1,0 +1,23 @@
+beginDocument {
+	title "CAPTION advertisement"
+}
+
+h1 "CAPTION 2002 advert files"
+
+p "[a dinkyad2.png [img dinkyad2.png] \
+"<br />PNG image, 11&nbsp;KB, 425 &times; 164 pixels"]"
+
+p "
+[a advertprnt.tif "TIFF document, 1&#183;2&nbsp;MB"] (300 dpi).
+"
+
+p "
+[a advertprnt2.bmp "Windows bitmap (.bmp), 1&#183;2&nbsp;MB"]
+"
+
+p "
+[a advertscreen.png "PNG, 116&nbsp;KB"] (1772 &times; 685 pixels)
+"
+
+
+endDocument

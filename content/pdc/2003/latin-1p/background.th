@@ -1,0 +1,115 @@
+# -*-tcl-*-
+
+source specDefs.tcl
+
+beginDocument {
+    title "Character Encoding #1 - Alleged Literature"
+    stylesheet spec.css
+}
+
+beginBody
+
+h1 "About character encodings"
+
+p " Modern text-processing software is described in terms of Unicode
+(or, equivalently, ISO&nbsp;10646).  That is, operations are described
+in terms of <em>character data</em>, where characters are the code
+points defined in the Unicode universal character set.  Examples of
+Unicode code points include U+0041 <samp>A</samp> (latin capital
+letter A), U+00C1 <samp>&#x00C1;</samp> (latin capital letter A with
+acute), U+2014 &mdash; (em dash)"
+
+
+p " These numbers must be <em>encoded</em> as sequences of bytes
+if they are to be stored in files on disc, or transmitted over
+networks, or passed as parameters to library functions.  The simplest
+encodings use one byte to represent one character; this obviously
+limits them to at most 256 Unicode code points.  Examples of
+single-byte encoding-schemes are ASCII, which encodes the first 128
+code points of Unicode one-for-one (code 0x41 encodes U+0041, and so
+on), and cannot encode characters beyond U+007F, and ISO 8859-1 (also
+called Latin-1), which encodes the first 256 code points of Unicode."
+
+p " Other single-byte encodings map bytes on to different Unicode
+characters&mdash;for example, ISO 8859-7 (Greek) maps characters in
+the range 0xC0 to 0xFF on to Greek letters (Unicode U+0370 onwards).
+    "
+
+
+h2 "About English punctuation"
+
+p " In typeset books, quoted words and phrases may be distinguished
+from the rest of the text through a change of typeface (from upright
+to italic, for example), or through quotation marks.  In English the
+marks of quotation are the apostrophe <samp>&rsquo;</samp> (Unicode
+U+2019 RIGHT SINGLE QUOTATION MARK) and the inverted comma
+<samp>&lsquo;</samp> (Unicode U+2018 LEFT SINGLE QUOTATION MARK).  In
+the days of hot-metal printing, the inverted (or turned) comma was
+literally a comma that was turned upside-down.  "
+
+p "Note that Unicode uses the name APOSTROPHE for U+0027
+<samp>'</samp>, a typewriter-inspired character that combines the
+roles of apostrophe, opening quotation mark, prime, and even acute
+accent.  It is often called <em>quote</em> or <em>tick</em> and is
+important in writing in computer languages."
+
+if {0} {
+
+p "Book printing also differs from typewriting with respect to
+hyphens, dashes, and minus signs.  Hyphens are used in compound words
+like <q>daughter-in-law</q>.  Dashes are used as punctuation in
+sentences&mdash;printers call them em dashes because they are
+traditionally 1&nbsp;em in width.  Shorter dashes are used in number
+ranges, like 123&ndash;234 and joining names of joint authors (the
+Smith&ndash;Jones hypothesis) or places (the London&ndash;Manchester
+road).  Printers call them en dashes (since 1&nbsp;en =
+&frac12;&nbsp;em).  Some fonts supply a separate glyph they call a
+figure dash.  Minus signs (as in &minus;1) look different again."
+
+table class=table {
+    tr {
+	td "Hyphen"
+	td "&#x2010;"
+	td "U+2010"
+    }
+    tr {
+	td "Figure dash"
+	td "&#x2012;"
+	td "U+2012"
+    }
+    tr {
+	td "En-dash"
+	td "&ndash;"
+	td "U+2013"
+    }
+    tr {
+	td "Em-dash"
+	td "&mdash;"
+	td "U+2014"
+    }
+    tr {
+	td "Minus sign"
+	td "&minus;"
+	td "U+2212"
+    }
+}
+
+p "
+Again, computer keyboards have a key that generally generates the
+typewriter-inspired HYPHEN-MINUS character.
+"
+
+}
+
+p " The glyphs for these characters vary according to the operating
+system your fonts were designed for.  On many systems using the X11
+window system, and many terminals, the glyphs for U+0027 and U+0060
+look more appropriate for U+2018 and U+2019, reflecting the common
+convention of using the former as substitutes for the latter.  "
+
+
+
+endBody
+endDocument
+
+

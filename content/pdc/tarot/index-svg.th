@@ -1,0 +1,82 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 [img title@600x60.gif "alt=Alleged Tarot 2002"]
+
+form action=deal.svg method=get id=chooseDeal {
+    p {<label for="lo" title="Choose a layout for the deal">Spread:</label>
+    <select id="lo" name="lo">
+    <option value="three">Three-card</option>
+    <option value="six">Six-card</option>
+    <option value="horseshoe">7-card Horseshoe</option>
+    <option value="celtic">Celtic cross</option>
+    <option value="yesno">Yes/No</option>
+    </select>
+    <label for="q" title="Enter your question here">Question:</label>&nbsp;<input id="q" name="q" value="What is the ultimate answer to Life, the Universe, and Everything?" />
+    <input type="submit" value="Deal" />
+}
+}
+
+p "
+[a about.html About the project]. Why draw a tarot deck?
+And why in stick figures?
+"
+
+p "[a svg.html [strong "Index of the cards."]]
+This is one page with 78 small cards on it, each linking
+linking to a  page
+with the SVG version of the card with commentary.
+"
+
+div id=picturemenu {
+    h2 "Index pages in pure SVG: "
+
+    div {
+	p "[a trumps0.svgz \
+		"[img 0-fool-100w.png alt=Trumps]\
+		[br]Trumps"]
+	"
+    }
+    div {
+	p "[a wands.svgz  \
+		"[img wands-ace-100w.png alt=Wands]\
+		[br]Wands"]"
+    }
+    div {
+	p "[a cups.svgz "[img cups-ace-100w.png alt=Cups]\
+		[br]Cups"]"
+    }
+    div {
+	p "[a swords.svgz "[img swords-ace-100w.png alt=Swords]\
+		[br]Swords"]"
+    }
+    div {
+	p "[a coins.svgz "[img coins-ace-100w.png alt=Coins]\
+		[br]Coins"]"
+    }
+}
+
+br* clear=both
+
+p "[a technical.html Technical info] about these pages,
+including a little about [SVG], the graphics format I&nbsp;used.
+&middot; [a aboutDealer.html Technical info about the dealer]
+&middot; [a references.html References]
+ &middot;  [a ../2003/tarot.html Work log]"
+
+br clear=all
+
+endBody
+endDocument
+
+
+

@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:20 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>March 2003 - Damian Cugley - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>03</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20030318" id="e20030318">LiveJournal, now with cool URLs</a></h2>
+        <p class="details">18 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="livejournal.html">LiveJournal</a></li>
+            <li><a href="web.html">web</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030318" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://livejournal.com/~pdc/"><img src="../2003/../wp/icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I have been scraping the <a
+      href="http://livejournal.com/~pdc/">syndicated version of my 
+      <abbr title="Really Simple Syndication">RSS</abbr>
+      feed</a> on <a href="http://livejournal.com/">LiveJournal</a> in
+      order to add comments links to my articles (not that anyone
+      does).  They recently changed the format, so that
+      (a)&nbsp;readers must click through to a second LJ page to find
+      the link to click read the post itself, and (b)&nbsp;my scraper
+      broke.  But that’s their perogative, and offering a
+      comment service to strangers who aren’t even LiveJournal
+      members is hardly part of their core mission, so I cannot fault
+      them for it!
+    </p>
+    <p>
+      They have also switched to using <a
+      href="http://www.w3.org/Provider/Style/URI.html">‘cool’
+      <abbr title="Universal Resource-Locator">URL</abbr>s</a> (in the
+      sense described by <a
+      href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a>
+      in his <a href="http://www.w3.org/Provider/Style/"><cite>Style
+      Guide to Online Hypertext</cite></a>) of the form
+      <code>~pdc/1234.html</code> rather than
+      <code>talkread.bml?this=that&amp;thother=1234</code>.  Apart from
+      making the URLs shorter, this change means that the mechanism
+      used to serve the files is now invisible, and can be altered
+      without having to change the URLs in future.  It could even be
+      (gasp!)&nbsp;static files generated once a night when they scan
+      my RSS feed.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030313" id="e20030313">Second network card</a></h2>
+        <p class="details">13 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="network.html">network</a></li>
+            <li><a href="djbdns.html">djbdns</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030313" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2003/../2002/09.html#e20020921"><img src="../2003/rtl8139.jpg" class="initial" alt="" align="left" width="119" height="114" border="0" /></a></div><p class="first">
+      A while back <a
+      href="../2003/../2002/09.html#e20020921">I&nbsp;installed a second
+      Ethernet card in my Linux box</a> and could not get it to work
+      before the iBook returned to where it belonged.  Having had
+      another  notebook computer visiting us last night, I finally got
+      the thing up and running.
+    </p>
+    <p>
+      All in all it was a simple matter of:
+    </p>
+    <ul>
+      <li>
+        Wasting time examining the floppy supplied with the card for
+        evidence of a program for setting the card’s <abbr
+        title="Interrupt ReQuest number">IRQ</abbr>.
+      </li>
+      <li>
+        Downloading <a
+        href="http://www.scyld.com/diag/"><code>rtl8139-diag.c</code></a>
+        and running it.  It informs me in no uncertain terms that
+        I&nbsp;need to visit the <abbr title="Basic Input-Output
+        System">BIOS</abbr> settings.  The error message has the
+        important hint that there is no way to do this other than the
+        BIOS set-up panel itslef.
+      </li>
+      <li>
+        Shutting down the operating system so I could do this little
+        thing.  Fiddling with the BIOS always makes me nervous, but
+        after a couple of attempts I&nbsp;managed to get it working.
+        I&nbsp;knew this when I&nbsp;rebooted Linux and it detected
+        and activated the second network interface automatically.
+      </li>
+      <li>
+        Changed the network settings for the borrowed laptop.  Poked
+        it some more until it believed that the network was there and
+        it was possible to ping back and forth along the wire.
+      </li>
+      <li>
+        Changed Internet Explorer’s own special control panel
+        for the automatic dial-up.  One of the options makes it so
+        that it does not dial up if there already is a working
+        network.  Duh.  Now <abbr title="Microsoft Internet
+        Explorer">MSIE</abbr> can visit <code>http://10.0.0.1/</code>
+        but cannot resolve domain names.
+      </li>
+      <li>
+        Changed my <a
+        href="http://cr.yp.to/djbdns/run-cache-x.html"><code>dnscache</code></a>
+        settings to permit my newly created
+        <code>192.168.100.0/24</code> network to use it.  (A simple
+        matter of <code>touch
+        /services/dnscache/root/ip/192.168.100</code>, as it turns
+        out.)
+      </li>
+    </ul>
+    <p>
+      At this point it was possible to browse the <abbr
+      title="World-Wide Web">WWW</abbr> from the laptop.  Yay.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030312" id="e20030312">Bahala Na!</a></h2>
+        <p class="details">12 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="comics.html">comics</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030312" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.bahala-na.co.uk/"><img src="../2003/davidgoodman.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      We first met <a
+      href="http://www.bahala-na.co.uk/about.htm">David Goodman</a>
+      and his minicomics when he and <a
+      href="http://www.favouritecrayon.co.uk/">his brother Arthur</a>
+      and some friends attended <a
+      href="http://caption.org/2001/">CAPTION 2001</a>.  Now
+      he’s got his own web site, where he has published <a
+      href="http://www.bahala-na.co.uk/comics/">most of his
+      strips</a>, <a
+      href="http://www.bahala-na.co.uk/gallery/">sketchbooks</a> and
+      reviews of things like <a
+      href="http://www.bahala-na.co.uk/articles/caption2k1.htm">CAPTION
+      2001</a>.  He’s also editor of an anthology zine <a
+      href="http://www.bahala-na.co.uk/zipgun/"><cite>Zip Gun
+      Presents</cite></a> and is soliciting submissions.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030310" id="e20030310">St Edmund Hall makes the news</a></h2>
+        <p class="details">10 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="personal.html">personal</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030310" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.seh.ox.ac.uk/"><img src="../2003/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      My former college, <a
+      href="http://www.seh.ox.ac.uk/">St&nbsp;Edmund Hall</a>, has
+      made the news: The <cite>Daily Telegraph</cite> published an
+      article about the alcoholic bingeing of its students—or
+      rather, an <a
+      href="http://www.oxfordstudent.com/2003-03-06/news/4">inaccurate
+      report of an alcohol ban</a> (as pointed out by <cite>Oxford
+      Student</cite>).  This was picked up by <a
+      href="http://www.bbc.co.uk/radio4/today/"><cite>Today</cite></a>
+      (and <a
+      href="http://news.bbc.co.uk/1/hi/england/2816757.stm">BBCi</a>,
+      which claims SEH has cloisters and a front gate resembling
+      Queen’s?)  and the <cite>Guardian</cite>:
+    </p>
+    <p>
+      <a href="../2003/seh-in-the-news.html">--More (20%)--</a>
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030307" id="e20030307">Return to Sender</a></h2>
+        <p class="details">7 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="comics.html">comics</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030307" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+		<div><a href="http://tourniquet.rydia.net/sender/"><img src="../2003/return-to-sender-detail.png" class="initial" alt="" align="left" width="158" height="138" border="0" /></a></div><p class="first">
+			I found <a href="http://tourniquet.rydia.net/sender/">Vera
+			Brosgol’s on-line comic <cite>Return to Sender</cite></a> (via
+			<a href="http://www.smallstoriesonline.com/links.htm">Derek Kirk
+				Kim’s links page</a>) 
+			just in time for her to announce a
+			short hiatus while she works on something for <a
+			href="http://www.girlamatic.com/">Girlamatic</a> (a
+			soon-to-be-launched web site for female comics creators, it
+			seems).  The whole strip is in a a very pretty pen and wash
+			style (actually the black ink is real and the blue wash is done
+			with Photoshop), giving it a very distinctive look.  
+		</p>
+	
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030305b" id="e20030305b">Copying files</a></h2>
+        <p class="details">5 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="programming.html">programming</a></li>
+            <li><a href="dotnet.html"><abbr title="Microsoft .NET Framework">.NET</abbr></a></li>
+            <li><a href="iis.html"><abbr title="Microsoft Internet Information Server">IIS</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030305b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2003/copying-files.html"><img src="../2003/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I really lost it at work today.   Why am I&nbsp;so frustrated?
+      Well, one of the things that upsets me is when stupid software
+      makes simple things hard.  For example, when I&nbsp;find myself
+      spending an entire fucking afternoon trying to copy data from
+      point <em>A</em> to point <em>B</em>.
+    </p>
+    <p>
+      <a href="../2003/copying-files.html">Rant about copying data about on
+      windows</a>
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030305a" id="e20030305a">Hypertext style and links</a></h2>
+        <p class="details">5 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="web.html">web</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030305a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://slumbering.lungfish.com/index.php?p=linkrules.1045257342"><img src="../2003/../wp/icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      In a discussion of quoting in weblogs I found a link to <a
+      href="http://slumbering.lungfish.com/index.php?p=linkrules.1045257342">a
+      note by Lore
+      Sj&ouml;berg</a> on one of the things mentioned by <a
+      href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a>
+      in his ancient <a href="http://www.w3.org/Provider/Style/"><cite>Style Guide
+      for online hypertext</cite></a>, namely that when writing
+      hypertext you should make it make sense without the links.  
+    </p>
+    <p>
+      <a href="../2003/link-style.html">More on linking styles</a>
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030304b" id="e20030304b">Pythonic Paint Shop Pro!</a></h2>
+        <p class="details">4 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="graphics.html">graphics</a></li>
+            <li><a href="python.html">Python</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030304b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.jasc.com/pbeta/psp/"><img src="../2003/psp.png" class="initial" alt="" align="left" width="80" height="50" border="0" /></a></div><p class="first">
+      <a href="http://www.jasc.com/pbeta/psp/">Paint Shop Pro 8</a> (a
+      Windows paint program) is out in beta and uses <a
+      href="http://www.python.org/">Python</a> as its scripting
+      engine.  It also has new distortion and fancy brush features.
+      <a href="../2003/pythonic-psp.html">--More (25%)--</a>
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030304a" id="e20030304a">Blimps bad</a></h2>
+        <p class="details">4 March 2003</p>
+        <p class="details permalink">
+          <a href="#e20030304a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://boards.straightdope.com/sdmb/showthread.php?threadid=160851"><img src="../2003/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Scylla, in the Straight Dope message boards: <a
+      href="http://boards.straightdope.com/sdmb/showthread.php?threadid=160851">The
+      horror of blimps</a> (via <a
+      href="http://www.deadlybloodyserious.com/Python/2003/02/27.html">Deadly
+      Bloody Serious about Python</a> (Garth T Kidd).  Well it made me
+      laugh.  (Note. No actual Python content.)
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030303" id="e20030303">New bike parking for me</a></h2>
+        <p class="details">3 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="bike.html">My Bike</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030303" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2003/../bike/"><img src="../2003/../bike/19980529d-64x64.jpg" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I complained <a title="Council’s anti-bike vendetta continues"
+      href="../2003/../2002/11.html#e20021116a">last November</a>
+      that my favourite bicycle parking place had been taken away from
+      me by the County Council.  Now the City Council (I assume) have
+      installed new Sheffield racks on a street corner just a few
+      dozen metres from my offices, which is nice.  What’s more,
+      they are flush with the ground (as opposed to having steel tubes
+      along the ground, which obstruct the wheels of parked bikes) and
+      well-spaced (usually Sheffield stands are too close together),
+      which improves on most of the cycle parking in town.  Groovy.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030302" id="e20030302">Small Stories</a></h2>
+        <p class="details">2 March 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="comics.html">comics</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030302" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.smallstoriesonline.com/"><img src="../2003/same-difference-detail.png" class="initial" alt="" align="left" width="64" height="110" border="0" /></a></div><p class="first">
+      If you like slice-o’-life comics, check out <a
+      href="http://www.smallstoriesonline.com/">Small Stories</a>, a
+      web site of comics strips by Derek Kirk Kim (I&nbsp;lost the
+      address to this site years ago but it was mentioned in <a
+      href="http://www.littleyellowdifferent.com/index.php?z=2003_02_01_archive.html#90357065">Ernie
+      Hsiung’s weblog</a>).  There are lots of stips there, some
+      long (<a
+      href="http://www.smallstoriesonline.com/Comics/SameDifference/SameDifferenceIndex.htm"><cite>Same
+      Difference</cite></a> is some 79 pages long), some short (such
+      as <a
+      href="http://www.smallstoriesonline.com/Comics/ValentinesDay/ValentinesDay.htm"><cite>Valentine’s
+      Day</cite></a>).  He says he’s working on getting some of
+      them ready for a printed book.  I can’t wait...
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

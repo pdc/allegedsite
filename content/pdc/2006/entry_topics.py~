@@ -1,0 +1,21 @@
+
+import os
+import re
+
+#subjects_file = 'subjects.data'
+
+root_dir = '..'
+
+xml_re = re.compile(r'<!--|<\?xml|<entry')
+dc_subject_re = re.compile(r'<dc:subject>([^<>]+)</dc:subject>')
+topics_re = re.compile(r'\nTopics:([^\n]+)\n')
+
+def get_entry_tags(entry_name):
+	yr = entry_name[:4]
+	file_name = os.path.join(root_dir, yr, entry_name)
+	text = open(file_name, 'rt').read()
+	if xml_re.search(text):
+		print dc_subject_re.findall(text)
+	else:
+		print topics_re.find(text).group(1)
+		

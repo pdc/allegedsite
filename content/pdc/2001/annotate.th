@@ -1,0 +1,65 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title SVG
+    pdcMetadata
+    style type=text/css {
+	#body {
+	    width: 512px;
+	}
+    }
+}
+
+beginBody
+
+h1 "SVG Annotations"
+
+
+p "
+This is a test of an idea I[nbsp]had to use 
+[acronym* "title=Scalable Vector Graphics" SVG]
+to annotate an existing raster image,
+as an alternative to, for example,
+using nonstandard extensions to 
+[acronym* "title=Tagged Image File Format" TIFF] and
+and a bespoke image viewer in, say, ActiveX format.
+"
+
+emit {<object type="image/svg+xml"
+data="annotate.svg" width="512" height="762"
+>
+<img src="../jrd/20011119.png" width="512" height="762" 
+title="Unless you install an SVG plug-in, you will not see annotations."
+/>
+</object>}
+
+p "This is not a complete example; I&nbsp;have not yet added
+buttons for zooming and moving to the next page etc.
+I&nbsp;am pretty sure they are perfectly doable in Javascript."
+
+p "Were I to be faced with the task of publishing on the web a mass of
+TIFFs containing annotations, then my suggestion would be to have
+either (a)&nbsp;a server plug-in that expands a TIFF file in to a
+virtual directory containing raster data as PNG and annotations in
+SVG, or else (b)&nbsp;just translate the CD into a directory of such
+files, since the hard disc space to do this will cost you about
+tuppence."
+
+p "Actually there are a couple of problems.  First, since SVG and PNG
+do not have [q rights management] built in to them, there is no way to
+prevent the user from printing the images they display.  This is a
+surprisingly common request.  Second, SVG has translucent colours but
+not the transparent yellow used by Microsoft&rsquo;s (Wang-supplied)
+Image Viewer.  I could manage that if I am allowed to require that the
+raster images use transparency to make the [q paper] transparent; the
+yellow rectangles would then be stuck behind the raster."
+
+p "
+The random image file I used is [a ../jrd/20011119.html one of]
+[a ../jrd/ Jeremy Dennis]&rsquo;s weeky strips.
+"
+
+endBody
+endDocument

@@ -1,0 +1,402 @@
+# -*-tcl-*-
+
+source xssDefs.tcl
+
+beginDocument {
+    title "XSS Revision 1 DRAFT - Alleged Literature"
+    stylesheet main.css 
+}
+
+p id=Trail "
+[a ../../../ Alleged Literature] ::
+[a ../../ Damian Cugley] ::
+[a ./ XSS] ::
+"
+
+push div id=Page
+
+h1 "XML Site Syndication description (DRAFT)"
+
+p "Revision 1 DRAFT (P. Damian Cugley, 12 September 2002)"
+
+hh "Intent"
+
+p "
+The aim of XSS is to create guidelines for consumers and
+producers of syndication data for web sites.
+That includes interoperability with existing 
+Really Simple Syndication and RDF Site Summary feeds,
+if possible.
+"
+
+p " XSS should function like a module (in the sense of modules in
+XHTML 1.1 and SVG 1.1): XSS elements can in principle be mixed in with
+other content.  This is how we approach compatibilty with RSS
+documents&mdash;we classify the non-XSS elements as &lsquo;other
+content&rsquo;.  "
+
+p " In this document we use terms like [should] and [must] in the
+usual way.  Of course, this document is not the product of any
+standards committee as such, so you should probably use your own
+judgement!"
+
+hh "XML details"
+
+
+hhh "Namespaces"
+
+p " XSS is hosted in a well-formed XML document.  The XSS elements
+will therefore have qnames that are defined in some namespace or
+other.  XSS producers [should] use the URI
+
+[code http://backend.userland.com/rss2/].  This means there must be
+an [code xmlns] attribute on each element, or an element
+containing the XSS data:"
+
+pre {&lt;rss xmlns="http://backend.userland.com/rss2/"&gt;
+  &lt;channel&gt;
+    <em>XSS content</em>
+  &lt;/channel&gt;
+&lt;/rss&gt;}
+
+p "Note that the [code rss] and [code channel] elements
+are not XSS elements, even though they are in the same namespace.
+(Not everything in a given namespace has to be defined in the same spec! )
+"
+
+p "
+For compatibility, XSS consumers [should]
+be prepared to detect XSS content using any the following namespaces URLs:
+"
+
+ul {
+    li "no namespace"
+    li [code http://my.netscape.com/rdf/simple/0.9/]
+    li [code http://purl.org/rss/1.0/]
+    li [code http://purl.org/rss/1.0/modules/rss091# ]
+    li [code http://backend.userland.com/rss2/]
+}
+
+p "
+For compatibility, producers [should] use the default namespace for XSS content
+(so that item elements appear as [code "&lt;item&gt;"] rather than,
+say, [code "&lt;xss:item&gt;"].  
+Consumers [should] use XML-savvy means to locate XSS data,
+which means they should not care whether the XSS elements are
+specially prefixed or not.
+"
+
+hhh "Text elements"
+
+p "
+We describe no mixed-mode elements&mdash;all XSS elements contain either
+more elements, or character data, but not both.  In particular,
+producers [must] strip HTML tags from text when generating [code title]
+and [code description] elements.  
+For example, given this HTML title:
+"
+
+pre -encode {I found <a href="http://example.com/">this</a> on foo.com}
+
+p "the XSS title should be rendered as"
+
+pre -encode {<title>I found this on foo.com</title>}
+
+p "
+To make this well-formed XML, the characters
+[code "&lt;"] and [code "&amp;"] [must] 
+be escaped, either as [code "&amp;lt;"], [code "&amp;amp;"] or using numeric escapes ([code "&\u0035[em nnn];"]).
+Also, the characters [code "&gt;"] and [code \"] [may] be encoded as
+[code "&amp;gt;"] and [code "&amp;quot;"].
+On the other hand, for compatibility with simple
+processors, apostrophes [code '] [should not] be
+escaped as [code "&amp;apos;"], which is defined in XML but not HTML.
+
+"
+
+p "
+For characters outside the ASCII repertoire, producers
+[should] simply use UTF-8 encoding.  They [may] use the Latin-1
+entities described in HTML 3.2 
+([code "&amp;egrave;"] for [code "&egrave;"], etc.). 
+"
+
+
+
+hhh "Dublin Core elements"
+
+p "[RSS 1.0] defines a mapping from the 
+Dublin Core in to XML elements in the namespace 
+[code http://purl.org/dc/elements/1.1/] with conventional
+prefix [code dc]." 
+
+p "
+In the following tables, some XSS elements have an  equivalent Dublin Core
+element.   :
+Generators [may] include DC elements that have XSS equivalents,
+but if so it [must]
+contain equal content to the XSS element.
+"
+
+p "The Dublin Core specification says that each of the 
+elements may appear more than once, whereas 
+the optional elements of XSS may appear at most once.
+DC elements [may] appear more than once in XSS data.
+The second and subsequent instance express additional facets
+of the metadata beyond that captured by the XSS element.
+For example, an item may have many [code dc:title] elements,
+prehaps reflecting 
+translations or alternative working titles, but only one
+XSS [code title] element.
+"
+
+hh "Channel-description elements"
+
+p "These describe the feed as a whole."
+
+hhh "Required elements"
+
+p "Required elements: [code title], [code link] and [code description],
+[a http://backend.userland.com/rss#requiredChannelElements as in RSS 2.0]."
+
+p "In [RSS 0.92] and [RSS 1.0] these appear as children of the
+[code channel] element.  XSS generators [should] follow suit."
+
+table {
+    thead {
+	tr valign=bottom {
+	    th "XSS"
+	    th "Dublin Core"
+	    th Comments
+	    th Version
+	}
+    }
+    tbody {
+	tr {
+	    td [code title]
+	    td [dcRef title]
+	    td "
+	    The name of the channel. It's how people refer to your
+	    service. If you have an HTML website that contains the
+	    same information as your RSS file, the title of your
+	    channel should be the same as the title of your website.
+	    "
+	    td [RSS 0.9]
+	}
+
+	tr {
+	    td [code link]
+	    td ...
+	    td "
+	    The URL of the web site described by the channel.
+	    This [should] be an [code http://...] URL that 
+	    links to an HTML web page.
+	    "
+	}
+	
+	tr {
+	    td [code description]
+	    td [dcRef description]
+	    td "
+	    A paragraph describing this
+	    channel&mdash;the position statement for
+	    your site.
+	    "
+	    td "[RSS 0.91]"
+	}
+    }
+}
+
+hhh "Optional channel metadata"
+
+p "Future revisions of this note may or may not attempt to organize the
+optional elements of [RSS 0.92] in to separate modules.  
+For now the
+[a http://backend.userland.com/rss#optionalChannelElements \
+list in the RSS 2.0 documentation] will suffice."
+
+table {
+    thead {
+	tr valign=bottom {
+	    th "XSS"
+	    th "Dublin Core"
+	    th Comments
+	}
+    }
+    tbody {
+	tr {
+	    td [a http://backend.userland.com/rss#ltcategorygtSubelementOfLtitemgt [code category]]
+	    td [dcRef subject]
+	    td "
+	    A member of a published taxonomy that describes this channel.
+	    The XSS element has an optional attribute [code domain] that identifies the taxonomy&mdash;this [should] be a URL.  The DC element takes the complete URL.  [a #n3 Note 3]
+	    "
+	}
+	tr {
+	    td [a "http://backend.userland.com/rss#ltcloudgtSubelementOfLtchannelgt" [code cloud]]
+	    td none
+	    td "
+	    XML-RPC publisher interface.
+	    "
+	    td [RSS 0.92]
+	}
+	tr {
+	    td [code copyright]
+	    td [dcRef rights]
+	    td "
+	    The DC element theoretically
+	    covers copyright, trade mark, patent,
+	    and other [q intellectual property] rights.
+	    "
+	}
+	tr {
+	    td [code generator]
+	    td ...
+	    td "
+	    Software used to generate this resource.
+	    "
+	    td [RSS 2.0]
+	}
+	tr {
+	    td [code language]
+	    td [dcRef language]
+	    td "
+	    DC and [RSS 1.0] cite RFC 1766.
+	    [RSS 0.91] and [RSS 0.92] have an explicit subset of 
+	    RFC 1766 codes.
+	    "
+	    td [RSS 0.91]
+	}
+	tr {
+	    td "[code lastBuildDate]"
+	    td [dcRef date]
+	    td "The time this XSS resource was generated from whatever
+	    its source data is.  
+	    [a #n1 Note 1], [a #n2 Note 2]"
+	}
+	tr {
+	    td "[code managingEditor]"
+	    td [dcRef creator]
+	    td "
+	    The person resposible for this channel as a whole.
+	    "
+	    td [RSS 0.92]
+	}
+	tr {
+	    td "[code pubDate]"
+	    td [dcRef date]
+	    td "
+	    The official publication date of this channel.
+	    For example, a newspaper might have an XSS feed
+	    containing articles from one day only.
+	    [a #n1 Note 1], [a #n2 Note 2]"
+	}
+	tr {
+	    td [a "http://backend.userland.com/rss#ltttlgtSubelementOfLtchannelgt" [code ttl]]
+	    td none
+	    td "Number of minutes before thus resource goes out-of-date,
+	    for when the XSS data is not being served by a protocol like HTTP
+	    (which already has the [code Expires] header and sundry cache-control headers.
+	    "
+	    td [RSS 2.0]
+	}   
+    
+}   }
+
+
+p "Notes"
+
+ol {
+    li id=n1 "DC specifies that dates are written as per the
+    [a http://www.w3.org/TR/NOTE-datetime W3C date and time note],
+    in other words, in ISO order
+    (2002-11-16T23:46).  Whereas RSS dates are written
+    in [a http://ietf.org/rfc/rfc2822.txt RFC 2822] stye
+    ([code Mon, 16 Sep 2002 23:46 +0100]).
+    "
+
+    li id=n2 "
+    The DC date elements can be used for either of the 
+    XSS date-valued elements, or you could have two [code dc:date]
+    elements, each corresponding to a different XSS element.
+    "
+
+    li id=n3 "
+    If the XSS element has no [code domain] attribute, a corresponding DC element might as well be the same.  If there is a domain, the XSS attribute and content will need to be combined to make a complete URL for a corresponding DC element.  
+"
+}
+
+
+p "The following Dublin Core elements do not have corresponding XSS elements."
+
+table {
+    thead {
+	tr valign=bottom {
+	    th "Dublin Core"
+	    th Comments
+	}
+    }
+    tbody {
+
+	tr {
+	    td [dcRef publisher]
+	    td ...
+	}
+	tr {
+	    td [dcRef contributor]
+	    td ...
+	}
+	tr {
+	    td [dcRef type]
+	    td ...
+	}
+	tr {
+	    td [dcRef format]
+	    td [code application/rss+xml]
+	}
+	tr {
+	    td [dcRef identifier]
+	    td ...
+	    td "Should be identical to the URL for this resource."
+	}
+	tr {
+	    td [dcRef source]
+	    td ...
+	    td "The URL of a resource from which this resource is derived."
+	}
+	tr {
+	    td [dcRef relation]
+	    td ...
+	}
+	tr {
+	    td [dcRef coverage]
+	    td ...
+	}
+    }
+}
+
+table {
+    thead {
+	tr valign=bottom {
+	    th "Dublin Core"
+	    th "XSS"
+	    th Comments
+	}
+    }
+   }
+
+hh "Categories, subjects, and taxonomies"
+
+p "
+It seems that usual practice for the <code>dc:subject</code> element
+is a semicolon-separate list of natural-language keywords:
+"
+
+pre -encode {<dc:subject>Apples; Pears; Elks</dc:subject>}
+
+p "
+
+"
+
+pop      
+endDocument

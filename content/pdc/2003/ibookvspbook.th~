@@ -1,0 +1,115 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "iBook vs. PowerBook - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "iBook vs. PowerBook"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+emit {
+    <p>
+      Mr Steve announced two new <a
+      href="http://www.apple.com/uk/powerbook/">PowerBooks</a>, one <a
+      href="http://www.apple.com/uk/powerbook/index17.html">large</a>
+      (more a portfolio than a notebook) and one <a
+      href="http://www.apple.com/uk/powerbook/index12.html">dinky</a>
+      (smaller than a PowerBook Duo, apparently).  The new 12<abbr
+      title="inch">&Prime;</abbr> model has a lot of similarities with
+      the 12&Prime; <a
+      href="http://www.apple.com/uk/ibook/">iBook</a>, not least the
+      screen (1024&times;768 with a 12&middot;1&Prime; diagonal),
+      maximum memory (640&nbsp;<abbr title="megabytes">MB</abbr>), and
+      network (10/100 base-T).  So it is kind of an &lsquo;iBook
+      G4&rsquo; with the following differences from the iBook Combo:
+    </p>
+    <table border="0" class="table">
+      <thead>
+	<tr valign="bottom">
+	  <td></td>
+	  <th align="left">iBook <abbr title="DVD/CD-RW optical drive">Combo</abbr></th>
+	  <th align="left">PowerBook 12&Prime;</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr align="left" valign="top">
+	  <th align="left">Processor</th>
+	  <td>800&nbsp;<abbr title="megahertz">MHz</abbr> G3</td>
+	  <td>867&nbsp;MHz G4</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">L2 Cache</th>
+	  <td>512&nbsp;<abbr title="kilobytes">KB</abbr> at 800&nbsp;MHz</td>
+	  <td>256&nbsp;KB <abbr title="double data-rate">DDR</abbr> SRAM</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Main memory</th>
+	  <td>128&nbsp;MB PC100 SDRAM @ £1049&middot;00</td>
+	  <td>256&nbsp;MB PC2100 DDR SDRAM @ £1398&middot;99</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Max memory</th>
+	  <td>640&nbsp;MB @ £1209&middot;02</td>
+	  <td>640&nbsp;MB @ £1517&middot;41</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Graphics</th>
+	  <td>ATI Mobility Radeon 7500 with 32MB SDRAM</td>
+	  <td>NVIDIA GeForce4 420 Go with 32MB of DDR SDRAM</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Disc</th>
+	  <td>30 GB Ultra ATA</td>
+	  <td>40 GB Ultra ATA/100</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Wireless</th>
+	  <td>Airport-ready</td>
+	  <td>Airport-Extreme-ready;<br />Bluetooth</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Video output</th>
+	  <td>VGA, S-Video</td>
+	  <td>VGA, optional S-Video/composite</td>
+	</tr>
+	<tr align="left" valign="top">
+	  <th align="left">Operating System</th>
+	  <td>9 and X</td>
+	  <td>X only</td>
+	</tr>
+      </tbody>
+    </table>
+    <p>
+      I&rsquo;ve priced them with maximum RAM because if I&nbsp;were
+      <em>hypothetically</em> to buy such a beastie, I&nbsp;would give RAM
+      priority over anything else.  But maybe that&rsquo;s because
+      I&rsquo;ve been having trouble with my mere 256&nbsp;MB on the
+      desktop at work, thanks to Microsoft .Net.
+    </p>
+
+    <p>
+      But how much memory does a computer really need?  The computer
+      I&nbsp;am typing this on runs more or less acceptably maxed out
+      at a &lsquo;tiny&rsquo; 64&nbsp;MB, despite X11 chewing up
+      34&nbsp;MB of it for some reason (so long as I&nbsp;avoid
+      Mozilla).  I&nbsp;remember playing <a href="http://www.iancgbell.clara.net/elite/">Elite</a> on a <a
+      href="http://www.mcmordie.co.uk/acornhistory/bbchist.shtml">BBC
+      Micro Model&nbsp;B</a> (<a
+      href="http://pages.zoom.co.uk/acorn.computer/bbcb.html">Photos</a>)
+      that had 32&nbsp;KB for main memory and graphics combined.  The
+      computers listed above both have 1024 times as much RAM in their
+      graphics cards alone.  In a notebook!  The world&rsquo;s gone
+      mad, I&nbsp;tell you.
+    </p>
+}
+
+p [a 01.html#e20030112 12 January 2003]
+
+endBody
+endDocument

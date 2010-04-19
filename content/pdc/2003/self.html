@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:51 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Self - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>self</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Self</h1>
+      <div class="entry">
+        <h2><a name="e20070304_redesign" id="e20070304_redesign">Refactor, Redesign, Restyle</a></h2>
+        <p class="details">4 March 2007</p>
+        <p class="details ljComment">
+          <a href="http://syndicated.livejournal.com/pdc/10550.html">Comment on LiveJournal</a>
+        </p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="css.html"><abbr title="Cascading Stylesheets">CSS</abbr></a></li>
+            <li><a href="html.html">html</a></li>
+            <li><a href="genshi.html">genshi</a></li>
+            <li><a href="python.html">Python</a></li>
+            <li><a href="markdown.html">Markdown</a></li>
+            <li><strong>self</strong></li>
+            <li><a href="restyle.html">restyle</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2007/03/04.html#e20070304_redesign" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">Yes, I have redesigned my archive pages—that is, the ones where all the entries apart
+   from the most recent live, and the index pages for navigating between them.  To see the new look you can visit the <a href="../2007/03/04.html">archive page for this entry</a>.
+</p>
+<p>Not too long ago I <a href="../2007/../2005/12/15.html" title="Experiments with Gentium">restyled this site</a> to use a font called Gentium and a
+   black-on-vellum colour scheme; the navigation remained the same, which is to say,
+   remained broken. Why is that, and what’s so great about my new system?
+</p>
+
+<h3> The problem with TclHTML</h3>
+<p>This site was originally maintained with a package I created called <a href="http://tclhtml.sourceforge.net/">TclHTML</a>, where
+   the programming language Tcl is extended with commands for generating HTML. It seemed
+   like a good idea at the time.
+</p>
+<p>Getting back in to the Tcl code used to generate the year and month
+   index pages was just too depressing to contemplate, so I concentrated on the front page.  Over the years I’ve been hacking on this site I have accumulated a whole slew of code designed to keep various bits in order.  The problem was not just that the Tcl code is harder to work with when you have not done Tcl programming in five years or so; the Makefiles used to run the whole process and pull in data from various files and so on has just become too unwieldy for words. 
+</p>
+
+<h3> The problem with Make</h3>
+<p>The <code>make</code> program works best with sparse dependencies—most targets depend on a small
+   number of other files, with one final linking step at the end. When I added the
+   <a href="../2007/../2003/subjects.html">subjects</a> page, this introduced a single file that depends on all the entries (since
+   any entry may introduce topics that must be listed in <code>subjects.html</code>), and on which
+   dozens of documents depend (the pages for each subject); this and a few other
+   overlapping dependencies means that changing one page means a great number of pages are
+   read and reread because they affect that page.
+</p>
+<p>The solution to this is to have a program with a more specialized algorithm than that of
+   <code>make</code>, so that all the pages can be read and their metadata extracted once; then all
+   the pages that need to be regenerated can be regenerated one after the other using this
+   metadata rather than reconstructing it from scratch each time.
+</p>
+<p>the upshot of this is that I am making a new system, which does not use the old Tcl+Make
+   based code at all—only the content (the entries)
+</p>
+
+<h3> The Problem with Gentium</h3>
+<p>Mozilla Firefox is my main web browser on my Mac, and something about the way Firefox
+   does text and the Gentium font means that my text is <a href="../2007/../2005/12/15.html" title="Experiments with Gentium">looks awful in Firefox</a>. It
+   works fine in Safari and looks great—and it looks no worse on Windows than any other
+   font, and better than most. It’s just Firefox on the Mac.
+</p>
+
+<h3> New possibilities with <s>Kid</s> Genshi</h3>
+<p>I have already been experimenting with generating static HTML <a href="../2007/../2006/08/20.html" title="Maintain Static HTML with Kid Templating">using Kid</a>, a neat and
+   tidy Python-based templating system for XML. Since then, Ryan Tomayko (Kid’s perpetrator)
+   has <a href="http://tomayko.com/articles/2006/11/11/xml-templating-in-python-evolves">anointed Genshi as Kid’s successor</a>. <a href="http://genshi.edgewall.org/">Genshi</a>, like Kid, has templates that are
+   well-formed XML, decorated with special attributes to control how data is incorporated in
+   to the template. Genshi has a few extra features, such as being able to generate text as
+   well as XML, and internally uses streams of mark-up events that use Python’s generator
+   feature to maximum advantage.
+</p>
+<p>Compared with TclHTML, Genshi neatly separates the concerns of how the data is
+   manipulated from the layout of the page: my development process consisted of writing
+   code to extract the information from the various files, and once that was working well
+   enough, hacking the template to make a reasonable page layout, and once that was working
+   well enough, hacking the CSS to make it pretty, and then going back to the Python to add to the repertoire of metadata being extracted.  The advantage over the TclHTML commingled approach is that while working on the template you can think in HTML without needing to hold the programming details in your head at the same time. Well, more or less.
+</p>
+<p>Another advantage is that Genshi will be able to generate non-HTML files (like a news feed in Atom) using the same system as the HTML, only changing the templates.
+</p>
+
+<h3> Object-Oriented Design</h3>
+<p>The inputs for my web site—at least the part I am working on here—are <strong>entries</strong>, stored on disc as one file per entry.<br/><em>Older</em> entries are stored in an XML format:
+</p>
+<pre><code>&lt;entry xmlns="http://www.alleged.org.uk/2003/um"
+    xmlns:dc="http://purl.org/dc/elements/1.1" 
+    date="20020219" icon="../2007/tarot/wands-4-64x64.png"&gt;
+  &lt;h&gt;Alleged Tarot (Week 8): Four &amp;times; Four&lt;/h&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      This week&amp;rsquo;s installment in my 
+      &lt;a href="../2007/tarot/"&gt;on-going project to create an 
+      tarot deck in SVG&lt;/a&gt; is the fours of each suit:
+      &lt;a href="../2007/tarot/wands-4-svg.html"&gt;Wands&lt;/a&gt;,
+      &lt;a href="../2007/tarot/cups-4-svg.html"&gt;Cups&lt;/a&gt;,
+      &lt;a href="../2007/tarot/swords-4-svg.html"&gt;Swords&lt;/a&gt;, and
+      &lt;a href="../2007/tarot/coins-4-svg.html"&gt;Coins&lt;/a&gt;.
+      Hope you all enjoy them.
+    &lt;/p&gt;
+  &lt;/body&gt;
+  &lt;dc:subject&gt;tarot&lt;/dc:subject&gt;
+&lt;/entry&gt;
+</code></pre><p>Note that the <code>body</code> element is basically the same as XHTML, except all the elements are
+   in the wrong namespace. The <code>dc:subject</code> element(s) record topic keywords. My system
+   used the short names, like <code>tarot</code>, to map on to proper labels, like ‘Alleged Tarot
+   2002’. Since then the fashion has emerged of using tags ‘in the raw’, so I might leave
+   them as keywords in future.
+</p>
+<p>In 2004 <a href="../2007/../2004/04/24.html" title="It’s a bit like Markdown">I switched to using Markdown conventions</a>:
+</p>
+<pre><code>Title: It’s a bit like Markdown
+Date: 20040424
+Image: ../icon-64x64.png
+Topics: pymarkdown tcl python markdown self 
+≈
+I have decided to change the way my home site works.  Up until now I
+have been writing entries by creating a quasi-XML file containing the
+HTML text;  I am changing  the format to be quasi-RFC-822: a text file
+with a short header section at the top.  &lt;s&gt;The text is translated to
+HTML via the usual hacked-together nest of regexps.&lt;/s&gt; 
+≈
+The motivation for the change in format is the same as that described
+on [John Gruber’s Markdown page][1]: while I can happily type HTML
+until the cows come home, for writing prose it is nice to be able
+concentrate on the words without being distracted by the requirements
+to get all the tags just right.  Unlike HTML source, it is possible to
+read Markdown text fluently. 
+≈
+  [1]: http://daringfireball.net/projects/markdown/
+≈
+... etc. ...
+</code></pre><p>Once the body has been converted to HTML, the information provided to the system is the
+   same: HTML, date, image, tags. So I have two classes, <code>Entry</code> and <code>XmlEntry</code> with a
+   common base class <code>EntryBase</code>. The function that loads entries peeks at the start of the
+   file to see whether it starts with <code>&lt;</code>, and then passes the text to the appropriate
+   class constructor.
+</p>
+<p>My first thought was to give the <code>EntityBase</code> subclasses a method <code>write_html</code> to
+   generate their HTML versions. Then I remembered that before 1 May 2003, entries did not
+   have their own page, but instead were grouped by month. To allow for this variation, the
+   <code>Corpus</code> object that keeps track of the entries also keeps a list of <code>Output</code> objects.
+   When loading in an entry, the corpus decides which outputs it participates in, and
+   creates them if they do not already exist.<br/>
+</p>
+<p>The <code>Output</code> objects have a list of entries, a title, and a template name (so the legacy
+   monthly roll-ups can use a different Genshi template from the one-entry-per-page
+   entries). They know if they are stale (they check by comparing modified-times), so they
+   need not be regenerated if their inputs have not changed.
+</p>
+<p>This system also gives me the <a href="../2007/../2004/">yearly</a> and <a href="../2007/../2004/07/">monthly</a> index pages almost for free: all I needed to do was add code to register a new output based on the month or year of each entry, and write two extra Genshi templates (and these could be largely based on the existing ones).
+</p>
+<p> <a href="http://www.bbc.co.uk/doctorwho/gallery/s2_08-09gallery/index.shtml">More on Ood</a>.
+</p>
+
+<h3> Redesigning and restyling</h3>
+<p>So much for refactoring the code that generates the site. I have also tweaked the
+   layout. Now the legacy pages have their own template they can have a distinctive design
+   from the single-entry pages: the date is abbreviated and made big and the sizes used in
+   the headings are different to reflect their different granularity. The index pages now
+   simply list titles and tags: the crappy almost-calendar used for the yearly index pages
+   (which did not include new-style entries at all) has been junked, and not a moment too
+   soon.
+</p>
+<p>I’ve also made a better fist of coming up with a workable grid system for the entry
+   pages. The entry details are no longer embedded in the side of the entry but have their
+   own column in the grid. Some nuance of the float rules caused the article photo to get
+   lost in the old style. Now it stands alone and looks decorative. I am also getting a
+   little bolder about adding larger chunks of white space to the design. Professional
+   designers may mock, but by my standards the layout looks pretty good. <code>:-)</code> 
+</p>
+<p>Mac users will see the body text in <a href="http://typography.com/catalog/hoeflertext/">Hoefler Text</a>, a comprehensive family of
+   beautiful text typefaces with all the trimmings provided gratis with Mac OS X. If you
+   have a Mac, open TextEdit, write some text, pop open the Font panel, choose Hoefler
+   Text, and use the cogwheel button menu to pop open the Typography panel to boggle at the
+   OpenType features supported by this under-appreciated font family. For headlines I’ve
+   once again used Futura capitals, slightly letter-spaced for that old-fashioned look.
+</p>
+<p>Windows users may see High Tower Text; I will need to evaluate the look on my PC at work
+   before I finalize the Windows version of the style sheets.
+</p>
+
+<h3> Next</h3>
+<p>This process is not yet finished; what you see now is one weekend’s effort. I’ve claimed
+   I can apply my Genshi-based method to generating the feed as well as the HTML, so I
+   should do that next. Then I need to apply the new system and look to the home page; this
+   will be trickier because there is more information on the home page, gathered from other
+   web sites.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2007/03/04.html#e20070304_redesign" title="Permanent URL for this entry">Refactor, Redesign, Restyle</a>
+          4 March 2007
+        </li>
+        <li>
+          <a href="../2004/04/24.html#e20040424" title="Permanent URL for this entry">It's a bit like Markdown</a>
+          24 April 2004
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

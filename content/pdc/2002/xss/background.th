@@ -1,0 +1,94 @@
+# -*-tcl-*-
+
+source xssDefs.tcl
+
+beginDocument {
+    title "RSS vs. RSS"
+    stylesheet main.css 
+}
+
+p id=Trail "
+[a ../../../ Alleged Literature] ::
+[a ../../ Damian Cugley] ::
+[a ./ XSS] ::
+"
+
+push div id=Page
+
+h1 "RSS vs. RSS"
+
+p "
+One of the strange things about  the weblogging world is that there are
+<em>two</em> [XML] formats with the same initials: 
+[a http://backend.userland.com/rss092 Really Simple Syndication], and
+[a http://www.purl.org/rss/1.0/ RDF Site Summary].
+"
+
+p "
+Both ultimately derive from a format from
+Netscape called 
+[a http://my.netscape.com/publish/formats/rss-0.9.dtd \
+	"RDF Site Summary&nbsp;0.9"] 
+
+(although it was not technically 
+[RDF]-compatible).
+
+The first revision 0.91
+is not backwards compatible, in the sense 
+that an RSS-0.9 document
+isn&rsquo;t an RSS-0.91 document:"
+
+ul {
+    li "The 0.91 root element is 
+    <code>rss</code> rather than <code>rdf:RDF</code>
+    (abandonning the pretence of [RDF] compatbility)."
+    li "In 0.91, the 
+    channel&rsquo;s <code>item</code> elements are nested inside the 
+    <code>channel</code> element (rather than following it)."
+    li "In 0.9 the elements are in the namespace [code http://my.netscape.com/rdf/simple/0.9/].  In 0.91 the elements have no namespace."
+}
+
+p "
+Many elements were added based on the 
+
+[a http://davenet.userland.com/1997/12/15/scriptingNewsInXML \
+Scripting News]
+
+format, adding per-item metadata beyond the bare headline and [URI].
+"
+
+p "
+The 0.9x series continues with [RSS 0.92] and [RSS 2.0], which
+are upwards-compatible (0.91 documents are 0.92 documents, etc.).
+[RSS 0.92] is the format with the largest number of feeds 
+on the syndic8 web site (as of September 2002).
+"
+
+p "
+[RSS 1.0] is the product of the RSS-DEV mailing list.
+It is a successor to [RSS 0.9] (retaining the [code rdf:RDF]
+root element and the positioning of [code item]s following the
+[code channel]), which has had additions made to make it valid [RDF],
+and a system of extension through modules.  
+It is [em not] a successor to 0.91 or 0.92
+(with their [code rss] root element etc.), although most of the
+elements added in 0.92 are also incorporated in 1.0.  Neither is it
+[em technically] upward-compatible with 0.9 (the XML
+namespace used is different, etc.).
+Not that this matters much, since 0.9 is no longer deployed. "
+
+
+p "
+There was [a http://diveintomark.org/archives/2002/09/06.html#history_of_the_rss_fork\
+some discussion at the time] as to whether the 
+
+1.0 format should have a different name.  
+In the end the drivers of both formats each stuck with the initials RSS.
+Luckily there is a slight tendency to use different file-name extensions
+([RSS 0.9x] tends to use [code .xml] or [code .rss],
+whereas [RSS 1.0] tends to use [code .rdf]).
+"
+
+
+pop      
+endDocument

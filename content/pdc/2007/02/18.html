@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:31 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2007/02;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2007/02 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>OpenID in a WSGI filter - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2007</a> &gt;&gt;
+      <a href="./">02</a> &gt;&gt;
+      <strong>18</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20070218_wsgi_openid" id="e20070218_wsgi_openid">OpenID in a WSGI filter</a></h2>
+        <p class="details">18 February 2007</p>
+        <p class="details ljComment">
+          <a href="http://syndicated.livejournal.com/pdc/10402.html">Comment on LiveJournal</a>
+        </p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/wsgi.html">wsgi</a></li>
+            <li><a href="../../2003/openid.html">openid</a></li>
+            <li><a href="../../2003/python.html">Python</a></li>
+            <li><a href="../../2003/quixotic.html">quixotic</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20070218_wsgi_openid" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">With all this <a href="http://simonwillison.net/tags/openid/">buzz about OpenID</a> all of a sudden I have been reminded
+   of how a while back I was tinkering with a <a href="http://turbogears.org/">TurboGears</a>-based web game
+   using <a href="http://openid.net/">OpenID</a> (see parts <a href="../../2007/../2006/02/10.html" title="TurboGears and OpenID">1</a>, <a href="../../2007/../2006/03/06.html" title="TurboGears and OpenID, part 2">2</a>, <a href="../../2007/../2006/03/08.html" title="TurboGears and Uploading Pictures">3</a>). Having learned more
+   about <a href="http://www.python.org/dev/peps/pep-0333/" title="PEP 333 Python Web Server Gateway Interface v1.0">WSGI</a> and <a href="http://pythonpaste.org/">Python Paste</a> I am inclined to see how far I can
+   push the idea of writing web applications using WSGI and a collection of
+   WSGI filters as my framework.
+</p>
+
+<h2> WSGI and WSGI filters</h2>
+<p>The WSGI approach uses a Python callable to represent a web
+   application—or part of one, since WSGI apps can be composed in various
+   ways to make more complicated apps. An app is a function with a definition
+   like this:
+</p>
+<pre><code>def something_app(environ, start_response):
+    ...examine environ and process request...
+
+    start_response(’200 OK’, headers)
+    return ...content of response...
+</code></pre><p>When the web server receives a request, it puts the information about the
+   request in <code>environ</code>, calls <code>something_app</code>, and then uses its return
+   value and the headers passed to the <code>start_response</code> function to issue the
+   response to the caller.
+</p>
+<p>WSGI is designed to be used as a common interface for web frameworks, but
+   given that it has to pass the information in <code>environ</code> to the application
+   code in some way, the <code>environ</code> dictionary is as good a way as any.
+   Similarly, your application has to provide the server with status code,
+   headers, and response data, and the <code>start_response</code> callable is as good
+   away to do that as any. So why not use WSGI as your framework?
+   Because your application would have to have its own code for decoding query-strings, setting cookies, and so on, which would mean a lot of tedious repeated code.  But we can address this with filters.
+</p>
+<p>A WSGI filter is a (higher-order) function that takes a WSGI app and
+   returns a new app with slightly modified behaviour. For example, WSGI
+   supplies your request’s query-string but does not break it down in to
+   parameters. I’ve created a function <code>parse_query_string</code> that does just
+   that. I can then define a filter as follows:
+</p>
+<pre><code>def query_string_filter(app):
+    def wrapped_app(environ, start_response):
+        environ[’alleged.query_args’] = parse_query_string(
+                environ.get(’QUERY_STRING’, ‘’))
+        return app(environ, start_response)
+    return wrapped_app
+</code></pre><p>This takes a function—here called <code>app</code>—that requires an extra entry
+   in the <code>environ</code> dictionary and makes a working WSGI app.  Python has a special syntax for applying functions to functions this way: you can write
+</p>
+<pre><code>@query_string_filter
+def my_app(environ, start_response):
+    ... code that exploits environ[’alleged.query_args’] ...
+</code></pre><p>This use of higher-order functions to simplify writing WSGI apps is called
+   middleware in the <a href="http://www.python.org/dev/peps/pep-0333/" title="PEP 333 Python Web Server Gateway Interface v1.0">WSGI</a> documentation.
+</p>
+<p>Why does the key start with <code>alleged.</code>? Simply to avoid name clashes with
+   other middleware that also works by adding extra entries to the <code>environ</code>
+   dictionary. The particular prefix I’ve chosen is taken from Alleged
+   Literature, our mini-comic publishing imprint from the 1990s. The
+   <code>alleged</code> prefix is also part of the package names for the reusable
+   filters. I suppose if I ever finished it I could add the Alleged
+   Microframework to the eleventy-one Python web frameworks. But don’t hold
+   your breath.
+</p>
+
+<h2> Log-in filter</h2>
+<p>One of the complaints about OpenID is that so far the number of consumers
+   (web sites that allow you to log in with your OpenID) is much lower than
+   the number of providers—this is natural, because it is much easier to
+   bolt an OpenID server on the side of an existing application than to rip
+   out its custom user database and replace it with one generic enough to
+   accept OpenIDs as well. The first wave of OpenID consumers will be
+   applications written with OpenID in mind from the start. Many, like
+   <a href="http://zoomr.com/" title="Like Flickr, except with black backgrounds">Zoomr</a> and <a href="http://simonwillison.net/2006/Dec/19/openid/">Simon Willison’s blog comments</a>, use OpenID as their
+   only authentication scheme. So I decided to have a go at making a log-in
+   system with pluggable authentication, but to only supply an OpenID
+   plug-in for now.
+</p>
+<p>My log-in ‘framework’ (if that’s not too grand a word) consists of just
+   two functions. First, <code>log_in_filter</code> is a more elaborate version of the
+   filter (middleware) functions described above. It roughly corresponds to
+   <a href="../../2007/../2006/03/06.html" title="TurboGears and OpenID, part 2">Part 2</a> of my TurboGears+OpenID experiment: the wrapped app checks
+   for the log-in cookie before each request, and if no-one is logged in
+   then it redirects to a <code>login</code> page (with one exception: you do not need
+   to be logged in to visit the login page). At the end of each request, it
+   updates the log-in cookie.
+</p>
+<p>The second function, <code>log_in_and_redirect</code>, is for use by the
+   implementation of the log-in page: it takes the user name as an
+   argument, and redirects to the page that the user originally requested.
+   You call it instead of calling <code>start_response</code> directly.
+</p>
+<p>What’s missing from this is the log-in page itself: it must be one of the
+   pages in the wrapped app, because it has to be able to communicate the
+   user’s login name back to <code>log_in_filter</code>. It also has to be careful to
+   preserve the query-string parameter <code>next</code>; the most straightforward way
+   to do this is to have the log-in form use <code>request_uri(environ)</code> as its
+   <code>action</code> attribute and also specify <code>method="post"</code>.
+</p>
+<p>Leaving the log-in page to the application allows any form of user name
+   and authentication to be used, including elaborate single-sign-on servers
+   and exotic smart-cards. Because the <code>log_in_filter</code> does not need to know
+   anything about the method of authentication, it needs a lot less
+   configuration than it might otherwise do.
+</p>
+
+<h2> Plugging in OpenID</h2>
+<p>The next step is creating a log-in page that works via OpenID. So far I
+   have taken the code from <a href="../../2007/../2006/02/10.html" title="TurboGears and OpenID">Part 1</a> of my TurboGears version and beaten
+   it roughly in to shape. Unlike the TurboGears version—which used
+   separate URIs for each stage of the OpenID handshake—it uses the same
+   <code>login</code> URI for displaying the form, handling the user’s POST, and
+   handling the redirect back from the OpenID provider. The first and last
+   of these are implementing the same method (GET) but we can tell the which
+   is which by looking for the <code>token</code> argument amongst the query
+   parameters.
+</p>
+<p>Unfortunately I have not yet been able to test this, since I have not yet
+   managed to get Pysqlite2 (needed to set up the OpenID database) installed
+   in Python 2.5 on my Mac as yet: I get an error message to the effect that
+   GCC 4.0 does not exist, so it looks like I need to trawl through the
+   Apple developer documentation to see what I need to do to get the
+   compiler to work. Grr.
+</p>
+<p>Ah well.  Maybe next weekend...?
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

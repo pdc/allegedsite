@@ -1,0 +1,59 @@
+# -*-Tcl-*-
+
+#set albumsDir ../../../../albums
+#source $albumsDir/albumDefs.tcl
+#source ../../pdcDefs.tcl
+#source $albumsDir/peopleUrls.tcl
+
+#initializeAlbum tuschin/pdc/2003/mull \
+#	$albumsDir/mull2003 \
+#	"Visiting Mull (2003) - Damian Cugley" \
+#	"Mull 2003" \
+#	"" \
+#	{"Mull" "Isle of Mull" "Tobermory" "Damian Cugley"} \
+#	../../pdc.css \
+#	[list beginBody] \
+#	endBody
+	
+
+#emitPictureIndexPage index.html { 
+beginDocument {
+	title "Mull 2003"
+	stylesheet ../../2007/entry.css
+}
+div class=entry_page {
+	p id=trail "
+		[a ../../../ [img ../../../img/alleged-03@32x16.png border=0 "alt=Alleged Literature"]]
+	"
+	p id=subtitle "Damian Cugley’s Photos"
+
+	h1 "Mull 2003"
+
+
+	div class=entry {
+		div class=body {
+		p "
+		This September Jeremy and Damian visited Damian&rsquo;s mother Jenny Cugley in her home in Tobermory on the Isle of Mull.
+		      It&rsquo;s a bit of a mixture&mdash;forest scenes from walking
+		      the dogs (my mother has 5&ndash;6 dogs in the house at a time,
+		      some of them borrowed from friends), or from visiting Aros Park
+		      on our own.   There are some close-ups of little stuff as
+		      I&nbsp;tested the (super)macro lens on my digital camera.  
+
+		"
+
+		p "[strong Update (31 March 2007).] This album has been 
+		[a http://flickr.com/photos/pdc/sets/72157600035611329/ \
+		migrated to Flickr] to live with my other photos."
+
+		}
+	}
+}
+
+endDocument
+
+
+#}
+
+#emitPicturePages
+#emitPeoplePages

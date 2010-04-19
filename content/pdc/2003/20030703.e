@@ -1,0 +1,42 @@
+<!-- -*-HTML-*- -->
+<entry date="20030703" icon="../../2005/percy/1/1a1.jpg"
+xmlns="http://www.alleged.org.uk/2003/um"
+xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
+  <h>Percy Street, Page 1</h>
+  <body>
+    <p>
+      If you&rsquo;ve been wondering why I&rsquo;ve not added anything
+      to my site for the last few weeks, it&rsquo;s because I have
+      been spending my spare time playing with <a href="06/12.html">my new graphics tablet</a> instead.
+    </p>
+    <p>
+      There have a been two or three hypothetical comics projects
+      bubbling in my brain for years now&mdash;I&nbsp;just draw too
+      slowly to get anything done.  I&nbsp;do, after all have a
+      full-time job which also takes a lot of creative effort.
+    </p>
+    <p>
+      So here are the two pages I&nbsp;have produced so far&mdash;not
+      a complete story, I&rsquo;m afraid.  This is something I started
+      drawing at the comics tea-party last month, using the Painter
+      program that came with my graphics tablet.  The panels are each
+      drawn as sperate images, the sizes chosen to fit together in to
+      a page 512 pixels wide.  They are drawn at three times the
+      resolution used for the on-line version; the 300-dpi version
+      might in principle be used for an A5 printed version.
+    </p>
+    <p>
+      <a
+      href="http://www.livejournal.com/users/damiancugley/1006.html">Comments
+      on LiveJournal</a>
+    </p>
+    <p>
+    	<strong>Update (10 Dec. 2005).</strong>
+	<a href="../../2005/percy/"><cite>Percy Street</cite></a> is now being
+	drawn under a pseudonym Leckford; for updates see <a
+	href="http://www.livejournal.com/users/leckford/">Leckford&rsquo;s LiveJournal</a>.
+    </p>
+  </body>
+  <dc:subject>graphics</dc:subject>
+  <dc:subject>percy</dc:subject>
+</entry>

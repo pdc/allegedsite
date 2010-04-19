@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from xhtml2-cite.th on 2006-11-01 20:57 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 xhtml2-cite.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Kill cite but keep kbd? Huh? - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>xhtml2-cite</strong>
+    </p>
+    <div id="body">
+      <h1>Kill cite but keep kbd? Huh?</h1>
+      <p id="tagline">Damian Cugley’s Weblog</p>
+      
+      <p class="article">
+      Feel <a
+      href="http://diveintomark.org/archives/2003/01/13.html#semantic_obsolescence">Mark
+      Pilgrim&rsquo;s distress</a> at the excision of
+      <code>cite</code> from <a
+      href="http://www.w3.org/TR/2002/WD-xhtml2-20021211/mod-text.html#s_textmodule">XHTML
+      2.0&rsquo;s Text module</a>.  The irony is that
+      <code>cite</code> is one of the &lsquo;semantic&rsquo; tags
+      (&lsquo;logical&rsquo; tags, as they used to be called) that is
+      actually used and supported by web browsers.  Meanwhile fossils
+      like <code>dfn</code>, <code>kbd</code> and <code>samp</code>
+      are retained.
+      </p>
+      <p>
+      In proper English-language typography, italics are used for
+      various purposes:
+      </p>
+      <ul>
+      <li>
+      Citing things like movies and books (<cite>The Fellowship  the
+      Rings</cite>, <cite>2001: A Space Odyssey</cite>), but not,
+      for example, short stories (&lsquo;The Sentinel&rsquo;);
+      </li>
+      <li>
+      Names of ships (<cite>HMS Beagle</cite>, <cite>HMS
+      Endeavour</cite>), but not, for example, pubs (The Beagle and Hounds);
+      </li>
+      <li>
+      Foreign tags (<i>ad nauseam</i>,
+      <i>b&ecirc;te noire</i>), but not when they have become
+      English words in their own right (caf&eacute;,
+      &aring;ngstr&ouml;m);
+      </li>
+      <li>
+      Words and letters mentioned rather than used (&lsquo;the word
+      <em>complex</em> is often confused with
+      <em>complicated</em>&rsquo;, &lsquo;mind your <em>p</em>s and
+      <em>q</em>s&rsquo;);
+      </li>
+      <li>
+      Terms being introduced for the first time* (&lsquo;we use
+      <dfn>equivalence relation</dfn> to mean a relation that is
+      symmetric, transitive, and associative...&rsquo;);
+      </li>
+      <li>
+      Words and letters used as identifiers in mathematical
+      work&dagger; (<var>x</var>, <var>y</var>, <var>&alpha;</var>,
+      <var>&beta;</var>), with special exceptions for some standard
+      functions like sin and cos;
+      </li>
+      <li>
+      Ditto for writings about computing by authors who think of
+      computing as being related to maths
+      (<var>gcd</var>(<var>a</var>,&nbsp;<var>b</var>),
+      <var>shortest_path</var>, <var>CLUNK</var>); and
+      </li>
+      <li>
+      To indicate <em>emphasis</em>.
+      </li>
+      </ul>
+      
+      <p>
+      The implication of the XHTML&nbsp;2 draft is that all of the
+      above actual, real-people uses of mark-up only deserve a single
+      tag, <code>em</code>.  If we want to have a single element whose
+      semantic, logical, Platonic ur-meaning is &lsquo;text that is
+      printed in italics&rsquo;, why not just use <code>i</code> and
+      save us some typing?
+      </p>
+      
+      <p>
+      Meanwhile there are separate XHTML tags for several esoteric
+      usages that exist <em>only</em> in computer literature, and in
+      fact only in computer manuals: <code>code</code>,
+      <code>samp</code>, <code>kbd</code>, and (in some
+      interpretations) <code>var</code>.  Now, even computer-literate
+      types are inconsistent in their use of a special typeface to
+      distinguish &lsquo;computer text&rsquo; from other text.  For
+      identifiers in programs one might argue that italics works
+      nicely and is easier to read (<a
+      href="http://www.research.att.com/~bs/homepage.html">Bjarne
+      Stroustrup</a> uses italics rather than typewriter in the third
+      edition of <a
+      href="http://www.research.att.com/~bs/3rd.html"><cite>The C++
+      Programming Language</cite></a>).  Few, if any, find the time to
+      distinguish between typing <kbd>foo</kbd> on the keyboard, the
+      character sequence <samp>foo</samp> it generates, the program
+      fragment <code>foo</code> and the variable <var>foo</var> it is
+      parsed as.  And if you are in that position, you probably ought
+      to be using DocBook instead...
+      </p>
+      
+      <p>
+      I&rsquo;d wager that even back in the dawn of the <abbr
+      title="World-Wide Web">WWW</abbr>, non-computer-related text
+      dominated the Web, starting with those particle-physics
+      databases and the <a href="http://imdb.com/uk/">IMDB</a>.  The
+      HTML features designed to support computer manuals are a fossil,
+      left over from when the HTML vocabulary was lifted from <a
+      href="http://www.gnu.org/software/texinfo/texinfo.html"><abbr
+      title="Gnu&rsquo;s not Unix">GNU</abbr>
+      Texinfo</a> (or something closely related thereto).
+      </p>
+      
+      <h2>Idle speculation</h2>
+      
+      <p>
+      There are precedents for formatting that which is normally
+      italicized differently.  The Texinfo conventions for
+      <code>cite</code>, <code>em</code>, and <code>var</code> are
+      <code>_cite_</code>, <code>*em*</code>, and <code>VAR</code>.
+      Donald E. Knuth in the <cite>TeXBook</cite> distinguishes
+      citation from emphasis, using oblique type for the former and
+      true italic for the latter (the mad fool).
+      </p>
+      
+      <p>
+      For what it is worth, if I&nbsp;were king of XHTML for a day
+      I&nbsp;would retain <code>cite</code>.  Would it also be
+      appropriate to extend it to other names of things like ship
+      names?  Many of the above uses of italics are really a form of
+      quotation; they could use <code>q</code>, which after all has
+      never been very successful at supplying quotation marks:
+      </p>
+      
+      <blockquote>
+      <p>
+      <code>
+      Strunk abhored the phrase &lt;q&gt;student body&lt;/q&gt; and suggested
+      &lt;q&gt;studentry&lt;/q&gt; instead.
+      </code>
+      </p>
+      </blockquote>
+      
+      <p>producing something like</p>
+      
+      <blockquote>
+      <p>
+      Strunk abhored the phrase <i>student body</i> and suggested
+      <i>studentry</i> instead.
+      </p>
+      </blockquote>
+      
+      <p>
+      In print this would be set with italics, but you can see how it
+      could just as easily have used quotation marks.  (In principle
+      the use of typewriter text for computery stuff is also a form of
+      quotation and could arguably be a variation on <code>q</code>!)
+      </p>
+      
+      <p>
+      Actual reported speech and would use actual marks of quotation,
+      which in British tradition are <code>&amp;lsquo;</code> and
+      <code>&amp;rsquo;</code> (&lsquo;&hellip;&rsquo;), and in
+      American <code>&amp;ldquo;</code> and <code>&amp;rdquo;</code>
+      (&ldquo;&hellip;&rdquo;).
+      </p>
+      
+      <p>
+      This leaves <code>dfn</code> for definitions, <code>var</code>
+      for variables names and similar (metasyntactic variables, formal
+      parameter names, and mathematical symbols).  Oh, and
+      <code>em</code> to indicate emphasis <em>only</em>.  Hmm.  This
+      almost makes sense.
+      </p>
+      
+      
+      <h2>Conclusion</h2>
+      
+      <p>
+      I&nbsp;think I&nbsp;am sticking with XHTML&nbsp;1.0 for now.  To
+      be honest I&nbsp;am still chary of this new-fangled
+      <code>application/xhtml+xml</code> media-type (I still
+      haven&rsquo;t found out why they want
+      <code>application</code> rather than <code>text</code>).
+      I&nbsp;think that even if XHTML&nbsp;2 is not intended to be
+      backward-compatible with XHTML&nbsp;1, it nevertheless should be
+      rich enough that documents may be converted between formats
+      without loss of information.  Folding <code>cite</code> in to
+      <code>em</code> on the face of it violates that principle.
+      </p>
+      
+      
+      <h2>Footnotes</h2>
+      
+      <p>
+      * The element <code>dfn</code> was lifted from Texinfo to cover
+      this case, but was not supported by browsers (it was not shown
+      italicized), so no-one uses it.
+      </p>
+      
+      <p>
+      &dagger; The element <code>var</code> was originally introduced
+      to cover the mathematical and metasyntactic use (being lifted
+      straight out of the Texinfo conventions), but Microsoft Internet
+      Explorer&rsquo;s designers got it wrong and used the monospace
+      font for <code>var</code>, in effect changing its meaning.  The
+      XHTML&nbsp;2 description tends towards the latter
+      interpretation.
+      </p>
+      
+      
+      
+      <p>
+        <strong>Update</strong> (1 November 2006). Linked to from
+        <a href="http://cafeconleche.org/">Cafe con Leche XML News and Resources</a>.
+        Corrected the spelling of <i>b&ecirc;te</i>.
+        Since I wrote this, the Firefox programmers have elaborated their implementation of the
+        <code>q</code> element to generate language-sensitive quotation marks.
+        Joe Clark has more on
+        we computer scientists’ promotion of computer-specific HTML
+        elements like <code>kbd</code> over additions that might be useful in
+        non-technical publishing in an article
+        <a href="http://blog.fawny.org/2006/10/28/tbl-html/">‘How not to fix HTML’</a>.
+      </p>
+      <p><a href="01.html#e20030113">13 January 2003</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

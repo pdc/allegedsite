@@ -1,0 +1,63 @@
+Title: Holidays
+Date: 20040616
+Image: ../icon-64x64.png
+Topics: macosx tclhtml
+
+I want to work on the [Caption 2004 web site][1] but not trapped at my
+desk upstairs.  So I want to copy my working files to my PowerBook,
+preferably with [`rsync`][2] (since it is about time I got that
+working).  Turns out my creaking Linux box does not have `rsync`.
+Downloaded and installed it.  
+
+Refreshed my memory of SourceForge so that I could use CVS to check
+out a copy of [TclHTML][3], used to generate the HTML files.  The
+SourceForge documentation still claims their CVS server is
+`cvs.sf.net`, but it turns out that nowadays it is
+`cvs.tclhtml.sf.net`.  Luckily I remembered my password!
+
+Doing `make` on TclHTML reveals a dependency on `giftopnm`, part of
+[Netpbm][4], a package of graphical utilities built on [Jef
+Poskanzer][5]'s pbmplus.  Downloaded this and its configure script
+demands [`libjpeg`][6].  But that's OK, IJG follow the GNU
+conventions.  Wait, it needs [`libtool`][7].  So I installed that with
+[FinkCommander][8].  Come to think of it, I could have installed
+`libjpeg` with Fink.  Doing that will make it easier to upgrade later,
+so what the heck, I deleted the copy I'd downloaded and got Fink to
+repeat it.  Next [`libtiff`][9], and [`libpng`][10], also via Fink.
+Anyways, in the end I got NetPBM installed, at which point I was able
+to make a working copy of the web site I can edit downstairs (where it
+is cooler) so long as I don't need to consult anything on the web.
+
+Another task for the day was upgrading my Internet connection from
+dial-up to one of NTL's cable-based broadband systems.  First I tried
+using the [NTL web site][11].  There is a snag: they have a package
+that is £29 for (a)&nbsp;all the non-premium channels plus
+(b)&nbsp;telephone line rental, but when you go to buy a package, the
+cable package now costs £19·50 and does not include phone.
+This would not be a problem if their list of phone deals included the
+implied £9·50/mo plain old phone option, but they only list
+the extra-cost free-weekend-minutes services.  (Looks like NTL have
+been infected with the same mindworm that infests people who market
+mobile phones.)
+
+In the end I abandoned the on-line application and called them.  After
+an impressively deep tree of phone menus I was offered the expected
+£29 deal as expected, except their (new) computer system was
+overloaded, my sales assistant (if that is the correct term) was at
+the end of her shift, and, well, they will phone tomorrow to confirm a
+date for the engineer to call.
+
+Interestingly, NTL have web servers at `www.ntl.co.uk`, `www.ntl.com`,
+`www.ntlhome.com`, and so on, but not `ntl.co.uk`...
+
+    [1]: http://caption.org/2004/
+    [2]: http://samba.anu.edu.au/rsync/
+    [3]: http://tclhtml.sourceforge.net/
+    [4]: http://netpbm.sourceforge.net/
+    [5]: http://acme.com/
+    [6]: http://www.ijg.org/ Independent JPEG Group
+    [7]: http://www.gnu.org/software/libtool/libtool.html
+    [8]: http://finkcommander.sourceforge.net/ A GUI for Fink
+    [9]: http://www.libtiff.org/ TIFF image library and tools
+    [10]: http://www.libpng.org/
+    [11]: http://www.ntl.co.uk/

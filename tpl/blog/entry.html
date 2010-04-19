@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load markup %}
+<html lang="en-GB">
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<title>{{ entry.title }} - Blog</title>
+  	<meta name="author" content="Damian Cugley">
+  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/blog.css" />
+  </head>
+  <body>
+    <div id="banner">
+      <b>Alleged Archive</b>
+      <h1>{{ entry.title }}</h1>
+    </div>
+    <div id="page">
+      <div id="entry-body">
+        {{ entry.body|markdown }}
+      </div>
+      <div id="entry-info">
+        <dl>
+          <dt>Author</dt>
+          <dd>Damian Cugley</dd>
+          <dt>Topics</dt>
+          <dd>(Under construction)</dd>
+        </dl>
+      </div>
+      <div id="entry-nav">
+        <h2>Other Entries</h2>
+        <ul>
+          {% if entry.prev %}
+          <li>
+            <a href="{{ entry.prev.href }}" rel="prev">Previous entry: ‘{{ entry.prev.title }}’</a>
+          </li>
+          {% endif %}
+          {% if entry.next %}
+          <li>
+            <a href="{{ entry.next.href }}" rel="next">Next entry: ‘{{ entry.next.title }}’</a>
+          </li>
+          {% endif %}
+        </ul>
+      </page>
+    </div>
+  </body>
+</html>

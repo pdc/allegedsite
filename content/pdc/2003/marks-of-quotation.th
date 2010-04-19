@@ -1,0 +1,196 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Marks of Quotation - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Marks of Quotation"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+emit {
+    <p class="article"> 
+      I once visited a real printing house, and discovered that the
+      keyboards actually have two quotation-mark keys: one for the
+      apostrophe (&rsquo;) and one for the inverted comma
+      (&lsquo;). Alas! That such simplicity was denied to us by, well,
+      by Apple.
+    </p>
+    <p>
+      <a
+      href="http://www-cs-faculty.stanford.edu/~knuth/">Donald&nbsp;E. Knuth</a>
+      could not depend on anything beyond the limited repertoire of
+      7-bit ASCII (ISO-646, essentially), so had to use the otherwise
+      useless quote (<samp>'</samp>) and backquote (<samp>`</samp>)
+      characters as substitutes. The result was that English
+      typesetting was actually fairly reasonable:
+    </p>
+    <blockquote>
+      <p><code>I said `She said ``Foo!'', and meant it.'</code></p>
+    </blockquote>
+    <p>
+      becomes
+    </p>
+    <blockquote>
+      <p>I said &lsquo;She said &ldquo;Foo!&rdquo;, and meant
+      it.&rsquo;</p>
+    </blockquote>
+    <p>
+      This was in 1982.  Twenty-one years ago.
+    </p>
+    <p>
+      When Apple designed the Macintosh they gave it its own file
+      system, bitmap fonts, screen and keyboard.  This was in an era
+      when <em>everyone</em> was designing their own character sets.
+      There was nothing stopping them from having 2&nbsp;keys for the
+      quotation marks&mdash;or from mapping code points 0x27 and 0x60
+      in their proprietary character set on to the apostrophe (now
+      Unicode U+2019) and turned comma (U+2018). They went part way to
+      proper punctuation, allowing access via obscure keystrokes using
+      the Option key.  This extra complexity lead to the impression
+      that proper punctuation was a difficult alternative to the
+      default of bashing on the <kbd>'</kbd> key.  Hence the term
+      <dfn>smart punctuation</dfn> to describe what could have been
+      the default.
+    </p>
+    <p>
+      SGML came along. They did not adopt Knuth&rsquo;s sensible
+      kludge, preferring to use elements to enclose quotations:
+    </p>
+    <blockquote>
+      <p><code>I said &lt;q&gt;She said &lt;q&gt;Foo!&lt;/q&gt;, and
+      meant it.&lt;/q&gt;</code></p>
+    </blockquote>
+    <p>
+      With complicated rules for working out whether single or double
+      marks are required (whereas the TeX system is simple and
+      foolproof).
+    </p>
+    <p>
+      The requirement that element start and end tags match causes
+      trouble in those situations where English tradition includes
+      unmatched symbols (such as at the start of a new paragraph if a
+      quotation extends beyond one paraqraph). It is also much more
+      intrusive than the TeX style.
+    </p>
+    <p>
+      What does it
+      gain us to force one particular gramatical structure,
+      quotations, to be reflected in the XML structure of the
+      document? We do not require sentences to be marked up so that
+      the full stops be added!
+    </p>
+    <blockquote>
+      <p><code>&lt;sentence class="question"&gt;what does it gain us to
+      force one particular gramatical structure &lt;parenthesis
+      class="comma"&gt;quotations&lt;/parenthesis&gt; to be reflected
+      in the &lt;acronym&gt;xml&lt;/acronym&gt; structure of the
+      document&lt;/sentence&gt; &lt;sentence class="exclamation"&gt;we
+      do not require sentences to be marked up so that the full stops
+      be added&lt;/sentence&gt;</code></p>
+    </blockquote>
+    <p>
+      <abbr title="HyperText Mark-up Language">HTML</abbr>&nbsp;4
+      added its own <code>q</code> element, but no web browsers
+      support it&mdash;at least none that I know of. In desperation
+      the <abbr title="Cascading Style-Sheet">CSS</abbr> standard was
+      <a
+      href="http://www.w3.org/TR/CSS2/generate.html#before-after-content">augmented</a>
+      <a
+      href="http://www.w3.org/TR/CSS2/generate.html#content">with</a>
+      <a
+      href="http://www.w3.org/TR/CSS2/generate.html#quotes">features</a>
+      to force browsers to insert quote marks&mdash;a huge burden on
+      CSS processors to crack this fairly pointless nut.
+    </p>
+    <p>
+      It also means loss of CSS removes the
+      quotation marks!
+    </p>
+    <p>
+      The way to get English punctutation is to use the correct
+      Unicode characters. You should be able to use
+      <code>&amp;lsquo;</code> to get an inverted comma and
+      <code>&amp;rsquo;</code> to get an apostrophe. Some browsers do
+      not yet support these HTML-4 character entities, so perhaps
+      numeric entities (<code>&amp;#x2018;</code>,
+      <code>&amp;#x2019;</code>) are better. Alas!  Older browsers
+      require numeric entities to be in decimal
+      (<code>&amp;#8216;</code>, <code>&amp;#8217;</code>), which is
+      annoying because Unicode numbers are conventionally always shown
+      in hex...
+    </p>
+    <p>
+      All of these options are much more intrusive than Knuth&rsquo;s
+      convention.
+    </p>
+    <p>
+      There are now some Unicode-savvy text editors that allow one to
+      store proper punctuation in your document, so long as you
+      somehow manage to type them in the first place. Presumably on a
+      Mac you can still use those Option key keystrokes. On Windows
+      you use Character Map or one or two apps that try to guess which
+      quotation mark you intended when you pressed the quote
+      key. Sigh.
+    </p>
+    <p>
+      It&rsquo;s crazy that my keyboard has <kbd>¬</kbd>,
+      <kbd>|</kbd>, <kbd>`</kbd>, <kbd>~</kbd>, etc. keys, but not the
+      punctuation marks we were all taught at school.
+    </p>
+}
+
+p [a 01.html#e20030114b 14 January 2003]
+
+p id=reply "[a \
+http://www.livejournal.com/talkread.bml?journal=pdc&itemid=3189#t629 \
+An anonymous poster] points out some browsers [em do] support 
+[code q] elements."
+
+emit {
+<p>Obviously I was remembering an older version of Mozilla&mdash;my information is out of date, sorry! I just tried it again, and it sort-of works.  Here&rsquo;s what that phrase comes out as in whatever browser you are using right now:
+</p>
+<blockquote><p>I said <q>She said <q>Foo!</q> and meant it</q>.</p></blockquote>
+<p>
+In Phoenix 0.5 and Opera 5 this comes out as:
+</p>
+<blockquote>
+<p>I said "She said "Foo!" and meant it".</p>
+</blockquote>
+<p>Which means that, yes, the <code>q</code> tag does do something, but, alas! does not use the correct punctuation marks... :-(
+</p>
+}
+
+emit {
+<p>The main bug for Mozilla quotes is <a title="Initial value for &#39;quotes&#39; property could be nicer [GC]" href="http://bugzilla.mozilla.org/show_bug.cgi?id=16206">16206</a>.  They say that they don&rsquo;t support inner quotes at all, and  adding multiple languages is going to be horribly inefficient.</p>
+
+<p>In fact <a
+href="http://bugzilla.mozilla.org/show_bug.cgi?id=24861">It&rsquo;s
+really hard to work out quoting depth properly</a>, because
+<em>any</em> HTML element can be set to have quotation-mark-inserting
+properties!  This is because by the time you add enough features to
+CSS&nbsp;2 to specify quotation marks, these new features can be
+combined in strange ways that are tough to implement correctly and
+efficiently.
+</p>
+
+<p>
+I stand by my claim that trying to make <code>q</code> do the right
+thing in the general case has required and will require enormous
+programming effort, and that being able to just type in the quotation
+marks oneself would be immesurably simpler and more transparent!
+</p>
+
+<p>Also... apostrophes also appear in non-quote contexts, and 
+<code>q</code> does nothing to help there.</p>
+}
+
+p [a 01.html#e20030116 16 January 2003]
+
+endBody
+endDocument

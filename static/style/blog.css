@@ -1,0 +1,271 @@
+
+@font-face {
+	font-family: 'MisoLight';
+	src: url('miso/miso-light.eot');
+	src: local('Miso'), local('Miso-Light'), url('miso/miso-light.woff') format('woff'), url('miso/miso-light.ttf') format('truetype'), url('miso/miso-light.svg#Miso-Light') format('svg');
+}
+
+@font-face {
+	font-family: 'MisoRegular';
+	src: url('miso/miso.eot');
+	src: local('Miso'), local('Miso'), url('miso/miso.woff') format('woff'), url('miso/miso.ttf') format('truetype'), url('miso/miso.svg#Miso') format('svg');
+}
+
+@font-face {
+	font-family: 'MisoBold';
+	src: url('miso/miso-bold.eot');
+	src: local('Miso'), local('Miso-Bold'), url('miso/miso-bold.woff') format('woff'), url('miso/miso-bold.ttf') format('truetype'), url('miso/miso-bold.svg#Miso-Bold') format('svg');
+}
+
+
+
+@font-face {
+	font-family: 'Whitehall';
+	src: url('whitehall/whitehall.eot');
+	src: local('Whitehall'), local('Whitehall'), url('whitehall/whitehall.woff') format('woff'), url('whitehall/whitehall.ttf') format('truetype'), url('whitehall/whitehall.svg#Whitehall') format('svg');
+}
+
+
+
+
+@font-face {
+	font-family: 'YanoneKaffeesatz Thin';
+	src: url('yanonekaffeesatz/yanonekaffeesatz-thin.eot');
+	src: local('☺'), url('yanonekaffeesatz/yanonekaffeesatz-thin.woff') format('woff'), url('yanonekaffeesatz/yanonekaffeesatz-thin.ttf') format('truetype'), url('yanonekaffeesatz/yanonekaffeesatz-thin.svg#webfont') format('svg');
+}
+
+@font-face {
+	font-family: 'YanoneKaffeesatz Regular';
+	src: url('yanonekaffeesatz/yanonekaffeesatz-regular.eot');
+	src: local('☺'), url('yanonekaffeesatz/yanonekaffeesatz-regular.woff') format('woff'), url('yanonekaffeesatz/yanonekaffeesatz-regular.ttf') format('truetype'), url('yanonekaffeesatz/yanonekaffeesatz-regular.svg#webfont') format('svg');
+}
+
+@font-face {
+	font-family: 'YanoneKaffeesatz Bold';
+	src: url('yanonekaffeesatz/yanonekaffeesatz-bold.eot');
+	src: local('☺'), url('yanonekaffeesatz/yanonekaffeesatz-bold.woff') format('woff'), url('yanonekaffeesatz/yanonekaffeesatz-bold.ttf') format('truetype'), url('yanonekaffeesatz/yanonekaffeesatz-bold.svg#webfont') format('svg');
+}
+
+@font-face {
+	font-family: 'YanoneKaffeesatz Light';
+	src: url('yanonekaffeesatz/yanonekaffeesatz-light.eot');
+	src: local('☺'), url('yanonekaffeesatz/yanonekaffeesatz-light.woff') format('woff'), url('yanonekaffeesatz/yanonekaffeesatz-light.ttf') format('truetype'), url('yanonekaffeesatz/yanonekaffeesatz-light.svg#webfont') format('svg');
+}
+
+
+
+@font-face {
+	font-family: 'GentiumBookBasicRegular';
+	src: url('gentium/GenBkBasR.eot');
+	src: local('Gentium Book Basic'), local('GentiumBookBasic'), url('gentium/GenBkBasR.woff') format('woff'), url('gentium/GenBkBasR.ttf') format('truetype'), url('gentium/GenBkBasR.svg#GentiumBookBasic') format('svg');
+}
+
+@font-face {
+	font-family: 'GentiumBookBasicItalic';
+	src: url('gentium/GenBkBasI.eot');
+	src: local('Gentium Book Basic'), local('GentiumBookBasic-Italic'), url('gentium/GenBkBasI.woff') format('woff'), url('gentium/GenBkBasI.ttf') format('truetype'), url('gentium/GenBkBasI.svg#GentiumBookBasic-Italic') format('svg');
+}
+
+@font-face {
+	font-family: 'GentiumBookBasicBold';
+	src: url('gentium/GenBkBasB.eot');
+	src: local('Gentium Book Basic'), local('GentiumBookBasic-Bold'), url('gentium/GenBkBasB.woff') format('woff'), url('gentium/GenBkBasB.ttf') format('truetype'), url('gentium/GenBkBasB.svg#GentiumBookBasic-Bold') format('svg');
+}
+
+@font-face {
+	font-family: 'GentiumBookBasicBoldItalic';
+	src: url('gentium/GenBkBasBI.eot');
+	src: local('Gentium Book Basic'), local('GentiumBookBasic-BoldItalic'), url('gentium/GenBkBasBI.woff') format('woff'), url('gentium/GenBkBasBI.ttf') format('truetype'), url('gentium/GenBkBasBI.svg#GentiumBookBasic-BoldItalic') format('svg');
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    
+    font-family: "GentiumBookBasicRegular", "Palatino", "Book Antiqua", serif;
+    line-height: 1.25; /* Default is 16px on 20px */
+    background-color: #EEE;
+}
+
+em {
+    font-family: "GentiumBookBasicItalic", "Palatino", "Book Antiqua", serif;
+    
+}
+
+#banner {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 7.5em;
+    margin: 0 0 0.625em;
+    padding: 0;
+    
+    background: #182834 url(banners/banner-2008-12-26.jpeg) left 50% no-repeat;
+    border-bottom: 4px solid #123;
+}
+
+#banner b {
+    font-size: 2em;
+    display: block;
+    padding: 0 10px;    
+    
+    font-weight: normal;
+    font-family: "Whitehall", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #FFF;
+}
+
+#banner i {
+    display: block;
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+    font-weight: normal;
+    font-family: "YanoneKaffeesatz Light", sans-serif;
+    color: #FFF;
+}
+
+#banner h1 {
+    font-size: 3em;
+    width: 940px;
+    margin: 0.4em auto 0;
+    padding: 0 10px;
+    
+    font-weight: bold;
+    font-family: "YanoneKaffeesatz Bold", sans-serif;
+    color: #FFF;
+}
+
+#page {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#entry-body {
+    display: block;
+    float: left;
+    width: 560px;
+}
+
+#entry-body h1 {
+    font-size: 1.5em;
+    margin: 0.833em 10px 0.167em;
+    padding: 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    line-height: 1;
+    color: #600;
+    background: transparent;
+}
+
+#entry-body h2 {
+    font-size: 1.25em;
+    margin: 1em 10px 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    line-height: 1;
+}
+
+#entry-body p {
+    margin: 0 10px;
+}
+
+#entry-body p+p {
+    text-indent: 30px;
+}
+
+#entry-body ol, 
+#entry-body ul {
+    margin: 0.625em 0;
+    padding: 0;
+}
+
+#entry-body li {
+    margin: 0.625em 10px 0.625em 40px;
+    padding: 0;
+}
+
+#entry-body li p {
+    margin: 0;
+    text-indent: 0;
+}
+
+#entry-info {
+    width: 160px;
+    float: left;
+}
+
+#entry-info dl {
+    margin: 0;
+    padding: 0;
+}
+
+#entry-info dt {
+    display: none;
+    margin: 0 10px;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    color: #036;
+}
+
+#entry-info dd {
+    margin: 0 10px 0.625em;
+    
+    font-family: "YanoneKaffeesatz regular", sans-serif;
+}
+
+#entry-nav {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 240px;
+}
+
+#entry-nav h2 {
+    font-size: 1.25em;
+    margin: 0 10px;
+    padding: 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    text-transform: uppercase;
+}
+
+#entry-nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#entry-nav li {
+    margin: 0 10px;
+    padding: 0;
+    
+    list-style-type: none;
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+}
+
+code {
+    font-size: 0.9167em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+pre {
+    /*
+    font-size: 0.9167em;
+    margin: 0.68em 10px;
+    padding: 0.6em 10px 0.76em 19px;
+    */
+    font-size: 1em;
+    margin: 0.625em 10px 0.625em 30px;
+    padding: 0.6em 9px 0.65em 9px;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #BB0;
+    border: 1px solid #BB0;
+    border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+}

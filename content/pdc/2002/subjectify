@@ -1,0 +1,8 @@
+#! /bin/sh
+
+for i in $(grep -l -i caption *.e); do
+    echo $i:
+    cp $i "$i~"
+    sed '\,<\/body>, a\
+  <dc:subject>caption</dc:subject>' < $i > tmp.txt && mv tmp.txt $i
+done

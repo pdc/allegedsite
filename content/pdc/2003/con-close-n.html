@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from con-close.th on 2003-05-17 22:18 BST -->
+  <!-- with command: cd /hda6/home/pdc/th/tuschin/pdc/2003;
+  /home/pdc/bin/thc -r /home/pdc/public_html/tuschin/ -s pdc/2003 con-close.th -->
+  <!-- htmlProcs.tcl version 5.1.6 -->
+  <head>
+    <title>ZODB: don&rsquo;t forget to close connections - Alleged Literature</title>
+    <link href="../pdc.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../..">Alleged Literature</a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>con-close</strong>
+    </p>
+    <div id="body">
+      <h1>ZODB: don&rsquo;t forget to close connections</h1>
+
+<p>
+      I have converted the Picky Picky Game so that it can run as a
+      <a
+      href="http://www.python.org/doc/current/lib/module-BaseHTTPServer.html"><code>BaseHTTPServer</code></a>
+      server as an alternative to as a
+      <abbr title="Common Gateway Interface">CGI</abbr> script, in
+      order to avoid the performance penalty caused by starting up
+      fresh Python processes for each request.  But I discovered
+      that the sevrer would lock up from time to time.
+      </p>
+      <p>
+      It was no ordinary lock-up: it could not be interrupted with
+      Ctrl-<kbd>C</kbd> (but Ctrl-<kbd>\</kbd> worked).  After an
+      abortive attempt to use GDB to debug Python itself, I added the
+      usual plethora of <code>print</code> statements to narrow down
+      the place where it went wrong, and it seemed to be in connecting
+      to the ZODB database.  In the end I changed my code to keep
+      track of the connection object it gets from the database and to
+      explicitly call <code>con.close()</code> (rather than assuming
+      this would happen automatically when the variable goes out of
+      scope).  The problem now appears to have gone away.
+      </p>
+      <p>
+      Thus it is I can run the Picky Picky Game as a
+      free-standing web server (running as
+      <code>http://caption.org:8005/a/</code>, for example) as an
+      alternative to running it via CGI.  At least, I can so long
+      as I remain connected to the sevrer with SSH; I need
+      to persuade Adrian to run the free-standing server as a daemon.
+      In the meantime,
+      you can visit the CGI version at <a
+      href="http://caption.org/caption-cgi/hello.cgi/sample/"><code>http://caption.org/caption-cgi/hello.cgi/sample/</code></a>.
+      </p>
+      <p>
+      My link for <a
+      href="http://bcn.boulder.co.us/government/approvalvote/center.html">Approval
+      Voting</a> has rotted and needs to be updated.  Sigh.  <a
+      href="http://www-personal.umich.edu/~bpl/approval-vote.htm">Another
+      description of Approval Vote</a>
+      </p>
+      <p>
+      The next thing to do is to separate out the base URL for static
+      files (such as the style sheet) so that these files need no
+      longer be tangled up with the resources served by the CGI script
+      (or by the free-standing server).
+      </p>
+
+<p><a href="05.html#e20030514">14 May 2003</a></p>
+    </div>
+    <dl class="links">
+      <dt class="FirstChild">Archives</dt>
+      <dd><a href="../2003/05-n.html">May 2003</a></dd>
+      <dd><a href="../2003/04-n.html">April 2003</a></dd>
+      <dd><a href="../2003/03-n.html">March 2003</a></dd>
+      <dd><a href="../2003/02-n.html">February 2003</a></dd>
+      <dd><a href="../2003/01-n.html">January 2003</a></dd>
+      <dd><a href="../2002/">2002</a></dd>
+      <dd><a href="../2001/">2001</a></dd>
+      <dd><a href="../2000/">2000</a></dd>
+      <dd><a href="../1999/">1999</a></dd>
+      <dd><a href="../1998/">1998</a></dd>
+      <dd><a href="../1997/">1997</a></dd>
+      <dt>Entertainments</dt>
+      <dd><a href="../tarot/">Alleged Tarot 2002</a></dd>
+      <dd><a href="../2001/xmas-n.html">2001 Xmas card (SVG)</a></dd>
+      <dd><a href="../how-tall-are-you/">How tall are you? quiz</a></dd>
+      <dd><a href="http://caption.org/2000/pdc/">My Fabulous Life (2000)</a></dd>
+      <dt>Photo albums</dt>
+      <dd><a href="../2002/maymorning/">May Morning (2002)</a></dd>
+      <dd><a href="../aviemore/">Aviemore (1999)</a></dd>
+      <dd><a href="../bologna/">Bologna (1998)</a></dd>
+      <dd><a href="../roch/">Roch Castle (1998)</a></dd>
+      <dd><a href="http://caption.org/1997/pdc/">CAPTION97</a></dd>
+      <dd><a href="http://caption.org/1996/pdc/">CAPTION96</a></dd>
+      <dt>Stuff</dt>
+      <dd><a href="../bike/">Bike</a></dd>
+      <dd><a href="../wp/">Web Project</a></dd>
+      <dd><a href="http://www.demon.co.uk/pdc/">Old Site</a></dd>
+      <dd><a href="../muds/">MUDS (very old)</a></dd>
+      <dd><a href="../pdc-n.html">About Damian</a></dd>
+      <dt><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml">XML</a></dt>
+      <dt><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer">Valid XHTML 1.0!</a></dt>
+    </dl>
+  </body>
+</html>
+

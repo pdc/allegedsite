@@ -1,0 +1,65 @@
+# -*-tcl-*-
+# Time-stamp: <pdc 2003-11-22>
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Alleged Tarot (PNG) - Alleged Literature"
+    stylesheet tarot.css
+}
+
+beginBody
+
+h1 "Alleged Tarot (PNG version)"
+
+p "
+This is the 
+[a ./ Alleged Tarot]
+page with the SVG graphics replaced by PNG.
+"
+
+proc ii {name {big 0}} {
+    set title [titleFor $name]
+
+    if {$big} {
+	return [a* href=$name-360h.png \
+	    title=$title \
+	    "[img $name-360h.png alt=$name]<br />$title"]
+    } else {
+	return [a* href=$name-360h.png \
+	    title=$title \
+	    "[img $name-100w.png alt=$name]<br />$title"]
+    }
+}
+
+set svgFiles [concat [glob "\[ivx0\]*-card3.svg"] \
+	[glob "{wands,cups,swords,coins}-*-card3.svg"]]
+set names {}
+foreach svgFile $svgFiles {
+    lappend names [string range $svgFile 0 [expr [string length $svgFile] -11]]
+}
+
+    puts $names
+
+
+set nCols 3
+set iCol 0
+
+push table width=100% border=0 cellspacing=4
+tr align=center {
+    td colspan=$nCols [ii [lindex $names end] 1]
+}
+push tr align=center 
+foreach name [lrange $names 0 [expr [llength $names] - 2]] {
+    if {[incr iCol] > 3} {
+	pop
+	push tr align=center 
+	set iCol 1
+    }
+    td [ii $name]
+}
+pop
+pop
+
+endBody
+endDocument

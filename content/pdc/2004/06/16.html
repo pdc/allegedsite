@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2005-12-11 18:21 GMT -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2004/06;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2004/06 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Holidays - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/lod.css" rel="stylesheet" type="text/css" arg0="title=Light" on="on" Dark="Dark" title="Light on Dark" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">06</a> &gt;&gt;
+      <strong>16</strong>
+    </p>
+    <div id="body">
+      <h1>Holidays</h1>
+      <div class="entry">
+        <p class="details">16 June 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/macosx.html">Mac OS X</a></li>
+            <li><a href="../../2003/tclhtml.html">TclHTML</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20040616" title="Permanent URL for this entry">#</a>
+        </p>
+
+<p>I want to work on the <a href="../../2004/1" title="1">Caption 2004 web site</a> but not trapped at my
+   desk upstairs.  So I want to copy my working files to my PowerBook,
+   preferably with [<code>rsync</code>]<a href="../../2004/since" title="it is about time I got that working">2</a>.  Turns out my creaking Linux box does not have <code>rsync</code>.
+   Downloaded and installed it.<br/>
+</p>
+<p>Refreshed my memory of SourceForge so that I could use CVS to check
+   out a copy of <a href="../../2004/3" title="3">TclHTML</a>, used to generate the HTML files.  The
+   SourceForge documentation still claims their CVS server is
+   <code>cvs.sf.net</code>, but it turns out that nowadays it is
+   <code>cvs.tclhtml.sf.net</code>.  Luckily I remembered my password!
+</p>
+<p>Doing <code>make</code> on TclHTML reveals a dependency on <code>giftopnm</code>, part of
+   <a href="../../2004/4" title="4">Netpbm</a>, a package of graphical utilities built on <a href="../../2004/5" title="5">Jef
+Poskanzer</a>'s pbmplus.  Downloaded this and its configure script
+   demands [<code>libjpeg</code>][6].  But that's OK, IJG follow the GNU
+   conventions.  Wait, it needs [<code>libtool</code>][7].  So I installed that with
+   <a href="../../2004/8" title="8">FinkCommander</a>.  Come to think of it, I could have installed
+   <code>libjpeg</code> with Fink.  Doing that will make it easier to upgrade later,
+   so what the heck, I deleted the copy I'd downloaded and got Fink to
+   repeat it.  Next [<code>libtiff</code>][9], and [<code>libpng</code>][10], also via Fink.
+   Anyways, in the end I got NetPBM installed, at which point I was able
+   to make a working copy of the web site I can edit downstairs (where it
+   is cooler) so long as I don't need to consult anything on the web.
+</p>
+<p>Another task for the day was upgrading my Internet connection from
+   dial-up to one of NTL's cable-based broadband systems.  First I tried
+   using the <a href="../../2004/11" title="11">NTL web site</a>.  There is a snag: they have a package
+   that is £29 for (a)&nbsp;all the non-premium channels plus
+   (b)&nbsp;telephone line rental, but when you go to buy a package, the
+   cable package now costs £19·50 and does not include phone.
+   This would not be a problem if their list of phone deals included the
+   implied £9·50/mo plain old phone option, but they only list
+   the extra-cost free-weekend-minutes services.  (Looks like NTL have
+   been infected with the same mindworm that infests people who market
+   mobile phones.)
+</p>
+<p>In the end I abandoned the on-line application and called them.  After
+   an impressively deep tree of phone menus I was offered the expected
+   £29 deal as expected, except their (new) computer system was
+   overloaded, my sales assistant (if that is the correct term) was at
+   the end of her shift, and, well, they will phone tomorrow to confirm a
+   date for the engineer to call.
+</p>
+<p>Interestingly, NTL have web servers at <code>www.ntl.co.uk</code>, <code>www.ntl.com</code>,
+   <code>www.ntlhome.com</code>, and so on, but not <code>ntl.co.uk</code>...
+</p>
+<pre><code>[1]: http://caption.org/2004/
+[2]: http://samba.anu.edu.au/rsync/
+[3]: http://tclhtml.sourceforge.net/
+[4]: http://netpbm.sourceforge.net/
+[5]: http://acme.com/
+[6]: http://www.ijg.org/ Independent JPEG Group
+[7]: http://www.gnu.org/software/libtool/libtool.html
+[8]: http://finkcommander.sourceforge.net/ A GUI for Fink
+[9]: http://www.libtiff.org/ TIFF image library and tools
+[10]: http://www.libpng.org/
+[11]: http://www.ntl.co.uk/
+</code></pre>
+
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2003/subjects.html">by topic</a></li>
+        <li><a href="../../2005/12/">December 2005</a></li>
+        <li><a href="../../2005/09/">September 2005</a></li>
+        <li><a href="../../2005/08/">August 2005</a></li>
+        <li><a href="../../2005/07/">July 2005</a></li>
+        <li><a href="../../2005/06/">June 2005</a></li>
+        <li><a href="../../2005/04/">April 2005</a></li>
+        <li><a href="../../2005/02/">February 2005</a></li>
+        <li><a href="../../2005/01/">January 2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

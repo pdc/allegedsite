@@ -1,0 +1,180 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Copying files - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Copying files"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+emit {
+    <p class="article">
+      I really lost it at work today.   Why am I&nbsp;so frustrated?
+      Well, one of the things that upsets me is when stupid software
+      makes simple things hard.  For example, when I&nbsp;find myself
+      spending an entire fucking afternoon trying to copy data from
+      point <em>A</em> to point <em>B</em>.
+    </p>
+    <p>
+      Now it so happens that Unix and the like sorted out this problem
+      a long time ago.  On Unix everything is a file, so you move
+      everything using <code>cp</code> and <code>mv</code>.  (Or, on
+      Mac&nbsp;OS, everything is an icon in a folder, and you move it
+      with drag &amp; drop.)  Between computers you can use
+      <code>ftp</code> or <code>scp</code>.  You move a bunch of
+      things using <code>tar</code>.  There are a few corner cases,
+      but that essentially covers it.
+    </p>
+    <p>
+      Not so in Windows world.  Every sort of data is stored in a
+      different way.  For example: Application settings are in the
+      Registry and require a specially written, and quirky, program to
+      edit by hand.  That&rsquo;s becase we mere users are not
+      supposed to need to edit the Registry by hand.  It also follows
+      that the format of Registry-based settings are completely
+      undocumented.  So when you do need to fix something,
+      you&rsquo;re stuffed.
+    </p>
+    <p>
+      How about Microsoft <abbr title="Standard/Structured Query
+      Language">SQL</abbr> Server databases?  Now, logically you
+      should not need to be copying databases around willy-nilly: the
+      whole point of a <abbr title="DataBase Management
+      System">DBMS</abbr> is that it manages your database for you.
+      But no, your colleagues, having been raised on Microsoft Access
+      will expect to be sent database images through the post.  So you
+      need to start Microsoft SQL Server Enterprise Manager, and
+      navigate to the database (this taks a while as it searches your
+      <abbr title="local-area network">LAN</abbr> for servers), invoke
+      the Backup command from an obscure submenu of the context menu,
+      delete your usual back-up settings, and navigate through some
+      frankly weird dialogue boxes where files are called devices for
+      some reason.  You have to be careful where you save the
+      resulting file because the directory it chooses by default is
+      not on a network share and so is inaccessible to you.  When you
+      are done you probably ought to try to put the original settings
+      back or you may find nightly back-ups don&rsquo;t work anymore.
+      At the other end, your recipient has to navigate through
+      Enterprise Manager as before, chosing Restore this time, and
+      locate the file you sent them.  They then have to navigate
+      through more insane dialogue boxes where they must enter <em>by
+      hand</em> the file names that their database stores its data
+      in&mdash;an obscure implementation detail that is surely the
+      database server&rsquo;s responsibility, not yours!
+    </p>
+    <p>
+      Actually there is also something called DTS, which is another
+      way to copy Microsoft SQL Server databses about, but that has
+      various problems.  First, it also involes entering weird options
+      into fancy dialogue boxes, each of which instructs DTS to
+      corrupt, fold, spindle, or mutilate your data in a subtly
+      different way (oversubtle transcoding of character sets, or
+      dropping extended properties or whatever).  Creating an actual
+      exact clone of your original databse is quite tricky.  Second,
+      DTS is specially licensed magic voodoo which means that you
+      cannot, for example, use it to inject data in to a personal-use
+      database running on a portable computer so that you can
+      demonstrate your SQL-Server-based application to clients.
+      Third, while the designers of the system were vaguely aware that
+      certain database objects must be copied before others, they did
+      not have the wit to actually solve the resulting
+      dependency-graph problem, preferring some kludges and
+      workarounds that mean that you don&rsquo;t usually run in to
+      trouble.  Of course when you do run in to trouble, you are
+      stuffed.
+    </p>
+    <p>
+      All in all, copying databases is one of those tasks that should
+      be simple but which usually leads to half a day annoyingly
+      wasted. 
+    </p>
+    <p>
+      What set me off this afternoon was actually a combination of
+      Microsoft Visual SourceSafe, Visual Studio .Net and <abbr
+      title="Microsoft Internet Information Server">IIS</abbr>.  The
+      morning was bad enough: I&nbsp;spent it trying to create a
+      bug-fixing branch of a project I&nbsp; was working on.  (This is
+      where you create a copy of the project as it was before you
+      started working on the next version, so you can fix a bug in the
+      old version.  It is supposed to be a straightforward task in a
+      source-code control system.)  For some reason the wrong versions
+      of the files kept reasserting themselves and it was a horrible
+      mess.  But In the end I&nbsp;got it working and actually made a
+      bug fix release.  So far so annoying.
+    </p>
+    <p>
+      The project in question has two products, both of which
+      I&nbsp;am developing in parallel, and so I&nbsp;had put them all
+      in one .Net &lsquo;Solution&rsquo; (=collection of projects).
+      The bug-fix branch only affected one of these products.  I
+      decided that keeping them mushed up together in one Solution was
+      wrong and it would make sense to split the Solution in to two
+      parts.  Solutions correspond to directories, so this boils down
+      to a desire to move (some of) the project files in to a
+      different directory.  With normal programs this is perfectly
+      doable, but one of them was an ASP&nbsp;.Net web application.
+    </p>
+    <p>
+      ASP&nbsp;.Net web applications take a slightly weird attitude,
+      storing the files on an IIS server, with complicated
+      arrangements to link back to the development environment when
+      the ASPX pages are visited in a web browser.  (Setting this up
+      in the first place required that I&nbsp;reinstall the operating
+      system and every bit of software on my desktop computer several
+      times over.)
+      This means that VS&nbsp;.Net hands over control of
+      where the files are to IIS, which in turn means that they are
+      <em>not</em> stored in (subdirectories of) the same directory as
+      the other projects in the same Solution.  But I&nbsp;wanted them
+      stored together so that I&nbsp;would be able to copy them
+      around, put them in ZIP archives, store them in Visual
+      SourceSafe, and what-have-you.  Oh, and so that they would be on
+      the disc which gets backed up each night. 
+    </p>
+    <p>
+      So I&nbsp;spent the afternoon in increasingly desperate attempts
+      to achive this fairly simple goal, deleting virtual directories
+      and stillborn .Net projects over and over as I&nbsp;tried doing
+      the various steps in different orders and got more and more
+      exasperated.  Again and again the computer locked up for minutes
+      at a time as it copied files back and forth between its own disc
+      drives (how hard can that be??).  Again and again it popped up
+      message boxes boasting of its uncanny ability to hide the
+      obsolete file names or old URLs in places I&nbsp;could not find
+      them.  In the end I&nbsp;stormed off home and spent the evening
+      seething in front of <cite>Star Trek: Deep Space Nine</cite>.
+      I&rsquo;ve had a nice relaxing bath now and I&nbsp;guess
+      tomorrow I&rsquo;ll just have to admit I&nbsp;have no control
+      over where the web server chooses to store my files and try to
+      get Visual SourceSafe to follow its lead.  So long as
+      I&nbsp;don&rsquo;t keep files checked out too long the risk
+      caused by lack of daily back-ups will not be <em>too</em> great.
+      It depresses me that I&nbsp;seem to have so little control over
+      the damn thing.
+    </p>
+    <p>
+      Ten years ago I&nbsp;wrote my own web server (handling the
+      then-current HTTP/0.9 protocol).  I&nbsp;admit it wasn&rsquo;t a
+      great server, but at least I&nbsp;was in charge of what the
+      computer did, and could fix it if it went wrong.  What
+      ASP&nbsp;.Net developers need is an equivalent of the servlet
+      runner that Sun supplied for developers targeting
+      JavaWebServer&mdash;a simpler, more easily configured server for
+      developers to run ASP&nbsp;.Net classes with during development.
+      I&nbsp;think Microsoft are reluctant to do this because it
+      promotes the idea that there can be more than one web server,
+      which in turn might make people examine the competition to IIS
+      more.
+    </p>
+}
+
+p [a 03.html#e20030305b 5 March 2003]
+
+endBody
+endDocument

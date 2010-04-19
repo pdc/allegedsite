@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2004-02-08 23:27 GMT -->
+  <!-- with command: cd /hda6/home/pdc/th/tuschin/pdc/how-tall-are-you;
+  /home/pdc/bin/thc -r /home/pdc/public_html/tuschin/ -s pdc/how-tall-are-you index.th -->
+  <!-- htmlProcs.tcl version 5.1.7 -->
+  <head>
+    <title>How Tall are You? - Alleged Literature</title>
+    <link href="../pdc.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+
+.q {
+	    margin: 1em 0pt;
+	    font-weight: bold; 
+	}
+	.a li {
+	    list-style-type: upper-alpha;
+	}
+	.result {
+	    padding: 6pt;
+	    border: 2px solid #6699CC;
+	}
+	.pre {
+	    margin: 6pt;
+	    border: 2px dashed #6699CC;
+	    padding: 6pt;
+	    font-size: xx-small;
+	    font-family: helvetica, arial, sans-serif; 
+	}
+
+</style>
+    <script>
+
+var hasDom = document.getElementById != null;
+	var hasDhtml = document.all != null; //  has MSIE-style DHTML
+
+</script>
+    <script defer="defer">
+
+// Code for deciding which answer to show.
+	var choices = new Array();
+	var scores = new Array();
+
+function dom_getById(name) 
+	{
+	    return document.getElementById(name);
+	}
+	function dhtml_getById(name) 
+	{
+	    return document.all[name];
+	}
+
+var getById = hasDom ? dom_getById : dhtml_getById;
+
+var nQuests = 0;// this is increased later
+
+function onClickRadio(iQuest,iAns)
+	{
+	    choices[iQuest] = iAns;
+
+if (nQuests) { // nQuests is 0 iff the page has not loaded yet.
+		for (var j = 1; j <= 3; j++) {
+		    scores[j] = 0;
+		}
+		for (var i = 1; i <= nQuests; i++) {
+		    scores[choices[i]]++;
+		}
+
+var iBest = 1;
+		for (var i = 2; i <= 3; i++) {
+		    if (scores[i] > scores[iBest]) {
+			iBest = i;
+		    }
+		}
+		reportResult(iBest);
+	    }
+	}
+
+function reportResult(iBest)
+	{
+	    var s = 'mostly ' + 'ABCDEF'.charAt(iBest - 1) + 's';
+	    if (hasDom || hasDhtml) {
+		for (var i = 1; i <= 3; i++) {
+		    var st = getById('r' + i).style;
+		    if (i == iBest) {
+			st.color = 'black';
+			st.backgroundColor = '#FFCC99';
+			st.borderColor = '#996633';
+			st.display = 'block';
+		    } else {
+			st.color = '#336699';
+			st.backgroundColor = 'white';
+			st.borderColor = '#6699CC';
+			st.display = 'none';
+		    }
+		    getById('html' + i).style.display = (i == iBest ? 'block' : 'none');
+		}
+		if (hasDom) {
+		    var e = getById('conclusion');
+		    while (e.hasChildNodes()) {
+			e.removeChild(e.lastChild);
+		    }
+		    e.appendChild(document.createTextNode(s));
+		} else {
+		    getById('conclusion').innerHTML = s;
+		} 
+	    } else {
+		document.forms.quiz.conclusion.value = s;
+	    }
+	}
+
+</script>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../..">Alleged Literature</a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <strong>how-tall-are-you</strong>
+    </p>
+    <div id="body">
+      <h1>How tall are you?</h1>
+      <p>
+        <embed src="2stick.svgz" type="image/svg+xml" align="right" width="125" height="100" &lt;img src="&quot;2stick.png&quot; width=&quot;125&quot; height=&quot;100&quot; border=&quot;0&quot; alt=&quot;&quot; /&gt;" />
+        Have you ever wondered whether you are tall or not?
+        After all, everyone knows how in most American presidential elections
+        are won by the taller candidate&mdash;and you never know when
+        being elected president might come in handy.
+      </p>
+      <h2>Questions</h2>
+      <form name="quiz" id="quiz">
+        <p class="q" id="q1">
+          1. <embed src="cookies.svgz" type="image/svg+xml" width="150" height="100" align="right" &lt;img src="&quot;cookies.png&quot; width=&quot;150&quot; height=&quot;100&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          You are carefully reaching for the cookie jar.  Are you:
+        </p>
+        <ol class="a" type="A">
+          <li id="a1a">
+            <script>document.write('<input type="radio" name="a1" id="r1a" value="1" onclick="onClickRadio(1,1)" />')</script>
+            Standing on a box?
+          </li>
+          <li id="a1b">
+            <script>document.write('<input type="radio" name="a1" id="r1b" value="2" onclick="onClickRadio(1,2)" />')</script>
+            Reaching for the top shelf?
+          </li>
+          <li id="a1c">
+            <script>document.write('<input type="radio" name="a1" id="r1c" value="3" onclick="onClickRadio(1,3)" />')</script>
+            Trying to avoid banging in to the light fixture?
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q2">
+          2.
+          <embed src="3faces.svgz" type="image/svg+xml" width="180" height="100" align="right" &lt;img src="&quot;3faces.png&quot; width=&quot;180&quot; height=&quot;100&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          What part of the face do you notice first in other people?
+        </p>
+        <ol class="a" type="A">
+          <li id="a2a">
+            <script>document.write('<input type="radio" name="a2" id="r2a" value="1" onclick="onClickRadio(2,1)" />')</script>
+            Their chin
+          </li>
+          <li id="a2b">
+            <script>document.write('<input type="radio" name="a2" id="r2b" value="2" onclick="onClickRadio(2,2)" />')</script>
+            Their eyes
+          </li>
+          <li id="a2c">
+            <script>document.write('<input type="radio" name="a2" id="r2c" value="3" onclick="onClickRadio(2,3)" />')</script>
+            Their hair
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q3">
+          3.
+          <embed src="bulb.svgz" type="image/svg+xml" width="63" height="110" align="right" &lt;img src="&quot;bulb.png&quot; width=&quot;63&quot; height=&quot;110&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          To change a light bulb you need:
+        </p>
+        <ol class="a" type="A">
+          <li id="a3a">
+            <script>document.write('<input type="radio" name="a3" id="r3a" value="1" onclick="onClickRadio(3,1)" />')</script>
+            A friend to change the light bulb for you.
+          </li>
+          <li id="a3b">
+            <script>document.write('<input type="radio" name="a3" id="r3b" value="2" onclick="onClickRadio(3,2)" />')</script>
+            A chair.
+          </li>
+          <li id="a3c">
+            <script>document.write('<input type="radio" name="a3" id="r3c" value="3" onclick="onClickRadio(3,3)" />')</script>
+            A light bulb.
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q4">
+          4.
+          <embed src="bed.svgz" type="image/svg+xml" width="190" height="83" align="right" &lt;img src="&quot;bed.png&quot; width=&quot;190&quot; height=&quot;83&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          You are in bed and your feet are cold. Why?
+        </p>
+        <ol class="a" type="A">
+          <li id="a4a">
+            <script>document.write('<input type="radio" name="a4" id="r4a" value="1" onclick="onClickRadio(4,1)" />')</script>
+            Someone has stolen the blankets.
+          </li>
+          <li id="a4b">
+            <script>document.write('<input type="radio" name="a4" id="r4b" value="2" onclick="onClickRadio(4,2)" />')</script>
+            You have no carpets and you only just got into bed.
+          </li>
+          <li id="a4c">
+            <script>document.write('<input type="radio" name="a4" id="r4c" value="3" onclick="onClickRadio(4,3)" />')</script>
+            Your duvet does not reach as far as your feet.
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q5">
+          5.
+          <embed src="sofa.svgz" type="image/svg+xml" width="188" height="82" align="right" &lt;img src="&quot;sofa.png&quot; width=&quot;188&quot; height=&quot;82&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          When you are sleeping  at a friend&rsquo;s place...
+        </p>
+        <ol class="a" type="A">
+          <li id="a5a">
+            <script>document.write('<input type="radio" name="a5" id="r5a" value="1" onclick="onClickRadio(5,1)" />')</script>
+            You sleep comfortably on the sofa
+          </li>
+          <li id="a5b">
+            <script>document.write('<input type="radio" name="a5" id="r5b" value="2" onclick="onClickRadio(5,2)" />')</script>
+            You curl up on the sofa
+          </li>
+          <li id="a5c">
+            <script>document.write('<input type="radio" name="a5" id="r5c" value="3" onclick="onClickRadio(5,3)" />')</script>
+            You put the sofa cushions down on the  floor.
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q6">
+          6.
+          <embed src="dec-ant-cat.svgz" type="image/svg+xml" width="182" height="115" align="right" &lt;img src="&quot;dec-ant-cat.png&quot; width=&quot;182&quot; height=&quot;115&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          You could swap clothes with:
+        </p>
+        <ol class="a" type="A">
+          <li id="a6a">
+            <script>document.write('<input type="radio" name="a6" id="r6a" value="1" onclick="onClickRadio(6,1)" />')</script>
+            Dec
+          </li>
+          <li id="a6b">
+            <script>document.write('<input type="radio" name="a6" id="r6b" value="2" onclick="onClickRadio(6,2)" />')</script>
+            Ant
+          </li>
+          <li id="a6c">
+            <script>document.write('<input type="radio" name="a6" id="r6c" value="3" onclick="onClickRadio(6,3)" />')</script>
+            Cat
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q7">
+          7. <embed src="food.svgz" type="image/svg+xml" width="200" height="90" align="right" &lt;img src="&quot;food.png&quot; width=&quot;200&quot; height=&quot;90&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          As a child you were fed
+        </p>
+        <ol class="a" type="A">
+          <li id="a7a">
+            <script>document.write('<input type="radio" name="a7" id="r7a" value="1" onclick="onClickRadio(7,1)" />')</script>
+            Twigs and leaves
+          </li>
+          <li id="a7b">
+            <script>document.write('<input type="radio" name="a7" id="r7b" value="2" onclick="onClickRadio(7,2)" />')</script>
+            Mainly potatoes
+          </li>
+          <li id="a7c">
+            <script>document.write('<input type="radio" name="a7" id="r7c" value="3" onclick="onClickRadio(7,3)" />')</script>
+            Milk and meat
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q8">
+          8. <embed src="shopping.svgz" type="image/svg+xml" width="90" height="150" align="right" &lt;img src="&quot;shopping.png&quot; width=&quot;90&quot; height=&quot;150&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          When shopping for clothes, ‘petite’ means
+        </p>
+        <ol class="a" type="A">
+          <li id="a8a">
+            <script>document.write('<input type="radio" name="a8" id="r8a" value="1" onclick="onClickRadio(8,1)" />')</script>
+            Baggy
+          </li>
+          <li id="a8b">
+            <script>document.write('<input type="radio" name="a8" id="r8b" value="2" onclick="onClickRadio(8,2)" />')</script>
+            Less leggy than the regular stuff
+          </li>
+          <li id="a8c">
+            <script>document.write('<input type="radio" name="a8" id="r8c" value="3" onclick="onClickRadio(8,3)" />')</script>
+            ‘Small’ in French
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q9">
+          9. <embed src="shoes.svgz" type="image/svg+xml" width="112" height="58" align="right" &lt;img src="&quot;shoes.png&quot; width=&quot;112&quot; height=&quot;58&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          Shoes that fit you are...
+        </p>
+        <ol class="a" type="A">
+          <li id="a9a">
+            <script>document.write('<input type="radio" name="a9" id="r9a" value="1" onclick="onClickRadio(9,1)" />')</script>
+            Brightly coloured and VAT-free.
+          </li>
+          <li id="a9b">
+            <script>document.write('<input type="radio" name="a9" id="r9b" value="2" onclick="onClickRadio(9,2)" />')</script>
+            More expensive than you might think.
+          </li>
+          <li id="a9c">
+            <script>document.write('<input type="radio" name="a9" id="r9c" value="3" onclick="onClickRadio(9,3)" />')</script>
+            Not available in the style you wanted.
+          </li>
+        </ol>
+        <br clear="all" />
+        <p class="q" id="q10">
+          10. <embed src="jedi.svgz" type="image/svg+xml" width="150" height="242" align="right" &lt;img src="&quot;jedi.png&quot; width=&quot;150&quot; height=&quot;242&quot; align=&quot;right&quot; title=&quot;You wont see the the SVG unless you get an SVG plug-in&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;" />
+          In your dressing gown you resemble:
+        </p>
+        <ol class="a" type="A">
+          <li id="a10a">
+            <script>document.write('<input type="radio" name="a10" id="r10a" value="1" onclick="onClickRadio(10,1)" />')</script>
+            Annie in <cite>Phantom Menace</cite>
+          </li>
+          <li id="a10b">
+            <script>document.write('<input type="radio" name="a10" id="r10b" value="2" onclick="onClickRadio(10,2)" />')</script>
+            Luke in <cite>Star Wars: A New Hope</cite>
+          </li>
+          <li id="a10c">
+            <script>document.write('<input type="radio" name="a10" id="r10c" value="3" onclick="onClickRadio(10,3)" />')</script>
+            Anakin’s ghost in <cite>Return of the Jedi</cite>
+          </li>
+        </ol>
+        <br clear="all" />
+        <script type="text/javascript" defer="defer">
+
+nQuests = 10;
+
+</script>
+        <h2>Results</h2>
+        <script>
+
+document.writeln('<p>You have answered ');
+	if (hasDom || hasDhtml) {
+	    document.writeln('<strong id="conclusion">...</strong>.')
+	} else {
+	    // Generate somthing in which to display the results.
+	    // Older browser: fall back on using 'input' element.
+	    document.writeln('<input type="text" name="conclusion" />');
+	}
+	document.writeln('</p>')
+
+</script>
+        <p id="r1" class="result">
+          <strong class="subhead">Mostly <em>A</em>s</strong>:
+
+You are so tiny that people need to
+          hold you up to feed the parking meter.
+          Well, maybe not that small.  But definitely not tall.
+        </p>
+        <p id="r2" class="result">
+          <strong class="subhead">Mostly <em>B</em>s</strong>:
+
+You split the difference bewtween munchkin
+          and beanpole, elegantly pursuing that middle-of-of-the-road,
+          not particularly tall or short route.
+        </p>
+        <p id="r3" class="result">
+          <strong class="subhead">Mostly <em>C</em>s</strong>:
+
+Your future lies in a career fetching things from tall
+          shelves and making jokes about the weather ‘up there’,
+          when in reality you dread the rain because you fear
+          being blinded by other people’s careless umbrellas.
+        </p>
+      </form>
+      <h2>Stickers</h2>
+      <p>
+        Cut and paste the HTML code below
+        to record the result of your taking of the How Tall are You test!
+      </p>
+      <div id="html1">
+        <p>
+          <embed src="yes-tiny.svgz" type="image/svg+xml" width="63" height="53" align="left" &lt;img src="&quot;yes-tiny.png&quot; width=&quot;63&quot; height=&quot;53&quot; align=&quot;left&quot; title=&quot;According to the  How Tall Are You test,
+          I am tiny!&quot; alt=&quot;Yes! I am tiny!&quot; border=&quot;0&quot; /&gt;" />
+        </p>
+        <p class="pre">
+          &lt;a href="http://www.alleged.demon.co.uk/pdc/how-tall-are-you/"&gt;&lt;embed src="http://www.alleged.demon.co.uk/pdc/how-tall-are-you/yes-tiny.svgz" type="image/svg+xml" width="63" height="53" &amp;lt;img src="&amp;quot;http://www.alleged.demon.co.uk/pdc/how-tall-are-you/yes-tiny.png&amp;quot; width=&amp;quot;63&amp;quot; height=&amp;quot;53&amp;quot; align=&amp;quot;right&amp;quot; title=&amp;quot;According to the  How Tall Are You test,
+          I am tiny!&amp;quot; alt=&amp;quot;Yes! I am tiny!&amp;quot; border=&amp;quot;0&amp;quot; /&amp;gt;" /&gt;&lt;/a&gt;
+        </p>
+      </div>
+      <div id="html2">
+        <p><embed src="yes-medium.svgz" type="image/svg+xml" width="63" height="53" align="left" &lt;img src="&quot;yes-medium.png&quot; width=&quot;63&quot; height=&quot;53&quot; align=&quot;left&quot; title=&quot;According to the How Tall are You test, I'm neither tiny nor tall&quot; alt=&quot;Pah! Who needs tall?&quot; border=&quot;0&quot; /&gt;" /></p>
+        <p class="pre">&lt;a href="http://www.alleged.demon.co.uk/pdc/how-tall-are-you/"&gt;&lt;embed src="http://www.alleged.demon.co.uk/pdc/how-tall-are-you/yes-medium.svgz" type="image/svg+xml" width="63" height="53" &amp;lt;img src="&amp;quot;http://www.alleged.demon.co.uk/pdc/how-tall-are-you/yes-medium.png&amp;quot; width=&amp;quot;63&amp;quot; height=&amp;quot;53&amp;quot; align=&amp;quot;right&amp;quot; title=&amp;quot;According to the How Tall are You test, I'm neither tiny nor tall&amp;quot; alt=&amp;quot;Pah! Who needs tall?&amp;quot; border=&amp;quot;0&amp;quot; /&amp;gt;" /&gt;&lt;/a&gt;</p>
+      </div>
+      <div id="html3">
+        <p><embed src="yes-tall.svgz" type="image/svg+xml" width="63" height="53" align="left" &lt;img src="&quot;yes-tall.png&quot; width=&quot;63&quot; height=&quot;53&quot; align=&quot;left&quot; title=&quot;According tp the How Tall are You test, I am tall!&quot; alt=&quot;Yes! I am TALL!&quot; border=&quot;0&quot; /&gt;" /></p>
+        <p class="pre">&lt;a href="http://www.alleged.demon.co.uk/pdc/how-tall-are-you/"&gt;&lt;embed src="http://www.alleged.demon.co.uk/pdc/how-tall-are-you/yes-tall.svgz" type="image/svg+xml" width="63" height="53" &amp;lt;img src="&amp;quot;http://www.alleged.demon.co.uk/pdc/how-tall-are-you/yes-tall.png&amp;quot; width=&amp;quot;63&amp;quot; height=&amp;quot;53&amp;quot; align=&amp;quot;right&amp;quot; title=&amp;quot;According tp the How Tall are You test, I am tall!&amp;quot; alt=&amp;quot;Yes! I am TALL!&amp;quot; border=&amp;quot;0&amp;quot; /&amp;gt;" /&gt;&lt;/a&gt;</p>
+      </div>
+      <dl class="note">
+        <dt>Note</dt>
+        <dd>
+          The doodles on this page  are in
+          the relatively new format
+          <a href="http://www.w3.org/Graphics/SVG/"><acronym title="Scalable Vector Graphics">SVG</acronym></a>,
+          but I have included fall-back images in the
+          less-new format
+          <acronym title="Portable Network Graphics">PNG</acronym>
+          for those who have not yet installed
+          <a href="http://www.adobe.com/svg/">Adobe’s SVG Viewer plug-in 3.0</a>.
+          Apologies if this tangles up your web browser... <code>:-(</code>
+        </dd>
+      </dl>
+    </div>
+    <dl class="links">
+      <dt class="FirstChild">Archives</dt>
+      <dd><a href="../2003/subjects-n.html">by topic</a></dd>
+      <dd><a href="../2004/02/">February 2004</a></dd>
+      <dd><a href="../2004/01/">January 2004</a></dd>
+      <dd><a href="../2003/">2003</a></dd>
+      <dd><a href="../2002/">2002</a></dd>
+      <dd><a href="../2001/">2001</a></dd>
+      <dd><a href="../2000/">2000</a></dd>
+      <dd><a href="../1999/">1999</a></dd>
+      <dd><a href="../1998/">1998</a></dd>
+      <dd><a href="../1997/">1997</a></dd>
+      <dt>Entertainments</dt>
+      <dd><a href="../2003/picky/">Picky Picky Game</a></dd>
+      <dd><a href="../tarot/">Alleged Tarot 2002</a></dd>
+      <dd><a href="../2001/xmas-n.html">2001 Xmas card (SVG)</a></dd>
+      <dd><a href="../how-tall-are-you/">How tall are you? quiz</a></dd>
+      <dd><a href="http://caption.org/2000/pdc/">My Fabulous Life (2000)</a></dd>
+      <dt>Photo albums</dt>
+      <dd><a href="../2003/mull/">Mull (2003)</a></dd>
+      <dd><a href="../2002/maymorning/">May Morning (2002)</a></dd>
+      <dd><a href="../aviemore/">Aviemore (1999)</a></dd>
+      <dd><a href="../bologna/">Bologna (1998)</a></dd>
+      <dd><a href="../roch/">Roch Castle (1998)</a></dd>
+      <dd><a href="http://caption.org/1997/pdc/">CAPTION97</a></dd>
+      <dd><a href="http://caption.org/1996/pdc/">CAPTION96</a></dd>
+      <dt><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml">XML</a></dt>
+      <dt><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer">Valid XHTML 1.0!</a></dt>
+    </dl>
+  </body>
+</html>
+

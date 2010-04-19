@@ -1,0 +1,63 @@
+# -*-tcl-*-
+
+source ../../pdcDefs.tcl
+
+beginDocument {
+    title "Microsft Paint - Picky Picky Game - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Using Microsoft Paint"
+
+p "How to make a Picky Picky Game panel using Microsoft Paint"
+
+p " If you have a Microsoft Windows computer then you will have
+Microsoft Paint included with the rest of the Windows programs.  It is
+hidden on the Accessories sub-menu of the Programes menu.  (On Windows
+XP, by Program menu I mean the All Programms button.)  This means even
+if you do not own fancy graphics packages like JASC Paintshop Pro or
+Adobe Photoshop, you can still do drawings.  "
+
+p " [img paint1s.png alt= align=right] Before you start
+drawing you need to set the image size.  Do this by selecting Image
+menu, Attributes command.  Make sure the Units chosen is
+&lsquo;Pels&rsquo; (meaning pixels) and enter the correct dimensions
+for the Picky Picky Game: Width 180, Height 240.  "
+
+
+p " [img paint2s.png alt= align=left hspace=4] The paint tools include a pencil
+(for drawing single-pixel lines), a brush (for drawing fatter lines),
+and a very simple spray can (which draws with a random pattern of
+dots).  "
+
+p "You choose the colours by clicking on one of the colour wells in
+the palette along the bottom of the window.  Two chosen colours are
+shown at the left end of the palette: the one drawn in front is the
+foreground colour, the other the background.  You select and paint
+with the background colour in the same way, except that you use the
+right mouse button instead of the left.  If you double-click on one of
+the colour wells, then you get a colour-picker for choosing a
+different colour to store in that well."
+
+p " [img paint3s.png alt= align=right] You can also zoom in to edit
+your drawing in greater detail, using commands in the View menu.  With
+the pencil tool and a lot of patience you could even attempt to do by
+hand some of the anti-aliasing and blending that fancier graphics
+programs do automatically.  "
+
+p " Once you have finished your drawing, save it as a Windows BMP
+file.  You can upload this direct to Picky Picky Game, which will
+automatically translate it from BMP format to PNG (since BMP is not an
+Internet graphics format).  "
+
+ul {
+    li "
+    [a http://www.lkwdpl.org/classes/MSPaint/paint.html Lakewood Public Library&rsquo;s Microsoft Paint primer]
+    "
+}
+
+
+endBody
+endDocument

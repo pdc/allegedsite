@@ -1,0 +1,95 @@
+cycling: cycling
+	bike: My Bike
+comics: comics 
+    comics2003: Comics 2003 Convention
+    caption: CAPTION
+computers: computers 
+    macosx: Mac OS X
+    nt: Microsoft Windows NT
+	apple: Apple Inc
+	imac: iMac
+organizations: organizations
+	bbc: <abbr title="British Broadcasting Corporation">BBC</abbr>
+	adobe: <abbr title="Adobe Systems, Inc">Adobe</abbr>
+graphics: graphics 
+livejournal: LiveJournal
+percy: <abbr title="Percy Street comic strip">Percy Street</abbr> 
+photos: photos
+projects: projects
+	tarot: Alleged Tarot 2002
+	picky: Picky Picky Game
+	allegednews: Alleged News
+programming: programming
+	applescript: AppleScript 
+    dotnet: <abbr title="Microsoft .NET Framework">.NET</abbr>
+    csharp: C#
+    python: Python
+    pbmplus: PBMPlus
+    markdown: Markdown
+    pymarkdown: pyMarkdown
+    zeo: <abbr title="Z Enterprise Objects">ZEO</abbr>
+    zodb: <abbr title="Z Object Database">ZODB</abbr>
+    unicode: Unicode
+    pil: <abbr title="Python Imaging Library">PIL</abbr>
+    asp: <abbr title="Microsoft ActiveX Server Pages">ASP</abbr>
+    ado: <abbr title="Microsoft ActiveX Data Objects">ADO</abbr>
+    sqlserver: Microsoft SQL Server
+    vb6: <abbr title="Microsoft Visual Basic 6">VB&nbsp;6</abbr>
+    dao: <abbr title="Microsoft Data Access Objects">DAO</abbr>
+    tcl: <abbr title="Tool Command Language">Tcl</abbr>
+    tclhtml: TclHTML
+    sqlobject: SQLObject
+    fileformats: file formats
+	riff: <abbr title="Raster Image File Format">Riff</abbr>
+	xml: <abbr title="Extensible Mark-Up Language">XML</abbr>
+	lmnl: <abbr title="Layered Markup and Annotation Language">LMNL</abbr>
+	mu: <abbr title="Alleged Mark-Up">MU</abbr>
+	mud: <abbr title="Alleged Mark-Up Document-type">MUD</abbr>
+	meta: <abbr title="Alleged Metadata file">META</abbr>
+	pdf: <abbr title="Portable Document Format">PDF</abbr>
+	php: <abbr title="PHP Hypertext Processor">PHP</abbr>
+	postscript: PostScript
+	yaml: <abbr title="YAML Ain’t Markup Language">YAML</abbr>
+	authentication: authentication
+	ajax: <abbr title="Asynchronous JavaScript and XML">AJAX</abbr>
+	csv: <abbr title="Comma-Separated Values">CSV</abbr>
+	bash: <abbr title="Borne Again Shell">bash</abbr>
+typography: typography
+web: web
+    css: <abbr title="Cascading Stylesheets">CSS</abbr>
+    cgi: <abbr title="Common Gateway Interface">CGI</abbr>
+    iis: <abbr title="Microsoft Internet Information Server">IIS</abbr>
+    opera: Opera browser
+    safari: Safari
+    msie: Microsoft Internet Explorer
+    camino: Camino
+    firefox: Mozilla Firefox
+    rest: <abbr title="Representational State Transfer">REST</abbr>
+    svg: <abbr title="Scalable Vector Graphics">SVG</abbr>
+    turbogears: TurboGears
+    rss: <abbr title="really Simple Syndication">RSS</abbr>
+	http: <abbr title="Hypertext Transport Protocol">HTTP</abbr>
+	html: <abbr title="Hypertext Mark-Up Language">HTML</abbr>
+	html5: <abbr title="Hypertext Mark-Up Language version 5">HTML 5</abbr>
+personal: personal
+galleries: galleries
+    tatemodern: Tate Modern
+    tatebritain: Tate Britain
+    turnerprize: Turner Prize
+    ra: Royal Academy
+    va: V&amp;A
+people: people
+    anishkapoor: Anish Kapoor
+    keithtyson: Keith Tyson
+    tamaradelempicka: Tamara de Lempicka
+    viviennewestwood: Vivienne Westwood
+works: works
+    marsyas: Marsyas
+    thethinkerafterrodin: The Thinker (After Rodin)
+    28dayslater: 28 Days Later...
+tools: tools
+    corelpainter: Corel Painter 8
+oxford: Oxford
+	oxfordgeeknights: Oxford Geek Nights
+australia: Australia
+	ausflag: AUSFlag

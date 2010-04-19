@@ -1,0 +1,90 @@
+# -*-tcl-*-
+
+
+source xssDefs.tcl
+
+beginDocument {
+    title "RSS vs. RSS"
+    stylesheet main.css 
+}
+
+p id=Trail "
+[a ../../../ Alleged Literature] ::
+[a ../../ Damian Cugley] ::
+[a ./ XSS] ::
+"
+
+push div id=Page
+
+h1 "References"
+
+p "Specifications in numerical order of version number
+(not chronological order)."
+
+dl {
+    dt [a http://my.netscape.com/publish/formats/rss-0.9.dtd RDF Site Summary 0.9]
+    dd "Netscape"
+
+    dt [a http://my.netscape.com/publish/formats/rss-spec-0.91.html RSS 0.91]
+    dd "Dan Libby, Netscape Communications, 10 July 1999"
+
+    dt [a http://backend.userland.com/rss092 Really Simple Syndication 0.92]
+    dd "Dave Winer, UserLand Software, Inc."
+
+    dt "[a http://web.resource.org/rss/1.0/spec.html RDF Site Summary 1.0],
+    version 1.3.1"
+    dd "RSS-DEV Working Group, 17 December 2000"
+
+    dt "[a http://web.resource.org/rss/1.0/modules/dc/ RDF Site Summary 1.0 Modules: Dublin Core], version 1.4"
+    dd "RSS-DEV Working Group, 9 December 2000.
+    Includes the Dublin Core Element Set v1.1 by reference.  
+    "
+
+    dt "[a http://dublincore.org/documents/1999/07/02/dces/ \
+	    Dublin Core Element Set], version 1.1"
+    dd "Dublin Core Metadate Initiative, 2 July 1999.
+    Defines character-string metadata for resources.
+    No specification  of the format of the strings involved. 
+    Includes W3C Date &am; Time formats by reference."
+
+    dt [a http://www.w3.org/TR/NOTE-datetime \
+	    Date and Time formats]
+    dd "W3C.  A profile of ISO 8601: the date is written ayear-first,
+    such as 2002-11-16, 2002-11-16T08:37:38+0100, or 2002-11-16T07:37:38Z"
+}
+
+p "RSS 2.0 development"
+
+dl {
+    dt [a http://www.intertwingly.net/stories/2002/09/02/reallySimpleSyndication.html Really Simple Syndication]
+    dd "Sam Ruby, 2 Sept. 2002. &lsquo;[em "So lets start
+    with a clean slate and describe what I would like to see in an
+    RSS 2.0 if I were made king of the world for a day "]&rsquo;
+    Also a good description of upwards and forwards
+    compatibilty and the irrelevance of the version att."
+
+    dt [a http://diveintomark.org/archives/2002/09/05.html#rss_20 RSS 2.0]
+    dd "Mark Pilgrim, 5 Sept. 2002. &lsquo;[em RSS 2.0 does not exist yet.  It is the code name for a proposed merging of the RSS 0.9x and RSS 1.0 branches.]&rsquo;"
+}
+
+p "Other"
+
+dl {
+    dt [a http://diveintomark.org/archives/2002/09/06.html#history_of_the_rss_fork\
+	    History of the RSS fork] 
+
+    dd "Mark Pilgrim 
+
+    ([a http://diveintomark.org/ [code http://diveintomark.org/]]), 6 Sept. 2002.
+    I&nbsp;am dependent on Mark
+    Pilgrim for information from the RSS-DEV mainling list,
+    because I&nbsp;cannot access it (I&nbsp;just get a message complaining that
+    I&nbsp;don&rsquo;t accept cookies)."
+
+}
+
+pop 
+endDocument
+
+
+

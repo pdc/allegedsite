@@ -1,0 +1,105 @@
+Title: NTL do not understand the concept of moving house
+Topics: ntl home
+Image: ../icon-64x64.png
+Date: 20050624
+
+We moved house last month, and it took NTL four weeks to reconnect our
+TV, phone, and broadband--counting from the date they agreed that the
+changeover would occur.  Including the ten days' or more lead time we
+gave them, we were deprived of all three services for over a month.  We
+have yet to discover whether they are billing us for the services we did
+not get.
+
+There were two main problems, one major and one minor. The minor problem
+is that, since I was moving house rather than a new customer, I has to
+phone the special reduced-service House Move line, which has reduced
+hours (09:00-17:00 M-F) and very long queues, unless you call before
+about 10:00. 
+
+The major problem is that wiring up the new place is something that
+requires the physical presence of an installer, and NTL cannot schedule
+visits for toffee. In the second week of May we arranged the visit for
+the 21st. I stayed in all Saturday, but no installer arrived. When I
+phoned afterwards I was told that the install was marked as 'complete'
+and that they would email the field office to get them to phone us to
+make a new appointment. They did not phone until Tuesday 31 May, and
+arranged a visit for 1 June and (after another no-show) 8 June.
+Eventually, after I called to say I had had no call from the field
+office (again) I got someone at NTL's call centre on my side and an
+offer for a visit later that very day. I cycled home and poked about the
+kitchen for random scraps of food for lunch, and waited for the
+installers to arrive.
+
+Once they were there the installers did a fine job, running wires in all
+sorts of creative ways to allow us to have our TV upstairs and the cable
+modem in the opposite side of the house from the phone, and so on. So
+far as I can judge, they worked efficiently, did not dawdle or waste
+time, and took a little over two hours. During this time they at least
+twice recieved phone calls demanding they add another visit to their
+rounds today. These they ignored as obviously impossible: they already
+had two more 'triples' that day.  The impression I get is that the
+people scheduling visits have un unrealistic idea of how many installs
+can be done in a working day, and once they have to start juggling
+today's scheduled visits with extra visits for irate customers who got
+missed last week and doubleplusurgent visits for people three weeks late
+the schedule all goes to pot. I idly wondered if all the analysis
+computer scientists have done with scheduling algorithms would help
+here.
+
+I also think there is a terrible lack of useful communication
+between the organizing centre of NTL and the people on the ground who
+actually do the work.  NTL's database spent weeks claiming the job was
+done--I had to start each phone call explaining that the installer had
+not told me why the job was unfinished because I had never met him.  Now
+the job was done, it was I who had to persuade them that the visit had
+occurred, and I was calling them from the phone that had just been
+wired in...
+
+I could not get my broadband connection to work. When I phoned their
+broadband support line, it turned out the solution was to visit an
+obscure web site (she had to recite the IP dotted-quad over the phone)
+and enter the password assigned to us a year ago when we first got
+broadband. This wored fine, and the support person could not have been
+more polite and efficient in diagnosing the problem and correcting it.
+The only problem is that I should never have had to make the call in the
+first place! NTL *knew* I was moving house, their database knew my
+router's MAC address and all that jazz, so why did I have to reregister
+at all? And if I did need to reregister, surely they could have *told*
+me I needed to and saved a call to their support lines? But, no, it
+seems their system for co-ordinating the change-over is to just wait for
+the customer to call technical support.
+
+In similar vein, I then spend several days phoning repeatedly to ask why
+we were not receiving any channels beyond BBC1, BBC2, ITV1 and C4; each
+time they said the billing system had not quite understood that we were
+installed now, and that they would try entering my box and card numbers
+again.  Finally I experimented with calling the fault line rather than
+customer service and lo! the TV started working almost as soon as I hung
+up.  I wonder if they have some system where customer-service employees
+can't really make changes, whereas the fault-fixers have greater access
+to the bits of the database that were going wrong?  The fault line also
+has infinitely preferable on-hold music.
+
+Conclusions?  Well, most of my friends gave up long before we did, and
+have Sky + BT + DSL as their comms solution: in at least once case, a
+friend has switched from NTL because of their customer-service problems.
+We stuck with NTL partly because installing a satellite dish would be
+no fun, and, besides, we don't want to give Murdoch any more money than
+absolutely necessary.  My advice to other people struggling with NTL
+would be:
+
+  * call very early (as soon after 09:00 as possible), especially during
+    the student-go-home period of June;
+  * get a speaker phone or hands-free headset if possible to allow you
+    to get some work done while on hold;
+  * a pocket-sized notebook with your account number, smart-card number, box number,
+    and phone number etc. will allow you to phone NTL in random bits of free
+    time and track which parts of the menu tree remain to be explored;
+    and
+  * if you can figure out a way to construe your problem as a fault, you
+    may get a better service from their fault line.
+
+A word of caution: the story is not quite over yet: NTL have not yet
+sent us a cheque for the &pound;110&middot;89 they overcharged us for
+the year before we moved, and neither have we seen any evidence as to
+whether they intend to charge us for the period we had no service.  

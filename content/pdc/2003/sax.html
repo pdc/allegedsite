@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:50 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Sax - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>sax</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Sax</h1>
+      <div class="entry">
+        <h2><a name="e20021107" id="e20021107">Picky, Skin, SaxLifter</a></h2>
+        <p class="details">7 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="picky.html">Picky Picky Game</a></li>
+            <li><a href="xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><strong>sax</strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2002/11.html#e20021107" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/10.html#e20021031"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      Found some time to continue <a href="../2002/10.html#e20021031">work on
+      the Picky Picky Game</a>.  I&nbsp;have something which, given a
+      graphics file, writes it in to the correct place in the
+      directory structure.  Tonight’s task was a routine for
+      generating the index page, based on the pictures stored so far.
+      In the eventual web application, this routine will be invoked in
+      <abbr title="Common Gateway Interface">CGI</abbr> scripts
+      whenever a new picture is added or vote recorded.  For the
+      present I&nbsp;can just run the Python script (one of the ways
+      in which creating web apps in Python is less hassle than, say,
+      <abbr title="Microsoft&reg; ActiveX Server
+      Pages">ASP</abbr>&nbsp;.Net or <a
+      href="../2002/../wp/wc.html">webclasses</a>).
+    </p>
+    <p>
+      The index page format is mainly controlled through a
+      ‘skin’ file <code>index.skin</code>.  This has most
+      of the HTML, with special XML tags for interpolating the dynamic
+      content.  This way hopefully Jeremy will be able to hack the
+      HTML without touching any of the application code.  (The
+      immediate inspiration for the term <em>skin</em> comes from the
+      <a href="http://helma.org/">Helma Object Publisher</a> system,
+      which does something similar, but using JavaScript.)
+    </p>
+    <p>
+      The picture metadata is written in <abbr title="Extensible
+      Mark-up Language">XML</abbr> which is straight&shy;forward
+      enough except that Python’s native 
+      <abbr title="Simple API for XML">SAX</abbr> support is broken:
+      it does not support <abbr title="Extensible
+      Mark-up Language">XML</abbr> namespaces!  I&nbsp;have fixed this
+      with my own  <abbr title="Simple API for XML">SAX</abbr> filter
+      dubbed <code>SaxLifter</code>: it processes
+      <code>startElement</code> events by scanning the attributes for
+      namespace prefixes, maintaining a stack of namespace mappings,
+      and generating <code>startElementNS</code> events.  Presumably
+      if I&nbsp;were using the XML-SIG or 4Thought enhancements to
+      Python things would work better.  Sigh.
+    </p>
+    <p>
+      The overall strategy is to generate as much static HTML as
+      possible—that is, instead of creating the HTML for the
+      list of pictures afresh each time someone visits the site (which
+      is what PHP and ASP, etc., do), I&nbsp;intend to generate it
+      only when a new picture is added to the list.  Since adding
+      pictures will happen much more rarely than viewing the list,
+      this reduces the overall load on the web server.  The aim is to
+      use <abbr title="Common Gateway Interface">CGI</abbr> only in
+      the pages that make a change (adding a picture or voting).
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

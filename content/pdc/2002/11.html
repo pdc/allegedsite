@@ -1,0 +1,744 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-02-28 21:34 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2002;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2002 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>November 2002 - Damian Cugley - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2002</a> &gt;&gt;
+      <strong>11</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20021125b" id="e20021125b">Picky Picky Game: minimal voting</a></h2>
+        <p class="details">25 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../2003/web.html">web</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021125b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.humboldt.co.uk/"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      <em>(Sunday night.)</em>
+      Still nothing up for you to see yet, I’m afraid.  (Apart
+      from anything else, I&nbsp;need to ask 
+      <a href="http://www.humboldt.co.uk/">my host</a> to install a few
+      Python packages...)  But I&nbsp;do do now have the start of the
+      second CGI script, the one that accepts reader’s votes for
+      the current round of pictures.  These votes later are used to
+      decide which picture to use for that panel of the comic strip.
+    </p>
+
+    <p>
+      At present the script accepts your vote but does not display
+      them in any way.
+      If you vote again, your previous ballot is silently overwritten.
+      I&nbsp;plan 
+      to support <a href="http://www.idhop.addr.com/av/">Approval
+      Voting</a> in future by having a page where you have a checkbox
+      for each candidate picture and can select as many as you like.
+    </p>
+    <p>
+      The word ‘your’ is a little misleading; we use
+      people’s IP addresses as their identifiers, which sort of
+      works most of the time, but means that people sharing a proxy
+      server will end up sharing a vote.  The alternative (requiring
+      users to register in order to vote) is not likely to work
+      because noone will want to register.
+    </p>
+    
+    <p>
+      <em>Update (Monday night)</em>:
+      The voting form now shows you the pictures with checkboxes.
+      When you first visit the page, the picture you cloicked on is
+      ticked, but then you can tick as many more as you like.  Because
+      of the way HTML forms are processed, each form parameter is
+      potentially a sequence anyway, so the code for each time around
+      the voting form can be exactly  the same.  The code that adjusts
+      the totals is very simple:
+    </p>
+
+    <pre>def vote(self, uid, pns):
+    """Register a vote from the user identified by uid.
+
+    uid is an integer, uniquely identifying a voter.
+    pns is a list of picture numbers
+    """
+    oldPns = self.userVotes.get(uid, [])
+    if pns == oldPns:
+        return
+    for pn in oldPns:
+        self.pictures[pn].nVotes += -1
+    for pn in pns:
+        self.pictures[pn].nVotes += 1
+    self.userVotes[uid] = pns</pre>
+
+    <p>
+      The first line retrieves that user’s old ballot, if any.
+      The first <code>for</code> statement reverses the effect (if
+      any) of their former vote, the second counts the new vote.  
+      Finally the ‘ballot’ is saved for later.  Behind the
+      scenes, <a href="http://zodb.sourceforge.net/"><abbr
+      title="the Z Object Database">ZODB</abbr></a>
+      takes care of reading the old data in off disc and 
+      (when the transaction is committed) saving the updated
+      data.
+    </p>
+
+    <p>
+      My paid job involves writing a web application as well, except
+      this one uses Microsoft <abbr title="Active Server
+      Pages">ASP</abbr>&nbsp;.Net linked via <abbr title="Active Data
+      Objects">ADO</abbr>&nbsp;.Net to Microsoft <abbr
+      title="Structured Query Language">SQL</abbr>
+      Server&reg;&nbsp;2000.  To do a similar job to the above
+      snippet, I&nbsp;would be writing two <abbr title="Structured
+      Query Language">SQL</abbr> stored procedures (one to retrieve
+      the exisiting ballot, one to alter the ballot).  Invoking a
+      stored procedure is several more lines of code in the <abbr
+      title="C Sharp">C&#x266F;</abbr> or <abbr title="Microsoft
+      Visual Basic">VB</abbr>&nbsp;.Net layer as you create a Command
+      object, add parameters to it, execute it, and dispose of the
+      remains.  (Or you can create DataSet objects which are even
+      worse, but have specialized wizards to help you draft the code.)
+      The actual algorithm (the encoding of the business logic) would
+      be buried in dozens of lines of boilerplate.  By comparison, the Python+<abbr
+      title="the Z Object Database">ZODB</abbr> implementation is a
+      miracle of concision and clarity.  The
+      <a href="http://www.zope.org/"><abbr title="Z Object Programming
+      Environment">ZOPE</abbr></a> people deserve much kudos.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021125a" id="e20021125a">Colour graphics the hard way</a></h2>
+        <p class="details">25 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/programming.html">programming</a></li>
+            <li><a href="../2003/graphics.html">graphics</a></li>
+            <li><a href="../2003/pbmplus.html">PBMPlus</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021125a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../2003/picky.html"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      On my badly broken Linux desktop, the Gimp is missing its
+      file-saving plug-ins, so it cannot save files except in a format
+      I&nbsp;cannot use.  XPaint does not exist, for some reason.  The
+      venerable <code>bitmap</code> program does work, but can only
+      produce X11 bitmap files (which are black and white only).  How
+      then to produce colour icons for my <a
+      href="../2002/../2003/picky.html">Picky Picky Game</a> mock-ups?
+    </p>
+    <p>
+      <a href="../2002/graphics-the-hard-way.html">Using PBMPlus to colourize
+      monochrome bitmaps</a>
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021118c" id="e20021118c">More family photos</a></h2>
+        <p class="details">18 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/photos.html">photos</a></li>
+            <li><a href="../2003/personal.html">personal</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021118c" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.korvar.pwp.blueyonder.co.uk/"><img src="../2002/darren-beach.jpg" class="initial" alt="" align="left" width="120" height="99" border="0" /></a></div><p class="first">
+      <a href="http://www.korvar.pwp.blueyonder.co.uk/">My brother
+      Mike Cugley</a> has put up <a
+      href="http://www.korvar.pwp.blueyonder.co.uk/Pictures/index.php?currDir=./Photos/Darren_Photos_4">another
+      bunch of photos of his son Darren</a>.  Here’s one of <a
+      href="http://www.korvar.pwp.blueyonder.co.uk/Pictures/index.php?currDir=./Photos/Darren_Photos_4&pageType=image&image=CNV00018.jpg">Dad,
+      my sister Rachel, Mike, Darren and me in Dad and Josie’s
+      garden in Ramsgate</a>.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021118b" id="e20021118b">ZEO just works</a></h2>
+        <p class="details">18 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../2003/zodb.html"><abbr title="Z Object Database">ZODB</abbr></a></li>
+            <li><a href="../2003/zeo.html"><abbr title="Z Enterprise Objects">ZEO</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021118b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><img src="../2002/../2003/zeo-64x64.png" alt="" align="left" width="64" height="64" border="0" /></div><p class="first">
+      Converting my non-concurrent code to instead use a persistent
+      store coordinated through <abbr title="ZOPE Enterprise
+      Objects">ZEO</abbr> is pretty easy once I’d grokked the
+      documentation.  In fact most of the work consisted of deleting
+      some of the routines for just-in-time reading back of the
+      metadata, since that is now taken care of for me by ZODB.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021118a" id="e20021118a">Picky Picky Game: The Joy of PIL</a></h2>
+        <p class="details">18 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../2003/pil.html"><abbr title="Python Imaging Library">PIL</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021118a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.pythonware.com/products/pil/"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      The final piece in the puzzle of my <abbr title="Picky Picky
+      Game">PPG</abbr> platform is <a
+      href="http://www.pythonware.com/products/pil/">the Python
+      Imaging Library (PIL)</a> from <a
+      href="http://www.pythonware.com/">Secret Labs AB
+      (PythonWare)</a>.  This makes it easy to check that the uploaded
+      images are the right dimensions, for example:
+    </p>
+    <pre>im = Image.open(StringIO.StringIO(data))
+width, height = im.size
+if width &gt; game.maxWidth or height &gt; game.maxHeight:
+    log('Image is too large: the maximum is %d &times; %d.' \
+            % (game.maxWidth, game.maxHeight), STOP)
+    ok = 0</pre>
+    <p>
+      I&nbsp;don’t even need to know whether the image is a 
+      <abbr title="Portable Network Graphics">PNG</abbr>,
+      <abbr title="Joint Photographic Expert Group">JPEG</abbr>, or
+      <abbr title="Compuserve Graphics Interchange Format">GIF</abbr>.
+    </p>
+
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021117" id="e20021117">Picky Picky Game: ZEO + CGI</a></h2>
+        <p class="details">17 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../2003/zeo.html"><abbr title="Z Enterprise Objects">ZEO</abbr></a></li>
+            <li><a href="../2003/cgi.html"><abbr title="Common Gateway Interface">CGI</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021117" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/picky-zeo-cgi.html"><img src="../2002/../2003/zeo-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Even in a toy web application like the Picky Picky Game, it is
+      possible (but unlikely) that two people will want to upload a
+      picture at (nearly) the exact same moment.  If two processes try
+      to write the same file at the same time, the results could be a
+      mess.  It follows that we need to include something to
+      co-ordinate the changes.  
+    </p>
+    <p><a href="../2002/picky-zeo-cgi.html">Using ZEO to coordinate CGI scripts</a></p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021116c" id="e20021116c">LifeJournal syndication</a></h2>
+        <p class="details">16 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/rss.html"><abbr title="really Simple Syndication">RSS</abbr></a></li>
+            <li><a href="../2003/livejournal.html">LiveJournal</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021116c" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://tinyjo.net/"><img src="../2002/../bike/19980529d-64x64.jpg" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      <a href="http://tinyjo.net/">Joe Charman</a> has created a <a
+      href="http://livejournal.com/">LiveJournal</a>
+      ‘syndication account’ for me.  As a result you can
+      see <a href="../2002/../rss091.xml">my <abbr title="Really Simple
+      Syndication">RSS</abbr> feed</a>, converted in to a LiveJournal
+      journal.  She says that if you have a paid-for LiveJournal
+      account, you can add <a
+      href="http://livejournal.com/~pdc/"><code>pdc</code></a> to your
+      friends roster.  <em>And</em> people can comment on the
+      LiveJournal pointers to my posts.  Woohoo.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021116b" id="e20021116b">EAGAIN, again</a></h2>
+        <p class="details">16 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021116b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://jonpy.sourceforge.net/"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      I&nbsp;throught I’d try out a different CGI framework, such
+      as <a href="http://jonpy.sourceforge.net/">jonpy</a>, and this
+      requires Python 2.2.  So I&nbsp;have now installed
+      Python&nbsp;2.2 (carefully installing GNU db, expat, etc. first
+      so these modules will be built).  During its self-tests,
+      I&nbsp;noticed that <code>test_socket.py</code> takes 2&frac12;
+      minutes (to do something that should take approximately no
+      time).  Come to think of it, initiating connections to my Linux
+      box from Jeremy’s <abbr title="Microsoft Windows
+      NT">NT</abbr> box also takes an inordinate amount of time.  That
+      might be why initiating HTTP connections to my
+      <code>thttpd</code> instance also takes an inordinate amount of
+      time, so long that <code>thttpd</code> kills the CGI rather than
+      waste any more time.  In other words, my CGI problems may mostly
+      stem from a broken network stack.  Teriffic.  This is a
+      variation on <a
+      href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">Joel
+      Spolsky’s law of leaky abstractions</a>: I would like to
+      be able to believe in POSIX’s abstraction of sockets as
+      being a lot like a file, but sadly it is all frinked up.
+      Another reason to spend a week or two installing <a
+      href="http://www.debian.org/">Debian</a> some time.
+    </p>
+    <p>
+      I&nbsp;think the way forward for now is probably to ignore the
+      network problems and cross my fingers when I&nbsp;install it on
+      the actual server.  Given that fairly thorough search of the WWW
+      and Netnews reveals no discussion of the sort of problems
+      I’ve been having, I&nbsp;am fairly sure it is some
+      freakish glitch in my computer...
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021116a" id="e20021116a">Council&rsquo;s anti-bike vendetta continues</a></h2>
+        <p class="details">16 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/bike.html">My Bike</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021116a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../bike/"><img src="../2002/../bike/19980529d-64x64.jpg" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      Judging from their behaviour, it has long seemed that the powers
+      that be in Oxfordshire hold cyclists in contempt but don’t
+      feel able to actually come out and admit it.  One of their
+      techniques for discouraging cycle commuters is to make it as
+      difficult to park a bicycle in town as it is to park a car.
+      Case in point: up until yesterday, I had the perfect place to
+      park <a href="../2002/../bike/">my bicycle</a>
+      each work day—it had a roof overhead and
+      plenty of railings to lock my machine to, and was not in
+      anybody’s way.  The <a
+      href="http://www.oxfordshire.gov.uk">County Council</a> (in
+      whose car park this spot was) has now fenced off this area with
+      a big steel fence, with a notice to the effect that it was
+      reserved for Environmental Services’ motorbikes and
+      bicycles.  When I&nbsp;tried locking my bike to the outside of
+      the new cage, notices were put up ordering me not to (the
+      implication being that they would not mind damaging my bike in
+      the process of removing it).
+    </p>
+    <p>
+      The upshot of this is that there is nowhere to park near my
+      office.  All the road signs are already occupied by the time
+      I&nbsp;get in. The foyer already has three bikes in it, but
+      I&nbsp;would not have used it anyway, having already had a bike
+      stolen from such a situation.  In the end I&nbsp;locked it to
+      the back of a street sign in the next street along.
+      Psychologically it feels exposed out there in the middle of the
+      footpath.  I&nbsp;much preferred keeping it out of
+      people’s way, on the grounds they will then feel less need
+      to vandalize it&hellip;
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021114b" id="e20021114b">More on Opera&rsquo;s boundaries</a></h2>
+        <p class="details">14 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/opera.html">Opera browser</a></li>
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021114b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><img src="../2002/../wp/icon-64x64.png" alt="" align="left" width="64" height="64" border="0" /></div><p class="first">
+      It occurs to me I&nbsp;may be being harsh on Opera;
+      I&nbsp;notice that elsewhere they show a preference for
+      splitting MIME parameters over multiple physical lines.  For
+      example, they use
+    </p>
+    <pre>Content-disposition: form-data;
+	name="fred"</pre>
+
+    <p>as opposed to</p>
+
+    <pre>Content-disposition: form-data; name="fred"</pre>
+
+    <p>
+      It is just about possible that this confuses <code>thttpd</code>
+      so that it clips everything after the first CRLF when passing
+      the headers to my script via CGI...?
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021114a" id="e20021114a">CGI upload woes</a></h2>
+        <p class="details">14 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/cgi.html"><abbr title="Common Gateway Interface">CGI</abbr></a></li>
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021114a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/11.html#e20021111"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      On <a href="../2002/11.html#e20021111">Monday</a> I&nbsp;was troubled by
+      <code>EAGAIN</code> interruptions when reading in a CGI
+      script’s data.  It turns out Python has a <code>cgi</code>
+      module already.  But when I&nbsp;tried creating a script that
+      used that, it failed to work with <a
+      href="../2002/11.html#e20021108">Opera’s boundary-less
+      multipart</a> (the built-in <code>cgi</code> module uses the
+      <code>multifile</code>, which I&nbsp;tried and rejected
+      earlier).
+    </p>
+    <p>
+      I&nbsp;have tried looping until <code>EAGAIN</code> does not
+      happen—but I&nbsp;put a limit of 10 iterations so as not
+      to chew up the CPU.  No dice.  I&nbsp;have also tried using the
+      <code>fcntl</code> module to remove the <code>O_NONBLOCK</code>
+      flag from stdin.  The result is that instead of crashing with
+      <code>EAGAIN</code> it waits indefinitely (and gets interrupted
+      by <code>thttpd</code>’s watchdog timer).
+    </p>
+    <p>
+      The upshot of this is that I&nbsp;have the beginnings of a CGI
+      script that works if I&nbsp;connect to it from the same machine the
+      server is running on, but not if I&nbsp;connect to it from a
+      different machine (an NT box) on the same network.
+      The thing is, I&nbsp;<em>know</em> that people have successfully
+      written CGI programs in Python, and none of the examples
+      I&nbsp;find on-line have any mention of these phenomena.  
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021111" id="e20021111">Picky Picky Game: Upload pictures, EAGAIN</a></h2>
+        <p class="details">11 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../2003/cgi.html"><abbr title="Common Gateway Interface">CGI</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021111" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/11.html#e20021107"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      I have now written a parser for HTML-4.0 file uploads (forms
+      with enctype <code>multipart/form-data</code>).  It will need
+      some finessing to get character encodings to work right, but for
+      the simple cases I&nbsp;tried it uploaded files flawlessly, and
+      moreover, plugged in to the back-end script I&nbsp;mentioned in
+      <a href="../2002/11.html#e20021107">an earlier installment</a>.
+    </p>
+
+    <p>
+      Alas!  When I tried uploading from Jeremy’s NT box, my
+      Python program crashed with an <code>IOError</code> exception
+      with
+       <code>errno=EAGAIN</code>.  I&nbsp;guess I&nbsp;need to do some
+      sort of loop to fill my buffer.  Ho hum.  
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021108" id="e20021108">Things your mother didn&rsquo;t tell you</a></h2>
+        <p class="details">8 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/opera.html">Opera browser</a></li>
+            <li><a href="../2003/cgi.html"><abbr title="Common Gateway Interface">CGI</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021108" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><img src="../2002/../wp/icon-64x64.png" alt="" align="left" width="64" height="64" border="0" /></div><p class="first">
+      Opera&nbsp;5 omits the boundary parameter when uploading files.
+      Lynx&nbsp;2.8.2 does not support uploading files at all (but,
+      oddly, does generate <code>multipart/form-data</code> forms
+      properly—it even gives the <code>charset</code> parameter
+      to the content-type of its form items).  Python’s
+      <code>multifile</code> module raises an exception on all of the
+      above, for some inputs.
+    </p>
+    <p>
+      I guess that if I want to handle uploaded images, I&nbsp;get to
+      write my own <code>multipart/form-data</code> parsers from
+      scratch.  I&nbsp;have already done this in C++ for work;
+      I&nbsp;guess I&nbsp;can do it again in Python. Sigh.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021107" id="e20021107">Picky, Skin, SaxLifter</a></h2>
+        <p class="details">7 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../2003/xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="../2003/sax.html">sax</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021107" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/10.html#e20021031"><img src="../2002/../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      Found some time to continue <a href="../2002/10.html#e20021031">work on
+      the Picky Picky Game</a>.  I&nbsp;have something which, given a
+      graphics file, writes it in to the correct place in the
+      directory structure.  Tonight’s task was a routine for
+      generating the index page, based on the pictures stored so far.
+      In the eventual web application, this routine will be invoked in
+      <abbr title="Common Gateway Interface">CGI</abbr> scripts
+      whenever a new picture is added or vote recorded.  For the
+      present I&nbsp;can just run the Python script (one of the ways
+      in which creating web apps in Python is less hassle than, say,
+      <abbr title="Microsoft&reg; ActiveX Server
+      Pages">ASP</abbr>&nbsp;.Net or <a
+      href="../2002/../wp/wc.html">webclasses</a>).
+    </p>
+    <p>
+      The index page format is mainly controlled through a
+      ‘skin’ file <code>index.skin</code>.  This has most
+      of the HTML, with special XML tags for interpolating the dynamic
+      content.  This way hopefully Jeremy will be able to hack the
+      HTML without touching any of the application code.  (The
+      immediate inspiration for the term <em>skin</em> comes from the
+      <a href="http://helma.org/">Helma Object Publisher</a> system,
+      which does something similar, but using JavaScript.)
+    </p>
+    <p>
+      The picture metadata is written in <abbr title="Extensible
+      Mark-up Language">XML</abbr> which is straight&shy;forward
+      enough except that Python’s native 
+      <abbr title="Simple API for XML">SAX</abbr> support is broken:
+      it does not support <abbr title="Extensible
+      Mark-up Language">XML</abbr> namespaces!  I&nbsp;have fixed this
+      with my own  <abbr title="Simple API for XML">SAX</abbr> filter
+      dubbed <code>SaxLifter</code>: it processes
+      <code>startElement</code> events by scanning the attributes for
+      namespace prefixes, maintaining a stack of namespace mappings,
+      and generating <code>startElementNS</code> events.  Presumably
+      if I&nbsp;were using the XML-SIG or 4Thought enhancements to
+      Python things would work better.  Sigh.
+    </p>
+    <p>
+      The overall strategy is to generate as much static HTML as
+      possible—that is, instead of creating the HTML for the
+      list of pictures afresh each time someone visits the site (which
+      is what PHP and ASP, etc., do), I&nbsp;intend to generate it
+      only when a new picture is added to the list.  Since adding
+      pictures will happen much more rarely than viewing the list,
+      this reduces the overall load on the web server.  The aim is to
+      use <abbr title="Common Gateway Interface">CGI</abbr> only in
+      the pages that make a change (adding a picture or voting).
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20021103" id="e20021103">London calling</a></h2>
+        <p class="details">3 November 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/personal.html">personal</a></li>
+            <li><a href="../2003/tatemodern.html">Tate Modern</a></li>
+            <li><a href="../2003/tatebritain.html">Tate Britain</a></li>
+            <li><a href="../2003/turnerprize.html">Turner Prize</a></li>
+            <li><a href="../2003/marsyas.html">Marsyas</a></li>
+            <li><a href="../2003/anishkapoor.html">Anish Kapoor</a></li>
+            <li><a href="../2003/keithtyson.html">Keith Tyson</a></li>
+            <li><a href="../2003/thethinkerafterrodin.html">The Thinker (After Rodin)</a></li>
+            <li><a href="../2003/28dayslater.html">28 Days Later...</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20021103" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.tate.org.uk/modern/exhibitions/kapoor/"><img src="../2002/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      We spent Sunday in London.  First to see <cite>Marsyas</cite>,
+      <a
+      href="http://www.tate.org.uk/modern/exhibitions/kapoor/">Anish
+      Kapoor’s giant red sculpture in the Tate Modern</a>
+      (<a
+      href="http://www.unilever.co.uk/news/anishkapoor.html">this year’s
+      Unilever Series installation</a>).  As <a
+      href="http://peteashton.com/001058.html">Pete</a> points out, it
+      is very big, designed to look like it had to be positively
+      rammed in to the Turbine Hall and almost didn’t fit.  The
+      title suggests that it is (part of) the flayed skin of a
+      mythological figure, represented in Jack Kirby style as a
+      titanic giant.
+    </p>
+
+    <p>
+      We only stayed a moment, because we were really there to see the
+      <a
+      href="http://www.tate.org.uk/britain/exhibitions/turnerprize/">Turner
+      Prize exhibits</a> at the <a
+      href="http://www.tate.org.uk/britain/">Tate Britain</a>.  The
+      place has been extensively remodelled since we last
+      visited—even the route from the tube stop to the entrance
+      was different—using similar white creamy stone to the
+      British Museum refit.  Jeremy and I liked the Turner Prize
+      stuff.  
+    </p>
+
+    <p>
+      I&nbsp;really liked <a
+      href="http://www.tate.org.uk/britain/exhibitions/turnerprize/2002/tyson.htm">Keith
+      Tyson</a>’s collection of poster-sized sketches of crazy
+      ideas and images.  (One of the complaints people were making in
+      the comments room was that modern artists cannot draw.  This is
+      patently not the case Keith Tyson’s idea-posters.)  His
+      three-dimensional works start in poster form—in this case
+      he had the diagram for <cite>The Thinker (After Rodin)</cite>
+      and the sculpture itself in the same room.  His
+      <cite>Thinker</cite> is sort of the reverse of Rodin’s:
+      instead of representing the <em>appearance</em> of a person
+      thinking, it does something that represents the thinking itself:
+      there is a computer system inside the column running a virtual
+      world simulation.  If you put your ear to the column you can
+      hear its ‘thoughts’.
+    </p>
+
+    <p>
+      To round off the cultural evening we watched the low-budget
+      British post-apocalyptic movie <a
+      href="http://uk.imdb.com/Details?0289043"><cite>28 Days
+      Later</cite></a>.  Afterwards as we walked home we passed some
+      of the landmarks from the deserted London of the film...
+    </p>
+
+    <p><small>[Written 2002-11-06]</small></p> 
+    <p><strong>Update</strong> (2003-03-08): Corrected the spelling of Anish
+    Kapoor’s name and ‘Marsyas’</p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/">2003</a></li>
+        <li><a href="../2002/12.html">December 2002</a></li>
+        <li><a href="../2002/11.html">November 2002</a></li>
+        <li><a href="../2002/10.html">October 2002</a></li>
+        <li><a href="../2002/09.html">September 2002</a></li>
+        <li><a href="../2002/08.html">August 2002</a></li>
+        <li><a href="../2002/07.html">July 2002</a></li>
+        <li><a href="../2002/06.html">June 2002</a></li>
+        <li><a href="../2002/05.html">May 2002</a></li>
+        <li><a href="../2002/04.html">April 2002</a></li>
+        <li><a href="../2002/03.html">March 2002</a></li>
+        <li><a href="../2002/02.html">February 2002</a></li>
+        <li><a href="../2002/01.html">January 2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

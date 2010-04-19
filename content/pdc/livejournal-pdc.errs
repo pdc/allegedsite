@@ -1,0 +1,8 @@
+line 52 column 1 - Warning: <style> attribute "type" lacks value
+line 84 column 1 - Warning: <table> attribute "summary" lacks value
+line 89 column 14 - Warning: <table> attribute "summary" lacks value
+line 93 column 545 - Warning: unknown attribute "lj:user"
+line 93 column 481 - Warning: nested emphasis <span>
+line 111 column 1 - Warning: <table> attribute "summary" lacks value
+Info: Doctype given is "-//W3C//DTD XHTML 1.0 Transitional//EN"
+Info: Document content looks like HTML 4.01 Transitional

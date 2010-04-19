@@ -1,0 +1,99 @@
+
+import os
+import re
+import sqlite3
+import time
+import getopt
+import sys
+
+VERSION = '1.0 (pdc 2006-10-26)'
+
+#subjects_file = 'subjects.data'
+
+root_dir = '..'
+db_name = 'topics.sqlite'
+
+xml_re = re.compile(r'<!--|<\?xml|<entry')
+dc_subject_re = re.compile(r'<dc:subject>([^<>]+)</dc:subject>')
+topics_re = re.compile(r'\nTopics:([^\n]+)\n')
+
+def get_entry_tags(file_name):
+	"""Given the file name of an entry, return the list of tags."""
+	text = open(file_name, 'rt').read()
+	if xml_re.search(text):
+		return dc_subject_re.findall(text)
+	else:
+		m = topics_re.search(text)
+		return m.group(1).split() if m else []
+	
+def update_entry(con, file_name):
+	"""Update the database with information about the entry in this file."""
+	tags = get_entry_tags(file_name) or ['unclassified']
+	c = con.cursor()
+	c.execute('replace into Docs (source) values (?)', (file_name,))
+	c.execute('select id from Docs where source = ?', (file_name,))
+	doc_id, = c.fetchone()
+	c.executemany('replace into Topics (name) values (?)', [(tag,) for tag in tags])
+	c.executemany('replace into Doc_Topics (doc, topic) select ?, id from Topics where name = ?', 
+			[(doc_id, tag) for tag in tags])
+	con.commit()
+	
+def maybe_update_entry(con, file_name):
+	"""Update this entry, if the file is more recently updated than the last scan."""
+	is_new = True
+	c = con.cursor()
+	c.execute('select scanned from Docs where source = ?', (file_name,))
+	row = c.fetchone()
+	if row:
+		last_scanned = time.strptime(row[0], '%Y-%m-%d %H:%M:%S')[:6]
+		last_modified = time.localtime(os.stat(file_name).st_mtime)[:6]
+		is_new = last_modified > last_scanned
+	if is_new:
+		update_entry(con, file_name)
+	return is_new
+		
+class Usage(Exception):
+	pass
+	
+help_text = """usage: 
+	entry_topics.py -h | --help
+	entry_topics.py -V | --version
+	entry_topics.py file_name...
+"""
+
+		
+def main(argv=None):
+	"""What to do when run from the command line."""
+	if argv is None:
+		argv = sys.argv
+	try:
+		try:
+			opts, args = getopt.getopt(argv[1:], 'hVv', ['help', 'version', 'verbose'])
+		except getopt.Error, err:
+			sys.exit(str(err))
+			
+		is_help = False
+		is_verbose = False
+		for flag, arg in opts:
+			if flag == '-h' or flag == '--help':
+				print help_text
+				is_help = True
+			elif flag == '-V' or flag == '--version':
+				print VERSION
+				is_help = True
+			elif flag == '-v' or flag == '--verbose':
+				is_verbose = True
+		if is_help:
+			return 0
+		
+		con = sqlite3.connect(db_name)
+		for file_name in args:
+			if maybe_update_entry(con, file_name) and is_verbose:
+				print 'updated', file_name
+	except Usage, err:
+		sys.exit('usage: entry_topics.py -h | -V | file_name...')
+			
+		
+if __name__ == '__main__':
+	sys.exit(main())
+		

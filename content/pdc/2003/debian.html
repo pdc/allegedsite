@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:23 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Debian - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>debian</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Debian</h1>
+      <div class="entry">
+        <h2><a name="e20041101" id="e20041101">How to fail to change fonts in librsvg2</a></h2>
+        <p class="details">1 November 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+            <li><strong>debian</strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2004/11/01.html#e20041101" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">On Debian GNU/Linux I am attempting to use <code> <a href="http://librsvg.sourceforge.net/">librsvg2</a> </code> to render a
+   few small images (because Mozilla-based browsers cannot display SVG),
+   and the wrong font is being used. How do I find out how to correct this?
+</p>
+<p>Here is a sample file. First, the SVG version ([source code: <code>tag.svg</code>][4]):
+</p>
+<blockquote>
+    <div>
+        <embed src="../2004/tag.svg" type="image/svg+xml" 
+            width="240" height="120" alt="" />
+    </div>
+</blockquote>
+
+<p>The font-family attribute specifies ‘Helvetica, Arial, sans-serif’. 
+   In Adobe’s SVG Viewer 3.0 it looks like this:
+</p>
+<blockquote>
+    <div>
+        <img src="../2004/tag-adobe.gif" alt="taG" />
+    </div>
+</blockquote>
+
+<p>This uses the font Helvetica; you can tell by looking for the flat top
+   on the <em>t</em>, the curly tail on the <em>a</em>, and the spur (beard) on the <em>G</em>. 
+   Batik works fine, but chooses to use Arial rather than Helvetica:
+</p>
+<blockquote>
+    <div>
+        <img src="../2004/tag-batik.png" alt="taG" />
+    </div>
+</blockquote>
+
+<p>You can tell it’s Arial from the slanted <em>t</em>, the less-curled tail on
+   the <em>a</em>, and the beardless capital <em>G</em>. Finally, here’s the <code>librsvg2</code>
+   version:
+</p>
+<blockquote>
+    <div>
+        <img src="../2004/tag-rsvg.png" alt="taG" />
+    </div>
+</blockquote>
+
+<p>I don’t know what font this is, but it is neither Arial nor Helvetica.
+   More significantly, it has different font metrics.
+   (I think it is Bitstream Vera Sans, the default sanserif font.)
+</p>
+<p>In this particular instance, I want Helvetica (or Arial), because that
+   is (more or less) the font used in the Flickr logo. Also, as discussed
+   <a href="../2004/10/31.html">yesterday</a>, the difference in the metrics of the font means the word falls
+   off the edge of the picture. Now, neither Helvetica nor Arial are free
+   software, although for a while Microsoft were allowing people to
+   download Arial gratis, but there are other metrically compatible
+   sanserif fonts. I seem to remember using URW Gothic in TeX back in the
+   early 1990s, and Debian has a <code>fc-list</code> command whose output includes
+   references to this font; does that mean it is installed in a way that
+   <code>rsvg</code> can use it? If so, couldn’t it be aliased to Helvetica for the
+   sake of simplifying cross-platform SVG? 
+</p>
+<p>The <code>librsvg2</code> web page has nothing to offer on configuring the way it finds fonts. 
+   This library is based on <a href="http://www.levien.com/">Ralph Levien’s</a> library <a href="http://www.levien.com/libart/">Libart</a>; 
+   perhaps there will be some clues there? There are some references to
+   fonts – unfortunately the first one Google found for me was about <a href="http://www.levien.com/svg/shame.html">how
+the SVG specification makes implementing text needlessly
+complicated</a>! Oh, well. 
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2004/10/31.html#e20041031" title="Permanent URL for this entry">Migrating my website workspace, part 2</a>
+          31 October 2004
+        </li>
+        <li>
+          <a href="../2004/10/30.html#e20041030" title="Permanent URL for this entry">Migrating my website workspace, part 1</a>
+          30 October 2004
+        </li>
+        <li>
+          <a href="../2004/08/02.html#e20040802" title="Permanent URL for this entry">Demand-dialled modem configuration on Debian (Sarge)</a>
+          2 August 2004
+        </li>
+        <li>
+          <a href="../2004/07/31.html#e20040731" title="Permanent URL for this entry">1024x768@85 please</a>
+          31 July 2004
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+#-*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    pdcMetadata
+    title "Damian Cugley's Bike"
+    keywords "Damian Cugley" bike Oxford
+    description "
+    Damian Cugley lives and works in Oxford.
+    This page is about his bike.  It has photos!
+    "
+}
+
+beginBody
+
+h1 "Damian's Bike" \
+
+p class=details "
+[small \[Photos taken with \
+	[a http://www.rcai.demon.co.uk/qv10.htm Rafe's Casio \
+	QV-10 digital camera].\
+	Click on the small images to see a larger one.]\
+]
+"
+
+p class=initial "(28 Feb 1999)
+Alas!  I have managed to dispose of another bicycle.
+This time it was written off in an accident&mdash;I was [q in collision]
+with a car door.  Luckily for me the bike took most of the damage,
+but in the process the front forks and frame were wrecked.
+Just about the only component unaffected is the rear wheel.
+Since this has the hub gears, it is probably the most expensive
+part of the bike...
+"
+
+p "
+
+The section below was written before the accident.  I won't bother 
+going through it to translate the present tense into the past,
+because (I hope) soon it will be true again.
+I intend to replace my bike with one just like it.  
+"
+
+h2 "My recently deceased bike"
+
+p class=initial "
+    [a 19980529g.jpg [img 19980529g-stamp.jpg \
+	    align=right "alt=\[Link to bike photo&mdash;22K JPEG]"]]
+
+This is my new bike (at least, new in Summer 1998).  It's what
+Trek like to call a Multitrack, meaning a [q hybrid], which in
+turn means a bike with a frame a bit like a mountain bike and
+wheels a bit like a tourer.
+This tends to strike both MTB and road bike fans as a bit of a
+strange compromise, but for commuting in Oxford
+it suits me down to the ground.  
+OK, so the upright sitting position may be less aerodynamic,
+but being able to see ahead to the next
+lemming-like tourist makes me feel a lot more
+confident as I cycle through town.
+"
+
+p "
+It has one novel feature,  a
+seven-speed hub gear instead of the usual deraillier
+[a 19980529b.jpg [img 19980529b-stamp.jpg \
+	align=left "alt=\[Link to chain guard&mdash;23K JPEG]"]]
+(more usual in Britain at least, where everyone seems to
+want to ride MTBs whether they live near a mountain or not).  
+One advantage of this is that the chain does not have
+to move from side to side when changing gears, so
+it can have a chain guard to protect my  trouser-legs from 
+grease and grime.  No more need for ankle straps.
+This is invaluable when I'm off in my suit
+to see a client...
+(Having said that, I [em do] still wear ankle straps, 
+since they are reflective and increase my visibility.)
+"
+
+p "
+    [a 19980529d.jpg [img 19980529d-64x64.jpg \
+	    align=right "alt=\[Link to bike photo&mdash;22K JPEG]"]]
+Thanks to my mum, I also [s have] had a spedometer
+(that is, a [q cycle computer]), which means I now know that my house 
+is a mere 2\u00B79&nbsp;km from work&mdash;or 4\u00B78&nbsp;km if I take the scenic
+route along the side of the river.  Not exactly a major commute
+[code :-)].  
+
+"
+
+h2 "Always lock your bike"
+
+p "
+[a bike-01.jpg [img bike-01-stamp.jpg align=right \
+	"alt=\[Link to my old bike&mdash;26K JPEG]"]]
+
+
+My previous bike was stolen on the day before
+Good Friday (9 April 1998). 
+Normally
+I religiously bolted my bike to something whenever I left it.
+I  nevertheless talked myself into
+thinking it would be relatively safe, stuck under the stairs in the
+foyer of the office building I work at. 
+This is a classic case of security being undermined
+by because a small inconvenience experienced daily 
+seems like a big inconvenience after a while.  Fellow cyclists,
+learn from my misfortune!
+"
+
+endBody
+endDocument

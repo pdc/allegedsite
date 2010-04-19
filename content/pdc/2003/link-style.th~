@@ -1,0 +1,51 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Hypertext style and links - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Hypertext style and links"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+emit {
+    <p>
+      In a discussion of quoting in weblogs I found a link to <a
+      href="http://slumbering.lungfish.com/index.php?p=linkrules.1045257342">a
+      note by Lore
+      Sj&ouml;berg</a> on one of the things mentioned by <a
+      href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a>
+      in his ancient <a href="http://www.w3.org/Provider/Style/"><cite>Style Guide
+      for online hypertext</cite></a>, namely that when writing
+      hypertext you should make it make sense without the links.  
+    </p>
+    <p>
+      This is important for me because my <abbr title="Really Simple
+      Syndication">RSS</abbr> feed uses plain text in the excerpts it
+      includes&mdash;all the hyperlinks are stripped out.  This is
+      intentional: firstly, it removes the ambiguity over whether the
+      text contains encoded HTML or not, which is one of the desperate
+      flaws in the RSS conventions, and secondly because I&nbsp;want
+      people to click through to my site to read the article.  
+    </p>
+    <p>
+      I also have the same complaint as in Sj&ouml;berg&rsquo;s
+      article&mdash;too many weblog posts consist of a single link
+      like <u>This is funny</u> or <u>How sad is this?</u>.  For
+      inspiration, see <a
+      href="http://diveintomark.org/archives/2003/01/28/autocontent.html">Mark
+      Pilgrim&rsquo;s auto-content page</a> which (a)&nbsp;claims to
+      be automatically generated and (b)&nbsp;is much more interesting
+      to read.  Your duty as an actual human being is to write
+      something more interesting than a computer can.
+    </p>
+}
+
+p [a 03.html#e20030305a 5 March 2003]
+
+endBody
+endDocument

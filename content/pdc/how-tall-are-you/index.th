@@ -1,0 +1,306 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "How Tall are You? - Alleged Literature"
+    pdcMetadata
+    style type=text/css {
+	.q {
+	    margin: 1em 0pt;
+	    font-weight: bold; 
+	}
+	.a li {
+	    list-style-type: upper-alpha;
+	}
+	.result {
+	    padding: 6pt;
+	    border: 2px solid #6699CC;
+	}
+	.pre {
+	    margin: 6pt;
+	    border: 2px dashed #6699CC;
+	    padding: 6pt;
+	    font-size: xx-small;
+	    font-family: helvetica, arial, sans-serif; 
+	}
+    }
+    script {
+	var hasDom = document.getElementById != null;
+	var hasDhtml = document.all != null; //  has MSIE-style DHTML
+    }
+    script defer {
+	// Code for deciding which answer to show.
+	var choices = new Array();
+	var scores = new Array();
+
+	function dom_getById(name) 
+	{
+	    return document.getElementById(name);
+	}
+	function dhtml_getById(name) 
+	{
+	    return document.all[name];
+	}
+
+	var getById = hasDom ? dom_getById : dhtml_getById;
+
+	var nQuests = 0;// this is increased later
+
+	function onClickRadio(iQuest,iAns)
+	{
+	    choices[iQuest] = iAns;
+
+ 	    if (nQuests) { // nQuests is 0 iff the page has not loaded yet.
+		for (var j = 1; j <= 3; j++) {
+		    scores[j] = 0;
+		}
+		for (var i = 1; i <= nQuests; i++) {
+		    scores[choices[i]]++;
+		}
+
+		var iBest = 1;
+		for (var i = 2; i <= 3; i++) {
+		    if (scores[i] > scores[iBest]) {
+			iBest = i;
+		    }
+		}
+		reportResult(iBest);
+	    }
+	}
+
+	function reportResult(iBest)
+	{
+	    var s = 'mostly ' + 'ABCDEF'.charAt(iBest - 1) + 's';
+	    if (hasDom || hasDhtml) {
+		for (var i = 1; i <= 3; i++) {
+		    var st = getById('r' + i).style;
+		    if (i == iBest) {
+			st.color = 'black';
+			st.backgroundColor = '#FFCC99';
+			st.borderColor = '#996633';
+			st.display = 'block';
+		    } else {
+			st.color = '#336699';
+			st.backgroundColor = 'white';
+			st.borderColor = '#6699CC';
+			st.display = 'none';
+		    }
+		    getById('html' + i).style.display = (i == iBest ? 'block' : 'none');
+		}
+		if (hasDom) {
+		    var e = getById('conclusion');
+		    while (e.hasChildNodes()) {
+			e.removeChild(e.lastChild);
+		    }
+		    e.appendChild(document.createTextNode(s));
+		} else {
+		    getById('conclusion').innerHTML = s;
+		} 
+	    } else {
+		document.forms.quiz.conclusion.value = s;
+	    }
+	}
+    }
+}
+
+beginBody
+
+h1 "How tall are you?"
+
+p "
+[svg 2stick.svgz align=right width=125 height=100 [img 2stick.png]]
+Have you ever wondered whether you are tall or not?  
+After all, everyone knows how in most American presidential elections
+are won by the taller candidate&mdash;and you never know when
+being elected president might come in handy.
+"
+
+set nq 0
+proc qq {text a b c} {
+    global nq
+    set iq [incr nq]
+    p class=q id=q$iq "$iq. $text"
+    ol class=a type=A {
+	set i 0
+	foreach x {a b c} {
+	    li id=a$iq$x "<script>document.write('[input type=radio name=a$iq\
+		    id=r$iq$x value=[incr i]\
+		    "onclick=onClickRadio($iq,$i)"]')</script>\
+		    \n[set $x]"
+	}
+    }
+    br* clear=all
+}
+
+proc ss {root w h {title "You wont see the the SVG unless you get an SVG plug-in"} {alt {}} {align right}} {
+    return [svg $root.svgz width=$w height=$h align=$align \
+	    [img $root.png width=$w height=$h align=$align \
+	    title=$title alt=$alt]]
+}
+
+h2 Questions
+
+form name=quiz {
+    qq "[ss cookies 150 100]
+    You are carefully reaching for the cookie jar.  Are you:" \
+	    "Standing on a box?" \
+	    "Reaching for the top shelf?" \
+	    "Trying to avoid banging in to the light fixture?"
+
+    qq "
+    [ss 3faces 180 100]
+    What part of the face do you notice first in other people?" \
+	    "Their chin" \
+	    "Their eyes" \
+	    "Their hair" 
+
+    qq "
+    [ss bulb 63 110 ] 
+    To change a light bulb you need:" \
+	    "A friend to change the light bulb for you." \
+	    "A chair." \
+	    "A light bulb."
+
+    qq "
+    [ss bed 190 83]
+    You are in bed and your feet are cold. Why?" \
+	    "Someone has stolen the blankets." \
+	    "You have no carpets and you only just got into bed." \
+	    "Your duvet does not reach as far as your feet."
+
+    qq "
+    [ss sofa 188  82]
+    When you are sleeping  at a friend&rsquo;s place..." \
+	    "You sleep comfortably on the sofa" \
+	    "You curl up on the sofa" \
+	    "You put the sofa cushions down on the  floor."
+
+    qq "
+    [ss dec-ant-cat 182 115]
+    You could swap clothes with:" \
+	    "Dec" "Ant" "Cat"
+
+    qq "[ss food 200 90]
+    As a child you were fed" \
+	    "Twigs and leaves" \
+	    "Mainly potatoes" \
+	    "Milk and meat"
+
+    qq "[ss shopping 90 150]
+    When shopping for clothes, [q petite] means" \
+	    "Baggy" \
+	    "Less leggy than the regular stuff" \
+	    "[q Small] in French"
+
+    qq "[ss shoes 112 58]
+    Shoes that fit you are..." \
+	    "Brightly coloured and VAT-free." \
+	    "More expensive than you might think." \
+	    "Not available in the style you wanted."
+
+    qq "[ss jedi 150 242]
+    In your dressing gown you resemble:" \
+	    "Annie in [cite Phantom Menace]" \
+	    "Luke in [cite Star Wars: A New Hope]" \
+	    "Anakin\u2019s ghost in [cite Return of the Jedi]"
+    
+    script type=text/javascript defer "
+	nQuests = $nq;
+    "
+
+    h2 "Results"
+
+
+    script {
+	document.writeln('<p>You have answered ');
+	if (hasDom || hasDhtml) {
+	    document.writeln('<strong id="conclusion">...</strong>.')
+	} else {
+	    // Generate somthing in which to display the results.
+	    // Older browser: fall back on using 'input' element.
+	    document.writeln('<input type="text" name="conclusion" />');
+	}
+	document.writeln('</p>')
+    }
+
+
+    set nResults 0
+    proc rr {text} {
+	global nResults
+	incr nResults
+	p id=r$nResults class=result "
+	[strong* class=subhead\
+		"Mostly [em [format %c [expr 64 + $nResults]]]s"]:
+	$text
+	"
+    }
+
+    rr "
+	You are so tiny that people need to
+	hold you up to feed the parking meter.
+	Well, maybe not that small.  But definitely not tall.
+    "
+
+    rr "
+	You split the difference bewtween munchkin
+	and beanpole, elegantly pursuing that middle-of-of-the-road,
+	not particularly tall or short route.
+    "
+
+    rr "
+	Your future lies in a career fetching things from tall 
+	shelves and making jokes about the weather [q up there],
+	when in reality you dread the rain because you fear
+	being blinded by other people\u2019s careless umbrellas.
+    "
+}
+
+h2 "Stickers"
+
+p "Cut and paste the HTML code below
+to record the result of your taking of the How Tall are You test!"
+
+proc pp {i icon title alt} {
+    set u http://www.alleged.demon.co.uk/pdc/how-tall-are-you
+    div id=html$i {
+	p [ss $icon 63 53 $title $alt left]
+	p class=pre [string map {& &amp; < &lt; > &gt; { align="right"} ""}\
+		[a $u/ [ss $u/$icon 63 53 $title $alt]]]
+	br clear=all
+    }
+}
+
+pp 1 yes-tiny \
+	"According to the  How Tall Are You test,
+	I am tiny!" \
+	"Yes! I am tiny!"
+
+pp 2 yes-medium\
+	"According to the How Tall are You test,\
+	I'm neither tiny nor tall"\
+	"Pah! Who needs tall?"
+
+pp 3 yes-tall\
+	"According tp the How Tall are You test,\
+	I am tall!"\
+	"Yes! I am TALL!"
+
+dl class=note {
+dt Note
+
+dd "The doodles on this page  are in
+the relatively new format
+[a http://www.w3.org/Graphics/SVG/\
+	[acronym* "title=Scalable Vector Graphics"  SVG]],
+but I&nbsp;have included fall-back images in the 
+less-new format
+[acronym* "title=Portable Network Graphics" PNG]
+for those who have not yet installed
+[a http://www.adobe.com/svg/ Adobe\u2019s SVG Viewer plug-in 3.0].  
+Apologies if this tangles up your web browser... [code :-(]
+"
+
+}
+endBody
+endDocument

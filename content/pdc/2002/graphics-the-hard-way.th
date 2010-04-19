@@ -1,0 +1,109 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Colour graphics the hard way - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Colour graphics the hard way"
+
+emit {
+    <p>
+      On my badly broken Linux desktop, 
+      the Gimp is missing its file-saving plug-ins, so it cannot save
+      files except in a format I&nbsp;cannot use.  XPaint does not
+      exist, for some reason.  The venerable <code>bitmap</code>
+      program does work, but can only produce 
+      X11 bitmap files (which are black and white only).  How then to produce colour icons for my 
+      <a href="../2003/picky.html">Picky Picky Game</a> mock-ups?
+    </p>
+    <p>
+      The answer is, of course, to use Jef Poskanzer&rsquo;s <a
+      href="http://www.acme.com/software/pbmplus/">PBMPlus
+      Toolkit</a> (as extended over the years by other people to make
+      NetPBM).  
+      I&nbsp;used this in the
+      distant  past to get around the lack of graphics editors on
+      Unix in the olden days (we are talking circa 1992, here).
+Using <code>bitmap</code>, you make masks for the colours you want,
+      and combine them using <code>pnmarith</code>.  
+
+      There was a slight hiccup when I&nbsp;discovered that
+      <code>pgmtoppm</code> seems to go strange when presented with a 
+      <abbr title="portable bitmap">PBM</abbr>: it generates a depth-1
+      pixmap, therefore losing the very colours you have just used it
+      to add.  No doubt my decrepit compuer has out-of-date PBMPlus
+      software, just like everything else...
+    </p>
+    <p>
+      Anyway, the PBMPlus method for colour graphics is as follows.
+      For each colour (including the white background), you create a
+      bitmap that is the mask for that colour:
+    </p>
+
+    <blockquote>
+      <div>
+        <img src="warning-white.png" width="32" height="32"
+	alt="(white mask)" />
+        <img src="warning-red.png" width="32" height="32"
+	alt="(red mask)" />
+      </div>
+    </blockquote>
+
+    <p>
+      The first one is the white mask.  The second is white where
+      I&nbsp;want the picture to be red, and black otherwise.  If
+      there were several colours there would be several of these.  In
+      <code>bitmap</code> producing these masks is relatively
+      easy&mdash;start with the white mask, press Invert, and then
+      Flood Fill the parts you don&rsquo;t want. 
+      Convert these to PBM files using <code>xbmtopbm</code>.
+    </p>
+
+    <p>
+      Now we start creating the image, one colour at a time.  The
+      first layer, white,  is easy: just copy
+      <code>warning-white.pbm</code> to <code>warning.ppm</code>.  For
+      other colours, you use <code>ppmmake</code> to create a block of
+      the colour, <code>pnmarith -m</code> to mask out the area you
+      want, and <code>pnmarith -a</code> to combine this with the main
+      image:
+    </p>
+
+    <pre>mv warning.ppm tmp.ppm &amp;&amp; ppmmake '#990000' 32 32 | 
+pnmarith -m - warning-red.pbm | 
+pnmarith -a - tmp.ppm &gt; warning.ppm</pre>
+      
+    <p>
+      The result is a picture with several colours in it, created
+      using only a bitmap editor:
+    </p>
+
+    <blockquote>
+      <div>
+        <img src="warning.png" width="32" height="32"
+	alt="(warning icon)" />
+      </div>
+    </blockquote>
+
+    <p>
+      All in all this is a lot more bother than using 
+      a proper 
+      <abbr title="what you see is what you get">WYSIWYG</abbr>
+      graphics editor. 
+      (You also cannot sensibly create images with  a large number of
+      colours, since each colour needs its own mask.)
+      When Jeremy&rsquo;s not using her 
+      <abbr title="Microsoft Windows NT">NT</abbr> box I&nbsp;might
+      borrow that to produce nicer graphics.
+    </p>
+}
+
+p [a 11.html#e20021125a "25 November 2002"]
+
+endBody
+endDocument

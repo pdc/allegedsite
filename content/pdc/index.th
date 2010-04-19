@@ -1,0 +1,141 @@
+# -*-tcl-*-
+
+source pdcDefs.tcl
+source entryDefs.tcl
+
+beginDocument {
+	title "Damian Cugley - Alleged Literature"
+        link http://www.livejournal.com/openid/server.bml rel=openid.server
+        link http://damiancugley.livejournal.com/ rel=openid.delegate
+	pdcMetadata
+}
+
+beginBody
+
+h1 "Alleged Articles"
+
+p id=tagline "Damian Cugley&rsquo;s web pages"
+
+set entries [lrange $Log::allEntries 0 5]
+ 
+Log::arNameEmitEntryList $entries
+
+endBody
+
+endDocument 
+
+########################################################################
+
+# RSS version!
+
+set entities {
+    nbsp \u00A0
+    copy \u00A9
+    frac12 \u00BD
+    ouml \u00F6
+    rsquo \u2019
+    lsquo \u2018
+    mdash \u2014
+    ndash \u2013
+    Prime \u2033
+    "#x266F" \u266F
+}
+
+proc entityDecode {text} {
+    global entities 
+
+    foreach {pat c} $entities {
+	regsub -all "\\&$pat;" $text $c text
+    }
+    return $text
+}
+
+set rfc2822fmt "%a, %d %b %Y %H:%M:%S +0000" ;# assumes UTC
+set rss091Name rss091.xml
+set output [open $rss091Name w]
+fconfigure $output -encoding utf-8
+puts $output {<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+ <channel>
+  <title>Alleged News</title>
+  <link>http://www.alleged.org.uk/pdc/</link>
+  <description>Damian Cugley&#x2019;s personal web site</description>
+  <language>en-gb</language>
+  <managingEditor>webmaster@alleged.demon.co.uk</managingEditor>
+  <webMaster>webmaster@alleged.demon.co.uk</webMaster>
+  <docs>http://backend.userland.com/rss</docs>}
+puts $output "  <copyright>\u00A9 [clock format [clock seconds] -format %Y]\
+	\P. Damian Cugley</copyright>"
+
+puts $output "  <lastBuildDate>[clock format [clock seconds] -gmt 1 -format $rfc2822fmt]</lastBuildDate>"
+
+
+set d [string range [lindex [split [lindex $entries 0] /] end] 0 7]
+puts $output "  <pubDate>[clock format [clock scan $d] -format $rfc2822fmt -gmt 1]</pubDate>"
+
+set includeHeadings 0
+foreach entry $entries {
+    Log::entryNameLoadToArrayName $entry infos
+
+    set h $infos(h1) 
+    set e [file root $entry]
+    set f [entryNameRetArName $e].html
+    set link http://www.alleged.org.uk/pdc/$Log::pref$f#e[file tail $e]
+    set d $infos(date)
+    set fmtDate [clock format [clock scan $d] -format $rfc2822fmt -gmt 1]
+
+    set p -1
+    set b $infos(body)
+    set r ""
+    while {1} {
+	set p [string first "<h2" $b]
+	if {$p > 0} {
+	    set pp [string first ">" $b $p]
+	    set q [string first </h2> $b $pp]
+	    set rest [string trim [string range $b [expr $q + 5] end]] 
+	    set nextHead [string trim [string range $b [expr $pp + 1] [expr $q - 1]]]
+	    set b [string range $b 0 [expr $p - 1]]
+	} else {
+	    catch {
+		unset nextHead
+	    }
+	}
+
+	puts $output "  <item>"
+	puts $output "   <title>[entityDecode $h]</title>"
+	puts $output "   <link>$link$r</link>"
+	puts $output "   <guid isPermaLink=\"true\">$link$r</guid>"	
+	puts $output "   <pubDate>$fmtDate</pubDate>"
+
+	regsub -all "</p>.*" $b "" b
+	regsub -all "<p>" $b "" b
+	regsub -all "<\[^<>]*>" $b "" b
+	regsub -all "\\s+" $b " " $b
+	set b [string trim $b]
+	set b [entityDecode $b]
+	if {[string length $b] > 240} {
+	    set b [string range $b 0 [string last " " $b 240]]...
+	}
+	puts $output "   <description>$b</description>"
+	puts $output "  </item>"
+
+	if {$includeHeadings && [info exists nextHead]} {
+	    set h $nextHead
+	    set b $rest
+	    if {"$r" == ""} {
+		set r "a"
+	    } else {
+		scan $r %c rn
+		set r [format %c [expr 1 + $rn]]
+	    }
+	} else {
+	    break
+	}
+    }
+}
+
+puts $output { </channel>
+</rss>
+}
+close $output
+puts [htmlInfo filesFile] $rss091Name

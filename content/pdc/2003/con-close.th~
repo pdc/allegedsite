@@ -1,0 +1,67 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "ZODB: don&rsquo;t forget to close connections - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "ZODB: don&rsquo;t forget to close connections"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+emit {
+    <p>
+      I have converted the Picky Picky Game so that it can run as a
+      <a
+      href="http://www.python.org/doc/current/lib/module-BaseHTTPServer.html"><code>BaseHTTPServer</code></a>
+      server as an alternative to as a 
+      <abbr title="Common Gateway Interface">CGI</abbr> script, in
+      order to avoid the performance penalty caused by starting up
+      fresh Python processes for each request.  But I&nbsp;discovered
+      that the sevrer would lock up from time to time.
+    </p>
+    <p>
+      It was no ordinary lock-up: it could not be interrupted with
+      Ctrl-<kbd>C</kbd> (but Ctrl-<kbd>\</kbd> worked).  After an
+      abortive attempt to use GDB to debug Python itself, I added the
+      usual plethora of <code>print</code> statements to narrow down
+      the place where it went wrong, and it seemed to be in connecting
+      to the ZODB database.  In the end I&nbsp;changed my code to keep
+      track of the connection object it gets from the database and to
+      explicitly call <code>con.close()</code> (rather than assuming
+      this would happen automatically when the variable goes out of
+      scope).  The problem now appears to have gone away.
+    </p>
+    <p>
+      Thus it is I&nbsp;can run the Picky Picky Game as a
+      free-standing web server (running as
+      <code>http://caption.org:8005/a/</code>, for example) as an
+      alternative to running it via CGI.  At least, I&nbsp;can so long
+      as I&nbsp;remain connected to the sevrer with SSH; I&nbsp;need
+      to persuade Adrian to run the free-standing server as a daemon.
+      In the meantime,
+      you can visit the CGI version at <a
+       href="http://caption.org/caption-cgi/hello.cgi/sample/"><code>http://caption.org/caption-cgi/hello.cgi/sample/</code></a>.
+    </p>
+    <p>
+      My link for <a
+      href="http://bcn.boulder.co.us/government/approvalvote/center.html">Approval
+      Voting</a> has rotted and needs to be updated.  Sigh.  <a
+      href="http://www-personal.umich.edu/~bpl/approval-vote.htm">Another
+      description of Approval Vote</a>
+    </p>
+    <p>
+      The next thing to do is to separate out the base URL for static
+      files (such as the style sheet) so that these files need no
+      longer be tangled up with the resources served by the CGI script
+      (or by the free-standing server).
+    </p>
+}
+
+p [a 05/14.html#e20030514 14 May 2003]
+
+endBody
+endDocument

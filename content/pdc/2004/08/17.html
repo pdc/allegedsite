@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2004-08-01 19:59 BST -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2004/08;
+  /usr/local/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2004/07 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>17 July 2004 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">07</a> &gt;&gt;
+      <strong>17</strong>
+    </p>
+    <div id="body">
+      <h1>Damian Cugley (17 July 2004)</h1>
+      <div class="entry">
+        <h2><a name="e20040717mu" id="e20040717mu">MU: A notation for mark-up</a></h2>
+        <p class="details">17 July 2004</p>
+  <p><img src="../../2004/../icon-64x64.png" alt="" align="right" width="64" height="64" border="0" />
+   Discussions of Apple&#x2019;s proposed extensions to HTML made me wonder if
+   perhaps XML is suffering from being too complex and too strict, and
+   that a different generalization of HTML might make sense. Here&#x2019;s my
+   completely half-baked ideas, a language I shall call MU.
+   </p>
+  <h3>
+   Incomplete notes on MU
+   </h3>
+  <p>
+   In fact there are two (meta)languages, MU and MUD.
+   MU is used to <cite>mark up</cite> documents.  MUD is metadata about the marked-up text (specifically, MUD files can specify the encoding, character-entities beyond the usual <code>&amp;lt;</code> etc., and a few other things).  I&#x2019;ll outline its format <a href="../../2004/19.html" title="Clear as MUD">later</a>.
+   </p>
+  <h3>
+   Encoding
+   </h3>
+  <p>
+   XML documents start with a declaration that specifies the character
+   encoding. In my view this is a problem, because it means that if you
+   want to transcode a document, you need a program that can parse the XML
+   declaration and alter the character data so it names the new encoding.
+   Things get more complicated with HTML because there are various ways
+   in which metadata about the encoding is embedded within the document.
+   </p>
+  <p>
+   Itwould be easier to require that XML data be accompanied by metadata
+   specifying its character encoding, making this an operating-system
+   problem, not part of the parser.
+   </p>
+  <p>
+   So far as the MU processor is concerned, a MU document is a squence of
+   characters, where characters are understood to be <a href="http://www.unicode.org/faq/unicode_iso.html" title="Unicode and ISO 10646 (unicode.org)">Unicode or
+   ISO-10646</a> code points. Character data should be in Unicode
+   Normalization form C, but parsers are not required to enforce this.
+   </p>
+  <p>
+   When retrieving a document froma file system or over the net,
+   documents are represented as sequences of bytes in the usual way, and
+   the recipient must use (1) supplied metadata, if any, (2) sniffing for
+   UTF-8, UTF-16, or UTF-32 bytes &agrave; la XML, or (3) the conventions
+   of the OS, to determine the encoding. Supplied metadata means things
+   like a <code>charset</code> attribute in the MIME content-type, or a supplied MUD
+   resource.  MU documents <cite>do not</cite> refer to their own encoding
+   internally.
+   </p>
+  <h3>
+   Entity references
+   </h3>
+  <p>
+   MU uses <code>&lt;</code> and <code>&amp;</code> as its magic characters, not because I think they
+   are a good choice but because HTML does. If I were inventing the
+   format from scratch, I would be thinking in terms of <code>{</code> and <code>\</code>
+   because they are less prevalent in real text.
+   </p>
+  <p>
+   Anhyow, MU and allows character-entity references <code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>,
+   <code>&amp;quot;</code>, and numeric entities <code>&amp;#x...;</code> and <code>&amp;#...;</code>. All of these
+   represent single characters; it lacks the SGML or XML concept of
+   entities containing chunks of text.
+   </p>
+  <p>
+   Additional character entities may be
+   defined in a MUD file.
+   </p>
+  <h3>
+   Tags and ranges
+   </h3>
+  <p>
+   Tags look like this (please excuse my pseudo-DTD notation):
+   </p>
+   <ul>
+   <li>
+    start-tag: <code>&lt;</code> etype ( <code>#</code> match-id )? att* <code>&gt;</code>
+    </li>
+   <li>
+    end-tag: <code>&lt;</code> <code>/</code> etype  ( <code>#</code> match-id )? <code>&gt;</code>
+    </li>
+   <li>
+    empty-tag: <code>&lt;</code> etype att* <code>/</code> <code>&gt;</code>
+    </li>
+   <li>
+    no-range-tag: <code>&lt;</code> etype att* <code>&gt;</code>
+    </li>
+  </ul>
+  <p>
+   The rules for tag-matching is that a start-tag must have a matching
+   end-tag later in the document. Tags define <cite>ranges</cite>, not elements, and
+   <em>ranges may overlap.</em>
+   </p>
+  <p>
+   There are two reasons to allow overlapping ranges. First, it allows
+   people to write things like
+   <code>&lt;b&gt;&lt;i&gt;bi&lt;/b&gt;&lt;/i&gt;</code>, which makes the format more forgiving of
+   amateurs. Second, it allows a given text to be marked up according to
+   different structures simultaneously. For example, consider
+   <a href="http://www.xml.com/pub/a/2004/05/26/totag.html" title="To Tag or Not to Tag: The New Variorum Shakespeare and XML (xml.com)">the XML.com article on tagging Shakespeare</a>. In this there are three
+   simultaneous structures: the division of the text in to lines (based on
+   the original First Folio edition); the division of the play in to acts,
+   scenes, and speeches; and the division of the book in to pages. Add to
+   this the requirement that notes refer to words or phrases from the text
+   (perhaps overlapping) and the requirement for overlapping mark-up
+   becomes apparent. The XML example fudges this by marking up not lines
+   but the breaks between them.
+   </p>
+  <p>
+   That said, for many applications a tree-based view of the document
+   structure is attractive; this is dealt with by the treeification
+   algorithm, described later.
+   </p>
+  <p>
+   The purpose of the optional <code>#</code>match-id part is to permit overlapping
+   ranges with the same etype, as in <code>&lt;lem#a&gt;foo &lt;lem#b&gt;bar&lt;/lem#a&gt;
+   baz&lt;/lem#b&gt;</code>. This is a direct steal from <a href="http://www.lmnl.net/" title="The Layered Mark-up and aNnotation Language">LMNL</a>. The matching
+   end-tag is  the first unmatched end-tag with the same match-id as the
+   start-tag, or with no match-id if the start-tag has no match-id. The
+   match-ids are only used by the parser; they are not passed up to the
+   client application.
+   </p>
+  <p>
+   An empty-tag is equivalent to a start-tag immediately followed by a
+   matching
+   end-tag.
+   </p>
+  <p>
+   There may be a MUD file and it may define a set of <cite>no-range</cite> etypes, in
+   which no-range tags may be used with the same meaning as empty-tags
+   (otherwise they would resemble start-tags). For example, if <code>img</code> is
+   a no-range element, <code>&lt;img src="../../2004/foo.png"&gt;</code> is equivalent to <code>&lt;img src="../../2004/foo.png"/&gt;</code>.
+   Document authors should omit end-tags for no-range elements, and parsers
+   should ignore them.
+   </p>
+  <h3>
+   Attributes values can omit quotes
+   </h3>
+  <p>
+   Attributes look like the following:
+   </p>
+   <ul>
+   <li>
+    att: html-token-att | key-value-att
+    </li>
+   <li>
+    html-token-att: id
+    </li>
+   <li>
+    key-value-att: att-id <code>=</code> ( quoted | apostrophed | naked )
+    </li>
+   <li>
+    quoted: <code>"</code> not-quote* <code>"</code>
+    </li>
+   <li>
+    apostrophed: <code>'</code> not-apostrophe* <code>'</code>
+    </li>
+   <li>
+    naked: not-space-or-gt*
+    </li>
+  </ul>
+  <p>
+   Naked attribute values allows <code>&lt;img src=foo.gif&gt;</code> as a shorthand for
+   <code>&lt;img src="../../2004/foo.gif"/&gt;</code>. (Issue: HTML in theory constrains naked
+   values to name tokens, but people often include slashes in them.)  For
+   identifiers and numbers, the quotes around attribute values serve no
+   real purpose.
+   </p>
+  <p>
+   The production html-token-att means those so-called boolean HTML
+   attributes like <code>&lt;option selected&gt;</code> that are taken to mean <code>&lt;option
+   selected="selected"&gt;</code>. I don&#x2019;t like them; they&#x2019;re an SGML feature that
+   just makes things more complicated, but HTML uses them so in they go.
+   </p>
+  <h3>
+   And what is the point of all this?
+   </h3>
+  <p>
+   The idea is that many HTML documents are already MU documents without
+   extra effort -- even a fair chunk of the invalid HTML documents that
+   exist.  At the same time MU is not an unreasonable format, from the
+   point of view of parsers and processors.  The plan is that a lot of
+   the second-guessing that pragmatic HTML browsers resort to can be
+   rationalized and made legitimate, thus defusing one of the big
+   theoretical vs. practical arguments that seems to rage forever these
+   days.
+   </p>
+        <p class="endnotes">
+          [
+          <a href="#e20040717mu" title="Permanent URL for this entry">#</a>
+          ]
+        </p>
+      </div>
+    </div>
+    <dl class="links">
+      <dt class="FirstChild">Archives</dt>
+      <dd><a href="../../2003/subjects.html">by topic</a></dd>
+      <dd><a href="../../2004/08/">August 2004</a></dd>
+      <dd><a href="../../2004/07/">July 2004</a></dd>
+      <dd><a href="../../2004/06/">June 2004</a></dd>
+      <dd><a href="../../2004/05/">May 2004</a></dd>
+      <dd><a href="../../2004/04/">April 2004</a></dd>
+      <dd><a href="../../2004/02/">February 2004</a></dd>
+      <dd><a href="../../2004/01/">January 2004</a></dd>
+      <dd><a href="../../2003/">2003</a></dd>
+      <dd><a href="../../2002/">2002</a></dd>
+      <dd><a href="../../2001/">2001</a></dd>
+      <dd><a href="../../2000/">2000</a></dd>
+      <dd><a href="../../1999/">1999</a></dd>
+      <dd><a href="../../1998/">1998</a></dd>
+      <dd><a href="../../1997/">1997</a></dd>
+      <dt>Entertainments</dt>
+      <dd><a href="../../2003/picky/">Picky Picky Game</a></dd>
+      <dd><a href="../../tarot/">Alleged Tarot 2002</a></dd>
+      <dd><a href="../../2001/xmas.html">2001 Xmas card (SVG)</a></dd>
+      <dd><a href="../../how-tall-are-you/">How tall are you? quiz</a></dd>
+      <dd><a href="http://caption.org/2000/pdc/">My Fabulous Life (2000)</a></dd>
+      <dt>Photo albums</dt>
+      <dd><a href="../../2003/mull/">Mull (2003)</a></dd>
+      <dd><a href="../../2002/maymorning/">May Morning (2002)</a></dd>
+      <dd><a href="../../aviemore/">Aviemore (1999)</a></dd>
+      <dd><a href="../../bologna/">Bologna (1998)</a></dd>
+      <dd><a href="../../roch/">Roch Castle (1998)</a></dd>
+      <dd><a href="http://caption.org/1997/pdc/">CAPTION97</a></dd>
+      <dd><a href="http://caption.org/1996/pdc/">CAPTION96</a></dd>
+      <dt><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></dt>
+      <dt><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></dt>
+      <dt><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></dt>
+    </dl>
+  </body>
+</html>

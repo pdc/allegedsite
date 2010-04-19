@@ -1,0 +1,106 @@
+# -*-tcl-*-
+
+source xssDefs.tcl
+
+beginDocument {
+    title "Two suggestions for RSS 2.0"
+    stylesheet main.css 
+}
+
+p id=Trail "
+[a ../../../ Alleged Literature] ::
+[a ../../ Damian Cugley] ::
+[a ./ XSS] ::
+"
+
+push div id=Page
+
+h1 "Two suggestions for RSS 2.0"
+
+p "To: dave@userland.com, f8dy@diveintomark.org"
+
+p "Two silly ideas for the next iteration of the Simple Syndication
+format.  My angle is as someone who (a)&nbsp;has hand-built
+site-maintenance tools that generate an [XML] feed, and (b)&nbsp;started
+building my own [RSS 0.9x] consumer and discovered none of my [XSLT] worked
+with [RSS 1.0]...  "
+
+p "First, allow the container document to have an arbitrary root element,
+and make the [code channel] wrapper optional as well.  Syndication
+processors [should] ignore everything apart from what in 0.92 documents
+are the subelements of [code channel].  The [code item] elements must still
+follow all the others.  The [em recommended] envelope for documents
+containing syndication data and nothing else remains as in 0.92 (apart
+from the version number):
+"
+
+pre -encode {<rss version="2.0" xmlns="http://my.netscape.com/rdf/simple/0.9/">
+    <channel>...</channel>
+</rss>}
+
+p "For the sake of [XML] fans, producers [should] generate the [code xmlns]
+
+attribute as shown above.  Nevertheless, for compatibility, consumers
+[should] recognize syndication elements even if they appear
+unprefixed, even if in the wrong namespace (or with no namespace).  "
+
+p "The intention in removing the requirement for a particular envelope
+is that in the future syndication data can be embedded in [em any] [XML]
+document; in other words, syndication becomes a &lsquo;module&rsquo;
+that can be mixed in with other formats in any way that is convenient.
+"
+
+p "In particular, 0.9 documents are compatible with 2.0 consumers,
+because [code item] elements are now permitted to follow the
+[code channel] rather than be contained within it.  (I&nbsp;admit
+there are vanishingly few version-0.9 feeds left, so you may not care
+about this!)  I&nbsp;believe it also allows syndication data to be embedded
+in [RSS 1.0] documents (the [RDF]-specific stuff being simply ignored),
+though I have not checked this thoroughly.  Some finessing may be
+required.  "
+
+p "I&rsquo;m pretty sure a form or words can be thrashed out that describes
+this slightly looser format without sacrificing the concise style of
+the existing [RSS 0.9x] documentation.
+"
+
+p "Second, I would like to suggest using the name [XML] Site Syndication
+(XSS) for this format.  At the same time we can start referring to the
+[RDF]-based RSS as [RDF]-[SS] or [RDF]/RSS.  The reason I want to do this is
+that&mdash;despite having many features in common&mdash;the two formats are
+different things, being the results of separate development processes,
+and it is confusing for outsiders that they have the same initials.
+"
+
+p " 
+For what it&rsquo;s worth, I think [XSS] is a nice name.  The
+[em X] reminds us it is built on [XML], not on top of an [RDF]
+layer on top of [XML].  Or, the [em X] reminds us that the new
+format is now extensible because [XSS] documents can exploit modules
+defined separately (because of the namespace paragraph Dave already
+added).  You can pronounce it &lsquo;excesses&rsquo;, which gives it
+an attractively hedonistic flavour :-) "
+
+p "I realize there are politics and history involved here, and that there
+are good reasons for not changing something&rsquo;s name (since name changes
+are also confusing).  On the other hand, I think having distinct names
+will make it easier to discuss differences and similarities between
+[XSS] and [RDF]-[SS] on a purely technical level.  
+"
+
+p "Anyway, that&rsquo;s my 2 ideas.  It may seem odd that on the one hand I am
+proposing a technical fix that just happens to make [RDF]-[SS] look like a
+special case of [XSS], whereas on the other I am apparently cementing
+the fork by giving the different branches their own names.  But I
+really think that this will let us get back to the interesting bit
+(generating and consuming syndication data) and leave the discussion
+of the &lsquo;ownership&rsquo; of the RSS name to future historians..."
+
+
+p "Bye for now"
+
+p "&mdash;Damian"
+
+pop;				# div id=page
+
+endDocument

@@ -1,0 +1,251 @@
+Title: Batch-Convert Corel Painter 8 RIFF Documents as GIF
+Topics: corelpainter applescript conversion
+Date: 20060807
+Icon: ../2003/applescript.png
+
+In a [previous rant][] I was trying to make an AppleScript program to convert my
+RIFF files to GIF. With some help from the Apple Support Discussions web site, I
+have finally come up with a workable solution. I am going to describe it here,
+partly because I expect I shall need reminding when I need to perform this task,
+in about a year's time.
+
+Save as GIF
+-----
+
+The toughest part is persuading Corel Painter to save a file as a GIF, under the
+control of my program. Here I present the working version of the procedure that
+does that. 
+
+We start by activating Painter and then talking to it via the System
+Events thingie (the UI scripting component):
+
+    (* Attempt to write the front-most image as a GIF file.
+    Will fail if there is already a file of that name. *)
+    on save_front_image_as_gif(gifs_folder)
+		tell application "Corel Painter 8"
+			activate
+		end tell
+		
+		tell application "System Events"
+			tell process "Corel Painter 8"
+				click menu item "Clone" of  menu 1 of menu bar item "File" of menu bar 1
+
+Why clone the image? To avoid the extra dialogue that Painter throws up warning
+me that there is more than one layer in the picture. I would then have to work
+out how to make AppleScript program recognize this dialogue and dismiss it.
+The cloned image has only one layer, which avoids the dialogue.
+              
+Now we show the Save As dialogue:
+
+				click menu item "Save As..." of menu 1 of menu bar item "File" of menu bar 1
+
+One of the things I did not know how to discover was the precise spelling of
+'Save As...': was the ellipsis a single Unicode character U+2026 (&#x2026;) or
+just three dots (...)?  they look the same on the screen, and Apple's UI Element Inspector does
+not allow me to copy and paste the text.  In the end the [UI Browser][] from
+PreFab solves this problem for me: it shows the incantation needed to click the
+menu item in a proper text box.
+
+The next problem is ensuring that the GIF is saved in the correct directory.
+There is a way to do this, by faking an obscure keyboard shortcut: control-/
+shows a dialogue for entering a directory name. The parameter `gifs_folder` will
+be a Finder file object, and we have to convert that to a directory name using
+an incantation I had to learn from via Google:
+                
+				(* Set the output directory using an obscure keyboard shortcut. *)
+				keystroke "/" using {control down}
+				delay 1
+				tell window 1
+					set gifs_dir_name to POSIX path of (gifs_folder as alias)
+					set value of text field 1 to gifs_dir_name
+					click button "Go"
+				end tell
+
+I don't know why '`as alias`' is required; it just is.
+
+Our next task is to trim the prefix `Clone of` from the file name.  The `delay
+1` seems to be required to ensure that we don't ask for the value before the
+dialogue's initialization code has finished running.
+				
+				tell window "Save"
+					(* Edit the file name to not start with 'clone of' *)
+					delay 1
+					set the_file_name to value of text field 1
+					if the_file_name starts with "Clone of " then
+					    set the_file_name to text 10 thru (length of the_file_name) of the_file_name
+					end if
+					set the value of text field 1 to the_file_name
+
+Finally, we need to tell it to save as GIF. The problem here was that the menu
+button I needed to manipulate is inside a panel that UI Element Inspector said
+was `unknown`. You can't refer to a widget using the word `unknown`, since
+`unknown` is a keyword. From the kind people on the [Apple Discussions
+forums][3] I discoverd that the things that are called 'controls' in Windows and
+'widgets' on Unix systems are called 'UI elements' on the Mac, and that you can
+get a list of all UI elements using the AppleScript reference `every UI
+element`.
+					
+					(* Set the file format to GIF *)
+					click pop up button 1 of UI element 9
+					click menu item "GIF" of menu 1 of pop up button 1 of UI element 9
+
+Now that is done it is time to click Save and then deal with the GIF Options
+dialogue that appears next.  When the file is saved we close the window
+containing the cloned image, and also the image we started with.
+
+					click button "Save"
+				end tell
+				
+				delay 1
+				tell window "Save as GIF Options"
+					click radio button "16 Colors"
+					if value of checkbox "Interlaced" = 0 then
+					click checkbox "Interlaced"
+					end if
+					keystroke return
+				end tell
+				
+				(* Now close the document we just saved. *)
+				delay 1
+				keystroke "W" using command down
+				
+				(* Now close the document we cloned in the first place. *)
+				delay 1
+				keystroke "W" using command down
+			end tell
+		end tell
+    end save_front_image_as_gif
+
+That was the hardest part of getting the script to work. All we need to do now
+is work out which files need updating, and then open each file in turn and
+invoke that procedure.
+
+Walking the Directory Tree, or Searching the Folder Hierarchy
+-----
+
+To look for files my AppleScript program talks to the Finder. The technique is
+pretty standard: we keep a list called `pending_folders` of folders that have
+not been scanned yet; at first this contains just the starting directory. As we
+scan a directory, we add its subdirectories to the list. When the list is empty,
+we are done.
+
+Because AppleScript dates back to Mac OS 9, and the old Macintosh file system
+had its own way of writing file names, and because file names in AppleScript are
+objects rather than mere strings, you need translate your nice Unix file names
+in to Mac OS 9 format: as an example, `/Users/pdc/foo` becomes `folder
+"Users:pdc:foo" of startup disk`.
+    
+    tell application "Finder"
+        set desired_count to 1000
+        set root_folder to folder "Macintosh HD:Users:pdc:foo"
+        set pages_folder to folder "pages" of root_folder
+        set gifs_folder to folder "External Disc:PRINT:gifs"
+        
+        set processed_count to 0
+        
+There is a complication because AppleScript does not appear to have a way to
+remove an item from the list if the list contains only one item! [E. W. Dijkstra
+argues that life is easier if lists are numbered starting at 0][1] and ranges are
+defined to include their lower bound and not their upper bound; AppleScript gets
+both of these wrong. There are several ways to work around this problem; the
+approach I used was to add an extra element to the list so that it never goes
+below one element.
+        
+        set pending_folders to {pages_folder, "--worst programming language EVAR--"}
+        repeat while processed_count < desired_count and length of pending_folders > 1
+            set a_folder to item 1 of pending_folders
+            set pending_folders to items 2 thru (length of pending_folders) of pending_folders
+            set more_folders to every folder of a_folder
+            set pending_folders to more_folders & pending_folders
+            
+            set riff_files to every document file of a_folder whose file type = "RIFF"
+            repeat with riff_file in riff_files
+                if my maybe_process_file(riff_file, gifs_folder) then
+                    set processed_count to processed_count + 1
+                    if processed_count >= desired_count then
+                        exit repeat
+                    end if
+                end if
+            end repeat
+        end repeat
+        
+        if processed_count < desired_count then
+            display dialog "ThatÕs all, folks"
+        end if
+    end tell
+
+What's all that fuss with `processed_count` and `desired_count` about? I
+added all that so that while I was testing the script I could change
+`desired_count` to limit the script to creating only one file: that way, if it
+went horribly wrong, the number of spurious files to clean up would be small.
+
+Processing One File (Maybe)
+-----
+
+The function `maybe_process_file` checks whether the file that has been found
+needs to be processed or not.  In this case, 'processed' means saving the GIF
+version in `gifs_folder`.
+
+    to maybe_process_file(riff_file, gifs_folder)
+        tell application "Finder"
+            set gif_name to name of riff_file
+            if gif_name ends with ".rif" then
+                set gif_name to text 1 thru ((length of gif_name) - 4) of gif_name
+            end if
+            set gif_name to gif_name & ".gif"
+            set is_gif_needed to (not (exists document file gif_name of gifs_folder))
+
+The parameter `riff_file` is a Finder file-name object; `name of` gives the last
+component of its full file name (such as `bar.rif`, or, in a few cases, just
+plain `baz`, with no suffix).  We set `gif_name` to this with `.rif` changed to
+`.gif`, and then check whether this file already exists.
+
+Even if the file exists, it is possible that it is out of date. This happens
+when the RIFF file is updated and the GIF has not been updated yet. We check for
+this by asking Finder for the modification dates of the files.  If an
+out-of-date file exists, then we delete it now; if we did not, then when we go
+to save the file, an extra dialogue box would appear, asking us whether we want
+to overwrite the exsting file, and this would cause our script to fail.
+            
+            (* Also process file if GIF is older than RIFF *)
+            if not is_gif_needed then
+                set gif_file to file gif_name of gifs_folder
+                set riff_time to modification date of riff_file
+                set gif_time to modification date of gif_file
+                if gif_time < riff_time then
+                    delete gif_file
+                    set is_gif_needed to true
+                end if
+            end if
+            if is_gif_needed then
+                my process_file(riff_file, gifs_folder)
+                return true
+            end if
+            return false
+        end tell
+    end maybe_process_file
+
+This procedure and the loop for walking the folder hierarchy are fairly generic:
+they could be used for any task that needs to do something for every file in a
+set of folders. The only  thing we would need to change to do a
+different 'something' is `process_file`. This part is  quite short:
+    
+    to process_file(riff_file, gifs_folder)
+        tell application "Finder" to open riff_file
+        my save_front_image_as_gif(gifs_folder)
+    end process_file
+
+That's pretty much it. The main things I need to remember from this are:
+
+- 'UI element';
+- UI Element Browser (it helps a lot!); and
+- `POSIX path (... as alias)`.
+
+Once this script was working it takes several hours to convert the couple of
+hundred drawings I have. Still, now it's done once, it will take much less time
+to update the pile o' GIFs when only a small number of RIFFs have been edited. 
+
+  [previous rant]: 07/14.html "Cannot convert Corel Painter RIFF to GIF (or any other format, for that matter)"
+  [UI Browser]: http://www.prefab.com/uibrowser/
+  [1]: http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html "EWD831"
+  [3]: http://discussions.apple.com/thread.jspa?threadID=580232&tstart=0

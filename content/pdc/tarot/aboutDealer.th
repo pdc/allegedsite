@@ -1,0 +1,149 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "How the dealer works - Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 "How the dealer works"
+
+h2 "JavaScript (ECMAScript)"
+
+p "[img xi-strength-100w.png align=right alt=]
+
+[SVG] files can have Javascript programs embedded in them, just
+like [HTML].  
+So my 
+[a deal.svg [code deal.svg]] graphic is linked to a JavaScript file 
+[a dealer.js [code dealer.js]] which defines a bunch of
+variables and functions
+for decoding the script parameters,
+and [q dealing] cards.  The outermost <code>svg</code> element in
+the picture has an <code>onload</code> attribute  that invokes 
+a  function [code ol] that ties them all together."
+
+p "
+The first thing it does is call
+[code scanOpts]
+which extracts the parameters to the script from the 
+[URL]. The params recognized at present are
+[code lo], which must name one of the 
+layouts it the [q database] of layouts (described later),
+and [code q], the question text.
+An example [URL] defining
+those parameters would be  [code "deal.svg?lo=horseshoe&amp;q=Will+Frodo+reach+Mordor%2F"]
+(where the
+plus signs represent spaces, and [code %2F] is an encoded question mark).
+"
+
+
+p "[img x-wheel-64x64.png align=left alt=]
+
+Then [code ol] creates an array of 78 numbers representing the cards
+and calls [code shuffle] to rearrange them randomly.
+Finally it calls [code dealLayout] to
+generate images of cards [q drawn] from the deck
+at positions on the screen defined by the layout.
+"
+
+
+h2 "Dealing cards with [DOM]"
+
+p "[img coins-3-100w.png align=right]
+
+Each card is represented by a bunch of SVG elements&mdash;the
+rectangle that is the backdrop, the image of the card, the text, etc.
+Rather than try to write JavaScript code that creates all these
+elements, I&nbsp;created a template in the [code defs] section which
+is cloned once for each dealt card.  This uses the [DOM] functions
+[code getElementById] to locate the items that need to be modified
+(such as the link, whose [code xlink:href] attribute must be modified),
+and finally [code cloneNode] to make a copy that can 
+be appended to the document.  "
+
+p "[img cups-8-64x64.png align=left]
+
+The advantage of using [code getElementById] each time
+is that it avoids having the code that makes the per-card changes
+having to know the details of how the cards are drawn.
+I&nbsp;should be able to make changes to the [SVG] template
+without breaking the dealing part.
+"
+
+h2 "Storing layouts as XML"
+
+p "[img xviii-moon-100w.png align=right alt=]
+
+A layout is an arrangement of dealt cards, eahc of which needs to have
+an indication of its role in the spread
+(this card represents the seeker, that one the future, and so on).
+At first I&nbsp;stored this in the JavaScript as a dictionary 
+(=object) mapping layout names to a sequence of card coordinates:"
+
+pre -encode {var layoutDefs = {
+    three: [0,0,'past', 1,0,'present', 2,0,'future'],
+    ...etc...
+};}
+
+p "This worked well enough, but when it came to the Celtic Cross
+spread&mdash;which has one card laid crosswise&mdash;I&nbsp;realized
+this was too limited for the long term.  So I&nbsp;rewrote the 
+
+[code dealLayout] function to instead use [XML] data stored in the
+[SVG] document itself:"
+
+pre -encode {<lo:layouts xmlns:lo="http://www.alleged.org.uk/pdc/tarot/">
+    <lo:layout id="three">
+        <lo:card col="0" row="0" title="past"></lo:card>
+        <lo:card col="1" row="0" title="present"></lo:card>
+        <lo:card col="2" row="0" title="future"></lo:card>
+    </lo:layout>
+    ....
+</lo:layouts>}
+
+p "This goes in the [code defs] section, along with the 
+template for the cards.  (I&nbsp;cannot find a reference 
+in the [SVG] specification that makes it explicit that 
+embedding random [XML] data in [SVG] is kosher, but it seems 
+to be implied by wording on the [SVG] section of the W3C site.)
+"
+
+p " The JavaScript code uses the [DOM] conventions to read the
+information needed to lay out the cards.  Using [XML] means that it
+was easy to add another attribute indicating a rotated card&mdash;and
+makes it easy to extend the format when adding new exotic layouts in
+future. For example, longer descriptions of the significance of each
+of the positions in the spread?  "
+
+h2 "Converting questions to numbers"
+
+p "[img v-pope-100w.png align=right alt=]
+
+The querent&rsquo;s question affects the deal through the 
+
+[q shuffling] process.  The shuffling is controlled by a sequence of
+78 pseudo-random numbers, and the pseudo-random number sequence in
+turn depends on a [dfn seed] number.  The function 
+
+[code questionToSeed] converts the character string in to a single
+number.  The algorithm used is a simple one I found after a little
+time with Google.  (Try 
+[a http://www.google.com/search?q=g_str_hash+X31_HASH g_str_hash X31_HASH])."
+
+
+h2 "References"
+
+p "[img iiii-emperor-64x64.png align=right alt=]
+
+The textbook I had at my side while doing the JavaScript programming
+is the rhino book: David Flanagan, [cite JavaScript: The Definitive Guide]
+[abbr* "title=Fourth edition" 4/e] (O&rsquo;Reilly, Jan 2002)."
+
+endBody	
+
+endDocument

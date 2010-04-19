@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:26 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2004/02;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2004/02 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Mozilla implements SVG while carefully remaining incompatible with the rest of the world - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">02</a> &gt;&gt;
+      <strong>09</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20040209" id="e20040209">Mozilla implements SVG while carefully remaining incompatible with the rest of the world</a></h2>
+        <p class="details">9 February 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="../../2003/mozilla.html">mozilla</a></li>
+            <li><a href="../../2003/svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20040209" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+		<div><a href="http://croczilla.org/"><img src="../../2004/../wp/icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+			Good news, everyone!  Mozilla now has a working <abbr
+			title="Scalable Vector Graphics">SVG</abbr> implementation
+			thanks to <a href="http://croczilla.org/">Alex Fritze of
+			croczilla.org</a>.  It even has suppport for plugging in
+			platform-specific back-ends so that in principle the Mac OS X
+			version might be able to exploit Quartz Extreme.  Cool!  This
+			could mean a working SVG-enabled release of Mozilla sometime
+			before I die of old age.
+		</p>
+		<p>
+			<embed src="../../2004/../how-tall-are-you/dec-ant-cat.svgz"
+				type="image/svg+xml" width="147" height="100" align="left" />
+				But does this mean that SVG-savvy Mozilla can display my <a
+			href="../../2004/../how-tall-are-you/">How Tall are You</a> quiz page, my
+			<a href="../../2004/../2001/xmas.html">2001 Xmas card</a>, or <a
+			href="../../2004/../tarot/">The Alleged Tarot 2002</a>?  Well, no,
+			Mozilla’s secret anti-SVG conspiracy would not allow that.
+			Oh, dear me, no.
+		</p>
+		<p>
+			Mozilla’s campaign to discourage the support of open
+			standards in vector graphics started in 2001, when the Mozilla
+			feature freeze for 0.91 <a
+			href="http://bugzilla.mozilla.org/show_bug.cgi?id=115528">changed
+			one of the interfaces the Adobe SVG Plug-in depended on</a>,
+			causing it to crash.  Adobe have no particular reason to devote
+			development effort to supporting Mozilla, and as a result there
+			was no SVG plug-in for Mozilla—until in 2003 Corel
+			released their rival plug-in (which sadly does not support
+			animation).  So even in 2004 the SVG support in Mozilla is still
+			mediocre at best.  
+		</p>
+		<p>
+			The new SVG back-end sadly does not allow Mozilla to display my
+			SVG pages, because the Mozilla project subscribes to the <abbr
+			title="Extensible Mark-Up Language">XML</abbr> Document Fantasy.
+			In the XML Document Fantasy, the right way to display SVG is to
+			embed it directly within an XML document:
+		</p>
+		<pre>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;body&gt;
+...
+&lt;svg xmlns="http://www.w3.org/2000/svg"
+width="400" height="600"&gt;
+...
+&lt;/svg&gt;
+...
+&lt;/body>
+&lt;html></pre>
+		<p>
+			To embed an image in a separate document,
+			you use  <code>iframe</code> or <code>object</code> to display
+			an XML document containing your image. 
+			SVG images must be served as documents with media type
+			<code>application/xml</code>.  
+		</p>
+		<p>
+			This is an example of <dfn>namespace dispatch</dfn>, meaning
+			that decisions as to which software component to dispatch
+			requests to is decided based on the XML namespace of the
+			<code>svg</code> element.  It requires that your XML browser be
+			essentially omniscient because it needs SVG, XHTML, and MathML
+			support baked in.  (Technically they could be implemented with
+			plug-in modules, but because the module would need access to the
+			internal repressentation of the shared XML document, the
+			plug-in interface would be very complex.)
+		</p>
+		<p>
+			<embed src="../../2004/../tarot/viiii-hermit-card3.svgz"
+				type="image/svg+xml" width="100" height="147" align="right" />
+
+			Contrast this with the old-school <dfn>content-type
+			dispatch</dfn> approach: when an HTML document contains
+			something that isn’t HTML, it does so by reference: the
+			<code>img</code>, <code>applet</code>, <code>embed</code>, or
+			<code>object</code> element has a a URL that specifies a
+			resource.  The HTML renderer leaves a rectangular space on the
+			screen for the alien content and leaves it to the handler for
+			that content-type to fill in the space.  The handler is chosen
+			based on the media type of the embedded resource (e.g., one
+			plug-in handles <code>image/svg+xml</code>, and another might
+			handle <code>image/png</code>).  The interface with the plug-in
+			is relatively simple: a graphics context, the URL of the
+			content, and any extra arguments included in the
+			<code>embed</code> or <code>object</code> tag.  This simplicity
+			has given rise to a large number of plug-ins for different
+			formats.  
+		</p>
+		<p>
+			All SVG content on the <abbr title="World-Wide Web">WWW</abbr>
+			today is in the form of separate resources included using
+			<code>embed</code> or its erratically-supported equivalent
+			<code>object</code>.  It will not work in Mozilla.  And, of
+			course, the demonstration pages for Mozilla’s SVG support
+			do not work in any other browser.  The conventions are mutually
+			incompatible: one cannot write a <abbr title="Hypertext Mark-Up
+			Language">HTML</abbr> document that works in both Mozilla and
+			not-Mozilla.
+		</p>
+		<p>
+			<embed src="../../2004/../tarot/swords-ten-card3.svgz"
+				type="image/svg+xml" width="200" height="294" align="left" />
+
+			The upshot of this is that the Mozilla project is wilfully
+			cutting themselves off from the mainstream of SVG practice (if
+			something so obscure as SVG can be said to have a mainstream),
+			and challenging the rest of the world to drop everything and do
+			it the Mozilla way or not at all.   And that’s in the
+			special SVG-enabled version of Mozilla; the standard release
+			does not have even that grudging support for SVG.
+		</p>
+		<p>
+			Alex Fritze has been assigned a bug report <a
+			href="http://bugzilla.mozilla.org/show_bug.cgi?id=231171">asking
+			for support for <code>embed</code></a>, which would go a long
+			way to bridging the gap.  He has also been requested to <a
+			href="http://bugzilla.mozilla.org/show_bug.cgi?id=157514">make
+			Mozilla support the <code>.svgz</code> format</a> (whereby SVG
+			files are stored compressed to prevent them from being so much
+			more verbose than binary formats).  It seems to me that, now the
+			heavy lifting has been done, it would not be hard at all for
+			Mozilla to be equipped with truly splendid support for
+			SVG—assuming the will is there.
+		</p>
+	
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

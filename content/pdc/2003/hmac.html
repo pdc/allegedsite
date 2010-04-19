@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:24 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Hmac - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>hmac</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Hmac</h1>
+      <div class="entry">
+        <h2><a name="e20060306-filepic" id="e20060306-filepic">TurboGears and OpenID, part 2</a></h2>
+        <p class="details">6 March 2006</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="turbogears.html">TurboGears</a></li>
+            <li><a href="picky.html">Picky Picky Game</a></li>
+            <li><a href="sqlobject.html">SQLObject</a></li>
+            <li><strong>hmac</strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2006/03/06.html#e20060306-filepic" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I wrote that I planned to return to my <a href="http://turbogears.org/">TurboGears</a> version of the
+   <a href="http://caption.org/picky/" title="Picky Picky Game version 0.19">Picky Picky Game</a> once I had picture-uploading working.  Yesterday I
+   finally had a spare afternoon to do some more hacking on Picky2, and got
+   uploading of pictures working.  But before that I will finish off my description
+   of doing authentication with OpenID. 
+</p>
+
+<h2> Log-in Cookie</h2>
+<p>In the <a href="../2006/02/10.html">first episode</a> I skipped the last step in authenticating a
+   user: remembering they are logged in so they don’t have to repeat the
+   process for  every page.  In the process of adding that tiny detail I
+   also refactored the code so that the log-in controller class (used by
+   the <a href="http://www.cherrypy.org/" title="CherryPy is a pythonic,  object-oriented web development framework.">CherryPy</a> part of TurboGears to run the <code>login</code> page) is in 
+   <code>authentication.py</code>; in <code>controllers.py</code> you just see
+</p>
+<pre><code>class Root(controllers.Root):
+    login = authentication.LoginController()
+... followed by method definitions ...
+</code></pre><p>The cookie is saved with this function
+</p>
+<pre><code>import sqlobject, hmac, base64, time
+...
+
+def setLoggedInUserByUri(uri, remember=False):
+    """The user identified by this URI is logged in: record this in a cookie."""
+    # 1. Ensure there is an entry in our database.
+    try:
+        pers = model.Person.byUri(uri)
+    except sqlobject.SQLObjectNotFound:
+        label = uri
+        if uri.startswith(’http://’):
+            label = label[7:]
+        pers = model.Person(uri=uri, label=label)
+
+    # 2. Create a cookie that contains an HMAC
+    # (message authentication code) for the user’s log-in URI.
+    s = ‘%d,%s’ % (int(time.time() + COOKIE_TTL), uri)
+    h = hmac.new(SECRET, s).digest()
+    cherrypy.response.simpleCookie[’you’] = base64.standard_b64encode(h) + ‘,’ + s 
+    c = cherrypy.response.simpleCookie[’you’] # Get the magic morsel object
+    c[’path’] = ‘/’
+    if remember:
+        c[’max-age’] = COOKIE_TTL
+
+    turbogears.flash(’Welcome to Picky2’)
+</code></pre><p>The first part adds an entry to our database if this person is new to us. Recall
+   that the person is identified by URI they  supplied to OpenID. The label field
+   will eventually be the human-friendly name for the person; for now we fudge it
+   by just using the URI.
+</p>
+<p>The second part creates a message-authentication code (MAC) of the HMAC flavour,
+   defined in <a href="http://www.ietf.org/rfc/rfc2104.txt" title="HMAC: Keyed-Hashing for Message Authentication">RFC 2104</a>. The cookie’s value looks something like
+</p>
+<pre><code> IjlymCqVDwIpY6MxFTRXjQ==,1141631485,http://example.org/jsmith
+</code></pre><p>The last part is the identity of the logged-in person; the second part is the
+   time when this cookie should be considered expired, and the first part is the
+   HMAC that makes it hard for someone else to forge a cookie: without knowing the
+   value of <code>SECRET</code>, it will be infeasible to generate the correct HMAC value.
+   The time-out value is included so that even if your cookie <em>is</em> stolen by some
+   cross-site scripting naughtiness, it will not be useful for very long.
+</p>
+<p>The last bit sets the cookie. The tricky part was finding documentatioin for how
+   CherryPy handles cookies; in the end it turns out Python has a <a href="http://docs.python.org/lib/module-Cookie.html">Cookie module</a>
+   and that CherryPy uses that.
+</p>
+
+<h2> Is that my Cookie?</h2>
+<p>The flip-side of all this is that when you visit a page later, it needs to know
+   if you have logged in.  To do that it uses this function to get the currently
+   logged in user:
+</p>
+<pre><code>def getLoggedInUser():
+    """Return the Person object for the logged-in user."""
+    loginUri = ‘login?next=%s’ % util.uriParamEncode(cherrypy.request.browserUrl)
+    c = cherrypy.request.simpleCookie.get(’you’)        
+    auth = c and c.value
+    if not auth:
+        turbogears.flash(’Please log in first’)
+        raise cherrypy.HTTPRedirect(loginUri)
+    h, s = auth.split(’,’, 1)
+    hh = hmac.new(SECRET, s).digest()
+    if h != base64.standard_b64encode(hh):
+        turbogears.flash(’Cookie has expired (or had bad HMAC)’)
+        raise cherrypy.HTTPRedirect(loginUri)
+    expires, u = s.split(’,’, 1)
+    if int(expires) &lt; time.time():
+        turbogears.flash(’Cookie has expired’)
+        raise cherrypy.HTTPRedirect(loginUri)
+
+    try:
+        pers = model.Person.byUri(u)
+    except sqlobject.SQLObjectNotFound:
+        turbogears.flash(’This user has never logged in (or database broken)’)
+        raise cherrypy.HTTPRedirect(loginUri)
+
+    # TODO. Refesh the cookie
+    return pers
+</code></pre><p>The first thing it tries is basically the <em>last</em> part of the set-cookie
+   function, run backwards: it gets the cookie, tries to see whether the HMAC
+   matches, then decomposes it in to the time-out and user-identity parts. Each
+   time it fails to verify the cookie, it uses <code>turbogears.flash</code> to explain why;
+   this is for my benefit (while debugging the application), and is probably too
+   indiscreet for a production web server. I should probably change it to just say
+   ‘Please log in’ and not offer any explanations!
+</p>
+<p>Next: all about uploading pictures. This time for sure.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:30 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2006/02;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2006/02 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Keeping my Web Site Fresh with Wfreshen - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2006</a> &gt;&gt;
+      <a href="./">02</a> &gt;&gt;
+      <strong>04</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20060204-wfreshen" id="e20060204-wfreshen">Keeping my Web Site Fresh with Wfreshen</a></h2>
+        <p class="details">4 February 2006</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/python.html">Python</a></li>
+            <li><a href="../../2003/web.html">web</a></li>
+            <li><a href="../../2003/wfreshen.html">wfreshen</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20060204-wfreshen" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">Nowadays my web presence (such as it is) is split over several sites
+   (<a href="http://flickr.com/photos/pdc/">Flickr</a>, <a href="http://del.icio.us/pdc/">Delicious</a>, <a href="http://damiancugley.livejournal.com/">LiveJournal</a>, etc., as well as 
+   <a href="http://www.alleged.org.uk/pdc/">this site</a>). I want my home page to include pointers to these other sites–such as
+   the Flickr badge I described in <a href="http://localhost/~pdc/tuschin/pdc/2006/01/01.html">the previous article</a>. 
+   To do this I need to download feeds from these other sites in order to
+   mix them in to my home page.  I wrote a <a href="http://python.org/">Python</a> program called
+   <code>wfreshen</code> to do this.
+</p>
+<p>This article describes how <code>wfreshen</code> works. You can  download
+   <code> <a href="../../2006/../../2006/wfreshen/wfreshen.py">wfreshen.py</a> </code>;  it needs Python 2.3 and <a href="http://yaml.org/">Yaml</a>.
+</p>
+
+<h2> What it Does</h2>
+<p>The program <code>wfreshen</code> by default reads a list of web page addresses
+   (URIs) and file names from <code>wfreshen.cfg</code>. For each URI, it downloads
+   the resource and writes it to the file. So far this is not unusual. What
+   it also does is keep a simple metadata database of when you last
+   downloaded the resource, so that if there have been no changes, it can
+   use the cached copy instead of downloading the whole thing.
+</p>
+<p>In particular, it recognizes the <code>ETag</code> and <code>Last-Modified</code> headers in
+   the downloaded resource, and squrrels them away in <code>metadata.yml</code> to use
+   next time in <code>If-None-Modified</code> and <code>If-Modified-Since</code> headers; the
+   remote web server will then return a status code of 304 if the resource
+   in question is unmodified.
+</p>
+<p>The request also includes an <code>Accept-Encoding:gzip</code> header.  This allows
+   web sites to respond with a compressed version of the resource in
+   question; <code>wfreshen</code> will uncompress it automatically.  This, together
+   with the support for 304 responses, is the bare minimum for a polite
+   web robot.
+</p>
+<p>Finally, when writing the resource data to disc, <code>wfreshen</code> checks
+   that the data is different from last time.  If it is not, the file is
+   not touched. This means that you can combine <code>wfreshen</code> with <code>make</code> to
+   update files, confident that the processing specified by your makefile
+   will only happen if the remote resource has been updated. This is useful
+   when (as in the case of some of my web site updates) the processing
+   takes some time.
+</p>
+
+<h2> Example Use</h2>
+<p>You must create a configuration file named <code>wfreshen.cfg</code> formatted
+   like this:
+</p>
+<pre><code>- uri: http://del.icio.us/rss/pdc
+  file: pdc.del.icio.us.xml
+- uri: http://damiancugley.livejournal.com/data/atom
+  file: pdc.livejournal.atom
+</code></pre><p>The confiuration follows the <a href="http://yaml.org/">Yaml</a> conventions: each resource is
+   introduced with a hyphen (standing in for a bullet) and has two 
+   attributes labelled <code>uri</code> and
+   <code>file</code>.
+</p>
+<p>When I run it it prints the following rather dull log of its activities:
+</p>
+<pre><code>Processing wfreshen.cfg ...
+  - uri: http://del.icio.us/rss/pdc
+    not read because: not modified
+  - uri: http://damiancugley.livejournal.com/data/atom
+    read bytes: 54175
+    wrote to: pdc.livejournal.atom
+Wrote metadata to metadata.yml
+</code></pre><p>We can now look in the files specified to see the feed data. We can also peek at
+   the stored metadata by examining <code>metadata.yml</code>:
+</p>
+<pre><code>— 
+http://damiancugley.livejournal.com/data/atom: 
+  checked: 2006-02-04T11:11:27
+  file: pdc.livejournal.atom
+  hash: c7e96ae701ab65cf96614d5cd02f50ddf083947d
+  date: Sat, 04 Feb 2006 11:11:27 GMT
+http://del.icio.us/rss/pdc: 
+  etag: "31313338393639363136"
+  hash: da6c80ab7c67cc6395337354094cbd338fc425cc
+  date: Sat, 04 Feb 2006 09:40:01 GMT
+  checked: 2006-02-04T11:11:26
+  file: pdc.del.icio.us.xml
+</code></pre><p>The <code>date</code> and <code>etag</code> fields–if any–come from the remote web site.  It
+   turns out that LiveJournal do not use etags.  The <code>hash</code> field is
+   generated by <code>wfreshen</code>, and will be used next time to check for changes to the
+   downloaded data.
+</p>
+
+<h2> Dependency on Yaml</h2>
+<p>There is one dependency that is a little tricky: I use <a href="http://yaml.org/">Yaml</a> as the
+   file format for the metadata storage and for the configuration file.
+   This is tricky only because there is not really a standard Python
+   implementation of Yaml yet. I use the old PyYaml, but that
+   appears to be abandoned, and the new <a href="http://pyyaml.org/">PyYaml</a> is still being worked
+   on. There is an implementation using <a href="http://whytheluckystiff.net/syck/">Syck</a> called <a href="http://xitology.org/pysyck/">PySyck</a>. This
+   still claims to be beta software, and there appear to be quibbles
+   regarding its Unicode support (<a href="http://trac.xitology.org/pysyck/ticket/37">Trac ticket 37</a>), but I don’t need
+   Unicode for <code>wfreshen.py</code>, so I installed <a href="http://xitology.org/pysyck/">PySyck</a> 0.55.1–and it
+   works. In order to allow for either library to be used, I added this
+   code to the front of <code>wfreshen.py</code>:
+</p>
+<pre><code>try:
+    import syck
+except ImportError:
+    syck = None
+    import yaml
+
+def yamlLoadFile(fileName):
+    """Load a Yaml file containing a single document."""
+    if syck:
+        input = open(fileName, ‘r’)
+        try:
+            result = syck.load(input)
+        finally:
+            input.close()
+        return result
+    else:
+        return yaml.loadFile(fileName).next()
+
+def yamlDumpToFile(obj, fileName):
+    """Write a Yaml file containing this object."""
+    output = open(fileName, ‘w’)
+    try:
+        if syck:
+            syck.dump(obj, output)
+        else:
+            yaml.dumpToFile(output, obj)
+    finally:
+        output.close()
+</code></pre>
+<h2> Updating my web site</h2>
+<p>I have a script called <code>updateAlleged</code> that goes like this:
+</p>
+<pre><code># /bin/sh
+
+cd /Users/pdc/blah
+wfreshen.py || exit 1
+
+cd blahblah
+make install
+</code></pre><p>At the moment I run it by hand–because my laptop is not always switched
+   on, it can’t be run from <code>cron</code> in any useful fashion. I need to
+   research <a href="http://duncandavidson.com/essay/2006/01/periodiclaunchd">launchd</a> so I can see whether it solves the
+   can’t-run-if-switched-off problem.
+</p>
+
+<h2> Future Work</h2>
+<p>I have not yet done the work required to make <code>wfreshen</code> a complete Unix
+   command: it needs <code>–help</code> and <code>–version</code> command-line options, and it
+   should be possible to specify URIs in the command line as well as in the
+   configuration file, and so on. Also, it could do with an installer–even
+   if it will be a trivial one.
+</p>
+<p>Consider whether I need to add support for redirections.  Read through <a href="http://diveintopython.org/http_web_services/">Mark
+Pilgrim’s Web Services chapter</a> to see what I have missed.
+</p>
+<p> <strong>Update</strong> (12 Feb 2006).<br/><a href="http://bitworking.org/">Joe Gregorio</a> has written an article <a href="http://www.xml.com/pub/a/2006/02/01/doing-http-caching-right-introducing-httplib2.html">Doing HTTP
+Caching Right: Introducing httplib2</a>  which rather steals my thunder by
+   covering more of HTTP’s caching conventions than I do here.  At some future date
+   I may change <code>wfreshen</code> to exploit <code>httplib2</code> rather than doing the work itself.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

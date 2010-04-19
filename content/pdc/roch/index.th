@@ -1,0 +1,28 @@
+# -*-Tcl-*-
+
+set albumsDir ../../../albums
+source $albumsDir/albumDefs.tcl
+source ../pdcDefs.tcl
+source $albumsDir/peopleUrls.tcl
+
+initializeAlbum tuschin/pdc/roch \
+	$albumsDir/roch \
+	"Roch Castle - Damian Cugley" \
+	Roch \
+	"Photos from a visit to Roch castle in Wales" \
+	{"Aviemore" "photography" "Damian Cugley"} \
+	../pdc.css \
+	[list beginBody] \
+	endBody
+	
+
+emitPictureIndexPage index.html {	
+p "Fifteen of us hired a Roch Castle in west Wales for a week
+	in late October 1998.  I had to leave early to go to a business
+	meeting in Bologna in northern Italy, so on my last day there
+	Jeremy gave me a disposable camera to take a few snaps of the 
+	outside of the castle."
+}
+
+emitPeoplePages
+emitPicturePages

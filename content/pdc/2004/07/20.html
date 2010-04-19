@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:27 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2004/07;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2004/07 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>MU part 3: More MUD - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">07</a> &gt;&gt;
+      <strong>20</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20040720" id="e20040720">MU part 3: More MUD</a></h2>
+        <p class="details">20 July 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/mu.html"><abbr title="Alleged Mark-Up">MU</abbr></a></li>
+            <li><a href="../../2003/mud.html"><abbr title="Alleged Mark-Up Document-type">MUD</abbr></a></li>
+            <li><a href="../../2003/xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><a href="../../2003/yaml.html">yaml</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20040720" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">Apologies to people reading this via LiveJournal’s syndicated feed; a
+   combination of my software converting every header in to an RSS item and
+   LiveJournal duplicating each item every time I edited the title has
+   created a flurry of links to essays that I expect no-one but me has any
+   interest in anyway.
+</p>
+<p>Just to rub it in, here is some more of my imaginary generalized mark-up
+   language <a href="../../2004/07/17.html" title="Mark-Up">MU</a> and its metadata format <a href="../../2004/07/19.html" title="MU Part 2: Clear as MUD">MUD</a>..
+</p>
+
+<h2> No-range tags</h2>
+<p>The property <code>no-range tags</code> is a list of etypes, as a YAML list:
+</p>
+<pre>
+no-range tags:
+  - img
+  - embed
+  - applet
+  - br
+  - hr
+  - base
+  - link
+</pre>
+
+<p>This is a kludge to allow for HTML’s empty elements: a list of etypes for
+   which the no-range-tag syntax is permitted. For example, with the above
+   definition, <code>&lt;hr&gt;</code> is treated the same as <code>&lt;hr/&gt;</code>.
+</p>
+<p>It is in the MUD file – rather than being in a separate schema or
+   pattern file – because it is needed to parse the MU.  This sadly
+   means documents  using this feature are not stand-alone.
+</p>
+
+<h2> Character entities</h2>
+<p>This section is used to define additional character entities.
+</p>
+<pre>
+characters:
+    nbsp: 00A0
+    iexcl: 00A1
+    cent: 00A2
+    ...
+</pre>
+
+<p>Characters are defined here using Unicode code points in hexadecimal,
+   so that in this example, <code>&amp;iexcl;</code> is equivalent to <code>&amp;#x00A1;</code>.
+   Note that (unlike SGML and XML) we do not allow entities to expand to
+   more than one character.<br/>
+</p>
+
+<h2> Style sheets</h2>
+<p>Collections of documents that describe how to display the text. I am
+   supposing in these examples that in the parallel universe where MU is
+   defined, CSS has been extended to work with documents containing
+   overlapping mark-up in the style of LMNL and MU.
+</p>
+<pre>
+views:
+    default:
+        title: Standard appearance
+    media: screen
+    features:
+      - tag:alleged.org.uk,2004:mu:css
+        style sheets:
+          - foo.css
+      - bar.css
+    mobile:
+        title: Compact layout
+    media: screen
+    features:
+      - tag:alleged.org.uk,2004:mu:css
+        style sheets:
+      - foo.css
+      - bar-compact.css
+</pre>
+
+<p>The view named <code>default</code> is used initially; all the other view names are
+   arbitrary, and are there for the sake of style-sheet switchers. The
+   <code>features</code> tag says which style-sheet processors will be required to
+   make sense of this view; if that feature is missing, that view is
+   skipped. This gives a way to extend the style-sheet system, without
+   using special mdia-types for the CSS files.
+</p>
+<p>It might be reasonable to make the CSS feature mandatory, so that in the
+   common case the <code>features</code> tag is not needed.
+</p>
+<p>This is just a sketch – sorting out the details is left as an excerise
+   for the reader.
+</p>
+
+<h2> Extensions</h2>
+<p>MUD files can also contain arbitrary extra data for plug-ins to play
+   with. This is a special section called <code>extensions</code>:
+</p>
+<pre>
+extensions:
+    speak-u-like:
+        default-voice: tiny child
+    default-speed: 110%
+    relax-ng:
+        schemas:
+      - this.rng
+      - that.rnc
+        mode: pedantic
+</pre>
+
+<p>The keys are arbitrary. Generally there should be a corresponding
+   <code>features</code> entry that activates the plug-in that then searches the
+   <code>extensions</code> section for its configuration, if any. 
+</p>
+
+<h2> MUD versus MUM versus META</h2>
+<p>Some of the fields I outlined for MUD files – such as <code>type</code> and
+   <code>charset</code> – I now think deserve a file of their own, which I have
+   dubbed META. The MUD file therefore is a document-format definition,
+   shared by many documents, compared with the META file, which gives
+   information specific to a single document.
+</p>
+<p>The <a href="../../2004/08/03.html" title="META files for HTML + XML encoding happiness">description of META files</a> now moved out to its own page.
+</p>
+<p>MUM is a bundling format I will describe some time in the future.
+</p>
+
+<h2> Changes</h2>
+<p>Updated 2004-08-05 to add <code>characters</code>, <code>extensions</code> and <code>views</code> sections.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:29 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2005/09;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2005/09 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>First Impressions of Firefox 1.5 BETA1 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2005</a> &gt;&gt;
+      <a href="./">09</a> &gt;&gt;
+      <strong>09</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20050909.svg" id="e20050909.svg">First Impressions of Firefox 1.5 BETA1</a></h2>
+        <p class="details">9 September 2005</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+            <li><a href="../../2003/firefox.html">Mozilla Firefox</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20050909.svg" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">As of today, there is light at the end of the tunnel: the beta of
+   Mozilla Firefox 1.5 not only has SVG support, said SVG support is
+   switched on, and even works a bit.<br/>
+</p>
+<p>I am afraid this note mainly
+   concentrates on the bad news (things that don’t work).  I plan to
+   write more when I have had a chance to try out some of the new
+   possibilities and adapt my existing SVG projects to exploit them.
+</p>
+
+<h2> Omissions</h2>
+<p>These are listed on the <a href="http://www.mozilla.org/projects/svg/status.html">Mozilla SVG status page</a>.
+</p>
+<p>Declarative animation is not supported (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=216462" title="Implement SVG (SMIL) Animation">bug 216462</a>): you can
+   see this in the Flickr badge on my <a href="http://www.alleged.org.uk/pdc/">home page</a>. Viewed via Adobe SVG
+   Viewer, you will see the last few images of mine from Flickr fade in and
+   out. In Firefox, you just see a black background with my icon in the top
+   corner, and a couple of spurious scrollbars.
+</p>
+<p>Second, SVG fonts are not supported (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=119490" title="Implement SVG fonts (Bugzilla)">bug 119490</a>).  I used those in the <a href="http://www.alleged.org.uk/pdc/tarot/">Alleged
+Tarot</a> to render the titles of the cards.   For example, in <a href="http://www.alleged.org.uk/pdc/tarot/vi-lovers-card3.svgz">The
+Lovers</a>, at the bottom-left corner we should see the title of the card
+   in a unicase font peculiar to this series.  On Windows this is replaced
+   with Helvetica, which does not look as bad as all that.  On Mac OS X, I
+   seem to be missing the text altogether: even the text that does not use
+   special fonts.
+</p>
+
+<h2> Tweaks required</h2>
+<p>There is a peculiar hack used by Adobe to make SVG files look less
+   bulky: if it detects that the file contains a Zip archive, it unpacks
+   the archive and uses the contained file.  Mozilla supports a more
+   approach: it displays a yellow box complaining of an XML parsing error. 
+   The solution is <a href="http://wiki.mozilla.org/SVG:MIMEType#The_Apache_.htaccess_File">described on the Mozilla SVG Wiki</a>: program your
+   web server to corretly label <code>.svg</code> files as having
+   <code>Content-Encoding:gzip</code> and they work.  I had to add to my site’s
+   <code>.htaccess</code> file, but now SVG files <em>do</em> display.
+</p>
+
+<h2> Layout Trouble</h2>
+<p>There are a couple of layout problems in Firefox with regard to
+   SVG files embedded with an <code>embed</code> tag.  The first is that the presence
+   of <code>embed</code> throws their paragraph-layout system in to some sort of fit:
+   witness these two screen grabs:
+</p>
+<ul>
+ <li>
+      <a href="../../2005/safari-1.0.png">Safari 1.0</a> 
+ </li>
+
+ <li>
+      <a href="../../2005/firefox-1.5b1.png">Firefox 1.5 BETA1</a> 
+ </li>
+</ul>
+<p>The <a href="../../2005/../2004/11/14.html">page in question</a> uses HTML code as follows:
+</p>
+<pre><code>&lt;p&gt;
+&lt;embed src="../../2005/../2004/firefox-logo.svgz" 
+    type="image/svg+xml" 
+    width="120" height="120" alt="(logo)" 
+    align="left" /&gt;
+The FireFox logo to the left of this paragraph is ...
+&lt;/p&gt;
+</code></pre><p>The Safari capture uses the Adobe SVG Viewer plug-in.  The graphic is
+   shown floated left within the paragraph as expected.  There is some
+   space around the embed because of a CSS rule:
+</p>
+<pre><code>p embed[align=’left’] {
+    margin: 0.25em 0.5em 0.25em 0;
+}
+</code></pre><p>All in all, it behaves pretty much as an image would, which is more or
+   less what I expect. The Firefox paragraph goes very weird. The left
+   margin is lost (notice how the <em>T</em> of <em>The</em> is to the left of the <em>d</em> of
+   <em>displayed</em>, and exactly matches the right edge of the column with the
+   <em>#</em> in it), and once it is past the embedded image it slurps all the way
+   over to the left edge of the viewport. The margin between this paragraph
+   and the next one is also gone.
+</p>
+
+<h2> A Whole New Viewport Problem</h2>
+<p>Another weird thing I see is that the graphic has scrollbars. My <code>embed</code>
+   tag specifies width 120 and height 120 whereas the SVG file gives its
+   natural dimensions as width 132&middot;72, height 127&middot;219. Firefox shows the
+   image at its natural size and adds scrollbars. I had expected the image
+   to be displayed with the standard SVG viewport rules, under which the
+   image would have been scaled until it fit in to the
+   120-pixel-by-120-pixel box I specified.
+</p>
+<p>To see this effect even more strongly, visit the <a href="http://www.alleged.org.uk/pdc/tarot/">Alleged Tarot</a> front
+   page.  The left picture should show a card scaled down to thumbnail
+   size, but instead shows only its top-left corner, plus scrollbars.
+</p>
+<p>I assume the reason for this is that <code>embed</code> is being treated as an
+   <code>iframe</code> containing another browser document, as opposed to being part
+   of this page.  (Update: this is Mozilla Bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=288276" title="The width and height of SVG embeded by reference isn’t overriden">288276</a>.)
+</p>
+<p>Another consequence of this is that, when I click on a
+   <code>a</code> tag in the SVG document, the page I linked to replaces the SVG file,
+   not the whole page!  To see this, click on the Flickr badge; in Safari
+   this replaces the whole page, in Firefox the Flickr page gets embedded
+   where the SVG was.<br/>
+</p>
+
+<h2> Moving On</h2>
+<p>I don’t want to give the impression that all is gloom, however.
+   Getting SVG integrated in the Mozilla is an impressive pice of work,
+   especially given how few developers have actually been working on it,
+   and considering that they are attempting to do SVG the hard way, by
+   integrating it in to Mozilla’s existing HTML + MathML layout engine,
+   rather than write a standalone plug-in that goes its own way.  The
+   result is that it has taken a long time, but the combination of SVG with
+   Mozilla’s existing XML-based features (like XUL and XBL) could make for
+   some powerful synergy in the future. 
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

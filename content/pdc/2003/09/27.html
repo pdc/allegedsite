@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:26 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003/09;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003/09 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>27 September 2003 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2003</a> &gt;&gt;
+      <a href="./">09</a> &gt;&gt;
+      <strong>27</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20030927b" id="e20030927b">Photos from Mull </a></h2>
+        <p class="details">27 September 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/photos.html">photos</a></li>
+            <li><a href="../../2003/personal.html">personal</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030927b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../../2003/mull/"><img src="../../2003/mull/p053-thumb.jpg" class="initial" alt="" align="left" width="100" height="75" border="0" /></a></div><p class="first">
+      This Semptember we went to visit my mother
+      Jenny in her home in Tobermory on the Isle of Mull.
+      I took with me my brand new camera and
+      took       <a href="../../2003/mull/">some photos from Tobermory (and the
+      journeys to and from)</a>.  
+    </p>
+    <p>
+      It’s a bit of a mixture—forest scenes from walking
+      the dogs (my mother has 5&ndash;6 dogs in the house at a time,
+      some of them borrowed from friends), or from visiting Aros Park
+      on our own.   There are some close-ups of little stuff as
+      I&nbsp;tested the (super)macro lens on my digital camera.  
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030927a" id="e20030927a">Moron AppleScript</a></h2>
+        <p class="details">27 September 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/applescript.html">AppleScript</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030927a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://apple.com/applescript/"><img src="../../2003/applescript.png" class="initial" alt="" align="left" width="102" height="103" border="0" /></a></div><p class="first">
+      My problem with <a
+      href="http://apple.com/applescript/">AppleScript</a> is its
+      patchy documentation and the needless <em>complexity</em> of its
+      syntax.  I am also crippled by my two decades’ experience
+      of using more consistently designed programming languages.
+    </p>
+    <p>
+      So, for example, when faced with the task of writing a program
+      that writes a few hundred lines to a file, my first idea would
+      be to open the file, write each line one at a time, then close
+      the file.  This way the operating system takes care of buffering
+      the data in an efficient manner.  
+    </p>
+    <p>
+      The first hurdle is how to
+      get the file name!
+      I wanted a way to find the user’s home directory, so that
+      I might place the output file there.
+      AppleScript has some things (properties? functions?) starting
+      with <code>path to</code> that supply the file names of
+      folders.  I know this from one of their sample scripts, which
+      uses <code>path to temporary items folder as string</code>.
+      It is not described in the reference manual or any other
+      documentation I have found.
+      After some <em>guesswork</em> I hit upon <code>path to desktop
+      folder</code>.  Not quite what I wanted, but close enough.
+    </p>
+    <p>
+      The problem is, when I try to assign <code>file (path to desktop
+      folder as string) &amp; "xyzzy.xml"</code> to a variable (which I
+      will then use to open a file), I get the inscrutable error
+      message ‘Cannot get Macintosh
+      Disk:Users:pdc:Desktop:xyzzy.xml’.  In the end I worked
+      out that my mistake was in trying to convert the name of a
+      non-existing file to a file name; the construct
+      ‘<code>file</code> <em>fileName</em>’ is only
+      permitted if (A)&nbsp;the file already exists, or (B)&nbsp;the
+      command the expression is used in will create the file itself.
+      Or this is my deduction after an exasperating waste of time.
+    </p>
+    <p>
+      At this point I just had to give up on trying to work with
+      AppleScript in the way I normally do programming, which is to
+      work out what I want to do and then use the documentation to
+      discover how to do it.  Instead I have resorted to <dfn>voodoo
+      programming</dfn>: slavishly copying snippets of sample code and
+      resisting the urge to modify, tweak or improve anything for fear
+      of breaking the spell.  The only documentation for writing to
+      files I have found on Apple’s web site is <a
+      href="http://www.apple.com/applescript/guidebook/sbrt/pgs/sbrt.11.htm">a
+      subroutine for writing a whole file at once</a>.  I attempted to
+      apply logic, reason and cunning to extrapolate from this a way
+      to write the file piece by piece, but in the end the meaningless
+      error messages mean this effort is futile.  Accumulating the
+      data in memory is much less efficient, but at least I might be
+      able to make it work.
+    </p>
+    <p>
+      So, in the end, I have managed to extract information from
+      iPhoto in to an XML file, and as a result am in a position to do
+      the rest of the work I want in the <a
+      href="http://python.org/">Python language</a>.  For which I am
+      very grateful!
+    </p>
+    <p>
+      <strong>Update:</strong>
+      I spoke too soon.  The script now silently fails to write the data to the
+      file.  Everything works as before, except the output file is
+      empty.  How fucking pathetic is that?!
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

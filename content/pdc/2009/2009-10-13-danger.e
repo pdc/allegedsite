@@ -1,0 +1,8 @@
+Title: Someone Needs to Buy their Copy-Editor a Dictionary of Proverbs
+Date: 2009-10-13
+Image: ../icon-64x64.png
+Topics: microsoft ec2 googleappengine cloud
+
+<a href="http://technologizer.com/2009/10/12/windows-vista-a-review-recap/">It is reported</a> that Steve Ballmer said, on the subject of whether Windows 7 will succeed where Windows Vista has failed, &lsquo;I am optimistic, but the proof will be in the pudding.&rsquo; This is strange, because &lsquo;the proof of the pudding is in the eating&rsquo; is one of the rare proverbial phrases that actually makes sense without gloss from a scholar of Semi-Early Modern English. (That said, it makes more sense if you know that &lsquo;proof&rsquo; used to be used to mean &lsquo;test&rsquo;.)
+
+Speaking of eating, <a href="http://www.microsoft.com/presspass/press/2008/feb08/02-11acquisition.mspx">Microsoft acquired Danger</a>, a <a href="http://www.danger.com/">maverick Blackberry-alternative</a>, last year. Last week they accidentally <a href="http://www.techcrunch.com/2009/10/10/t-mobile-sidekick-disaster-microsofts-servers-crashed-and-they-dont-have-a-backup/">blew it up</a>. This is bad news for Sidekick and Hiptop users, especially if you were running your business from your contacts stored on their cloudy servers. Will this dent confidence in <a href="http://www.microsoft.com/azure/default.mspx">Windows Azure</a>, their attempt to jump on the coat-tails of <a href="http://code.google.com/appengine/">Google App Engine</a> and <a href="http://aws.amazon.com/ec2/">Amazon Elastic Compute Cloud (EC2)</a>?

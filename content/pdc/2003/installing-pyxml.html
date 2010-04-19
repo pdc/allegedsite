@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from installing-pyxml.th on 2006-11-02 08:57 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 installing-pyxml.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Processing XML with Python on Mac OS X - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>installing-pyxml</strong>
+    </p>
+    <div id="body">
+      <h1>Processing XML with Python on Mac OS X</h1>
+      <p id="tagline">Damian Cugley’s Weblog</p>
+      
+      <p>
+      I’ve been amusing myself by concocting an
+      <abbr title="Really Simple Syndication">RSS</abbr>
+      reader using <abbr title="XSL (Extensible Style-sheet
+      Language) Transform">XSLT</abbr> to do the processing.
+      XSLT can even handle the downloading of the RSS
+      files, but this does not allow for caching or
+      aggregating—so I&nbsp;thought I&nbsp;would knock
+      something together in Python.
+      </p>
+      <p>
+      Python is installed on Mac OS
+      &nbsp;X out of the box. But
+      I&nbsp;discovered to my dismay that it has no XML
+      parsers! Since I&nbsp;wanted to store my list
+      of RSS feeds as XML, this was something of a bother. Not
+      to worry—I&nbsp;visited the XML Topic Guide on the
+      Python web site and downloaded
+      <a href="http://pyxml.sourceforge.net/">pyxml</a>&nbsp;0.8.2. This then
+      failed to install. I fixed this little problem by
+      editing <code>setup.py</code>. In the imports I added
+      <code>get_config_var</code> to the line
+      </p>
+      <blockquote>
+      <p><code>from distutils.sysconfig import
+      get_config_vars</code></p>
+      </blockquote>
+      <p>
+      And I&nbsp;deleted <code>distutils.sysconfig</code> from
+      the line
+      </p>
+      <blockquote>
+      <p><code>if sys.platform[:6] == "darwin" and \<br />
+      distutils.sysconfig.get_config_var("LDSHARED").find("-flat_namespace") ==
+      -1:</code></p>
+      </blockquote>
+      <p>
+      This line would have worked if the <code>import</code>
+      line had just said <code>import
+      distutils.sysconfig</code> (and if other references to
+      <code>get_code_vars</code> had been fully qualified
+      names).
+      I&nbsp;generally prefer to avoid the
+      <code>from ... import</code> style of imports for just
+      this sort of reason.
+      </p>
+      <p>
+      Now all I&nbsp;have to do is persuade the SAX2 parser to
+      grok XML namespaces...
+      </p>
+      
+      <p><a href="05/01.html#e20030501">1 May 2003</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

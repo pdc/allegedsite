@@ -1,0 +1,39 @@
+Title: PostScript knowlege can save you too
+Date: 20040529
+Image: ../icon-64x64.png
+Topics: postscript printing
+
+My old [Performa 5260][2] is running Mac OS 9, the last Macintosh operating
+system for the old pre-G3 computers.  We have Quark installed thereon,
+and it wants to print.  The printer is a [PostScript][1]-enabled HP
+LaserJet 4MP, attached to my Linux server.  Why is it so hard to print
+the damn' file?  Even during that brief time when it would work, I
+could never get landscape printing to work.
+
+    [1]: http://www.adobe.com/products/postscript/ "Adobe web site"
+    [2]: http://www.everymac.com/systems/apple/mac_performa/stats/mac_performa_5260_120.html
+
+I can choose the LaserWriter 8 icon in Chooser, but then it asks where
+my AppleTalk network is.  As it happens, I *do* run an AppleTalk
+server (`netatalk`) on the Linux box, and I even run something called
+`papd`, but neither the Max OS 9 dinosaur nor the Mac OS X 10.2.8
+PowerBook believe it has any printers.
+
+There is a solution: the document is only one page long, so use
+Quark's Save as Encapsulated PostScript option, then copy the EPS to a
+shared disc on the Linux server.  Then edit the EPS with GNU Emacs.
+Study the PostScript code to deduce the start of the page (in this
+case, search for `%%EndSetup`).  Insert `0 842 translate -90 rotate`
+to switch it to landscape printing, and voil&agrave;! it prints
+correctly with `lpr`.  The great thing about Unix is that it lets you
+point to a file and say 'send that to the printer' without its playing
+silly buggers and trying to load some application's random Print
+dialogue boxes and then second-guessing you on the whole landscape
+printing issue so cleverly that your document emerges rotated and
+clipped.
+
+I have the Adobe manaual (_PostScript Lanugage Reference Manual_ 2/e,
+ISBN 0-201-18127-4), which has an exellent index and is full of
+information.  Thus I was able to learn how to insert `<< /NumCopies 10
+>> setpagedevice` in order to print multiple copies.  Simplicity
+itself compared to the user-friendly alternatives.

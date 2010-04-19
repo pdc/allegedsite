@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:28 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2004/10;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2004/10 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>October 2004 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <strong>10</strong>
+    </p>
+    <div id="body">
+      <h1>Archives for October 2004</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20041031" id="e20041031">Migrating my website workspace, part 2</a></h2>
+        <p class="details">31 October 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+            <li><a href="../../2003/python.html">Python</a></li>
+            <li><a href="../../2003/debian.html">debian</a></li>
+            <li><a href="../../2003/http.html">http</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../../2004/10/31.html#e20041031" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I am still in <a href="../../2004/10/30.html">the process of converting my website-maintaining
+scripts</a>
+   to work on <a href="http://debian.org/">Debian GNU/Linux</a> rather than <a href="http://www.apple.com/uk/macosx/">Mac OS X</a>. Last episode left me
+   with a conundrum as how to convert SVG files to PNG for the sake of
+   browsers that cannot display SVG properly.
+</p>
+<p>This afternoon I revamped my Python script <code>fetch.py</code>, used to get
+   copies of certain external web pages, such as the Atom feed from Flickr.
+   Fetch already keeps <a href="http://www.python.org/doc/current/lib/module-sha.html">SHA(1)</a> hashes of the downloaded resources in
+   a persistent file, so that the local copies are written ony if the
+   resource changes; this prevents gratuitous ‘recompilation’ when I use
+   Make to rebuild the relevant output files. I extended it to also store
+   the <code>Last-Modified</code> and <code>ETag</code> headers, and to reuse these values (as
+   <code> <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25">If-Modified-Since</a> </code> and <code> <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26">If-None-Match</a> </code> headers) the next
+   time that URI is requested. If the servers return <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.5">304</a>, this
+   throws an exception; all I needed to do was make the handler set the
+   data to None and make the rest of the script skip the saving-to-file
+   part. Python’s shipping ‘with batteries’ made adding support for
+   <code> <a href="http://www.python.org/doc/current/lib/module-gzip.html">gzip</a> </code> compression easy (insert an <code> <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3">Accept-Encoding</a> </code>
+   header in the request and check for <code> <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11">Content-Encoding</a> </code> in the
+   response).
+</p>
+<p>With all this in place, it was simple enough to modify my SVG-generating
+   script so that, when before it would have written a URL of an image in
+   to the file, it instead fetched the resource to a local file and
+   subsitituted the name of the file. The result is an SVG that the <code>rsvg</code> program can
+   handle correctly.
+</p>
+<p>The next step was a little annoying. I have not installed <code>rsvg</code> on my
+   Mac OS X machine; Fink does not support it (at least not in Stable), and
+   I cannot be bothered trying to build it myself. Instead I created a
+   driver program <code>svgtopng</code> that works out which out of Batik and <code>rsvg</code>
+   is available, and creates the correct command-line automatically.  (I
+   could have done this as a shell script, but in the end it was easier
+   todo <em>this</em> in Python too.)  This way I modify my Makefiles to use
+   <code>svgtopng</code> and it works whether I am on Ariel or Tranq.
+</p>
+<p>There is one little bitty problem: the outputs do not match. Here is the
+   rendering done with Batik on the Mac:
+</p>
+<blockquote>
+    <div>
+        <img src="../../2004/flickr-ariel-20041031.png" width="100" height="50" alt="" />
+    </div>
+</blockquote>
+
+<p>The version generated with <code>rsvg</code> has the image too small (leaving a gap
+   down one side) and the text has fallen off the side of the icon:
+</p>
+<blockquote>
+    <div>
+        <img src="../../2004/flickr-tranq-20041031.png" width="100" height="50" alt="" />
+    </div>
+</blockquote>
+
+<p>The second of these problems is probably fixable by including more
+   synonyms for Helvetica (Debian systems doubtless include the URW fonts, which
+   are metrically compatible). The first may mean that I need finally to
+   give up on using the <code> <a href="http://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">preserveAspectRatio</a> </code> attribute to control how the
+   aspect ratio is preserved, and do it myself by doing all the positioning
+   calculations myself. Grrump.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../../2004/10/30.html#e20041030" title="Permanent URL for this entry">Migrating my website workspace, part 1</a>
+          30 October 2004
+        </li>
+        <li>
+          <a href="../../2004/10/06.html#e20041006" title="Permanent URL for this entry">Website tweaks</a>
+          6 October 2004
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

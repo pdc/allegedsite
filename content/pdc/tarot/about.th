@@ -1,0 +1,41 @@
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "About Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 "About the project"
+
+p " [img 0-fool-100w.png align=right alt=]
+Some while back I&nbsp;produced a minicomic
+called the [cite Pebble Tarot], depicting the major
+arcana of the traditional Tarot deck in stick-figure form. 
+In January 2002, 
+I&nbsp;started a project to produce a new version of the stick-figure tarot,
+this time drawing them in colour and publishing them in 
+
+[a http://www.w3.org/Graphics/SVG/ \
+[acronym* "title=Scalable Vector Graphics" SVG]] 
+
+format.  "
+
+p "[img iii-empress-100w.png align=left alt=] I&nbsp;hope Tarot
+aficionados will not be too offended by my frivolous stick-figure
+interpretation.  I&nbsp;figure that Tarot illustrations are supposed
+to be symbolic, and there&rsquo;s nothing more symbolic than a stick
+figure.  I&nbsp;have done 
+[a references.html a modicum of research] 
+this time around, and
+have included some of the symbolism from mediaeval and modern decks.
+"
+
+endBody
+endDocument
+
+
+

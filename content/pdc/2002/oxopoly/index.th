@@ -1,0 +1,31 @@
+# -*-Tcl-*-
+
+source ../../pdcDefs.tcl
+
+
+beginDocument {
+	title "Oxopoly SKetch"
+	pdcMetadata
+}
+
+beginBody
+
+h1 "Oxopoly sketch"
+
+p "This is based on [a "http://www.livejournal.com/talkread.bml?journal=tinyjo&itemid=97798" "Jo Charman&rsquo;s first sketch of an Oxford-University
+themed property-trading game"]."
+
+emit {<object data="oxopoly.svgz" type="image/svg+xml" width="500" height="500">
+    <embed src="oxopoly.svgz" type="image/svg+xml" width="500" height="500" />
+</object>}
+
+p "Obviously I have not done some little things like writing in all
+the names of the colleges and stuff&mdash;the basic shape is there
+though and adding the text will be easy enough when I&nbsp;next have
+some time to spend on it... I just wanted to get the basic framework together..."
+
+
+
+endBody 
+
+endDocument

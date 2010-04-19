@@ -1,0 +1,83 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Picky Picky Game: No writing files - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Picky Picky Game: No writing files"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+emit {
+    <p class="article">
+      As mentioned earlier, I&nbsp;am working on a version of the <a
+      href="picky.html">Picky Picky Game</a> that does not need to
+      write to files (since some web servers will be set up that way
+      for security reasons).  In some ways this simplifies things,
+      because it means there is only one <abbr title="Uniform
+      Resource-Locator">URL</abbr> hierarchy to worry about.
+    </p>
+    <p>
+      The URL design now looks like this:
+    </p>
+    <table>
+      <tbody>
+        <tr valign="baseline">
+	  <td><code>picky.cgi/sample/</code></td>
+	  <td>GET</td>
+	  <td>Home page, dynamically generated</td>
+	</tr>
+	<tr valign="baseline">
+	  <td><code>picky.cgi/sample/main.css</code></td>
+	  <td>GET</td>
+	  <td>Style sheets and other static files</td>
+	</tr>
+	<tr valign="baseline">
+	  <td><code>picky.cgi/sample/13/foo.png</code></td>
+	  <td>GET</td>
+	  <td>One of the candidates in the 13th panel</td>
+	</tr>
+	<tr valign="baseline">
+	  <td><code>picky.cgi/sample/13/votes</code></td>
+	  <td>POST</td>
+	  <td>Ballot box for panel 13</td>
+	</tr>
+	<tr valign="baseline">
+	  <td><code>picky.cgi/sample/14/pictures</code></td>
+	  <td>POST</td>
+	  <td>Where to post candidates for panel 14</td>
+	</tr>
+      </tbody>
+    </table>
+    <p>
+      Previously only the <code>POST</code> URLs used the CGI script;
+      all the static resources came from files and had a separate URL
+      hierarchy.
+    </p>
+    <p>
+      The dynamically generated resources that previously were stored
+      on disc can now instead be stored in the object database that
+      holds the other metadata.  This means the host web server
+      (Apache) is no longer responsible for such details as
+      <code>Content-Length</code> headers or handling
+      <code>If-Modified-Since</code>, and I&nbsp;need to implement
+      them.  So far I&nbsp;am halfway done.
+    </p>
+    <p>
+      For some reason, pictures stored on disc (what I&nbsp;could now
+      call &lsquo;legacy&rsquo; resources) are not being served
+      properly; I&nbsp;will look in to that when I&nbsp;next have some
+      spare time.  In the meantime, you can try out the fairly
+      broken-looking prototype at <a
+      href="http://caption.org/caption-cgi/hello.cgi/sample/"><code>http://caption.org/caption-cgi/hello.cgi/sample/</code></a>.
+    </p>
+}
+
+p [a 05/04.html#e20030504 4 May 2003]
+
+endBody
+endDocument

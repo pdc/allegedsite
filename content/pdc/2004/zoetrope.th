@@ -1,0 +1,20 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+	title "Zoetrope blank"
+	pdcMetadata
+}
+
+beginBody
+	
+
+h1 "Zoetrope blank"
+
+
+p [svg zoe.svg]
+
+endBody
+
+endDocument

@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:50 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Flickr - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>flickr</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Flickr</h1>
+      <div class="entry">
+        <h2><a name="e20060101-flickr-svg" id="e20060101-flickr-svg">Flickr Badge in SVG</a></h2>
+        <p class="details">1 January 2006</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="svg.html"><abbr title="Scalable Vector Graphics">SVG</abbr></a></li>
+            <li><strong>flickr</strong></li>
+            <li><a href="make.html">make</a></li>
+            <li><a href="xsltproc.html">xsltproc</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2006/01/01.html#e20060101-flickr-svg" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div><img src="../2006/flickr-100x100.png" alt="" align="left" width="400" height="400" border="0" /></div><p class="first">In October 2004 I added a Flickr ‘badge’ to my home page. Now that
+   someone’s asked me how this is done, I am going to explain in a
+   reasonable about of detail how the SVG file is generated automatically
+   from information on Flickr.  Even if you don’t feel a pressing need to
+   create a SVG file celebrating your Flickr photos, the techniques
+   described herein are fairly widely applicable if you happen to maintain
+   your own web site.
+</p>
+
+<h3> Getting Flickr Information as XML</h3>
+<p>I want to generate the Flickr badge automatically from my most recent
+   photos on <a href="http://flickr.com/" title="Photo Sharing">Flickr</a>.  Since the <a href="http://www.w3.org/Graphics/SVG/" title="Scalable Vector Graphics">SVG</a> format is based on <a href="http://www.w3.org/XML/" title="Extensible Mark-Up Language">XML</a>, so the first approach I would
+   try is to get the information as XML somehow, and then convert that to
+   SVG using <a href="http://www.w3.org/Style/XSL/" title="Extensible Stylesheet Language">XSLT</a>.  So how do I do that?
+</p>
+<p>The <a href="http://www.flickr.com/help/photos/#53">Flickr FAQ list</a> points to the <a href="http://www.flickr.com/badge_new.gne">Flickr badge wizard</a>. The
+   wizard works by asking you some questions and then giving you an HTML
+   fragment to insert on your web page. Picking apart the HTML fragment, I
+   discovered a URL that returns the information I want. I was able to
+   confirm this by visiting the URL in my web browser.  It does not quite return XML, however, but something like this:
+</p>
+<pre><code>document.write(’&lt;a href="http://www.flickr.com/photos/pdc/66501836/"&gt;&lt;img src="http://static.flickr.com/35/66501836_2e53f137c7_m.jpg" class="flickrimg" id="flickrimg1" /&gt;&lt;/a&gt;’);
+document.write(’&lt;a href="http://www.flickr.com/photos/pdc/66501835/"&gt;&lt;img src="http://static.flickr.com/29/66501835_50d58d3831_m.jpg" class="flickrimg" id="flickrimg2" /&gt;&lt;/a&gt;’);
+document.write(’&lt;a href="http://www.flickr.com/photos/pdc/66501834/"&gt;&lt;img src="http://static.flickr.com/26/66501834_1890d20731_m.jpg" class="flickrimg" id="flickrimg3" /&gt;&lt;/a&gt;’);
+document.write(’&lt;a href="http://www.flickr.com/photos/pdc/66501833/"&gt;&lt;img src="http://static.flickr.com/34/66501833_fd0187210a_m.jpg" class="flickrimg" id="flickrimg4" /&gt;&lt;/a&gt;’);
+document.write(’&lt;a href="http://www.flickr.com/photos/pdc/66501832/"&gt;&lt;img src="http://static.flickr.com/28/66501832_1c9fe98e1a_m.jpg" class="flickrimg" id="flickrimg5" /&gt;&lt;/a&gt;’);
+</code></pre><p>It has the XML I want, but wrapped up in JavaScript coating. So I saved
+   it as <code>flickr-badge.js</code> (<code>.js</code> for JavaScript). It was easy enough to
+   write a <a href="http://python.org/" title="Python programming language">Python</a> program <code>flickr-badge-to-xml.py</code> that strips off the
+   JavaScript and converts this to an XML document:
+</p>
+<pre><code>#!/usr/bin/python
+
+import sys
+
+fileName = sys.argv[1]
+input = open(fileName, ‘r’)
+text = input.read()
+input.close()
+
+text = text.replace("document.write(’", ‘’)
+text = text.replace("’);", ‘’)
+
+print ‘&lt;badge xmlns="tag:alleged.org.uk,2004:flickr"&gt;’
+print text
+print ‘&lt;/badge&gt;’
+</code></pre><p>I tested this by using typing in a command like
+</p>
+<pre><code>python flickr-badge-to-xml.py flickr-badge.js | less
+</code></pre><p>The output of this program is an XML document that feeds in to the next
+   step.
+</p>
+<p> <strong>Note.</strong> <em>I think the Flickr badge generator produces different HTML
+from what it produced back in October 2004, and the new HTML uses a new
+URL for obtaining the image data.  So if I were doing this all from
+scratch some of the above details might now be different.</em> 
+</p>
+
+<h3> Converting XML to SVG with XSLT</h3>
+<p> <a href="http://www.w3.org/Style/XSL/" title="Extensible Stylesheet Language">XSLT</a> is a system for describing a transformation from one XML format
+   to another one—in this case, from the XML format I just made up in the
+   previous step in to SVG.  (I could use the exact same system to generate
+   an XHTML document instead, for example.)  The XSLT language itself is an
+   XML format, and as a result is verbose and a little difficult to read if
+   you are not used to it. Unless you are an avid XML fan, you will want to
+   skip the rest of this section.
+</p>
+<p>We start with a ‘blank’ XSLT file:
+</p>
+<pre><code>&lt;xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+            xmlns:flickr="tag:alleged.org.uk,2004:flickr"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.0"
+            exclude-result-prefixes="flickr"&gt;
+    &lt;xsl:output method="xml" indent="no" omit-xml-declaration="yes"/&gt;
+&lt;/xsl:transform&gt;
+</code></pre><p>The namespace introduced with
+   <code>xmlns:flickr="tag:alleged.org.uk,2004:flickr"</code> is the one used in my
+   ad-hoc XML format; the URL uses the <a href="http://www.taguri.org/">Tag URI scheme</a> (<a href="http://ietf.org/rfc/rfc4151.txt" title="The ‘tag’ URI Scheme">RFC 4151</a>).
+   The <code>xsl:output</code> element’s <code>indent</code> attribute is set to <code>no</code> because
+   some SVG renderers include newlines between <code>text</code> tags and their
+   contents as extra whitespace, which disrupts the layout. I no longer
+   include <code>doctype-system</code> and <code>doctype-public</code> attributes; SVG
+   implementations do not use them and future versions of SVG do not permit
+   them.
+</p>
+<p>The next step is adding a template that matches the outermost element of
+   the input format and generates the outer structure of the output document:
+</p>
+<pre><code>&lt;xsl:param name="width" select="200"/&gt;
+&lt;xsl:param name="height" select="200"/&gt;
+&lt;xsl:param name="creator" select="’Damian Cugley’"/&gt;
+
+&lt;xsl:template match="/flickr:badge"&gt;
+    &lt;svg viewBox="0 0 {$width} {$height}" width="100%" height="100%"&gt;
+        &lt;title&gt;
+            &lt;xsl:value-of select="$creator"/&gt;
+            &lt;xsl:text&gt;&amp;#x2019;s photos&lt;/xsl:text&gt;
+        &lt;/title&gt;
+        &lt;desc&gt;
+            &lt;xsl:text&gt;Link to &lt;/xsl:text&gt;
+            &lt;xsl:value-of select="$creator"/&gt;
+            &lt;xsl:text&gt;&amp;#x2019;s photos on Flickr.com&lt;/xsl:text&gt;
+        &lt;/desc&gt;
+        &lt;defs&gt;
+        &lt;/defs&gt;
+        &lt;!– content will go here –&gt;
+    &lt;/svg&gt;
+&lt;/xsl:template&gt;
+</code></pre><p>The parameters <code>$width</code> and <code>$height</code> control the natural size of the
+   image. Originally the <code>width</code> and <code>height</code> attributes would be set to
+   those values as well, but using <code>100%</code> instead prevents unwanted scrollbars in Firefox
+   (Bugzilla bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=288276" title="The width and height of SVG embeded by reference isn’t overriden">288276</a>). 
+</p>
+<p>Next we add the actual content of the document after the <code>defs</code> element:
+</p>
+<pre><code>&lt;xsl:param name="uri" select="’http://www.flickr.com/photos/pdc/’"/&gt;
+
+&lt;xsl:template match="/flickr:badge"&gt;
+    &lt;svg ...&gt;
+        ...
+        &lt;a xlink:href="../2006/{$uri}" target="_parent"&gt;
+            &lt;g onclick="parent.location.href=’{$uri}’; return false;"&gt;
+                &lt;xsl:apply-templates select="flickr:a/flickr:img"/&gt;
+            &lt;/g&gt;
+        &lt;/a&gt;
+    &lt;/svg&gt;
+&lt;/xsl:template&gt;
+</code></pre><p>The link (<code>a</code> element) has a <code>target</code> attribute of <code>_parent</code>, which I
+   believe should cause clicking on the link in the image to replace the
+   parent document. But alas! Firefox 1.5 does not support this attribute
+   (bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=300868" title="target attribute not supported for SVG:a element">300868</a>), so I also add an <code>onclick</code> attribute, which does the
+   same thing, except using JavaScript. This can’t be on the <code>a</code> element
+   itself (bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=267664" title="anchor doesn’t handle event">267664</a>), so needs an extra <code>g</code> wrapper.
+</p>
+<p>The line 
+</p>
+<pre><code>&lt;xsl:apply-templates select="flickr:a/flickr:img"/&gt;
+</code></pre><p>in the middle of all that is the bit that looks for images in the XML
+   input and generates the SVG equivalent.  Because all of this is wrapped
+   in the <code>a</code> and <code>g</code> elements, clicking on any of this will cause the
+   user’s web browser to visit that page.
+</p>
+<p>At this point, I needed to decide how I wanted my ‘badge’ laid out. The
+   approach I have used is fairly simple: the most recent photos are
+   stacked on top of each other, but are all transparent (opacity = 0&middot;0)
+   and one at a time is made visible (opacity = 1&middot;0).  This creates
+   the effect of a slideshow.
+</p>
+<p>So we add a second template that matches those <code>flickr:img</code> elements:
+</p>
+<pre><code>&lt;xsl:template match="flickr:img"&gt;
+    &lt;image
+            x="0" y="0" width="{$width}" height="{$height}"
+            preserveAspectRatio="xMidYMid slice"
+            xlink:href="../2006/{@src}"&gt;
+    &lt;/image&gt;
+&lt;/xsl:template&gt;
+</code></pre><p>This uses the magic of SVG’s <code>preserveAspectRatio</code> conventions to take
+   care of scaling and cropping the photo to fill our badge’s area.
+</p>
+<p>This actually shows only the least-recently-added photo from the
+   recently-added photos list, because it is stacked on top, and is opaque.
+   The next step is to make a slide-show be arranging that all of them be
+   transparent most of the time, and take turns in becoming visible.  After
+   a fair amount of fiddling and head-scratching, this is what I came up
+   with:
+</p>
+<pre><code>&lt;xsl:template match="flickr:img"&gt;
+    &lt;xsl:variable name="i" select="count(../preceding-sibling::flickr:a)"/&gt;
+    &lt;xsl:variable name="n" select="count(../../flickr:a)"/&gt;
+    &lt;xsl:variable name="total-seconds"
+            select="$photo-seconds + $crossfade-seconds"/&gt;
+    &lt;xsl:variable name="photo-frac" 
+            select="$photo-seconds div ($total-seconds) div $n"/&gt;
+    &lt;xsl:variable name="crossfade-frac" 
+            select="$crossfade-seconds div ($total-seconds) div $n"/&gt;
+    &lt;image
+            x="0" y="0" width="{$width}" height="{$height}"
+            preserveAspectRatio="xMidYMid slice"
+            xlink:href="../2006/{@src}"
+            opacity="0"&gt;
+        &lt;animate attributeName="opacity" values="0;1;1;0;0" 
+                keyTimes="0;{$crossfade-frac};{$photo-frac + $crossfade-frac};{$photo-frac + 2 * $crossfade-frac};1"
+                begin="{$i * $total-seconds}s" dur="{$n * $total-seconds}" repeatCount="indefinite"/&gt;
+    &lt;/image&gt;
+&lt;/xsl:template&gt;
+</code></pre><p>The list of <code>xsl:variable</code> elements calculate the slice of time this
+   image should be made visible, and then we use these values in the
+   <code>keyTimes</code> attribute of the <code>svg:animate</code> element.  There is still one
+   slight problem: when it starts up, <em>none</em> of the images is
+   visible—which is a big problem in Firefox, which ignores the <code>animate</code>
+   element (bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=216462">216462</a>).  So I modified it so the <code>opacity="0"</code>
+   attribute is not added to the most-recent image:
+</p>
+<pre><code>&lt;xsl:template match="flickr:img"&gt;
+    ...
+    &lt;image
+            x="0" y="0" width="{$width}" height="{$height}"
+            preserveAspectRatio="xMidYMid slice"
+            xlink:href="../2006/{@src}"&gt;
+        &lt;xsl:if test="$i &amp;gt; 0"&gt;
+            &lt;xsl:attribute name="opacity"&gt;0&lt;/xsl:attribute&gt;
+        &lt;/xsl:if&gt;
+        &lt;animate ... /&gt;
+    &lt;/image&gt;
+&lt;/xsl:template&gt;
+</code></pre><p>Firefox users don’t see the animation, but at least they see a recent
+   photo.
+</p>
+<p>Finally, we can go back to the first template and add some extra
+   decorations, in the form of my userpic, and a version of the Flickr
+   logo:
+</p>
+<pre><code>&lt;xsl:template match="/flickr:badge"&gt;
+    &lt;svg ...&gt;
+        ...
+        &lt;a ...&gt;
+            &lt;g ...&gt;
+                &lt;xsl:apply-templates select="flickr:a/flickr:img"/&gt;
+                &lt;image
+                        x="1" y="1" width="48" height="48"
+                        xlink:href="http://www.flickr.com/buddyicons/14145351@N00.jpg"/&gt;
+                &lt;rect x="{$width - 50}" y="{$height - 20}" width="52" height="22" 
+                        rx="2" ry="2" fill="#FFF" opacity="0.75"/&gt;
+                &lt;text
+                    x="{$width - 1}" y="{$height - 1}"
+                    font-family="Helvetica, Ariel, sans-serif"
+                    font-weight="700"
+                    font-size="20"
+                    text-anchor="end" stroke="none"
+                &gt;
+                    &lt;tspan fill="#0063DC"&gt;flick&lt;/tspan&gt;&lt;tspan fill="#FF0084"&gt;r&lt;/tspan&gt;
+                &lt;/text&gt;
+            &lt;/g&gt;
+        &lt;/a&gt;
+    &lt;/svg&gt;
+&lt;/xsl:template&gt;
+</code></pre><p>I’ve had some trouble identifying the font used in the Flickr logo;
+   <a href="http://www.myfonts.com/WhatTheFont/">WhatTheFont</a> failed to find one with that distinctive
+   vertical-terminated <em>c</em> and square dots on the <em>i</em>.  On the other hand,
+   the only sanserif fonts I can depend on on user’s browsers are Helvetica
+   and Arial, so I specify those.
+</p>
+<p>The complete XSLT program is in a file
+   <code> <a href="../2006/../2004/flickr-badge-to-svg.xslt">flickr-badge-to-svg.xslt</a> </code>.  I can test this using a
+   command like
+</p>
+<pre><code>xsltproc flickr-badge-to-svg.xslt flickr-badge.xml &gt; flickr-badge.svg
+</code></pre><p>and then examining the file <code>flickr-badge.svg</code> in an SVG-savvy browser
+   (or in a text editor, to check the SVG being generated is exactly what I
+   expect).
+</p>
+
+<h3> Marvelous Automation with Make</h3>
+<p>This makes for a nice enough badge, but when I take new photos (assuming
+   I buy a camera to replace the one that was stolen!) I need to do several
+   steps to update the badge to match the new photos:
+</p>
+<ul>
+ <li>
+     visit the strange URL that gets the photo information
+ </li>
+
+ <li>
+     File &rarr; Save As
+ </li>
+
+ <li>
+      <code>python flickr-badge-to-xml.py flickr-badge.js &gt; flickr-badge.xml</code> 
+ </li>
+
+ <li>
+      <code>xsltproc flickr-badge-to-svg.xslt flickr-badge.xml &gt; flickr-badge.svg</code> 
+ </li>
+
+ <li>
+     FTP the updated files to the Alleged Literature web server.
+ </li>
+</ul>
+<p>This is tedious and error-prone; let’s instead automate it using <code>cron</code> and <code>make</code>.
+</p>
+<p>For the benefit of readers who are interested in SVG and XML but don’t
+   know about <code>make</code>, I will now attempt a brief description. The <code>make</code>
+   command is the standard Unix tool for building programs. It has a
+   configuration file (called a makefile) full of little recipes. For
+   example, the following makefile recipe
+</p>
+<pre><code>flickr-badge.svg: flickr-badge.xml flickr-badge-to-svg.xslt
+        xsltproc flickr-badge-to-svg.xslt flickr-badge.xml &gt; flickr-badge.svg
+</code></pre><p>is shorthand for something like this:
+</p>
+<blockquote><p> <strong>To make:</strong>  flickr-badge.svg
+</p>
+<p> <strong>Ingredients:</strong> one cup of flickr-badge.xml, dash of flickr-badge-to-svg.xslt
+</p>
+<p> <strong>Method:</strong> feed <code>flickr-badge-to-svg.xslt</code> and
+   <code>flickr-badge.xml</code> in to <code>xsltproc</code>. Serve immediately in
+   <code>flickr-badge.svg</code>.
+</p>
+</blockquote><p>It’s a bit like cooking, except the ingredients and outputs are always
+   files rather than foods and the method is a sequence of Unix commands.
+   The clever bit is that a recipe can have ingredients that are described
+   by other recipes in the makefile; <code>make</code> will take care of building
+   things in the correct order. It also knows not to bother making
+   something if it is already up to date.
+</p>
+<p>The <code>make</code> command is installed as standard on Unix systems, including
+   Mac OS X. If you are stuck with a Windows system, you can install
+   various flavours of <code>make</code>, either as part of a commercal development
+   environment like Microsoft Visual Studio .NET 2003, or one of the
+   Windows ports of the GNU tools.
+</p>
+<p>Anyway, the makefile for the badge machine is fairly straightforward:
+</p>
+<pre><code>flickr-badge.svg: flickr-badge.xml flickr-badge-to-svg.xslt
+        xsltproc flickr-badge-to-svg.xslt flickr-badge.xml &gt; flickr-badge.svg
+
+flickr-badge.xml: flickr-badge.js flickr-badge-to-xml.py 
+        python flickr-badge-to-xml.py flickr-badge.js &gt; flickr-badge.xml
+</code></pre><p>You will notice that we treat the programs used to munge the files
+   (<code>flickr-badge-to-xml.py </code> and <code>flickr-badge-to-svg.xslt</code>) as
+   ingredients: this means that when we change these files, the SVG file is
+   considered out-of-date and will be rebuilt. 
+</p>
+<p>On my system, the process of copying files from my build directory to
+   the local copy of my web site is done through a ‘virtual’ recipe named
+   <code>install</code>, which is also included in the makefile:
+</p>
+<pre><code>install: install-flickr
+
+install-flickr: flickr-badge.svg flickr-badge-to-svg.xslt
+        cp -p flickr-badge.svg $(htmlDir)
+        cp -p flickr-badge-to-svg.xslt $(htmlDir)
+</code></pre><p>The makefile now takes care of all the processing steps between getting fresh copies
+   of the photos list from the Flickr web site to uploading to my website.
+</p>
+<p>The first step—getting the data files from <code>flickr.com</code>—uses another
+   program of mine, called <code>fetch.py</code>. It has a configuration file that
+   lists URLs that I want a copy of. It maintains its own metadata database
+   that lists the time each URL was last downloaded, its <code>ETags</code>, and its
+   MD5 digest: if the remote resource has <em>not</em> been changed since last
+   time, the file on disc is not changed, and that means <code>make</code> will know
+   not to update the output files, and that in turn stops them from being
+   needlessly uploaded to my web site.<br/>
+</p>
+<p>Finally, I have a <code>cron</code> script that runs <code>fetch.py</code> to freshen my
+   downloaded files and then invokes <code>make</code> to update anything that is
+   affected by the changed files (if any). In principle, it would be run
+   every day, say; in practice, since my PowerBook is not left running 24
+   hours a day, this does not work, and I instead run the script myself
+   when I remember to. But in principle this last step could be automated
+   as well.
+</p>
+<p> <strong>Update</strong> (4 February 2006). I have renamed <code>fetch.py</code> to <code>wfreshen.py</code> to try
+   to make the name more likely to be unique. It is described in my <a href="../2006/02/04.html">next article</a>.
+</p>
+
+<h3> Isn’t this a Lot of Effort?</h3>
+<p>I use XSLT a lot, especially at my day job (which has nothing to do with
+   SVG, but does use a lot of XML in various applications), so using XSLT
+   to generate badges is the straightforward option for me.  By the same
+   token, I already had a system for maintaining my web site using <code>make</code>
+   and <code>fetch.py</code>; slotting the Flickr badge processing in to this system
+   was pretty easy.  If neither of the above apply to you, then you
+   probably do <em>not</em> want to be running out to install <code>xsltproc</code> and GNU
+   <code>make</code> just to make a Flickr badge—especially as Flickr supply a
+   perfectly fine badge based on Macromedia Flash that requires no
+   programming effort on your part at all.
+</p>
+<p>The advantage to me is that I can change the way my badge looks by
+   editing the XSLT. (Emulating the sliding tiles in Flickr’s prefabricated
+   badge is an exercise for the reader.)  And the same techniques could be
+   adapted to other photolog web sites if you don’t use Flickr.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2005/02/02.html#e20050202tags" title="Permanent URL for this entry">Flickr and del.icio.us tags illustrate why worse is better</a>
+          2 February 2005
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

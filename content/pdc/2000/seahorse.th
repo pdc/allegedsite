@@ -1,0 +1,57 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+	title  "SEAHORSE cartoon - Damian Cugley"
+	pdcMetadata
+
+keywords "Alleged Literature" "Damian Cugley" bike Oxford
+description "
+Damian Cugley lives and works in Oxford.
+"
+
+}
+
+beginBody 
+
+h1 "Damian&rsquo;s SEAHORSE cartoon"
+
+
+    p "[img cafe-492x360.png]"
+
+    p "[a http://www.seahorse.oxi.net/ SEAHORSE]
+    is a multilingual, interactive, growing knowledge tree
+    for people affected by HIV and AIDS.
+    I work for [a http://www.oxfordcc.co.uk/ Oxford Computer Consultants Ltd],
+    the member of the SEAHORSE consortium.
+    OCC&rsquo;s role is the technical development of SEAHORSE."
+
+    p "As part of the process of 
+    evolving the visual design for the completed web site 
+    (something which the project only seriously tackled after all the 
+    other development was finished) we (Jeremy and I)
+    were asked to spend a day or two trying to come up with ideas
+    for a title page graphic.  It had often been described as
+    being some kind of [q Internet "caf&eacute;"] picture,
+    so that is what we did.  
+    "
+
+    p "The cartoon was roundly rejected by the other people on the
+    design committee.  We were told it looked like something from
+    [cite Viz] (the English comic, not the American republished of
+    Japanese comics), which annoyed me because the art style is
+    intended to be in the style of European clear-line comics, not like 
+    [cite Viz] at all...
+    "
+
+    p "As a result this cartoon will never be finished off properly,
+    despite a few obvious problems.  The woman at the table is intended
+    to be taken as  a doctor but needs a pocket with a stethescope
+    to make it more obvious. And if the man at the table is
+    supposed to be HIV+, why is his hair so long?
+    "
+
+endBody
+
+endDocument

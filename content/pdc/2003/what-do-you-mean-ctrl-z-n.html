@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from what-do-you-mean-ctrl-z.th on 2003-05-03 16:29 BST -->
+  <!-- with command: cd /hda6/home/pdc/th/tuschin/pdc/2003;
+  /home/pdc/bin/thc -r /home/pdc/public_html/tuschin/ -s pdc/2003 what-do-you-mean-ctrl-z.th -->
+  <!-- htmlProcs.tcl version 5.1.6 -->
+  <head>
+    <title>Windows Unicode versus Python&rsquo;s Unicode - Alleged Literature</title>
+    <link href="../pdc.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../..">Alleged Literature</a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>what-do-you-mean-ctrl-z</strong>
+    </p>
+    <div id="body">
+      <h1>Windows Unicode versus Python&rsquo;s Unicode</h1>
+
+<body>
+      <p>
+      During an attempt to better organize a collection of <abbr
+      title="Microsoft Transact-SQL">T-SQL</abbr> scripts I came
+      across a strange behaviour when converting Windows
+      ANSI (8-bit character data) to Unicode (16-bit character data)
+      which appears, surprisingly, to involve the ancient
+      <abbr title="Microsoft Disk Operating System">MS-DOS</abbr>
+      convention of using Ctrl-Z (character 0x1A) to end files.
+      </p>
+      <p>
+
+The whole things started because I wanted a better
+      alternative to the system we had for reproducing databases.  We
+      are, for no particular reason, using SQL databases to implement
+      a document model: each document is implemented as a separate
+      database.  To create a &lsquo;blank&rsquo; database suitable for
+      new document, the algorithm is to:
+      </p>
+      <ol>
+      <li>
+      In one database-maintenance program (called Enterprise
+      Manager), show the New Database dialog, enter the database
+      name.  Before pressing OK <em>copy and past the underlying
+      file names in to an instance of Notepad</em>.  Normally the
+      underlying files used by the database are of no interest
+      (isn&rsquo;t that the point of having a
+      <abbr title="Database Management System">DBMS</abbr>?), but you
+      will need these later.
+      </li>
+      <li>
+      We supply a back-up file of a blank database (with the tables,
+      stored procedures, and initial content set up).  Copy this on
+      to one of the hard discs of the server.  In the Restore Backup
+      dialogue, choose New Device (strange terminology) and navigate
+      to the backup file.  In the Options tab, copy and paste the
+      file names saved in step one.  If you forgot to do this, then
+      you will have to enter the file names from memory, or close
+      the Restore dialogue, visit the database properties, stretch
+      the window to be wide enough to show the file name (it
+      isn&rsquo;t scrollable), and copy it down by hand, then start
+      the Restore dialogue all over again.
+      </li>
+      <li>
+      Having &lsquo;restored&rsquo; the back-up, visit its Users and
+      Roles pages in Enterprise Manager to create the two special
+      users that must be set up for the two programs that access the
+      database.   Setting up the correct permissions
+      (so they have access to the stored procedures they need and no
+      others) is a tedious matter of more dialogue boxes.  Or
+      instead you could  give both of them
+      &lsquo;owner&rsquo; privileges, which is less secure but
+      easier.
+      </li>
+      <li>
+      In the special central database that lists the available
+      &lsquo;documents&rsquo;, add a row with the new
+      database&rsquo;s name and the identity number of the analyst
+      who will be permitted to use it.
+      </li>
+      </ol>
+      <p>
+      Having most of the database structure encoded as a back-up of a
+      template database is a maintenance nightmare if you have more
+      than one person working on them.  We have dozens of these
+      multi-megabyte files on various developers&rsquo;s
+      workstations&mdash;which is the latest one?  There is no way to
+      examine them short of the above tedious rigamarole.  Updating a
+      database template involves restoring it, altering whatever need
+      fixing, and then going through a similar rigamarole to create a
+      fresh backup file.
+      </p>
+      <p>
+      My preference would be to store the information about the
+      database structure and stored procedures etc. as <abbr
+      title="Structured Query Language">SQL</abbr> scripts.   Scripts
+      can be entered in to a source-code control system like any
+      other file, they can be examined and edited with text editors,
+      and they are more compact.       Much of the script (the list of
+      tables, the stored procedures) can be generated automatically.
+      There is even a rudimentary template system built in to another
+      database-maintenance tool (called SQL Query Analyser), which
+      means the work required to create a new database boils down to:
+      </p>
+      <ol>
+      <li>
+      Visit the script template in Query Analyzer
+      </li>
+      <li>
+      Type Ctrl+Shift+M or invoke Edit -&gt; Replace Template
+      Parameters.  In the resulting dialogue box, enter the name
+      for the new database and the analyst&rsquo;s user name.
+      </li>
+      <li>
+      Press Go (or type F5) to run the script.  Done.
+      </li>
+      </ol>
+      <p>
+      If scripts are simpler to work with, why do we (ab)use the
+      backup system instead?  Basically because my colleagues were
+      raised on Microsoft Access, where copying databases around like
+      files is normal, and Microsoft Visual <abbr
+      title="Beginner&rsquo;s All-purpose Symbolic Instruction
+      Code">Basic</abbr>, which trains you never to type text when you
+      could be clicking things with the mouse.  These are
+      disadvantages when it comes to using a real SQL database and a
+      language like Visual Basic .NET.  (That&rsquo;s the cruel
+      irony&mdash;not being a <abbr title="veeby">VB</abbr>
+      programmer, I am better at VB .NET programming than VB
+      programmers are.)
+      </p>
+      <p>
+      There is also the problem that the SQL script is very, very
+      long.  The SQL scripts for related tasks are also very long, and
+      have big overlaps.  So I decided on Tuesday to modularize my
+      scripts in the simplest possible way: for each task,
+      I create a directory named <code>Create Project</code>,
+      say.  This holds a collection of SQL scripts.  Each has a
+      friendly name prefixed with a sequence number (e.g., <code>050
+      Languages 1.sql</code>).  With a little defensive coding so
+      that scripts can be rerun during debugging, each of these
+      smaller scripts can be debugged independently.  Of course that
+      means that the creating a new project now requires running 16
+      scripts, which would be pretty tedious.
+      </p>
+      <p>
+      My solution was to knock together a Python script that walks
+      through the directory hierarchy of my new <code>Tasks</code>
+      directory, and concatenates the script files to make the
+      megascript, which is what end-users use.  The main wrinkles is
+      that the scripts handling the <code>Languages</code> table
+      contain Unicode character data, so must be stored in an
+      appropriate encoding on disc.  SQL Server offers only one, which
+      is <abbr title="UCS Transfer Format">UTF</abbr>-16 (actually
+      UTF-16LE prepended with 0xFF 0xFE&mdash;see <a
+      href="http://www.ietf.org/rfc/rfc2781.txt">RFC 2781</a> for
+      details).  The other scripts tend to be stored in a single-byte
+      encoding that Microsoft are pleased to call Windows ANSI (more
+      generally known as <a
+      href="http://www.microsoft.com/typography/unicode/1252.htm">Windows-1252</a>).
+      The Windows convention is to not distinguish between UTF-16 and
+      single-byte-encoded files: you have to read the first two bytes
+      and if they are not 0xFF 0xFE then the data is presumed to be in
+      Windows-1252.
+      </p>
+      <p>
+      In Python this is very straightforward:
+      </p>
+      <pre>input = file(inFileName, 'rt')
+      text = input.read()
+      input.close()
+
+if text[:2] == '\xFF\xFE':
+      text = text.decode('UTF-16')</pre>
+      <p>
+      Writing an encoded file is also pretty simple:
+      </p>
+      <pre>output = codecs.open(outFileName, 'wt')
+      ...output.write(text)...</pre>
+      <p>
+
+All was
+      going well except that for some reason one of the files was only
+      partly copied in to the long file&mdash;the text of the next
+      file started in the middle of a line.  What gives?  I deleted
+      the line in question and the same thing happened in another line
+      mentioning the same language: <a
+      href="http://www.omniglot.com/writing/kirghiz.htm">Kyrgyz/Kirghiz
+      (&#1050;&#1099;&#1088;&#1075;&#1099;&#1079;)</a>.  Hmm.  The
+      first letter of the name is where the file gets chopped off.  It
+      turns out that it is not a K, but is the Cyrillic letter
+      &#x041A; U+041A CYRILLIC CAPITAL LETTER KA (see the <a
+      href="http://www.unicode.org/charts/PDF/U0400.pdf">Unicode code
+      chart</a>).  Its value means its encoding in UTF-16LE is the
+      sequence 0x1A 0x04, which just happens to contain the MS-DOS
+      end-of-file character (0x1A = Ctrl-Z).  Is this the cause of the
+      problem?  (Or is it the presence of 0x04, the equivalent of
+      Ctrl-D?)
+      </p>
+      <p>
+      In the end the fix turned out to be to change the
+      <code>rt</code> code in the first line in the first fragment
+      above with <code>rb</code>.  The <code>t</code> means to do
+      end-of-line conversions (the MS-DOS convention of <abbr
+      title="0x0D Carriage Return, 0x0A Line Feed">CRLF</abbr> is
+      translated to a single LF); the <code>b</code> means to leave
+      well alone.  This means the rest of the program has to be
+      careful to use <code>\r\n</code> rather than <code>\n</code>
+      (since it will not be magically converted for me), but the
+      script now worked correctly.  Phew!
+      </p>
+
+<p><a href="04.html#e20030410">10 April 2003</a></p>
+    </div>
+    <dl class="links">
+      <dt class="FirstChild">Archives</dt>
+      <dd><a href="../2003/05-n.html">May 2003</a></dd>
+      <dd><a href="../2003/04-n.html">April 2003</a></dd>
+      <dd><a href="../2003/03-n.html">March 2003</a></dd>
+      <dd><a href="../2003/02-n.html">February 2003</a></dd>
+      <dd><a href="../2003/01-n.html">January 2003</a></dd>
+      <dd><a href="../2002/">2002</a></dd>
+      <dd><a href="../2001/">2001</a></dd>
+      <dd><a href="../2000/">2000</a></dd>
+      <dd><a href="../1999/">1999</a></dd>
+      <dd><a href="../1998/">1998</a></dd>
+      <dd><a href="../1997/">1997</a></dd>
+      <dt>Entertainments</dt>
+      <dd><a href="../tarot/">Alleged Tarot 2002</a></dd>
+      <dd><a href="../2001/xmas-n.html">2001 Xmas card (SVG)</a></dd>
+      <dd><a href="../how-tall-are-you/">How tall are you? quiz</a></dd>
+      <dd><a href="http://caption.org/2000/pdc/">My Fabulous Life (2000)</a></dd>
+      <dt>Photo albums</dt>
+      <dd><a href="../2002/maymorning/">May Morning (2002)</a></dd>
+      <dd><a href="../aviemore/">Aviemore (1999)</a></dd>
+      <dd><a href="../bologna/">Bologna (1998)</a></dd>
+      <dd><a href="../roch/">Roch Castle (1998)</a></dd>
+      <dd><a href="http://caption.org/1997/pdc/">CAPTION97</a></dd>
+      <dd><a href="http://caption.org/1996/pdc/">CAPTION96</a></dd>
+      <dt>Stuff</dt>
+      <dd><a href="../bike/">Bike</a></dd>
+      <dd><a href="../wp/">Web Project</a></dd>
+      <dd><a href="http://www.demon.co.uk/pdc/">Old Site</a></dd>
+      <dd><a href="../muds/">MUDS (very old)</a></dd>
+      <dd><a href="../pdc-n.html">About Damian</a></dd>
+      <dt><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml">XML</a></dt>
+      <dt><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer">Valid XHTML 1.0!</a></dt>
+    </dl>
+  </body>
+</html>
+

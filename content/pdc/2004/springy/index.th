@@ -1,0 +1,31 @@
+# -*-Tcl-*-
+
+set albumsDir ../../../../albums
+source $albumsDir/albumDefs.tcl
+source ../../pdcDefs.tcl
+source $albumsDir/peopleUrls.tcl
+
+initializeAlbum tuschin/pdc/2004/springy \
+	$albumsDir/20040208 \
+	"Springy weather&mdash;Damian Cugley" \
+	"Oxford Botanic Cardens, 2004-02-08" \
+	"" \
+	{"Crocus" "Pitcher plant" "Oxford" "photography" "Damian Cugley"} \
+	../../pdc.css \
+	[list beginBody] \
+	endBody
+	
+
+emitPictureIndexPage index.html { 
+
+
+p " On Saturday we spotted a modified hoarding on Cowley road that
+deserved recording, so when we went out for lunch on Sunday
+8&nbsp;February 2004 I took my camera with me.  I also took some snaps
+as we wandered through the Oxford Botanical Garden.  "
+
+
+}
+
+emitPicturePages
+emitPeoplePages

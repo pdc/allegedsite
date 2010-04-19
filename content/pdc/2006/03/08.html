@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:30 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2006/03;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2006/03 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>TurboGears and Uploading Pictures - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2006</a> &gt;&gt;
+      <a href="./">03</a> &gt;&gt;
+      <strong>08</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20060308-filepic" id="e20060308-filepic">TurboGears and Uploading Pictures</a></h2>
+        <p class="details">7 March 2006</p>
+        <p class="details ljComment">
+          <a href="http://syndicated.livejournal.com/pdc/8114.html">Comment on LiveJournal</a>
+        </p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/turbogears.html">TurboGears</a></li>
+            <li><a href="../../2003/forms.html">forms</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20060308-filepic" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first"> <a href="http://turbogears.org/">TurboGears</a> and the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a> make writing
+   applications that allow the reader to upload
+   pictures a snap—which is a refreshing change.
+</p>
+
+<h2> Capturing Uploads the CherryPy Way</h2>
+<p>Most web-server frameworks make handling uploaded files difficult. Often this is
+   because they were originally designed to make the more common case in mind: form
+   items whose values are strings. When they add the ability to handle file
+   uploads, it often looks like an afterthought. Microsoft’s ASP library required
+   third-party extensions, I seem to recall; ASP .NET supplies for parameters as a
+   statically typed, string-valued dictionary, so file uploads have to be done
+   through an entirely separate interface—and so on.
+</p>
+<p>TurboGears, through <a href="http://www.cherrypy.org/">CherryPy</a>, makes uploads easy. In fact it uses the same
+   mechanism to pass uploaded files as any other form parameter:
+</p>
+<pre><code>@turbogears.expose(html="picky2.templates.addpicture")
+def filepic(self, id, pic):
+    ... process the arguments ...
+    return dict(...)
+</code></pre><p>In order to work out why the <code>pic</code> parameter is different, you need have to look
+   at the template that contains the form for uploading pictures:
+</p>
+<pre><code>...
+&lt;h2&gt;Add a picture&lt;/h2&gt;
+&lt;form action="filepic?id=${panel.id}" method="post"
+        enctype="multipart/form-data" id="filepic"&gt;
+    ...
+    &lt;label for="pic"&gt;Picture file:&lt;/label&gt; ...
+    &lt;input type="file" name="pic" id="pic"/&gt;
+   ...
+&lt;/form&gt;
+</code></pre><p>The essential differences are (1) the <code>enctype</code> attribute on the <code>form</code> element,
+   and (2) an <code>input</code> element with <code>type="file"</code> and, in this case, the name <code>pic</code>.
+</p>
+<p>These changes mean that the argument <code>pic</code> passed to my method <code>filepic</code> is an
+   object rather than just a string. Its properties are sketchily documented as
+   part of Python’s <a href="http://docs.python.org/lib/node471.html">cgi module</a> and in section 3.1.6 of <a href="http://www.cherrypy.org/cherrypy-2.1.0/docs/book/chunk/ch03.html">Chapter 3</a> of the CherryPy
+   book. It has three interesting member variables:
+</p>
+<ul>
+ <li>
+      <code>file</code>: a file-like object from which we can read the data;
+ </li>
+
+ <li>
+      <code>filename</code>: the name used for this file on the user’s computer; and
+ </li>
+
+ <li>
+      <code>type</code>: the MIME media-type of the file, as reported by the user’s computer.
+ </li>
+</ul>
+<p>The next two sections outline how I process the file in my toy application.
+   None of this is particilary profound, so bored readers will probably want to
+   skip it.
+</p>
+
+<h2> Storing the Picture Once it Has Arrived</h2>
+<p>Let’s step through the <code>filepic</code> method in order. In the Picky2 game, pictures
+   are uploaded as candidates for a panel.  Our database model includes <code>Panel</code> and
+   <code>Picture</code> classes, and we pass the identifier of the current panel as one of the
+   parameters. The first thing we do is retrieve our person and panel info from the
+   database:
+</p>
+<pre><code>def filepic(self, id, pic):
+    pers = authentication.getLoggedInUser()
+    panel = model.Panel.get(id)
+    ...
+</code></pre><p>We could store the picture directly in the database. At work, we always end up
+   doing that, because we a re terrified that one day we might need to migrate the
+   application to a different server, and would have to remember to copy the files
+   as well as the database itself, which apparently is an easy thing for database
+   admins to forget. Nevertheless for Picky2, I intend to keep metadata in the
+   database and store the picture data on disc. So I need to generate a file name
+   for it.
+</p>
+<div class="small_photo_right">
+    <a href="http://www.flickr.com/photos/pdc/107119756/" title="Pink Bird Nest"><img src="http://static.flickr.com/52/107119756_c749e8a574_m.jpg" width="180" height="240" alt=""  /></a>
+</div>
+
+<p>You will recall that the upload object is supplied with a <code>filename</code> parameter,
+   and it would be nice if we could reuse that (if only during the debugging phase
+   of development). Of course, the file name supplied is in the form understood by
+   the user’s computer: it might be <code>/Users/pdc/Pictures/bird.jpg</code> or
+   <code>C:\Documents and Settings\pdc.OCC\My Documents\My Pictures\bird.jpg</code>. Also,
+   in the context of a jam-comics web game, players are likely to create files with
+   obvious names like <code>panel.jpg</code>, which will cause clashes—it would be tragic if
+   somone’s picture was clobbered because someone later on used the same name and
+   our server overwrote it.
+</p>
+<p>We concoct a probably-unique file name for use on the web server from a
+   combination of the following:
+</p>
+<ul>
+ <li><p>The date of upload (turned in to a directory name like <code>2006/03/07/</code>);
+</p>
+
+ </li>
+
+ <li><p>The identity of the uploader (munged into a directory  name, so that
+   <code>http://example.org/jsmith</code> becomes <code>example.org-jsmith</code>);
+</p>
+
+ </li>
+
+ <li><p>The last component of the file name from the user’s home computer (so the
+   examples I gave above end up with <code>bird.jpg</code>).
+</p>
+
+ </li>
+</ul>
+<p>This gives something like <code>2006/03/07/example.org-jsmith/bird.jpg</code>. The reason
+   for the directory structure is that eventually we might have hundreds or
+   thousands of pictures, and keeping them all in one directory might make looking
+   up files inefficient. (I am admittedly anticipating scaleability issues that are
+   unlikely to manifest given how obscure my game will be; and besides,
+   <a href="http://www.namesys.com/">ReiserFS</a> has BTree-based directories that do not degrade in performance when
+   they have enormous numbers of files.)
+</p>
+<p>This scheme does expect a given person to avoid choosing the same name on the
+   same day for different pictures. I ought to add something to cope with that
+   case—either munging the name, or refusing the upload until they change the
+   name. I’m not sure which.
+</p>
+<p>We want to cap files saved on our system to a given maximum
+   size (say 50K bytes).  We do this by carefully only reading 1 byte more than the
+   maximum size, and rejecting files that completely fill the buffer:
+</p>
+<pre><code>    output = open(fileName, ‘wb’)
+    try:
+        size = 0
+        bytes = pic.file.read(1 + MAX_FILE_SIZE)
+        while bytes:
+            size += len(bytes)
+            if size &gt; MAX_FILE_SIZE:
+                raise BadPictureException(’Sorry, that file is too big: maximum size is %dK.’
+                        % (MAX_FILE_SIZE // 1024))
+            output.write(bytes)
+            bytes = pic.file.read(1 + MAX_FILE_SIZE - size)
+    finally:
+        output.close()
+</code></pre><p>This code assumes that <code>pic.file.read</code> may choose to not read all the bytes in the file in
+   one gulp—I have not checked whether this caution is actually required.
+</p>
+<p>The important thing, though, is that if the file is too big, we throw an
+   exception <code>BadPictureException</code>. The above code is actually wrapped in a
+   <code>try</code>...<code>except</code> block, as follows:
+</p>
+<pre><code>try:
+    ... read in the file as above ...
+    ... process the file ...
+    return dict(...)
+except BadPictureException, err:
+    # The uploaded picture was unsatisfactory; issue a message and try again.
+    os.unlink(fileName)
+    turbogears.flash(str(err))
+    raise cherrypy.HTTPRedirect(’panel?id=%d’ % id)
+</code></pre><p>Anywhere in the file-processing where we need to reject the upload, we raise a
+   <code>BadPictureException</code> with an appropriate error message. The handler for the
+   exception cleans up the unwanted file and redirects back to the page with the
+   form on it. This is an example of a function that throws exceptions that it
+   catches itself (so that the clean-up code need only be written once).
+</p>
+
+<h2> Processing Images</h2>
+<p>We have now uploaded the picture and checked it is not too large for our disc.
+   Another constraint on images is that they have a maximum size on the page. We
+   can check this by using the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a>:
+</p>
+<pre><code>    im = Image.open(fileName)
+    width, height = im.size
+    if width &gt; MAX_WIDTH:
+        raise BadPictureException(’Sorry, that picture is too wide: maximum is %d pixels.’
+                % MAX_WIDTH)
+    if height &gt; MAX_HEIGHT:
+        raise BadPictureException(’Sorry, that picture is too tall: maximum is %d pixels.’
+                % MAX_HEIGHT)
+</code></pre><p>If we wanted to generate thumbnails, this is where we would do it.
+</p>
+<p>At this point we have saved the user’s upload, and verified that it is
+   acceptable. It is time to save a pointer to the newly created file in the
+   database. Having added some extra classes <code>Picture</code> and <code>Vote</code> to <code>model.py</code>,
+   the code to do this is quite short:
+</p>
+<pre><code>picture = model.Picture(uri=PICS_BASE_URI + picDir + name,
+        width=width, height=height, panel=panel, score=1, person=pers)
+model.Vote(picture=picture, person=pers, value=1)
+</code></pre><p>The second statement adds a vote from this user for their picture. Like Reddit, we
+   assume that people only upload panels if they think they are good enough to be
+   worth voting for. (They can unvote for their panel later if they really want
+   to.)  More on voting next episode.
+</p>
+<p>Finally, like all CherryPy methods, we return a dictionary that is used by the template to
+   create the HTML page:
+</p>
+<pre><code>return dict(picture=picture, panel=panel)
+</code></pre>
+<h2> Ever Onwards</h2>
+<div>
+    <a href="http://www.flickr.com/photos/pdc/103568742/" title="Pedestrian Drain 3"><img src="http://static.flickr.com/33/103568742_eaa7fec57b_m.jpg" width="240" height="180" alt="" align="left" /></a>
+</div>
+
+<p>So it looks like I have got most of a Picky Picky Game clone together in a
+   couple of afternoons’ sporadic work—it has a concept of panels (even if there
+   is only one so far), and you can upload pictures to a panel and see them listed
+   with your name underneath it. What remains is voting, spawining a new panel
+   every week (or whatever), and arranging the most-voted pictures in to a strip.
+   We’ll see how I get on with that next time I have a spare afternoon...
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

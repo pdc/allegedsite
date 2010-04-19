@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:29 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2005/04;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2005/04 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Markdown + Make versus Microsoft Word - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2005</a> &gt;&gt;
+      <a href="./">04</a> &gt;&gt;
+      <strong>08</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20050408marky" id="e20050408marky">Markdown + Make versus Microsoft Word</a></h2>
+        <p class="details">8 April 2005</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/make.html">make</a></li>
+            <li><a href="../../2003/markdown.html">Markdown</a></li>
+            <li><a href="../../2003/msword.html">msword</a></li>
+            <li><a href="../../2003/html.html">html</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20050408marky" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I have written [a short note about using <code>make</code> and <code>sed</code> with Markdown
+   to maintain a collection of HTML documents][0]. Programmers are forever writing
+   documentation (proposals, specifications, technical notes, and so on),
+   and the latest stage in my quest to make writing prose as frictionless
+   as possible
+   I have started using <a href="http://daringfireball.net/projects/markdown/">Markdown</a> to do this.
+   Before that I wrote in HTML with some XML mixed in to better handle
+   sectioning; before that I used Microsoft Word.
+</p>
+<p>The <a href="../../2005/../../2005/marky/">aformentioned note</a> gives the details of how this works. The
+   rest of <em>this</em> note discusses why I’m not using Microsoft Word.
+</p>
+
+<h2> Writing with Word is not frictionless</h2>
+<p>Most of my managers would expect me to use Microsoft Word to write
+   proposals and specifications and the like. This makes some sense
+   because, not being developers, the spend most of their time plugging
+   away in Microsoft Office, so Word is always to hand. But I instead <em>program</em> for a
+   living: I typically have three text editors open at once (Microsoft
+   Visual Studio .NET 2003, the <a href="https://sourceforge.net/projects/pywin32/">Pythonwin IDE</a>, and <a href="http://www.jedit.org/">jEdit</a>), so dashing
+   out a note in a text editor is the natural thing to do. When
+   I do use Word I waste time
+   struggling against its officious auto-lousification features.
+   <a href="../../2005/../../jrd/">Jeremy</a>’s description of it as being like a bolshy secretary is very
+   apt; it is so annoying that there is a whole industry growing around the
+   <a href="http://www.wopr.com/books/annoyword97.htm">_Word Annoyances_</a> books.
+</p>
+<p>Besides, we are all web developers now, and should always be looking for
+   a chance to sharpen our HTML skills and practice organizing documents for the Web.
+</p>
+
+<h2> Word documents are not good to read</h2>
+<p>Word is worse for reading on-line than HTML. When colleagues and
+   customers send us documents in Word format, I cringe. I have to wait
+   while the word processor drags its bloated code off the hard drive and
+   in to memory, and eventually opens a window in which the document in
+   question is displayed at some random zoom level and view mode chosen by
+   the last person to edit it.
+</p>
+<p>Word documents do not sit comfortably on the company intranet. Not that
+   anyone seems to have the wit to appreciate that being able to refer to
+   documents by URL would save a lot of time that instead we waste digging
+   though old mail messages or obscure file shares looking for ‘the DTI
+   spec’ (which is not named that, of course).
+</p>
+<p>With HTML pages on an intranet server, it is easy to have
+   cross-references between documents, to write index pages, even share
+   them with clients via an extranet server. You can have links from bug
+   reports to the relevant section of the specification or what-have-you.
+</p>
+
+<h2> Word documents are ugly</h2>
+<p> <a href="http://www.flickr.com/photos/pdc/1911118/" title="Wishing well (on Flickr)">&lt;img src="http://photos2.flickr.com/1911118_2e55e0f904_m.jpg" width="240" height="159" alt="" align="right" /&gt;</a>
+   But surely we can exploit the extra formatting features Word offers to
+   make documents of rare clarity and great beauty? Yes, and, back when I
+   wrote position papers in Word, I carefully chose fonts and adjusted the
+   layout of headings to make the documents look nice and read well. I even
+   persuaded the powers at be to let me buy a Bitstream 500-font CD so we
+   could use <a href="http://www.linotype.com/13564/plantinroman-font.html#more">Plantin</a> rather than Times Roman. I made these changes
+   using Styles so that formatting was consistent throughout the document.
+   I discovered how to make a Code style that used <a href="http://www.linotype.com/12641/univers55roman-font.html#more">Univers 55</a> to represent
+   computer text and suppressed the spell-checker. I even worked out how to
+   attach this style to a keyboard shortcut so I could write technical
+   documents with lots of computer text in. I spent ages arguing with the
+   automatic header-numbering dialogues until they numbered the headings
+   properly, and I tweaked the table of contents to make it more usable. I
+   organized my documents carefully so as to avoid convoluted and heavily
+   nested sub-sub-subheadings. I felt this was the least I needed to do to
+   produce documents of an acceptable standard that could be shown to
+   clients.
+</p>
+<p>In this regard, I am unique. Normal people use the wizz-bang features of
+   Word to create ugly, unstructured documents that use fonts too small to
+   read on the screen, and lines too long to read comfortably on paper. The
+   least bad examples are when they leave the default, ugly, heading
+   formats in place. When they attempt impose a style of their own it is
+   far worse.
+</p>
+
+<h2> Concentrate on the words, not Word</h2>
+<p>Another things that irritates me (and is not entirely relevant to this
+   discussion) is that so little thought goes in to writing these words.
+   Another way in which I am freakishly divergent from the norm is that the
+   second thing I put in every paper is a line with the revision
+   number, the date, and my name. The idea is that (a) it should be easy to
+   discover whether one is reading the latest version, and (b) if there are
+   questions, it is possible to ask someone. An undated document headed ‘Bugs in
+   Frobomatic’ followed by a list of complaints will soon be useless
+   because it does not say which version of the software, or whom to ask
+   for details about the bugs.
+</p>
+<p> <a href="http://www.flickr.com/photos/pdc/630282/" title="Bodford (on Flickr)">&lt;img src="http://photos1.flickr.com/630282_0be34102c7_m.jpg" width="240" height="180" alt="" align="left" /&gt;</a>
+   I used to make a point of numbering documents (something might be Tech
+   Note #3) and number headings in documents and in some cases even
+   paragraphs. This way you could refer to TN3, &sect;4.2 concisely rather
+   than ‘The one about the database thingummy that Jared mailed you in June
+   I think, about halfway through, headed Issues with User Authentication
+   (or do I mean Authorization?), about four paragraphs in’. I even wrote
+   scripts to automagically number headings in HTML documents, <em>and</em>
+   provide anchors so I could link directly to a certain section of a
+   certain document. I have since given up: nobody cares. 
+</p>
+
+<h2> Conclusion</h2>
+<p>Too many people spend hundreds of pounds on word-processing software so
+   that they may spend hundreds of hours writing documents, but then
+   neglect to spend a minute or two ensuring these documents will be
+   citeable, findable and readable. 
+</p>
+<p>For writing technical prose, the formatting features of word processors
+   are a distraction at best. Programmers especially would be better off
+   spending their time getting really good with a decent text editor.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

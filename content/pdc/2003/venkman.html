@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:25 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Venkman - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>venkman</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Venkman</h1>
+      <div class="entry">
+        <h2><a name="e20030609" id="e20030609">JavaScript image loading problems</a></h2>
+        <p class="details">9 June 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="picky.html">Picky Picky Game</a></li>
+            <li><a href="javascript.html">javascript</a></li>
+            <li><a href="safari.html">Safari</a></li>
+            <li><a href="msie.html">Microsoft Internet Explorer</a></li>
+            <li><a href="camino.html">Camino</a></li>
+            <li><a href="mozilla.html">mozilla</a></li>
+            <li><strong>venkman</strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2003/06/09.html#e20030609" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://caption.org/picky/"><img src="../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      The image-cycling feature of the 
+      <a href="http://caption.org/picky/">Picky Picky Game
+      prototype</a> depends on using JavaScript to load images.  If
+      you click on the Cycle button before the images have been
+      prloaded, then nothing visible happens—it appears to have
+      failed.  There is no way for the user to see whether the images
+      have loaded or not.  I have attempted to add such an indication,
+      only to be thwarted by what appear to be bugs in the web
+      browsers I&nbsp;have tried it on.
+    </p>
+    <p>
+      The theory is as follows.  In JavaScript, you preload an image
+      resource by creating an <code>Image</code> object and assigning
+      the URL to its <code>src</code> attribute.  So far this is
+      fairly uncontroversial.  You can also, allegedly, assign a
+      JavaScript function to the <code>onload</code> attribute  of the
+      <code>Image</code> object and it will invoke this function when
+      the image has finished downloading.  Thus we might have:
+    </p>
+    <pre>var im  = new Image();
+im.ipanel = ipanel; // Used in the onload handler
+im.onload = function () { preloadOnload(this.ipanel); }
+im.src = inf.src;</pre>
+    <p>
+      The event handler is, I believe, called in the context of the
+      object that triggers it: in this case the <code>Image</code>
+      object.  That means that the keyword <code>this</code> refers to
+      the <code>Image</code> object.  Using the <code>ipanel</code>
+      attribute I&nbsp;added to the image object, it invokes
+      <code>preloadOnload</code> with the information it needs.  (The
+      name <code>ipanel</code> is an index in to an array of panel
+      descriptions.)
+    </p>
+    <p>
+      <img src="../2003/loading.gif" alt="" align="right" width="135"
+      height="78" />
+      Based on the above, we can do the following.  First, replace the
+      Cycle buttons in the skin files with an animated image saying
+      LOADING.  Second, maintain a
+      count, for each panel, of the number of images still to be
+      preloaded.  When an image triggers its <code>onload</code>
+      event, decrement the counter.  When it reaches zero, replace the
+      LOADING... image with the Cycle button.  Voil&agrave;!
+    </p>
+    <p>
+      My first attempt at getting this to work involved yet more
+      JavaScript debugging on Safari.   I ended up adding lots of
+      <code>alter</code> commands to the event-handling functions,
+      none of which got triggered.  I&nbsp;concluded that I&nbsp;had
+      been mistake in thinking that <code>onload</code> habdlers
+      applied to image objects, and gave up and fixed some other bug.
+      Monday morning I checked the Picky Picky Game site and
+      discovered to my chagrin that the <code>alerts</code> do
+      appear—in Mozilla Firebird.  As a result many visitors
+      were getting weird pop-up messages which made them think the
+      whole site was exploding or something.
+    </p>
+    <p>
+      I got home and decided to try out Venkman, the JavaScript
+      debugger bundled with Mozilla.  After only moderate pain I made
+      some progress, and managed to get the event handlers to be
+      called sometimes.  I also managed to get the debugger in to a
+      state where it refused to run, or to stop, or something.
+      Whatever it was, it was stuck on an old version of the page and
+      I could not debug the new version.  After I poked it a few times
+      the whole browser crashed.  Nevertheless, once I had restarted
+      Mozilla, visiting the pages (sans debugger) seems to work!  The
+      LOADING... animation plays below each image, and when they are
+      ready the Cycle button replaces it.  Great!
+    </p>
+    <p>
+      Camino&nbsp;0.7, being Gecko-based, also works, once you
+      persuade it to refresh its cached copy of the JavaScript.
+    </p>
+    <p>
+      Microsoft Internet Explorer for the Mac version 5.2 seemed to
+      respond to the onload handlers at first, but now no longer seems
+      to work.  Like Safari, one is left with the LOADING... animation
+      playing forever, which obviously is not acceptable.  On the
+      other hand, once it had crashed and been restarted, MSIE works
+      fine.  Perhaps it was crahsed by reloading the same JavaScript
+      file once too many times?  I have also tried it in Microsft
+      Internet Explorer for Windows 5.5 and it works.
+    </p>
+    <p>
+      Opera 5.0 on Linux fails the same way as Safari (the onload
+      events apparently never being triggered).  On the other hand,
+      its cycling looked wrong anyway, since the pictures would not
+      resize...
+    </p>
+    <p>
+      Based on this rather spotty success rate I&nbsp;think
+      I&nbsp;will upload the modified JavaScript to caption.org so
+      I&nbsp;can try it out on a wider variety of browsers than what
+      I&nbsp;happen to have at home.    Hope this does not cause too
+      much inconvenience...
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

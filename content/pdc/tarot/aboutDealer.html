@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from aboutDealer.th on 2005-11-30 18:58 GMT -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/tarot;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/tarot aboutDealer.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>How the dealer works - Alleged Tarot - Alleged Literature</title>
+    <link href="tarot.css" rel="stylesheet" type="text/css" arg0="" />
+    <link href="../../favicon.ico" rel="shortcut icon" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p id="trail">
+      <a href="../../" title="Alleged Literature home page"><img src="../../img/alleged-03@32x16.png" alt="Alleged Literature" width="32" height="16" /></a> &rarr;
+      <a href="../">Damian Cugley</a> &rarr;
+      <a href="./">Alleged Tarot 2002</a> &rarr;
+    </p>
+    <div id="body">
+      <h1>How the dealer works</h1>
+      <h2>JavaScript (ECMAScript)</h2>
+      <p>
+        <img src="xi-strength-100w.png" align="right" alt="" width="100" height="137" />
+        
+        <a href="http://www.w3.org/Graphics/SVG/"><abbr title="Scalable Vector Graphics">SVG</abbr></a> files can have Javascript programs embedded in them, just
+        like <a href="http://www.w3.org/MarkUp/"><abbr title="Hypertext Mark-up Language">HTML</abbr></a>.
+        So my
+        <a href="deal.svg"><code>deal.svg</code></a> graphic is linked to a JavaScript file
+        <a href="dealer.js"><code>dealer.js</code></a> which defines a bunch of
+        variables and functions
+        for decoding the script parameters,
+        and &quot;dealing&quot; cards.  The outermost <code>svg</code> element in
+        the picture has an <code>onload</code> attribute  that invokes
+        a  function <code>ol</code> that ties them all together.
+      </p>
+      <p>
+        The first thing it does is call
+        <code>scanOpts</code>
+        which extracts the parameters to the script from the
+        <abbr title="Uniform Resource Locator">URL</abbr>. The params recognized at present are
+        <code>lo</code>, which must name one of the
+        layouts it the &quot;database&quot; of layouts (described later),
+        and <code>q</code>, the question text.
+        An example <abbr title="Uniform Resource Locator">URL</abbr> defining
+        those parameters would be  <code>deal.svg?lo=horseshoe&amp;q=Will+Frodo+reach+Mordor%2F</code>
+        (where the
+        plus signs represent spaces, and <code>%2F</code> is an encoded question mark).
+      </p>
+      <p>
+        <img src="x-wheel-64x64.png" align="left" alt="" width="64" height="64" />
+        
+        Then <code>ol</code> creates an array of 78 numbers representing the cards
+        and calls <code>shuffle</code> to rearrange them randomly.
+        Finally it calls <code>dealLayout</code> to
+        generate images of cards &quot;drawn&quot; from the deck
+        at positions on the screen defined by the layout.
+      </p>
+      <h2>Dealing cards with <abbr title="Document Object Model">DOM</abbr></h2>
+      <p>
+        <img src="coins-3-100w.png" align="right" width="100" height="137" />
+        
+        Each card is represented by a bunch of SVG elements&mdash;the
+        rectangle that is the backdrop, the image of the card, the text, etc.
+        Rather than try to write JavaScript code that creates all these
+        elements, I&nbsp;created a template in the <code>defs</code> section which
+        is cloned once for each dealt card.  This uses the <abbr title="Document Object Model">DOM</abbr> functions
+        <code>getElementById</code> to locate the items that need to be modified
+        (such as the link, whose <code>xlink:href</code> attribute must be modified),
+        and finally <code>cloneNode</code> to make a copy that can
+        be appended to the document.
+      </p>
+      <p>
+        <img src="cups-8-64x64.png" align="left" width="64" height="64" />
+        
+        The advantage of using <code>getElementById</code> each time
+        is that it avoids having the code that makes the per-card changes
+        having to know the details of how the cards are drawn.
+        I&nbsp;should be able to make changes to the <abbr title="Scalable Vector Graphics">SVG</abbr> template
+        without breaking the dealing part.
+      </p>
+      <h2>Storing layouts as XML</h2>
+      <p>
+        <img src="xviii-moon-100w.png" align="right" alt="" width="100" height="137" />
+        
+        A layout is an arrangement of dealt cards, eahc of which needs to have
+        an indication of its role in the spread
+        (this card represents the seeker, that one the future, and so on).
+        At first I&nbsp;stored this in the JavaScript as a dictionary
+        (=object) mapping layout names to a sequence of card coordinates:
+      </p>
+      <pre>
+var layoutDefs = {
+    three: [0,0,'past', 1,0,'present', 2,0,'future'],
+    ...etc...
+};</pre>
+      <p>
+        This worked well enough, but when it came to the Celtic Cross
+        spread&mdash;which has one card laid crosswise&mdash;I&nbsp;realized
+        this was too limited for the long term.  So I&nbsp;rewrote the
+        
+        <code>dealLayout</code> function to instead use <a href="http://www.w3.org/XML/"><abbr title="Extensible Mark-up Language">XML</abbr></a> data stored in the
+        <abbr title="Scalable Vector Graphics">SVG</abbr> document itself:
+      </p>
+      <pre>
+&lt;lo:layouts xmlns:lo="http://www.alleged.org.uk/pdc/tarot/"&gt;
+    &lt;lo:layout id="three"&gt;
+        &lt;lo:card col="0" row="0" title="past"&gt;&lt;/lo:card&gt;
+        &lt;lo:card col="1" row="0" title="present"&gt;&lt;/lo:card&gt;
+        &lt;lo:card col="2" row="0" title="future"&gt;&lt;/lo:card&gt;
+    &lt;/lo:layout&gt;
+    ....
+&lt;/lo:layouts&gt;</pre>
+      <p>
+        This goes in the <code>defs</code> section, along with the
+        template for the cards.  (I&nbsp;cannot find a reference
+        in the <abbr title="Scalable Vector Graphics">SVG</abbr> specification that makes it explicit that
+        embedding random <abbr title="Extensible Mark-up Language">XML</abbr> data in <abbr title="Scalable Vector Graphics">SVG</abbr> is kosher, but it seems
+        to be implied by wording on the <abbr title="Scalable Vector Graphics">SVG</abbr> section of the W3C site.)
+      </p>
+      <p>
+        The JavaScript code uses the <abbr title="Document Object Model">DOM</abbr> conventions to read the
+        information needed to lay out the cards.  Using <abbr title="Extensible Mark-up Language">XML</abbr> means that it
+        was easy to add another attribute indicating a rotated card&mdash;and
+        makes it easy to extend the format when adding new exotic layouts in
+        future. For example, longer descriptions of the significance of each
+        of the positions in the spread?
+      </p>
+      <h2>Converting questions to numbers</h2>
+      <p>
+        <img src="v-pope-100w.png" align="right" alt="" width="100" height="137" />
+        
+        The querent&rsquo;s question affects the deal through the
+        
+        &quot;shuffling&quot; process.  The shuffling is controlled by a sequence of
+        78 pseudo-random numbers, and the pseudo-random number sequence in
+        turn depends on a <dfn>seed</dfn> number.  The function
+        
+        <code>questionToSeed</code> converts the character string in to a single
+        number.  The algorithm used is a simple one I found after a little
+        time with Google.  (Try
+        <a href="http://www.google.com/search?q=g_str_hash+X31_HASH">g_str_hash X31_HASH</a>).
+      </p>
+      <h2>References</h2>
+      <p>
+        <img src="iiii-emperor-64x64.png" align="right" alt="" width="64" height="64" />
+        
+        The textbook I had at my side while doing the JavaScript programming
+        is the rhino book: David Flanagan, <cite>JavaScript: The Definitive Guide</cite>
+        <abbr title="Fourth edition">4/e</abbr> (O&rsquo;Reilly, Jan 2002).
+      </p>
+    </div>
+  </body>
+</html>

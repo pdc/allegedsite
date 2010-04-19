@@ -1,0 +1,212 @@
+Title: Integrated Development Environments 
+Topics: ide programming rant
+Date: 2007-09-25
+Icon: ../icon-64x64.png
+
+I was going to write about my JavaScript-based web application Hello,
+but the first section about IDEs sort of got out of hand, so here it is,
+split off in to a separate ranty rant rant of its own.
+
+Are Integrated Development Environments Good?
+=============================================
+
+There are two extremes of thought it comes to software development
+tools. The first is typified by Microsoft’s Visual Studio Team Builder
+Maxi Format Enterprise Edition with Fries which provides complex GUIs
+with pop-up windows and tabs and dialogues and wizards to work with
+their complex .NET + SQL Server platform, and its companion Microsoft
+SQL Server 2005 Management Studio, which is happy to spoon-feed
+developers with forms for designing tables and assembling queries. It
+works by generating SQL code, just as Visual Studio will generate ASPX
+and C# code for me for the HTML forms, database access, moving data from
+objects to widgets on forms, and so on. The result is a lot of
+mechanically generated code that, despite not being written by hand,
+nevertheless must be maintained, and which has proved a real problem for
+our longer-lived projects.
+
+The opposite extreme might be typified by [C. A. R. Hoare][2] who
+famously has no computer in his office, and claims that programming is
+best pursued with pencil and paper.
+
+Tools are at best a mixed blessing. A lot of Visual Studio is a crutch
+for coping with an overly complex development framework, and a lot of
+the gratuitous complexity of the development framework is there to
+support the tools: it’s a vicious cycle. 
+
+
+
+The by-the-book approach to
+displaying a list on a web page in ASP.NET is data-binding, which
+requires configuring widgets on the ASPX page (using a mutant template
+language of Microsoft’s devising) to call methods you define to use
+`DataSet` objects that you supply and a slew of SQL code that is
+generated with a point-and-click query generator that I personally find
+bewildering and is held together with code generated using wizards. The
+wizards, `DataSet`s, templates, etc., all exist so that in demos they
+can ‘just slap’ a column from a table from a database on to a form and
+have it ‘just work’ (although not as smoothly as [NeXTSTEP did in
+1992][3]). They make long-term maintenance of the code *harder* not
+easier by increasing the quantity of code in the project while at the
+same time reducing its readability and reducing the programmers’
+understanding of that code.
+
+Dead weight
+===========
+
+The other thing that drives me nuts at work sometimes is that it is all
+*so-o-o slo-o-o-ow*. 
+
+To try out an SQL query, I start up Microsoft SQL
+Server 2005 Management Studio, which on my fairly recent dual-3-GHz
+workstation takes an eternity (well, a minute) just to start up and
+display the list of databases. Everything you do requires a dialogue box
+of great complexity that slurps on to my screen like molasses. Every
+time I open a script file it pops up a dialogue so I can tell it that,
+yes, I want to load this script in the context of the same database
+server I have loaded every other script file this week. Then I have to
+remember to choose the database that I have been working on exclusively
+all that week from the drop-list in the status bar, otherwise my script
+will run in the `master` database, causing havok. Gah! 
+
+Microsoft Visual Studio.NET 2003
+and Microsoft Visual Studio 2005 also takes forever just to start up and
+load the project file (the equivalent of a makefile), leading to
+conversations with the company director along the lines of ‘Damian, what
+are you doing right now?’ (Subtext: I think you are slacking.) ‘Watching
+that progress indicator.’ 
+
+Web projects take extra time because of a
+stupid design decision that web development has to work by talking
+WEBDAV to your web server even if it just happens to be running on the
+same computer you are developing it on—as if the default is for everyone
+to be editing the live server. Then whenever I have fixed something and
+want to run the web app again, I press F5 and watch as it runs a verbose
+build of every project and does whatever freaky things it does to
+arrange for debugging of the system’s web server (rather than running
+its own development server, which would be simpler and more reliable).
+After about half a minute a blank Internet Explorer window appears and
+it begins compiling the first page of the site. After another half
+minute the home page appears and I can begin laboriously clicking
+through the application to the page I am trying to test—each new page
+taking another thirty seconds to appear the first time. 
+
+These long
+delays between fix and test mean it is very hard to maintain focus,
+because the delay is long enough to start reading something else or just
+wander off. The sluggishness of the GUI makes it feel heavy, and I find myself using more physical effort as I shove these great slow windows about the screen.
+
+Non-transferable Knowledge
+==========================
+
+There is a dangerous idea that tools save you from having to understand
+what you are doing. If you are working on a web application, you can’t
+get away without knowing the ins and outs of HTML, XML, JavaScript, and
+HTTP, for those times where the tools fail you. At least you need
+someone who understands these things, and on our projects I am that
+unhappy person.
+
+Developers brought up on ASP.NET have got away with only hazy
+understanding of the fundamentals of web applications, because they have
+instead been filling their heads with ASPX and the frankly demented
+event model used in ASP.NET in an attempt to make VB6 developers feel at
+home. The problem is that this is non-transferable knowledge: we cannot
+consider switching to a different web-application framework, because
+that would mean starting from square one. By contrast, a thorough
+understanding of HTML and JavaScript would be useful anywhere.
+
+
+The Tool-free Alternative
+=========================
+
+The [screencasts demonstrating Ruby on Rails][4] (and other new web
+frameworks) show just a text editor with syntax highlighting, a terminal
+window, and a web browser. There is no IDE (integrated development
+environment). A development web server runs in the terminal window and
+spurts out log messages as the application is tested. The programmer
+flicks between the browser and the text editor. If they are using a Mac,
+this is best done with the Exposé feature, because it looks super-cool
+in a demo.
+
+In real work the only difference is that you need two browser windows:
+the second holds the documentation for the language and libraries you
+are using. And of course things go slower at first because you are
+learning the system, and there are occasional pauses while you read the
+documentation for something: you can’t get away with just guessing based
+on the dialogue boxes.
+
+Simplicity and Less Code
+========================
+
+For this to work, the framework has to be small enough to fit in the
+heads of the programmer—in fact, to fit in to the part of the
+programmer’s head that is not already taken up with HTML, XML,
+JavaScript, and HTTP. This is why it is actually a good thing that
+templates in [Rails][], [TurboGears][], et al. are closer to HTML than,
+say ASPX, and build on your HTML knowledge rather than trying to replace
+it.
+
+The use of languages like Ruby, JavaScript, and Python is part of this.
+The problem with C# is not just that it a lot of explicit type
+declarations; it also needs more custom types. For example, suppose a
+list box needs a list of value–label pairs to display. In Python, you
+can write
+
+    [('English', 'en'), ('Esperanto', 'eo')]
+
+whereas in C# the library has to supply class definitions for `ListItem`
+and `ListItemCollection`. Multiplying this by the number of extra
+classes needed to represent form controls and HTTP requests and suchlike
+and you get hundreds of class definitions that Python’s built-in types
+make unnecessary.
+
+In most of these web frameworks, the handler for a page is not a class
+but a function. TurboGears and others use the formal parameters of the
+function to tell them how to interpret the query-string arguments in the
+requested URL. The upshot is you can write something like
+
+	@turbogears(html='welcome.html')
+	def login_page(login, password):
+		... check login is OK ...
+		return {'login': login, 'message': 'Welcome!'}
+
+The ASP.NET equivalent is a longish class definition, with the
+consequent extra cognitive load of more names, more functions, and more
+code in general.
+
+Lightweight and Fast
+====================
+
+I wrote a while back about my experiments with writing web applications
+in Python, first using TurboGears, and then rolling my own framework
+from pure [WSGI][]. Of course, it is a little unfair to compare the
+feeling of working on ASP.NET at work with Python programming I do at
+home for the interest of it, but nevertheless I have to say it is more
+fun with Python. I don’t miss the .NET and SQL IDEs, and I work faster
+on my old 0·867-GHz 12&#x2033; PowerBook than on the souped-up
+workstation at work.
+
+The gap between fixing something and viewing the results is much
+shorter. TurboGears is set up to reload the application when the files
+are changed; usually this is done before I have got as far as clicking
+on the browser window to bring it to the front. My home-brew system does
+not have this feature, so instead I use Ctrl-C, &#x2191;, Return to
+restart the server. The whole server loads and restarts faster than
+Visual Studio.NET can compile a single ASPX page.
+
+It is also nice that [Kid][] (used in TurboGears) and [Genshi][] (its
+successor) give me greater control over the HTML generated than ASP.NET
+does. Streamlined, carefully designed HTML in turn gives faster
+downloads and more efficient use of bandwidth (which would matter if any
+of my toy apps ever went in to serious production).
+
+
+
+  [1]: http://www.couchdbwiki.com/index.php?title=Open_Project_Work_Items
+  [2]: http://en.wikipedia.org/wiki/C._A._R._Hoare
+  [3]: http://youtube.com/watch?v=j02b8Fuz73A
+  [4]: http://www.rubyonrails.org/screencasts
+  [Rails]: http://rubyonrails.org/
+  [TurboGears]: http://turbogears.org/
+  [WSGI]: http://www.python.org/dev/peps/pep-0333/
+  [Kid]:
+  [Genshi]:

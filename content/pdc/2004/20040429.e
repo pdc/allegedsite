@@ -1,0 +1,107 @@
+Title: The tag URI scheme: a simpler, more democratic URN
+Date: 20040429
+Image: ../icon-64x64.png
+Topics: web
+
+I recently stumbled across <a href="http://taguri.org/">the <code>tag</code> URI scheme</a>, a convention
+that does a lot of what `urn` and `http`-based identifiers do with
+less ambiguity and confusion.  But perhaps I had better explain what I
+mean by URI first.
+
+  [1]: http://taguri.org/
+
+Background: There are lots of places in the on-line world where it is
+helpful to have a tag for something that is guaranteed not to
+accidentally conflict with a name chosen by someone else.  For
+example, XML namespace identifiers need to be unique.  There are
+various ways to do this; UUIDs (also called GUIDs) and Netnews
+message-ids are examples of standard schemes.
+
+One way popular at the W3C is to use a URL that you 'own' as your
+unique identifier.  Other people will not accidentally choose the same
+name because if they use a URL it will contain their domain name, not
+yours.  For example, `http` URLs are used to specify XML namespaces
+(XHTML has the namespace `http://www.w3.org/1999/xhtml`, for example),
+and URIs are used in the [topic map][2] core as subject indicators
+(such as `http://www.topicmaps.org/xtm/1.0/core.xtm#class-instance`).
+
+  [2]: http://www.topicmaps.org/
+
+XML processors do not have to do anything with the namespace URI
+except check whether it is the same as some other namespace URI --
+they do not download it.  Nevertheless there has been continual
+speculation as to what sort of resource *should* be retrievable from
+that address.
+
+For this reason, some people prefer to use __URN__s.  URNs are uniform
+resource *names*, meaning they say what something is without helping
+you to find it -- as as opposed to uniform resource *locators*, which
+say how to download some resource on the WWW, while remaining vague
+about exactly what it is.  URNs look just like URLs, except that
+rather than srtarting with `http` or `ftp` they all start with `urn`.
+
+At various points in WWW history, URNs have been considered a type of
+URL (because they use the same syntax as URLs), or as distinct from a
+URL (because they do not actually give the location of a resource).
+To having to decide one way or another, WWW recommendations use the
+term URI (uniform resource *identifier*) to refer collectively to URLs
+and URNs.  To further muddy the waters, there are plenty of
+non-resolvable URL schemas (you cannot actually download
+`isbn:1-86197-612-7`), and [RFC 2168][3] discusses how to resolve
+URNs!
+
+  [3]: http://www.ietf.org/rfc/rfc2168.txt
+
+One problem with URNs is that although the URN concept and `urn`
+prefix have been around since the start of the WWW, a formal [syntax
+for URNs][4] and [systematic management of the URN namespaces][5] are
+relatively recent and fairly obscure.  Before then, people assumed
+that any string likely to be unique with `urn` and a colon added to
+the start would do.  As a result, there are plenty of bogus URNs out
+there.
+
+  [4]: http://www.ietf.org/rfc/rfc2141.txt
+  [5]: http://www.ietf.org/rfc/rfc2611.txt
+
+Another tricky thing is that if *I* wanted to mint some URNs to use as
+XML namespaces or whatever, I would have to apply to the IANA for a
+URN namespace (documenting how the identifiers in that namespace are
+checked for uniqueness, and so on), attend IETF meetings, etc., all of
+which is a lot of bother.  So URNs do not make sense for everyday
+purposes, only for applications with global scope and big travel
+budgets.
+
+The `tag` scheme, by contrast, is refreshingly simple and unencumbered
+by bureaucracy.  Anyone with a domain name or even just an email
+address can mint their own URIs without going via any centralized
+checking.  For example, if I want to propose a published subject
+indicator for W3C date-time formats, I can use
+`tag:alleged.org.uk,2004:datetime:w3c` without needing special
+permission.
+
+So what's the advantage, if any, over using an `http` URI like
+<http://www.alleged.org.uk/2002/datetime.html#w3c>?  One difference is
+that the `http` version commits me to maintaining [an HTML page][6]
+indefinitely; if for some reason I changed my mind, or the domain
+lapsed or whatever, the URI would remain as a dangling pointer to a
+resource that no longer existed.  It also means that I cannot easily
+publish the description in a different format (such as [XTM][7] or
+RDF).
+
+  [6]: ../../2002/datetime.html "Date-Time PSIs"
+  [7]: http://www.topicmaps.org/xtm/1.0/
+
+The `tag` URI makes no promises of resources, which is actually an
+advantage because it can't break promises it doesn't make.  You might
+worry about how one finds information about what a `tag` URI means,
+but don't.  First, it *has* no meaning without surrounding context,
+which should furnish clues, and second, *there'll always be Google.*
+
+**Update** 2004-05-29.  Mark Pilgrim has [an article on Atom ids][8]
+describing `tag` URIs.
+
+  [8]: http://diveintomark.org/archives.2004.05/28/howto-atom-id
+  
+**Update** 2006-11-01.  The `tag` scheme is now  published as [RFC 4151][].
+
+  [RFC 4151]: http://ietf.org/rfc/rfc4151.txt

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:25 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003/05;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003/05 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>21 May 2003 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2003</a> &gt;&gt;
+      <a href="./">05</a> &gt;&gt;
+      <strong>21</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20030521b" id="e20030521b">Now with BMP support</a></h2>
+        <p class="details">21 May 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../../2003/pil.html"><abbr title="Python Imaging Library">PIL</abbr></a></li>
+            <li><a href="../../2003/python.html">Python</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030521b" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://caption.org/caption-cgi/hello.cgi/sample/"><img src="../../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      To make it easier to create pictures for the <a
+      href="http://caption.org/caption-cgi/hello.cgi/sample/">Picky
+      Picky Game</a>, I have added code to automatically convert
+      Microsoft Windows Bitmap (<code>.bmp</code>) files into 
+      <abbr title="Portable Network Graphics">PNG</abbr>s.  
+    </p>
+    <p>
+      This is straightforward because I&nbsp;already was using <abbr
+      title="the Python Imaging Library">PIL</abbr> to check the
+      dimensions of the images.  Converting to PNG (if the format is
+      one PIL knows) is pretty simple:
+    </p>
+    <pre>permittedTypes = ['image/png', 'image/jpeg', 'image/pjpeg', 'image/gif']
+...
+if not imt in permittedTypes:
+    buf = StringIO.StringIO()
+    im.save(buf, 'PNG')
+    data = buf.getvalue()
+    logger.log(slog.WARNING, 'Converted your image from %s to image/png' % imt,
+	       'This may have lead to a slight loss of image quality.')
+    imt = 'image/png'
+    buf.close()</pre>
+
+    <p>
+      The above goes in the sequence of checks on uploaded images
+      (after the check for width &times; height, but before the check
+      for number of bytes).  I&nbsp;think I&nbsp;spent longer creating
+      a BMP image to test it on than I&nbsp;did writing the new code!
+    </p>
+    <p>
+      <img src="../../2003/paint1.png" align="right" alt="" width="230"
+      height="134" />
+      The advantage of BMP support is that, if you have Microsoft
+      Windows, then you definitely have Microsoft Paint installed.
+      So long as you know about Start menu &rarr; Programs &rarr;
+      Accessories &rarr; Paint, and the Image &rarr; Attributes menu item,
+      you can create panels for Picky Picky Game.
+    </p>
+
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20030521" id="e20030521">On to Panel 17!</a></h2>
+        <p class="details">21 May 2003</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/picky.html">Picky Picky Game</a></li>
+            <li><a href="../../2003/comics2003.html">Comics 2003 Convention</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20030521" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://caption.org/caption-cgi/hello.cgi/sample/"><img src="../../2003/picky-80x80.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      I have taken the liberty of bumping the <a
+      href="http://caption.org/caption-cgi/hello.cgi/sample/">Picky
+      Picky Game</a> forward to the next panel.  I have also cranked
+      the speed up a notch: each ‘week’ will be 3 days for
+      the next little while.  
+    </p>
+    <p>
+      The idea is to let us test the various behind-the-scenes
+      mechanisms of the game so that we can risk mentioning it to
+      people at <a href="http://www.sitsvac.org/C2001.html">COMICS
+      2003</a> in Bristol this bank-holiday weekend.
+    </p>
+    <p>
+      The <abbr title="Cascading Style-Sheets">CSS</abbr> has been
+      tweaked to not use <code>auto</code> margins, because they are
+      not supported in <abbr title="Microsoft Internet Explorer for
+      Windows">MSIE</abbr>.
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

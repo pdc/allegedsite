@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from more-upload-woes.th on 2006-11-02 08:49 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 more-upload-woes.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>More trouble with uploads and CGI - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>more-upload-woes</strong>
+    </p>
+    <div id="body">
+      <h1>More trouble with uploads and CGI</h1>
+      <p id="tagline">Damian Cugley’s Weblog</p>
+      
+      <p class="article">
+      So far getting uploads to work with the
+      <a href="picky.html">Picky Picky Game</a> is an uphill
+      struggle.  Some web browsers work and some do not, and it is
+      going to require some fancy diagnostic tools to find out why
+      not.
+      </p>
+      <p>
+      <a hrf="http://www.apple.com/safari/">Safari</a> works fine,
+      except when it doesn&rsquo;t.  I often get an alert saying the
+      request failed &lsquo;because the network connection was
+      reset. This sometimes occurs when the server is busy.&rsquo;
+      Apparently I am not the only one&mdash;I found a reference to
+      this message on a <a
+      href="http://www.oreillynet.com/cs/user/view/cs_msg/14535">O&rsquo;Reilly
+      network message board</a>.  If I try the request again it
+      usually works the second time.
+      </p>
+      <p>
+      If, however, I was trying to submit a form, and the form had
+      <code>method="post"</code> and
+      <code>enctype="multipart/form-data"</code>, then
+      some weird things happen.
+      First of all, although what I&nbsp;see is the filled-in form,
+      I cannot
+      repeat the request by clicking on the Submit button&mdash;it
+      does nothing.  If I click on the Reload button (which I would
+      have expected to reload the form, not resubmit it), then the
+      form is submitted again, but! my CGI script sees
+      <code>REQUEST_METHOD="GET"</code> (as opposed to
+      <code>POST</code>).  Since my script distinguishes between
+      these two verbs, it fails with  a 404 error code.
+      I&nbsp;believe these behaviours might be bugs.
+      </p>
+      <p>
+      I have also tried Microsoft Internet Explorer (Mac OS X
+      version).  When I&nbsp;submit a form with an uploaded file it
+      simply spins forever&mdash;it apparently never finishes the
+      upload.
+      </p>
+      <p>
+      I also installed <a
+      href="http://mozilla.org/projects/camino/">Camino</a>, a Gecko +
+      Cocoa browser.  When I try to submit the upload form I see the
+      &lsquo;barber pole&rsquo; progress indicator for a long while,
+      then it displays an error message from my CGI script indicating
+      it was interrupted by the server (<code>thttpd</code>) for taking
+      too long.
+      </p>
+      <p>
+      All three mentioned above are running on my shiny new <a
+      href="http://www.apple.com/uk/powerbook/index12.html">PowerBook
+      12&Prime;</a>, running Mac OS&nbsp;X version 10.2.5,
+      connecting to my <code>thttpd</code> server over Ethernet.
+      </p>
+      <p>
+      I have also tried Microsoft Internet Explorer 5&frac12; running
+      on Windows NT 4.0.  It exhibits the same behaviour as Camino.
+      This was the bug that I&nbsp;discussed  <a
+      href="../2002/11.html#e20021111">a while back</a>, where
+      the script gets wedged reading  the data uploaded by its
+      caller.
+      </p>
+      <p>
+      Meanwhile things work fine on my Linux box&mdash;at least with
+      Opera&nbsp;5, which is the most recent web browser I&nbsp;have
+      installed thereon (my Red Hat 6.2 installation is too primitive
+      for more modern browsers).
+      </p>
+      <p>
+      Apart from some arguably buggy behaviour from Safari, presumably
+      there are nuances about the way these various programs interpret
+      the rules for submitting forms that are foxing my CGI script.
+      Obviously I&nbsp;have tried using a script that simply
+      regurgitates what it reads, but the various infinite-pause
+      behaviours happen <em>while it is reading in the
+      data</em>&mdash;and if it cannot get that far then there is not
+      much for it to report...  I need to write some sort of
+      fiendishly clever one-byte-at-a-time system that is somehow
+      clever enough not to be fooled by lying
+      <code>Content-length</code> headers or transitory network
+      problems.  Or line endings, though I thought I had carefully
+      taken line-ending variations in to account.  Sigh.
+      </p>
+      <p>
+      <strong>Update:</strong> After adding some xtra instrumentation
+      to my CGI script, it appears that when the request is from MSIE
+      it receives 1408 bytes or so, from Camino 1344 bytes or so.
+      I&nbsp;begin to suspect a dodgy network stack on my creaky Linux
+      box&mdash;I am tempted to believe those numbers could represent
+      a 1500-byte packet minus the header info...
+      </p>
+      <p>
+      Also, now I have installed the application on a different web
+      server, and the uplaoding of files appears to happen without a
+      hitch&mdash;it then fails to save them to disc because Apache is
+      running as a user with insifficuent privs to create the
+      directory.  But at least the upload works!
+      </p>
+      
+      <p><a href="04.html#e20030414a">14 April 2003</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

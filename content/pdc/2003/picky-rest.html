@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from picky-rest.th on 2006-11-02 08:57 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 picky-rest.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Picky + REST? - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <strong>picky-rest</strong>
+    </p>
+    <div id="body">
+      <h1>Picky + REST?</h1>
+      <p id="tagline">Damian Cugley’s Weblog</p>
+      
+      <p class="article">
+      Does I&nbsp;make sense to rework the <abbr title="uniform
+      resource locator (web address)">URL</abbr>s for the Picky Picky Game so
+      they more resemble
+      <abbr title="Representational State Transfer">REST</abbr>-inspired
+      interfaces like <a
+      href="http://wellformedweb.org/">the Well-Formed Web</a>
+      experiment?  I&nbsp;have belatedly returned to the project and
+      started by creating a self-contained server version (as opposed
+      to the <a href="../2002/12.html#e20021208b"><abbr title="Common
+      Gateway Interface">CGI</abbr>-based one created earlier</a>).
+      This gives me more control over the URL scheme used for the
+      (proposed) site.
+      </p>
+      <p>
+      I&nbsp;am still expecting the game to work with current web
+      browsers, so it follows that <code>POST</code> requests will use
+      the types <code>application/x-www-urlencoded</code> (standard
+      forms) and <code>multipart/form-data</code> (forms with file
+      uploads in them), rather than expecting uploaded XML (that can
+      come in the future, so that people can connect with their
+      XHTML-2-based wristwatches in 2012).
+      </p>
+      <p>
+      I&nbsp;am also following the <em>de facto</em> convention for
+      content negociation, namely <code>.</code>-suffixes on URLs.
+      For example, we can view <code>index.html</code> as a request
+      for the resource identified by <code>index</code> in the format
+      nicknamed <code>.html</code>.  With a little fiddling of the
+      back-end I&nbsp;can arrange that specifying <code>index</code>
+      also works (i.e., the suffix is optional) so long as the
+      <code>Accept</code> header is properly formed.  By the same
+      token, you can also invoke the <code>vote</code> URL as
+      <code>vote.html</code> (&lsquo;show me the results in
+      HTML&rsquo;) or <code>vote.xml</code>, say (hypothetical, for
+      now).  This is my proposal to do the equivalent of the
+      <code>type=xml</code> or <code>fl=xml</code> query parameters
+      offered by some web servers.
+      </p>
+      <p>
+      The upshot of this is that, hypothetically, the voting
+      procedure&mdash;where you are presented with a ballot for
+      choosing which pictures you like in a particular
+      round&mdash;should be changed from
+      </p>
+      <blockquote><p><code>/cgi-bin/picky-vote?g=sample&amp;r=10&amp;votes=2&amp;votes=3</code></p></blockquote>
+      <p>
+      to something like
+      </p>
+      <blockquote><p><code>/sample/10/vote.html</code></p></blockquote>
+      <p>
+      With the votes offered as form parameters with a
+      <code>PUT</code> request, since you are replacing your previous
+      ballot (if there was one) with the new one.  This is all fine,
+      but I&nbsp;have no idea if web browsers are going to be relaxed
+      about my specifying a form with method=<code>PUT</code>.  Some
+      experimentation will be required.  I&nbsp;may pragmatically have
+      to accept <code>POST</code>...
+      </p>
+      <p>
+      Another thing I&rsquo;m not sure about (in terms of REST) is
+      that the <code>vote</code> page will show <em>your</em> vote (at
+      least, the one owned by your <abbr title="internet
+      protocol">IP</abbr> address), so the same URL shows different
+      results for different people.  Is that kosher?  Hmmm.  (Of
+      course using IP as authentication is never going to be
+      particularly satisfactory.)
+      </p>
+      <p>
+      Finally, while I&nbsp;may be able to replace
+      <code>cgi-bin/picky-upload</code> with a POST to something like
+      <code>10/candidates.html</code>, this request has no choice but
+      to use <code>multipart/form-data</code> as its format,
+      XML data cannot carry binary data (such as images).
+      </p>
+      
+      <p><a href="02.html#e20030202">2 February 2003</a></p>
+      
+      <p>
+      <strong>Update</strong> (18 March 2003).  Really what I&nbsp;am
+      talking about here is more to do with <a
+      href="http://www.w3.org/Provider/Style/URI.html">cool URLs</a>
+      (to use the term coined by Tim Berners-Lee) than REST per se.
+      </p>
+      
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

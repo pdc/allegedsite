@@ -1,0 +1,67 @@
+# -*-tcl-*-
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "References - Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+    link ../../favicon.ico "rel=shortcut icon" 
+}
+
+beginBody
+
+h1 "References"
+
+dl {
+    dt "Jocelyn Almond and Keith Seddon, [cite Understanding Tarot]."
+    dd "
+    ISBN 1-85538-087-0.
+    In the process of discussing interpretations of the cards,
+    this book gives short descriptions of the imagery.
+    I found this  useful as a starting-point for drawing them.
+    Also, the keywords along the  top
+    and bottom edges of the cards
+    (apart from the court cards)
+    are lifted directly from this book.
+    "
+
+    dt "Jonathan Dee, [cite Tarot], 1999."
+    dd "ISBN 0-75257-637-2.  Sold with a tarot deck 
+
+    [a ../../jrd/ Jeremy] bought in a
+    cheapie book shop for £3.
+    "
+
+    dt "Rowenna Stuart, [cite Collins Gem Tarot], 1999."
+    dd "Illustrated with the quasi-mediaeval imagery of the
+    18th-century Tarot of Marseilles.  Nice potted history of Tarot,
+    and outlines of the symbolism.  I used this book for the physical
+    descriptions of the court cards (hair and eye colour) and the zodiac
+    attributions."
+
+
+    dt "Charlotte and Peter Fiell, [cite Chairs] 
+    ([a http://www.taschen.com/ Taschen] Icons
+    series), 2001."  
+
+    dd " Illustrates important chair designs form the whole of the
+    twentieth century (and a few from the end of the nineteenth, such
+    as the King of Wands chair, which is from 1897), and gives
+    biographies of the designers.  I referred to this book while
+    drawing some of the chairs in the court cards.  "
+    
+
+    
+
+    dt "[a http://www.aeclectic.net/tarot/ Aeclectic Tarot] web site"
+    dd "Collects information about hundreds of existing Tarot decks,
+    with images of sample cards from each deck..
+    Also hosts [a http://www.tarotforum.net/ the Tarot Forums].
+    "
+
+    dt "[a http://queenofpentacles.com/ Queen of Pentacles] web site"
+    dd "A tarot reader&rsquo;s perspectives on  tarot and tarot cards"
+}
+
+endBody
+endDocument

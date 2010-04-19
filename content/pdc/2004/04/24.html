@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:26 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2004/04;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2004/04 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>It's a bit like Markdown - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">04</a> &gt;&gt;
+      <strong>24</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20040424" id="e20040424">It's a bit like Markdown</a></h2>
+        <p class="details">24 April 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/pymarkdown.html">pyMarkdown</a></li>
+            <li><a href="../../2003/tcl.html"><abbr title="Tool Command Language">Tcl</abbr></a></li>
+            <li><a href="../../2003/python.html">Python</a></li>
+            <li><a href="../../2003/markdown.html">Markdown</a></li>
+            <li><a href="../../2003/self.html">self</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20040424" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I have decided to change the way my home site works.  Up until now I
+   have been writing entries by creating a quasi-XML file containing the
+   HTML text;  I am changing  the format to be quasi-RFC-822: a text file
+   with a short header section at the top.<br/><s>The text is translated to
+   HTML via the usual hacked-together nest of regexps.</s> 
+</p>
+<p>The motivation for the change in format is the same as that described
+   on <a href="http://daringfireball.net/projects/markdown/">John Gruber’s Markdown page</a>: while I can happily type HTML
+   until the cows come home, for writing prose it is nice to be able
+   concentrate on the words without being distracted by the requirements
+   to get all the tags just right.  Unlike HTML source, it is possible to
+   read Markdown text fluently.
+</p>
+<p>I intend to implement something close to a proper subset of the
+   Markdown+Smartypants conventions, simply because I don’t want to add
+   one more to the existing proliferation of <em>different</em> Wiki-like text
+   formats.  By <em>subset</em> I mean I do not intend immediately to implement
+   <em>all</em> of Markdown; it is actually a fairly complex syntax.<br/>
+</p>
+<p> <strong>Update</strong> (2004-05-08).  I have switched to doing my Markdown clone
+   in Python rather than Tcl.  This is partly because nowadays I am more
+   fluent in Python (this web site is the only Tcl project I still have).
+   In order to accomodate the interactions between the `\ <code>-escapes and
+</code>\<code/>-quoting I have replaced a lot of the regexp substitutions with a
+   single-pass finite-state machine, and I find this easier in Python
+   than Tcl.
+</p>
+<p>It’s still early days; in writing the previous paragraph I discovered
+   a bug to fix, and I haven’t got around to processing apostrophes yet.
+</p>
+<p> <strong>Update</strong> (2004-05-10).  I have apostrophe (<code>’</code>) automatically
+   translated to &#x2018; and &#x2019; (the Unicode characters for
+   inverted comma and apostrophe) according to context.  Similarly <code>"</code>
+   becomes &#x201C; and &#x201D;.  (Except they do not when inside
+   <code>\</code>...\<code/> or part of HTML tags.)
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

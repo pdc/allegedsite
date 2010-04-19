@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:51 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Mime - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>mime</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Mime</h1>
+      <div class="entry">
+        <h2><a name="e20040803meta" id="e20040803meta">META files for HTML + XML encoding happiness</a></h2>
+        <p class="details">3 August 2004</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="meta.html"><abbr title="Alleged Metadata file">META</abbr></a></li>
+            <li><a href="web.html">web</a></li>
+            <li><a href="xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a></li>
+            <li><strong>mime</strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2004/08/03.html#e20040803meta" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">There has been all sorts of trouble with web developers being unable to
+   cause their web servers to issue the correct <code>Content-type</code> headers. 
+   Most recent fallout was <a href="http://www.xml.com/pub/a/2004/07/21/dive.html" title="XML on the Web Has Failed">Mark Pilgrim’s essay on XML.com</a>. 
+</p>
+
+<h3> The problem</h3>
+<p>Suppose I have several  HTML files, some in ISO 8859-1 and the newer ones saved as UTF-8.
+   How do I arrange for my web server to serve them tagged
+   as <code>text/html; charset=ISO8859-1</code> and <code>text/html; charset=UTF-8</code> respectively?
+</p>
+<p>Most web servers guess the media-type based on the file name suffix
+   (so <code>.html</code> &rarr; <code>text/html</code>, and so on).
+   I have seen sites where different suffixes are used for
+   different encodings (<code>index.htm8</code>), but that seems kind of a kludge. You
+   could mandate the server to parse the file looking for <code>meta</code> tags with
+   attribute <code>http-equiv="content-type"</code>, but that presumes that the server
+   can understand subtleties of HTML parsing, and it will take up extra resources on the
+   server.
+</p>
+<p>To address this problem I am proposing a
+   simple resource format called META (for metadata). 
+</p>
+<p>The format (which I shall
+   not define in detail here) is essentially the same as RFC 822 headers:
+</p>
+<pre>
+Content-type: text/html; charset=ISO8859-1
+Title: My plan for world peace
+</pre>
+
+<p>Processors should scan this file considered as an octet-sequence
+   (i.e., as bytes, not characters), in the fashion mandated by MIME and RFC 822
+   and the rest. Keywords are therefore always US-ASCII. The
+   permitted keywords include:
+</p>
+<ul>
+ <li>
+      <code>Content-type</code>, the MIME media type, with parameters;
+ </li>
+
+ <li>
+      <code>Title</code>: the title to use for this resource; and
+ </li>
+
+ <li>
+      <code>Link</code>: links to other documents, with <code>rel</code>, <code>title</code>, <code>type</code>
+  attributes corresponding to the HTML equivalents.
+ </li>
+</ul>
+<p>The point of the META is that it is very simple and it can be used to
+   supply the correct MIME <code>content-type</code> header. 
+   I am assuming that if I (or my web-page editing program) can I upload
+   <code>peace-plan.html</code> to my web server, I can  
+   also upload <code>peace-plan.meta</code>. 
+</p>
+<p>META-savvy
+   Web servers use the
+   META files associated with a resource to tell them how to serve said
+   resources. This should not be too hard; code for
+   scanning RFC-822 headers exists and is available as a library for most
+   platforms.
+</p>
+<p>As a convenience, they might, if the file-specific metadata
+   file is missing, look for <code>html.meta</code> in (a) the directory that the
+   HTML file is in, and (b) in a server-wide set of defaults. (Obviously
+   these META files should not contain titles.) There might be
+   operating-system-specific options, such as  
+   resource forks on HFS+ file systems.
+</p>
+<p>This implies two file-system accesses per request, at least the first
+   time a file is served. I would suggest that the META files are small
+   enough that caching them (or the information extracted from them)
+   should not be difficult. Servers could also ‘compile’ metadata ahead of
+   time in to an in-memory database.
+</p>
+
+<h3> Application outside of HTML and HTTP</h3>
+<p>This is not intended to be limited to HTML files; on the contrary, METAs are
+   are designed to be format-neutral:
+</p>
+<pre>
+Content-type: image/jpeg
+Title: Kittens and string
+Link: &lt;kitten46.jpg&gt;; rel=next
+Link: &lt;kitten44.jpg&gt;; rel=prev
+</pre>
+
+<p>Pictures can have titles, and links
+   (I was going to link to the HTTP/1.1 definition of
+   <code>Link</code> and <code>Title</code>, but then discovered that HTTP/1.1 does not have them any more!
+   The syntax above is modelled on the examples in <a href="http://www.w3.org/TR/REC-html40/present/styles.html#h-14.6" title="14.6 Linking to style sheets with HTTP headers">HTML 4.0 &amp;sect;14.6</a>.)
+</p>
+<p>The web server thus does not have to understand JPEG text annotations to
+   serve JPEGs with metadata; on the other hand, a separate program might be used to scan
+   JPEGs for metadata and spit out META files for the server to absorb.
+</p>
+
+<h3> On the file system</h3>
+<p>All the above is not restricted to web servers. When one opens a
+   document by double-clicking in your file browser, it should be able to
+   use META information to decide how to display the file. This might go
+   some what to reduce the annoyance caused when the GUI’s understanding of
+   file-types is wrong.
+</p>
+<p>There is the worry that now there are two files where once there was one
+   – won’t those hapless users get them confused, split them up, delete
+   one and not the other, forget to copy both of them, etc.? Actally HTML
+   documents already have this problem, since all their included images,
+   CSS files, and so on are also separate files.
+   Microsoft have
+   gone to great lengths to address this problem by adding extra complexity
+   to Windows Explorer – all the extra files go in a specially named
+   directory that the Explorer windows may hide from you and may copy about
+   automatically. There are some obvious alternatives if you really want to treat a
+   collection of HTML pages as a single document:
+</p>
+<ul>
+ <li>
+     treat a specially named directory of HTML pages in a fashion similar to an
+       application directory (app dirs are a concept used in <a href="http://rox.sourceforge.net/phpwiki/" title="ROX desktop system">ROX</a>, called an application
+  bundles in <a href="http://www.apple.com/uk/macosx/" title="Apple Mac OS X">Mac OS X</a>);
+ </li>
+
+ <li>
+     combine HTML and its resources as [MIME <code>multipart/related</code>][5] with a
+  document file name ending <code>.mht</code> (in this case the META resources might be 
+  folded in with the MIME headers);
+ </li>
+
+ <li>
+     combine HTML and its resources as a ZIP archive (like a JAR or WAR).
+ </li>
+</ul>
+<p>  document file name ending <code>.mht</code> (in this case the META resources might be 
+     folded in with the MIME headers);
+     * combine HTML and its resources as a ZIP archive (like a JAR or WAR).
+</p>
+
+<h3> Applicability to XML served as <code>text/xml</code> </h3>
+<p>This also would permit XML to use <code>text/xml</code> as a media-type:
+</p>
+<pre>
+Content-type: text/xml; charset=ISO8859-7
+Title: =?ISO-8859-7?B?...greek text...?=
+</pre>
+
+<p>The web server does not have to be XML-savvy to generate correct
+   headers; it only needs to understand the META file and then serve the
+   file unaltered. In many cases the META file can be dropped in to the
+   HTTP
+   headers unaltered.
+</p>
+<p>If XML files did not have the <code>encoding</code> pseudo-attribute in the
+   <code>&lt;?xml...?&gt;</code> pseudo-processing-instruction at the start, then transcoding would now
+   be a non-issue: a transcoding proxy server transcodes the character data
+   and rewrites the MIME <code>content-type</code>, neither of which are XML-specific.
+   A program that transcodes a file on disc must also know to locate and
+   alter the META file, but, again, this is not an XML-specific task.
+   (These
+   utilities might have to be written specially for your XML work, but
+   would be generally applicable.)
+</p>
+<p>I do not want to dismiss lightly the clever scheme the XML committee
+   came up with for having a file describe its own encoding in a standard
+   way. But, speaking purely in the context of counterfactual historical fiction,
+   I do think that there would have been advantages to instead
+   taking the following approach:
+</p>
+<ul>
+ <li>
+     Create a separate RFC for the META files outlined in this
+       note and recommend it as best practice foe web servers;
+ </li>
+
+ <li>
+     Insist that XML files be processed as character data, with the
+       encoding specified via a META file, or HTTP or MIME headers, or
+       application-specific and
+       operating-system-specific alternatives (such as command-line
+       arguments, Windows’ use of byte-order marks to distinguish MCBS and 
+       UTF-16 files, 
+       and Mac OS resources);
+ </li>
+
+ <li>
+     Forbid a document from referring to its own encoding.
+ </li>
+</ul>
+<p>  application-specific and
+     operating-system-specific alternatives (such as command-line
+     arguments, Windows’ use of byte-order marks to distinguish MCBS and 
+     UTF-16 files, 
+     and Mac OS resources);
+     * Forbid a document from referring to its own encoding.
+</p>
+<p>The intention being to oblige applications to handle character encodings
+   and media-types properly in general, rather than working around their
+   existing failings in a fashion that works for XML only.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2004/07/19.html#e20040719" title="Permanent URL for this entry">MU part 2: Clear as MUD</a>
+          19 July 2004
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Alternatives to inverted commas - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Alternatives to inverted commas"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+emit {
+
+    <p>
+      Well, it is true that one can often infer whether a typewriter
+      quotation mark is an apostrophe or turned comma according to its
+      position. On the other hand, why bother having marks of
+      quotation at all, since they can be guessed from the words
+      anyway? Many prose writers despise quotation marks and just do
+      not use them. It is increasingly popular to represent non-spoken
+      words (such as a character&rsquo;s thoughts) in italics rather
+      than set off by quotation marks.
+    </p>
+
+    <p>
+      While we&rsquo;re at it, do we need apostrophes anyway? George
+      Bernard Shaw despised them and did not use them (he wrote
+      <em>dont</em>, <em>cant</em>), except for words that would
+      become ambiguous (such as <em>I&rsquo;ll</em>,
+      <em>we&rsquo;re</em>). We could go futher by writing these as
+      two words (<em>I ll</em>, <em>we r</em>), the elision of the
+      vowels being implied by their not being written rather than the
+      presence of a special mark.
+    </p>
+
+    <p>
+      <em>What about the possessive case?</em>, I hear you ask. Well,
+      bear in mind that words like <em>Peter&rsquo;s</em>,
+      <em>Anne&rsquo;s</em> are really abbreviations of an Anglo-Saxon
+      declension or inclination or whatever the term is, and they
+      could be written <em>Peteres</em>, <em>Annes</em>. After all, we
+      no longer write <em>pass&rsquo;d</em>, <em>sort&rsquo;d</em> as
+      Shakespeare might have; the suppression of the sound of the e is
+      recognized by convention. Some spelling reformers have suggested
+      the opposite tack, where the vowel is omitted: <em>passd</em>,
+      <em>sortd</em> (and similarly for <em>akr</em> (acre),
+      <em>theatr</em>). This gives us three apostrophe-free variations
+      on the possessive case:
+    </p>
+
+    <ul>
+      <li>
+	Peters, Annes (matches <em>his</em>, <em>hers</em>,
+	<em>its</em>)
+      </li>
+      <li>
+	Peteres, Annes (like <em>passed</em>=<em>pass&rsquo;d</em>)
+      </li>
+      <li>
+	Peter s, Anne s (same logic as <em>I ll</em>, <em>we r</em>)
+      </li>
+    <ul>
+
+    <p>
+      Spelling reformers might prefer Petrz, Anz!
+    </p>
+
+    <p>
+      Note the distinction between <em>cant</em> and <em>we
+      r</em>. I&nbsp;dont favour <em>can nt</em>, because the
+      pronounciation of <em>can</em> now depends on its being followed
+      by <em>nt</em>. So it makes sense to write it <em>cant</em>. You
+      have to guess from context that it is not intended to be the
+      word <em>cant</em> (as in thieve s cant), just as you already
+      have to distinguish <em>read</em> (sounds like <em>reed</em>)
+      from <em>read</em> (sounds like <em>red</em>).
+    </p>
+
+    <p>
+      Hey! Let s get rid of hyphens and dashes too! Dashes in
+      principle can be replaced by colons or commas, depending on how
+      they are used. Hyphens appear in compound words like
+      <em>X-ray</em> and <em>mother-in-law</em>. We could require
+      these compounds to be spelled either as two words or as one and
+      ban the halfway hyphenated comounds. Let s face it, most writers
+      these days do anyway. Hyphens also appear in phrases used
+      attributively, as in a <em>bright-red balloon</em> (versus
+      <em>the balloon was bright red</em>). Of course these hyphens
+      are often omitted through ignorance anyway.
+    </p>
+
+    <p>
+      Come to think of it who needs punctuation anyway it s not as if
+      we have commas and colons and semicolons appearing in the air
+      around us as we speak unless you count the occasional sketching
+      of quotation marks to indicate heavy handed irony so why should
+      we bother marking off parenthetical remarks and subsidiary
+      clauses and suchlike when we write ? I suppose it might be
+      useful to retain question marks and perhaps end of sentence
+      punctuation has a role to play although I rather fancy that if
+      you actually transcribed people s speach patterns without trying
+      to post rationalize some sort of gramatical structure you would
+      end up deciding that most people speak one long sentence with
+      endless repetitions and digressions from birth until death with
+      the occasional pause for eating and sleeping Better still we can
+      save 25% of the space needed for text b y o m i t t i n g t h o
+      s e n e e d l e s s s p a c e s b e t w e e n w o r d s . y o u
+      w o u l d n e e d t o r e p r o g r a m b r o w s e r s t o w r
+      a p b e t w e e n c h a r a c t e r s .  e v e n f u l l s t o p
+      s a n d c a p i t a l l e t t e r s a r e r e d u n d a n t a s
+      e a c h s e n t e n c e c o u l d e n d w i t h a s i n g l e s
+      p a c e .  a n d i h a v n t e v n s t a r t d o n s p e l n g r e
+      f o r m . . .
+    </p>
+}
+
+
+p [a "01.html#e20030123" "23 January 2003"]
+endBody
+endDocument

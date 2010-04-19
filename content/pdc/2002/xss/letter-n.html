@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from letter.th on 2004-02-08 23:27 GMT -->
+  <!-- with command: cd /hda6/home/pdc/th/tuschin/pdc/2002/xss;
+  /home/pdc/bin/thc -r /home/pdc/public_html/tuschin/ -s pdc/2002/xss letter.th -->
+  <!-- htmlProcs.tcl version 5.1.7 -->
+  <head>
+    <title>Two suggestions for RSS 2.0</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p id="Trail">
+      <a href="../../../">Alleged Literature</a> ::
+      <a href="../../">Damian Cugley</a> ::
+      <a href="./">XSS</a> ::
+    </p>
+    <div id="Page">
+      <h1>Two suggestions for RSS 2.0</h1>
+      <p>To: dave@userland.com, f8dy@diveintomark.org</p>
+      <p>
+        Two silly ideas for the next iteration of the Simple Syndication
+        format.  My angle is as someone who (a) has hand-built
+        site-maintenance tools that generate an <a href="http://www.w3.org/XML/"><abbr title="Extensible Mark-up Language">XML</abbr></a> feed, and (b) started
+        building my own <abbr title="Really Simple Syndication">RSS</abbr> 0.9x consumer and discovered none of my <abbr title="Extensible-Stylesheet-Language Transform">XSLT</abbr> worked
+        with <abbr title="RDF Site Summary">RSS</abbr> 1.0...
+      </p>
+      <p>
+        First, allow the container document to have an arbitrary root element,
+        and make the <code>channel</code> wrapper optional as well.  Syndication
+        processors <em class="ShouldMust">should </em> ignore everything apart from what in 0.92 documents
+        are the subelements of <code>channel</code>.  The <code>item</code> elements must still
+        follow all the others.  The <em>recommended</em> envelope for documents
+        containing syndication data and nothing else remains as in 0.92 (apart
+        from the version number):
+      </p>
+      <pre>
+&lt;rss version="2.0" xmlns="http://my.netscape.com/rdf/simple/0.9/"&gt;
+    &lt;channel&gt;...&lt;/channel&gt;
+&lt;/rss&gt;</pre>
+      <p>
+        For the sake of <abbr title="Extensible Mark-up Language">XML</abbr> fans, producers <em class="ShouldMust">should </em> generate the <code>xmlns</code>
+
+attribute as shown above.  Nevertheless, for compatibility, consumers
+        <em class="ShouldMust">should </em> recognize syndication elements even if they appear
+        unprefixed, even if in the wrong namespace (or with no namespace).
+      </p>
+      <p>
+        The intention in removing the requirement for a particular envelope
+        is that in the future syndication data can be embedded in <em>any</em> <abbr title="Extensible Mark-up Language">XML</abbr>
+        document; in other words, syndication becomes a &lsquo;module&rsquo;
+        that can be mixed in with other formats in any way that is convenient.
+      </p>
+      <p>
+        In particular, 0.9 documents are compatible with 2.0 consumers,
+        because <code>item</code> elements are now permitted to follow the
+        <code>channel</code> rather than be contained within it.  (I admit
+        there are vanishingly few version-0.9 feeds left, so you may not care
+        about this!)  I believe it also allows syndication data to be embedded
+        in <abbr title="RDF Site Summary">RSS</abbr> 1.0 documents (the <abbr title="Resource-Description Framework">RDF</abbr>-specific stuff being simply ignored),
+        though I have not checked this thoroughly.  Some finessing may be
+        required.
+      </p>
+      <p>
+        I&rsquo;m pretty sure a form or words can be thrashed out that describes
+        this slightly looser format without sacrificing the concise style of
+        the existing <abbr title="Really Simple Syndication">RSS</abbr> 0.9x documentation.
+      </p>
+      <p>
+        Second, I would like to suggest using the name <abbr title="Extensible Mark-up Language">XML</abbr> Site Syndication
+        (XSS) for this format.  At the same time we can start referring to the
+        <abbr title="Resource-Description Framework">RDF</abbr>-based RSS as <abbr title="Resource-Description Framework">RDF</abbr>-<abbr title="Site Summary">SS</abbr> or <abbr title="Resource-Description Framework">RDF</abbr>/RSS.  The reason I want to do this is
+        that&mdash;despite having many features in common&mdash;the two formats are
+        different things, being the results of separate development processes,
+        and it is confusing for outsiders that they have the same initials.
+      </p>
+      <p>
+        For what it&rsquo;s worth, I think <a href="http://www.alleged.org.uk/pdc/2002/xss/"><abbr title="XML Site Syndication">XSS</abbr></a> is a nice name.  The
+        <em>X</em> reminds us it is built on <abbr title="Extensible Mark-up Language">XML</abbr>, not on top of an <abbr title="Resource-Description Framework">RDF</abbr>
+        layer on top of <abbr title="Extensible Mark-up Language">XML</abbr>.  Or, the <em>X</em> reminds us that the new
+        format is now extensible because <abbr title="XML Site Syndication">XSS</abbr> documents can exploit modules
+        defined separately (because of the namespace paragraph Dave already
+        added).  You can pronounce it &lsquo;excesses&rsquo;, which gives it
+        an attractively hedonistic flavour :-)
+      </p>
+      <p>
+        I realize there are politics and history involved here, and that there
+        are good reasons for not changing something&rsquo;s name (since name changes
+        are also confusing).  On the other hand, I think having distinct names
+        will make it easier to discuss differences and similarities between
+        <abbr title="XML Site Syndication">XSS</abbr> and <abbr title="Resource-Description Framework">RDF</abbr>-<abbr title="Site Summary">SS</abbr> on a purely technical level.
+      </p>
+      <p>
+        Anyway, that&rsquo;s my 2 ideas.  It may seem odd that on the one hand I am
+        proposing a technical fix that just happens to make <abbr title="Resource-Description Framework">RDF</abbr>-<abbr title="Site Summary">SS</abbr> look like a
+        special case of <abbr title="XML Site Syndication">XSS</abbr>, whereas on the other I am apparently cementing
+        the fork by giving the different branches their own names.  But I
+        really think that this will let us get back to the interesting bit
+        (generating and consuming syndication data) and leave the discussion
+        of the &lsquo;ownership&rsquo; of the RSS name to future historians...
+      </p>
+      <p>Bye for now</p>
+      <p>&mdash;Damian</p>
+    </div>
+  </body>
+</html>
+

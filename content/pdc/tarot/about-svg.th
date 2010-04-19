@@ -1,0 +1,90 @@
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Alleged Tarot - Alleged Literature"
+    stylesheet tarot.css
+}
+
+beginBody
+
+h1 "A little about SVG"
+
+h2 "Scalable versus pixmap"
+
+p "
+[a http://www.w3.org/Graphics/SVG/ SVG (Scalable Vector Graphics)]
+is a new file format for graphics on
+the web.  How does this differ from 
+
+[acronym* "title=Graphics Interchange Format" GIF], 
+
+[a http://www.w3.org/Graphics/PNG/ [acronym* "title=Portable Network Graphics" PNG]], and
+
+[acronym* "title=Joint Phorographic Expert Group" JPEG]?  The short
+answer is that it is an example of a [dfn vector] format (also called
+outlines or scalable graphics); the others are examples of 
+
+[dfn raster] formats (also called bitmap or pixmap).  The difference
+is the manner in which the picture is described.  We can interpret a
+GIF or PNG as instructions for creating a mosaic, along the lines of:
+"
+
+blockquote "Create a mosaic of 10000 pixels in a grid of 100 rows of
+100 tiles, in order white, white, white, white, white, red, red, ... (etc.)"
+
+p "You would not want to describe a picture to a human painter this
+way, but to a computer this is very simple and convenient.  All modern
+computer screens naturally work this way.  Raster graphics is also the
+natural format for images produced by a scanner or digital camera."
+
+p "Vector graphics is more like the way you might decribe a drawing to
+a person: "
+
+blockquote "On a page 100 by 100 units, draw: a red triangle whose
+corners lie at (10,20), (40,20), and (40,60); a blue circle centred on
+(50,50) with radius 10 ... (etc.)"
+
+p "Most drawings in practice use fancier shapes than triangles and circles.  Most formats support [dfn paths] of any length, composed of straight line segments and curved lines defined using mathematical functions.  
+The curves used in SVG are cubic and quadratic B&eacute;ziers.
+"
+
+p " This style of description obviously works best for pictures drawn
+as shapes, as opposed to, for example, scanned photographs (although
+there is software for converting pixmaps to outlines, and vector
+formats can contain embedded raster images).  If you are graphics
+designer you will already have recognized these two classes of image
+as corresponding to Adobe Photoshop (or Painter, the GIMP, etc.) and
+Adobe Illustrator (CorelDRAW, etc.)  respectively."
+
+h2 "SVG features"
+
+p "One advantage of vector formats is because the drawing instructions
+are explicit, the program doing drawing can exploit the full
+resolution of the output device (screen or printer) it is using.  If
+you have printed out web pages, you will be familiar with how raster
+graphics optimized for display on the screen look fuzzy when printed,
+because printers have more pixels per inch.  You can display vector
+graphics at different sizes and they all look smoothly scaled&mdash;if
+you resize bitmaps too much, the results are again fuzzy and blurred
+(when shrunk), or jagged and blocky (when expanded).  If you use
+Adobe&rsquo;s plug-in, you can zoom in and pan the image as much as
+you like.  I&rsquo;ve used this to hide invisible details in some of
+the pictures!"
+
+p "Another benefit is that the items being drawn retain their
+individual identity in the picture file.  This allows for them to be
+moved and resized to make simple animations and to react to mouse
+clicks by doing things.  SVG files can contain Javascript programs
+that arbitrarily rearrange the picture and do everything Javascript
+can do.  They also have built-in animation features that mean you
+don&rsquo;t even need to use Javascript to make things happen.  "
+
+h2 "SVG versus SWF (Macromedia Flash)"
+
+p 
+
+
+	
+endBody
+endDocument

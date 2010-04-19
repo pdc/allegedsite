@@ -1,0 +1,3 @@
+su -c '/usr/sbin/pppd  nodetach call demon noauth'
+ /etc/sysconfig/network-scripts/ifup-routes ppp0
+ping -c 1 demon

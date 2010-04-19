@@ -1,0 +1,98 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Serving my own damn' files - Alleged Literature"
+    pdcMetadata
+}
+
+beginBody
+
+h1 "Serving my own damn&rsquo; files"
+p id=tagline "Damian Cugley\u2019s Weblog"
+
+
+emit {
+    <p class="article">
+      I am rethinking my original plan for the <a
+      href="picky.html">Picky Picky Game</a>, which was to store
+      resoures in files as often as possible.  For example,
+      <code>index.html</code> is a static file (not dynamically
+      generated every time someone visits it).  This requires that
+      when something happens that means <code>index.html</code> should
+      change, this file has to be updated.
+    </p>
+    <h2>Why use files?</h2>
+    <p>
+      Many web applications are so paranoid about a cached page
+      turning up and runining a demo that they turn on every
+      cache-busting flag and ensure that every page is generated from
+      scratch every time it is visited.  This makes development
+      simpler but will present problems later.  It is exacerbated by
+      the VB programmer&rsquo;s conviction that all data must be
+      stored in an <abbr title="relational-database
+      management-system">RDBMS</abbr>.  So why do I want to store
+      pictures and even dynamically generated HTML in files instead?
+    </p>
+    <p>
+      The advantage of using files as often as possible
+      it puts the minimum load on the web server.
+      Experience with web applications produced with <abbr
+      title="ActiveX Server Pages">ASP</abbr>, webclasses, and ASP
+      .NET is that you eventually start worrying about scalability and
+      realize that you are committed to doing a lot of processing to
+      deliver every page served.  Servers like Microsoft <abbr
+      title="Internet Information Server">IIS</abbr> are said to have
+      a &lsquo;fast paper path&rsquo; for resources served from static
+      files (because this is how you win web-server benchmarks).  In
+      one case we had panic around the office because serving the
+      home page of a site had jumped from 3 to  40&nbsp;seconds after
+      an upgrade to the software.  Three seconds was arguably already
+      far too slow.  
+    </p>
+    <p>
+      The main disadvantage of using plain old files is that
+      I&nbsp;have to be careful that my application updates the disc
+      files when something changes.  If you have designed your
+      application on the assumption that all pages are generated
+      on-the-fly, then you may have designed them in a way that make
+      this very difficult.  For example, the navigation section of a
+      page might be generated automatically from information about
+      other pages it references; changing one page&rsquo;s title might
+      change umpteen other pages where they refer to it, making it
+      hard to work out which disc files need to be regenerated.  The
+      dependencies between pages either need to be carefully planned
+      or automatically divined by the system, and it is very easy to
+      make this very hard.
+    </p>
+
+    <h2>The fly in the ointment</h2>
+    <p>
+      This all assumes  that the web server is <em>allowed</em> to update its
+      own files, which may actually not be the case.  This is the
+      trouble I am struggling with in deploying <abbr title="Picky
+      Picky Game">PPG</abbr> on <a
+      href="http://caption.org/2003/sample/">CAPTION.org</a>: the web
+      server is not permitted to write files (a fairly sensible
+      security precaution, though inconvenient to me).
+    </p>
+    <p>
+      So I plan to get around the problem by changing this so that the
+      resources that are created or edited by the web application will
+      live in the object database that is already used for storing
+      information about the game.  This means that I&nbsp;need to add
+      support for <code>If-Modified-Since</code> and
+      <code>Content-Length</code> and sundry other HTTP headers that
+      hitherto I could rely on the host web server to worry about.  It
+      also means that unless I rethink the 
+      <abbr title="Universal Resource Locator">URL</abbr> design again
+      I&nbsp;will end up with everything being delivered via the CGI
+      script, which will slow down the whole system.  Sigh.
+    </p>
+}
+
+p [a 04.html#e20030429 29 April 2003]
+
+endBody
+endDocument

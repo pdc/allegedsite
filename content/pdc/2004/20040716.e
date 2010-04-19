@@ -1,0 +1,93 @@
+Title: Bizarre fantasies of an Extensible Mark-Up Language
+Date: 20040716
+Image: ../icon-64x64.png
+Topics: xml html csv lmnl yaml sql
+
+I'm awake at 05:00 unable to sleep and instead working on migrating the
+working copy of my web site to my laptop so that I can eventually retire
+my old desktop. One of the importunate thoughts bouncing about in my
+sleep-deprived brain is something someone at work said about some
+weirdos he'd heard of who actually (ab)use XML as some sort of
+[(standard) generalized mark-up language][1]. This bizarre (to him)
+concept involves one choosing a set of XML tags to express the structure
+of the text (as if text could have structure!), which is ludicrous
+because how would anyone be able to read it? One would have to use XSLT
+to transform it in to HTML, so why not use HTML in the first place, eh?
+
+In a way this shows just how much the data-heads have beaten the the
+document-processing crowd when it comes to managers' mind-share.  By
+data-heads I mean those people who cannot see or understand anything
+unless it is expressible as relational database tables. Nothing else
+exists: Object-oriented analysis and design is merely a complex
+variation on entity-relationship diagrams, themselves an affectation
+when you should just be diving in to a wysiwyg schema-designer;
+windows and dialogue boxes and GUIs in general only make sense as
+views of a database table (or occasionally of the results of a query);
+XML exists purely as a serialization format for database tables.
+
+The last of these is particularly annoying. XML is a lousy
+serialization format.  If XML had been designed as a text-based
+serialization of data, then it would look more like [YAML][2] than
+SGML. In fact, for database programmers' needs, even YAML is
+overqualified; for expressing collections of tabular data, you could
+just use comma-separated values for each table, packaged as a unit
+using [multipart MIME][3]:
+
+<pre>
+Content-Type: multipart/related; boundary=foobar;
+    type=application/tables
+<span></span>
+--foobar
+Content-type: application/tables+csv; charset=Windows-1252
+<span></span>
+Employees,cid:employees.12345@example.com
+Managers,cid:managers.12345@example.com
+--foobar
+Content-type: application/csv; charset=Windows-1252; headerrows=1
+Content-id: &lt;cid:employees.12345@example.com>
+<span></span>
+id,name,salary,loyalty,quirks,height,eyes,hair,manager
+56789,Bill,57,5,2,179,blue,grey,34567
+56781,Julian,45,3,182,brown,black,34567
+[... 45000 more rows ...]
+--foobar
+Content-type: application/csv; charset=Windows-1252; headerrows=1
+Content-id: &lt;cid:managers.12345@example.com>
+<span></span>
+id,name,cars,suit cost
+34567,Sue,4,500
+12345,Graeme,2,600
+--foobar--
+</pre>
+
+This would have the advantage of recycling a lot of existing code:
+database programs already understand how to write and read CSV, and if
+you are functioning on the internet you need a MIME processor. The
+`application/tables+csv` section is a bit dull, and might be extended
+to include schema information for the tables (a subset of ANSI SQL
+DDL). All in all, *if* all the world needs is a way to exchange the
+contents of relational databases, then this is a zillion times better
+a solution than XML.
+
+On the other hand, there is more to life than RDBMSs, and as a mark-up
+language, XML is ... well ... adequate. There are bits I would
+personally have omitted, such as `NOTATION` declarations and those
+features of DTDs that prevent XML documents from being stand-alone
+(namely declaration of `&`-entitites, and default attributes). But its
+main asset is its openness to recursive nesting of elements and
+mixed-content elements (those combining text with nested elements),
+features that dataheads loathe because they do not fit in to
+relational database concepts at all.
+
+And no, people should not need to invent their own tag-sets in order
+to write a note for the milkman; that is what we have committees
+thrashing out XML formats like DOCBOOK and XHTML for. But [when you
+want to do a critical edition of Shakespeare][4], the extra effort of
+hammering out a new XML format makes sense. Of course you then find
+you need overlapping elements, and end up wishing for [LMNL][5].
+
+  [1]: http://xml.coverpages.org/sgml.html "Standard Generalized Markup Language (Cover Pages)"
+  [2]: http://yaml.org "Yaml Ain't Mark-up Language"
+  [3]: http://www.ietf.org/rfc/rfc2387.txt "RFC 2387 The MIME Multipart/Related Content-type"
+  [4]: http://www.xml.com/pub/a/2004/05/26/totag.html "To Tag or Not to Tag: The New Variorum Shakespeare and XML (xml.com)"
+  [5]: http://www.lmnl.net/ "The Layered Mark-up and aNnotation Language"

@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-03-28 22:25 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Safari - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>safari</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Safari</h1>
+      <div class="entry">
+        <h2><a name="e20050124font-size-adjust" id="e20050124font-size-adjust">No font-size-adjust yet</a></h2>
+        <p class="details">24 January 2005</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="css.html"><abbr title="Cascading Stylesheets">CSS</abbr></a></li>
+            <li><strong>Safari</strong></li>
+            <li><a href="mozilla.html">mozilla</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2005/01/24.html#e20050124font-size-adjust" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">Today I have tweaked the CSS for the new look slightly: subheadings
+   within articles no longer live in the left margin, and italics have gone
+   a little curlier. 
+</p>
+<p>I decided to try doing something silly with the type face, which is
+   to
+   mix a sanserif body font with italics from a completely different
+   family. This is partly because the italics for Futura are extremely
+   subtle, and also seem out of scale with the roman, and partly as a sort
+   of stylistic flourish.
+</p>
+<p>Here’s what it looks like on my system: 
+</p>
+<blockquote>
+<img src="../2005/futura+cochin.png" width="354" height="115" alt="(screen
+shot)" border="1" />
+</blockquote>
+
+<p>Most of the words are in Futura Medium (if your computer happens to have
+   that font). The italics (’and other packages...’) are <a href="http://www.linotype.com/12889/cochinbolditalic-font.html#more">Cochin
+Italic</a>. The trick is, Cochin has a smaller <em>x</em>-height than Futura
+   (at least, than the version 
+   shipped with Mac OS X: <a href="http://www.castletype.com/screen_showings/futura_ct_medium.html">versions closer to the 1928 original</a> would
+   have a smaller <em>x</em>-height). As a result, if you juxtapose 10-point
+   Futura Medium and Cochin Italic, the lowercase letters will be different
+   sizes.
+</p>
+<p>When I wrote style files for TeX, I solved this problem by creating
+   boxes with an <em>x</em> in in each font, so as to measure their respective
+   heights, and magnify the smaller font accordingly.
+   <a href="http://www.w3.org/TR/REC-CSS2/fonts.html#font-size-props">CSS2 has an equivalent of this</a>: the property <code>font-size-adjust</code>. In this
+   case I think I should be able to put the following in my CSS:
+</p>
+<pre>
+em, i, cite {
+    font-family: NONEXISTENT, Cochin, serif;
+    font-size-adjust: 0.470;
+    font-style: italic;
+}
+</pre>
+
+<p>The value 0&middot;470 is the <em>x</em>-height of Futura (which I found by Googling
+   for <code> <a href="http://www.google.co.uk/search?hl=en&q=futura+AFM+XHeight&btnG=Search">futura XHeight AFM</a> </code>). Cochin has an <em>x</em>-height of 0&middot;392, so
+   this should have the effect of magnifying it by
+   0&middot;470/0&middot;392 = 1&middot;20. 
+</p>
+<p>But, alas! no web browser I have tried this in groks <code>font-size-adjust</code>,
+   so this has no effect. For now I am fudging this by replacing
+   <code>font-size-adjust</code> with <code>font-size: 1.20em</code> (in other words, magnifying
+   the font unconditionally). On computers with both Futura and Cochin
+   available, this works fine. On computers that must substitute other
+   fonts, the sizes will probably be even more out of whack than before.
+</p>
+<p>Really what I should do is choose a different set of fonts.
+</p>
+<p> <strong>Update</strong> (2005-02-06).  I have now given up on using Futura as body
+   font because I cannot specify it in a cross-platform fashion. Also, I
+   was struggling to come up with a sensible typographic alternative to use
+   for computer text. 
+   Instead I
+   am using a very conventional combination of serif font for the body,
+   with sanserif for computer text and headings.<br/>
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2004/02/14.html#e20040214" title="Permanent URL for this entry">The object tag postponed</a>
+          14 February 2004
+        </li>
+        <li>
+          <a href="../2003/12/03.html#e20031203" title="Permanent URL for this entry">Alleged Tarot brush-up (3)</a>
+          3 December 2003
+        </li>
+        <li>
+          <a href="../2003/07/11.html#e20030711" title="Permanent URL for this entry">New layout for archive pages</a>
+          11 July 2003
+        </li>
+        <li>
+          <a href="../2003/06/09.html#e20030609" title="Permanent URL for this entry">JavaScript image loading problems</a>
+          9 June 2003
+        </li>
+        <li>
+          <a href="../2003/04.html#e20030414a" title="Permanent URL for this entry">More trouble with uploads and CGI</a>
+          14 April 2003
+        </li>
+        <li>
+          <a href="../2002/04.html#e20020425" title="Permanent URL for this entry">SVG: embed or object?</a>
+          25 April 2002
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

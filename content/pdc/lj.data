@@ -1,0 +1,20 @@
+# Map from article title to URI on LiveJournal
+# Generated with xsltproc ljToLjData.xslt livejournal-pdc.html
+
+array set ljTitleComments {
+     http://www.livejournal.com/create.bml
+     http://www.livejournal.com/lostinfo.bml
+    "Jack Bauer Wrecks Trek" http://syndicated.livejournal.com/pdc/11020.html
+    "The RIFF that is known is not the true RIFF" http://syndicated.livejournal.com/pdc/8977.html
+    "Batch-Convert Corel Painter 8 RIFF Documents as GIF" http://syndicated.livejournal.com/pdc/9301.html
+    "Maintain Static HTML with Kid Templating" http://syndicated.livejournal.com/pdc/9528.html
+    "Desktop Web Server in .Net" http://syndicated.livejournal.com/pdc/9981.html
+    "Birds of a Feather" http://syndicated.livejournal.com/pdc/10190.html
+    "OpenID in a WSGI filter" http://syndicated.livejournal.com/pdc/10402.html
+    "Refactor, Redesign, Restyle" http://syndicated.livejournal.com/pdc/10550.html
+    "My Mate V-Mate?" http://syndicated.livejournal.com/pdc/10770.html
+    "TurboGears and Uploading Pictures" http://syndicated.livejournal.com/pdc/8114.html
+    "Another SVG Roadblock" http://syndicated.livejournal.com/pdc/8325.html
+    "The Ultimate Commuting Machine?" http://syndicated.livejournal.com/pdc/8448.html
+    "Cannot convert Corel Painter RIFF to GIF (or any other format, for that matter)" http://syndicated.livejournal.com/pdc/8831.html
+}

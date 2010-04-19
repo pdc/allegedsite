@@ -1,0 +1,75 @@
+applescript: AppleScript 
+bike: My Bike
+comics: comics 
+    comics2003: Comics 2003 Convention
+    caption: CAPTION
+computers: computers 
+    macosx: Mac OS X
+    nt: Microsoft Windows NT
+graphics: graphics 
+livejournal: LiveJournal
+percy: <abbr title="Percy Street comic strip">Percy Street</abbr> 
+photos: photos
+picky: Picky Picky Game
+allegednews: Alleged News
+programming: programming
+    dotnet: <abbr title="Microsoft .NET Framework">.NET</abbr>
+    python: Python
+    pbmplus: PBMPlus
+    markdown: Markdown
+    pymarkdown: pyMarkdown
+    zeo: <abbr title="Z Enterprise Objects">ZEO</abbr>
+    zodb: <abbr title="Z Object Database">ZODB</abbr>
+    unicode: Unicode
+    pil: <abbr title="Python Imaging Library">PIL</abbr>
+    asp: <abbr title="Microsoft ActiveX Server Pages">ASP</abbr>
+    ado: <abbr title="Microsoft ActiveX Data Objects">ADO</abbr>
+    sqlserver: Microsoft SQL Server
+    vb6: <abbr title="Microsoft Visual Basic 6">VB&nbsp;6</abbr>
+    dao: <abbr title="Microsoft Data Access Objects">DAO</abbr>
+    tcl: <abbr title="Tool Command Language">Tcl</abbr>
+    tclhtml: TclHTML
+    sqlobject: SQLObject
+    fileformats: file formats
+	riff: <acronym title="Raster Image File Format">Riff</acronym>
+	xml: <abbr title="Extensible Mark-Up Language">XML</abbr>
+	lmnl: <abbr title="Layered Markup and Annotation Language">LMNL</abbr>
+	mu: <abbr title="Alleged Mark-Up">MU</abbr>
+	mud: <abbr title="Alleged Mark-Up Document-type">MUD</abbr>
+	meta: <abbr title="Alleged Metadata file">META</abbr>
+	pdf: <abbr title="Portable Document Format">PDF</abbr>
+tarot: Alleged Tarot 2002
+typography: typography
+web: web
+    css: <abbr title="Cascading Stylesheets">CSS</abbr>
+    cgi: <abbr title="Common Gateway Interface">CGI</abbr>
+    iis: <abbr title="Microsoft Internet Information Server">IIS</abbr>
+    opera: Opera browser
+    safari: Safari
+    msie: Microsoft Internet Explorer
+    camino: Camino
+    firefox: Mozilla Firefox
+    rest: <abbr title="Representational State Transfer">REST</abbr>
+    svg: <abbr title="Scalable Vector Graphics">SVG</abbr>
+    turbogears: TurboGears
+    rss: <abbr title="really Simple Syndication">RSS</abbr>
+personal: personal
+galleries: galleries
+    tatemodern: Tate Modern
+    tatebritain: Tate Britain
+    turnerprize: Turner Prize
+    ra: Royal Academy
+    va: V&amp;A
+people: people
+    anishkapoor: Anish Kapoor
+    keithtyson: Keith Tyson
+    tamaradelempicka: Tamara de Lempicka
+    viviennewestwood: Vivienne Westwood
+works: works
+    marsyas: Marsyas
+    thethinkerafterrodin: The Thinker (After Rodin)
+    28dayslater: 28 Days Later...
+tools: tools
+    corelpainter: Corel Painter 8
+countries: countries
+	australia: Australia

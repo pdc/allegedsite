@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from spec.th on 2003-01-22 09:41 GMT -->
+  <!-- with command: cd /hda6/home/pdc/th/tuschin/pdc/2003/latin-1p;
+  /home/pdc/bin/thc -r /home/pdc/public_html/tuschin/ -s pdc/2003/latin-1p/ spec.th -->
+  <!-- htmlProcs.tcl version 5.1.6 -->
+  <head>
+    <title>Latin-1p nonstandard - Alleged Literature</title>
+    <link href="spec.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../../">Alleged Literature</a>
+      : <a href="../../">Damian Cugley</a>
+      : <a href="../">2003</a>
+      : <a href="./">Latin-1p</a>
+    </p>
+    <div id="body">
+      <h1>Latin-1p specification</h1>
+      <p>
+        Revision 1
+        (P. Damian Cugley,
+        <a href="../01.html#e20030121">2003-01-21</a>)
+      </p>
+      <p>
+        This note describes an encoding that pragmatically allows access
+        to English punctuation characters, at the expense of the
+        typewriter-inspired characters used in computer programming, and
+        without requiring new keyboards or even new text editors.  It is not
+        endorsed by any standards body and does not define an official
+        standard of any kind.
+      </p>
+      <p>
+        Latin-1p is defined to be identical to ISO 8859-1 (Latin-1), except
+        for the character positions 0x27 and 0x60, which are defined as
+        follows:
+      </p>
+
+Position
+            ISO 8859-1
+            Latin-1p
+
+<tbody>
+
+<code>0x27</code>
+            U+0027 '<br /> APOSTROPHE
+            U+2019 &rsquo;<br /> RIGHT SINGLE QUOTATION MARK
+
+<code>0x60</code>
+            U+0060 `<br /> SPACING GRAVE ACCENT
+            U+2018 &lsquo;<br /> LEFT SINGLE QUOTATION MARK
+
+</tbody>
+
+<p>
+        This encoding does not allow the generation of other punctuation
+        marks, like double quotation characters (but clever display systems
+        could display <samp>``</samp> and <samp>''</samp> using
+        double-quotation mark glyphs, using the same logic that displays fi as
+        a single fi ligature in some systems) or the dashes.
+      </p>
+      <p>
+        This encoding can be used as a <code>charset</code> or
+        <code>encoding</code> parameter where <code>Latin-1</code> or
+        <code>ISO 8859-1</code> can.  Here is an example, displayed as if with USASCII encoding:
+      </p>
+      <blockquote>
+        <p><samp>Content-type: text/plain; charset=Latin-1p</samp></p>
+        <p><samp>She said `He said ``Foo''.'</samp></p>
+      </blockquote>
+      <p>By labelling it as Latin-1p, the reader is instructed to read it in as</p>
+      <blockquote>
+        <p><samp>She said &lsquo;He said &lsquo;&lsquo;Foo&rsquo;&rsquo;.&rsquo;</samp></p>
+      </blockquote>
+      <p>
+        (screenshot)
+        The irony is that on my Linux box, (1) the X11 fonts use glyphs for
+        the ASCII characters that resemble the Latin-1p equivalent, and (2)
+        Mozilla and Gecko map U+2018 on to U+0027 because Linux lacks Unicode
+        fonts, and so the ersatz punctuation in the Latin-1p text actually
+        looks better than the text using HTML escapes!
+      </p>
+    </div>
+  </body>
+</html>
+

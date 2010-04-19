@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-02-28 21:34 GMT -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2002;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2002 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>September 2002 - Damian Cugley - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2002</a> &gt;&gt;
+      <strong>09</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Archive</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20020925a" id="e20020925a">The future is now!</a></h2>
+        <p class="details">25 September 2002</p>
+        <p class="details permalink">
+          <a href="#e20020925a" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../../jrd/2002/20020815.html"><img src="../2002/../../jrd/2002/20021002-detail.png" class="initial" alt="" align="left" width="80" height="80" border="0" /></a></div><p class="first">
+      Today and for the next three weeks we are  showing the
+      last four episodes of 
+      <a href="../2002/../../jrd/2002/20020815.html"><cite>Black
+      Butterflies</cite></a>.
+      Because we were away in Canada for a fortnight, we are 
+      posting some of the episodes early.
+      If you want to maintain the weekly suspense between episodes,
+      please simply refrain from following the links until the
+      date written underneath it.
+      Sorry for any confusion.  
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020922" id="e20020922">Thinking about Topic Maps and dates</a></h2>
+        <p class="details">22 September 2002</p>
+        <p class="details permalink">
+          <a href="#e20020922" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/../../2002/datetime.html"><img src="../2002/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I&nbsp;had an idle thought about using topic-maps’
+      processing model (or even topic maps themselves) to represent
+      the information encoded in <abbr title="Really Simple
+      Syndication">RSS</abbr> and <abbr title="RDF Site
+      Summary">RSS</abbr> data resources.  The attraction is that
+      topic maps have a concept of merging built in, so writing an
+      aggregator would in principle be straightforward.  
+    </p>
+
+    <p>
+      Obviously stories are topics, and categories are topics.  What
+      about dates?  These become what in topic-maps are called
+      occurences (the concept of occurrence is stretched a little).
+      I&nbsp;assume any topic-map query-engine is willing to do
+      grouping and sorting on  topics according to occurrence values?
+    </p>
+
+    <p>
+      This got me thinking about dates in metadata.  Most metadata
+      examples I’ve seen use what might be called free-form
+      dates.  This is perhaps OK within one, isolated database, but
+      when I&nbsp;am merging two topic-maps, how does my
+      computer&nbsp;know how to compare dates in random formats like
+      <code>13 Oct 02</code> and <code>2002-09-22</code>?  I&nbsp;would
+      rather not rely on the cute guessing games that programs like
+      Microsoft&reg; Excel resort to (e.g., if I&nbsp;enter 12-09-2002
+      and 13-09-2002 in separate cells, they end up holding
+      9&nbsp;December and 13&nbsp;September).
+    </p>
+
+    <p>
+      My suggestion is that the occurrence-types that subclass special
+      topics that are conventionally used for dates in particular
+      formats.  These special topics in turn would require published
+      subject indicators.  I&nbsp;have created a page that contains <a
+      href="../2002/../../2002/datetime.html">PSIs for Date-Time occurrence
+      types</a> to illustrate the idea.  Note! this is just for
+      discussion.  Also, it really needs an attached
+      machine-processable metadata resource (in <abbr title="XML Topic
+      Map">XTM</abbr>, say).
+    </p>
+
+    <p>
+      Another slightly weird approach would be to reify the dates.
+      That is, create topics representing the dates themselves.  The
+      relationship between story and the date it is published on then
+      is represented as an association between the story topic and the
+      date topic.  Date topics would use PSIs with a format like
+      <code>http://psi.example.com/2002/date/#2002-09-22</code> or
+      <code>http://psi.example.com/2002/date/?d=2002-09-22</code> (the
+      latter has the advantage of being able to run a check on the
+      format of its param).  Probably less efficient than using occurences.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020921" id="e20020921">Time to add a second Ethernet card?</a></h2>
+        <p class="details">21 September 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/network.html">network</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020921" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div></div><p class="first">
+      My network at home uses what is now old-fashioned coax with BNC
+      connectors.  New computers—such as, for example, a
+      visiting iBooks—only have connectors for new-style cat-5e
+      cables.  Rather than replace my entire home network, I’m
+      experimenting with a second
+      <abbr title="Network Interface Card">NIC</abbr> and a crossover
+      cable.  This means powering down my desktop (uptime: up 170
+      days, 15:55).  
+    </p>
+    <p>
+      <em>Update:</em>
+      some hours later I&nbsp;have managed to get my <em>first</em>
+      card working again, after Red Hat’s auto-configuration
+      clobbered my settings!  My attempts to load the module for
+      card #2 so far unsuccessful.  I have downloaded a newer kernel
+      (I&nbsp;was running 2.2.12, this is 2.2.22),
+      which is currently compiling.  Maybe it will do better.
+      &para; It has now finished after 15&frac12; minutes.
+      I&nbsp;will not try rebooting until tomorrow, however.
+    </p>
+    <p>
+      <em>Update (Sunday):</em>
+      Turns out that kernel 2.2.22 hangs on boot-up.  Argh.
+      Returned to 2.2.12 for now.
+      On the
+      otherhand, I&nbsp;discovered that <code>make modules
+      modules_install</code> is different from merely <code>make
+      modules_install</code>.  It appears that the install target does
+      not imply actually building the modules?  Anyway, I&nbsp;did
+      this and I&nbsp;now have an <code>rtl2039.o</code> that can be
+      loaded with <code>modprobe</code>.  Alas! trying to bring up the
+      interface complains of a ‘Resource temporarily
+      unavailable’, which I&nbsp;take to mean that the card
+      needs to have an <abbr title="interrupt request">IRQ</abbr>
+      assigned to it, something that may be doable through the BIOS?
+      Something to try later in the week.
+      I&nbsp;have other things to do today.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020918" id="e20020918">Topic Maps</a></h2>
+        <p class="details">18 September 2002</p>
+        <p class="details permalink">
+          <a href="#e20020918" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.topicmaps.org/"><img src="../2002/../icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I’ve been <a href="http://www.xml.com/pub/a/2002/09/11/topicmaps.html">reading</a> about 
+      <a href="http://www.topicmaps.org/">Topic Maps</a>,
+      an 
+      <abbr title="International Organization for Standardization">ISO</abbr>
+      standard that has been augmented with an 
+      <a href="http://www.topicmaps.org/xtm/1.0/">XML
+      representation</a>.  
+    </p>
+
+    <p>
+      Topic maps are very similar to the <abbr
+      title="Resource-Description Framework">RDF</abbr>, in that they
+      are all about graphs of topics (representing real-world
+      subjects) connected with associations.  The difference is that
+      the Topic-maps paradigm seems easier to understand.  Maybe its
+      because they draw a distinction between the topics and the
+      subjects they stand in for, whereas <abbr
+      title="Resource-Description Framework">RDF</abbr> tends to
+      conflate the two.  Or maybe its the way a few important
+      relationships (like occurence and instanceOf) are treated
+      specially in topic maps, which makes maps a little less
+      bewilderingly generic.
+    </p>
+
+    <p>
+      Topic maps have a system of using 
+      <abbr title="Universal Resource Identifier">URI</abbr>s 
+      to stand in for particular abstract subjects.
+      Separate topic maps using the same URI
+      <code>http://www.topicmaps.org/xtm/language.xtm#en</code>
+      as the <em>subject indicator</em> for the English language
+      know they are referring to the same thing.
+      When they are merged, the corresponding topics will be combined
+      automatically.  One of the activities of various topic-map
+      committees is creating <em>published</em> subject indicators for
+      various generically useful types of topic, in order to promote
+      interoperability between topic maps.  
+    </p>
+    <p>
+      Other (meta)data systems use URIs to represent subjects: 
+      <abbr
+      title="Resource-Description Framework">RDF</abbr> does (using a
+      weird convention where XML element-names turn in to URIs), 
+      <abbr title="Really Simple Syndication">RSS</abbr> 0.9x/2.0 does
+      (inasmuch as <code>category</code> names may be  interpreted
+      relative to a <code>domain</code> specified by a URL).  It would
+      be kind of cool if we could all agree to use the same 
+      subject identifiers, so our various efforts interoperate as much
+      as possible. 
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020912" id="e20020912">Version numbers in namespaces considered harmful</a></h2>
+        <p class="details">12 September 2002</p>
+        <p class="details permalink">
+          <a href="#e20020912" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><img src="../2002/../wp/icon-64x64.png" alt="" align="left" width="64" height="64" border="0" /></div><p class="first">
+      The various flavours of RSS offer a variety of namespace
+      requirements:
+    </p>
+
+    <table>
+      <thead>
+        <tr valign="bottom">
+	  <th align="left">URL</th>
+	  <th align="left">RSS version</th>
+	</tr>
+      </thead>
+      <tbody>
+        <tr>
+	  <td><code>http://my.netscape.com/rdf/simple/0.9/</code></td>
+	  <td>0.9</td>
+	</tr>
+        <tr>
+	  <td>(default)</td>
+	  <td>0.91, 0.92, 0.94</td>
+	</tr>
+	<tr>
+	  <td>
+	    <code>http://purl.org/rss/1.0/<br />
+	    http://purl.org/rss/1.0/modules/rss091#</code>
+	  </td>
+	  <td>1.0</td>
+	</tr>
+	<tr>
+	  <td><code>http://backend.userland.com/rss2</code></td>
+	  <td>2.0</td>
+	</tr>
+      </tbody>
+    </table>
+
+    <p>
+      In my opinion, it is a grave mistake to include a version number
+      in a namespace URI.  The function of a namespace is to prevent
+      accidental collisions between names defined by different people
+      (or organizations) when two XML vocabularies are combined in one
+      document.  The version number of the format can be specified 
+      separately (as indeed all the RSS versions do, as an attribute
+      of their root element).  If the 0.9 spec had only used
+      <code>http://netscape.com/1999/rss</code> as its namespace
+      (following the lead of
+      <code>http://www.w3.org/1999/xhtml</code>) then all
+      the versions could have used the same namespace.
+    </p>
+
+    <p>
+      Why do I&nbsp;care, you ask?  Because if you use actual XML
+      tools like XSLT to manipulate RSS feeds, then the fact that
+      there are three or four namespaces in use for essentially the
+      same elements makes the whole thing more complicated.  Where
+      I&nbsp;might have had
+    </p>
+
+    <pre>&lt;xsl:template match="/rss:rss/rss:channel"&gt;...</pre>
+
+    <p>
+      I better be prepared for more complicated expressions like
+    </p>
+
+    <pre>&lt;xsl:template match="/*/*[lname()=channel]"&gt;...</pre>
+
+    <p>
+      (to allow for any root element, and  to ignore the namespace of
+      the <code>channel</code> element).  This clutters the XSLT file
+      and makes it harder to maintain—and probably also less
+      efficient.  Sigh.
+    </p>
+
+    <p>
+      This is not unique to RSS, by the way—I&nbsp;had all sorts
+      of hassle with early ve4sions of SVG tools which were caught out
+      by the ever-changing SVG namespace URL.  They finally settled on
+      the quite-sane <code>http://www.w3.org/2000/svg</code>.
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020910" id="e20020910">Two silly suggestions for RSS 2.0</a></h2>
+        <p class="details">10 September 2002</p>
+        <p class="details permalink">
+          <a href="#e20020910" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/xss/letter.html"><img src="../2002/../wp/icon-64x64.png" class="initial" alt="" align="left" width="64" height="64" border="0" /></a></div><p class="first">
+      I’ve been thinking about the various RSS branches and
+      the RSS-2.0 process and send 
+      <a href="../2002/xss/letter.html">this</a>
+      to Mark Pilgrim and Dave Winer.  
+      Since then I&nbsp;have been sort out a draft recommendation.
+      It’s tricker than I&nbsp;thought...
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020903" id="e20020903">Wordsworth London Bicentennial</a></h2>
+        <p class="details">3 September 2002</p>
+        <p class="details permalink">
+          <a href="#e20020903" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="../2002/flags/au1901-240h.png"><img src="../2002/flags/au1901-64h.png" class="initial" alt="" align="left" width="128" height="64" border="0" /></a></div><p class="first">
+      Today is the 200th anniversary of Wordsworth’s ode to
+      London (luckily he could not afford to ride <em>inside</em> the
+      coach, so got a view worth writing about...).
+    </p>
+
+    <p>
+      It is also the
+      101st anniversary of the raising of the flag of the then
+      shiny-new Australian commonwealth (3 September 1901).
+      As it happens, when it came to making up quizzes for some
+      testing software at work, I whimsically chose the Australian
+      flag as a topic, which meant I ended up 
+      <a href="../2002/flags/">drawing my own</a>.
+      The one up at the top right there is the 1901 edition;
+      it is largely similar to the current National flag—can you
+      spot the differences?
+      (See also my entry for <a href="../2002/05.html#e20020531">31 May</a>.)
+    </p>
+  
+        </div>
+      </div>
+      <div class="entry">
+        <h2><a name="e20020902" id="e20020902">Random photos</a></h2>
+        <p class="details">2 September 2002</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../2003/caption.html">CAPTION</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="#e20020902" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+    <div><a href="http://www.korvar.pwp.blueyonder.co.uk/Pictures/index.php?pageType=folder<p>amp;currDir=./More_Photos_Of_Darren<p>amp;startFrom=1"><img src="../2002/cnv00030.jpg" class="initial" alt="" align="left" width="67" height="100" border="0" /></a></div><p class="first">
+      <a
+      href="http://www.korvar.pwp.blueyonder.co.uk/Pictures/index.php?pageType=folder&currDir=./More_Photos_Of_Darren&startFrom=1">More
+      snapshots of my nephew Darren</a> (my brother’s been
+      upgrading his web site).
+    </p>
+
+    <p>
+      Photos from
+      <a
+      href="http://caption.org/2002/">CAPTION 2002</a> by 
+      <a
+      href="http://www.disraeli.plus.com/CAP2002/capindex.html"><strong>Matt
+      Brooker</strong></a>, 
+      <a
+      href="http://www.bahala-na.co.uk/articles/caption2k2photos.htm">David
+      Goodman</a>, and <a
+      href="http://rubycabernet.members.beeb.net/photos/caption2002.htm">Matthew
+      Lawrenson</a>.  Jeremy’s <a
+      href="http://caption.org/2002/workshop/page1.htm">workshop
+      report</a> also has photos of the participants at work.
+    </p>
+  
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/">2003</a></li>
+        <li><a href="../2002/12.html">December 2002</a></li>
+        <li><a href="../2002/11.html">November 2002</a></li>
+        <li><a href="../2002/10.html">October 2002</a></li>
+        <li><a href="../2002/09.html">September 2002</a></li>
+        <li><a href="../2002/08.html">August 2002</a></li>
+        <li><a href="../2002/07.html">July 2002</a></li>
+        <li><a href="../2002/06.html">June 2002</a></li>
+        <li><a href="../2002/05.html">May 2002</a></li>
+        <li><a href="../2002/04.html">April 2002</a></li>
+        <li><a href="../2002/03.html">March 2002</a></li>
+        <li><a href="../2002/02.html">February 2002</a></li>
+        <li><a href="../2002/01.html">January 2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

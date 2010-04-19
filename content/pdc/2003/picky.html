@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:50 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Picky Picky Game - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>picky</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Picky Picky Game</h1>
+      <div class="entry">
+        <h2><a name="e20060306-filepic" id="e20060306-filepic">TurboGears and OpenID, part 2</a></h2>
+        <p class="details">6 March 2006</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="turbogears.html">TurboGears</a></li>
+            <li><strong>Picky Picky Game</strong></li>
+            <li><a href="sqlobject.html">SQLObject</a></li>
+            <li><a href="hmac.html">hmac</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2006/03/06.html#e20060306-filepic" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I wrote that I planned to return to my <a href="http://turbogears.org/">TurboGears</a> version of the
+   <a href="http://caption.org/picky/" title="Picky Picky Game version 0.19">Picky Picky Game</a> once I had picture-uploading working.  Yesterday I
+   finally had a spare afternoon to do some more hacking on Picky2, and got
+   uploading of pictures working.  But before that I will finish off my description
+   of doing authentication with OpenID. 
+</p>
+
+<h3> Log-in Cookie</h3>
+<p>In the <a href="../2006/02/10.html">first episode</a> I skipped the last step in authenticating a
+   user: remembering they are logged in so they don’t have to repeat the
+   process for  every page.  In the process of adding that tiny detail I
+   also refactored the code so that the log-in controller class (used by
+   the <a href="http://www.cherrypy.org/" title="CherryPy is a pythonic,  object-oriented web development framework.">CherryPy</a> part of TurboGears to run the <code>login</code> page) is in 
+   <code>authentication.py</code>; in <code>controllers.py</code> you just see
+</p>
+<pre><code>class Root(controllers.Root):
+    login = authentication.LoginController()
+... followed by method definitions ...
+</code></pre><p>The cookie is saved with this function
+</p>
+<pre><code>import sqlobject, hmac, base64, time
+...
+
+def setLoggedInUserByUri(uri, remember=False):
+    """The user identified by this URI is logged in: record this in a cookie."""
+    # 1. Ensure there is an entry in our database.
+    try:
+        pers = model.Person.byUri(uri)
+    except sqlobject.SQLObjectNotFound:
+        label = uri
+        if uri.startswith(’http://’):
+            label = label[7:]
+        pers = model.Person(uri=uri, label=label)
+
+    # 2. Create a cookie that contains an HMAC
+    # (message authentication code) for the user’s log-in URI.
+    s = ‘%d,%s’ % (int(time.time() + COOKIE_TTL), uri)
+    h = hmac.new(SECRET, s).digest()
+    cherrypy.response.simpleCookie[’you’] = base64.standard_b64encode(h) + ‘,’ + s 
+    c = cherrypy.response.simpleCookie[’you’] # Get the magic morsel object
+    c[’path’] = ‘/’
+    if remember:
+        c[’max-age’] = COOKIE_TTL
+
+    turbogears.flash(’Welcome to Picky2’)
+</code></pre><p>The first part adds an entry to our database if this person is new to us. Recall
+   that the person is identified by URI they  supplied to OpenID. The label field
+   will eventually be the human-friendly name for the person; for now we fudge it
+   by just using the URI.
+</p>
+<p>The second part creates a message-authentication code (MAC) of the HMAC flavour,
+   defined in <a href="http://www.ietf.org/rfc/rfc2104.txt" title="HMAC: Keyed-Hashing for Message Authentication">RFC 2104</a>. The cookie’s value looks something like
+</p>
+<pre><code> IjlymCqVDwIpY6MxFTRXjQ==,1141631485,http://example.org/jsmith
+</code></pre><p>The last part is the identity of the logged-in person; the second part is the
+   time when this cookie should be considered expired, and the first part is the
+   HMAC that makes it hard for someone else to forge a cookie: without knowing the
+   value of <code>SECRET</code>, it will be infeasible to generate the correct HMAC value.
+   The time-out value is included so that even if your cookie <em>is</em> stolen by some
+   cross-site scripting naughtiness, it will not be useful for very long.
+</p>
+<p>The last bit sets the cookie. The tricky part was finding documentatioin for how
+   CherryPy handles cookies; in the end it turns out Python has a <a href="http://docs.python.org/lib/module-Cookie.html">Cookie module</a>
+   and that CherryPy uses that.
+</p>
+
+<h3> Is that my Cookie?</h3>
+<p>The flip-side of all this is that when you visit a page later, it needs to know
+   if you have logged in.  To do that it uses this function to get the currently
+   logged in user:
+</p>
+<pre><code>def getLoggedInUser():
+    """Return the Person object for the logged-in user."""
+    loginUri = ‘login?next=%s’ % util.uriParamEncode(cherrypy.request.browserUrl)
+    c = cherrypy.request.simpleCookie.get(’you’)        
+    auth = c and c.value
+    if not auth:
+        turbogears.flash(’Please log in first’)
+        raise cherrypy.HTTPRedirect(loginUri)
+    h, s = auth.split(’,’, 1)
+    hh = hmac.new(SECRET, s).digest()
+    if h != base64.standard_b64encode(hh):
+        turbogears.flash(’Cookie has expired (or had bad HMAC)’)
+        raise cherrypy.HTTPRedirect(loginUri)
+    expires, u = s.split(’,’, 1)
+    if int(expires) &lt; time.time():
+        turbogears.flash(’Cookie has expired’)
+        raise cherrypy.HTTPRedirect(loginUri)
+
+    try:
+        pers = model.Person.byUri(u)
+    except sqlobject.SQLObjectNotFound:
+        turbogears.flash(’This user has never logged in (or database broken)’)
+        raise cherrypy.HTTPRedirect(loginUri)
+
+    # TODO. Refesh the cookie
+    return pers
+</code></pre><p>The first thing it tries is basically the <em>last</em> part of the set-cookie
+   function, run backwards: it gets the cookie, tries to see whether the HMAC
+   matches, then decomposes it in to the time-out and user-identity parts. Each
+   time it fails to verify the cookie, it uses <code>turbogears.flash</code> to explain why;
+   this is for my benefit (while debugging the application), and is probably too
+   indiscreet for a production web server. I should probably change it to just say
+   ‘Please log in’ and not offer any explanations!
+</p>
+<p>Next: all about uploading pictures. This time for sure.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../2004/06/24.html#e20040624" title="Permanent URL for this entry">Submit Picture page versus caching</a>
+          24 June 2004
+        </li>
+        <li>
+          <a href="../2003/12/28.html#e20031228" title="Permanent URL for this entry">Dates Dates Dates</a>
+          28 December 2003
+        </li>
+        <li>
+          <a href="../2003/08/27.html#e20030827" title="Permanent URL for this entry">Tweaked the RSS feed for Picky Picky Game</a>
+          27 August 2003
+        </li>
+        <li>
+          <a href="../2003/08/13.html#e20030813" title="Permanent URL for this entry">RSS feed for the Picky Picky Game</a>
+          13 August 2003
+        </li>
+        <li>
+          <a href="../2003/07/21.html#e20030721" title="Permanent URL for this entry">Picky Picky Game restarted</a>
+          21 July 2003
+        </li>
+        <li>
+          <a href="../2003/07/18.html#e20030718" title="Permanent URL for this entry">Picky Picky Disaster</a>
+          18 July 2003
+        </li>
+        <li>
+          <a href="../2003/07/11.html#e20030711" title="Permanent URL for this entry">New layout for archive pages</a>
+          11 July 2003
+        </li>
+        <li>
+          <a href="../2003/06/09.html#e20030609" title="Permanent URL for this entry">JavaScript image loading problems</a>
+          9 June 2003
+        </li>
+        <li>
+          <a href="../2003/06/06.html#e20030606" title="Permanent URL for this entry">Fixed a bug when starting new panel</a>
+          6 June 2003
+        </li>
+        <li>
+          <a href="../2003/05/31.html#e20030531" title="Permanent URL for this entry">Now with comments!</a>
+          31 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/30.html#e20030530" title="Permanent URL for this entry">Remember my details</a>
+          30 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/26.html#e20030526" title="Permanent URL for this entry">Using Microsoft Paint to draw a panel</a>
+          26 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/25.html#e20030525" title="Permanent URL for this entry">Back to your regular schedule</a>
+          25 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/22.html#e20030522" title="Permanent URL for this entry">Fixed a JavaScript problem, one remains</a>
+          22 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/21.html#e20030521b" title="Permanent URL for this entry">Now with BMP support</a>
+          21 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/21.html#e20030521" title="Permanent URL for this entry">On to Panel 17!</a>
+          21 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/19.html#e20030519b" title="Permanent URL for this entry">CGI vs. If-Modified-Since (part 2)</a>
+          19 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/19.html#e20030519a" title="Permanent URL for this entry">CGI vs. If-Modified-Since and other stories</a>
+          19 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/17.html#e20030517" title="Permanent URL for this entry">Backslashes in URLs</a>
+          17 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/14.html#e20030514" title="Permanent URL for this entry">ZODB: don&rsquo;t forget to close connections</a>
+          14 May 2003
+        </li>
+        <li>
+          <a href="../2003/05/04.html#e20030504" title="Permanent URL for this entry">Picky Picky Game: No writing files</a>
+          4 May 2003
+        </li>
+        <li>
+          <a href="../2003/04.html#e20030429" title="Permanent URL for this entry">Serving my own damn files</a>
+          29 April 2003
+        </li>
+        <li>
+          <a href="../2003/04.html#e20030414a" title="Permanent URL for this entry">More trouble with uploads and CGI</a>
+          14 April 2003
+        </li>
+        <li>
+          <a href="../2003/04.html#e20030413" title="Permanent URL for this entry">Picky Picky Game: HTML 4 versus REST</a>
+          13 April 2003
+        </li>
+        <li>
+          <a href="../2003/02.html#e20030202" title="Permanent URL for this entry">Picky + REST?</a>
+          2 February 2003
+        </li>
+        <li>
+          <a href="../2002/12.html#e20021208b" title="Permanent URL for this entry">Picky Picky Game release 0.1</a>
+          8 December 2002
+        </li>
+        <li>
+          <a href="../2002/12.html#e20021207" title="Permanent URL for this entry">Picky Picky Game: Refactoring the CGI scripts</a>
+          7 December 2002
+        </li>
+        <li>
+          <a href="../2002/12.html#e20021206" title="Permanent URL for this entry">PPG: Testing time</a>
+          6 December 2002
+        </li>
+        <li>
+          <a href="../2002/12.html#e20021202" title="Permanent URL for this entry">Picky Picky Game: Tidying up the Python code</a>
+          2 December 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021125b" title="Permanent URL for this entry">Picky Picky Game: minimal voting</a>
+          25 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021118b" title="Permanent URL for this entry">ZEO just works</a>
+          18 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021118a" title="Permanent URL for this entry">Picky Picky Game: The Joy of PIL</a>
+          18 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021117" title="Permanent URL for this entry">Picky Picky Game: ZEO + CGI</a>
+          17 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021116b" title="Permanent URL for this entry">EAGAIN, again</a>
+          16 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021114b" title="Permanent URL for this entry">More on Opera&rsquo;s boundaries</a>
+          14 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021114a" title="Permanent URL for this entry">CGI upload woes</a>
+          14 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021111" title="Permanent URL for this entry">Picky Picky Game: Upload pictures, EAGAIN</a>
+          11 November 2002
+        </li>
+        <li>
+          <a href="../2002/11.html#e20021107" title="Permanent URL for this entry">Picky, Skin, SaxLifter</a>
+          7 November 2002
+        </li>
+        <li>
+          <a href="../2002/10.html#e20021031a" title="Permanent URL for this entry">Picky Picky periodicity</a>
+          31 October 2002
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

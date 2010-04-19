@@ -1,0 +1,114 @@
+#! /usr/bin/env python
+# -*-python-*-
+
+import sys
+import urllib
+import re
+import codecs
+import time
+import getopt
+
+class Usage(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+
+usage = """USAGE: fetchljLinks [ OPTION... ]
+
+Options:
+    -n, --no-fetch
+        Don't download the HTML page, recycle the data obtained last time.
+    -p, --preserve
+        Attempt to preserve old comments links.
+        Since LiveJournal do not preserve comments beyond a certain
+        age, this is no longer very useful.
+"""
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv[1:]
+        
+    titleItems = {}
+
+    tmpFileName = 'livejournal-pdc.html'
+    isArchivePreserved = 0
+    isRecycleTmp = 0
+
+    try:
+        try:
+            opts, args = getopt.getopt(argv, 'np', ['no-fetch', 'preserve'])
+        except getopt.GetoptError, msg:
+            raise Usage(msg)
+
+        for flag, val in opts:
+            if flag in ['-n', '--no-fetch']:
+                isRecycleTmp = True
+            elif flag in ['-p', '--preserve']:
+                isArchivePreserved = True
+        if args:
+            raise Usage('Unrecognized arguments after options')
+        
+        if isArchivePreserved:
+            input = open('lj.data', 'r')
+
+            isTitles = 0
+            for line in input.readlines():
+                es = line.split()
+                if 'ljTitleComments' in es:
+                    isTitles = 1
+                    isCounts = isComments = 0
+
+                if len(es) == 2:
+                    if isTitles:
+                        titleItems[es[0]] = es[1]
+            input.close()
+            print 'Read', len(titleItems), 'new-style entries'
+
+        if isRecycleTmp:
+            input = codecs.open(tmpFileName, 'r', 'UTF-8')
+            text = input.read()
+            input.close()
+        else:
+            input = urllib.urlopen('http://livejournal.com/~pdc/')
+            enc = input.info().get('content-type')
+            text = input.read().decode('UTF-8') # .decode('iso-8859-1')
+
+            tmp = codecs.open(tmpFileName, 'w', 'UTF-8')
+            tmp.write(text)
+            tmp.close()
+
+        print 'Got', len(text), 'characters'
+
+        newRe = re.compile(r'<tr><td[^<>]*><a href="http://www.livejournal.com/users/pdc/([0-9]*).html">[^<>]*</a>:</td><td[^<>]*> <b>([^<>]*)</b>')
+        n = 0
+        for itemid, title in newRe.findall(text):
+            if not titleItems.has_key(title):
+                titleItems[title] = itemid
+                n += 1
+
+        print 'Read', n, 'new-style entries.'
+
+        output = codecs.open('lj.data', 'w', 'UTF-8')
+        output.write('# Info about the syndicated copy of my RSS on LiveJournal\n')
+        output.write('# Generated on %s\n' % time.strftime('%Y-%m-%dT%H:%M', time.localtime()))
+
+        def writeArray(output, name, xs):
+            output.write('\narray set %s {\n' % name)
+            ks = xs.keys()
+            ks.sort()
+            for k  in ks:
+                if ' ' in k:
+                    output.write('\t"%s" %s\n' % (k, xs[k]))
+                else:
+                    output.write('\t%s %s\n' % (k, xs[k]))
+            output.write('}\n')
+
+        writeArray(output, 'ljTitleComments', titleItems)
+        output.close()
+        return 0
+    except Usage, err:
+        print >>sys.stderr, err.msg
+        print >>sys.stderr, usage
+        return 2
+
+if __name__ == '__main__':
+    sys.exit(main())

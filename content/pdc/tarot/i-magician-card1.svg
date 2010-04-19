@@ -1,0 +1,135 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" 
+  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 400 580"
+	    width="400" height="580">
+    <defs>
+ 	<font id="font-1" horiz-adv-x="12">
+	    <font-face
+		    font-family="Even" 
+		    font-weight="normal"
+		    font-style="normal"
+		    units-per-em="18"
+		    horiz-origin-x="1.5"
+	    	horiz-adv-x="10"
+		    cap-height="12"
+		    x-height="9"
+		    ascent="12"
+		    descent="0"
+		    alphabetic="0" mathematical="6"
+		    ideographic="6" hanging="6">
+	    </font-face>
+	    <missing-glyph horiz-adv-x="11"
+	    	    d="M1,0  v12  h9  v-12  z 
+	    	    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
+	    <glyph unicode=" " horiz-adv-x="6" d=""/>
+	    <glyph unicode="!" horiz-adv-x="3.5"
+	    	    d="M1,0  v1.5  h1.5  v-1.5  z 
+	    	    M1,3  v9  h1.5  v-9  z"/>
+	    <glyph unicode="0" horiz-adv-x="11"
+	            d="M5.5,-0.25  Q10,-0.25 10,5.825
+	            Q10,12.25 5.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 5.5,10.75  Q8.5,10.75 8.5,5.825
+	            Q8.5,1.25 5.5,1.25  z
+	            "/>
+	    <glyph unicode="." horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z"/>
+	    <glyph unicode="a" horiz-adv-x="11"
+	            d="M5.5,8  q-4.5,0 -4.5,-4  t4.5,-4.25
+	            q3,0 3,1.75  v-1.5  h1.5  v7
+	            q0,5.25 -4.5,5.25
+	            q-2.5,0 -3.5,-1.5  v-1.5  q1,1.5 3.5,1.5
+	            q3,0  3,-3  z
+	            M8.5,6.25  v-3.25  q0,-1.75 -3,-1.75
+	            t-3,2.75 3,2.5 z"/>
+	    <glyph unicode="c" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            q2.5,0 4.5,1.5  v-1.5   q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>
+	    <glyph unicode="e" horiz-adv-x="13"
+	            d="M12,5  q0,7 -5.5,7.25  t-5.5,-6.25 5.5,-6.25
+	            q3.5,0 4.5,1.5  v1.5  q-2,-1.5 -4.5,-1.5
+	    		q-4,0 -4,3.75  z
+	    		M2.5,6.5  q0,4.25 4,4.25 t4,-4.25  z"/>
+	    <glyph unicode="f" horiz-adv-x="8"
+	            d="M1,0  h1.5  v5  h4  v1.5  h-4  v4  h5  v1.5  h-6.5  z"/>
+	    <glyph unicode="g" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            9,1.25 9.5,2.75
+	            V5  h-3  V6.5  h4.5  V1.25
+	            q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>	            
+	    <glyph unicode="h" horiz-adv-x="11"
+	    		d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
+	    		h-1.5  v5.25  h-6  v-5.25  z"/>
+	    <glyph unicode="i" horiz-adv-x="4.5"
+	            d="M1.5,0  h1.5  v12  h-1.5  z"/>
+	    <glyph unicode="l" horiz-adv-x="8"
+	    		d="M1,0  v12  h1.5  v-10.5  h5.5  v-1.5  z"/>
+	    <glyph unicode="m" horiz-adv-x="18"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.325,12.25  9.75,12.25 9,6.75
+	            8.25,12.25 12.625,12.25   17,12.25 17,5.825
+	            V0  h-1.5  V5.85
+	            Q15.5,10.75 12.625,10.75  9.75,10.75 9.75,5.85
+	            V0  h-1.5  V5.85
+	            Q8.25,10.75 5.325,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="n" horiz-adv-x="11"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.5,12.25  10,12.25 10,5.825
+	            V0  h-1.5  V5.85
+	            Q8.5,10.75 5.5,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="o" horiz-adv-x="13"
+	            d="M6.5,-0.25  Q12,-0.25 12,5.825
+	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 6.5,-0.25  z
+	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 6.5,10.75  Q10.5,10.75 10.5,5.825
+	            Q10.5,1.25 6.5,1.25  z"/>
+	    <glyph unicode="t" horiz-adv-x="11"
+	            d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
+	    <glyph unicode="O" horiz-adv-x="13"
+	            d="M5.5,-0.25  Q11,-0.25 11,5.825
+	            Q11,12.25 5.5,12.25  Q0,12.25 0,5.825
+	            Q0,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q1.5,1.25 1.5,5.825
+	            Q1.5,10.75 5.5,10.75  Q9.5,10.75 9.5,5.825
+	            Q9.5,1.25 5.5,1.25  z"/>
+	</font>
+    </defs>
+    <rect x="1" y="1" width="398" height="578" stroke-width="2" rx="20" ry="20"
+        fill="#F8F8F0" stroke="#666600"
+    />
+    <image x="20" y="40" width="360" height="500"
+            xlink:href="i-magician.svg"/>
+    <path fill="black" stroke="none" opacity="0.5"
+            d="M380,40 H340 V320 q0,20 20,20  H380  z"/>
+    <text x="0" y="0" transform="rotate(-90) translate(-325,375)"
+            fill="white" stroke="none"
+            font-family="Even" font-size="40"
+            width="500">
+        the magician
+    </text>
+    <text x="20" y="36" fill="black" stroke="none"
+            font-family="arial, helvetica, sans-serif" font-size="16">
+        skill, confidence, communication
+    </text>
+    <text transform="rotate(180) translate(-380,-544)"
+            fill="black" stroke="none"
+            font-family="arial, helvetica, sans-serif" font-size="16">
+        lack of confidence, bad communication
+    </text>
+	
+</svg>

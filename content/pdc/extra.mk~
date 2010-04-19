@@ -1,0 +1,18 @@
+
+index.html: 	entryDefs.tcl */*.e lj.data 2004/delicious.inc 2006/livejournal.inc
+
+rss.xml: 	index.html
+
+$(htmlFiles): pdcDefs.tcl
+
+lj.data: livejournal-pdc.html ljToljData.xslt
+	# This relies on its being well-formed XML.
+	xsltproc ljToljData.xslt livejournal-pdc.html > lj.data
+	
+2004/delicious.inc: 2004/del.icio.us.rss 2004/delToHtml.xslt
+	xsltproc 2004/delToHtml.xslt 2004/del.icio.us.rss > tmp.xml
+	sed -e '1 d' -e '2 s, xmlns="http://www.w3.org/1999/xhtml",,' < tmp.xml > 2004/delicious.inc
+	rm tmp.xml
+
+2006/livejournal.inc:
+	cd 2006; $(MAKE) livejournal.inc

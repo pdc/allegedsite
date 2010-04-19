@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2004-08-01 19:59 BST -->
+  <!-- with command: cd /Users/pdc/th/tuschin/pdc/2004/08;
+  /usr/local/bin/thc -r /Users/pdc/Sites/tuschin/ -s pdc/2004/07 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>19 July 2004 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2004</a> &gt;&gt;
+      <a href="./">07</a> &gt;&gt;
+      <strong>19</strong>
+    </p>
+    <div id="body">
+      <h1>Damian Cugley (19 July 2004)</h1>
+      <div class="entry">
+        <h2><a name="e20040719" id="e20040719">MU part 2: Clear as MUD</a></h2>
+        <p class="details">19 July 2004</p>
+  <p><img src="../../2004/../icon-64x64.png" alt="" align="right" width="64" height="64" border="0" />
+   This is a continuation of <a href="../../2004/17.html" title="MU: A notation for mark-up">my pointless musing about a hypothetical
+   alternative to XML called MU</a>.
+   </p>
+  <h3>
+   The importance of metadata
+   </h3>
+  <p>
+   A MU instance cannot stand entirely alone -- no text file can, because
+   you need to know the encoding used to convert the character data to a
+   the sequence of bytes actually stored on disc or transmitted over the
+   network.  (As discussed in the previous entry, the MU data does not
+   describe its own encoding.)
+   </p>
+  <p>
+   I will describe two ways to store metadata for MU documents, one using
+   MIME media-type parameters and the other as a separate resource in a
+   format called MUD.  A MUD-savvy web servers will use the metadata in
+   the MUD to construct the <code>Content-type</code> headers.
+   </p>
+  <h3>
+   MIME-type parameters
+   </h3>
+  <p>
+   In the fantasy world in which MU exists, the Internet media-type for
+   MU is <code>text/mu</code>, with variations like <code>text/html+mu</code>
+   permitted in a manner similar to the <code>+xml</code> convention.
+   </p>
+  <p>
+   There is some discussion as to where XML data should be
+   <code>application/xml</code> or <code>text/xml</code>.  I am pretty sure that the reasons
+   for preferring the former is that (a) not all XML data is supposed to
+   be a document for reading by human beings, and (b) media-types
+   starting with <code>text/</code> are subject to transcoding, and that would break
+   XML documents that mention their own encoding.  MU is not intended as
+   a general-purpose serialization format, and can be transcoded (because
+   the program doing the transcoding will emend the metadata), so I think
+   that makes <code>text/mu</code> OK.  I might be wrong, though.
+   </p>
+  <p>
+   The <code>charset</code> parameter specifies how to convert the bytes in to
+   characters.  Thus one can have things like
+   </p>
+   <ul>
+   <li>
+    <code>text/mu; charset=ISO8859-1</code>
+    </li>
+   <li>
+    <code>text/mu; charset=UTF-8</code>
+    </li>
+   <li>
+    <code>text/mu; charset=UTF-16LE</code>
+    </li>
+  </ul>
+  <p>
+   And for compatibility with other RFCs I am too lazy to look up,
+   </p>
+   <ul>
+   <li>
+    an omitted <code>charset</code> means the MU document is in strict US-ASCII;
+    </li>
+   <li>
+    if the charset is UTF-16, then the data may be (a) a byte-order
+        mark 0xFF 0xFE followed by UTF-16LE data, (b) a BOM
+        0xFE 0xFF followed by UTF-16BE data, or (c) UTF-16BE data with no BOM.
+    </li>
+  </ul>
+  <p>
+   The first point diverges from HTML, which vaguely assumes ISO 8859-1
+   in the absence of a charset but then requires increasingly
+   hair-raising guesses depending on the byte values the parser
+   encounters.  But MU documents must always be accompanied by a valid
+   media-type, and that MUST include a <code>charset</code> if the encoding is not
+   US-ASCII.
+   </p>
+  <p>
+   Another parameter is <code>mud</code>.  This gives one or more URIs for MUD
+   resources to be used when interpreting this MU resource.  This is a
+   list of one or more URIs separated by whitespace.  For example,
+   </p>
+<pre>
+text/mu; charset=UTF-8; mud="http://example.org/muds/formz.mud"
+</pre>
+  <p>
+   Note that MUDs for popular formats will of course be cached, so the
+   standard URI should be used wherever possible.
+   </p>
+  <h3>
+   MUD units
+   </h3>
+  <p>
+   In this document I am not describing MUD features in complete
+   detail as would be required by a real spec.
+   The underlying format of the MUD unit is <a href="http://yaml.org" title="Yaml Ain't Mark-up Language">YAML</a>.  A formal
+   specification of MUD, if such a thing extsited, might define a syntax
+   that is a subset or profile of the full YAML syntax.  For example:
+   </p>
+<pre>
+media type: text/html+mu
+charset: UTF-8
+features:
+  - tag:alleged.org,2004:mu:link/1.0
+  - tag:alleged.org,2004:mu:object/1.0
+namespaces:
+  html: http://www.w3.org/1999/xhtml
+  dc: http://purl.org/dc/1.0
+</pre>
+  <p>
+   The <code>media type</code> property is MIME type and subtype, sans parameters.
+   The key <code>charset</code> gives the character encoding of the MU.  A MUD-savvy web
+   server would use these to generate a complete MIME media-type for the
+   MU resource, with a <code>mud</code> parameter pointing at the MUD unit.  Note
+   that the media type from the web server takes precedence over any
+   <code>media type</code> and <code>charset</code> parameters in the MUD (to allow for
+   transcoding).
+   </p>
+  <p>
+   The connection of MU to MUD for files on a computer&#x2019;s file system will
+   depend partly on the underlying operating system.  On a Macintosh with
+   HFS, the MUD unit might conceivably be a <code>MUD!</code> resource of the MU
+   document.  Ditto for other operating systems which allow multipart
+   files natively -- although if I were to point out that this includes
+   NTFS it would probably suprise a lot of Windows NT developers!
+   </p>
+  <p>
+   Otherwise processors could automatically expect that a document
+   <code>foo/bar.mu</code> will have a MUD resource available as <code>foo/bar.mud</code>, or,
+   failing that, <code>foo/DEFAULT.mud</code>.
+   </p>
+  <h3>
+   MUD imports
+   </h3>
+  <p>
+   The key <code>imports</code> has as its value a list if URIs, each on a separate
+   line, introduced with a hyphen-space (YAML list syntax).  For example:
+   </p>
+<pre>
+imports:
+  - http://www.example.org/2004/html.mud
+  - http://www.example.org/2004/formz.mud
+  - http://www.example.org/2004/mathml.mud
+</pre>
+  <p>
+   Imports means reading in the extra MUD files and merging their
+   properties.
+   </p>
+  <p>
+   The key <code>base</code> can be used to specify the base for partial URIs (same
+   idea as <code>xml:base</code>).
+   </p>
+  <p>
+   The use of imports allows for a MUD embedded in a file (as a Macintosh
+   resource, say) to be very short, limited to a <code>charset</code> and an
+   <code>imports</code> parameter).
+   </p>
+  <h3>
+   Namespaces
+   </h3>
+  <p>
+   The purpose of namespaces is to allow sets of tags defined by
+   different organizations to be mixed without prior arrangement.
+   Namespaces are not intended to be used to indicate the
+   <em>interpretation</em> of the tags; for that, see the <code>features</code> property
+   described below.
+   </p>
+  <p>
+   The <code>namespaces</code> parameter is a mapping from prefixes to URIs.  In the
+   MUD this is represented as namespace-colon-URI pairs, one per line,
+   indented (the YAML syntax for maps).  For example:
+   </p>
+<pre>
+namespaces:
+  html: http://www.w3.org/1999/xhtml
+  form: tag:example.org,2004:formz
+</pre>
+  <p>
+   Each of these maps a namespace prefix to the subject indicator for its
+   namespace.  No implication is made that there is a downloadable
+   resource at this URI; they are used merely to supply a globally unique
+   identifier.
+   </p>
+  <p>
+   There is no default namespace.  Tags with no prefix are promiscuous so
+   far as special meanings (specified by features, below) are concerned.
+   </p>
+  <p>
+   MU namespaces are simpler than XML namespaces in a couple of ways:
+   they are specified outside the MU document (not on individual
+   elements), and so apply uniformly throughout the document.  A MU
+   editor that is assembling a document from arbitrary fragments can
+   collect together their namespaces and if necessary munge the prefixes
+   to make them unique.
+   </p>
+  <p>
+   Mixed-namespace documents should not be needed as much with MU as with
+   XML, because MU does not need to use namespaces to trigger special
+   features.  For example, MU can use <code>href</code> for links (using the
+   <code>features</code> property described below), rather than having to have
+   <code>xlink:href</code> or <code>xml:href</code> as separately namespaced  attributes.
+   </p>
+  <p>
+   Also, inclusion of data in different formats is expected to be done
+   through links rather than in-line.
+   </p>
+  <h3>
+   Features
+   </h3>
+  <p>
+   The key <code>features</code> introduces a list of URIs that are subject
+   indicators for features required in the MU processor to correctly
+   render this document.
+   </p>
+  <p>
+   The term <code>subject indicator</code> means a URI that does not refer to actual
+   downloadable resources, but is used as a token for a software feature
+   the processor must support to make sense of this document.  The URIs
+   may well be compiled in to the plug-in implementing the feature.
+   </p>
+  <p>
+   For example, we might define the URI
+   <code>tag:alleged.org.uk,2004:mu:link/1.0</code> to mean that <code>href</code> and <code>src</code>
+   attributes have the same meanings as <code>xml:href</code> and <code>xml:src</code> in
+   <a href="http://dubinko.info/writing/skunklink/">Skunklink</a>.
+   </p>
+  <p>
+   Features will generally be associated with a namespace, but that does
+   not mean that the tags that are recognized by a feature must always
+   have a namespace prefix: tags are offered to all
+   feature implementations and features should match tags (a) with their
+   namespace prefix, and (b) with no prefix.
+   </p>
+  <p>
+   For example, we might define a <code>switch</code> tag in a namespace
+   <code>tag:alleged.org,2004:mu:switch</code> and include the  URI
+   <code>tag:alleged.org,2004:mu:switch/1.0</code> amongst the features.
+   This allows us to have a MU fragment like the following:
+   </p>
+<pre>
+&lt;p>
+    This is HTML with an image:
+    &lt;switch>
+        &lt;img feature="tag:alleged.org,2004:mu:svg/1.0"
+              src="../../2004/foo.svg"/>
+        &lt;img feature="tag:alleged.org,2004:mu:png/1.0"
+	      implementation="msie/5.5" src="../../2004/foo-noalpha.png"/>
+        &lt;img feature="tag:alleged.org,2004:mu:png/1.0"
+              src="../../2004/foo.png"/>
+        &lt;span>FOO&lt;/span>
+    &lt;/switch>
+    And on with the text.
+&lt;/p>
+</pre>
+  <p>
+   The <code>p</code>, <code>span</code> and <code>img</code> tags are recognized by the HTML feature,
+   say, so implicitly in the <code>http://www.w3.org/1999/xhtml</code> namespace,
+   whereas the <code>switch</code> tag, and <code>feature</code> and <code>implementation</code>
+   attributes are recognized by the switch feature and are implicitly in
+   its namespace.
+   </p>
+  <p>
+   The idea here is to allow modularization of HTML but to only require
+   namespace prefixes when there is ambiguity.  This reduces the load on
+   the MU author, which is just as well because we have seen that most
+   HTML developers are terrified of XML namespaces!
+   </p>
+  <p>
+   If a tag is not recognized by any feature, then the default behaviour
+   is to strip the tags and display its content.  This includes the case
+   where a feature is not supported by the application.
+   </p>
+  <p>
+   Finally, one of the feature URIs would be (say) <code>tag:alleged.org,2004:css/3</code>,
+   and would mean that CSS 3 is used to describe how tags are displayed
+   (in the absence of other applicable features).  I imagine that much of
+   the HTML compatibility could be expressed in CSS 3.
+   </p>
+  <h3>
+   Title
+   </h3>
+  <p>
+   Does this belong in the MUD or the MU?  I think the MUD but this
+   implies that every document needs a separate MUD resource.
+   </p>
+  <h3>
+   Links
+   </h3>
+  <p>
+   Links to other resources.  Each link is itself a mapping:
+   </p>
+<pre>
+links:
+  - rel: stylesheet
+    type: text/css
+    href: foo.css
+  - rel: alternate
+    type: application/atom+xml
+    href: bar.atom
+</pre>
+  <p>
+   I think I have gone on about my hypothetical MUD for long enough now.
+   </p>
+        <p class="endnotes">
+          [
+          <a href="../../2003/mu.html">mu</a>, <a href="../../2003/mud.html">mud</a>, <a href="../../2003/xml.html"><abbr title="Extensible Mark-Up Language">XML</abbr></a>, <a href="../../2003/html.html">html</a>, <a href="../../2003/yaml.html">yaml</a>, <a href="../../2003/mime.html">mime</a>
+          |
+          <a href="#e20040719" title="Permanent URL for this entry">#</a>
+          ]
+        </p>
+      </div>
+    </div>
+    <dl class="links">
+      <dt class="FirstChild">Archives</dt>
+      <dd><a href="../../2003/subjects.html">by topic</a></dd>
+      <dd><a href="../../2004/08/">August 2004</a></dd>
+      <dd><a href="../../2004/07/">July 2004</a></dd>
+      <dd><a href="../../2004/06/">June 2004</a></dd>
+      <dd><a href="../../2004/05/">May 2004</a></dd>
+      <dd><a href="../../2004/04/">April 2004</a></dd>
+      <dd><a href="../../2004/02/">February 2004</a></dd>
+      <dd><a href="../../2004/01/">January 2004</a></dd>
+      <dd><a href="../../2003/">2003</a></dd>
+      <dd><a href="../../2002/">2002</a></dd>
+      <dd><a href="../../2001/">2001</a></dd>
+      <dd><a href="../../2000/">2000</a></dd>
+      <dd><a href="../../1999/">1999</a></dd>
+      <dd><a href="../../1998/">1998</a></dd>
+      <dd><a href="../../1997/">1997</a></dd>
+      <dt>Entertainments</dt>
+      <dd><a href="../../2003/picky/">Picky Picky Game</a></dd>
+      <dd><a href="../../tarot/">Alleged Tarot 2002</a></dd>
+      <dd><a href="../../2001/xmas.html">2001 Xmas card (SVG)</a></dd>
+      <dd><a href="../../how-tall-are-you/">How tall are you? quiz</a></dd>
+      <dd><a href="http://caption.org/2000/pdc/">My Fabulous Life (2000)</a></dd>
+      <dt>Photo albums</dt>
+      <dd><a href="../../2003/mull/">Mull (2003)</a></dd>
+      <dd><a href="../../2002/maymorning/">May Morning (2002)</a></dd>
+      <dd><a href="../../aviemore/">Aviemore (1999)</a></dd>
+      <dd><a href="../../bologna/">Bologna (1998)</a></dd>
+      <dd><a href="../../roch/">Roch Castle (1998)</a></dd>
+      <dd><a href="http://caption.org/1997/pdc/">CAPTION97</a></dd>
+      <dd><a href="http://caption.org/1996/pdc/">CAPTION96</a></dd>
+      <dt><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></dt>
+      <dt><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></dt>
+      <dt><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></dt>
+    </dl>
+  </body>
+</html>

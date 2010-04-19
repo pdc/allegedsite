@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:29 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2005/04;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2005/04 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>April 2005 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2005</a> &gt;&gt;
+      <strong>04</strong>
+    </p>
+    <div id="body">
+      <h1>Archives for April 2005</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20050411pwdencrypt" id="e20050411pwdencrypt">Cryptographically secured tickets using Microsoft SQL Server with pwdencrypt</a></h2>
+        <p class="details">11 April 2005</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/sqlserver.html">Microsoft SQL Server</a></li>
+            <li><a href="../../2003/pwdencrypt.html">pwdencrypt</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../../2005/04/11.html#e20050411pwdencrypt" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">O Google, accept my offering of a method of doing SHA-1-secured
+   authentication in a stored procedure on Microsoft SQL Server 7 using
+   the undocumented function <code>pwdencrypt</code>. This proved useful to me
+   recently, so let it be discovered by developers in the future.
+</p>
+<p>This technique is useful when two pages in a web application, say, need
+   to be able to pass information about who is logged in to the
+   application. Our typical user Alice visits the log-in page and enters
+   her log-in name and password. When the application sends back its
+   response, it includes a <code>Set-Cookie</code> header with Alice’s user name in
+   it. Her web browser will include this cookie in subsequent HTTP requests.
+   Other pages in the application examine the cookie to see who is logged
+   in.
+</p>
+<p>The problem is, you can’t entirely trust the user’s web browser.
+   Suppose Bob wants to read a page restricted to Alice. He could write a
+   program that connects to the web server with HTTP and includes the
+   cookie with Alice’s name in it, thus impersonating her to the
+   application.  To prevent this, we don’t just store the user name in the
+   cookie, but instead the cookie contains a <em>ticket</em>.
+</p>
+
+<h3> Background on tickets and authentication</h3>
+<p>A <strong>ticket</strong> is a token (a character string) that identifies a user to an
+   application, and contains other information that prevents anyone other
+   than the application from generating valid tickets. Tickets can be used
+   in contexts other than cookies; the main requirement is that producers
+   and consumers of tickets can both access the user database.
+</p>
+<p> <a href="http://www.flickr.com/photos/pdc/6008304/" title="Three times three times three (Flickr)">&lt;img src="http://photos3.flickr.com/6008304_28f32e999c_s.jpg" width="75" height="75" alt="" align="left" /&gt;</a>
+   A ticket contains at least three
+   parts: Alice’s log-in name, the expiration date of the ticket, and a <em>check
+field</em> to prevent tampering. The check field is random-looking data
+   calculated using a cryptographically strong hash function with the user
+   name, expiration date, any other public fields, and a secret key as inputs.
+   Here is some sample code in Python, using MD5 as the hash function:
+</p>
+<p> <pre>
+   import md5, time
+</p>
+<p>userSecrets = {’alice’: ‘12345678’, ‘bob’: ‘23456789’}
+</p>
+<p>def createTicket(user, minutes=30):
+       """Given a user, and expiration date, return a ticket."""
+       expires = int(time.time() + minutes * 60)
+       publicPart = user.encode(’UTF-8’) + ‘:’ + str(expires)
+       checkField = md5.new(publicPart + ‘:’ 
+               + userSecrets[user]).hexdigest()
+       return publicPart + checkField
+</p>
+<p>print ticket(’alice’)
+   </pre> 
+</p>
+<p>This generates tickets that look like
+</p>
+<pre>
+alice:1113257911:86a7bd6aba6367968252c104e28699f0
+</pre>
+
+<p>You check the ticket in two
+   steps: first, that its expiration date is in the future, and second, that the
+   public part, when concatenated with the secret key and hashed with MD5,
+   produces the same result as the check field:
+</p>
+<p> <pre>
+   def checkTicket(ticket):
+       """Given a ticket, return the user name or None."""
+       es = ticket.split(’:’, 3)
+       if len(es) != 3 or int(es[1]) &lt;= time.time():
+           return None
+       user = es[0]
+       if not user in userSecrets:
+           return None
+       data = ticket[:-32] + userSecrets[user]
+       if md5.new(data).hexdigest() != es[2]:
+           return None
+       return user
+   </pre> 
+</p>
+<p>Without knowing the secret keys (<code>userSecrets</code> in the above code, standing
+   in for the real database of users), you
+   can’t generate tickets. Note that, if someone manages to intercept the
+   ticket can use it to impersonate Alice; including an expiration date is
+   supposed to help reduce the window of opportunity.
+</p>
+<p>The secrets are a random string stored in the user database, never
+   revealed to other applications, and changed from time to time.
+   Changing the secret has the effect of invalidating all outstanding
+   tickets, so this gives you a way to ‘log out’.
+</p>
+
+<h3> Digest functions in Microsoft SQL Server</h3>
+<p> <a href="http://www.flickr.com/photos/pdc/6006966/" title="Rearing pitcher plants (Flickr)">&lt;img src="http://photos6.flickr.com/6006966_392981b72a_m.jpg" width="239" height="240" alt="" align="right" /&gt;</a>
+   I wanted to use this technique in an application where the web-server
+   code can only access the database through SQL stored procedures, and I
+   wanted to avoid having a stored procedure that allowed the web application
+   to find out the user’s password or secret key (the idea being that even
+   if an attacker manages to subvert the web server, they will not be able
+   to get the information needed to forge tickets). This means I needed a way to
+   calculate a digest within an SQL stored procedure.
+</p>
+<p>Sadly there are no official MD5 or SHA-1 routines available to T-SQL
+   programs. It is possible to add one: I have found a reference to <a href="http://www.codeproject.com/database/xp_md5.asp">a
+free extended stored proc</a> that implements an MD5 and <a href="http://www.databasejournal.com/features/mssql/article.php/1474671">another
+example using an OLE Automation object</a>. I did not use
+   this because I don’t want to install an extension on
+   SQL Server, since this will complicate the installer for the
+   application. When I was discussing this with a colleague, she suggested
+   looking for the undocumented functions [<code>pwdencrypt</code> and <code>pwdcompare</code>][5].
+</p>
+<p>As it turns out, Google’s top hit for <code>pwdencrypt</code> is <a href="http://www.theregister.co.uk/2002/07/08/cracking_ms_sql_server_passwords/">an article claiming the algorithm is
+flawed</a>; this links to <a href="http://www.nextgenss.com/papers/cracking-sql-passwords.pdf">a paper (in PDF)</a> that describes the
+   algorithm used. Here’s Python code for creating a valid password hash:
+</p>
+<p> <pre>
+   import sha, random, struct
+</p>
+<p>def pwdencrypt(s):
+       """Given a password, return a 46-byte hash mash-up."""
+       header = ‘1 0’
+       salt = struct.pack(’I’, random.randint(0, 0x100000000L))
+       hash1 = sha.new(s.encode(’UTF-16LE’) + salt).digest()
+       hash2 = sha.new(s.upper().encode(’UTF-16LE’) + salt).digest()
+       return header + salt + hash1 + hash2
+   </pre> 
+</p>
+<p>(This code differs from the SQL implementation in that the 4-byte random
+   salt is calculated in a different way.) Leaving aside the discussion of
+   its suitability as a password algorithm, the 46 bytes do include a SHA-1
+   hash, so we can use it as an alternative to MD5 in the ticket algorithm.
+   The addition of random salt and the use of two hashes rather than one is
+   superfluous to our requirements, but do no harm beyond wasting CPU
+   cycles.
+</p>
+
+<h3> Passing tickets to a stored procedure</h3>
+<p>One of the deficiencies of the T-SQL language is that binary data cannot
+   be encoded (using hexadecimal or base-64, for example). My initial approach
+   was to pass the ticket in a pre-digested form as two
+   arguments: the public part and the check field, decoded as binary data,
+   something like this:
+</p>
+<pre>
+CREATE PROCEDURE CreateTicket
+    @login NVARCHAR(400),
+    @minutes REAL,
+    @publicPart NVARCHAR(400) OUTPUT,
+    @checkField VARBINARY(46) OUTPUT
+AS
+    DECLARE 
+        @secret NVARCHAR(400),
+        @expires DATETIME,
+        @seconds INT,
+        @data NVARCHAR(400)
+    SET @secret = (
+        SELECT secret FROM Users WHERE login = @login
+    )
+    SET @expires = DATEADD(MINUTE, @minutes, GETUTCDATE())
+    SET @seconds = DATEDIFF(SECOND, ‘2001-01-01’, @expires)
+    SET @publicPart = @login + ‘:’ + CAST(@seconds AS VARCHAR(20))
+    SET @data = @publicPart + ‘:’ + @secret
+    SET @checkField = pwdencrypt(@data)
+</pre>
+
+<p>(This code is untested because I am writing this from memory at home, where I do not
+   have access to SQL Server.)  Checking a ticket is somewhat laborious
+   because of the limitations on string manipulation in T-SQL.  It starts
+   like this:
+</p>
+<pre>
+CREATE PROCEDURE CheckTicket
+    @publicPart NVARCHAR(400),
+    @checkField VARBINARY(46),
+    @login NVARCHAR(400) OUTPUT
+AS
+</pre>
+
+<p>... and involves use of <code>CHARINDEX</code> and <code>SUBSTRING</code> to pick apart the
+   string and check the expiration date, followed by<br/><code>pwdcompare(@data,
+@checkField)</code>.  Details are left as an exercise for the reader,
+   presuming the reader has an SQL Server handy to try this on.
+</p>
+<p>Later on it turned out the application framework I was using could not
+   handle binary parameters, so I wrote my own base-64 codec in SQL so that
+   the ticket could be passed as a single <code>VARCHAR</code> argument.
+</p>
+
+<h3> Future changes</h3>
+<p>Will there be better alternatives in future versions of SQL Server?
+   Possibly, since security is something Microsoft are currently making a
+   big fuss about. Having a built-in base-64 codec would be convenient too.
+</p>
+<p>More importantly, will code using <code>pwdencrypt</code> stop working in the next
+   version? According to <a href="http://msmvps.com/gladchenko/archive/2005/04/06/41083.aspx">this note</a>, the output of <code>pwdencrypt</code> is
+   reduced to 26 bytes in SQL Server 2005 betas, and the <code>pwdcompare</code>
+   routine seems to accept either format.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../../2005/04/08.html#e20050408marky" title="Permanent URL for this entry">Markdown + Make versus Microsoft Word</a>
+          8 April 2005
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

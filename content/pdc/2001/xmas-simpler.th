@@ -1,0 +1,28 @@
+# -*-tcl-*-
+
+source ../pdcDefs.tcl
+
+beginDocument {
+    title "Happy Christmas - Alleged Literature"
+    pdcMetadata
+    style type=text/css {
+	#body {
+	    width: 520px;
+	    max-width: 520px;
+	}
+    }
+}
+
+beginBody
+
+
+div align=center {
+	emit [svg xmas-simpler.svgz width=512 height=640 [img xmas-3.gif]]
+}
+
+p "If you see nothing, [a xmas-3.gif "try the GIF version"]&mdash;Or 
+try the
+[a xmas.html fancy version]."
+
+endBody
+endDocument

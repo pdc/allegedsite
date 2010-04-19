@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from index.th on 2007-03-28 22:31 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2006/07;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2006/07 index.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>July 2006 - Damian Cugley - Alleged Literature</title>
+    <link href="../../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../../.."><img src="../../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../../">pdc</a> &gt;&gt;
+      <a href="../">2006</a> &gt;&gt;
+      <strong>07</strong>
+    </p>
+    <div id="body">
+      <h1>Archives for July 2006</h1>
+      <p id="tagline">Damian Cugley’s web site</p>
+      <div class="entry">
+        <h2><a name="e20060715.riff" id="e20060715.riff">The RIFF that is known is not the true RIFF</a></h2>
+        <p class="details">15 July 2006</p>
+        <p class="details ljComment">
+          <a href="http://syndicated.livejournal.com/pdc/8977.html">Comment on LiveJournal</a>
+        </p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="../../2003/riff.html"><acronym title="Raster Image File Format">Riff</acronym></a></li>
+            <li><a href="../../2003/graphics.html">graphics</a></li>
+            <li><a href="../../2003/futility.html">futility</a></li>
+            <li><a href="../../2003/corelpainter.html">Corel Painter 8</a></li>
+            <li><a href="../../2003/conversion.html">conversion</a></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../../2006/07/15.html#e20060715.riff" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">In my <a href="../../2006/07/14.html" title="Cannot convert Corel Painter RIFF to GIF">previous rant</a> I mention a file format called RIFF. Why can’t I
+   just google for a RIFF converter? Here’s why.
+</p>
+<p>The underlying syntax of most multimedia on Microsoft Window systems is called
+   <a href="http://en.wikipedia.org/wiki/RIFF">RIFF</a> (Resource Interchange File Format: the most redundant acronym for a
+   format I have yet encountered), so if you google for ‘RIFF converter’ you find
+   audio software that understands ‘RIFF MIDI’ or ‘WAV (RIFF)’. Some lists of file
+   suffixes or file formats eroneously describe <code>.rif</code> as being RIFF in this sense.
+</p>
+<p>How do I know this is not the format used by Corel in RIFF files? Here’s a
+   simple program for checking, based on <a href="http://www.daubnet.com/formats/RIFF.html">some random description of RIFF
+format</a>:
+</p>
+<pre><code>import struct
+
+input = open(’1a1’, ‘rb’)
+try:
+    hdr = input.read(4)
+    chunkLen, = struct.unpack(’&lt;i’, input.read(4))
+
+    input.seek(0, 2)
+    fileLen = input.tell()
+
+    if hdr != ‘RIFF’:
+        print ‘Header should be RIFF but was instead’, repr(hdr)
+    if chunkLen != fileLen - 8:
+        print ‘This is not a RIFF file: chunkLen is %s but file length is %s’ % (chunkLen, fileLen)
+finally:
+    input.close()
+</code></pre><p>Needless to say, my <code>.rif</code> files do not pass this simple test.
+</p>
+<p>The origin of the Painter RIFF format is probably Raster Image File Format,
+   mentioned on the <a href="http://www.kamit.com/gifconverter/doc/gifc-Support.html#Heading186">list of formats understood by GIFConverter</a>. The devisor,
+   Mark Zimmer of Fractal Design Software co-wrote the original Painter (<a href="http://en.wikipedia.org/wiki/Corel_Painter" title="Wikipedia entry for Corel Painter">Corel
+painter</a> started life as Fractal Design Painter). The problem here is that,
+   at the time GIFConverter was written, Painter did not support layers or vector
+   graphics: it was just a flat image. These have been added either as extensions
+   to the original RIFF format or as a new format. Thus <a href="http://www.lemkesoft.com/en/gcabout_formats.htm">GraphicConverter US</a>
+   (bundled with Mac OS X) lists RIFF as a format, but says that my <code>.rif</code> files
+   are in an unknown format.
+</p>
+<p>The upshot of this is that, when someone asks ‘<a href="http://www.photoshoptechniques.com/forum/showthread.php?t=19362">how can I convert my RIFF
+files</a>’, some smartarse googles for ‘RIFF convert to PSD’ and finds <a href="http://www.faqs.org/faqs/graphics/fileformats-faq/part2/">Graphics
+File Formats FAQ (Part 2 of 4): Image Conversion and Display Programs</a>, which
+   mentions support for the obsolete form of RIFF, which is of no use to me or
+   anyone else.
+</p>
+
+
+        </div>
+      </div>
+      <h2>Older entries</h2>
+      <ul>
+        <li>
+          <a href="../../2006/07/14.html#e20060714.applescript" title="Permanent URL for this entry">Cannot convert Corel Painter RIFF to GIF (or any other format, for that matter)</a>
+          14 July 2006
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../../2006/topics.html">by topic</a></li>
+        <li><a href="../../2007/03/">March 2007</a></li>
+        <li><a href="../../2007/02/">February 2007</a></li>
+        <li><a href="../../2006/">2006</a></li>
+        <li><a href="../../2005/">2005</a></li>
+        <li><a href="../../2004/">2004</a></li>
+        <li><a href="../../2003/">2003</a></li>
+        <li><a href="../../2002/">2002</a></li>
+        <li><a href="../../2001/">2001</a></li>
+        <li><a href="../../2000/">2000</a></li>
+        <li><a href="../../1999/">1999</a></li>
+        <li><a href="../../1998/">1998</a></li>
+        <li><a href="../../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../../rss091.xml" type="text/xml"><img src="../../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>

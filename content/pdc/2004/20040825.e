@@ -1,0 +1,90 @@
+Title: Why XML is bad for data serialization
+Image: ../icon-64x64.png
+Date: 20040824
+Topics: xml yaml
+
+A lot of people use XML to serialize data structures; with the XML
+parsers bundled with many programming environments it is easier than
+writing one's own parser. But XML was not designed with this in mind and
+contains too many traps causzed by the mismatch between the XML object
+model and that of your application. A text format designed expressly for
+for the purpose (my favourite is [YAML][yaml]) would be more convenient
+and safer.
+
+The application I am developing at work uses a lot of metadata stored as
+XML; some as [topic maps][tm], some as plain XML. In dot-Net, using XML
+for configuration files is the path of least resistance. I use a text
+editor, [jEdit][jedit], that checks the XML files against their DTDs and
+so makes writing valid files easier. But I still spent an afternoon
+trying to work out why adding a single element to my file caused it to
+no longer validate.
+
+<pre>
+... several hundred lines omitted ...
+&lt;mumble>
+    &lt;foo>Westminster&lt;/foo>
+    &lt;bar>
+        &lt;baz>&lt;foo>Whitehall&lt;/foo>&lt;goo>Wellington&lt;/goo>&lt;/baz>
+    &lt;/bar>.
+    &lt;quux>
+        &lt;wibble>&lt;wobble/>&lt;/wibble>
+    &lt;/quux>
+&lt;/mumble>
+... several hundred lines omitted ...
+</pre>
+
+The error message was something insane like `Content of mumble must match
+((foo|foofoo)?,(((bar|barbar)?,(bim|bam|bo)?,quux?)|quux+))`. I can't imagine what a normal person would make of this.
+Fortunately I wrote the DTD, so I had some idea of what that hideous expression was meant to mean. I spent
+what seemed like an eternity trying to figure out in what way my XML did
+not match that schema. Maybe my readers will spot my blunder immediately.
+
+Let's try the same thing again, assuming a plausible YAML format:
+
+<pre>
+mumbles:
+    ...
+  - foo: Westminster
+    bar:
+        baz:
+	    foo: Whitehall
+	    goo: Wellington
+    .
+    quux:
+        wibble: wobble
+    ...
+</pre>
+
+Here the more lightweight syntax means that the extraneous full stop is
+a little easier to spot. YAML would report this as a syntax error. 
+
+This is an unrealistic error for YAML, of course, because 
+without all those `<`, `/`, and `>` keystrokes flying about
+I would be less likely to accidentally type an extra stop.
+In YAML -- at least, with pyYAML -- the equivalent invisible error
+would be an extra space after the colon ending a line;
+but then the error message is 'extra space after colon at end of line
+57', which makes it easier to work out what is wrong!
+
+So why can't the error message I got when validating the XML be
+something as clear as 'unexpected `.` at line 99'? The reason is that
+the extra character does not prevent the file from being well-formed;
+character data is allowed between elements, which makes perfect sense
+for marking up text, but is not what you want for serializing a data
+structure. By allowing character data between elements, this error
+cannot be caught until the (optional) schema-checking step, and this results in
+very abstract and difficult-to-interpret error messages.
+
+Remember that at bottom XML is a mark-up notation. The fragment above is
+conceptually equivalent to the text 
+
+<embed src="westminster.svg" type="image/svg+xml"
+        width="360" height="128" />
+
+with the different words underlined in different colours and squiggles (corresponding to elements).
+Viewed this way, my configuration data is obviously *not* a document, and using XML
+for configuration files is obviously a silly hack.
+
+  [jedit]: http://www.jedit.org/
+  [yaml]: http://yaml.org/
+  [tm]: http://topicmaps.org/

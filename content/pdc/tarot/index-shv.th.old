@@ -1,0 +1,63 @@
+# -*-tcl-*-
+# Time-stamp: <pdc 2003-11-22>
+
+source tarotDefs.tcl
+
+beginDocument {
+    title "Alleged Tarot index in SVG"
+    stylesheet tarot.css
+}
+
+beginBody 
+
+surTitle "Alleged Tarot"
+h1 "Making an index in SVG"
+
+p "
+My virtual tarot deck is published in 
+[SVG], but the index pages are still in [HTML],
+which is a problem for people trying to visit 
+using an SVG-only browser like Batik.  So I&nbsp;intend to make
+an SVG-powered index page.  "
+
+h2 id=a1 "Attempt 1"
+
+p "This version uses the [SVG] tag [code image]."
+
+p [svg attempt-1.svg width=450 height=450 "You need the SVG plug-in"]
+
+p "
+My first attempt
+uses the [SVG] <code>image</code> tag and intrinsic animation
+to switch between cards.  This turns out to be unsatisfactory on
+two counts.  First, it works by rendering the card and then
+displaying the result as if it were a raster image&mdash;on my
+computer that leaves the screen blank for some seconds while the
+off-screen rendring takes place.  Second,  the resulting image
+is not interactive&mdash;you lose the feature of the pips cards
+where the illustration can be switched on and off."
+
+
+h2 id=a2 "Attempt 2"
+
+p "This version has the [SVG] code for the card images embedded in the file."
+
+p [svg attempt-2.svgz width=520 height=580 "You need the SVG plug-in"]
+
+p "This one has the SVG for the card images embedded within itself,
+and uses [DOM] manipulation to bring them to the front. Promising?
+Potentially very bulky.  Also requires JavaScript support,
+which is lacking from Batik 1.1"
+
+
+h2 id=a3 "Attempt 3&mdash;links"
+
+p "
+Here is a version using links ([code a] elements) rather than JavaScript.  The index is rendered using [PNG] images, which link to the [SVG] versions proper.
+"
+
+p [svg wands.svgz width=520 height=350 "You need the SVG plug-in"]
+
+endBody
+
+endDocument

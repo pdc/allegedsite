@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from subjects.th on 2007-06-13 23:50 BST -->
+  <!-- with command: cd /Users/pdc/th/alleged.org.uk/pdc/2003;
+  /Users/pdc/bin/thc -r /Users/pdc/Sites/alleged.org.uk/ -s pdc/2003 subjects.th -->
+  <!-- htmlProcs.tcl version 5.1.8 -->
+  <head>
+    <title>Authentication - Topics - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+    <link href="../2005/gentium.css" rel="stylesheet" type="text/css" arg0="title=Gentium" title="Gentium" />
+    <link href="../2005/lod.css" rel="alternate stylesheet" type="text/css" title="Light on Dark" />
+    
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="../2005/gentium-ie6.css" title="Gentium" />
+    <![endif]-->
+    
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="../.."><img src="../../img/alleged-03@32x16.png" align="absmiddle" alt="Alleged Literature" width="32" height="16" border="0" /></a> &gt;&gt;
+      <a href="../">pdc</a> &gt;&gt;
+      <a href="./">2003</a> &gt;&gt;
+      <a &gt;&gt;
+      href="subjects.html">topics</a> &gt;&gt;
+      <strong>authentication</strong>
+    </p>
+    <div id="body">
+      <h1>Alleged Topic: Authentication</h1>
+      <div class="entry">
+        <h2><a name="e20060210-openid" id="e20060210-openid">TurboGears and OpenID</a></h2>
+        <p class="details">10 February 2006</p>
+        <div class="details">
+          <h3>Topics</h3>
+          <ul class="topics">
+            <li><a href="turbogears.html">TurboGears</a></li>
+            <li><a href="openid.html">openid</a></li>
+            <li><a href="python.html">Python</a></li>
+            <li><strong>authentication</strong></li>
+          </ul>
+        </div>
+        <p class="details permalink">
+          <a href="../2006/02/10.html#e20060210-openid" title="Permanent URL for this entry">#</a>
+        </p>
+        <div class="content">
+
+<div></div><p class="first">I thought I might have a go at familiarizing myself with <a href="http://turbogears.org/">TurboGears</a>, one of the new
+   Python web frameworks, by writing a new and improved clone of the 
+   <a href="http://caption.org/picky/">Picky Picky Game</a>.  Step one was verifying that I can upload pictures
+   easily.  Step two was getting an identity system put together.  Creating
+   a registration page and log-in form and so on is the obvious and dull
+   solution, so I thought I’d have a go at exploiting <a href="http://openid.net/">OpenID</a> instead.
+</p>
+
+<h2> But what is OpenID?</h2>
+<p>Don’t you hate having to learn a new username and password whenever you
+   want to play on a new web site? Well, the people at <a href="http://www.livejournal.com/">LiveJournal</a>
+   thought you might, so they concocted a system where you (and only you)
+   use your LiveJournal URL as your log-in name on other sites.  If
+   you are <code>alice</code> on LiveJournal, then your OpenID identifier is
+   <code>http://alice.livejournal.com/</code>.  It isn’t restricted to LiveJournal,
+   either; anyone can run their own identity server.
+</p>
+
+<h2> Come to Think of it, what is TurboGears?</h2>
+<p> <a href="http://turbogears.org/">TurboGears</a> is yet another entrant in Python’s notoriously crowded
+   web-frameworks competition. TurboGears is actaully a sort of Frankestein
+   creation—rather than designing its own quirky template, database and
+   controller conventions, TurboGears uses established, <em>lightweight</em>
+   libraries like <a href="http://kid.lesscode.org/language.html">Kid</a>, <a href="http://sqlobject.org/">SQLObject</a>, <a href="http://www.cherrypy.org/">CherryPy</a>, and <a href="http://www.mochikit.com/">MochiKit</a>.
+   I had already been thinking it would be nice to swap the Picky Picky
+   Game’s home-brewed templating system with Kid and its controller
+   framework with CherryPy, so finding them nicely packaged up together as
+   TurboGears looks very attractive!
+</p>
+<p>I am not going to attempt to write a TurboGears tutorial here; there is already
+   the <a href="http://files.turbogears.org/video/20MinuteWiki2nd.mov">20-minute Wiki</a> movie and a fine <a href="http://docs.turbogears.org/1.0/Wiki20/Page1">TurboGears tutorial</a>. What I will do
+   here is outline the code I wrote. If you, gentle reader, are a web developer who
+   does not already know TurboGears, I hope it will give you a flavour of the
+   brevity of TurboGears code.
+</p>
+
+<h2> Step Zero: Install, Install, Install</h2>
+<p>Installing TurboGears is a little adventurous on Mac OS X.  The first
+   thing you have to do is upgrade Python to version 2.4 (since even the
+   latest Mac OS X revision has Python 2.3), and even the <a href="http://python.org/">Python</a> web
+   site is mum on how to achieve this.  In the end the packages the
+   TurboGears web site points to worked fine.  The process of installing
+   TurboGears itself (via something called Easy Install) also worked fine.  Most
+   of the time was spent reading the documentation.
+</p>
+<p>Then I decided I wanted to be able to use the latest SQLite as my
+   database driver. This required me to actually install Unix packages from
+   source, something I have gotten out of the habit of, what with everyone
+   supplying fancy installers and Mac OS packages. This required nothing
+   more than the incantations I remember from when I did everything on
+   GNU/Linux boxes:
+</p>
+<pre><code>./configure
+make
+sudo make install
+</code></pre><p>In the same fashion, installing the Python drivers is very similar,
+   except that Python has its own  idiom:
+</p>
+<pre><code>python setup.py build
+sudo python setup.py install
+</code></pre><p>I tested this had installed it where Python could find it by starting up
+   python and doing <code>import pysqlite2</code>.
+</p>
+<p>I was fully prepared to roll my own OpenID library based on the
+   specification—I have done the same with <a href="http://ietf.org/rfc/rfc2617.txt" title="HTTP Authentication: Basic and Digest Access Authentication">RFC 2617</a> three times over—but a
+   little poking about on the OpenID site pointed me to a Python library
+   <a href="http://www.openidenabled.com/openid/libraries/python">Python-OpenID</a>.  Cool!
+</p>
+
+<h2> Building an OpenID-enabled TurboGears Application, Step One</h2>
+<p>I had already run the <code>tg-admin quickstart</code> command to create a web application
+   directory. This creates a directory tree with skeletal Python files and Kid
+   templates ready for you to modify; some people will not like this, but the files
+   it creates are essentially what you would end up with if you wrote it starting
+   from scratch (and were very organized), so I’m happy with it.
+</p>
+<p>To add a ‘Please Log In’ page, I started by adding a method to <code>controllers.py</code>:
+</p>
+<pre><code>class Root(controllers.Root):
+    ...
+    @turbogears.expose(html=’picky2.templates.login’)
+    def login(self, next=’./’):
+        return dict(next=next)
+</code></pre><p>This tells the server that URLs like <code>http://localhost:8080/login?next=foo</code> are
+   handled by rendering the template <code>picky2.templates.login</code> (Picky2 is the
+   application name), passing the value of the <code>next</code> variable as a parameter to
+   the template. This will be used, once the user is logged in, to redirect them
+   to the page they started on.
+</p>
+<p>The template in turn is created by copying <code>welcome.kid</code> and
+   editing to look something like this:
+</p>
+<pre><code>&lt;!DOCTYPE html SYSTEM "xhtml+kid.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://purl.org/kid/ns#"
+        py:extends="’master.kid’"&gt;    
+    &lt;head&gt;
+        &lt;meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="’’"/&gt;
+        &lt;title&gt;Picky2 Playpen&lt;/title&gt;
+    &lt;/head&gt;    
+    &lt;body&gt;
+        &lt;div id="loginForm" class="form"&gt;
+            &lt;h1&gt;Log in!&lt;/h1&gt;
+            &lt;form action="loginBegin" method="get"&gt;
+                &lt;input type="hidden" name="next" value="${next}"/&gt;
+                &lt;p&gt;
+                    &lt;label for="urlbox"&gt;Log in with your blog URL:&lt;/label&gt;
+                    &lt;input type="text" name="url" size="60" id="urlbox"/&gt;
+                    &lt;input type="submit" value="Log me in!"/&gt;
+                &lt;/p&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>This is mostly the usual HTML for displaying a form.  The point to note is
+   is that the <code>next</code> parameter is squirrelled away in a hidden form
+   item.
+</p>
+<p>One nice thing about Kid templates is
+   they they are well-formed XML; if you have an XML-savvy text editor—such as
+   <a href="http://jedit.org/">jEdit</a>—it can check the syntax of templates as you type, and save you from
+   generating bad HTML that is only detected when it is in the browser. (In order to
+   placate <a href="http://jedit.org/">jEdit</a>’s XML validator, I created my own <code>XHTML+kid.dtd</code>
+   document-type definition file; it is supposed to be XHTML with Kid’s attributes
+   permitted everywhere, but I have only done as much as is necessary to make my
+   templates validate.  Or I could have just removed the <code>!DOCTYPE</code> declaration.)
+</p>
+<p>Now I can switch to my Firefox window and visit the login page to see it all
+   working.
+</p>
+<p>The <code>action</code> attribute for the <code>form</code> element is <code>loginBegin</code>, so I need to add
+   another method to <code>controllers.py</code>:
+</p>
+<pre><code>import authentication
+...
+
+class Root(...):
+    ...
+    @turbogears.expose(html=’picky2.templates.login’)
+    def loginBegin(self, url, next):
+        """Called when user clicks OK on the login form."""
+        openId = authentication.openId()
+        status, inf = openId.beginAuth(url)
+        if status == ‘success’:
+            returnUri = self.openIdReturnUri(inf, next)
+            openIdUri = openId.constructRedirect(inf, returnUri, ‘http://localhost:8080/’)
+            raise cherrypy.HTTPRedirect(openIdUri)
+        # If we get here, then the OpenID server could not be contacted.
+        return dict(error=status, detail=inf, next=next, who=None, openId=None)
+
+    def openIdReturnUri(self, inf, next):
+        """Given an OpenID request information object, return a URI on this server."""
+        token = uriParamEncode(inf.token)
+        next = uriParamEncode(next)
+        return ‘http://localhost:8080/loginFinish?token=%s&amp;next=%s’ % (token, next)
+</code></pre><p>The argument names for the <code>loginBegin</code> method correspond to the form parameters
+   in the HTML. The <code>url</code> parameter is the URI the user wants to use as their
+   identifier. The <code>openId</code> object is an instance of <code>OpenIDConsumer</code>
+   from a module I will write next
+   that wraps up the Python-OpenID library. The <code>beginAuth</code> method visits the URI
+   and looks for a link to an OpenID server. If all goes well, it returns the
+   information needed to make the complete URI of the remote OpenID server with all
+   the right parameters (via the <code>constructRedirect</code> method).  To perform the
+   redirection, it seems the standard idiom is to throw an <code>cherrypy.HTTPRedirect</code>
+   exception.
+</p>
+<p>If the <code>OpenIDConsumer</code> object returns anything other than success, this is
+   passed to the same Kid template (<code>login.kid</code>) as before.  Thus it shows the same
+   form as before, except with an error message added below it.  This requires
+   adding something to the template to include the error message:
+</p>
+<pre><code>&lt;div class="error" py:if="error"&gt;
+    &lt;p&gt;
+         Could not verify your identity
+         because of ${error}&lt;span py:if="detail" py:replace="detail"&gt;404&lt;/span&gt;.
+    &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>Not elegant, but adequate for my test version. The <code>py:if</code> attribute ensures
+   this <code>div</code> element completly vanishes if there is no error code.
+</p>
+<p>The big gotcha in the above is in the method <code>openIdReturnUri</code>: the token and
+   next-URI parameters need to be escaped with <code>uriParamEncode</code> so that they do not
+   get scrambled when they get read back in at the end.  My first attempt omitted
+   this step, and I got mysterious failures as a result.
+</p>
+
+<h2> Creating the OpenIDController Object</h2>
+<p>The bit that I have swept under the carpet is the code that actually creates the
+   <code>OpenIDConsumer</code> object that does most of the work in my <code>loginBegin</code> method.  I
+   put this in its own module out of a sense of tidiness; as it turns out, the
+   amount of code is small enough that I might as well have simply included it in
+   <code>controllers.py</code>, but never mind.  Here is is:
+</p>
+<pre><code>from pysqlite2 import dbapi2 as sqlite
+from openid.consumer import consumer
+from openid.store import sqlstore
+
+def openId():
+    """Return an object that may be used to authenticate user using the OpenID protocol."""
+    #TODO get database info from configuration file...?
+    con = sqlite.connect(’openid.db’)
+    store = sqlstore.SQLiteStore(con)
+    return consumer.OpenIDConsumer(store)
+</code></pre><p>For now the database used is always called <code>openid.db</code>. I could probably have
+   simply used the connection settings from TurboGears so as to use the same
+   database file used to store everything else in my application, but I like the
+   idea of separating the data managed by Python-OpenID from the rest of my data. 
+</p>
+<p>The main gotcha is that I expected the database connection function to be
+   <code>pysqlite2.connect</code> but it is instead <code>pysqlite2.dbapi2.connect</code>, which took me
+   a little Googling to find.
+</p>
+<p>Python allows a module to double as a program by adding an <code>if __name__ ==
+‘__main__’</code> clause at the end. I used this to add the code that must be run once
+   to initialize the OpenID database:
+</p>
+<pre><code>if __name__ == ‘__main__’:
+    import sys
+
+    if sys.argv[1] == ‘create’:
+        print ‘Creating tables for OpenID support...’
+        con = sqlite.connect(’openid.db’)
+        store = sqlstore.SQLiteStore(con)
+        store.createTables()
+</code></pre>
+<h2> Step Two: Handling the Return from the OpenID Server</h2>
+<p>At this point I can enter my LiveJournal URI
+   <code>http://damiancugley.livejournal.com/</code> in to the form and press the button and I
+   am amagically transported to the LiveJournal page that validates OpenID
+   requests:
+</p>
+<blockquote>
+    <div>
+        <a href="../2006/openid-1.png"><img src="../2006/openid-1-50pc.png" alt="(screenshot)"
+        /></a>
+    </div>
+</blockquote>
+
+<p>Clicking on the Yes button takes me back to my server, which prompty complains
+   that I have not defined a <code>loginFinish</code> method yet.  (It gets that name from the
+   return URI parameter included in the OpenID request.)  To implement this, we
+   just add another method to <code>controllers.py</code> as follows:
+</p>
+<pre><code>@turbogears.expose(html=’picky2.templates.login’)
+def loginFinish(self, token, next, **kws):
+    """Called when OpenID server has approved user’s login.
+
+    token – as returned by OpenIDConsumer
+    next – as passed to the original login method;
+        URI of the page to redirect to once user is authenticated
+    """
+    # TODO. Check return_to equals expected value
+    openId = authentication.openId()
+    status, inf = openId.completeAuth(token, kws)
+    if status == ‘success’:
+        # TODO. Create cookie
+        turbogears.flash(’Welcome to Picky2’)
+        raise cherrypy.HTTPRedirect(next)
+    return dict(error=status, detail=None, next=next, who=inf, openId=kws)
+</code></pre><p>There a re a couple of bits that I have not yet put in—thus the <code>TODO</code>
+   comments—but this method does the bare minimum: it checks the results using
+   <code>OpenIDConsumer.completeAuth</code>, and redirects to the URL that was originally
+   passed to the <code>login</code> page and has been passed like a football from page to
+   page since.  The <code>turbogears.flash</code> causes an extra message to appear (<del>I’m not
+   sure how this works with more than one visitor, unless there is some form of
+   session management I am unaware of</del> <ins>using a cookie</ins>).
+</p>
+<p>So voil&agrave;—a working OpenID consumer in not very many lines of code at
+   all.<br/>
+</p>
+
+<h2> What Comes Next?</h2>
+<p>I have already experimented with uploading pictures; now I need to link up the
+   pictures with the person who uploaded them. When I next have some time for
+   playing with TurboGears, I will report on how I get on with that.
+</p>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2007/">2007</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+        <li><a href="../2004/">2004</a></li>
+        <li><a href="../2003/12/">December 2003</a></li>
+        <li><a href="../2003/11/">November 2003</a></li>
+        <li><a href="../2003/10/">October 2003</a></li>
+        <li><a href="../2003/09/">September 2003</a></li>
+        <li><a href="../2003/08/">August 2003</a></li>
+        <li><a href="../2003/07/">July 2003</a></li>
+        <li><a href="../2003/06/">June 2003</a></li>
+        <li><a href="../2003/05/">May 2003</a></li>
+        <li><a href="../2003/04.html">April 2003</a></li>
+        <li><a href="../2003/03.html">March 2003</a></li>
+        <li><a href="../2003/02.html">February 2003</a></li>
+        <li><a href="../2003/01.html">January 2003</a></li>
+        <li><a href="../2002/">2002</a></li>
+        <li><a href="../2001/">2001</a></li>
+        <li><a href="../2000/">2000</a></li>
+        <li><a href="../1999/">1999</a></li>
+        <li><a href="../1998/">1998</a></li>
+        <li><a href="../1997/">1997</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Check this page for conformance to XHTML 1.0" href="http://validator.w3.org/check/referer"><img src="../../img/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" border="0" /></a></p>
+      <p id="squidcredit"><a title="Background pattern taken from the squidfingers.com collection" href="http://squidfingers.com/patterns/">bg by squidfingers</a></p>
+      <p id="jennicredit"><a title="Photograph used in the masthead taken by Jenni Scott in the ROTA club in April 2003" href="http://www.flickr.com/photos/jinty/">photo by Jenni Scott</a></p>
+    </div>
+  </body>
+</html>
