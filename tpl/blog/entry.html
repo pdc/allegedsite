@@ -27,17 +27,34 @@
       <div id="entry-nav">
         <h2>Other Entries</h2>
         <ul>
-          {% if entry.prev %}
-          <li>
-            <a href="{{ entry.prev.href }}" rel="prev">Previous entry: ‘{{ entry.prev.title }}’</a>
-          </li>
-          {% endif %}
-          {% if entry.next %}
-          <li>
-            <a href="{{ entry.next.href }}" rel="next">Next entry: ‘{{ entry.next.title }}’</a>
-          </li>
-          {% endif %}
+          {% with entry.prev as e %}
+            {% if e %}
+            <li>
+              <a href="{{ e.href }}" rel="prev">Past: ‘{{ e.title }}’ 
+                <small>{{ e.published|date:"j N"}}</small></a>
+            </li>
+            {% endif %}
+          {% endwith %}
+          {% with entry.next as e %}
+            {% if e %}
+            <li>
+              <a href="{{ e.href }}" rel="next">Future: ‘{{ e.title }}’ 
+                <small>{{ e.published|date:"j N"}}</small></a>
+            </li>
+            {% endif %}
+          {% endwith %}
         </ul>
+    		{% if this_month %}
+      	<h2>{{ entry.published|date:"N Y" }}</h2>
+      	<ul>
+      	  {% for e in this_month %}
+          <li>
+            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
+              <small>{{ e.published|date:"j N"}}</small></a>
+          </li>
+			    {% endfor %}
+			  </ul>
+			  {% endif %}
       </page>
     </div>
   </body>

@@ -18,8 +18,9 @@ class SimpleTest(TestCase):
         if not os.path.exists(BASE_DIR):
             os.mkdir(BASE_DIR)
         else:
-            if not os.path.exists(os.path.join(BASE_DIR, '2010')):
-                os.mkdir(os.path.join(BASE_DIR, '2010'))
+            for y in ['2008', '2009', '2010']:
+                if not os.path.exists(os.path.join(BASE_DIR, y)):
+                    os.mkdir(os.path.join(BASE_DIR, y))
             for subdir, subdirs, files in os.walk(BASE_DIR):
                 for file_name in files:
                     os.unlink(os.path.join(subdir, file_name))
@@ -118,5 +119,21 @@ class SimpleTest(TestCase):
         entry = entries[-1]
         self.assertEqual('<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>', entry.body)
     
+    def test_filtering(self):
+        with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
+            output.write('Title: A\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
+            output.write('Title: B\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2010/2010-03-07-c.e'), 'wt') as output:
+            output.write('Title: C\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2009/2009-12-31-d.e'), 'wt') as output:
+            output.write('Title: D\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2008/2008-07-11-e.e'), 'wt') as output:
+            output.write('Title: E\n\nHello [world](17.html)\n')
+        entries = get_entries(BASE_DIR, '/x/', '/i/')
+        entry, this_month, years = get_entry(entries, 2010, 4, 18)
         
-    
+        self.assertEqual('A', entry.title)        
+        self.assertEqual(['E', 'D', 'C', 'A', 'B'], [x.title for x in entries])
+        self.assertEqual(['A', 'B'], [x.title for x in this_month])
+        self.assertEqual(['E', 'D', 'B'], [x.title for x in years])

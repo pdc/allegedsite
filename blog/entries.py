@@ -154,3 +154,22 @@ def entries_iter(dir_path, blog_url, image_url):
             if file_name.endswith('.e'):
                 yield Entry(dir_path, subdir_path, file_name, blog_url, image_url)
                 
+def get_entry(entries, year, month, day):
+    entries_by_year = {}
+    beg = 0
+    prev = None
+    for i, e in enumerate(entries):
+        if e.published.year != prev:
+            if prev:
+                entries_by_year[prev] = entries[beg:i]
+            beg = i
+            prev = e.published.year            
+    if prev:
+        entries_by_year[prev] = entries[beg:]
+         
+    this_year = entries_by_year[year] if year else []
+    this_month = [e for e in (this_year or entries) if e.published.month == month] if month else []
+    this_day = [e for e in (this_month or this_year or entries) if e.published.day == day] if day else []
+    entry = (this_day or this_month or this_year or entries)[-1]
+    years = [ys[-1] for (y, ys) in sorted(entries_by_year.items())]
+    return entry, this_month, years
