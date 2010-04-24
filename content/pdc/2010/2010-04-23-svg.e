@@ -38,13 +38,6 @@ there is even a claim on the Mozilla
 Developer Connection that there will be
 [SVG animation (SMIL) in Firefox 3.7][10], so I better check again in 2012.
 
-Meanwhile, here is an animated graphic from 2001.
-
-<div class="svg image-full-width framed framed-full-width">
-    <embed src="../2001/xmas.svg" type="image/svg+xml"
-        width="512" height="640" />
-</div>
-
 
   [1]: ../2004/11/14.html
   [2]: http://www.w3.org/TR/SVG/animate.html
