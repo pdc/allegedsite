@@ -1,0 +1,391 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+>
+<svg xmlns="http://www.w3.org/2000/svg"
+    width="512" height="640" 
+    viewBox="0 0 512 640">
+    
+    <desc>Christmas Tree</desc>
+
+	<defs>
+	    <g id="wbranch" transform="translate(-50 -10)"
+	            stroke="#006600" stroke-width="3" fill="none">
+	        <path d="M0 10 h50"/>
+	        <path d="M5 0 l10 10 l-10 10"/>
+	        <path d="M15 0 l10 10 l-10 10"/>
+	        <path d="M25 0 l10 10 l-10 10"/>
+	        <path d="M35 0 l10 10 l-10 10"/>
+	        <!--<path d="M45 0 l10 10 l-10 10"/>-->
+	        <circle cx="0" cy="10" r="5" stroke="none" fill="yellow">
+	            <animateColor attributeName="fill" attributeType="CSS"
+	                from="#996633" to="#FFFF00" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	        <circle cx="0" cy="10" r="15" stroke="none" fill="white" opacity="0.5">
+	            <animate attributeName="opacity" attributeType="CSS"
+	                from="0" to="0.5" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	    </g>
+	    <g id="ebranch"
+	            stroke="#006600" stroke-width="3" fill="none">
+	        <path d="M0 0 h50"/>
+	        <!--<path d="M5 -10 l-10 10 l10 10"/>-->
+	        <path d="M15 -10 l-10 10 l10 10"/>
+	        <path d="M25 -10 l-10 10 l10 10"/>
+	        <path d="M35 -10 l-10 10 l10 10"/>
+	        <path d="M45 -10 l-10 10 l10 10"/>
+	        <circle cx="50" cy="0" r="5" stroke="none" fill="yellow">
+	            <animateColor attributeName="fill" attributeType="CSS"
+	                from="#996633" to="#FFFF00" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	        <circle cx="50" cy="0" r="15" stroke="none" fill="white" opacity="0.5">
+	            <animate attributeName="opacity" attributeType="CSS"
+	                from="0" to="0.5" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	    </g>
+	    <g id="nbranch" transform="rotate(-90)"
+	            stroke="#006600" stroke-width="3" fill="none">
+	        <path d="M0 0 h50"/>
+	        <path d="M5 -10 l-10 10 l10 10"/>
+	        <path d="M15 -10 l-10 10 l10 10"/>
+	        <path d="M25 -10 l-10 10 l10 10"/>
+	        <path d="M35 -10 l-10 10 l10 10"/>
+	        <path d="M45 -10 l-10 10 l10 10"/>
+	        <circle cx="50" cy="0" r="5" stroke="none" fill="yellow">
+	            <animateColor attributeName="fill" attributeType="CSS"
+	                from="#996633" to="#FFFF00" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	        <circle cx="50" cy="0" r="15" stroke="none" fill="white" opacity="0.5">
+	            <animate attributeName="opacity" attributeType="CSS"
+	                from="0" to="0.5" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	    </g>
+	    <symbol id="bauble" viewBox="-16 -21 32 37" stroke="2">
+	        <rect x="-5" y="-20" width="10" height="20" fill="#FF9900" stroke="#993300"/>
+	        <circle cx="0" cy="0" r="15" stroke="#990000" fill="#CC0000"/>
+	        <circle cx="-7" cy="-7" r="3" stroke="none" fill="white" opacity="0.75"/>
+	    </symbol>
+
+	    <linearGradient id="sky"
+	        x1="30%" y1="10%" x2="70%" y2="90%" spreadMethod="pad">
+	        <stop offset="0%" stop-color="#99CCCC"/>
+	        <stop offset="100%" stop-color="#FFCCFF"/>
+	    </linearGradient>
+	    <linearGradient id="ground"
+	        x1="70%" y1="0%" x2="30%" y2="90%" spreadMethod="pad">
+	        <stop offset="0%" stop-color="#FFFFCC"/>
+	        <stop offset="5%" stop-color="#CCFFFF"/>
+	        <stop offset="30%" stop-color="#99CCFF"/>
+	        <stop offset="70%" stop-color="#006633"/>
+	        <stop offset="100%" stop-color="#003300"/>
+	    </linearGradient>
+	</defs>
+
+	<rect fill="#99CCCC" x="0" y="0" width="512" height="500"/>
+	<rect fill="#006633" x="0" y="475" width="512" height="200"/>
+
+
+
+    <g id="half">
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v0" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-110 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-60 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-110 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-60 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-50" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-90 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-40 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-90 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-40 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-100" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-70 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-20 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-70 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-20 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-150" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h-50 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h-50 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h-10 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-200" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h-30 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h-30 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h-10 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+
+    	</use>
+    </g>
+
+
+    <g>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v0" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h110 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h60 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h110 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h60 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-50" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h90 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h40 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h90 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h40 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-100" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h70 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h20 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h70 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h20 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-150" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h50 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h50 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h10 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-200" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h30 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h30 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h10 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+
+    	</use>
+    </g>
+
+    <g>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-300" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v50" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-200" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-150" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-100" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-50" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-0" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    </g>
+
+
+    <g font-family="Georgia, serif" font-style="italic" font-weight="700"
+            fill="#006600" stroke="#660000" stroke-width="2">
+        <text>
+            <tspan x="25" y="110" font-size="42">Happy Christmas!</tspan>
+            <tspan x="150" y="600" font-size="24" stroke-width="0.5">from Jeremy and Damian</tspan>
+        </text>
+    </g>
+
+
+</svg>

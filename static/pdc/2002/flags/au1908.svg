@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		viewBox="0 0 240 120"
+		width="480" height="240"
+>
+	<title>Australian National Flag</title>
+	<desc>
+	</desc>
+	<defs>
+		<style type="text/css">
+			.blue {
+				fill: #003366;
+				stroke: none;
+			}
+			.red {
+				fill: #CC0033;
+				stroke: none;
+			}
+			.white {
+				fill: #FFFFFF;
+				stroke: none;
+			}
+		</style>
+
+		<!--
+			Union Flag instructions from
+			http://www.jdawiseman.com/papers/union-jack/union-jack.html#correct-construction
+		-->
+		<g id="unionflag">
+			<rect class="blue" x="-30" y="-15" width="60" height="30"/>
+			<path class="white"
+					d="M-30,-15 H-23.3 L30,11.6 V15 H23.3 L-30,-11.6 Z"/>
+			<path class="white"
+					d="M-30,15 H-23.3 L30,-11.6 V-15 H23.3 L-30,11.6 Z"/>
+			<path class="red"
+					d="M-30,-15 V-12.8 L-4.5,0 H0 Z
+					M30,15 V12.8 L4.5,0 H0 Z
+					M30,-15 H25.5 L0,-2.2 V0 Z
+					M-30,15 H-25.5 L0,2.2 V0 Z"/>
+			<path d="M-30,-5 H-5 V-15 H5 V-5
+					H30 V5 H5 V15 H-5 V5 H-30 Z"
+					fill="white" stroke="none"/>
+			<path class="red"
+					d="M-30,-3 L-3,-3 -3,-15 3,-15, 3,-3
+					30,-3 30,3, 3,3,  3,15, -3,15, -3,3, -30,3 Z"/>
+		</g>
+
+
+		<path id="star7"
+				d="M0,-8.6  L-1.7,-3.4  L-6.7,-5.3  L-3.7,-0.8  L-8.4,1.9  L-3.0,2.4  
+				L-3.7,7.7  L-0.0,3.8  L3.7,7.7  L3.0,2.4  L8.4,1.9  L3.7,-0.8  
+				L6.7,-5.3  L1.7,-3.4  L0.0,-8.6  Z"
+				fill="white" stroke="none"
+		/>
+
+	</defs>
+
+	<rect class="blue" x="0" y="0" width="240" height="120"
+			fill="#003366" stroke="none"/>
+	<use xlink:href="#unionflag" x="30" y="15" transform="scale(2)"/>
+
+	<!-- Federation star -->
+	<path class="white" transform="translate(60, 90)" 
+			d="M0,-18.0  L-3.5,-7.2  L-14.1,-11.2  L-7.8,-1.8  L-17.5,4.0  L-6.3,5.0  L-7.8,16.2  L-0.0,8.0  L7.8,16.2  L6.3,5.0  L17.5,4.0  L7.8,-1.8  L14.1,-11.2  L3.5,-7.2  L0.0,-18.0  Z"
+	/>
+
+	<g class="white">
+		<!-- Alpha (bottom) -->
+		<use xlink:href="#star7" x="180" y="100"/>
+
+		<!-- Beta (left) -->
+		<use xlink:href="#star7" x="150" y="52.5"/>
+
+		<!-- Gamma (top) -->
+		<use xlink:href="#star7" x="180" y="20"/>
+
+		<!-- Delta (right) -->
+		<use xlink:href="#star7" x="206.7" y="43.5"/>
+
+		<!-- Epsilon (5 points) -->
+		<path transform="translate(190,65)"
+			
+d="M0,-6.0  L-1.6,-2.2  L-5.7,-1.9  L-2.5,0.8  L-3.5,4.9  L-0.0,2.7  L3.5,4.9  L2.5,0.8  L5.7,-1.9  L1.6,-2.2  L0.0,-6.0  Z"
+		/>
+	</g>
+</svg>

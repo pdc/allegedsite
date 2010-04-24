@@ -118,6 +118,15 @@ em {
     color: #FFF;
 }
 
+#banner b a {
+    color: inherit;
+    text-decoration: none;
+}
+#banner b a:hover,
+#banner b a:active {
+    text-decoration: underline;
+}
+
 #banner i {
     display: block;
     width: 940px;
@@ -148,6 +157,7 @@ em {
     display: block;
     float: left;
     width: 560px;
+    padding: 0 0 3em 0;
 }
 
 #entry-body h1 {
@@ -230,8 +240,19 @@ em {
     margin: 0 10px;
     padding: 0;
     
+    
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     text-transform: uppercase;
+    color: #630;
+}
+
+#entry-nav h3 {
+    font-size: 1.25em;
+    margin: 1em 10px 0;
+    padding: 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    color: #630;
 }
 
 #entry-nav ul {
@@ -268,4 +289,36 @@ pre {
     border-radius: 0.5em;
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
+}
+
+div.image-left {
+    float: left;
+    margin: 0.625em 20px 0.625em 10px;
+}
+div.image-full-width {
+    margin: 0.625em 10px;
+}
+
+div.svg embed {
+    display: block;
+    margin: 0 auto;
+}
+
+div.framed {
+    padding: 10px 0;
+    
+    background-color: #FFF;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.4em;
+    -webkit-border-radius: 0.4em;
+    -moz-box-shadow: #000 1px 1px 3px; 
+    -webkit-box-shadow: #000 1px 1px 3px;    
+}
+
+div.framed-3u {
+    width: 220px;   
+}
+
+div.framed-4u {
+    width: 300px;
 }

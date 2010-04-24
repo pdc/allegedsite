@@ -1,0 +1,457 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="512" height="640" 
+    viewBox="0 0 512 640">
+    
+    <desc>Christmas Tree</desc>
+
+	<defs>
+	    <g id="wbranch" transform="translate(-50 -10)"
+	            stroke="#006600" stroke-width="3" fill="none">
+	        <path d="M0 10 h50"/>
+	        <path d="M5 0 l10 10 l-10 10"/>
+	        <path d="M15 0 l10 10 l-10 10"/>
+	        <path d="M25 0 l10 10 l-10 10"/>
+	        <path d="M35 0 l10 10 l-10 10"/>
+	        <!--<path d="M45 0 l10 10 l-10 10"/>-->
+	        <circle cx="0" cy="10" r="5" stroke="none" fill="yellow">
+	            <animateColor attributeName="fill" attributeType="CSS"
+	                from="#996633" to="#FFFF00" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	        <circle cx="0" cy="10" r="15" stroke="none" fill="white" opacity="0.5">
+	            <animate attributeName="opacity" attributeType="CSS"
+	                from="0" to="0.5" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	    </g>
+	    <g id="ebranch"
+	            stroke="#006600" stroke-width="3" fill="none">
+	        <path d="M0 0 h50"/>
+	        <!--<path d="M5 -10 l-10 10 l10 10"/>-->
+	        <path d="M15 -10 l-10 10 l10 10"/>
+	        <path d="M25 -10 l-10 10 l10 10"/>
+	        <path d="M35 -10 l-10 10 l10 10"/>
+	        <path d="M45 -10 l-10 10 l10 10"/>
+	        <circle cx="50" cy="0" r="5" stroke="none" fill="yellow">
+	            <animateColor attributeName="fill" attributeType="CSS"
+	                from="#996633" to="#FFFF00" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	        <circle cx="50" cy="0" r="15" stroke="none" fill="white" opacity="0.5">
+	            <animate attributeName="opacity" attributeType="CSS"
+	                from="0" to="0.5" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	    </g>
+	    <g id="nbranch" transform="rotate(-90)"
+	            stroke="#006600" stroke-width="3" fill="none">
+	        <path d="M0 0 h50"/>
+	        <path d="M5 -10 l-10 10 l10 10"/>
+	        <path d="M15 -10 l-10 10 l10 10"/>
+	        <path d="M25 -10 l-10 10 l10 10"/>
+	        <path d="M35 -10 l-10 10 l10 10"/>
+	        <path d="M45 -10 l-10 10 l10 10"/>
+	        <circle cx="50" cy="0" r="5" stroke="none" fill="yellow">
+	            <animateColor attributeName="fill" attributeType="CSS"
+	                from="#996633" to="#FFFF00" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	        <circle cx="50" cy="0" r="15" stroke="none" fill="white" opacity="0.5">
+	            <animate attributeName="opacity" attributeType="CSS"
+	                from="0" to="0.5" fill="freeze"
+	                begin="0s" dur="0.5s" repeatDur="indefinite"/>
+	        </circle>
+	    </g>
+	    <symbol id="bauble" viewBox="-16 -21 32 37" stroke="2">
+	        <rect x="-5" y="-20" width="10" height="20" fill="#FF9900" stroke="#993300"/>
+	        <circle cx="0" cy="0" r="15" stroke="#990000" fill="#CC0000"/>
+	        <circle cx="-7" cy="-7" r="3" stroke="none" fill="white" opacity="0.75"/>
+	    </symbol>
+
+	    <linearGradient id="sky"
+	        x1="30%" y1="10%" x2="70%" y2="90%" spreadMethod="pad">
+	        <stop offset="0%" stop-color="#99CCCC"/>
+	        <stop offset="100%" stop-color="#FFCCFF"/>
+	    </linearGradient>
+	    <linearGradient id="ground"
+	        x1="70%" y1="0%" x2="30%" y2="90%" spreadMethod="pad">
+	        <stop offset="0%" stop-color="#FFFFCC"/>
+	        <stop offset="5%" stop-color="#CCFFFF"/>
+	        <stop offset="30%" stop-color="#99CCFF"/>
+	        <stop offset="70%" stop-color="#006633"/>
+	        <stop offset="100%" stop-color="#003300"/>
+	    </linearGradient>
+	</defs>
+
+	<rect fill="url(#sky)" x="0" y="0" width="512" height="500"/>
+	<rect fill="url(#ground)" x="0" y="475" width="512" height="200"/>
+
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+          x="20" y="400" width="109.5" height="139.5"
+          viewBox="0 0 216 279">
+        <g stroke-width="5" stroke-linecap="round">
+            <g stroke="#81027E">
+                <!-- legs -->
+                <path fill="none" d="M 134.101 262.333L 169.288 179.583L 206.288 257.583"/>
+
+                <!-- l arm -->
+                <path fill="#ffbfff" d="M 160.288 113.583L 213.288 104.583"/>
+
+                <!-- r arm -->
+                <path fill="#ffbfff" d="M 161.288 121.583L 116.017 173.25"/>
+
+                <!-- body -->
+                <path fill="#ffbfff" d="M 153.788 76.5833L 169.288 182.583"/>
+
+                <!-- head -->
+                <path fill="#ffffbf" d="M 158.707 95.9881C 184.482 88.13 199.145 61.3189 191.457 36.1048C 183.77 10.8907 156.643 -3.17957 130.869 4.67853C 105.095 12.5366 90.4315 39.3478 98.1189 64.5618C 105.806 89.7759 132.933 103.846 158.707 95.9881z"/>
+
+
+                <!-- hair -->
+                <path fill="#CC3399" d="M 107.955 18.5833L 99.9548 39.25L 108.621 29.25L 104.621 43.9166"/>
+                <path fill="#CC3399" d="M 108.621 26.5833L 127.288 10.5833"/>
+                <path fill="#CC3399" d="M 119.288 11.5833L 156.288 7.58331L 123.288 19.5833L 147.288 18.5833L 134.288 27.5833L 149.288 24.5833"/>
+
+                <!-- mouth -->
+                <path fill="#ffffff" d="M 130.288 78.5833C 130.288 78.5833 145.755 90.6868 153.538 88.5833C 162.788 86.0833 175.538 68.8333 175.538 68.8333"/>
+                <path fill="none" d="M 123.538 78.0833C 123.538 78.0833 139.288 77.5833 149.288 75.5833C 159.288 73.5833 177.288 67.3958 177.288 67.3958"/>
+
+                <!-- eyes behind eyeglasses -->
+                <path d="M 131.496 50.4791L 133.83 55.8125"/>
+                <path d="M 162.288 44.5833L 163.955 49.25"/>
+                <path fill="none" d="M 110.288 53.5833L 89.2881 48.5833L 89.2881 59.5833"/>
+                <path fill="#FFFFFF" opacity="0.4" d="M 128.288 67.9681C 137.27 67.9681 144.552 59.7368 144.552 49.5833C 144.552 39.4298 137.27 31.1985 128.288 31.1985C 119.306 31.1985 112.025 39.4298 112.025 49.5833C 112.025 59.7368 119.306 67.9681 128.288 67.9681z"/>
+                <path fill="#FFFFFF" opacity="0.4" d="M 161.788 61.9681C 170.77 61.9681 178.052 53.7368 178.052 43.5833C 178.052 33.4298 170.77 25.1985 161.788 25.1985C 152.806 25.1985 145.525 33.4298 145.525 43.5833C 145.525 53.7368 152.806 61.9681 161.788 61.9681z"/>
+                <path fill="none" d="M 128.288 67.9681C 137.27 67.9681 144.552 59.7368 144.552 49.5833C 144.552 39.4298 137.27 31.1985 128.288 31.1985C 119.306 31.1985 112.025 39.4298 112.025 49.5833C 112.025 59.7368 119.306 67.9681 128.288 67.9681z"/>
+                <path fill="none" d="M 161.788 61.9681C 170.77 61.9681 178.052 53.7368 178.052 43.5833C 178.052 33.4298 170.77 25.1985 161.788 25.1985C 152.806 25.1985 145.525 33.4298 145.525 43.5833C 145.525 53.7368 152.806 61.9681 161.788 61.9681z"/>
+            </g>
+
+
+            <path style="stroke:#40AA54; fill:#ffffbf" d="M 91.9548 123.25L 97.9548 123.917"/>
+            <path style="stroke:#ff7f00; fill:#ffffbf" d="M 89.9548 129.917L 93.9548 139.25"/>
+            <path style="stroke:#ff7f00; fill:#ffffbf" d="M 15.2881 142.583L 13.9548 157.917"/>
+
+            <g stroke="#7F0000" fill="none">
+                <path fill="#C0E8F1" d="M 61.5057 155.588C 86.2007 148.21 100.601 123.421 93.6698 100.223C 86.7383 77.0243 61.0989 64.1995 36.4038 71.5783C 11.7088 78.9571 -2.69176 103.746 4.23984 126.944C 11.1713 150.142 36.8106 162.967 61.5057 155.588z"/>
+                <path d="M 40.6214 109.25L 43.2881 117.917"/>
+                <path d="M 66.2464 109.083L 68.9131 117.75"/>
+                <path d="M 31.9548 135.917C 31.9548 135.917 45.2881 137.917 56.6214 136.583C 67.9548 135.25 75.2881 131.917 75.2881 131.917C 75.2881 131.917 66.6214 143.917 57.2881 146.583C 47.9548 149.25 37.2881 137.917 37.2881 137.917"/>
+                <path d="M 53.9548 159.917C 53.9548 161.917 63.2881 223.917 63.2881 223.917"/>
+                <path d="M 30.0589 276.479L 62.0589 225.812L 95.2881 265.917"/>
+                <path d="M 17.9548 203.917L 53.9548 175.917"/>
+                <path d="M 60.6214 183.25L 88.6214 182.583"/>
+
+                <!-- hair -->
+                <path id="jeremy.hair" stroke="#CC0066" d="M 5.95484 101.25L 4.62144 88.5833L 11.2881 102.583C 11.2881 102.583 11.9548 76.5833 12.6214 78.5833C 13.2881 80.5833 19.9548 91.25 19.9548 91.25L 25.2881 69.9166L 35.2881 83.25C 35.2881 83.25 35.9548 59.9166 37.2881 62.5833C 38.6214 65.25 50.6214 84.5833 50.6214 84.5833L 53.2881 63.9166L 61.2881 74.5833C 61.2881 74.5833 67.9548 65.9166 69.2881 67.9166C 70.6214 69.9166 77.9548 83.9166 77.9548 83.9166L 82.6214 75.25L 88.6214 89.9166">
+<!--                
+                    <animateColor attributeName="stroke" attributeType="CSS"
+                            values="#CC9900;#00FF00;#99CCFF;#CCCC33;#990000;#CC9900"
+                            begin="0s" dur="300s" repeatCount="indefinite"/>
+-->
+                </path>
+            </g>
+        </g>
+    </svg>
+
+    <g id="half">
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v0" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-110 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-60 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-110 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h-60 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-50" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-90 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-40 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-90 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h-40 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-100" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-70 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-20 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-70 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h-20 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-150" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h-50 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h-50 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h-10 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-200" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h-30 h10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h-30 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h-10 h10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#wbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+
+    	</use>
+    </g>
+
+
+    <g>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v0" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h110 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h60 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h110 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 h60 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-50" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h90 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h40 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h90 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -50 h40 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-100" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h70 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h20 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h70 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -100 h20 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-150" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h50 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h50 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -150 h10 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-200" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h30 h-10" begin="6s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h30 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 -200 h10 h-10" begin="6s" dur="3s" fill="freeze"/>
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="45 250 500"
+                    begin="6s" dur="1s"/>
+    	</use>
+	
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#ebranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="3s" dur="3s" fill="freeze"/>
+
+            <animateTransform attributeName="transform" attributeType="XML"
+                    type="rotate" additive="sum" fill="freeze"
+                    from="0 250 500" to="-45 250 500"
+                    begin="6s" dur="1s"/>
+
+    	</use>
+    </g>
+
+    <g>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-300" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v50" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-250" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-200" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-150" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-100" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-50" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    	<use xlink:href="#nbranch" x="250" y="500">
+    	    <animateMotion path="M0 0 v-0" begin="1s" dur="3s" fill="freeze"/>
+    	</use>
+    </g>
+
+
+    <g font-family="Georgia, serif" font-style="italic" font-weight="700"
+            fill="#006600" stroke="#660000" stroke-width="2">
+        <text>
+            <tspan x="25" y="110" font-size="42">Happy Christmas!</tspan>
+            <tspan x="150" y="600" font-size="24" stroke-width="0.5">from Jeremy and Damian</tspan>
+        </text>
+    </g>
+
+
+</svg>

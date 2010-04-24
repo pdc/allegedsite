@@ -1,0 +1,27 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN"
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" 
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		viewBox="0 0 16 16" width="100%" height="100%">
+	<title>Symbol for OpenID</title>
+  	<desc>
+		Vertical orange stroke suggests the letter I, and
+		a grey curved arrow behind it completes a lower -case letter
+		d.
+	</desc>
+    <defs>
+	</defs>
+	<!--
+	<g transform="translate(8, 10) scale(1, 0.75)">
+		<path d="M0,8 A8,8 0 1 1 5.65,-5.56 
+				l1.41,-1.41 v4.24 h-4.24 l1.41,-1.41
+				L4.24,-4.24  A6,6 0 1  0 0,6 Z"
+				stroke="none" fill="#666"/>
+	</g>
+-->
+	<path d="M6,16 V2 L10,0 V14 z"
+			stroke="none" fill="#F60"/>
+	<path d="M6,16  A6,6 0 1 1 6,4  V6  A3,4 0 0 0 6,14  z
+			M10,4  A6,6 0 0 1 16,10  H13  A3,4 0 0 0 10,6  z"
+			stroke="none" fill="#888"/>
+</svg>

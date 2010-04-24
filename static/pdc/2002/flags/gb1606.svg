@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		viewBox="-25 -15 50 30"
+		width="400" height="240"
+>
+	<title>Union Flag</title>
+	<desc>
+		A blue flag with the red cross of St George fibrulated in white
+		over the interleaved read and white saltairs.
+	</desc>
+	<defs>
+		<style type="text/css">
+			.blue {
+				fill: #003366;
+				stroke: none;
+			}
+			.red {
+				fill: #CC0033;
+				stroke: none;
+			}
+			.white {
+				fill: #FFFFFF;
+				stroke: none;
+			}
+		</style>
+	</defs>
+
+	<!--
+		Union Flag instructions from
+		http://www.jdawiseman.com/papers/union-jack/union-jack.html#correct-construction
+	-->
+
+	<rect class="blue" x="-30" y="-15" width="60" height="30"/>
+	<path class="white" d="M-30,-15 H-20.1 L30,12.1 V15 H20.1 L-30,-12.1 Z"/>
+	<path class="white" d="M-30,15 H-20.1 L30,-12.1 V-15 H20.1 L-30,12.1 Z"/>
+	<path class="white" d="M-30,-5 H-5 V-15 H5 V-5
+			H30 V5 H5 V15 H-5 V5 H-30 Z"/>
+	<path class="red"
+			d="M-30,-3 L-3,-3 -3,-15 3,-15, 3,-3
+			30,-3 30,3, 3,3,  3,15, -3,15, -3,3, -30,3 Z"/>
+
+</svg>

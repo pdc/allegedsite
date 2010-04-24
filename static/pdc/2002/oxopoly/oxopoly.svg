@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+	"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="500" height="500">
+	<defs>
+		<linearGradient id="yellow-metallic" x1="88.8889%" y1="0%" x2="0%" y2="100%"
+			spreadMethod="pad" gradientUnits="objectBoundingBox">
+			<stop offset="0%" stop-color="#c0c0c0" stop-opacity="1"/>
+			<stop offset="14%" stop-color="#ffe743" stop-opacity="1"/>
+			<stop offset="54%" stop-color="#ffffff" stop-opacity="1"/>
+			<stop offset="71%" stop-color="#ffffc0" stop-opacity="1"/>
+			<stop offset="84%" stop-color="#ffe743" stop-opacity="1"/>
+			<stop offset="100%" stop-color="#c0c0c0" stop-opacity="1"/>
+		</linearGradient>
+		<linearGradient id="black-white" x1="0%" y1="0%" x2="100%" y2="0%"
+			spreadMethod="pad" gradientUnits="objectBoundingBox">
+			<stop offset="0%" stop-color="#000000" stop-opacity="1"/>
+			<stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
+		</linearGradient>
+	</defs>
+	<rect id="board-edge" x="1" y="1" width="498" height="498" rx="2" ry="2"
+		fill="url(#yellow-metallic)" stroke="#cccccc" stroke-width="2"
+		fill-opacity="0.5"/>
+	<g id="outlines" fill="none" stroke="#000000" stroke-width="1">
+		<rect x="1" y="1" width="68" height="68"/>
+		<rect x="431" y="1" width="68" height="68"/>
+		<rect x="431" y="431" width="68" height="68"/>
+		<rect x="1" y="431" width="68" height="68"/>
+		<rect x="71" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="111" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="151" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="191" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="231" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="271" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="311" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="351" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="391" y="1" width="38" height="68" rx="3" ry="3"/>
+		<rect x="1" y="71" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="111" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="151" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="191" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="231" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="271" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="311" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="351" width="68" height="38" rx="3" ry="3"/>
+		<rect x="1" y="391" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="71" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="111" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="151" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="191" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="231" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="271" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="311" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="351" width="68" height="38" rx="3" ry="3"/>
+		<rect x="431" y="391" width="68" height="38" rx="3" ry="3"/>
+		<rect x="71" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="111" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="151" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="191" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="231" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="271" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="311" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="351" y="431" width="38" height="68" rx="3" ry="3"/>
+		<rect x="391" y="431" width="38" height="68" rx="3" ry="3"/>
+	</g>
+	<g id="dark-purple" fill="#990066" stroke="none">
+		<rect x="52" y="312" width="16" height="36" rx="2" ry="2"/>
+		<rect x="52" y="392" width="16" height="36" rx="2" ry="2"/>
+	</g>
+	<g id="light-blue" fill="#99ccff" stroke="none">
+		<rect x="52" y="72" width="16" height="36" rx="2" ry="2"/>
+		<rect x="52" y="152" width="16" height="36" rx="2" ry="2"/>
+		<rect x="52" y="192" width="16" height="36" rx="2" ry="2"/>
+	</g>
+	<g id="red" fill="#cc3300" stroke="none">
+		<rect x="432" y="72" width="16" height="36" rx="2" ry="2"/>
+		<rect x="432" y="112" width="16" height="36" rx="2" ry="2"/>
+		<rect x="432" y="192" width="16" height="36" rx="2" ry="2"/>
+	</g>
+	<g id="yellow" fill="#eedd00" stroke="none">
+		<rect x="432" y="272" width="16" height="36" rx="2" ry="2"/>
+		<rect x="432" y="312" width="16" height="36" rx="2" ry="2"/>
+		<rect x="432" y="392" width="16" height="36" rx="2" ry="2"/>
+	</g>
+	<g id="purple" fill="#dd00dd" stroke="none">
+		<rect y="52" x="72" height="16" width="36" rx="2" ry="2"/>
+		<rect y="52" x="152" height="16" width="36" rx="2" ry="2"/>
+		<rect y="52" x="192" height="16" width="36" rx="2" ry="2"/>
+	</g>
+	<g id="orange" fill="#ff9900" stroke="none">
+		<rect y="52" x="272" height="16" width="36" rx="2" ry="2"/>
+		<rect y="52" x="312" height="16" width="36" rx="2" ry="2"/>
+		<rect y="52" x="392" height="16" width="36" rx="2" ry="2"/>
+	</g>
+	<g id="green" fill="#006633" stroke="none">
+		<rect y="432" x="272" height="16" width="36" rx="2" ry="2"/>
+		<rect y="432" x="352" height="16" width="36" rx="2" ry="2"/>
+		<rect y="432" x="392" height="16" width="36" rx="2" ry="2"/>
+	</g>
+	<g id="dark-blue" fill="#003399" stroke="none">
+		<rect y="432" x="72" height="16" width="36" rx="2" ry="2"/>
+		<rect y="432" x="152" height="16" width="36" rx="2" ry="2"/>
+	</g>
+	<text fill="#000000" font-size="10" font-family="trebuchet ms, sans-serif"
+		font-weight="bold">
+<tspan x="113" y="460">SUPER</tspan>
+		<tspan x="113" y="472">TAX</tspan>
+		<tspan x="113" y="484" font-size="8">pay $2m</tspan>
+			</text>
+	<text fill="#000000" font-size="8" font-family="trebuchet ms, sans-serif">
+<tspan x="73" y="460">Christ</tspan>
+		<tspan x="73" y="470">Church</tspan>
+		<tspan x="73" y="480">College</tspan>
+		<tspan x="73" y="490">$4m</tspan>
+		<tspan x="153" y="460">St John's</tspan>
+		<tspan x="153" y="470">College</tspan>
+		<tspan x="153" y="490">$3.5m</tspan>
+			</text>
+	<text fill="#000000" font-size="8" font-family="trebuchet ms, sans-serif"
+		transform="rotate(90)">
+<tspan x="73" y="-40">Exeter</tspan>
+		<tspan x="73" y="-30">College</tspan>
+				<tspan x="73" y="-20">
+		</tspan>
+<tspan x="73" y="-10">$1.2m</tspan>
+		<tspan x="153" y="-40">St Edmund</tspan>
+		<tspan x="153" y="-30">Hall</tspan>
+		<tspan x="153" y="-10">$1m</tspan>
+			</text>
+	<text fill="#000000" font-size="8" font-family="trebuchet ms, sans-serif"
+		transform="rotate(180)">
+<tspan x="-107" y="-40">Exeter</tspan>
+		<tspan x="-107" y="-30">College</tspan>
+				<tspan x="-1067" y="-20">
+		</tspan>
+<tspan x="-107" y="-10">$1.4m</tspan>
+		<tspan x="-187" y="-40">St Edmund</tspan>
+		<tspan x="-187" y="-30">Hall</tspan>
+		<tspan x="-187" y="-10">$1.4m</tspan>
+			</text>
+	<text fill="#000000" font-size="8" font-family="trebuchet ms, sans-serif"
+		transform="rotate(270)">
+<tspan x="-107" y="460">Exeter</tspan>
+		<tspan x="-107" y="470">College</tspan>
+				<tspan x="-107" y="480">
+		</tspan>
+<tspan x="-107" y="490">$1.4m</tspan>
+		<tspan x="-187" y="460">St Edmund</tspan>
+		<tspan x="-187" y="470">Hall</tspan>
+		<tspan x="-187" y="490">$1.4m</tspan>
+			</text>
+	<path id="arrow"
+		d="M43.8945 459.077 L28.245 443.437 L12.4374 459.077 L22.0801 459.077 C22.1409 470.093
+			30.5372 489.437 58.4374 489.437 L58.4374 474.027 C45.6333 474.027 34.5073
+			467.801 34.568 459.077 z" fill="#cc6600" stroke="#660000" stroke-width="1"
+		transform="translate(58.4374 443.437) scale(0.847826 0.847826) translate(-58.4374 -443.437) translate(6.36238 -7.99376) translate(58.4374 443.437) scale(0.871795 0.923077) translate(-58.4374 -443.437)"
+		/>
+	<text fill="#000000" font-size="20" font-family="Trebuchet MS"
+		font-weight="bold" transform="translate(30 450) rotate(45)">
+<tspan x="0" y="20">GO</tspan>
+		<tspan font-size="7" x="-7" y="30">collect $2m</tspan>
+			</text>
+</svg>

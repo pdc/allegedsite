@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="150" viewBox="0 0 200 150">
+  <rect x="0.5" y="0.5" width="199" height="149" rx="5.5" ry="5.5" fill="#F90" stroke="#600" stroke-width="1"/>
+  <a xlink:href="2003/percy/" id="index">
+    <rect x="1.5" y="1.5" width="197" height="27" rx="5.5" ry="5.5" stroke="#FFF" stroke-width="1" fill="#FC9" opacity="0">
+      <set attributeName="opacity" to="1" begin="index.mouseover"/>
+      <set attributeName="opacity" to="0" begin="index.mouseout"/>
+    </rect>
+    <text x="6" y="24" stroke="#FFF" stroke-width="1" stroke-linejoin="round" fill="none" font-family="Futura Medium, Futura, Century Gothic, sans-serif" font-size="24"><set attributeName="stroke" to="#000" begin="index.mouseover"/><set attributeName="stroke" to="#FFF" begin="index.mouseout"/>Percy Street</text>
+  </a>
+  <a xlink:href="2003/percy/percy-24.html" id="current">
+    <rect x="1.5" y="41.5" width="197" height="97" rx="5.5" ry="5.5" stroke="#930" stroke-width="3" fill="none" opacity="0">
+      <set attributeName="opacity" to="0.75" begin="current.mouseover"/>
+      <set attributeName="opacity" to="0" begin="current.mouseout"/>
+    </rect>
+    <text x="197" y="60" text-anchor="end" font-family="Futura Medium, Futura, Century Gothic, sans-serif" font-size="20" fill="#F90" stroke="#000">24</text>
+  </a>
+  <a xlink:href="2003/percy/percy-17.html">
+    <g id="story">
+      <rect x="1.5" y="29.5" width="197" height="11" rx="5.5" ry="5.5" stroke="#FFF" fill="#FC9" opacity="0">
+        <set attributeName="opacity" to="1" begin="story.mouseover"/>
+        <set attributeName="opacity" to="0" begin="story.mouseout"/>
+      </rect>
+      <text x="6" y="39" font-family="Futura Medium, Futura, Century Gothic, sans-serif" font-size="10">&#8216;Saturday Night &amp; Sunday Morning&#8217;</text>
+    </g>
+  </a>
+  <text x="100" y="148" text-anchor="middle" stroke="none" fill="#930" font-family="Futura Medium, Futura, Century Gothic, sansserif" font-size="9">Not work-safe (some pages contain nudity).</text>
+</svg>

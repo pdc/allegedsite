@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="banner">
-      <b>Alleged Archive</b>
+      <b><a href="{% url blog_entry %}">Alleged Archive</a></b>
       <h1>{{ entry.title }}</h1>
     </div>
     <div id="page">
@@ -20,6 +20,8 @@
         <dl>
           <dt>Author</dt>
           <dd>Damian Cugley</dd>
+          <dt>Published</dt>
+          <dd>{{ entry.published|date:"j N Y" }}</dd>
           <dt>Topics</dt>
           <dd>(Under construction)</dd>
         </dl>
@@ -45,12 +47,33 @@
           {% endwith %}
         </ul>
     		{% if this_month %}
-      	<h2>{{ entry.published|date:"N Y" }}</h2>
+      	<h3>{{ entry.published|date:"F Y" }}</h3>
       	<ul>
-      	  {% for e in this_month %}
+      	  {% for e in this_month %}      	    
           <li>
-            <a href="{{ e.href }}">‘{{ e.title }}’ 
+      	    {% ifequal e entry %}
+            <strong>‘{{ e.title }}’ 
+              <small>{{ e.published|date:"j N"}}</small></strong>
+      	    {% else %}
+            <a href="{{ e.href }}"‘{{ e.title }}’
               <small>{{ e.published|date:"j N"}}</small></a>
+            {% endifequal %}
+          </li>
+			    {% endfor %}
+			  </ul>
+			  {% endif %}
+    		{% if years %}
+      	<h3>Jump</h3>
+      	<ul>
+      	  {% for e in years %}      	    
+          <li>
+      	    {% ifequal e entry %}
+            <strong>‘{{ e.title }}’ 
+              <small>{{ e.published|date:"Y"}}</small></strong>
+      	    {% else %}
+            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
+              <small>{{ e.published|date:"Y"}}</small></a>
+            {% endifequal %}
           </li>
 			    {% endfor %}
 			  </ul>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" 
+		"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" 
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		viewBox="0 0 360 128" width="360" height="128">
+	<title>~Foolish marked-up text sample</title>
+  	<desc></desc>
+    	<defs>
+	</defs>
+	<rect x="0" y="0" width="512" height="128"
+			fill="#EEE" stroke="#DDD" stroke-width="2"/>
+	<text font-family="helvetica, ariel, sans-serif" font-size="18" font-weight="400">
+		<tspan x="32" y="18">WestminsterWhitehallWellington.</tspan>
+	</text>
+	<g transform="translate(34,20)">
+		<path stroke="#369" stroke-width="0.5" fill="#69C"
+				d="M0,0 q+0,+8 +8,+8 H41 q+6,+0 +6,+6 +0,-6 +6,-6 H86 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H55 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="47" y="25" fill="#369">foo</tspan>
+		</text>
+	</g>
+	<g transform="translate(132,20)">
+		<path stroke="#369" stroke-width="0.5" fill="#69C"
+				d="M0,0 q+0,+8 +8,+8 H31 q+6,+0 +6,+6 +0,-6 +6,-6 H66 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H45 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="37" y="25" fill="#369">foo</tspan>
+		</text>
+	</g>
+	<g transform="translate(208,20)">
+		<path stroke="#936" stroke-width="0.5" fill="#C69"
+				d="M0,0 q+0,+8 +8,+8 H35 q+6,+0 +6,+6 +0,-6 +6,-6 H74 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H49 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="45" y="25" fill="#936">goo</tspan>
+		</text>
+	</g>
+	<g transform="translate(296,20)">
+		<path stroke="#C33" stroke-width="0.5" fill="#F66"
+				d="M0,0 l+4,+12 -4,-4 -4,+4z"/>
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="0" y="25" fill="#C33">wibble</tspan>
+		</text>
+	</g>
+	<g transform="translate(132,45)">
+		<path stroke="#963" stroke-width="0.5" fill="#C96"
+				d="M0,0 q+0,+8 +8,+8 H73 q+6,+0 +6,+6 +0,-6 +6,-6 H150 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H87 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="83" y="25" fill="#963">baz</tspan>
+		</text>
+	</g>
+	<g transform="translate(282,45)">
+		<path stroke="#693" stroke-width="0.5" fill="#9C6"
+				d="M0,0 q+0,+8 +8,+8 H8 q+6,+0 +6,+6 +0,-6 +6,-6 H20 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H22 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="14" y="25" fill="#693">wobble</tspan>
+		</text>
+	</g>
+	<g transform="translate(132,70)">
+		<path stroke="#396" stroke-width="0.5" fill="#6C9"
+				d="M0,0 q+0,+8 +8,+8 H73 q+6,+0 +6,+6 +0,-6 +6,-6 H150 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H87 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="83" y="25" fill="#396">bar</tspan>
+		</text>
+	</g>
+	<g transform="translate(282,70)">
+		<path stroke="#666" stroke-width="0.5" fill="#999"
+				d="M0,0 q+0,+8 +8,+8 H8 q+6,+0 +6,+6 +0,-6 +6,-6 H20 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H22 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="14" y="25" fill="#666">quux</tspan>
+		</text>
+	</g>
+	<g transform="translate(32,95)">
+		<path stroke="#639" stroke-width="0.5" fill="#96C"
+				d="M0,0 q+0,+8 +8,+8 H123 q+6,+0 +6,+6 +0,-6 +6,-6 H266 q+8,+0 +8,-8
+				q+0,+6 -8,+6 H137 q-6,+0 -8,+6 -2,-6 -8,-6 H8 q-8,+0 -8,-6z"/> 
+		<text font-family="helvetica, ariel, sans-serif" font-weight="600" font-style="italic"
+				font-size="12" text-anchor="middle" stroke="none">
+			<tspan x="133" y="25" fill="#639">mumble</tspan>
+		</text>
+	</g>
+</svg>
