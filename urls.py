@@ -15,8 +15,9 @@ snaptioner_args = {
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
 urlpatterns = patterns('',
-    (r'^$', 'alleged.blog.views.entry', blog_args, 'blog_entry'),
+    (r'^$', 'alleged.blog.views.front_page', blog_args, 'front_page'),
     (r'^albums/', include('alleged.snaptioner.urls')),
+    (r'^pdc/$', 'alleged.blog.views.entry', blog_args, 'blog_entry'),
     (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$', 
         'alleged.blog.views.entry', blog_args, 'blog_entry')
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
