@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		viewBox="0 0 176 176" width=" 176" height="176">
+	<title>Flickr Badge</title>
+	<desc></desc>
+	<defs>
+	</defs>
+	<a xlink:href="http://www.flickr.com/photos/pdc/">
+		<image
+				x="0" y="0" width="176" height="176"
+				preserveAspectRatio="xMidYMid slice"
+				xlink:href="None"/>
+		<image
+				x="1" y="1" width="48" height="48"
+				xlink:href="http://www.flickr.com/buddyicons/14145351@N00.jpg"/>
+		<rect x="126" y="156" width="52" height="22" 
+				rx="2" ry="2" fill="#FFF" opacity="0.75"/>
+		<text
+			x="175" y="175"
+			font-family="Helvetica, Ariel, sans-serif"
+			font-weight="700"
+			font-size="20"
+			text-anchor="end" stroke="none"
+		>
+			<tspan fill="#0063DC">flick</tspan><tspan fill="#FF0084">r</tspan>
+		</text>
+	</a>
+</svg>
+

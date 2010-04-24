@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 282.0 195.0"
+        width="282.0mm" height="195.0mm">
+    <title>Zoetrope blank for CAPTION 2004</title>
+    <rect x="0" y="0" width="282.0" height="195.0"
+            fill="#FFF" stroke="none"/>
+    <circle cx="240.11" cy="64.00" r="39.89"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <circle cx="240.11" cy="64.00" r="1.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <path d="M2.00,128.00 h278.00 v60.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            l-5.00,5.00 h-7.38 l-5.00,-5.00
+            L2.00,188.00 z"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="277.00" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="246.11" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="215.22" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="184.33" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="153.44" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="122.56" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="91.67" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="60.78" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+    <rect x="29.89" y="135.50" width="3.00" height="15.00"
+            stroke="#000" stroke-width="0.15" fill="#FFF"/>
+
+</svg>

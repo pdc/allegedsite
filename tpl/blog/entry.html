@@ -45,12 +45,33 @@
           {% endwith %}
         </ul>
     		{% if this_month %}
-      	<h2>{{ entry.published|date:"N Y" }}</h2>
+      	<h2>{{ entry.published|date:"F Y" }}</h2>
       	<ul>
-      	  {% for e in this_month %}
+      	  {% for e in this_month %}      	    
           <li>
+      	    {% ifequal e entry %}
+            <strong>‘{{ e.title }}’ 
+              <small>{{ e.published|date:"j N"}}</small></strong>
+      	    {% else %}
             <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
               <small>{{ e.published|date:"j N"}}</small></a>
+            {% endifequal %}
+          </li>
+			    {% endfor %}
+			  </ul>
+			  {% endif %}
+    		{% if years %}
+      	<h2>Jump</h2>
+      	<ul>
+      	  {% for e in years %}      	    
+          <li>
+      	    {% ifequal e entry %}
+            <strong>‘{{ e.title }}’ 
+              <small>{{ e.published|date:"Y"}}</small></strong>
+      	    {% else %}
+            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
+              <small>{{ e.published|date:"Y"}}</small></a>
+            {% endifequal %}
           </li>
 			    {% endfor %}
 			  </ul>

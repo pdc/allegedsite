@@ -41,15 +41,22 @@ class HrefsTreeprocessor(Treeprocessor):
     def run(self, root):
         for e in root:
             if e.tag == 'a':
-                e.set('href', self.blog_url + e.get('href'))
+                e.set('href', munge_url(self.blog_url, e.get('href')))
             elif e.tag == 'img':
-                e.set('src', self.image_url + e.get('src'))
+                e.set('src', munge_url(self.image_url, e.get('src')))
             else:
                 self.run(e)
         return root
         
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
-img_re = re.compile(r'(<img[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
+img_or_embed_re = re.compile(r'(<(?:img|embed)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
+
+def munge_url(url, more_url):
+    if more_url.endswith('.svgz'):
+        more_url = more_url[:-1]
+    if more_url.startswith('http://'):
+        return more_url
+    return url + more_url 
         
 class HrefsPostprocessor(Postprocessor):
     def __init__(self, markdown, blog_url, image_url, *args, **kwargs):
@@ -62,13 +69,14 @@ class HrefsPostprocessor(Postprocessor):
         for i in range(self.markdown.htmlStash.html_counter):
             html, safe  = self.markdown.htmlStash.rawHtmlBlocks[i]
             html = a_re.sub(self.link_sub(self.blog_url), html)
-            html = img_re.sub(self.link_sub(self.image_url), html)
+            html = img_or_embed_re.sub(self.link_sub(self.image_url), html)
             self.markdown.htmlStash.rawHtmlBlocks[i] = (html, safe)
         return text
         
     def link_sub(self, url):
         def sub(m):
-            return '%s"%s%s"%s' % (m.group(1), url, m.group(2)[1:-1], m.group(3))
+            new_url = munge_url(url, m.group(2)[1:-1])
+            return '%s"%s"%s' % (m.group(1), new_url, m.group(3))
         return sub
 
 class HrefsExtension(Extension):            
@@ -105,9 +113,15 @@ class Entry(object):
             text = input.read()
         if text.startswith('<'):
             # Old XML-based format.
+            
+            p = text.index('<entry', 0, 200) + 6
+            if text.find('xmlns:dc', 0, 200) < 0:
+                text = '%s xmlns:dc="http://purl.org/dc/elements/1.1"%s' % (text[:p], text[p:])
+            text = text.replace(' xmlns="http://www.alleged.org.uk/2003/um"', '', 1)            
+            
             root = fromstring(unentity(text))
             for e in root:
-                if e.tag == 'h1':
+                if e.tag == 'h1' or e.tag == 'h':
                     self._title = e.text
                 elif e.tag == 'body':
                     bytes = tostring(e, 'UTF-8')
@@ -126,12 +140,14 @@ class Entry(object):
             
     @property
     def title(self):
+        """The title of this entry, as PCDATA."""
         if not self.is_loaded:
             self.load()
         return self._title      
             
     @property
     def body(self):
+        """The body of this entry, as HTML."""
         if not self.is_loaded:
             self.load()
         return self._body

@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+		"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		id="body" width="25" height="9" viewBox="0 -40 250 90">
+	<title></title>
+	<desc>
+		An arrow pointing left
+	</desc>
+	<defs>
+		<filter id="MyFilter" filterUnits="userSpaceOnUse" x="0" y="-40" width="250" height="90">
+		  <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+		  <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+		  <feSpecularLighting in="blur" surfaceScale="5" specularConstant=".75" 
+							  specularExponent="20" lighting-color="#bbbbbb"  
+							  result="specOut">
+			<fePointLight x="-5000" y="-10000" z="20000"/>
+		  </feSpecularLighting>
+		  <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+		  <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" 
+					   k1="0" k2="1" k3="1" k4="0" result="litPaint"/>
+		  <feMerge>
+			<feMergeNode in="offsetBlur"/>
+			<feMergeNode in="litPaint"/>
+		  </feMerge>
+		</filter>
+	</defs>
+	<g filter="url(#MyFilter)" >
+		<path d="M237.5,00 L160,35 L175,12.5 H2.5 V-12.5 H175 L160,-35 Z"
+			fill="#AC341C" stroke="#000" stroke-width="5" 
+			stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+	<!-- fill="#DCA494" stroke="#AC341C" -->
+</svg>
+
