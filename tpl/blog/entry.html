@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="banner">
-      <b>Alleged Archive</b>
+      <b><a href="{% url blog_entry %}">Alleged Archive</a></b>
       <h1>{{ entry.title }}</h1>
     </div>
     <div id="page">
@@ -20,6 +20,8 @@
         <dl>
           <dt>Author</dt>
           <dd>Damian Cugley</dd>
+          <dt>Published</dt>
+          <dd>{{ entry.published|date:"j N Y" }}</dd>
           <dt>Topics</dt>
           <dd>(Under construction)</dd>
         </dl>
@@ -45,7 +47,7 @@
           {% endwith %}
         </ul>
     		{% if this_month %}
-      	<h2>{{ entry.published|date:"F Y" }}</h2>
+      	<h3>{{ entry.published|date:"F Y" }}</h3>
       	<ul>
       	  {% for e in this_month %}      	    
           <li>
@@ -61,7 +63,7 @@
 			  </ul>
 			  {% endif %}
     		{% if years %}
-      	<h2>Jump</h2>
+      	<h3>Jump</h3>
       	<ul>
       	  {% for e in years %}      	    
           <li>

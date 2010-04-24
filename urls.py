@@ -15,7 +15,7 @@ snaptioner_args = {
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
 urlpatterns = patterns('',
-    (r'^$', 'alleged.blog.views.entry', blog_args, 'blog_entry_1'),
+    (r'^$', 'alleged.blog.views.entry', blog_args, 'blog_entry'),
     (r'^albums/', include('alleged.snaptioner.urls')),
     (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$', 
         'alleged.blog.views.entry', blog_args, 'blog_entry')
