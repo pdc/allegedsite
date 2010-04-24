@@ -235,6 +235,7 @@ class SimpleTest(TestCase):
         self.assertEqual('<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>', entry.body)
     
     def test_src_munging_embed_unsvgz(self):
+        """When including a SVG file iwth the old-style .svgz ending, change it to .svg."""
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <embed src="zergukk.svgz" type="image/svg" />\n')
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
@@ -242,6 +243,7 @@ class SimpleTest(TestCase):
         self.assertEqual('<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>', entry.body)
     
     def test_filtering(self):
+        """Create a bunch of entries and show that you get the correct ones in the this_month list."""
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
             output.write('Title: A\n\nHello [world](17.html)\n')
         with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
