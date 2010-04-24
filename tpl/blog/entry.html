@@ -49,7 +49,7 @@
       	<ul>
       	  {% for e in this_month %}
           <li>
-            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
+            <a href="{{ e.href }}">‘{{ e.title }}’ 
               <small>{{ e.published|date:"j N"}}</small></a>
           </li>
 			    {% endfor %}
