@@ -27,7 +27,7 @@ class SimpleTest(TestCase):
         
     def test_entry_list_1(self):
         with open(os.path.join(BASE_DIR, '2010-04-17-testa.e'), 'wt') as output:
-            output.write('Title: FOO\n\nBAR\nBAZ\n')
+            output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
         entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
@@ -36,6 +36,8 @@ class SimpleTest(TestCase):
         self.assertEqual(datetime(2010, 4, 17, 12, 0, 0), e.published)
         self.assertEqual('testa', e.slug)
         self.assertEqual('/masterblog/2010/04/17.html', e.href)
+        self.assert_('alpha' in e.tags)
+        self.assert_('beta' in e.tags)
         
     def test_archaic(self):
         with open(os.path.join(BASE_DIR, '19970611.e'), 'wt') as output:
@@ -115,6 +117,8 @@ class SimpleTest(TestCase):
         self.assertEqual(expected, e.body)
         self.assertEqual(datetime(1998, 4, 25, 12, 0), e.published)
         self.assertEqual('', e.slug or '')    
+        self.assert_('photos' in e.tags)
+        self.assert_('caption' in e.tags)
         
     def test_h_rather_than_h1(self):
         with open(os.path.join(BASE_DIR, '19980425.e'), 'wt') as output:
@@ -261,3 +265,38 @@ class SimpleTest(TestCase):
         self.assertEqual(['E', 'D', 'C', 'A', 'B'], [x.title for x in entries])
         self.assertEqual(['A', 'B'], [x.title for x in this_month])
         self.assertEqual(['E', 'D', 'B'], [x.title for x in years])
+        
+    def test_find_by_tag(self):
+        """Create a bunch of entries and show that you get the correct ones in the this_month list."""
+        with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
+            output.write('Title: A\nTopics: a b\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
+            output.write('Title: B\nTOpics: b c d\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2010/2010-03-07-c.e'), 'wt') as output:
+            output.write('Title: C\nTopics: c d\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2009/2009-12-31-d.e'), 'wt') as output:
+            output.write('Title: D\nTopics: d\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2008/2008-07-11-e.e'), 'wt') as output:
+            output.write('Title: E\nTopics: a e\n\nHello [world](17.html)\n')
+        entries = get_entries(BASE_DIR, '/x/', '/i/')
+        toc = get_toc(entries)
+        self.assertEqual(5, len(toc))
+        self.assertEqual('E', toc[0].title)
+        self.assertEqual(['a', 'e'], toc[0].tags)
+        self.assertEqual(datetime(2008, 7, 11, 12, 0), toc[0].published)
+        self.assertEqual('B', toc[-1].title)
+        self.assertEqual(['b', 'c', 'd'], toc[-1].tags)
+        self.assertEqual(datetime(2010, 4, 21, 12, 0), toc[-1].published)
+        
+        a_entries = toc.filter(tag='a')
+        self.assertEqual(2, len(a_entries))
+        self.assertEqual('E', a_entries[0].title)
+        self.assertEqual(['a', 'e'], a_entries[0].tags)
+        self.assertEqual(datetime(2008, 7, 11, 12, 0), a_entries[0].published)
+        self.assertEqual('A', a_entries[1].title)
+        self.assertEqual(['a', 'b'], a_entries[1].tags)
+        self.assertEqual(datetime(2010, 4, 18, 12, 0), a_entries[1].published)
+        
+        ae_entries = a_entries.filter(tag='e')
+        self.assertEqual(1, len(ae_entries))
+        self.assertEqual(a_entries[0], ae_entries[0])

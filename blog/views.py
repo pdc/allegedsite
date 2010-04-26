@@ -4,20 +4,36 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response 
 from django.core.urlresolvers import reverse
+from django.core.cache import cache
 
-from alleged.blog.entries import get_entries as get_entries_1, get_entry
+from alleged.blog.entries import get_entries as get_entries_1, get_entry, get_toc as get_toc_1
+
+def add_hrefs(entries):
+    for entry in entries:
+        if not hasattr(entry, 'href'):
+            entry.href = reverse('blog_entry', kwargs={
+                'year': str(entry.published.year),
+                'month': '%02d' % entry.published.month,
+                'day': '%02d' % entry.published.day,
+            })
 
 def get_entries(blog_dir, blog_url, image_url):
     """Get the lust of blog entries."""
-    entries = get_entries_1(blog_dir, blog_url, image_url)
-    for entry in entries:
-        entry.href = reverse('blog_entry', kwargs={
-            #'blog_dir': blog_dir,
-            'year': str(entry.published.year),
-            'month': '%02d' % entry.published.month,
-            'day': '%02d' % entry.published.day,
-        })
+    blog_key = 'blog:%s' % blog_dir
+    entries = cache.get(blog_key)
+    if not entries:
+        entries = get_entries_1(blog_dir, blog_url, image_url)
+        add_hrefs(entries)
+        for entry in entries:
+            if not entry.is_loaded:
+                entry.load()
+        cache.set(blog_key, entries)
     return entries
+    
+def get_toc(blog_dir, blog_url, image_url):
+    entries = get_entries(blog_dir, blog_url, image_url)
+    toc = get_toc_1(entries)
+    return toc
     
 def render_with(template_name):
     """Decorator for request handlers. the decorated function returns a dict of template args."""
@@ -44,6 +60,20 @@ def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=Non
         'this_month': this_month, 
         'years': reversed(years),
     }
+    
+@render_with('blog/filtered_by_tag.html')
+def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags):
+    tags = sorted(plus_separated_tags.split('+'))
+    matching_entries = get_toc(blog_dir, blog_url, image_url)
+    for tag in tags:
+        matching_entries = matching_entries.filter(tag=tag)
+    return {
+        'tags': tags,
+        'plus_separated_tags': plus_separated_tags,
+        'matching_entries': matching_entries,
+    }
+    
+        
 
 @render_with('front_page.html')
 def front_page(request, blog_dir, blog_url, image_url):

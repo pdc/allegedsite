@@ -17,7 +17,7 @@ example, XML namespace identifiers need to be unique.  There are
 various ways to do this; UUIDs (also called GUIDs) and Netnews
 message-ids are examples of standard schemes.
 
-One way popular at the W3C is to use a URL that you 'own' as your
+One way popular at the W3C is to use a URL that you ‘own’ as your
 unique identifier.  Other people will not accidentally choose the same
 name because if they use a URL it will contain their domain name, not
 yours.  For example, `http` URLs are used to specify XML namespaces
@@ -35,16 +35,16 @@ that address.
 
 For this reason, some people prefer to use __URN__s.  URNs are uniform
 resource *names*, meaning they say what something is without helping
-you to find it -- as as opposed to uniform resource *locators*, which
+you to find it—as as opposed to uniform resource *locators*, which
 say how to download some resource on the WWW, while remaining vague
 about exactly what it is.  URNs look just like URLs, except that
-rather than srtarting with `http` or `ftp` they all start with `urn`.
+rather than starting with `http` or `ftp` they all start with `urn`.
 
 At various points in WWW history, URNs have been considered a type of
 URL (because they use the same syntax as URLs), or as distinct from a
 URL (because they do not actually give the location of a resource).
-To having to decide one way or another, WWW recommendations use the
-term URI (uniform resource *identifier*) to refer collectively to URLs
+To avoid having to decide one way or another, WWW recommendations use the
+term __URI__ (uniform resource *identifier*) to refer collectively to URLs
 and URNs.  To further muddy the waters, there are plenty of
 non-resolvable URL schemas (you cannot actually download
 `isbn:1-86197-612-7`), and [RFC 2168][3] discusses how to resolve
@@ -79,7 +79,7 @@ indicator for W3C date-time formats, I can use
 `tag:alleged.org.uk,2004:datetime:w3c` without needing special
 permission.
 
-So what's the advantage, if any, over using an `http` URI like
+So what’s the advantage, if any, over using an `http` URI like
 <http://www.alleged.org.uk/2002/datetime.html#w3c>?  One difference is
 that the `http` version commits me to maintaining [an HTML page][6]
 indefinitely; if for some reason I changed my mind, or the domain
@@ -92,10 +92,10 @@ RDF).
   [7]: http://www.topicmaps.org/xtm/1.0/
 
 The `tag` URI makes no promises of resources, which is actually an
-advantage because it can't break promises it doesn't make.  You might
+advantage because it can’t break promises it doesn’t make.  You might
 worry about how one finds information about what a `tag` URI means,
-but don't.  First, it *has* no meaning without surrounding context,
-which should furnish clues, and second, *there'll always be Google.*
+but don’t.  First, it *has* no meaning without surrounding context,
+which should furnish clues, and second, *there’ll always be Google.*
 
 **Update** 2004-05-29.  Mark Pilgrim has [an article on Atom ids][8]
 describing `tag` URIs.

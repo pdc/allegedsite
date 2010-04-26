@@ -14,7 +14,7 @@ is not a spoiler is itself a spoiler.)
 
 It all starts with Eris's not being invited to a feast of the gods, in
 revenge for which she throws the golden apple inscribed 'To the
-fairest' onto the table.  Argument breaks out amongst the godesses
+fairest' onto the table.  Argument breaks out amongst the goddesses
 present, and in the end to make peace they agree to appoint a mortal
 man as judge.
 
@@ -25,7 +25,7 @@ wisdom and unbeatable prowess in battle.  Paris chooses Aphrodite,
 goddess of love.  What did she offer him?  The most beautiful mortal
 woman in the world as his bride.
 
-So it is that Paris adbucts Helen, child-wife of King Meneleus (she is
+So it is that Paris abducts Helen, child-wife of King Meneleus (she is
 given no choice in the matter) and takes her to Troy.  
 
 The Greek city-states band together under Agamemnon to form a war
@@ -33,7 +33,7 @@ party to retrieve her.  Before setting out they naturally consult the
 oracle of Delphi and receive the usual cryptic advice.  One of the
 kings ends up sacrificing his daughter to ensure victory; Agamemnon is
 assured that he cannot prevail without the famous young warrior
-Achilles.  He sends the wily king Odyseus to fetch him.
+Achilles.  He sends the wily king Odysseus to fetch him.
 
 Achilles's mother is a sea nymph, and when he was a baby she dipped
 him in the Rive Styx, giving him invulnerable skin (apart from the
@@ -50,7 +50,7 @@ More adventures ensue but eventually they arrive at Troy.  The affair
 with the golden apple has left the gods divided as to which side they
 support.  As a result, after the initial skirmishes, neither side has
 won, and as weeks and months pass they settle in to a long, drawn-out
-seige.   There is stuff with heroes like Ajax here,
+siege.   There is stuff with heroes like Ajax here,
 but I don't know this bit.  Achilles grows from a boy in to a
 ferocious bully, almost as dangerous to his friends as his foes.
 
@@ -76,7 +76,7 @@ ankle.  Achilles dies of the poison.
 
 In the end, desperate to finish the war, the Greeks resort to the
 famous Trojan horse gambit.  The Trojans assume the horse is an
-offering to the sea god Posiden (it is one of his sacred animals), and
+offering to the sea god Poseidon (it is one of his sacred animals), and
 by taking it in the city they will bring the Greeks back luck on the
 voyage home.  The sole dissenting voice is Cassandra, a prophetess
 cursed by Apollo to always predict truly, and to never be believed.
@@ -85,9 +85,9 @@ everyone in an orgy of violence.  King Priam in despair leaps to his
 death from the highest tower of the city.
 
 Using a votive offering (the horse) in this way is clever but also
-dishonorable -- and the Greeks are cursed by the gods for it.
+dishonourable -- and the Greeks are cursed by the gods for it.
 Odysseus notoriously spends ten years struggling to get home through
-Posiden's wrath.  Agamemnon arrives home just in time to be killed by
+Poseidon's wrath.  Agamemnon arrives home just in time to be killed by
 his wife.  Meneleus and Helen, however, do live happily ever after.
 
 *... but none of the above happens in the movie.*

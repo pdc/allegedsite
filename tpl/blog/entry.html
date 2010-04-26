@@ -16,6 +16,7 @@
       <div id="entry-body">
         {{ entry.body|markdown }}
       </div>
+      
       <div id="entry-info">
         <dl>
           <dt>Author</dt>
@@ -23,9 +24,18 @@
           <dt>Published</dt>
           <dd>{{ entry.published|date:"j N Y" }}</dd>
           <dt>Topics</dt>
-          <dd>(Under construction)</dd>
+          <dd>
+            <ul>
+              {% for tag in entry.tags %}
+              <li>
+                <a href="{% url blog_tag plus_separated_tags=tag %}">{{ tag }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </dd>
         </dl>
       </div>
+      
       <div id="entry-nav">
         <h2>Other Entries</h2>
         <ul>

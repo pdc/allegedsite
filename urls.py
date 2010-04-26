@@ -19,7 +19,8 @@ urlpatterns = patterns('',
     (r'^albums/', include('alleged.snaptioner.urls')),
     (r'^pdc/$', 'alleged.blog.views.entry', blog_args, 'blog_entry'),
     (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$', 
-        'alleged.blog.views.entry', blog_args, 'blog_entry')
+        'alleged.blog.views.entry', blog_args, 'blog_entry'),
+    (r'^pdc/tags/(?P<plus_separated_tags>[a-z0-9+-]+)$', 'alleged.blog.views.filtered_by_tag', blog_args, 'blog_tag'),
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),

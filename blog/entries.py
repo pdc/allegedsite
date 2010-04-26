@@ -17,6 +17,9 @@ from markdown.postprocessors import Postprocessor
 from xml.etree.ElementTree import fromstring, tostring
 import htmlentitydefs 
 
+XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
+TAG_DC_SUBJECT = '{%s}subject' % XMLNS_DC
+
 date_re = re.compile('^(199[0-9]|20[0-9][0-9])-?([0-1][0-9])-?([0-3][0-9])')
 
 entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
@@ -116,8 +119,10 @@ class Entry(object):
             
             p = text.index('<entry', 0, 200) + 6
             if text.find('xmlns:dc', 0, 200) < 0:
-                text = '%s xmlns:dc="http://purl.org/dc/elements/1.1"%s' % (text[:p], text[p:])
-            text = text.replace(' xmlns="http://www.alleged.org.uk/2003/um"', '', 1)            
+                text = '%s xmlns:dc="%s"%s' % (text[:p], XMLNS_DC, text[p:])
+            text = text.replace(' xmlns="http://www.alleged.org.uk/2003/um"', '', 1)      
+            
+            self._tags = set()      
             
             root = fromstring(unentity(text))
             for e in root:
@@ -128,13 +133,19 @@ class Entry(object):
                     bytes = bytes[39:] # Remove unwanted XML prolog.
                     bytes = bytes.strip()[6:-7].strip()
                     self._body = bytes.decode('UTF-8')
+                elif e.tag == TAG_DC_SUBJECT:
+                    self._tags.add(e.text)
+                else:
+                    print e.tag, 'unknown'
         else:
+            # New Markdown-based format, with RFC-style headers preceding the body.
             converter = Markdown(extensions=['meta', HrefsExtension({
                 'blog_url': [self.munged_blog_url, 'WTF'],
                 'image_url': [self.munged_image_url, 'OMG'],
                 })])
             self._body = converter.convert(text.decode('UTF-8'))
             self._title = ', '.join(converter.Meta['title'])
+            self._tags = ' '.join(converter.Meta.get('topics', [])).split()
             
         self.is_loaded = True
             
@@ -151,6 +162,14 @@ class Entry(object):
         if not self.is_loaded:
             self.load()
         return self._body
+        
+    @property
+    def tags(self):
+        """The set of tags representing topics this entry is an ocurrence of."""
+        if not self.is_loaded:
+            self.load()
+        return self._tags
+        
 
 def get_entries(dir_path, blog_url, image_url, reverse=False):
     entries = sorted(entries_iter(dir_path, blog_url, image_url), key=lambda entry: entry.published, reverse=reverse)
@@ -189,3 +208,11 @@ def get_entry(entries, year, month, day):
     entry = (this_day or this_month or this_year or entries)[-1]
     years = [ys[-1] for (y, ys) in sorted(entries_by_year.items())]
     return entry, this_month, years
+
+        
+class EntryList(list):
+    def filter(self, tag):
+        return EntryList(e for e in self if tag in e.tags)
+            
+def get_toc(entries):
+    return EntryList(entries)
