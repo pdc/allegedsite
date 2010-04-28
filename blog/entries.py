@@ -210,9 +210,49 @@ def get_entry(entries, year, month, day):
     return entry, this_month, years
 
         
+class TagInfo(object):
+    def __init__(self, tag, count=None):
+        self.tag = tag
+        self.count = count
+        
+    def __lt__(self, other):
+        return self.tag < other.tag
+        
+    def __gt__(self, other):
+        return self.tag > other.tag
+        
+    def __le__(self, other):
+        return self.tag <= other.tag
+        
+    def __ge__(self, other):
+        return self.tag >= other.tag
+        
+    def __eq__(self, other):
+        return self.tag == other.tag
+        
+    def __ne__(self, other):
+        return self.tag != other.tag
+        
 class EntryList(list):
+    selected_tag_infos = []
     def filter(self, tag):
-        return EntryList(e for e in self if tag in e.tags)
+        new_list = EntryList(e for e in self if tag in e.tags)
+        new_list.selected_tag_infos = self.selected_tag_infos + [TagInfo(tag)]
+        new_list.selected_tag_infos.sort()
+        
+        available_tag_counts = {}
+        for e in new_list:
+            for tag in e.tags:
+                for info in new_list.selected_tag_infos:
+                    if info.tag == tag:
+                        break
+                    else:
+                        pass
+                else:
+                    available_tag_counts[tag] = available_tag_counts.get(tag, 0) + 1
+        new_list.available_tag_infos = [TagInfo(tag, count) 
+                for (tag, count) in sorted(available_tag_counts.items())]
+        return new_list
             
 def get_toc(entries):
     return EntryList(entries)

@@ -289,6 +289,7 @@ class SimpleTest(TestCase):
         self.assertEqual(datetime(2010, 4, 21, 12, 0), toc[-1].published)
         
         a_entries = toc.filter(tag='a')
+        # Check the resultis a list with A and E in it, since they are the only ones with tag 'a'
         self.assertEqual(2, len(a_entries))
         self.assertEqual('E', a_entries[0].title)
         self.assertEqual(['a', 'e'], a_entries[0].tags)
@@ -297,6 +298,22 @@ class SimpleTest(TestCase):
         self.assertEqual(['a', 'b'], a_entries[1].tags)
         self.assertEqual(datetime(2010, 4, 18, 12, 0), a_entries[1].published)
         
+        # Now chech we have the info needed to navigate to narrower or wider searches.
+        self.assertEqual(1, len(a_entries.selected_tag_infos))
+        self.assertEqual('a', a_entries.selected_tag_infos[0].tag)
+        self.assertEqual(2, len(a_entries.available_tag_infos))
+        self.assertEqual('b', a_entries.available_tag_infos[0].tag)
+        self.assertEqual(1, a_entries.available_tag_infos[0].count)
+        self.assertEqual('e', a_entries.available_tag_infos[1].tag)
+        self.assertEqual(1, a_entries.available_tag_infos[1].count)
+        
         ae_entries = a_entries.filter(tag='e')
         self.assertEqual(1, len(ae_entries))
         self.assertEqual(a_entries[0], ae_entries[0])
+        self.assertEqual(['a', 'e'], [info.tag for info in ae_entries.selected_tag_infos])
+        self.assertEqual([], ae_entries.available_tag_infos)
+        
+        # List of selected tags is always alphabetically ordered.
+        self.assertEqual(['a', 'e'], [info.tag 
+                for info in toc.filter(tag='e').filter(tag='a').selected_tag_infos])
+        

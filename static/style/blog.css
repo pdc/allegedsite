@@ -235,7 +235,8 @@ em {
     width: 240px;
 }
 
-#entry-nav h2 {
+#entry-nav h2,
+#tags h2 {
     font-size: 1.25em;
     margin: 0 10px;
     padding: 0;
@@ -255,18 +256,43 @@ em {
     color: #630;
 }
 
-#entry-nav ul {
+#entry-nav ul,
+#tags ul {
     margin: 0;
     padding: 0;
 }
 
-#entry-nav li {
+#entry-nav li,
+#tags li {
     margin: 0 10px;
     padding: 0;
     
     list-style-type: none;
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
+
+#tags {
+    float: left;
+    width: 160px;
+}
+
+#matching-entries h2 {
+    font-size: 2em;
+    margin: .25em 10px 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    line-height: 1;
+}
+#matching-entries ul {
+    margin: 0;
+    padding: 0;
+}
+
+#matching-entries li {
+    margin: 0.625em 10px;
+    list-style-type: none;
+}
+
 
 code {
     font-size: 0.9167em;

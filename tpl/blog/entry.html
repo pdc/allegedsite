@@ -1,18 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% extends "blog/base.html" %}
 {% load markup %}
-<html lang="en-GB">
-  <head>
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  	<title>{{ entry.title }} - Blog</title>
-  	<meta name="author" content="Damian Cugley">
-  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/blog.css" />
-  </head>
-  <body>
-    <div id="banner">
-      <b><a href="{% url blog_entry %}">Alleged Archive</a></b>
-      <h1>{{ entry.title }}</h1>
-    </div>
-    <div id="page">
+{% block title %}{{ entry.title }} - Alleged Articles{% endblock %}
+{% block heading %}{{ entry.title }}{% endblock %}
+
+{% block content %}
       <div id="entry-body">
         {{ entry.body|markdown }}
       </div>
@@ -88,7 +79,5 @@
 			    {% endfor %}
 			  </ul>
 			  {% endif %}
-      </page>
-    </div>
-  </body>
-</html>
+      </div>
+{% endblock %}

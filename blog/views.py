@@ -67,13 +67,22 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
     matching_entries = get_toc(blog_dir, blog_url, image_url)
     for tag in tags:
         matching_entries = matching_entries.filter(tag=tag)
+    if len(matching_entries.selected_tag_infos) > 1:
+        for info in matching_entries.selected_tag_infos:
+            info_tags = list(tags)
+            info_tags.remove(info.tag)
+            info.href = reverse('blog_tag', kwargs={'plus_separated_tags': '+'.join(sorted(info_tags))})
+        
+    for info in matching_entries.available_tag_infos:
+        info_tags = list(tags)
+        info_tags.append(info.tag)
+        info.href = reverse('blog_tag', kwargs={'plus_separated_tags': '+'.join(sorted(info_tags))})
+        
     return {
         'tags': tags,
         'plus_separated_tags': plus_separated_tags,
         'matching_entries': matching_entries,
     }
-    
-        
 
 @render_with('front_page.html')
 def front_page(request, blog_dir, blog_url, image_url):
