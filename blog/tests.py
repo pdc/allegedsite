@@ -18,7 +18,7 @@ class SimpleTest(TestCase):
         if not os.path.exists(BASE_DIR):
             os.mkdir(BASE_DIR)
         else:
-            for y in ['2008', '2009', '2010']:
+            for y in ['2002', '2003', '2008', '2009', '2010']:
                 if not os.path.exists(os.path.join(BASE_DIR, y)):
                     os.mkdir(os.path.join(BASE_DIR, y))
             for subdir, subdirs, files in os.walk(BASE_DIR):
@@ -121,7 +121,7 @@ class SimpleTest(TestCase):
         self.assert_('caption' in e.tags)
         
     def test_h_rather_than_h1(self):
-        with open(os.path.join(BASE_DIR, '19980425.e'), 'wt') as output:
+        with open(os.path.join(BASE_DIR, '2002/20021229.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
 <entry date="20021229" icon="../tarot/x-wheel-100w.png">
   <h>Alleged Tarot: a better dial-a-reading</h>
@@ -144,10 +144,10 @@ class SimpleTest(TestCase):
         e = entries[0]
         self.assertEqual('Alleged Tarot: a better dial-a-reading', e.title)
         expected = u"""<p>
-      My <a href="../tarot/">Alleged Tarot 2002</a> project has been
+      My <a href="/blog/tarot/">Alleged Tarot 2002</a> project has been
       stuck with an ersatz dealer for far too long (since 
-      <a href="08.html#e20020809">August</a>, in fact).  I\xA0have
-      now added to the <a href="../tarot/aboutDealer.html">JavaScript
+      <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xA0have
+      now added to the <a href="/blog/tarot/aboutDealer.html">JavaScript
       used for the dealer</a> so it takes a question and converts that
       to a seed number, rather than requiring the querent to supply
       their own.  Entering the question corresponds to the shuffling
@@ -156,7 +156,7 @@ class SimpleTest(TestCase):
         self.assertEqual(expected, e.body)
         
     def test_with_namepsaces_supplied(self):
-        with open(os.path.join(BASE_DIR, '19980425.e'), 'wt') as output:
+        with open(os.path.join(BASE_DIR, '2003/20031228.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
 <entry date="20031228" icon="picky-80x80.png" xmlns="http://www.alleged.org.uk/2003/um" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <h>Dates Dates Dates</h>
@@ -186,9 +186,9 @@ class SimpleTest(TestCase):
         self.assertEqual(expected, e.body)
         
     def test_entry_list_chron(self):
-        with open(os.path.join(BASE_DIR, '2010-03-02-foo.e'), 'wt') as output:
+        with open(os.path.join(BASE_DIR, '2010/2010-03-02-foo.e'), 'wt') as output:
             output.write('Title: FOO\n\nFoo bar baz\n')
-        with open(os.path.join(BASE_DIR, '2010-04-17-bar.e'), 'wt') as output:
+        with open(os.path.join(BASE_DIR, '2010/2010-04-17-bar.e'), 'wt') as output:
             output.write('Title: BAR\n\nBar baz quux\n')
         entries = get_entries(BASE_DIR, '/blog/', '/images/')
         self.assertEqual(2, len(entries))
@@ -204,11 +204,48 @@ class SimpleTest(TestCase):
         self.assertEqual(None, entries[0].prev)
         
     def test_href_munging_link(self):
+        """Relative URLs in the body of the article are munged ."""
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello [world](17.html)\n')
         entries = get_entries(BASE_DIR, '/banko/', '/plugh/')
         entry = entries[-1]
         self.assertEqual('<p>Hello <a href="/banko/2010/17.html">world</a></p>', entry.body)
+        
+    def test_munging_xml(self):
+        with open(os.path.join(BASE_DIR, '2002/20021229.e'), 'wt') as output:
+            output.write("""<!-- -*-HTML-*- -->
+<entry date="20021229" icon="../tarot/x-wheel-100w.png">
+  <h>Alleged Tarot: a better dial-a-reading</h>
+  <body>
+    <p>
+      My <a href="../tarot/">Alleged Tarot 2002</a> project has been
+      stuck with an ersatz dealer for far too long (since 
+      <a href="08.html#e20020809">August</a>, in fact).  I&nbsp;have
+      now added to the <a href="../tarot/aboutDealer.html">JavaScript
+      used for the dealer</a> so it takes a question and converts that
+      to a seed number, rather than requiring the querent to supply
+      their own.  Entering the question corresponds to the shuffling
+      of the deck that you do in a tarot deal in real life.
+    </p>
+  </body>
+  <dc:subject>tarot</dc:subject>
+</entry>""")
+        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        self.assertEqual(1, len(entries))
+        e = entries[0]
+        self.assertEqual('Alleged Tarot: a better dial-a-reading', e.title)
+        expected = u"""<p>
+      My <a href="/blog/tarot/">Alleged Tarot 2002</a> project has been
+      stuck with an ersatz dealer for far too long (since 
+      <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xA0have
+      now added to the <a href="/blog/tarot/aboutDealer.html">JavaScript
+      used for the dealer</a> so it takes a question and converts that
+      to a seed number, rather than requiring the querent to supply
+      their own.  Entering the question corresponds to the shuffling
+      of the deck that you do in a tarot deal in real life.
+    </p>"""
+        self.assertEqual(expected, e.body)
+        
         
     def test_href_not_munging_external_link(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
@@ -316,4 +353,20 @@ class SimpleTest(TestCase):
         # List of selected tags is always alphabetically ordered.
         self.assertEqual(['a', 'e'], [info.tag 
                 for info in toc.filter(tag='e').filter(tag='a').selected_tag_infos])
+                
+    def test_entry_image_yes(self):
+        with open(os.path.join(BASE_DIR, '2010/2010-04-17-testa.e'), 'wt') as output:
+            output.write('Title: FOO\nTopics: alpha beta\nImage: hazmat-64.png\n\nBAR\nBAZ\n')
+        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        self.assertEqual(1, len(entries))
+        e = entries[0]
+        self.assertEqual('/images/2010/hazmat-64.png', e.image.src)
+        
+    def test_entry_image_no(self):
+        with open(os.path.join(BASE_DIR, '2010/2010-04-17-testa.e'), 'wt') as output:
+            output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
+        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        self.assertEqual(1, len(entries))
+        e = entries[0]
+        self.assertEqual('/images/icon-64x64.png', e.image.src)
         

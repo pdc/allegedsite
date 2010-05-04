@@ -24,6 +24,8 @@ date_re = re.compile('^(199[0-9]|20[0-9][0-9])-?([0-1][0-9])-?([0-3][0-9])')
 
 entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
 
+MUNGE_TRANSITION_DATE = datetime(2003, 5, 1, 12, 0)
+
 def _unentity_sub(m):
     name = m.group(0)[1:-1]
     code = htmlentitydefs.name2codepoint.get(name)
@@ -59,7 +61,22 @@ def munge_url(url, more_url):
         more_url = more_url[:-1]
     if more_url.startswith('http://'):
         return more_url
+    while more_url.startswith('../'):
+        p = url.rindex('/', 0, len(url) - 1)
+        url = url[:p + 1]
+        more_url = more_url[3:]
     return url + more_url 
+    
+def make_link_sub(url):
+    def sub(m):
+        new_url = munge_url(url, m.group(2)[1:-1])
+        return '%s"%s"%s' % (m.group(1), new_url, m.group(3))
+    return sub
+        
+def munge_html(html, blog_url, image_url):
+    html = a_re.sub(make_link_sub(blog_url), html)
+    html = img_or_embed_re.sub(make_link_sub(image_url), html)
+    return html
         
 class HrefsPostprocessor(Postprocessor):
     def __init__(self, markdown, blog_url, image_url, *args, **kwargs):
@@ -71,16 +88,9 @@ class HrefsPostprocessor(Postprocessor):
     def run(self, text):
         for i in range(self.markdown.htmlStash.html_counter):
             html, safe  = self.markdown.htmlStash.rawHtmlBlocks[i]
-            html = a_re.sub(self.link_sub(self.blog_url), html)
-            html = img_or_embed_re.sub(self.link_sub(self.image_url), html)
+            html = munge_html(html, self.blog_url, self.image_url)
             self.markdown.htmlStash.rawHtmlBlocks[i] = (html, safe)
         return text
-        
-    def link_sub(self, url):
-        def sub(m):
-            new_url = munge_url(url, m.group(2)[1:-1])
-            return '%s"%s"%s' % (m.group(1), new_url, m.group(3))
-        return sub
 
 class HrefsExtension(Extension):            
     def extendMarkdown(self, md, md_globals):
@@ -91,6 +101,10 @@ class HrefsExtension(Extension):
             md,
             self.getConfig('blog_url'),
             self.getConfig('image_url')), '<raw_html')
+            
+class Image(object):
+    def __init__(self, src):
+        self.src = src
         
 class Entry(object):
     def __init__(self, root_dir_path, dir_path, file_name, blog_url, image_url):
@@ -108,9 +122,10 @@ class Entry(object):
         self.file_path = os.path.join(dir_path, file_name)
         self.blog_url = blog_url
         self.image_url = blog_url
+        
         self.munged_blog_url = blog_url + dir_path[len(root_dir_path) + 1:] + '/'
         self.munged_image_url = image_url + dir_path[len(root_dir_path) + 1:] + '/'
-        
+    
     def load(self):        
         with open(self.file_path, 'rb') as input:
             text = input.read()
@@ -132,7 +147,7 @@ class Entry(object):
                     bytes = tostring(e, 'UTF-8')
                     bytes = bytes[39:] # Remove unwanted XML prolog.
                     bytes = bytes.strip()[6:-7].strip()
-                    self._body = bytes.decode('UTF-8')
+                    self._body = munge_html(bytes.decode('UTF-8'), self.munged_blog_url, self.munged_image_url)
                 elif e.tag == TAG_DC_SUBJECT:
                     self._tags.add(e.text)
                 else:
@@ -146,6 +161,7 @@ class Entry(object):
             self._body = converter.convert(text.decode('UTF-8'))
             self._title = ', '.join(converter.Meta['title'])
             self._tags = ' '.join(converter.Meta.get('topics', [])).split()
+            self._image = Image(munge_url(self.munged_image_url, converter.Meta.get('image', ['../icon-64x64.png'])[0]))
             
         self.is_loaded = True
             
@@ -170,7 +186,13 @@ class Entry(object):
             self.load()
         return self._tags
         
-
+    @property
+    def image(self):
+        """The  image that we use in place of a userpic."""
+        if not self.is_loaded:
+            self.load()
+        return self._image
+        
 def get_entries(dir_path, blog_url, image_url, reverse=False):
     entries = sorted(entries_iter(dir_path, blog_url, image_url), key=lambda entry: entry.published, reverse=reverse)
     prev = None

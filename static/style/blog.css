@@ -227,6 +227,36 @@ em {
     font-family: "YanoneKaffeesatz regular", sans-serif;
 }
 
+#entry-info img {
+    display: block;
+}
+
+#entry-info ul {
+    margin: 0;
+    padding: 0;
+}
+
+#entry-info li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* List of entries on a month page. This is mostly for the old-style
+ entries, which are single paragraphs linking to articles. */
+#entry-list {
+    display: block;
+    float: left;
+    width: 640px;
+    margin: 0 80px 0 0;
+    padding: 0 0 3em 0;
+}
+
+#entry-list p {
+    margin: 0 10px 1.25em 90px;
+}
+
+
 #entry-nav {
     display: block;
     float: left;

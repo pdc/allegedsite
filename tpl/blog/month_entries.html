@@ -1,35 +1,22 @@
 {% extends "blog/base.html" %}
 {% load markup %}
-{% block title %}{{ entry.title }} - Alleged Articles{% endblock %}
-{% block heading %}{{ entry.title }}{% endblock %}
+{% block title %}{{ entry.published|date:"F Y" }} - Alleged Articles{% endblock %}
+{% block heading %}{{ entry.published|date:"F Y" }}{% endblock %}
 
 {% block content %}
-      <div id="entry-body">
-        {{ entry.body|markdown }}
-      </div>
-      
-      <div id="entry-info">
-        <dl>
-          <dt>Author</dt>
-          <dd>
-            {% if entry.image %}
-            <img src="{{ entry.image.src }}" alt="X" />
-            {% endif %}
-            Damian Cugley
-          </dd>
-          <dt>Published</dt>
-          <dd>{{ entry.published|date:"j N Y" }}</dd>
-          <dt>Topics</dt>
-          <dd>
-            <ul>
-              {% for tag in entry.tags %}
-              <li>
-                <a href="{% url blog_tag plus_separated_tags=tag %}">{{ tag }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </dd>
-        </dl>
+      <div id="entry-list">
+      	<h2>Articles</h2>
+    		{% if this_month %}
+      	  {% for e in this_month %}   
+    		  <h3><a href="{{ e.href }}" rel="prev">{{ e.title }}</a></h3>
+    		    
+          <small>{{ e.published|date:"j N"}}</small>
+          {{ e.body|safe }}
+      	
+			    {% endfor %}
+			  {% else %}
+			  <p>No article in this month.</p>
+			  {% endif %}
       </div>
       
       <div id="entry-nav">
