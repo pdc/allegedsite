@@ -40,7 +40,7 @@
         since they are reflective and increase my visibility.)
     </p>
     <p>
-            <a href="19980529d.jpg"><img src="19980529d-64x64.jpg "
+            <a href="19980529d.jpg"><img src="19980529d-64x64.jpg"
 	    align="right" alt="[Link to bike photo—22K JPEG]"/></a>
         Thanks to my mum, I also  have a spedometer
         (that is, a ‘cycle computer’), which means I now know that my house 
@@ -48,8 +48,6 @@
         route along the side of the river.  Not exactly a major commute
         <code>:-)</code>.  
     </p>
-
-    
 
     <h2>Updates</h2>
     <p><strong>Update (1999):</strong>  I was intending to add more info about
