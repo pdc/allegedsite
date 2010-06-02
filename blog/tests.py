@@ -1,3 +1,4 @@
+# Encoding: UTF-8
 """
 This file demonstrates two different styles of tests (one doctest and one
 unittest). These will both pass when you run "manage.py test".
@@ -38,6 +39,13 @@ class SimpleTest(TestCase):
         self.assertEqual('/masterblog/2010/04/17.html', e.href)
         self.assert_('alpha' in e.tags)
         self.assert_('beta' in e.tags)
+        
+    def test_freskish_markdown_extension(self):
+        with open(os.path.join(BASE_DIR, '2010/2010-05-08-zum.e'), 'wt') as output:
+            output.write(u'Title: FOO\nTopics: alpha beta\n\nBAR\n\n    Hullo\n    ≈\n    World\n\nBAZ\n'.encode('UTF-8'))
+        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        e = entries[0]
+        self.assertEqual(u'<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
         
     def test_archaic(self):
         with open(os.path.join(BASE_DIR, '19970611.e'), 'wt') as output:
@@ -303,8 +311,14 @@ class SimpleTest(TestCase):
         self.assertEqual(['A', 'B'], [x.title for x in this_month])
         self.assertEqual(['E', 'D', 'B'], [x.title for x in years])
         
+        self.assertEqual(3, len(entries.get_by_year()))
+        self.assertEqual(3, len(entries.get_by_year()[2010]))
+        self.assertEqual(['C', 'A', 'B'], [x.title for x in entries.get_by_year()[2010]])
+        self.assertEqual(['D'], [x.title for x in entries.get_by_year()[2009]])
+        self.assertEqual(['E'], [x.title for x in entries.get_by_year()[2008]])
+        
     def test_find_by_tag(self):
-        """Create a bunch of entries and show that you get the correct ones in the this_month list."""
+        """Create a bunch of entries and show that you get the correct ones in the filtered list."""
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
             output.write('Title: A\nTopics: a b\n\nHello [world](17.html)\n')
         with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
@@ -369,4 +383,17 @@ class SimpleTest(TestCase):
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('/images/icon-64x64.png', e.image.src)
+        
+    def test_entry_href_before_june_2003(self):
+        with open(os.path.join(BASE_DIR, '2003-05-17.e'), 'wt') as output:
+            output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
+        es = get_entries(BASE_DIR, '/x/', '/i/')
+        self.assertEqual('/x/2003/05.html#e20030517', es[0].href)
+        
+    def test_entry_href_from_june_2003(self):
+        with open(os.path.join(BASE_DIR, '2003-06-14.e'), 'wt') as output:
+            output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
+        es = get_entries(BASE_DIR, '/x/', '/i/')
+        self.assertEqual('/x/2003/06/14.html', es[0].href)
+        
         

@@ -5,12 +5,20 @@
 
 {% block content %}
       <div id="entry-list">
-      	<h2>Articles</h2>
     		{% if this_month %}
       	  {% for e in this_month %}   
-    		  <h3><a href="{{ e.href }}" rel="prev">{{ e.title }}</a></h3>
+    		  <h2><a href="{{ e.href }}" rel="prev">{{ e.title }}</a></h2>
     		    
-          <small>{{ e.published|date:"j N"}}</small>
+          <div class="entry-list-entry-info">
+            {% if e.image %}
+            <img src="{{ e.image.src }}" alt="" />
+            {% endif %}
+            <div class="date">
+              <span class="date-day">{{ e.published|date:"j"}}</span>
+              <span class="date-month">{{ e.published|date:"F"}}</span>
+            </div>
+            <div class="permalink"><a href="{{ e.href }}">Permalink</a></div>
+          </div>
           {{ e.body|safe }}
       	
 			    {% endfor %}
@@ -22,50 +30,43 @@
       <div id="entry-nav">
         <h2>Other Entries</h2>
         <ul>
-          {% with entry.prev as e %}
+          {% with prev as e %}
             {% if e %}
             <li>
-              <a href="{{ e.href }}" rel="prev">Past: ‘{{ e.title }}’ 
-                <small>{{ e.published|date:"j N"}}</small></a>
+              <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}" rel="prev"><span>Older:</span> 
+               {{ e.published|date:"N Y"}}</a>
             </li>
             {% endif %}
           {% endwith %}
-          {% with entry.next as e %}
+          {% with next as e %}
             {% if e %}
             <li>
-              <a href="{{ e.href }}" rel="next">Future: ‘{{ e.title }}’ 
-                <small>{{ e.published|date:"j N"}}</small></a>
+              <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}" rel="next"><span>Newer:</span>
+               {{ e.published|date:"N Y"}}</a>
             </li>
             {% endif %}
           {% endwith %}
         </ul>
-    		{% if this_month %}
-      	<h3>{{ entry.published|date:"F Y" }}</h3>
-      	<ul>
-      	  {% for e in this_month %}      	    
-          <li>
-      	    {% ifequal e entry %}
-            <strong>‘{{ e.title }}’ 
-              <small>{{ e.published|date:"j N"}}</small></strong>
-      	    {% else %}
-            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
-              <small>{{ e.published|date:"j N"}}</small></a>
-            {% endifequal %}
-          </li>
-			    {% endfor %}
-			  </ul>
-			  {% endif %}
     		{% if years %}
-      	<h3>Jump</h3>
-      	<ul>
+      	<h3>Article Archive by Date</h3>
+      	<ul id="years">
       	  {% for e in years %}      	    
           <li>
-      	    {% ifequal e entry %}
-            <strong>‘{{ e.title }}’ 
-              <small>{{ e.published|date:"Y"}}</small></strong>
+      	    {% ifequal e.published.year entry.published.year %}
+            <h4>{{ e.published|date:"Y"}}</h4>
+            <ul>
+              {% for month, e in this_year_months %}
+              <li>
+                {% ifequal month entry.publioshed.month %}
+                   <strong>{{ e.published|date:"N" }}</strong>
+               {% else %}
+                  <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}">{{ e.published|date:"N" }}</a>
+                {% endifequal %}
+              </li>
+              {% endfor %}
+            </ul>
       	    {% else %}
-            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
-              <small>{{ e.published|date:"Y"}}</small></a>
+              <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}">{{ e.published|date:"Y"}}</a>
             {% endifequal %}
           </li>
 			    {% endfor %}

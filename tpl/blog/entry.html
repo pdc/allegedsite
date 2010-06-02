@@ -5,7 +5,7 @@
 
 {% block content %}
       <div id="entry-body">
-        {{ entry.body|markdown }}
+        {{ entry.body|safe }}
       </div>
       
       <div id="entry-info">
@@ -30,15 +30,18 @@
             </ul>
           </dd>
         </dl>
+        <div class="permalink"><a href="{{ e.href }}">Permalink</a></div>
       </div>
       
       <div id="entry-nav">
-        <h2>Other Entries</h2>
-        <ul>
+        <h2>Other Articles</h2>
+        <ul class="w">
           {% with entry.prev as e %}
             {% if e %}
             <li>
-              <a href="{{ e.href }}" rel="prev">Past: ‘{{ e.title }}’ 
+              <a href="{{ e.href }}" rel="prev">
+                <span>Older:</span>
+                <q>{{ e.title }}</q>
                 <small>{{ e.published|date:"j N"}}</small></a>
             </li>
             {% endif %}
@@ -46,43 +49,54 @@
           {% with entry.next as e %}
             {% if e %}
             <li>
-              <a href="{{ e.href }}" rel="next">Future: ‘{{ e.title }}’ 
+              <a href="{{ e.href }}" rel="next">
+                <span>Newer:</span>
+                <q>{{ e.title }}</q>
                 <small>{{ e.published|date:"j N"}}</small></a>
             </li>
             {% endif %}
           {% endwith %}
         </ul>
-    		{% if this_month %}
-      	<h3>{{ entry.published|date:"F Y" }}</h3>
-      	<ul>
-      	  {% for e in this_month %}      	    
+        
+			  
+      	<h3>Article Archives by Date</h3>
+      	<ul id="years">
+      	  {% for year_e in years %}      	    
           <li>
-      	    {% ifequal e entry %}
-            <strong>‘{{ e.title }}’ 
-              <small>{{ e.published|date:"j N"}}</small></strong>
+      	    {% ifequal year_e.published.year entry.published.year %}
+            
+          	<h4>{{ entry.published|date:"Y" }}</h4>
+          	<ul>
+          	  {% for month, e in this_year_months %}   
+                <li>
+    	     	    {% ifequal month entry.published.month %}
+    	            <h5>{{ e.published|date:"F" }}</h5>
+    	            <ul class="w">
+                	  {% for e in this_month %}   
+                      <li>
+                  	  {% ifequal e.published entry.published %}
+                  	    <strong><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></strong>
+                  	  {% else %}
+                  	    <a href="{{ e.href }}"><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></a>
+                      {% endifequal %}
+          			    {% endfor %}
+                    </li>
+          			  </ul>
+                </li>
+
+    	     	    {% else %}
+                <li>
+            	    <a href="{% url blog_month year=e.published.year|stringformat:"02d",month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
+                </li>
+                {% endifequal %}
+    			    {% endfor %}
+    			  </ul>
+			  
       	    {% else %}
-            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
-              <small>{{ e.published|date:"j N"}}</small></a>
+            <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
             {% endifequal %}
           </li>
 			    {% endfor %}
 			  </ul>
-			  {% endif %}
-    		{% if years %}
-      	<h3>Jump</h3>
-      	<ul>
-      	  {% for e in years %}      	    
-          <li>
-      	    {% ifequal e entry %}
-            <strong>‘{{ e.title }}’ 
-              <small>{{ e.published|date:"Y"}}</small></strong>
-      	    {% else %}
-            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
-              <small>{{ e.published|date:"Y"}}</small></a>
-            {% endifequal %}
-          </li>
-			    {% endfor %}
-			  </ul>
-			  {% endif %}
       </div>
 {% endblock %}

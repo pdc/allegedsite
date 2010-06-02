@@ -6,6 +6,8 @@ from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
 
+from datetime import date
+
 from alleged.blog.entries import get_entries as get_entries_1, get_entry, get_toc as get_toc_1
 
 def add_hrefs(entries):
@@ -46,6 +48,16 @@ def render_with(template_name):
             return render_to_response(template_name, template_args, RequestContext(request)) 
         return decorated_func
     return decorator
+    
+    
+def get_year_months(entries, y):
+    # Find the last aeticle in each month in this year,
+    this_year_months = {}
+    by_year = entries.get_by_year()
+    this_year = by_year[y or date.today().year]
+    for e in this_year:
+        this_year_months[e.published.month] = e
+    return sorted(this_year_months.items())
 
 @render_with('blog/entry.html')
 def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=None):
@@ -54,11 +66,13 @@ def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=Non
     m = month and int(month, 10)
     d = day and int(day, 10)
     entry, this_month, years = get_entry(entries, y, m, d)
+    
     return {
         'entry': entry,
         'entries': entries,   
         'this_month': this_month, 
-        'years': reversed(years),
+        'years': years,
+        'this_year_months': get_year_months(entries, y),
     }
     
 @render_with('blog/month_entries.html')
@@ -68,11 +82,15 @@ def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None)
     m = month and int(month, 10)
     d = None
     entry, this_month, years = get_entry(entries, y, m, d)
+    
     return {
         'entry': entry,
-        'entries': entries,   
-        'this_month': this_month, 
+        'entries': entries,  
+        'this_month': this_month,  
+        'prev': this_month[0].prev,
+        'next': this_month[-1].next,
         'years': reversed(years),
+        'this_year_months': get_year_months(entries, y),
     }
     
 @render_with('blog/filtered_by_tag.html')
