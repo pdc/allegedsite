@@ -68,8 +68,8 @@ def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=Non
     entry, this_month, years = get_entry(entries, y, m, d)
     
     return {
-        'entry': entry,
         'entries': entries,   
+        'entry': entry,
         'this_month': this_month, 
         'years': years,
         'this_year_months': get_year_months(entries, y),

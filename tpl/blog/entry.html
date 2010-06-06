@@ -10,15 +10,17 @@
       
       <div id="entry-info">
         <dl>
+          {% if entry.image %}
           <dt>Author</dt>
           <dd>
-            {% if entry.image %}
             <img src="{{ entry.image.src }}" alt="X" />
-            {% endif %}
-            Damian Cugley
           </dd>
+          {% endif %}
           <dt>Published</dt>
-          <dd>{{ entry.published|date:"j N Y" }}</dd>
+          <dd class="date">
+            <span class="date-day">{{ entry.published|date:"j" }}</span>
+            <span class="date-month">{{ entry.published|date:"F" }}</span>
+          </dd>
           <dt>Topics</dt>
           <dd>
             <ul>
@@ -69,20 +71,26 @@
           	<ul>
           	  {% for month, e in this_year_months %}   
                 <li>
-    	     	    {% ifequal month entry.published.month %}
-    	            <h5>{{ e.published|date:"F" }}</h5>
-    	            <ul class="w">
-                	  {% for e in this_month %}   
-                      <li>
-                  	  {% ifequal e.published entry.published %}
-                  	    <strong><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></strong>
-                  	  {% else %}
-                  	    <a href="{{ e.href }}"><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></a>
-                      {% endifequal %}
-          			    {% endfor %}
-                    </li>
-          			  </ul>
-                </li>
+    	     	      {% ifequal month entry.published.month %}
+      	     	      {% if this_month %}
+      	            <h5>{{ e.published|date:"F" }} ({{ this_month|length }})</h5>
+      	            <ul class="w">
+                  	  {% for e in this_month %}   
+                        <li>
+                    	  {% ifequal e.published entry.published %}
+                    	    <strong><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></strong>
+                    	  {% else %}
+                    	    <a href="{{ e.href }}"><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></a>
+                        {% endifequal %}
+            			    {% endfor %}
+                      </li>
+            			  </ul>
+                  </li>
+                  {% else %}    	     	      
+                  <li>
+              	    <a href="{% url blog_month year=e.published.year|stringformat:"02d",month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
+                  </li>
+                  {% endif %}
 
     	     	    {% else %}
                 <li>

@@ -18,6 +18,8 @@ from xml.etree.ElementTree import fromstring, tostring
 import htmlentitydefs 
 
 XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
+XMLNS_HTML = 'http://www.w3.org/1999/xhtml'
+XMLNS_UM = 'http://www.alleged.org.uk/2003/um'
 TAG_DC_SUBJECT = '{%s}subject' % XMLNS_DC
 
 date_re = re.compile('^(199[0-9]|20[0-9][0-9])-?([0-1][0-9])-?([0-3][0-9])')
@@ -140,42 +142,51 @@ class Entry(object):
         with open(self.file_path, 'rb') as input:
             text = input.read()
         if text.startswith('<'):
-            # Old XML-based format.
-            
-            p = text.index('<entry', 0, 200) + 6
-            if text.find('xmlns:dc', 0, 200) < 0:
-                text = '%s xmlns:dc="%s"%s' % (text[:p], XMLNS_DC, text[p:])
-            text = text.replace(' xmlns="http://www.alleged.org.uk/2003/um"', '', 1)      
-            
-            self._tags = set()      
-            
-            root = fromstring(unentity(text))
-            for e in root:
-                if e.tag == 'h1' or e.tag == 'h':
-                    self._title = e.text
-                elif e.tag == 'body':
-                    bytes = tostring(e, 'UTF-8')
-                    bytes = bytes[39:] # Remove unwanted XML prolog.
-                    bytes = bytes.strip()[6:-7].strip()
-                    self._body = munge_html(bytes.decode('UTF-8'), self.munged_blog_url, self.munged_image_url)
-                elif e.tag == TAG_DC_SUBJECT:
-                    self._tags.add(e.text)
-                else:
-                    print e.tag, 'unknown'
+            self.load_xml(text)
         else:
-            # New Markdown-based format, with RFC-style headers preceding the body.
-            href_extension = HrefsExtension({
-                'blog_url': [self.munged_blog_url, 'WTF'],
-                'image_url': [self.munged_image_url, 'OMG'],
-            })
-            converter = Markdown(extensions=['meta', href_extension])
-            self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
-            self._title = ', '.join(converter.Meta['title'])
-            self._tags = ' '.join(converter.Meta.get('topics', [])).split()
-            self._image = Image(munge_url(self.munged_image_url, converter.Meta.get('image', ['../icon-64x64.png'])[0]))
-            
+            self.load_markdown(text)
         self.is_loaded = True
-            
+        
+    def load_xml(self, text):
+        """Load an entry in the old-style XML-based (or UM) format."""
+        p = text.index('<entry', 0, 200) + 6
+        if text.find('xmlns:dc', 0, 200) < 0:
+            text = '%s xmlns:dc="%s"%s' % (text[:p], XMLNS_DC, text[p:])
+        else:
+            # Allow for misspelled DC namespace.
+            text = text.replace('xmlns:dc="http://purl.org/dc/elements/1.1"', 'xmlns:dc="%s"' % XMLNS_DC)
+        text = text.replace('xmlns="%s"' % XMLNS_UM, '', 1)  
+        
+        self._tags = set()      
+        
+        root = fromstring(unentity(text))
+        img_raw = root.get('icon')
+        self._image = Image(munge_url(self.munged_image_url, img_raw))
+        for e in root:
+            if e.tag == 'h1' or e.tag == 'h':
+                self._title = e.text
+            elif e.tag == 'body':
+                bytes = tostring(e, 'UTF-8')
+                bytes = bytes[39:] # Remove unwanted XML prolog.
+                bytes = bytes.strip()[6:-7].strip()
+                self._body = munge_html(bytes.decode('UTF-8'), self.munged_blog_url, self.munged_image_url)
+            elif e.tag == TAG_DC_SUBJECT:
+                self._tags.add(e.text)
+            else:
+                print e.tag, 'unknown'
+                 
+    def load_markdown(self, text)::
+        """New Markdown-based format, with RFC-style headers preceding the body."""
+        href_extension = HrefsExtension({
+            'blog_url': [self.munged_blog_url, 'WTF'],
+            'image_url': [self.munged_image_url, 'OMG'],
+        })
+        converter = Markdown(extensions=['meta', href_extension])
+        self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
+        self._title = ', '.join(converter.Meta['title'])
+        self._tags = ' '.join(converter.Meta.get('topics', [])).split()
+        self._image = Image(munge_url(self.munged_image_url, converter.Meta.get('image', ['../icon-64x64.png'])[0]))
+                    
     @property
     def title(self):
         """The title of this entry, as PCDATA."""
@@ -189,6 +200,15 @@ class Entry(object):
         if not self.is_loaded:
             self.load()
         return self._body
+        
+    @property
+    def summary(self):
+        summary = self.body
+        if self.published > MUNGE_TRANSITION_DATE:
+            pos = summary.find('</p>')
+            if pos >= 0:
+                summary = summary[:pos] + '\n<a class="more" href="%s">Read more</a></p>' % self.href
+        return summary
         
     @property
     def tags(self):

@@ -253,6 +253,38 @@ class SimpleTest(TestCase):
       of the deck that you do in a tarot deal in real life.
     </p>"""
         self.assertEqual(expected, e.body)
+        self.assertEqual('/images/tarot/x-wheel-100w.png', e.image.src)
+        
+    def test_um(self):
+        with open(os.path.join(BASE_DIR, '2003/20030703.e'), 'wt') as out_stream:
+            out_stream.write("""<!-- -*-HTML-*- -->
+<entry date="20030703" icon="../../2005/percy/1/1a1.jpg"
+xmlns="http://www.alleged.org.uk/2003/um"
+xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
+  <h>Percy Street, Page 1</h>
+  <body>
+    <p>
+      If you&rsquo;ve been wondering why I&rsquo;ve not added anything
+      to my site for the last few weeks, it&rsquo;s because I have
+      been spending my spare time playing with <a href="06/12.html">my new graphics tablet</a> instead.
+    </p>
+  </body>
+  <dc:subject>graphics</dc:subject>
+  <dc:subject>percy</dc:subject>
+</entry>
+""")
+        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        self.assertEqual(1, len(entries))
+        e = entries[0]
+        self.assertEqual('Percy Street, Page 1', e.title)
+        expected = u"""<p>
+      If you\u2019ve been wondering why I\u2019ve not added anything
+      to my site for the last few weeks, it\u2019s because I have
+      been spending my spare time playing with <a href="/blog/2003/06/12.html">my new graphics tablet</a> instead.
+    </p>"""
+        self.assertEqual(expected, e.body)
+        self.assertEqual(set(['graphics', 'percy']), e.tags)
+        
         
         
     def test_href_not_munging_external_link(self):
@@ -395,5 +427,19 @@ class SimpleTest(TestCase):
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
         es = get_entries(BASE_DIR, '/x/', '/i/')
         self.assertEqual('/x/2003/06/14.html', es[0].href)
+        
+    def test_summary_old_style(self):
+        """Old entries (before June 2003) are just a summary and may link to an article."""
+        with open(os.path.join(BASE_DIR, '2003/2003-05-17.e'), 'wt') as output:
+            output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n\nQUUX\n')
+        es = get_entries(BASE_DIR, '/x/', '/i/')
+        self.assertEqual('<p>BAR\nBAZ</p>\n<p>QUUX</p>', es[0].summary)
+        
+    def test_summary_new_style(self):
+        """New entries are complete articles use the first paragraph as their summary."""
+        with open(os.path.join(BASE_DIR, '2003/2003-06-14.e'), 'wt') as output:
+            output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n\nQUUX\n')
+        es = get_entries(BASE_DIR, '/x/', '/i/')
+        self.assertEqual('<p>BAR\nBAZ\n<a class="more" href="/x/2003/06/14.html">Read more</a></p>', es[0].summary)
         
         
