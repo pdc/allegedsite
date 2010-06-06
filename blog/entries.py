@@ -175,7 +175,7 @@ class Entry(object):
             else:
                 print e.tag, 'unknown'
                  
-    def load_markdown(self, text)::
+    def load_markdown(self, text):
         """New Markdown-based format, with RFC-style headers preceding the body."""
         href_extension = HrefsExtension({
             'blog_url': [self.munged_blog_url, 'WTF'],
