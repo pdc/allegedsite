@@ -442,4 +442,49 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
         es = get_entries(BASE_DIR, '/x/', '/i/')
         self.assertEqual('<p>BAR\nBAZ\n<a class="more" href="/x/2003/06/14.html">Read more</a></p>', es[0].summary)
         
-        
+    def test_named_article(self):
+        with open(os.path.join(BASE_DIR, '2003/ancient.html'), 'wt') as stream:
+            stream.write("""<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Generated from graphics-the-hard-way.th on 2006-10-29 09:49 GMT -->
+  <head>
+    <title>Colour graphics the hard way - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+  </head>
+  <body>
+    <p class="trail">
+      <a href="./">2002</a> &gt;&gt;
+      <strong>graphics-the-hard-way</strong>
+    </p>
+    <div id="body">
+      <h1>Colour graphics the hard way</h1>      
+      <p>
+      On my badly broken Linux desktop,
+      the Gimp is missing its file-saving plug-ins, so it cannot save
+      files except in a format I&nbsp;cannot use.
+      </p>
+      <p><a href="11.html#e20021125a">25 November 2002</a></p>
+    </div>
+    <div class="links">
+      <h3>Archives</h3>
+      <ul>
+        <li><a href="../2006/topics.html">by topic</a></li>
+        <li><a href="../2006/">2006</a></li>
+        <li><a href="../2005/">2005</a></li>
+      </ul>
+    </div>
+    <div class="links">
+      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+    </div>
+  </body>
+</html>""")
+        article = get_named_article(BASE_DIR, '/blog/', '/im/', 2003, 'ancient')
+        self.assertEqual('Colour graphics the hard way', article.title)
+        self.assertEqual('/blog/2003/ancient.html', article.href)
+        self.assertEqual(u"""<p>
+      On my badly broken Linux desktop,
+      the Gimp is missing its file-saving plug-ins, so it cannot save
+      files except in a format I\u00A0cannot use.
+      </p>
+      <p><a href="11.html#e20021125a">25 November 2002</a></p>""", article.body)

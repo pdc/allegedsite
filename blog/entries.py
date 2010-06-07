@@ -14,7 +14,8 @@ from datetime import date, datetime
 from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
-from xml.etree.ElementTree import fromstring, tostring
+#from xml.etree.ElementTree import fromstring, parse, tostring
+from lxml.etree import fromstring, tostring
 import htmlentitydefs 
 
 XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
@@ -24,10 +25,10 @@ TAG_DC_SUBJECT = '{%s}subject' % XMLNS_DC
 
 date_re = re.compile('^(199[0-9]|20[0-9][0-9])-?([0-1][0-9])-?([0-3][0-9])')
 
-entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
 
 MUNGE_TRANSITION_DATE = datetime(2003, 6, 1, 12, 0)
 
+entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
 def _unentity_sub(m):
     name = m.group(0)[1:-1]
     code = htmlentitydefs.name2codepoint.get(name)
@@ -38,6 +39,13 @@ def _unentity_sub(m):
 def unentity(s):
     return entity_re.sub(_unentity_sub, s)
     
+numeric_char_ref_re = re.compile(r'\&#([0-9]+);')
+def _numeric_char_ref_sub(m):
+    n = int(m.group(1), 10)
+    return unichr(n)
+    
+def expand_numeric_character_references(s):
+    return numeric_char_ref_re.sub(_numeric_char_ref_sub, s)
     
 class HrefsTreeprocessor(Treeprocessor):
     """Machinery for modifying the behaviour of Markdown-formatted text."""
@@ -116,6 +124,8 @@ class Image(object):
     def __init__(self, src):
         self.src = src
         
+body_re = re.compile(r'<body[^>]*>(.*)</body>', re.DOTALL)
+        
 class Entry(object):
     def __init__(self, root_dir_path, dir_path, file_name, blog_url, image_url):
         """Create an entry by examining the proffered file."""
@@ -166,10 +176,13 @@ class Entry(object):
             if e.tag == 'h1' or e.tag == 'h':
                 self._title = e.text
             elif e.tag == 'body':
-                bytes = tostring(e, 'UTF-8')
-                bytes = bytes[39:] # Remove unwanted XML prolog.
-                bytes = bytes.strip()[6:-7].strip()
-                self._body = munge_html(bytes.decode('UTF-8'), self.munged_blog_url, self.munged_image_url)
+                body = tostring(e)
+                if body.startswith('<?xml '):
+                    body = body[39:] # Remove unwanted XML prolog.
+                body = body_re.sub('\\1', body)
+                body = body.strip()
+                body = expand_numeric_character_references(body)
+                self._body = munge_html(body, self.munged_blog_url, self.munged_image_url)
             elif e.tag == TAG_DC_SUBJECT:
                 self._tags.add(e.text)
             else:
@@ -319,3 +332,25 @@ class EntryList(list):
             
 def get_toc(entries):
     return EntryList(entries)
+    
+    
+class Article(object):
+    """In older entries, the entry is a summary and links to a named article."""
+    class DoesNotExist(Exception): 
+        def __init__(self, file_path):
+            Exception.__init__(self, '%s: file not found' % file_path)
+    
+    def __init__(self, dir_path, blog_url, image_url, year, name):
+        file_path = os.path.join(dir_path, '%d/%s.html' % (year, name))
+        with open(file_path, 'rb') as in_stream:
+            text = unentity(in_stream.read())
+            tree = fromstring(text)
+        body_elements = tree.xpath('//html:div[@id="body"]/*', namespaces={'html': XMLNS_HTML})
+        self.title = body_elements[0].text
+        self.body = ''.join(tostring(x) for x in body_elements[1:]).strip()
+        self.body = expand_numeric_character_references(self.body.replace(' xmlns="%s"' % XMLNS_HTML, ''))
+        self.href = '%s%d/%s.html' % (blog_url, year, name)
+        
+def get_named_article(dir_path, blog_url, image_url, year, name):
+    return Article(dir_path, blog_url, image_url, year, name)
+        

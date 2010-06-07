@@ -8,7 +8,7 @@ from django.core.cache import cache
 
 from datetime import date
 
-from alleged.blog.entries import get_entries as get_entries_1, get_entry, get_toc as get_toc_1
+from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
 
 def add_hrefs(entries):
     for entry in entries:
@@ -24,7 +24,7 @@ def get_entries(blog_dir, blog_url, image_url):
     blog_key = 'blog:%s' % blog_dir
     entries = cache.get(blog_key)
     if not entries:
-        entries = get_entries_1(blog_dir, blog_url, image_url)
+        entries = get_entries_uncached(blog_dir, blog_url, image_url)
         add_hrefs(entries)
         for entry in entries:
             if not entry.is_loaded:
@@ -34,8 +34,17 @@ def get_entries(blog_dir, blog_url, image_url):
     
 def get_toc(blog_dir, blog_url, image_url):
     entries = get_entries(blog_dir, blog_url, image_url)
-    toc = get_toc_1(entries)
+    toc = get_toc_uncached(entries)
     return toc
+    
+def get_named_article(blog_dir, blog_url, image_url, year, name):
+    article_key = 'blog:%s,%d,%s' % (blog_dir, year, name)
+    entries = cache.get(article_key)
+    if not entries:
+        article = get_named_article_uncached(blog_dir, blog_url, image_url, year, name)
+        #cache.set(blog_key, article)
+    return article
+    
     
 def render_with(template_name):
     """Decorator for request handlers. the decorated function returns a dict of template args."""
@@ -89,7 +98,7 @@ def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None)
         'this_month': this_month,  
         'prev': this_month[0].prev,
         'next': this_month[-1].next,
-        'years': reversed(years),
+        'years': years,
         'this_year_months': get_year_months(entries, y),
     }
     
@@ -119,3 +128,17 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
 @render_with('front_page.html')
 def front_page(request, blog_dir, blog_url, image_url):
     return {}
+    
+
+@render_with('blog/named_article.html')
+def named_article(request, blog_dir, blog_url, image_url, year, name):
+    y = year and int(year)
+    article = get_named_article(blog_dir, blog_url, image_url, y, name)
+    entries = get_entries(blog_dir, blog_url, image_url) # Needed for archive navigation
+    entry, this_month, years = get_entry(entries, y, None, None)
+    return {
+        'article': article,
+        'years': years,
+        'this_year_months': get_year_months(entries, y),
+    }
+    
