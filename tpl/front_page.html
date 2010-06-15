@@ -1,25 +1,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en-GB">
-  <head>
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  	<title>frontpage</title>
-  	<meta name="generator" content="TextMate http://macromates.com/">
-  	<meta name="author" content="Damian Cugley">
-  	<meta name="google-site-verification" content="G36DSP1rXXLZryW5q79Va7Oiz6mVE-1qV4myQ7hLGfs" />
-  </head>
-  <body>
-    <h1>next.alleged.org.uk</h1>
-    <p>
-      The next version of <a href="http://www.alleged.org.uk/">http://www.alleged.org.uk/</a> is being
-      tested here.
-    </p>
-    <ul>
-      <li>
-        <a href="/pdc/">Damian Cugley’s Alleged Articles</a>
-      </li>
-      <li>
-        <a href="/albums/">Ancient Photo Albums</a> from before Flickr!
-      </li>
-    </ul>
-  </body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>frontpage</title>
+        <meta name="generator" content="TextMate http://macromates.com/">
+        <meta name="author" content="Damian Cugley">
+        <meta name="google-site-verification" content="G36DSP1rXXLZryW5q79Va7Oiz6mVE-1qV4myQ7hLGfs" />
+        <link rel="stylesheet" href="{{ settings.STATIC_URL }}/style/front.css" type="text/css" />
+    </head>
+    <body>
+        <div id="intro">
+            <p>
+                Long ago, before the World Wide Web, music reviews, political rants, and dissection of
+                television science fiction was perpetrated through grubby photocopied whatsits called 
+                fanzines,  zines or minicomics. I thought it would be fun to give them a named publisher,
+                and the name I chose was
+            </p>
+        </div>
+    
+        <div id="logo">
+            <embed src="{{ settings.STATIC_URL }}logo/alleged.svg" type="image/svg+xml" width="275" height="100" 
+                    style="float: left; padding: 35px 40px 15px" alt="Alleged" />
+            <embed src="{{ settings.STATIC_URL }}logo/logo.svg" type="image/svg+xml" width="150" height="150"
+                    style="float: left; padding: 0"/>
+            <embed src="{{ settings.STATIC_URL }}logo/literature.svg" type="image/svg+xml" width="375" height="100"
+                    style="float: left; padding: 35px 40px 15px" alt="Literature"/>
+            <div class="after"></div>
+        </div>
+        
+        <div id="content">
+            <p>
+                My ambition to make Alleged Literature a hub for a variety
+                of Oxford-based zines did not come to much, but the name survives!
+            </p>
+            <p>
+                The next version of <a href="http://www.alleged.org.uk/">http://www.alleged.org.uk/</a> is being
+                tested here.
+            </p>
+            <h2>Currently being updated</h2>
+            <ul>
+                <li>
+                    <a href="/pdc/">Damian Cugley’s Alleged Articles</a>
+                </li>
+                <li>
+                    <a href="/albums/">Ancient Photo Albums</a> from before Flickr!
+                </li>
+            </ul>
+            
+            <h2>Already updated</h2>
+            
+            <ul>
+                <li>                    
+                    <a href="http://jeremyday.org.uk/tws/"><i>The Weekly Strip</i></a>
+                    by <a href="http://jeremyday.org.uk/">Jeremy Day</a>
+                    and <a href="http://jeremyday.org.uk/projects/">other projects</a>.
+                </li>
+            </ul>
+            
+            <h2>Backlog</h2>
+            <ul>
+                <li>
+                    <a href="http://www.alleged.org.uk/2005/percy/"><i>Percy Street</i></a>
+                    and <a href="http://www.alleged.org.uk/2007/toss/"><i>TOSS</i></a> by
+                    <a href="http://leckford.livejournal.com">Leckford</a>.
+                </li>
+                <li>
+                    <a href="http://www.alleged.org.uk/pdc/tarot/">Alleged Tarot 2002</a>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="{{ settings.STATIC_URL }}js/front.js"></script>
+    </body>
 </html>
