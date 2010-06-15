@@ -16,7 +16,7 @@ function replaceEmbed(context$) {
 
 function isSvgSupported() {
     /* From Mark Pilgrim’s Dive Into HTML5 <http://diveintohtml5.org/everything.html>: */
-    return false && !!(document.createElementNS 
+    return !!(document.createElementNS 
         && document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
 }
 
