@@ -53,3 +53,8 @@ body {
     -webkit-column-break-after: avoid;
     */
 }
+
+#content .one-third {
+    width: 320px;
+    float: left;
+}
