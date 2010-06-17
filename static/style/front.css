@@ -28,10 +28,6 @@ body {
 }
 
 #content {
-    /*
-    -webkit-column-width: 480px;
-    -webkit-column-gap: 0;
-    */
 }
 
 #content p {
@@ -46,12 +42,6 @@ body {
     font-size: 1.2em;
     
     margin: 0 10px;
-    /*
-    -moz-break-before: column;
-    -moz-break-after: avoid;
-    -webkit-column-break-before: always;
-    -webkit-column-break-after: avoid;
-    */
 }
 
 #content .one-third {
