@@ -12,6 +12,7 @@ function replaceEmbed(context$) {
         });
         $(this).replaceWith(replacement$);
     });
+    $('#hide-svg').remove();
 }
 
 function isSvgSupported() {
