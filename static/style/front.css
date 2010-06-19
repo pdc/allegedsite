@@ -48,3 +48,15 @@ body {
     width: 320px;
     float: left;
 }
+
+#hide-svg {
+    clear: both;
+    width: 960px;
+    padding: 1.25em 0;
+    margin: 0 auto;
+}
+
+#hide-svg p {
+    font-size: 0.75em;
+    margin: 0 10px;
+}
