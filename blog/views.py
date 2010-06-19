@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response 
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
+from django.conf import settings
 
 from datetime import date
 
@@ -21,15 +22,20 @@ def add_hrefs(entries):
 
 def get_entries(blog_dir, blog_url, image_url):
     """Get the lust of blog entries."""
-    blog_key = 'blog:%s' % blog_dir
-    entries = cache.get(blog_key)
-    if not entries:
-        entries = get_entries_uncached(blog_dir, blog_url, image_url)
-        add_hrefs(entries)
-        for entry in entries:
-            if not entry.is_loaded:
-                entry.load()
-        cache.set(blog_key, entries)
+    if settings.BLOG_CACHE_ENTRIES:
+        blog_key = 'blog:%s' % blog_dir
+        entries = cache.get(blog_key)
+        if not entries:
+            entries = get_entries_uncached(blog_dir, blog_url, image_url)
+            add_hrefs(entries)
+            for entry in entries:
+                if not entry.is_loaded:
+                    entry.load()
+            cache.set(blog_key, entries)
+        return entries
+    
+    entries = get_entries_uncached(blog_dir, blog_url, image_url)
+    add_hrefs(entries)
     return entries
     
 def get_toc(blog_dir, blog_url, image_url):
@@ -126,8 +132,10 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
     }
 
 @render_with('front_page.html')
-def front_page(request, blog_dir, blog_url, image_url):
-    return {}
+def front_page(request, blog_dir, blog_url, image_url, is_svg_wanted):
+    return {
+        'is_svg_wanted': is_svg_wanted,
+    }
     
 
 @render_with('blog/named_article.html')
