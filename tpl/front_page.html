@@ -19,12 +19,21 @@
         </div>
     
         <div id="logo">
+            {% if is_svg_wanted %}
             <embed src="{{ settings.STATIC_URL }}logo/alleged.svg" type="image/svg+xml" width="275" height="100" 
                     style="float: left; padding: 35px 40px 15px" alt="Alleged" />
             <embed src="{{ settings.STATIC_URL }}logo/logo.svg" type="image/svg+xml" width="150" height="150"
                     style="float: left; padding: 0"/>
             <embed src="{{ settings.STATIC_URL }}logo/literature.svg" type="image/svg+xml" width="375" height="100"
                     style="float: left; padding: 35px 40px 15px" alt="Literature"/>
+            {% else %}
+            <img src="{{ settings.STATIC_URL }}logo/alleged-275x100.png" width="275" height="100" 
+                    style="float: left; padding: 35px 40px 15px" alt="Alleged" />
+            <img src="{{ settings.STATIC_URL }}logo/logo-150x150.png" width="150" height="150"
+                    style="float: left; padding: 0"/>
+            <img src="{{ settings.STATIC_URL }}logo/literature-375x100.png" width="375" height="100"
+                    style="float: left; padding: 35px 40px 15px" alt="Literature"/>
+            {% endif %}
             <div class="after"></div>
         </div>
         
@@ -76,6 +85,14 @@
                 </ul>
             </div>
         </div>
+        
+        {% if is_svg_wanted %}
+        <div id="hide-svg">
+            <p>If the SVG images do not work on your browser, 
+                <a href="{% url front_page_sans_svg %}">click here to switch to PNG</a>.</p>
+        </div>
+        {% endif %}
+        
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="{{ settings.STATIC_URL }}js/front.js"></script>
     </body>

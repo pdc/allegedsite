@@ -10,12 +10,19 @@ blog_args = {
     'blog_url': '/pdc/',
     'image_url': settings.STATIC_URL + 'pdc/',
 }
+
+def updated_dict(d, *args, **kwargs):
+    result = dict(d)
+    result.update(*args, **kwargs)
+    return result
+
 snaptioner_args = {
     'library_dir': settings.SNAPTIONER_LIBRARY_DIR,
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
 urlpatterns = patterns('',
-    (r'^$', 'alleged.blog.views.front_page', blog_args, 'front_page'),
+    (r'^$', 'alleged.blog.views.front_page', updated_dict(blog_args, is_svg_wanted=True), 'front_page'),
+    (r'^ancient-browser-support$', 'alleged.blog.views.front_page', updated_dict(blog_args, is_svg_wanted=False), 'front_page_sans_svg'),
     (r'^albums/', include('alleged.snaptioner.urls')),
     (r'^pdc/$', 'alleged.blog.views.entry', blog_args, 'blog_entry'),
     (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$', 
