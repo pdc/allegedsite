@@ -66,6 +66,7 @@ class HrefsTreeprocessor(Treeprocessor):
         
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 img_or_embed_re = re.compile(r'(<(?:img|embed)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
+image_file_name_re = re.compile(r'.*\.(?:jpg|jpeg|gif|png)$')
 
 def munge_url(url, more_url):
     """Generate a URL that will work in the published page.
@@ -85,15 +86,17 @@ def munge_url(url, more_url):
         more_url = more_url[3:]
     return url + more_url 
     
-def make_link_sub(url):
+    
+def make_link_sub(usual_url, image_url):
     def sub(m):
-        new_url = munge_url(url, m.group(2)[1:-1])
+        original_url = m.group(2)[1:-1]
+        new_url = munge_url(image_url if image_file_name_re.match(original_url) else usual_url, original_url)
         return '%s"%s"%s' % (m.group(1), new_url, m.group(3))
     return sub
         
 def munge_html(html, blog_url, image_url):
-    html = a_re.sub(make_link_sub(blog_url), html)
-    html = img_or_embed_re.sub(make_link_sub(image_url), html)
+    html = a_re.sub(make_link_sub(blog_url, image_url), html)
+    html = img_or_embed_re.sub(make_link_sub(image_url, image_url), html)
     return html
         
 class HrefsPostprocessor(Postprocessor):
@@ -347,10 +350,10 @@ class Article(object):
             tree = fromstring(text)
         body_elements = tree.xpath('//html:div[@id="body"]/*', namespaces={'html': XMLNS_HTML})
         self.title = body_elements[0].text
-        self.body = ''.join(tostring(x) for x in body_elements[1:]).strip()
+        self.body = ''.join(tostring(x, method='html') for x in body_elements[1:]).strip()
         self.body = expand_numeric_character_references(self.body.replace(' xmlns="%s"' % XMLNS_HTML, ''))
+        self.body = munge_html(self.body, '%s%d/' % (blog_url, year), '%s%d/' % (image_url, year))
         self.href = '%s%d/%s.html' % (blog_url, year, name)
         
 def get_named_article(dir_path, blog_url, image_url, year, name):
-    return Article(dir_path, blog_url, image_url, year, name)
-        
+    return Article(dir_path, blog_url, image_url, year, name)        

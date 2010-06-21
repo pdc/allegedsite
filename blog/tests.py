@@ -19,7 +19,7 @@ class SimpleTest(TestCase):
         if not os.path.exists(BASE_DIR):
             os.mkdir(BASE_DIR)
         else:
-            for y in ['2002', '2003', '2008', '2009', '2010']:
+            for y in ['1998', '2002', '2003', '2008', '2009', '2010']:
                 if not os.path.exists(os.path.join(BASE_DIR, y)):
                     os.mkdir(os.path.join(BASE_DIR, y))
             for subdir, subdirs, files in os.walk(BASE_DIR):
@@ -93,7 +93,7 @@ class SimpleTest(TestCase):
     def test_dc_subject(self):
         with open(os.path.join(BASE_DIR, '19980425.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
-<entry date="19980425" icon="../img/caption94-64x64.png">
+<entry date="19980425" icon="http://caption.org/img/caption94-64x64.gif">
   <h1>CAPTION97 photo album</h1>
   <body>
     I took almost 200 pictures of small-press-comics folk
@@ -488,3 +488,33 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
       files except in a format I\u00A0cannot use.
       </p>
       <p><a href="11.html#e20021125a">25 November 2002</a></p>""", article.body)
+      
+              
+    def test_named_article_with_image(self):
+        with open(os.path.join(BASE_DIR, '1998/bike.html'), 'wt') as stream:
+            stream.write("""<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Colour graphics the hard way - Alleged Literature</title>
+    <link href="../pdc.css" rel="alternate stylesheet" type="text/css" title="Spirals" />
+  </head>
+  <body>
+    <div id="body">
+      <h1>My recently deceased bike</h1>
+      <p class="initial">
+        <a href="19980529g.jpg"><img src="19980529g-stamp.jpg" align="right" alt="[Link to bike photo&mdash;22K JPEG]" width="86" height="64" border="0" /></a>
+        
+        This is my new bike (at least, new in Summer 1998).
+      </p>
+    </div>
+  </body>
+</html>""")
+        article = get_named_article(BASE_DIR, '/blog/', '/im/', 1998, 'bike')
+        expected = u"""<p class="initial">
+        <a href="/im/1998/19980529g.jpg"><img src="/im/1998/19980529g-stamp.jpg" align="right" alt="[Link to bike photo\u201422K JPEG]" width="86" height="64" border="0" /></a>
+        
+        This is my new bike (at least, new in Summer 1998).
+      </p>"""
+        actual = article.body
+        #for i, c in enumerate(expected):
+        #    self.assertEqual(c, actual[i], 'Strings differ at position %d (%r vs %r)' % (i, expected[i : i + 10], actual[i : i + 10]))
+        self.assertEqual(expected, actual)
