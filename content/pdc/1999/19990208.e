@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19990208" icon="bike/19980529d-64x64.jpeg">
+<entry date="19990208" icon="../bike/19980529d-64x64.jpeg">
 	<h1>My bike wrecked</h1>
 	<body>
 		<p>
@@ -14,7 +14,7 @@
 		</p>
 		<p>
 			I sha&rsquo;n&rsquo;t bother 
-			changing <a href="bike/">my bike page</a>
+			changing <a href="bike.html">my bike page</a>
 			to translate the present tense into the past,
 			because (I hope) soon it will be true again.
 			I intend to replace my bike with one just like it. 
@@ -25,4 +25,5 @@
 		</p>
 	</body>
 	<dc:subject>bike</dc:subject>
+	<dc:subject>updated</dc:subject>
 </entry>

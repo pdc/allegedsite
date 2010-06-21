@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020321" icon="icon-64x64.png">
+<entry date="20020321" icon="../icon-64x64.png">
   <h>PocketSVG! etc.</h>
   <body>
     <p>
@@ -18,4 +18,7 @@
       the distilled wisdom of the mailing list is already emerging.
     </p>
   </body>
+  <dc:subject>svg</dc:subject>
+  <dc:subject>csiro</dc:subject>
+  <dc:subject>australia</dc:subject>
 </entry>

@@ -36,4 +36,5 @@
     </p>
   </body>
   <dc:subject>picky</dc:subject>
+  <dc:subject>cgi</dc:subject>
 </entry>

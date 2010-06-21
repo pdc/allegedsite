@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011206" icon="how-tall-are-you/yes-tall-64x64.png">
+<entry date="20011206" icon="../how-tall-are-you/yes-tall-64x64.png">
   <h1>Quiz: How tall are you?</h1>
   <body>
     <p>
@@ -29,4 +29,7 @@
       Weird.
     </p>
   </body>
+  <dc:subject>svg</dc:subject>
+    <dc:subject>javascript</dc:subject>
+    <dc:subject>toy</dc:subject>
 </entry>

@@ -20,4 +20,7 @@
     </p>
   </body>
   <dc:subject>caption</dc:subject>
+  <dc:subject>photos</dc:subject>
+  <dc:subject>alleged</dc:subject>
+  <dc:subject>tclhtml</dc:subject>
 </entry>

@@ -30,9 +30,6 @@
       PostScript to a bureau whose printer would not even fit in your
       house.  
     </p>
-
-
   </body>
   <dc:subject>caption</dc:subject>
-  <dc:subject>tarot</dc:subject>
 </entry>

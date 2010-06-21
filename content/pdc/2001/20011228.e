@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011228" icon="icon-64x64.png">
+<entry date="20011228" icon="../icon-64x64.png">
   <h1>Christmas Visits (3)</h1>
   <body>
     <p>
@@ -27,7 +27,7 @@
 
     <p>
       Darren is 10 months old and cute as a button.  He spent a lot of
-      his time on Mull crawling at speed up and down corrdidors and up
+      his time on Mull crawling at speed up and down corridors and up
       and down the various adults who were trying to deflect him from
       anything heavy or small enough to try to eat or big enough to
       try to eat <em>him</em>.    Actually of my Mum&rsquo;s dogs,
@@ -36,4 +36,6 @@
       not kept an eye on him.
     </p>
   </body>
+  <dc:subject>diary</dc:subject>
+    <dc:subject>xmas</dc:subject>
 </entry>

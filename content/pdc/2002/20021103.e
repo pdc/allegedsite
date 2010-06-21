@@ -61,7 +61,7 @@
     <p><strong>Update</strong> (2003-03-08): Corrected the spelling of Anish
     Kapoor&rsquo;s name and &lsquo;Marsyas&rsquo;</p>
   </body>
-  <dc:subject>personal</dc:subject>
+  <dc:subject>dairy</dc:subject>
   <dc:subject>tatemodern</dc:subject>
   <dc:subject>tatebritain</dc:subject>
   <dc:subject>turnerprize</dc:subject>
@@ -70,4 +70,5 @@
   <dc:subject>keithtyson</dc:subject>
   <dc:subject>thethinkerafterrodin</dc:subject>
   <dc:subject>28dayslater</dc:subject>
+  <dc:subject>london</dc:subject>
 </entry>

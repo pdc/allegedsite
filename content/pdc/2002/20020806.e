@@ -14,7 +14,7 @@
       that went over the heads of the mainly teenage audience.
       Compare and contrast two different ideas of cool:
       <cite>MiiB</cite> is all discipline and sharp suits with a
-      monochrome pallete, <cite>Powers</cite> is all hedonism and
+      monochrome palette, <cite>Powers</cite> is all hedonism and
       bright colours.  Oxford viewers also get to point and gurgle
       happily at the inclusion of a new Mini as Nigel Power&rsquo;s
       spy car.  BMW must be very chuffed to have a new movie featuring
@@ -31,5 +31,5 @@
       <a href="http://cleanskies.livejournal.com/50164.html">Comments.</a>
     </p>
   </body>
-  <dc:subject>tarot</dc:subject>
+  <dc:subject>film</dc:subject>
 </entry>

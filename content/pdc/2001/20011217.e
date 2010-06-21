@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011217" icon="icon-64x64.png">
+<entry date="20011217" icon="../icon-64x64.png">
   <h1>Christmas visits (2)</h1>
   <body>
     <p>
@@ -15,4 +15,6 @@
       even that looks novel. 
     </p>
   </body>
+  <dc:subject>diary</dc:subject>
+    <dc:subject>xmas</dc:subject>
 </entry>

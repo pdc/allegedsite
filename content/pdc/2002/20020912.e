@@ -81,4 +81,7 @@
       the quite-sane <code>http://www.w3.org/2000/svg</code>.
     </p>
   </body>
+  <dc:subject>rss</dc:subject>
+  <dc:subject>xml</dc:subject>
+  <dc:subject>xmlns</dc:subject>
 </entry>

@@ -26,4 +26,5 @@
     </p>
   </body>
   <dc:subject>caption</dc:subject>
+  <dc:subject>photos</dc:subject>
 </entry>

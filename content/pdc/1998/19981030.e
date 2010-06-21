@@ -11,5 +11,10 @@
     the camera with me and took 
     <a href="bologna/">some photos of Bologna</a>.</p>
   </body>
+  <dc:subject>rochcastle</dc:subject>
+    <dc:subject>wales</dc:subject>
+    <dc:subject>bologna</dc:subject>
+    <dc:subject>italy</dc:subject>
+    <dc:subject>photos</dc:subject>
 </entry>
 	

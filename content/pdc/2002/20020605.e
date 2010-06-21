@@ -17,6 +17,13 @@
       There are still some links left to the old site,
       but we&rsquo;re working on it...
     </p>
+    
+    <p>
+        <strong>Update (20 June 2010)</strong>
+        Jeremy]s sectio has been obsoleted by the
+        <a href="http://jeremyday.org.uk/">Jermey Day</a> web site.
+    </p>
   </body>
   <dc:subject>caption</dc:subject>
+  <dc:subject>updated</dc:subject>
 </entry>

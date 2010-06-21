@@ -41,4 +41,6 @@
       it formatted will have to follow the link!
     </p>
   </body>
+  <dc:subject>rss</dc:subject>
+  <dc:subject>alleged</dc:subject>
 </entry>

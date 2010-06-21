@@ -3,8 +3,8 @@
   <h>Back from Canada</h>
   <body>
     <p>
-      Compared to the long staight organized roads through endless
-      flat prarie of Alberta, even British motorways look like a maze
+      Compared to the long straight organized roads through endless
+      flat prairie of Alberta, even British motorways look like a maze
       of twisty little fog-bound lanes... let alone the back-streets
       of London or Oxford.  I&rsquo;m surprised tourists
       from North America don&rsquo;t get claustrophobia.
@@ -23,7 +23,7 @@
       I&nbsp;was putting down Jeremy&rsquo;s black bag, the next
       I&nbsp;was all curled up in agony.  Luckily I&nbsp;was able to
       unkink enough to hobble in to the car using a chair as an ersatz
-      zimmerframe.  The airport at Calgary loaned me a wheelchair so
+      zimmer frame.  The airport at Calgary loaned me a wheelchair so
       I&nbsp;had no trouble getting through check-in and customs.  At
       Gatwick the wheelchairs have small back wheels, which means the
       occupant cannot wheel themselves, and instead must put up with
@@ -37,4 +37,6 @@
       recovering my mobility now</a>.
     </p>
   </body>
+  <dc:subject>canada</dc:subject>
+    <dc:subject>diary</dc:subject>
 </entry>

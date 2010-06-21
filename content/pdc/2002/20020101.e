@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020101" icon="icon-64x64.png">
+<entry date="20020101" icon="../icon-64x64.png">
   <h>Happy New Year</h>
   <body>
     <p>
@@ -28,4 +28,5 @@
       becoming something of a tradition...
     </p>
   </body>
+  <dc:subject>diary</dc:subject>
 </entry>

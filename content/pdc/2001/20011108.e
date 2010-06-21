@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011108" icon="wp/icon-64x64.png">
+<entry date="20011108" icon="../icon-64x64.png">
   <h1>Webclasses considered harmful</h1>
   <body>
     <p>
@@ -15,4 +15,10 @@
       working life these days...  <code>:-(</code>
     </p>
   </body>
+  <dc:subject>rant</dc:subject>
+    <dc:subject>framework</dc:subject>
+    <dc:subject>webclasses</dc:subject>
+    <dc:subject>vb</dc:subject>
+    <dc:subject>microsoft</dc:subject>
+    <dc:subject>stupid</dc:subject>
 </entry>

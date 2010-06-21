@@ -125,6 +125,10 @@
       that&rsquo;s what I&nbsp;work with every day...
     </p>
   </body>
+  <dc:subject>xmtml2</dc:subject>
+    <dc:subject>hlink</dc:subject>
+    <dc:subject>xml</dc:subject>
+    <dc:subject>standards</dc:subject>
 </entry>
 
 

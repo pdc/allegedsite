@@ -48,5 +48,6 @@
       &lsquo;standard&rsquo; image.
     </p>
   </body>
-  <dc:subject>caption</dc:subject>
+  <dc:subject>xss</dc:subject>
+    <dc:subject>rss</dc:subject>
 </entry>

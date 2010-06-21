@@ -19,4 +19,5 @@
   <dc:subject>programming</dc:subject>
   <dc:subject>graphics</dc:subject>
   <dc:subject>pbmplus</dc:subject>
+  <dc:subject>netpbm</dc:subject>
 </entry>

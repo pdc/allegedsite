@@ -57,4 +57,6 @@
       format of its param).  Probably less efficient than using occurences.
     </p>
   </body>
+  <dc:subject>topicmaps</dc:subject>
+  <dc:subject>datetime</dc:subject>
 </entry>

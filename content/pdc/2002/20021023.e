@@ -16,4 +16,11 @@
       dates</a> specifically only a few weeks later.  I&nbsp;have now
       fixed this and <a
       href="http://feeds.archive.org/validator/check?url=http://www.alleged.org.uk/pdc/rss091.xml">my
-      RSS feed validates</a>.  </p> </body> </entry>
+      RSS feed validates</a>. 
+   </p>
+</body>
+    <dc:subject>rss</dc:subject>
+        <dc:subject>validation</dc:subject>
+        <dc:subject>standards</dc:subject>
+        <dc:subject>markpilgrim</dc:subject>
+</entry>

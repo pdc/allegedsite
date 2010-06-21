@@ -22,4 +22,7 @@
       (See also my entry for <a href="05.html#e20020531">31 May</a>.)
     </p>
   </body>
+  <dc:subject>australia</dc:subject>
+  <dc:subject>flag</dc:subject>
+  <dc:subject>svg</dc:subject>
 </entry>

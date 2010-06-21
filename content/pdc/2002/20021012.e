@@ -41,4 +41,7 @@
       <a href="rss091.xml">my experimental RSS feed</a>.
     </p>
   </body>
+  <dc:subject>rss</dc:subject>
+    <dc:subject>xmlns</dc:subject>
+    <dc:subject>alleged</dc:subject>
 </entry>

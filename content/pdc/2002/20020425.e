@@ -38,4 +38,5 @@
   <dc:subject>svg</dc:subject>
   <dc:subject>safari</dc:subject>
   <dc:subject>html</dc:subject>
+  <dc:subject>updated</dc:subject>
 </entry>

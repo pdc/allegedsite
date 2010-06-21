@@ -14,4 +14,5 @@
     </p>
   </body>
   <dc:subject>rss</dc:subject>
+  <dc:subject>validation</dc:subject>
 </entry>

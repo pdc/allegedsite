@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020309" icon="icon-64x64.png">
+<entry date="20020309" icon="../icon-64x64.png">
   <h>Three SVG Articles on XML.com</h>
   <body>
     <p>
@@ -33,5 +33,9 @@
       title="Shockwave Flash">SWF</abbr> (Macromedia Flash) and shows how to suplicate
       a simple interactive animation.
     </p>
-  </body>
+  </body>  
+  <dc:subject>links</dc:subject>
+  <dc:subject>batik</dc:subject>
+  <dc:subject>svg</dc:subject>
+  <dc:subject>xslt</dc:subject>
 </entry>

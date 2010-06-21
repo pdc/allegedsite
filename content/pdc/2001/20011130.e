@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011130" icon="wp/icon-64x64.png">
+<entry date="20011130" icon="../wp/icon-64x64.png">
   <h1>An experiment: Annotating images with SVG</h1>
   <body>
     <p>
@@ -15,4 +15,7 @@
 
     </p>
   </body>
+  <dc:subject>svg</dc:subject>
+    <dc:subject>adobe</dc:subject>
+    <dc:subject>ie</dc:subject>
 </entry>

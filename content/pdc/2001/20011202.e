@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011202" icon="icon-64x64.png">
+<entry date="20011202" icon="../icon-64x64.png">
   <h1>Keeping Sunday Special</h1>
   <body>
     <p>
@@ -35,4 +35,5 @@
       Nichole Kidman does very good mad starey eyes.
     </p>
   </body>
+  <dc:subject>diary</dc:subject>
 </entry>

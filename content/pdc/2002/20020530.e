@@ -28,4 +28,6 @@
       result is better or worse as far as structure goes!
     </p>
   </body>
+  <dc:subject>alleged</dc:subject>
+  <dc:subject>google</dc:subject>
 </entry>

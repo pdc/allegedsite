@@ -31,4 +31,7 @@
       <code>mime_types.txt</code> made no difference <code>:-(</code>.
     </p>
   </body>
+  <dc:subject>mozilla</dc:subject>
+  <dc:subject>standards</dc:subject>
+  <dc:subject>thttpd</dc:subject>
 </entry>

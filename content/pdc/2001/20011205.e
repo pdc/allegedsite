@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011205" icon="wp/icon-64x64.png">
+<entry date="20011205" icon="../wp/icon-64x64.png">
   <h1>I want my, I want my SVG</h1>
   <body>
     <p>
@@ -30,4 +30,6 @@
       on a borrowed Windows&nbsp;NT box...
     </p>
   </body>
+  <dc:subject>svg</dc:subject>
+    <dc:subject>mozilla</dc:subject>
 </entry>

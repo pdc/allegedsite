@@ -18,11 +18,12 @@
       This might be a good time to mention that from the HTML page, if
       you are using Adobe&rsquo;s SVG Viewer,
       you can right-click on the graphic and choose View SVG to show
-      the graphic full-size in its own window, whichmakes it easier to
+      the graphic full-size in its own window, which makes it easier to
       read.  If you zoom in, you will see that the card images are
       just raster images (and look fuzzy when magnified);  click on
       them to see the scalable SVG versions.
     </p>
   </body>
   <dc:subject>tarot</dc:subject>
+  <dc:subject>svg</dc:subject>
 </entry>

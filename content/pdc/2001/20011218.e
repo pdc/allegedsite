@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011218" icon="2001/xmas-64x64.png">
+<entry date="20011218" icon="xmas-64x64.png">
   <h1>SaVaGe Christmas Cards</h1>
   <body>
     <p>
@@ -22,4 +22,8 @@
       background picture) in case that helps.
     </p>
   </body>
+  <dc:subject>svg</dc:subject>
+    <dc:subject>xmas</dc:subject>
+    <dc:subject>smil</dc:subject>
+    <dc:subject>gif</dc:subject>
 </entry>

@@ -13,4 +13,7 @@
     to use it on another system.</em> For example, mentions of
     its dbref (<code>#8813</code>) will need to be changed to its new dbref.
   </body>
+  <dc:subject>code</dc:subject>
+    <dc:subject>tinymuck</dc:subject>
+    <dc:subject>mud</dc:subject>
 </entry>

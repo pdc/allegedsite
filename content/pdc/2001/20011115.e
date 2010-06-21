@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011115" icon="wp/icon-64x64.png">
+<entry date="20011115" icon="../wp/icon-64x64.png">
   <h1>Another reason to not use webclasses</h1>
   <body>
     <p>
@@ -10,4 +10,9 @@
       co-ordinate your developers&rsquo; changes!
     </p>
   </body>
+  <dc:subject>vb</dc:subject>
+    <dc:subject>microsoft</dc:subject>
+    <dc:subject>webclasses</dc:subject>
+    <dc:subject>stupid</dc:subject>
+    <dc:subject>rcs</dc:subject>
 </entry>

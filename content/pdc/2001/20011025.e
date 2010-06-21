@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011025" icon="../img/caption94-64x64.png">
+<entry date="20011025" icon="http://caption.org/img/caption94-64x64.gif">
   <h1>Welcome to caption.org</h1>
   <body>
     We have created a new web site for CAPTION:
@@ -10,4 +10,5 @@
     used up 20750438 bytes of its  20971520-byte
     quota&mdash;that&rsquo;s 98&#183;95% full!
   </body>
+  <dc:subject>caption</dc:subject>
 </entry>
