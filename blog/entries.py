@@ -337,8 +337,16 @@ def get_toc(entries):
     return EntryList(entries)
     
     
+    
+yet_another_re = re.compile(r'<([^<>]+\S)\s*/>')
+    
 class Article(object):
-    """In older entries, the entry is a summary and links to a named article."""
+    """In older entries, the entry is a summary and links to a named article.
+    
+    Articles were formatted using TclHTML. For the moment I am using
+    the HTML oputput as input for the new site—this class strips off all the
+    navigation clutter and returns the HTML of the artile as a lump of HTML elements.
+    """
     class DoesNotExist(Exception): 
         def __init__(self, file_path):
             Exception.__init__(self, '%s: file not found' % file_path)
@@ -350,9 +358,22 @@ class Article(object):
             tree = fromstring(text)
         body_elements = tree.xpath('//html:div[@id="body"]/*', namespaces={'html': XMLNS_HTML})
         self.title = body_elements[0].text
-        self.body = ''.join(tostring(x, method='html') for x in body_elements[1:]).strip()
+        
+        # The body is just a clot of HTML. It is not necessarily even a single element.
+        self.body = ''.join(tostring(x, method='xml') for x in body_elements[1:]).strip()
+        
+        # The lxml library (and I assume libxml) has two output flavours.
+        # One generates <img.../> and the other <img...></img>. 
+        # But I want <img... /> for Appendix-C compatibility.
+        self.body = yet_another_re.sub(r'<\1 />', self.body)
+        
+        # libxml numeric-encodes every character. My server correctly labels the
+        # content as UTF-8 so that is not necessary. (Also, I hate decimal numeric characeter references.)
         self.body = expand_numeric_character_references(self.body.replace(' xmlns="%s"' % XMLNS_HTML, ''))
+        
+        # We also need to change internal URLs so they work when on the published site.
         self.body = munge_html(self.body, '%s%d/' % (blog_url, year), '%s%d/' % (image_url, year))
+        
         self.href = '%s%d/%s.html' % (blog_url, year, name)
         
 def get_named_article(dir_path, blog_url, image_url, year, name):

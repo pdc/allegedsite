@@ -482,12 +482,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
         article = get_named_article(BASE_DIR, '/blog/', '/im/', 2003, 'ancient')
         self.assertEqual('Colour graphics the hard way', article.title)
         self.assertEqual('/blog/2003/ancient.html', article.href)
-        self.assertEqual(u"""<p>
+        self.assertEqualStrings(u"""<p>
       On my badly broken Linux desktop,
       the Gimp is missing its file-saving plug-ins, so it cannot save
       files except in a format I\u00A0cannot use.
       </p>
-      <p><a href="11.html#e20021125a">25 November 2002</a></p>""", article.body)
+      <p><a href="/blog/2003/11.html#e20021125a">25 November 2002</a></p>""", article.body)
       
               
     def test_named_article_with_image(self):
@@ -515,6 +515,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
         This is my new bike (at least, new in Summer 1998).
       </p>"""
         actual = article.body
-        #for i, c in enumerate(expected):
-        #    self.assertEqual(c, actual[i], 'Strings differ at position %d (%r vs %r)' % (i, expected[i : i + 10], actual[i : i + 10]))
-        self.assertEqual(expected, actual)
+        self.assertEqualStrings(expected, actual)
+        
+    def assertEqualStrings(self, expected, actual):
+        if expected == actual:
+            return
+        for i in range(min(len(expected), len(actual))):
+            beg = i - 5 if i > 5 else 0
+            end = i + 15
+            indent = ' ' * (i - beg + 2)
+            self.assertEqual(expected[i], actual[i], 'Strings differ at position %d\n %r\n %r\n %s^' 
+                % (i, expected[beg:end], actual[beg:end], indent))
