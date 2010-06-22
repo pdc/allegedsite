@@ -1,3 +1,4 @@
 *.pyc
 tmp.p?m
 test_blog
+settings.py

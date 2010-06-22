@@ -56,6 +56,9 @@ ADMIN_MEDIA_PREFIX = '/media/'
 SNAPTIONER_LIBRARY_DIR = expand_path('albums')
 SNAPTIONER_LIBRARY_URL = 'http://localhost/~pdc/snaptioner/albums/'
 
+BLOG_DIR = expand_path('content/pdc')
+BLOG_CACHE_ENTRIES = False
+
 STATIC_URL = 'http://localhost/~pdc/snaptioner/static/'
 
 
@@ -101,4 +104,5 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     
     'alleged.snaptioner',
+    'alleged.blog',
 )
