@@ -1,0 +1,1114 @@
+@prog pdc-morph.muf
+1 99999 d
+1 i
+( %M% 1.%I% %E% -- a program for general changes to properties 
+* Author: P. Damian Cugley.  Please email problems and suggestions to
+*  Damian.Cugley@comlab.ox.ac.uk.
+*
+*  This program is designed to be useful for making an object {such as a
+*  player} with a description that can be easily changed with one short
+*  command.  The idea is to set up your object to use one of the
+*  properties-based general-description programs to generate a description;
+*  then all that this program needs to do is change some properties and
+*  print appropriate messages.
+*   
+*  By making this program able to change several props in one operation, it
+*  is possible to {for example} make a shape-changer whose _scent changes
+*  to match their new form.  {It also means that the program is general
+*  enough that it is not restricted to making morphing characters.}
+*
+*  To use this program, create an action properties and
+*  print appropriate messages.
+*   
+*  By making this program able to change several props in one operation, it
+*  is possible to {for example} make a shape-changer whose _scent changes
+*  to match their new form.  {It also means that the program is general
+*  enough that it is not restricted to making morphing characters.}
+*
+*  To use this program, create an action linked to it.  For example:
+*
+*      @action morph = me
+*      @link morph = #8813
+*
+*  You can call the action anything you like {personally I find "morph"
+*  hard to type in a hurry}; from now on "<command>" will be used to
+*  stand for the action name.  If the action is not attached to the
+*  target object {the one being changed} then do 
+*
+*      @set <command> =  _<command>/target: <target object>
+*
+*  Now add the list of properties on <target object> that can be
+*  affected by the command:
+*
+*      lsedit <command> = _<command>/prop
+*      <property names on separate lines>
+*      .end
+*
+*  {note the trailing slash, and that property names go on separate
+*  lines}.  Now you can use the command
+*
+*      <command> #define <new state>
+*
+*  to define new states {use "<command> #help #define" for more info on that}
+*  and
+*
+*      <command> <new state>
+*
+*  to switch to a new state that has been defined.
+*
+*  The "help" pages for the command contain more information.
+*   
+* EXAMPLE
+*  Here's a fairly complete example of how you might set youself up
+*  with two animal species, and the ability to switch sex.  Note that
+*  sex-changing is completely orthogonal to species, and format/oformat
+*  have ben omitted for clarity.  An asterix in the left margin
+*  indicates a prompt from the program, everything else is what the use
+*  types.
+*   
+*      @desc me = @$desc %sub[_desc/%sub[species]]
+*      @set me=_desc/cat: A blue cat, %p eyes are gold.
+*      @set me=_desc/fox: A golden fox, %p eyes are green.
+*   
+*      @action morph = me
+*      @link morph = #8813
+*      lsedit morph=_morph/prop
+*      species
+*      _scent
+*      sex
+*      .end
+*
+*      morph #define fox
+*   *  @set #xxx=_morph/fox/species:
+*      fox
+*   *  @set #xxx=_morph/fox/_scent:
+*      Foxy and %sub[sex].
+*   *  @set @xxx=_morph/fox/sex:
+*                                               [presses SPACE then RETURN]
+*   *  ok                                       [we are finished]
+*   
+*       [...similar for cat...]
+*   
+*      morph #define male
+*   *  @set #xxx=_morph/male/species:
+*                                               [presses SPACE then RETURN]
+*   *  @set #xxx=_morph/male/_scent:
+*                                               [ditto]
+*   *  @set @xxx=_morph/male/sex:
+*      male
+*   *  ok                                       [we are finished]
+*
+*       [...similar for female...]
+*   
+*  [Now arrange that we can't become male if already male and vice versa:]
+*      @set morph=_morph/old-state-prop: sex
+*      @set morph=_morph/male/male/ok?: no
+*      @set morph=_morph/female/female/ok?: no
+*   
+* )
+( {{{ program proper )
+( {{{  global variables )
+var silent-flag                         (1 iff #silent option used)
+var override-flag                       (1 iff #override option used)
+var verbose-flag                        (1 iff #override option used)
+var oformat                             (string, non-empty iff =STRING used)
+var old-morph-prefix                    ( _<command>/<new state>/<old state>/ )
+var morph-prefix                        ( _<command>/<new state>/ )
+var command-prefix                      ( _<command>/ )
+var morph-name                          ( <new state> )
+var target-object                       ( object being changed )
+var proploc-object                      ( object to get properties from )
+( }}}  variables )
+( {{{  words for debugging )
+: any-to-str                            ( anything -- s )
+    dup int?
+    if
+        intostr
+        exit
+    then
+    dup string?
+    if 
+        "\"" swap over  strcat strcat
+        exit
+    then
+    dup dbref?
+    if
+        intostr  "#" swap strcat
+        exit
+    then
+    pop  "???"
+;
+(  print the contents of the stack )
+: dump-stack                            ( -- )
+    depth 2 +
+    "* Stack contents: "
+    begin
+        over 2 >
+    while
+        over pick
+        any-to-str  strcat  " " strcat
+        swap  1 -  swap
+    repeat
+    "." strcat
+    me @  swap notify
+    pop
+;
+( }}}  words for debugging )
+( {{{  string routines )
+$define 0=  not  $enddef
+$define str=  strcmp  0=  $enddef
+$define str/  strcut  swap pop   $enddef
+$define str\  strcut  pop   $enddef
+$define str-empty?  not  $enddef
+$define str-yes?   1 str\  "y" stringcmp  0=  $enddef
+$define abbrev-for?    over strlen  str\   strcmp  0=  $enddef
+$define setpropstr  0 addprop  $enddef
+( Cut 1st word from string )
+: str-cut-word                           ( s -- remainder word )
+    dup " " instr  
+    dup  0 =
+    if
+        pop "" swap                      ( only one word left )
+    else
+        1 -  strcut                      ( separate into word and remainder )
+        striplead 
+        swap                             ( put word on top of stack )
+    then
+;
+( remove at most one hash mark from start of string: )
+: strip-leading-hash                    ( s -- s )
+    dup  1 strcut swap
+    "#" str=
+    if  
+        swap
+    then
+    pop
+;
+(  Take the longest prefix of s that does not include pat  )
+: str-take-until                        ( s pat -- s' )
+    instr                               ( s i+1 )
+    dup 
+    if
+        1 -  str\                       ( s\i )
+    else
+        pop                             ( s )
+    then
+;
+( }}}  string routines )
+( {{{  unabbrev )
+( Look for abbrev in list of abbrevs index, using sep to separate abbrevs
+  If not found return abbrev unchanged.
+  abbrev must not have extra leading or trailing spaces.  
+  index must not have leading spaces. )
+(  helper function, optimized for when separator leads string too:  )
+: unabbrev-1                            ( abbrev index sep -- s )
+    over over 5 pick strcat         ( abbrev index sep index sep+abbrev  )
+    instr                           ( abbrev index sep i+1-#sep )
+    dup                             ( found? )
+    if
+        1 -  over strlen +          ( abbrev index sep i )
+        rot swap str/               ( abbrev sep index/i )
+        dup rot  str-take-until     ( abbrev index/i\j )
+        swap pop                    ( index/i\j )
+    else
+        pop pop pop                 ( not found so just use abbrev )
+    then
+;
+: unabbrev
+    ( check at start of string first: )
+    over 4 pick  dup strlen  strncmp  0=
+    if
+        rot pop                         ( dispose of original string )
+        over swap  str-take-until
+    else
+        unabbrev-1
+    then
+;
+( }}}  unabbrev )
+( {{{  dbref operations )
+( {{{   convert user string to dbref of object )
+( Helper function for str-to-dbref.
+  The effect of this function in the normal case is to do the effect
+  of  1 strcut swap
+  If string starts with $, however, it is searched for as a reference
+  to another string {a property _ref/<name> in the environment of the
+  trigger}.  If this indirect string in turn starts the a $ sign the
+  process continues, this time using the location of the _ref prop
+  as the starting point.  And so on. )
+: resolve-references-and-split          ( d s -- d' s' s'/1 s'\1 )
+    dup 1 strcut swap                   ( split off first character )
+    dup "$" str=                        ( does it start with $? )
+    if
+        begin 
+            pop swap pop                ( d s/1 )
+            "_ref/" swap strcat         ( d s* )
+            envpropstr                  ( d' s' )
+            dup 1 strcut swap           ( d' s' s'/1 s'\1 )
+            dup "$" str= not
+        until
+    then
+;
+(  Convert a string to a dbref.
+   This may return #-1 #-2 or #-3 in certain circumstances.
+   $-References are not followed.  )
+: simple-str-to-dbref                   ( d s s/1 s\1 -- d d' )
+    "#" str=                            ( is is #xxx? )
+    if
+        swap pop                        ( keep only s/1 )
+        dup number? not
+        if
+            command @  ": #" strcat
+            swap strcat  ": invalid object reference" strcat
+            me @  swap notify
+            #-1
+        else
+            atoi  dbref
+        then
+        exit
+    else
+        pop                             ( remove s/1 )
+        dup number?
+        if
+            atoi  dbref 
+        else 
+            dup tolower "me" str=       ( handle "me" as a special case )
+            if
+                pop                     ( remove string )
+                owner dup               ( ensure is player object )
+            else                        ( none of the above, use rmatch )
+                over 
+                begin
+                    dup exit?               ( rmatch don't work on exits )
+                while
+                    location
+                repeat
+                swap rmatch
+            then
+        then
+    then
+;
+(  This is the procedure to be called to convert an arbitrary string
+  into an actual object  )
+: str-to-dbref                          ( d s -- d' )
+    resolve-references-and-split        ( d s s/1 s\1 )
+    simple-str-to-dbref                 ( d d' )
+    dup #-3 dbcmp
+    if
+        pop getlink                     ( get HOME of reference object )
+    else
+        swap pop                        ( remove refernce object )
+    then
+;
+( }}}   convert user string to dbref of object )
+: the-name-1                            ( d the -- s )
+    over player?
+    if
+        pop name exit                   ( don't change player's name )
+    then
+    swap name 
+    dup "a " 2 strncmp  0=             ( is it "a foo"? )
+    if
+        2 str/   strcat                 ( change to definite article )
+        exit
+    then
+    dup "an " 3 strncmp  0=            ( is it "an oof"? )
+    if
+        3 str/   strcat                 ( change to definite article )
+        exit
+    then
+    swap pop                            ( get rid of 'the' )
+;
+: The-name                              ( d -- s )
+    "The " the-name-1
+;
+: the-name                              ( d -- s )
+    "the " the-name-1
+;
+( }}}  dbref operations )
+( {{{  fake MPI )
+: notify-with-fake-mpi                  ( p s -- )
+    dup  striplead 6 strcut swap        ( p s s/6 s\6  )
+    "{list:" str=
+    if                                  ( p s s/6 )
+        striptail  dup strlen 1 -  strcut  ( p s s/6\#s-1 s\#s-1 )
+        dup "}" str=
+        if
+                pop swap pop                ( p n -- n is prop name )
+        else
+                ( user appears to have omitted closing brace )
+                strcat swap pop
+        then
+        1                       ( p n i )
+        begin
+                2 pick 2 pick intostr strcat ( p n i ni )
+                trigger @  swap getpropstr ( p n i t )
+                dup
+        while
+                4 pick  swap notify
+                1 +             ( p n i+1 )
+        repeat
+        pop pop pop                     (  clear the stack )
+    else                                ( p s s/6 )
+        pop
+        notify
+    then
+;
+        
+( }}}  fake MPI )
+( {{{  compatibility with FurryMUCK-style lists )
+( s is a list name; if there is property s + "#/1" on d then
+  return s + "#/", otherwise return s + "/" if that's defined, else s )
+: find-list                             ( d s -- d s' )
+    over over  "#/1" strcat  getpropstr 
+    if
+        "#/" strcat                     ( FurryMUCK style )
+    else
+        over over  "/1" strcat  getpropstr
+        if
+            "/" strcat                  ( my prefered style )
+        then
+    then
+;
+( }}}   compatibility with new-style lists )
+( {{{  searching for properties )
+( These routines require that PROPLOC-OBJECT and the various prefixes have
+  already been given values.  )
+(  Look for property as _command/key  )
+: get-prop-1                            ( s -- s )
+    proploc-object @  command-prefix @  rot    ( d s s )
+    strcat  getpropstr
+;
+: get-prop-3                            ( key -- val )
+    old-morph-prefix @                  ( key _c/s/os/ )
+    dup
+    if
+        over  strcat  proploc-object @  swap getpropstr ( key v )
+    then
+    dup                                 ( found it? )
+    if
+        swap pop 
+        exit
+    then
+    (  Try _<command>/<new state>/<key>  )
+    pop   morph-prefix @            ( key _c/s/ )
+    over  strcat                    ( key _c/s/key )
+    proploc-object @  swap getpropstr      ( key v )
+    dup 
+    if 
+        swap pop
+        exit
+    then
+    ( Try _<command>/<key>: )
+    pop   command-prefix @      ( key _c/ )
+    swap strcat                 ( _c/key )
+    proploc-object @  swap getpropstr
+;
+( }}}  searching for properties )
+( {{{  transformation )
+(  Set property s2 on d according to s1.
+   If s1 is null, leave d alone; if s1 is %null% then remove property s2;
+   otherwise set s2 to have value s1. )
+: transform-prop                        ( d s2 s1 -- )
+    dup str-empty?
+    if
+        verbose-flag @ 
+        if
+            pop
+            command @  ": " strcat  swap strcat  " unchanged" strcat
+            me @  swap notify
+            pop
+        else
+            pop pop pop
+        then
+    else
+        dup "%null%" str=               ( %null% means remove prop )
+        if
+            pop 
+            verbose-flag @
+            if
+                command @  ": " strcat  over strcat  " removed" strcat
+                me @  swap notify
+            then
+            remove_prop
+        else
+            verbose-flag @
+            if
+                command @  ": " strcat  3 pick strcat  " set to " strcat
+                        over strcat
+                me @  swap notify
+            then
+            setpropstr              ( set the property on the target )
+        then
+    then
+;
+( transform: alter properties on target according to proploc: )
+: transform                             ( -- )
+    command-prefix @  "prop" strcat     ( s' )
+    proploc-object @  swap find-list    ( d s )
+    1                                   ( d s i )
+    begin
+        over over                       ( d s i s i )
+        intostr  strcat                 ( d s i si )
+        4 pick  swap getpropstr         ( d s i p )
+        dup 
+    while
+        target-object @ swap            ( d s i dt p )
+        dup get-prop-3                  ( d s i dt p val )
+        transform-prop                  ( d s i )
+        1 +                             ( and loop )
+    repeat
+    pop pop pop pop                     ( clear junk from stack )
+;
+( generate messages to invoker and to rest of people in room )
+: notify-transform                      ( -- )
+    ( start constructing the message to the invoker: )      
+    "format" get-prop-3       
+    dup str-empty? 
+    if
+        pop   ( generate default message )
+        target-object @ 
+        dup me @ dbcmp
+        if
+            pop "You are transformed..."
+        else
+            The-name  " is transformed!" strcat
+        then
+    then
+    silent-flag @
+    if
+        "(Silently) "  swap strcat
+    then
+    me @  swap notify
+    ( notify other people in room, unless silent: )
+    silent-flag @ not
+    if
+        oformat @  dup str-empty?
+        if
+            pop  "oformat" get-prop-3
+        then
+        dup
+        if
+            ( Prefix oformat with name of the object being transformed )
+            target-object @         
+            dup room? not               ( ... unless it is a room )
+            if
+                dup The-name   " " strcat  rot strcat  swap
+            then
+            (  Now arrange for % substitutions... )
+            swap                        ( d s )
+            me @ name  "%actor" subst
+            target-object @ The-name  "%Object" subst
+            target-object @ the-name  "%object" subst
+            pronoun_sub                 ( %-subs for object )
+            me @  swap pronoun_sub      ( %-subs for actor )
+            loc @  me @  rot notify_except
+        then
+    then
+;
+( }}}  transformation )
+( {{{  help )
+: usage-message
+    me @
+  "---Damian's Morphing Program 1.%I% %E%----------------------------------"
+    notify
+    "Usage:     " command @ strcat
+    " { <option> } <new state> [ = <oformat> ]" strcat
+        me @  swap notify  
+    "           " command @ strcat " #define { <option> } <new state> " strcat
+        "[ = <oformat> ]" strcat
+        me @  swap notify  
+    "           " command @ strcat " #help [ <topic> ]" strcat
+        me @  swap notify  
+    "<option>:  #silent | #override | #command <word> | #verbose"
+        me @  swap notify  
+    "<topic>:   "  prog  "_help/index" getpropstr  strcat
+        me @  swap notify 
+;
+( Send list called S on object D )
+: me-notify-list                        ( d s -- )
+    1
+    begin
+        over over  intostr strcat
+        4 pick  swap getpropstr
+        dup
+    while
+        me @  swap notify
+        1 +
+    repeat
+    pop pop pop
+;
+( send help topic to user )
+: me-notify-help                        ( s -- )
+    prog "_help/"  rot strcat  find-list
+    me-notify-list
+;
+( if s is a recognized topic, print help pages )
+: help-command                          ( s -- )
+    dup str-empty?
+    if
+        pop  "help"                     ( default is "#help help" )
+    then
+    tolower strip-leading-hash          ( s )
+    prog "_help/index" getpropstr 
+    " | " explode                       ( s sn...s1 n )
+    begin
+        dup  0 >
+    while
+        swap                            ( s sn...s2 n s1 )
+        over 2 +  pick                  ( s sn...s1 n s1 s )
+        over                            ( s sn...s2 n s1 s s1 )
+        abbrev-for? not                 ( s sn...s2 n s1 b )
+    while
+        pop  1 -                        ( s sn...s2 n-1 )
+    repeat
+    ( if left at 1st while, stack has  s sn...s1 n
+        otherwise s sn...s2 n s1 )
+    dup string?
+    if
+        me-notify-help                  ( s sn...s2 n )
+        1 -                             ( s sn...s2 n-1 )
+    else
+        me @  "Sorry, no help for that topic."  notify
+    then
+;
+( }}}  help )
+( {{{  command line )
+( {{{   stripping options )
+(  handle a flag option  )
+(  if s1 is a valid flag for s2 then set v to 1
+   otherwise, leave s1 on the stack
+   In each case leaves a flag which is 1 iff this option did NOT match
+  Both strings must already be downcased. )
+: flag-option                           ( s1 v s2 -- [s1] f )
+    3 pick swap  abbrev-for?            ( s1 v f )
+    if
+        1 swap !                        ( s1 )
+        pop 1                           ( 1 )
+    else
+        pop 0                           ( s1 0 )
+    then
+;
+( handle option taking an argument )
+(  if s1 is valid flag for s2 then set v to first word of s0 and return 1
+   otherwise leave s0 and s1 on stack and return o )
+: arg-option                            ( s0 s1 v s2 -- s0 [s1] f )
+    3 pick swap  abbrev-for?            ( s0 s1 v f )
+    if
+        rot  str-cut-word               ( s1 v s0' w )
+        rot  !                          ( s1 s0' )
+        swap pop  1                     ( s0' 0 )
+    else
+        pop 0                           ( s0 s1 1 )
+    then
+;
+(  Two parameters -- command line s2 and option word s1
+   s1 has already had 'tolower' applied to it.
+   This procedure does whatever the option requires and removes it.
+   It may also strip further arguments from the command line string. )
+: do-one-option ( s2 s1 -- s2' )
+    silent-flag "silent" flag-option
+    if  exit  then
+    override-flag "override" flag-option
+    if  exit  then
+    verbose-flag "verbose" flag-option
+    if  exit  then
+    command "command" arg-option
+    if  exit  then
+    (  Unrecognized, so print error message: )
+    command @  ": unknown option \"" strcat  
+    swap strcat  "\" (ignored)" strcat
+    me @  swap notify
+;
+( Removes and interprets #-options from string )
+: strip-options    ( s -- s )
+    striplead
+    begin                            
+        dup 1 strcut swap                   ( find 1st character of the line )
+        (  stack contains: s s/1 s\1 )
+        "#" str=                        ( is it a hash? )
+    while
+        swap pop                        ( keep s/1 )
+        str-cut-word  tolower           ( extract first word )
+        do-one-option                   ( and process that option )
+    repeat
+    pop                                 ( discard s/1 )
+;
+( }}}  stripping options )
+( {{{   calculate prefixes )
+: calculate-target                      ( -- )
+    ( requires command-prefix to be set )
+    "target" get-prop-1
+    dup 
+    if
+        proploc-object @  
+        dup not
+        if
+            pop  trig
+        then
+        swap str-to-dbref               ( search starting w/ proploc )
+    else
+        pop  
+        trigger @  location
+    then
+    target-object !
+;
+: calculate-prefixes                    ( s -- )
+    "_"  command @  strcat  "/" strcat  ( s _c/ )
+    dup command-prefix !                
+    ( we now have enough info to check for a proploc: )
+    trigger @  over "proploc" strcat  getpropstr ( s _c/ v )
+    dup
+    if
+        trig  swap str-to-dbref  proploc-object !
+    else
+        pop
+        trigger @  proploc-object !
+    then
+    calculate-target
+    swap                                ( _c/ s )
+    ( allow for abbreviated morphs: )
+    "index" get-prop-1                  ( index of morphs? )
+    dup
+    if
+        "\\" unabbrev-1                 ( look up morph in it )
+    else
+        pop
+    then
+    dup morph-name !
+    ( now the morph prefix, which is checked before command-prefix: )
+    strcat  "/" strcat            ( _c/s/ )
+    dup  morph-prefix !
+    ( now the old-state prefix, which is checked first. )
+    (  This requires reading a prop from proploc-object, which is why we
+       had to calculate that first: )
+    "old-state-prop" get-prop-1         ( _c/s/ s' )
+    dup str-empty? 
+    if
+        pop  "species"                  ( species is default prop )
+    then
+    target-object @  swap getpropstr  ( _s/s/ s'' )
+    dup str-empty?
+    if
+        ( no old-morph value, so disable old-morph-preifx: )
+        old-morph-prefix !
+    else
+        strcat  "/" strcat              ( _s/s/s''/ )
+        old-morph-prefix !
+    then
+;
+( }}}   calculate prefixes )
+( Strip options, set prefixes, set oformat if there is '=' sign )
+: absorb-command-line                   ( s -- )
+    0 override-flag !   0 silent-flag !  0 verbose-flag !   "" oformat !
+    strip-options
+    dup  "=" instr  dup                 ( is there an =<oformat> ? )
+    if
+        1 - strcut  1 str/  striplead  oformat !
+    else
+        pop
+    then
+    striptail  
+    begin
+        dup str-empty?
+    while
+        pop
+        command @  ": please enter name of new state (or @Q to quit):"  strcat 
+        me @  swap notify
+        read strip
+    repeat
+    
+    calculate-prefixes
+;
+( }}}  command line )
+( {{{  morph command )
+: morph-command                         ( s -- )
+    dup str-empty?
+    if
+        usage-message  exit
+    then
+    absorb-command-line
+    verbose-flag @
+    if
+        "Check in order " old-morph-prefix @ strcat  ", " strcat
+        morph-prefix @ strcat  ", " strcat  command-prefix @ strcat  "." strcat
+        me @  swap notify
+    then
+    ( check permissions: )
+    trig owner  target-object @ owner  dbcmp not 
+    if
+        command @ ": permission denied: " strcat
+        target-object @ name  strcat
+        " is not owned by " strcat
+        trig  owner name  strcat
+        ", the owner of the action " strcat
+        trig name strcat
+        me @  swap notify
+        exit
+    then
+    override-flag @                     ( if this is set, ignore ok? props )
+    if 
+        1
+    else
+        "ok?" get-prop-3  str-yes?      ( otherwise must find an ok?:yes )
+    then
+    if
+        transform
+        notify-transform
+    else
+        "Sorry, you can't " command @ strcat 
+        " into that state." strcat  me @  swap notify
+    then
+;
+( }}}  morph command )
+( {{{  define new state )
+( morph #define [ #command <word> ] <new state> [ = <oformat> ] )
+: read-property                              ( s -- )
+    (  generate prompt message:  )
+    "@set #"  proploc-object @ intostr strcat
+    " = " strcat  morph-prefix @ strcat  over strcat  ": " strcat
+    proploc-object @  morph-prefix @  4 pick strcat  getpropstr  strcat
+    me @ swap notify
+    read 
+    dup striplead str-empty?
+    if 
+        pop pop 
+        exit 
+    then
+    dup strip "@r" stringcmp  0 =
+    if
+        pop 
+        proploc-object @  morph-prefix @  rot strcat  remove_prop
+    else
+        proploc-object @  
+        rot  morph-prefix @  swap strcat
+        rot setpropstr
+    then
+;
+: define-command                           ( s -- )
+    absorb-command-line
+    ( check permissions )
+    proploc-object @  owner  me @  dbcmp not
+    if
+        command @  ": permission denied: you may only define morphs " strcat
+        "on objects owned by " strcat  me @ name strcat
+        me @  swap notify
+        exit
+    then
+    ( make it "ok?:yes": )
+    proploc-object @  morph-prefix @  "ok?" strcat  "yes" setpropstr
+    ( add to list of abbrevs: )
+    "index" get-prop-1                  ( morph index )
+    dup  "\\"  morph-name @ strcat  instr 0=
+    if
+        "\\" strcat  morph-name @ strcat        ( index' )
+        proploc-object @  
+        command-prefix @ "index" strcat ( index' proploc _c/index )
+        rot setpropstr
+    else
+        pop
+    then
+        
+    "format" read-property
+    oformat @
+    if
+        proploc-object @  morph-prefix @ "oformat" strcat 
+        oformat @ setpropstr
+    else
+        "oformat" read-property
+    then
+    proploc-object @  command-prefix @  "prop" strcat  find-list
+    1                                   ( d s n )
+    begin
+        over over                       ( d s n s n )
+        intostr strcat  4 pick  swap getpropstr      ( d s n s' )
+        dup
+    while
+        read-property
+        1 +
+    repeat
+    pop pop pop
+    me @ "ok" notify
+;
+( }}}  define new state )
+( {{{  main routine )
+: main
+    (   first check if we have a leading option that selects one of the
+        auxillary modes:  )
+    striplead
+    dup  1 strcut swap  "#" str=
+    if
+        str-cut-word tolower            ( extract first word )
+        dup "help" abbrev-for?
+        if
+            ( help mode )
+            pop swap pop                ( dispose of old cmd line )
+            help-command
+            exit
+        then
+        dup "define" abbrev-for?
+        if
+            ( define mode )
+            pop swap pop
+            define-command
+            exit
+        then
+        pop
+    then
+    pop 
+    morph-command
+;
+( }}}  main routine )
+( }}} program proper )
+( Local variables: )
+( fold-folded-p: t )
+( muf-mud-buffer: "*Slate*" )
+( muf-mud-dbref: "#8813" )
+( End: )
+863 lines displayed.
+.
+c
+q
+@register #me pdc-morph.muf=morph.muf
+@register #me pdc-morph.muf=pdc-morph
+@register #me pdc-morph.muf=tmp/prog1
+@set $tmp/prog1=L
+@set $tmp/prog1=2
+@propset $tmp/prog1=int:/.debug/errcount:2
+@propset $tmp/prog1=int:/.debug/lastcrash:835329171
+@propset $tmp/prog1=str:/.debug/lasterr:pdc-morph.muf(#8813), line 382; GETPROPSTR: Permission denied.
+@propset $tmp/prog1=str:/_/de:A scroll containing a spell called pdc-morph.muf
+@propset $tmp/prog1=str:/_docs:@list #8813=1-97
+@propset $tmp/prog1=str:/_help/define#:22
+@propset $tmp/prog1=str:/_help/define#/1:---Damian's Morphing Program---------DEFINING NEW MORPHS---------------------
+@propset $tmp/prog1=str:/_help/define#/10:*  named property has already been defined on the proploc, with that as
+@propset $tmp/prog1=str:/_help/define#/11:*  value.  
+@propset $tmp/prog1=str:/_help/define#/12:*      For each property you can type one of the following:
+@propset $tmp/prog1=str:/_help/define#/13:* BLANK LINE.  Completely blank lines are ignored altogether.  A line with
+@propset $tmp/prog1=str:/_help/define#/14:*      just a space on it means to leave the property alone -- if it is
+@propset $tmp/prog1=str:/_help/define#/15:*      undefined then leave it undefined.
+@propset $tmp/prog1=str:/_help/define#/16:* @Q.  Quit the program immediately.  The result of this will be to leave
+@propset $tmp/prog1=str:/_help/define#/17:*      unchanged this property and any others further down in the list.
+@propset $tmp/prog1=str:/_help/define#/18:* @R.  Remove the property.  This is only meaningful when the property
+@propset $tmp/prog1=str:/_help/define#/19:*      already has a value, otherwise just a space is just as good.
+@propset $tmp/prog1=str:/_help/define#/2:*
+@propset $tmp/prog1=str:/_help/define#/20:* ANYTHING ELSE.  Set the property to have this value.  (Leading and
+@propset $tmp/prog1=str:/_help/define#/21:*      trailing spaces are *not* removed.)
+@propset $tmp/prog1=str:/_help/define#/22:*
+@propset $tmp/prog1=str:/_help/define#/3:*      <command> #define { <option> } <new state> [ =<oformat> ]
+@propset $tmp/prog1=str:/_help/define#/4:*
+@propset $tmp/prog1=str:/_help/define#/5:*  where <new state> is the name of the new state to create.  The program
+@propset $tmp/prog1=str:/_help/define#/6:*  will then set "_<command>/<new state>/ok?" to "yes" and prompt you for
+@propset $tmp/prog1=str:/_help/define#/7:*  values for the properties that define the new state.  Each prompt is of
+@propset $tmp/prog1=str:/_help/define#/8:*  the form "@set <command>=<prop>: [ <value> ]" where <prop> is the
+@propset $tmp/prog1=str:/_help/define#/9:*  property name.  If a <value> is included then it indicates that the
+@propset $tmp/prog1=str:/_help/effects#:20
+@propset $tmp/prog1=str:/_help/effects#/1:---Damian's Morphing Program---------EFFECTS--------------------------
+@propset $tmp/prog1=str:/_help/effects#/10:*  property <prop> on the target object is given that value.  A value of
+@propset $tmp/prog1=str:/_help/effects#/11:*  "%null%" means to remove that property.
+@propset $tmp/prog1=str:/_help/effects#/12:*   
+@propset $tmp/prog1=str:/_help/effects#/13:*  Finally, "_<command>/<new state>/oformat" and "format" properties are
+@propset $tmp/prog1=str:/_help/effects#/14:*  used to generate messages reporting the transformation.  Pronoun
+@propset $tmp/prog1=str:/_help/effects#/15:*  substitutions are performed on the "oformat" message, and it is prefixed
+@propset $tmp/prog1=str:/_help/effects#/16:*  by the object's name.
+@propset $tmp/prog1=str:/_help/effects#/17:*   
+@propset $tmp/prog1=str:/_help/effects#/18:*  If the command is invoked as "<command> <new state>=<oformat>" then this
+@propset $tmp/prog1=str:/_help/effects#/19:*  is used instead of searching for an "oformat" property.
+@propset $tmp/prog1=str:/_help/effects#/2:*
+@propset $tmp/prog1=str:/_help/effects#/20:*
+@propset $tmp/prog1=str:/_help/effects#/3:*  The command '<command> <new state>' sets the value of properties on the
+@propset $tmp/prog1=str:/_help/effects#/4:*  target object according to state <new state> and maybe <old state>.  The
+@propset $tmp/prog1=str:/_help/effects#/5:*  property _<command>/<new state>/ok? on the trigger must be set to "yes"
+@propset $tmp/prog1=str:/_help/effects#/6:*  (or "y"), otherwise that morph is not allowed and nothing happens.
+@propset $tmp/prog1=str:/_help/effects#/7:*   
+@propset $tmp/prog1=str:/_help/effects#/8:*  For each name <prop> in the list "_<command>/prop", a property
+@propset $tmp/prog1=str:/_help/effects#/9:*  _command/<new state>/<prop> is searched for and if it is found, the
+@propset $tmp/prog1=str:/_help/features#:24
+@propset $tmp/prog1=str:/_help/features#/1:---Damian's Morphing Program---------FEATURES---------------------------
+@propset $tmp/prog1=str:/_help/features#/10:* -- Accepts abbreviations of state names and options (so "morph #v gry"
+@propset $tmp/prog1=str:/_help/features#/11:*    --> "morph #verbose gryphon") and even #help topics.
+@propset $tmp/prog1=str:/_help/features#/12:*
+@propset $tmp/prog1=str:/_help/features#/13:* -- Property names are all prefixed with the command name, so it can be
+@propset $tmp/prog1=str:/_help/features#/14:*    used to implement several different-named morphing commands using
+@propset $tmp/prog1=str:/_help/features#/15:*    just one action (saving DB).
+@propset $tmp/prog1=str:/_help/features#/16:*
+@propset $tmp/prog1=str:/_help/features#/17:* -- Props that refer to objects can use a dbref, #<dbref>, $<name> or
+@propset $tmp/prog1=str:/_help/features#/18:*    even an object name!  Accept no substitutes!
+@propset $tmp/prog1=str:/_help/features#/19:*
+@propset $tmp/prog1=str:/_help/features#/2:*
+@propset $tmp/prog1=str:/_help/features#/20:* -- Compatibility with new list functions: a list called "foo" might
+@propset $tmp/prog1=str:/_help/features#/21:*    have members "foo#/1", "foo#/2", ... (new style), or "foo/1",
+@propset $tmp/prog1=str:/_help/features#/22:*    "foo/2", ... (old style).  New-style lists take priority.
+@propset $tmp/prog1=str:/_help/features#/23:* -- More help topics than you could possibly want.
+@propset $tmp/prog1=str:/_help/features#/24:*
+@propset $tmp/prog1=str:/_help/features#/3:* -- Can set several properties with a single command.
+@propset $tmp/prog1=str:/_help/features#/4:*
+@propset $tmp/prog1=str:/_help/features#/5:* -- The messages produced can depend on the state you are changing from
+@propset $tmp/prog1=str:/_help/features#/6:*    as well as the new state.
+@propset $tmp/prog1=str:/_help/features#/7:*
+@propset $tmp/prog1=str:/_help/features#/8:* -- Add new morphs with the #define option.  It's easy and fun.
+@propset $tmp/prog1=str:/_help/features#/9:*
+@propset $tmp/prog1=str:/_help/help#:28
+@propset $tmp/prog1=str:/_help/help#/1:---Damian's Morphing Program---------HELP----------------------------------
+@propset $tmp/prog1=str:/_help/help#/10:*  effects
+@propset $tmp/prog1=str:/_help/help#/11:*      A description of what this command actually does.
+@propset $tmp/prog1=str:/_help/help#/12:*
+@propset $tmp/prog1=str:/_help/help#/13:*  define
+@propset $tmp/prog1=str:/_help/help#/14:*      The easy way to define new states (#define).
+@propset $tmp/prog1=str:/_help/help#/15:*
+@propset $tmp/prog1=str:/_help/help#/16:*  properties
+@propset $tmp/prog1=str:/_help/help#/17:*      A list of properties used to customize the command.
+@propset $tmp/prog1=str:/_help/help#/18:*
+@propset $tmp/prog1=str:/_help/help#/19:*  options
+@propset $tmp/prog1=str:/_help/help#/2:*
+@propset $tmp/prog1=str:/_help/help#/20:*      Describes what each of the options does.
+@propset $tmp/prog1=str:/_help/help#/21:*
+@propset $tmp/prog1=str:/_help/help#/22:*  substitutions
+@propset $tmp/prog1=str:/_help/help#/23:*      Describes %-subs in omessages generated by this program.
+@propset $tmp/prog1=str:/_help/help#/24:*
+@propset $tmp/prog1=str:/_help/help#/25:*  features
+@propset $tmp/prog1=str:/_help/help#/26:*      Lists some of the fancy features of this program.
+@propset $tmp/prog1=str:/_help/help#/27:*
+@propset $tmp/prog1=str:/_help/help#/28:*
+@propset $tmp/prog1=str:/_help/help#/3:*  To read one of the help pages, type  <command> #help [ <topic> ]
+@propset $tmp/prog1=str:/_help/help#/4:*  where <command> is the name of the action linked to this program
+@propset $tmp/prog1=str:/_help/help#/5:*  and   <topic> is one of:
+@propset $tmp/prog1=str:/_help/help#/6:*
+@propset $tmp/prog1=str:/_help/help#/7:*  introduction
+@propset $tmp/prog1=str:/_help/help#/8:*      An outline of what this program does
+@propset $tmp/prog1=str:/_help/help#/9:*
+@propset $tmp/prog1=str:/_help/index:introduction | effects | define | help | properties | options | substitutions | features
+@propset $tmp/prog1=str:/_help/introduction#:25
+@propset $tmp/prog1=str:/_help/introduction#/1:---Damian's Morphing Program---------INTRODUCTION--------------------------
+@propset $tmp/prog1=str:/_help/introduction#/10:*  By making this program able to change several props in one operation,
+@propset $tmp/prog1=str:/_help/introduction#/11:*  it is possible to (for example) make a shape-changer whose "species"
+@propset $tmp/prog1=str:/_help/introduction#/12:*  and "hug" properties change to match their new form.  It also means
+@propset $tmp/prog1=str:/_help/introduction#/13:*  that the program is useful for things other than making morphing
+@propset $tmp/prog1=str:/_help/introduction#/14:*  characters.
+@propset $tmp/prog1=str:/_help/introduction#/15:*
+@propset $tmp/prog1=str:/_help/introduction#/16:*  The command you use to invoke this program depends on the action
+@propset $tmp/prog1=str:/_help/introduction#/17:*  linked to it; it is be represented by <command> in the help pages.
+@propset $tmp/prog1=str:/_help/introduction#/18:*
+@propset $tmp/prog1=str:/_help/introduction#/19:*  A particular set of values of properties on the target object is
+@propset $tmp/prog1=str:/_help/introduction#/2:*
+@propset $tmp/prog1=str:/_help/introduction#/20:*  called a STATE.  Once the right properties are set up on the trigger,
+@propset $tmp/prog1=str:/_help/introduction#/21:*  this program gives you a command with syntax
+@propset $tmp/prog1=str:/_help/introduction#/22:*      <command> <new state> 
+@propset $tmp/prog1=str:/_help/introduction#/23:* 
+@propset $tmp/prog1=str:/_help/introduction#/24:*  which switches the target object to a new state.
+@propset $tmp/prog1=str:/_help/introduction#/25:*
+@propset $tmp/prog1=str:/_help/introduction#/3:*  This program is designed to be useful for making an object (such as a
+@propset $tmp/prog1=str:/_help/introduction#/4:*  player) with a description that can be easily changed with a short
+@propset $tmp/prog1=str:/_help/introduction#/5:*  command.  The idea is to set up your object to use one of the
+@propset $tmp/prog1=str:/_help/introduction#/6:*  properties-based general-description programs to generate a
+@propset $tmp/prog1=str:/_help/introduction#/7:*  description; then all that this program needs to do is change some
+@propset $tmp/prog1=str:/_help/introduction#/8:*  properties and print appropriate messages.  
+@propset $tmp/prog1=str:/_help/introduction#/9:*   
+@propset $tmp/prog1=str:/_help/options#:20
+@propset $tmp/prog1=str:/_help/options#/1:---Damian's Morphing Program---------OPTIONS-------------------------------
+@propset $tmp/prog1=str:/_help/options#/10:*      changing from a "wrong" form to avoid embarrassment.
+@propset $tmp/prog1=str:/_help/options#/11:*
+@propset $tmp/prog1=str:/_help/options#/12:* #command <word>
+@propset $tmp/prog1=str:/_help/options#/13:*      Act as if the program were invoked with the command <word>.  In
+@propset $tmp/prog1=str:/_help/options#/14:*      other words, read properties in _<word>/ rather than _<command>/.
+@propset $tmp/prog1=str:/_help/options#/15:*      This is most useful when debugging the program.
+@propset $tmp/prog1=str:/_help/options#/16:*
+@propset $tmp/prog1=str:/_help/options#/17:* #verbose
+@propset $tmp/prog1=str:/_help/options#/18:*      Print out some messages about the properties being read.
+@propset $tmp/prog1=str:/_help/options#/19:*      This is most useful when debugging the program.
+@propset $tmp/prog1=str:/_help/options#/2:*
+@propset $tmp/prog1=str:/_help/options#/20:*
+@propset $tmp/prog1=str:/_help/options#/3:* #override 
+@propset $tmp/prog1=str:/_help/options#/4:*      Specifies that the ".../ok?" property should be ignored when
+@propset $tmp/prog1=str:/_help/options#/5:*      deciding if the transformation is feasible.  This might be used as a
+@propset $tmp/prog1=str:/_help/options#/6:*      quick fix if you discover yourself to be in the wrong form...
+@propset $tmp/prog1=str:/_help/options#/7:*
+@propset $tmp/prog1=str:/_help/options#/8:* #silent
+@propset $tmp/prog1=str:/_help/options#/9:*      The "oformat" message is not printed.  This might be used when
+@propset $tmp/prog1=str:/_help/properties#:60
+@propset $tmp/prog1=str:/_help/properties#/1:---Damian's Morphing Program---------PROPERTIES----------------------------
+@propset $tmp/prog1=str:/_help/properties#/10:*       
+@propset $tmp/prog1=str:/_help/properties#/11:*  _<command>/target: <dbref>
+@propset $tmp/prog1=str:/_help/properties#/12:*      (optional) The object to be modified.  Default is the source of
+@propset $tmp/prog1=str:/_help/properties#/13:*      the trigger action.
+@propset $tmp/prog1=str:/_help/properties#/14:*   
+@propset $tmp/prog1=str:/_help/properties#/15:*  _<command>/prop/<n>: <property name>
+@propset $tmp/prog1=str:/_help/properties#/16:*      (required) A list of properties that may be modified by a morph.
+@propset $tmp/prog1=str:/_help/properties#/17:*      <n> is a number from 1 upwards.  For compatibility with new
+@propset $tmp/prog1=str:/_help/properties#/18:*      list conventions, these props may be called
+@propset $tmp/prog1=str:/_help/properties#/19:*      "_<command>/prop#/<n>" instead.
+@propset $tmp/prog1=str:/_help/properties#/2:*
+@propset $tmp/prog1=str:/_help/properties#/20:*   
+@propset $tmp/prog1=str:/_help/properties#/21:*  _<command>/old-state-prop: <property name>
+@propset $tmp/prog1=str:/_help/properties#/22:*      (optional) The name of a property on the target that holds the name
+@propset $tmp/prog1=str:/_help/properties#/23:*      of the "old state".  The default is "species".
+@propset $tmp/prog1=str:/_help/properties#/24:*   
+@propset $tmp/prog1=str:/_help/properties#/25:*  _<command>/<new state>/ok?: yes|no
+@propset $tmp/prog1=str:/_help/properties#/26:*      (required) If "yes", you are allowed to change to <new state>.
+@propset $tmp/prog1=str:/_help/properties#/27:*       
+@propset $tmp/prog1=str:/_help/properties#/28:*  _<command>/<new state>/format: <text>
+@propset $tmp/prog1=str:/_help/properties#/29:*  _<command>/<new state>/oformat: <text>
+@propset $tmp/prog1=str:/_help/properties#/3:*  PROPERTIES all have a common prefix named after the command used to 
+@propset $tmp/prog1=str:/_help/properties#/30:*      (optional) Messages to print during the transformation.  oformat is
+@propset $tmp/prog1=str:/_help/properties#/31:*      prefixed by the target's name, and pronon subs are performed --
+@propset $tmp/prog1=str:/_help/properties#/32:*      after the transformation.
+@propset $tmp/prog1=str:/_help/properties#/33:*   
+@propset $tmp/prog1=str:/_help/properties#/34:*  _<command>/<new state>/<prop>: <string>
+@propset $tmp/prog1=str:/_help/properties#/35:*      (optional) A value for the property named <prop> on the thing named
+@propset $tmp/prog1=str:/_help/properties#/36:*      by _<command>/target.  If this property is not specified, no change
+@propset $tmp/prog1=str:/_help/properties#/37:*      is made.  A value of "%null%" means removed the property.  <prop>
+@propset $tmp/prog1=str:/_help/properties#/38:*      must be one of the names mentioned in the "_<command>/prop" list.
+@propset $tmp/prog1=str:/_help/properties#/39:*   
+@propset $tmp/prog1=str:/_help/properties#/4:*  invoke the program.  This means you can use one action with more than
+@propset $tmp/prog1=str:/_help/properties#/40:*  _<command>/<new state>/<old state>/ok?: yes|no
+@propset $tmp/prog1=str:/_help/properties#/41:*  _<command>/<new state>/<old state>/format: <text>
+@propset $tmp/prog1=str:/_help/properties#/42:*  _<command>/<new state>/<old state>/oformat: <text>
+@propset $tmp/prog1=str:/_help/properties#/43:*  _<command>/<new state>/<old state>/<prop>: <string>
+@propset $tmp/prog1=str:/_help/properties#/44:*      (optional) If defined, these values override the above when
+@propset $tmp/prog1=str:/_help/properties#/45:*      transforming from <old state>.  This can be used to prevent
+@propset $tmp/prog1=str:/_help/properties#/46:*      transforms that don't make sense (by setting new/ok? to "yes" but
+@propset $tmp/prog1=str:/_help/properties#/47:*      new/old/ok? to "no").
+@propset $tmp/prog1=str:/_help/properties#/48:*   
+@propset $tmp/prog1=str:/_help/properties#/49:*  _<command>/format: <text>
+@propset $tmp/prog1=str:/_help/properties#/5:*  one name to give the effect of several commands.
+@propset $tmp/prog1=str:/_help/properties#/50:*  _<command>/oformat: <text>
+@propset $tmp/prog1=str:/_help/properties#/51:*  _<command>/<prop>: <string>
+@propset $tmp/prog1=str:/_help/properties#/52:*      (optional) Defaults, used the corresponding "new state" properties
+@propset $tmp/prog1=str:/_help/properties#/53:*      are missing.
+@propset $tmp/prog1=str:/_help/properties#/54:*
+@propset $tmp/prog1=str:/_help/properties#/55:*  _<command>/index: \<state>\<state>\...
+@propset $tmp/prog1=str:/_help/properties#/56:*      (optional) A list of state names, each one preceded by a backslash.
+@propset $tmp/prog1=str:/_help/properties#/57:*      This is used to translate abbreviations for state names into the
+@propset $tmp/prog1=str:/_help/properties#/58:*      full name of that state.  EXAMPLE:  a value of "\male\female" allows
+@propset $tmp/prog1=str:/_help/properties#/59:*      "m", "f", "fem" etc. as abbrevs of "male" and "female".
+@propset $tmp/prog1=str:/_help/properties#/6:*   
+@propset $tmp/prog1=str:/_help/properties#/60:*
+@propset $tmp/prog1=str:/_help/properties#/7:*  _<command>/proploc: <dbref> 
+@propset $tmp/prog1=str:/_help/properties#/8:*      (optional) An object to read other properties from.  (THIS prop must
+@propset $tmp/prog1=str:/_help/properties#/9:*      be on the trigger action, of course.)
+@propset $tmp/prog1=str:/_help/substitutions#:25
+@propset $tmp/prog1=str:/_help/substitutions#/1:---Damian's Morphing Program---------SUBSTITUTIONS-------------------------
+@propset $tmp/prog1=str:/_help/substitutions#/10:*  %Object
+@propset $tmp/prog1=str:/_help/substitutions#/11:*      The name of the object, except with leading "a " or "an " changed to
+@propset $tmp/prog1=str:/_help/substitutions#/12:*      "The " (unless the object is a player-character, in whcih case it is
+@propset $tmp/prog1=str:/_help/substitutions#/13:*      the object's name verbatim).  This is the correct form for the start
+@propset $tmp/prog1=str:/_help/substitutions#/14:*      of a sentence.
+@propset $tmp/prog1=str:/_help/substitutions#/15:*
+@propset $tmp/prog1=str:/_help/substitutions#/16:*  %object
+@propset $tmp/prog1=str:/_help/substitutions#/17:*      The name of the object, except with leading "a " or "an " changed to
+@propset $tmp/prog1=str:/_help/substitutions#/18:*      "the ".  This is correct for the middle of a sentence.
+@propset $tmp/prog1=str:/_help/substitutions#/19:*
+@propset $tmp/prog1=str:/_help/substitutions#/2:*
+@propset $tmp/prog1=str:/_help/substitutions#/20:*  %actor
+@propset $tmp/prog1=str:/_help/substitutions#/21:*      The name of the player-character who invoked the program.
+@propset $tmp/prog1=str:/_help/substitutions#/22:*
+@propset $tmp/prog1=str:/_help/substitutions#/23:*  The oformat message is preceeded by the name of the transformed object
+@propset $tmp/prog1=str:/_help/substitutions#/24:*  (munged in the same was as %Object) unless it is a room.
+@propset $tmp/prog1=str:/_help/substitutions#/25:*
+@propset $tmp/prog1=str:/_help/substitutions#/3:*  The oformat message (only) has pronoun substitutions performed twice,
+@propset $tmp/prog1=str:/_help/substitutions#/4:*  first with respect to the object being transformed, then with respect
+@propset $tmp/prog1=str:/_help/substitutions#/5:*  to the person acting upon it.  Therefore %s %o %p etc. refer to the
+@propset $tmp/prog1=str:/_help/substitutions#/6:*  object and %%s %%o %%p etc. apply to the actor.
+@propset $tmp/prog1=str:/_help/substitutions#/7:*
+@propset $tmp/prog1=str:/_help/substitutions#/8:*  In addition, there are the following substitutions:
+@propset $tmp/prog1=str:/_help/substitutions#/9:*  
+
