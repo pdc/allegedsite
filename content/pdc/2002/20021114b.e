@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021114" icon="../wp/icon-64x64.png">
+<entry date="20021114" icon="../1998/wp-64x64.png">
 	<h>More on Opera&rsquo;s boundaries</h>
 	<body>
 		<p>

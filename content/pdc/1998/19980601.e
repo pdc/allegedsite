@@ -1,4 +1,4 @@
-<entry date="19980601" icon="../wp/icon-64x64.png">
+<entry date="19980601" icon="wp-64x64.png">
     <h1>Accessibility: Submitting to Bobby</h1>
     <body>
         I had hoped to get my site Bobby-approved

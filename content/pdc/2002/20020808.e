@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020808" icon="../wp/icon-64x64.png">
+<entry date="20020808" icon="../1998/wp-64x64.png">
   <h>RSS 0.91 experiments</h>
   <body>
     <p>

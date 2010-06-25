@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021012" icon="../wp/icon-64x64.png">
+<entry date="20021012" icon="../1998/wp-64x64.png">
   <h>Namespaces annoyances in RSS</h>
   <body>
     <p>

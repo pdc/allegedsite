@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20030318" icon="../wp/icon-64x64.png">
+<entry date="20030318" icon="../1998/wp-64x64.png">
   <h>LiveJournal, now with cool URLs</h>
   <body>
     <p>

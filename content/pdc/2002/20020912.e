@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020912" icon="../wp/icon-64x64.png">
+<entry date="20020912" icon="../1998/wp-64x64.png">
   <h>Version numbers in namespaces considered harmful</h>
   <body>
     <p>

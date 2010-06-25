@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19990901" icon="../wp/icon-64x64.png">
+<entry date="19990901" icon="../1998/wp-64x64.png">
   <h1>Validation (addendum)</h1>
   <body>
     I added <a href="wp/validation.html#addendum">an addendum to my

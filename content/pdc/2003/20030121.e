@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20030121" icon="../wp/icon-64x64.png">
+<entry date="20030121" icon="../1998/wp-64x64.png">
   <h>Latin-1p: a new nonstandard</h>
   <body>
     <p>

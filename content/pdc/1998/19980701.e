@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19980701" icon="../wp/icon-64x64.png">
+<entry date="19980701" icon="wp-64x64.png">
   <h1>Self-labelling and the PICSies</h1>
   <body>
     I felt I should <a href="wp/labels.html">give self-labelling

@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19980529" icon="bike/19980529d-64x64.jpeg">
+<entry date="19980529" icon="19980529d-64x64.jpeg">
   <h1>Always lock your bike</h1>
   <body>
     My <a href="bike.html">bike</a> was stolen on the day before

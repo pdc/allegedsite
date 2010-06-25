@@ -337,6 +337,7 @@ em {
 
 .entry-list-entry-info img {
     display: block;
+    width: 64px;
 }
 
 .date {

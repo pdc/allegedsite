@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20040209" icon="../wp/icon-64x64.png" xmlns="http://www.alleged.org.uk/2003/um" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<entry date="20040209" icon="../1998/wp-64x64.png" xmlns="http://www.alleged.org.uk/2003/um" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<h>Mozilla implements SVG while carefully remaining incompatible with the rest of the world</h>
 	<body>
 		<p>

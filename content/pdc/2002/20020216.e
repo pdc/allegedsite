@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020216" icon="../wp/icon-64x64.png">
+<entry date="20020216" icon="../1998/wp-64x64.png">
   <h>Alternatives to Webclasses</h>
   <body>
     <p>

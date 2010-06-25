@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19980501" icon="../wp/icon-64x64.png">
+<entry date="19980501" icon="wp-64x64.png">
   <h1>Validation</h1>
   <body>
     With some effort and only a few surprises I was able to

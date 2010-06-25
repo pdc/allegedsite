@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20030113" icon="../wp/icon-64x64.png">
+<entry date="20030113" icon="../1998/wp-64x64.png">
   <h>Kill cite but keep kbd? Huh?</h>
   <body>
     <p>

@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021025" icon="../wp/icon-64x64.png">
+<entry date="20021025" icon="../1998/wp-64x64.png">
   <h>XSS&mdash;Extremely Simple Syndication</h>
   <body>
     <p>

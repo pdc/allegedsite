@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021017" icon="../wp/icon-64x64.png">
+<entry date="20021017" icon="../1998/wp-64x64.png">
   <h>Must ... ignore ... HLink!</h>
   <body>
     <p>
