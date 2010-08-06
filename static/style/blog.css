@@ -542,7 +542,7 @@ pre {
     padding: 0.6em 9px 0.65em 9px;
     
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #BB0;
+    /* background-color: #BB0; */
     border: 1px solid #BB0;
     border-radius: 0.5em;
     -moz-border-radius: 0.5em;
@@ -579,4 +579,31 @@ div.framed-3u {
 
 div.framed-4u {
     width: 300px;
+}
+
+table {
+    /* border-collapse: collapse; */
+    /*
+    font-size: 0.9167em;
+    margin: 0.68em 10px;
+    padding: 0.6em 10px 0.76em 19px;
+    */
+    font-size: 1em;
+    margin: 0.625em 10px 0.625em 30px;
+    padding: 0.6em 4px 0.65em 4px;
+    
+    border: 1px solid #BB0;
+    border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+}
+
+td, th {
+    padding: 0.1em 5px;
+    text-align: left;
+}
+
+th {
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    color: #630;
 }
