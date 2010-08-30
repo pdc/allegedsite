@@ -1,6 +1,6 @@
-Title: Minification
+Title: Jigsawr (1): Minification
 Date: 2010-08-29
-Topics: svg javascript 10k 
+Topics: jigsawr css javascript 10k cssmin closure
 
 I created an [SVG-powered jigsaw app][269] for the [10K Apart][] contest. To get
 it under 10K I had to squash the JavaScript and CSS files down as much
@@ -66,7 +66,7 @@ use [Cssutils][].
 Minifying HTML and SVG with sed
 ===============================
 
-I did not attept a clever HTML compressor. I did, however, create a
+I did not attempt a clever HTML compressor. I did, however, create a
 `sed` program to remove whitespace at the starts of lines:
 
     sed -e 's/^ *//'

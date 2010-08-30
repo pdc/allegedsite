@@ -553,6 +553,10 @@ div.image-left {
     float: left;
     margin: 0.625em 20px 0.625em 10px;
 }
+div.image-right {
+    float: right;
+    margin: 0.625em -70px 0.625em 20px;
+}
 div.image-full-width {
     margin: 0.625em 10px;
 }
