@@ -170,7 +170,7 @@ because dragging is used for moving the page as whole!
   [CSS min]: http://tools.w3clubs.com/cssmin/
   [JavaScriptCore]: http://webkit.org/projects/javascript/
   [Cssutils]: http://cthedot.de/cssutils/
-  [prev]: 29.html
+  [prev]: 08/29.html
   [SVG]: http://www.w3.org/Graphics/SVG/
   [screenshot]: http://jigsawr.org/pub/screenshot2.png
   [Flickr API]: http://www.flickr.com/services/api/
