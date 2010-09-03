@@ -88,6 +88,7 @@ def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=Non
         'this_month': this_month, 
         'years': years,
         'this_year_months': get_year_months(entries, y),
+        'is_index': not year and not month and not day
     }
     
 @render_with('blog/month_entries.html')
@@ -136,7 +137,6 @@ def front_page(request, blog_dir, blog_url, image_url, is_svg_wanted):
     return {
         'is_svg_wanted': is_svg_wanted,
     }
-    
 
 @render_with('blog/named_article.html')
 def named_article(request, blog_dir, blog_url, image_url, year, name):

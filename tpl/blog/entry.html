@@ -1,5 +1,13 @@
 {% extends "blog/base.html" %}
 {% load markup %}
+
+{% block meta %}
+    {% if is_index %}
+		<link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
+		<link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
+	{% endif %}
+{% endblock %}
+
 {% block title %}{{ entry.title }} - Alleged Articles{% endblock %}
 {% block heading %}{{ entry.title }}{% endblock %}
 

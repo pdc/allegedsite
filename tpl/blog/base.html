@@ -5,6 +5,7 @@
   	<title>{% block title %}Blog Entry{% endblock %}</title>
   	<meta name="author" content="Damian Cugley">
   	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/blog.css" />
+  	{% block meta %}{% endblock %}
   </head>
   <body>
     <div id="banner">
