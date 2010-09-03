@@ -64,6 +64,7 @@ class HrefsTreeprocessor(Treeprocessor):
                 self.run(e)
         return root
         
+absolute_url_re = re.compile('^[a-z+-.]+:|^/')
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 img_or_embed_re = re.compile(r'(<(?:img|embed)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 image_file_name_re = re.compile(r'.*\.(?:jpg|jpeg|gif|png)$')
@@ -78,7 +79,7 @@ def munge_url(url, more_url):
     """
     if more_url.endswith('.svgz'):
         more_url = more_url[:-1]
-    if more_url.startswith('http://'):
+    if absolute_url_re.match(more_url):
         return more_url
     while more_url.startswith('../'):
         p = url.rindex('/', 0, len(url) - 1)
