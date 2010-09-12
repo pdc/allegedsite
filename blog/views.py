@@ -1,4 +1,4 @@
-# Create your views here.
+# Encoding: UTF-8
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
@@ -52,7 +52,7 @@ def get_named_article(blog_dir, blog_url, image_url, year, name):
     return article
     
     
-def render_with(template_name):
+def render_with(template_name, mimetype='text/html'):
     """Decorator for request handlers. the decorated function returns a dict of template args."""
     def decorator(func):
         def decorated_func(request, *args, **kwargs):
@@ -60,7 +60,7 @@ def render_with(template_name):
             if isinstance(result, HttpResponse):
                 return result
             template_args = result
-            return render_to_response(template_name, template_args, RequestContext(request)) 
+            return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype) 
         return decorated_func
     return decorator
     
@@ -150,3 +150,68 @@ def named_article(request, blog_dir, blog_url, image_url, year, name):
         'this_year_months': get_year_months(entries, y),
     }
     
+ATOM_PAGE_SIZE = 15
+@render_with('blog/atom.xml', mimetype='application/atom+xml')
+def atom(request, blog_dir, blog_url, image_url, page_no=None):
+    entries = get_entries(blog_dir, blog_url, image_url)
+    
+    # Just to be tricky:
+    # • Positive pages are archive pages, counting up from earliest page.
+    # • Negative pages are paged-feed pages, counting down from -1 being the second-most-recent.
+    # • There is no page 0. Instead we have page None for the subscription page
+    #   (which is the most-recemt page in the paged-feed pages).
+    if page_no is not None:
+        page_no = int(page_no)
+    subset = (entries[(page_no - 1) * ATOM_PAGE_SIZE : page_no * ATOM_PAGE_SIZE] 
+        if page_no 
+        else entries[-ATOM_PAGE_SIZE:])
+    subset.reverse()
+    
+    vars = {
+        'page_no': page_no,
+        'entries': entries,
+        'subset': subset,
+        'updated': subset[-1].published,
+        'is_index': not page_no,
+        'is_archive': page_no and page_no > 0,
+        'is_paged': page_no and page_no < 0,
+    }
+    
+    prev_page_no = ((1 + (len(entries) - 1) // ATOM_PAGE_SIZE)
+        if page_no is None
+        else (page_no - 1) if page_no > 1
+        else (page_no + 1) if page_no < 1
+        else None)
+    next_page_no = (-1
+        if page_no is None
+        else (page_no + 1) 
+        if page_no > 0 and page_no * ATOM_PAGE_SIZE < len(entries) 
+        else (page_no - 1)
+        if page_no < 0 and (page_no - 1) * ATOM_PAGE_SIZE + len(entries) > 0
+        else None)
+    
+    links = [
+        ('self',
+            reverse('blog_atom_archive', kwargs={'page_no': page_no}) 
+            if page_no else reverse('blog_atom')),
+    ]
+    if page_no:
+        links.append(('current', reverse('blog_atom')))
+    else:
+        links.insert(0, (None, blog_url))
+    for name, p_no in [('prev', prev_page_no), ('next', next_page_no)]:
+        if p_no:
+            rel = ('previous' 
+                if name == 'prev' and p_no < 0
+                else '{name}{archived}'.format(name=name, archived='-archive' if p_no > 0 else ''))
+            href = request.build_absolute_uri(
+                reverse('blog_atom_archive', kwargs={'page_no': str(p_no)}))
+            links.append((rel, href))
+    if not page_no or page_no < 0:
+        links.append(('first', reverse('blog_atom')))
+        
+        p = -((len(entries) - 1) // ATOM_PAGE_SIZE)
+        links.append(('last', reverse('blog_atom_archive', kwargs={'page_no': p})))
+            
+    vars['links'] = [(rel, request.build_absolute_uri(href)) for (rel, href) in links]
+    return vars

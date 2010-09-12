@@ -1,0 +1,33 @@
+{% load atomtags %}
+<feed xmlns="http://www.w3.org/2005/Atom" 
+        xmlns:fh="http://purl.org/syndication/history/1.0">
+    <title type="text">Damian Cugley’s Alleged Articles{% if page_no %}, archive page {{ page_no }}{% endif %}</title>
+    {# <subtitle></subtitle> #}
+    <updated>{{ updated|rfc3339 }}</updated>
+    <id>tag:alleged.org.uk,2010:blog:pdc</id>
+    <rights>© 1996–{% now "Y" %} Damian Cugley</rights>
+    <generator uri="http://www.alleged.org.uk/" version="1.0">
+            Alleged Blog
+    </generator>
+    {% if is_archive %}<fh:archive/>{% endif %}
+    {% for rel, href in links %}
+    <link{% if rel %} rel="{{ rel }}"{% endif %} href="{{ href }}"/>
+    {% endfor %}
+    <author>
+        <name>Damian Cugley</name>
+        <uri>http://www.alleged.org.uk/pdc/</uri>
+        <email>pdc@alleged.org.uk</email>
+    </author>
+    {% for entry in subset %}
+    <entry>
+        <title>{{ entry.title }}</title>
+        <link href="{{ entry.href }}"/>
+        <id>tag:alleged.org.uk,2010:pdc:{{ entry.published|date:"Y-m-d" }}</id>
+        <updated>{{ entry.published|rfc3339 }}</updated>
+        <published>{{ entry.published|rfc3339 }}</published>
+        <content type="html" xml:lang="en">
+            {{ entry.body }}
+        </content>
+    </entry>
+    {% endfor %}
+</feed>
