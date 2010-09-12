@@ -169,6 +169,7 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     
     vars = {
         'page_no': page_no,
+        'absolute_page_no': -page_no if page_no and page_no < 0 else page_no,
         'entries': entries,
         'subset': subset,
         'updated': subset[-1].published,

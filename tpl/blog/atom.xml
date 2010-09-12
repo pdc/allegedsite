@@ -1,7 +1,7 @@
 {% load atomtags %}
 <feed xmlns="http://www.w3.org/2005/Atom" 
         xmlns:fh="http://purl.org/syndication/history/1.0">
-    <title type="text">Damian Cugley’s Alleged Articles{% if page_no %}, archive page {{ page_no }}{% endif %}</title>
+    <title type="text">Damian Cugley’s Alleged Articles{% if is_archive %}, archive page {{ page_no }}{% endif %}{% if is_paged %}, page {{ absolute_page_no }}{% endif %}</title>
     {# <subtitle></subtitle> #}
     <updated>{{ updated|rfc3339 }}</updated>
     <id>tag:alleged.org.uk,2010:blog:pdc</id>
