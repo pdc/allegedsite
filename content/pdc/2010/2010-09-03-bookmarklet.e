@@ -8,8 +8,7 @@ Just for fun, here’s a bookmarklet you can use to create a jigsaw from any pag
 
 <blockquote>
     <p>
-        <a href="javascript:(function(){for(var c=document.images,d=0,e,a=0;a<c.length;++a){var b=c[a],f=b.width*b.height;if(f>d){d=f;e=b}}location=&quot;http://jigsawr.org/?u=&quot;+escape(e.src)+&quot;&amp;d=24&amp;j=1&quot;})();return false
-">&rarr;Jigsawr</a>
+        <a href="javascript:(function(){for(var c=document.images,d=0,e,a=0;a&lt;c.length;++a){var b=c[a],f=b.width*b.height;if(f>d){d=f;e=b}}location=&quot;http://jigsawr.org/?u=&quot;+escape(e.src)+&quot;&amp;d=24&amp;j=1&quot;})();return false">&rarr;Jigsawr</a>
     </p>
 </blockquote>
 

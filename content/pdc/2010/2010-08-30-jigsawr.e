@@ -7,7 +7,7 @@ contest. While the judges ponder their decision, just for fun I have
 created it its own web site, [jigsawr.org][]. 
 
 <div class="image-right">
-    <img src="http://jigsawr.org/pub/screenshot2.png" alt="">
+    <img src="http://jigsawr.org/pub/screenshot2.png" alt="" />
 </div>
 
 In a previous entry I outlined [Minification of the JavaScript and CSS][prev]
