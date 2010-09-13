@@ -1,4 +1,4 @@
-
+/*
 @font-face {
 	font-family: 'MisoLight';
 	src: url('miso/miso-light.eot');
@@ -16,7 +16,7 @@
 	src: url('miso/miso-bold.eot');
 	src: local('Miso'), local('Miso-Bold'), url('miso/miso-bold.woff') format('woff'), url('miso/miso-bold.ttf') format('truetype'), url('miso/miso-bold.svg#Miso-Bold') format('svg');
 }
-
+*/
 
 
 @font-face {
@@ -24,9 +24,6 @@
 	src: url('whitehall/whitehall.eot');
 	src: local('Whitehall'), local('Whitehall'), url('whitehall/whitehall.woff') format('woff'), url('whitehall/whitehall.ttf') format('truetype'), url('whitehall/whitehall.svg#Whitehall') format('svg');
 }
-
-
-
 
 @font-face {
 	font-family: 'YanoneKaffeesatz Thin';
@@ -610,4 +607,49 @@ td, th {
 th {
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     color: #630;
+}
+
+
+@media only all and (min-width: 1240px) {
+}
+
+/* Widescreen means 15 units instead of 12 for 1180px + margins */
+@media only all and (min-width: 1240px) {
+    #banner h1 {
+        width: 1180px;
+    }
+    #page {
+        width: 1200px;
+    }
+    #entry-nav {
+        width: 480px;
+    }
+    #entry-nav nav {
+        display: block;
+        float: left;
+        width: 240px;
+    }
+}
+
+/* Narrow layout means 9 units for 700px + margins */
+@media only all and (max-width: 1000px) {
+    #banner h1 {
+        width: 700px;
+    }
+    #page {
+        width: 720px;
+    }
+    #entry-nav {
+        width: 640px;
+    }
+    #entry-nav nav {
+        display: block;
+        float: left;
+        width: 240px;
+        margin: 0 0 0 80px;
+    }
+}
+
+body {
+    -webkit-transition: width 1s ease-in;
 }
