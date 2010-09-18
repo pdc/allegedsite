@@ -47,6 +47,7 @@ def _numeric_char_ref_sub(m):
 def expand_numeric_character_references(s):
     return numeric_char_ref_re.sub(_numeric_char_ref_sub, s)
     
+
 class HrefsTreeprocessor(Treeprocessor):
     """Machinery for modifying the behaviour of Markdown-formatted text."""
     def __init__(self, blog_url, image_url, *args, **kwargs):
@@ -86,7 +87,6 @@ def munge_url(url, more_url):
         url = url[:p + 1]
         more_url = more_url[3:]
     return url + more_url 
-    
     
 def make_link_sub(usual_url, image_url):
     def sub(m):
@@ -268,7 +268,10 @@ def get_entry(entries, year, month, day):
     this_month = [e for e in (this_year or entries) if e.published.month == month] if month else []
     this_day = [e for e in (this_month or this_year or entries) if e.published.day == day] if day else []
     entry = (this_day or this_month or this_year or entries)[-1]
-    years = [ys[-1] for (y, ys) in sorted(entries_by_year.items())]
+    if entry and not this_month:
+        this_year = entries_by_year[entry.published.year]
+        this_month = [e for e in this_year if e.published.month == entry.published.month]
+    years = [es[-1] for (y, es) in sorted(entries_by_year.items())]
     return entry, this_month, years
 
         
@@ -294,7 +297,8 @@ class TagInfo(object):
         
     def __ne__(self, other):
         return self.tag != other.tag
-        
+
+
 class EntryList(list):
     selected_tag_infos = []
         
@@ -337,8 +341,7 @@ class EntryList(list):
 def get_toc(entries):
     return EntryList(entries)
     
-    
-    
+
 yet_another_re = re.compile(r'<([^<>]+\S)\s*/>')
     
 class Article(object):

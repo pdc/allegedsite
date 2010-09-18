@@ -14,8 +14,8 @@ from datetime import datetime, date, timedelta
 
 BASE_DIR = 'test_blog'
 
-class SimpleTest(TestCase):
-    def setUp(self):
+class BlogTestMixin(object):
+    def prepare_test_blog_dir(self):
         if not os.path.exists(BASE_DIR):
             os.mkdir(BASE_DIR)
         else:
@@ -25,6 +25,10 @@ class SimpleTest(TestCase):
             for subdir, subdirs, files in os.walk(BASE_DIR):
                 for file_name in files:
                     os.unlink(os.path.join(subdir, file_name))
+
+class SimpleTest(TestCase, BlogTestMixin):
+    def setUp(self):
+        self.prepare_test_blog_dir()
         
     def test_entry_list_1(self):
         with open(os.path.join(BASE_DIR, '2010-04-17-testa.e'), 'wt') as output:
@@ -322,32 +326,6 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual('<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>', entry.body)
-    
-    def test_filtering(self):
-        """Create a bunch of entries and show that you get the correct ones in the this_month list."""
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
-            output.write('Title: A\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
-            output.write('Title: B\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-03-07-c.e'), 'wt') as output:
-            output.write('Title: C\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2009/2009-12-31-d.e'), 'wt') as output:
-            output.write('Title: D\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2008/2008-07-11-e.e'), 'wt') as output:
-            output.write('Title: E\n\nHello [world](17.html)\n')
-        entries = get_entries(BASE_DIR, '/x/', '/i/')
-        entry, this_month, years = get_entry(entries, 2010, 4, 18)
-        
-        self.assertEqual('A', entry.title)        
-        self.assertEqual(['E', 'D', 'C', 'A', 'B'], [x.title for x in entries])
-        self.assertEqual(['A', 'B'], [x.title for x in this_month])
-        self.assertEqual(['E', 'D', 'B'], [x.title for x in years])
-        
-        self.assertEqual(3, len(entries.get_by_year()))
-        self.assertEqual(3, len(entries.get_by_year()[2010]))
-        self.assertEqual(['C', 'A', 'B'], [x.title for x in entries.get_by_year()[2010]])
-        self.assertEqual(['D'], [x.title for x in entries.get_by_year()[2009]])
-        self.assertEqual(['E'], [x.title for x in entries.get_by_year()[2008]])
         
     def test_find_by_tag(self):
         """Create a bunch of entries and show that you get the correct ones in the filtered list."""
@@ -489,7 +467,6 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
       </p>
       <p><a href="/blog/2003/11.html#e20021125a">25 November 2002</a></p>""", article.body)
       
-              
     def test_named_article_with_image(self):
         with open(os.path.join(BASE_DIR, '1998/bike.html'), 'wt') as stream:
             stream.write("""<html xmlns="http://www.w3.org/1999/xhtml">
@@ -526,3 +503,47 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
             indent = ' ' * (i - beg + 2)
             self.assertEqual(expected[i], actual[i], 'Strings differ at position %d\n %r\n %r\n %s^' 
                 % (i, expected[beg:end], actual[beg:end], indent))
+
+class TestThisMonthList(TestCase, BlogTestMixin):            
+    """Create a bunch of entries and show that you get the correct ones in the this_month list."""
+    
+    def setUp(self):
+        self.prepare_test_blog_dir()
+        
+        with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
+            output.write('Title: A\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
+            output.write('Title: B\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2010/2010-03-07-c.e'), 'wt') as output:
+            output.write('Title: C\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2009/2009-12-31-d.e'), 'wt') as output:
+            output.write('Title: D\n\nHello [world](17.html)\n')
+        with open(os.path.join(BASE_DIR, '2008/2008-07-11-e.e'), 'wt') as output:
+            output.write('Title: E\n\nHello [world](17.html)\n')
+            
+        self.entries = get_entries(BASE_DIR, '/x/', '/i/')
+        
+    def test_entries_sortede_by_date(self):
+        self.assertEqual(['E', 'D', 'C', 'A', 'B'], [x.title for x in self.entries])
+        
+    def test_get_article_by_date(self):
+        entry, this_month, years = get_entry(self.entries, 2010, 4, 18)
+        
+        self.assertEqual('A', entry.title)        
+        self.assertEqual(['A', 'B'], [x.title for x in this_month])
+        self.assertEqual(['E', 'D', 'B'], [x.title for x in years])
+        
+    def test_no_article_specified_gets_last_article(self):
+        entry, this_month, years = get_entry(self.entries, None, None, None)
+        
+        self.assertEqual('B', entry.title)
+        self.assertEqual(['A', 'B'], [x.title for x in this_month])
+        self.assertEqual(['E', 'D', 'B'], [x.title for x in years])
+        
+    def test_get_by_year(self):
+        by_year = self.entries.get_by_year()
+        self.assertEqual(3, len(by_year))
+        self.assertEqual(3, len(by_year[2010]))
+        self.assertEqual(['C', 'A', 'B'], [x.title for x in by_year[2010]])
+        self.assertEqual(['D'], [x.title for x in by_year[2009]])
+        self.assertEqual(['E'], [x.title for x in by_year[2008]])

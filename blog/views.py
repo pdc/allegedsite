@@ -74,15 +74,26 @@ def get_year_months(entries, y):
         this_year_months[e.published.month] = e
     return sorted(this_year_months.items())
 
+@render_with('blog/index.html')
+def index_view(request, blog_dir, blog_url, image_url):
+    entries = get_entries(blog_dir, blog_url, image_url)
+    entry, this_month, years = get_entry(entries, None, None, None)
+    return {
+        'entries': entries,   
+        'entry': entry,
+        'this_month': this_month, 
+        'years': years,
+        'this_year_months': get_year_months(entries, entry.published.year),
+        'is_index': True,
+    }
+    
 @render_with('blog/entry.html')
-def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=None):
+def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
     entries = get_entries(blog_dir, blog_url, image_url)
     y = year and int(year)
     m = month and int(month, 10)
     d = day and int(day, 10)
     entry, this_month, years = get_entry(entries, y, m, d)
-    
-    is_index = not year and not month and not day
     
     return {
         'entries': entries,   
@@ -90,8 +101,7 @@ def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=Non
         'this_month': this_month, 
         'years': years,
         'this_year_months': get_year_months(entries, y),
-        'is_index': is_index,
-        'template_name': 'blog/index.html' if is_index else 'blog/entry.html'
+        'is_index': False,
     }
     
 @render_with('blog/month_entries.html')
