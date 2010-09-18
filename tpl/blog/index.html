@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% load markup %}
+
+{% block meta %}
+	<link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
+	<link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
+	<link rel="alternate" type="application/atom+xml" href="{% url blog_atom %}" />
+{% endblock %}
+
+{% block title %}Damian Cugley{% endblock %}
+{% block heading %}Damian Cugley{% endblock %}
+
+{% block content %}
+    {% include "blog/parts/entry.div" %}
+    {% include "blog/parts/entry-nav.div" %}
+{% endblock %}

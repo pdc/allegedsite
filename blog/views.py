@@ -51,14 +51,14 @@ def get_named_article(blog_dir, blog_url, image_url, year, name):
         #cache.set(blog_key, article)
     return article
     
-    
-def render_with(template_name, mimetype='text/html'):
+def render_with(default_template_name, mimetype='text/html'):
     """Decorator for request handlers. the decorated function returns a dict of template args."""
     def decorator(func):
         def decorated_func(request, *args, **kwargs):
             result = func(request, *args, **kwargs)
             if isinstance(result, HttpResponse):
                 return result
+            template_name = result.pop('template_name') if 'template_name' in result else default_template_name
             template_args = result
             return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype) 
         return decorated_func
@@ -82,13 +82,16 @@ def entry(request, blog_dir, blog_url, image_url, year=None, month=None, day=Non
     d = day and int(day, 10)
     entry, this_month, years = get_entry(entries, y, m, d)
     
+    is_index = not year and not month and not day
+    
     return {
         'entries': entries,   
         'entry': entry,
         'this_month': this_month, 
         'years': years,
         'this_year_months': get_year_months(entries, y),
-        'is_index': not year and not month and not day
+        'is_index': is_index,
+        'template_name': 'blog/index.html' if is_index else 'blog/entry.html'
     }
     
 @render_with('blog/month_entries.html')
@@ -159,7 +162,7 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     # • Positive pages are archive pages, counting up from earliest page.
     # • Negative pages are paged-feed pages, counting down from -1 being the second-most-recent.
     # • There is no page 0. Instead we have page None for the subscription page
-    #   (which is the most-recemt page in the paged-feed pages).
+    #   (which is the most-recent page in the paged-feed pages).
     if page_no is not None:
         page_no = int(page_no)
     subset = (entries[(page_no - 1) * ATOM_PAGE_SIZE : page_no * ATOM_PAGE_SIZE] 
