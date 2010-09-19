@@ -1,4 +1,4 @@
-<entry date="20011107" icon="icon-64x64.png">
+<entry date="20011107" icon="../icon-64x64.png">
   <h1>Emacs macro for making Entries</h1>
   <body>
     <p>
@@ -13,4 +13,6 @@
       I&nbsp;still use Emacs for at work...
     </p>
   </body>
+  <dc:subject>alleged</dc:subject>
+    <dc:subject>emacs</dc:subject>
 </entry>

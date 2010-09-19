@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19990308" icon="aviemore/icon-64x64.png">
+<entry date="19990308" icon="../aviemore/icon-64x64.png">
   <h1>Aviemore album</h1>
   <body>
 	<p>
@@ -19,5 +19,9 @@
 		paper photographs.
 	</p>
   </body>
+  <dc:subject>aviemore</dc:subject>
+    <dc:subject>scotland</dc:subject>
+    <dc:subject>photos</dc:subject>
+    <dc:subject>updated</dc:subject>
 </entry>
 	

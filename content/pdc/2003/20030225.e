@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20030225" icon="../wp/icon-64x64.png">
+<entry date="20030225" icon="../1998/wp-64x64.png">
   <h>Now with added subjects</h>
   <body>
     <p>

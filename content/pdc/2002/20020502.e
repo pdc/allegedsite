@@ -20,4 +20,7 @@
       rest.  Smug.
     </p>
   </body>
+  <dc:subject>tws</dc:subject>
+  <dc:subject>tclhtml</dc:subject>
+  <dc:subject>alleged</dc:subject>
 </entry>

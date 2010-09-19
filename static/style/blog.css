@@ -1,4 +1,4 @@
-
+/*
 @font-face {
 	font-family: 'MisoLight';
 	src: url('miso/miso-light.eot');
@@ -16,7 +16,7 @@
 	src: url('miso/miso-bold.eot');
 	src: local('Miso'), local('Miso-Bold'), url('miso/miso-bold.woff') format('woff'), url('miso/miso-bold.ttf') format('truetype'), url('miso/miso-bold.svg#Miso-Bold') format('svg');
 }
-
+*/
 
 
 @font-face {
@@ -24,9 +24,6 @@
 	src: url('whitehall/whitehall.eot');
 	src: local('Whitehall'), local('Whitehall'), url('whitehall/whitehall.woff') format('woff'), url('whitehall/whitehall.ttf') format('truetype'), url('whitehall/whitehall.svg#Whitehall') format('svg');
 }
-
-
-
 
 @font-face {
 	font-family: 'YanoneKaffeesatz Thin';
@@ -89,6 +86,19 @@ body {
     background-color: #EEE;
 }
 
+a:link {
+    color: #F60;
+}
+a:visited {
+    color: #930;
+}
+a:hover {
+    color: #F60;
+}
+a:active {
+    color: #F60;
+}
+
 em {
     font-family: "GentiumBookBasicItalic", "Palatino", "Book Antiqua", serif;
     
@@ -98,8 +108,8 @@ em {
     display: block;
     position: relative;
     width: 100%;
-    height: 7.5em;
-    margin: 0 0 0.625em;
+    min-height: 7.5em;
+    margin: 0;
     padding: 0;
     
     background: #182834 url(banners/banner-2008-12-26.jpeg) left 50% no-repeat;
@@ -140,23 +150,69 @@ em {
 #banner h1 {
     font-size: 3em;
     width: 940px;
-    margin: 0.4em auto 0;
-    padding: 0 10px;
+    margin: 0.3em auto -6px;
+    padding: 0.1em 20px 6px;
     
     font-weight: bold;
     font-family: "YanoneKaffeesatz Bold", sans-serif;
-    color: #FFF;
+    color: #310;
+    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 #page {
     width: 960px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
+    padding: 20px 10px;
+    
+    background-color: #FFF;
+    -moz-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px;
+}
+
+#flow {
+    float: left;
+    width: 640px;
+    background: #FED;
+}
+
+#page-after {
+    clear: both;
+}
+
+article {
+    display: block;
+    float: left;
+    width: 640px;
+    background: #EDC;
+    margin: 0 0 1.25em;
+}
+
+article.twitter {
+    min-height: 48px;
+}
+
+article.twitter img {
+    float: left;
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 16px 5px 26px; /* Breaking the grid by 4px because the article icon does. */
 }
 
 #entry-body {
     display: block;
     float: left;
     width: 560px;
+    margin: 0 80px 0 80px;
+    padding: 0 0 3em 0;
+}
+
+#article-body {
+    display: block;
+    float: left;
+    width: 640px;
+    margin: 0 80px 0 0;
     padding: 0 0 3em 0;
 }
 
@@ -179,11 +235,11 @@ em {
     line-height: 1;
 }
 
-#entry-body p {
+article p {
     margin: 0 10px;
 }
 
-#entry-body p+p {
+article p+p {
     text-indent: 30px;
 }
 
@@ -206,6 +262,7 @@ em {
 #entry-info {
     width: 160px;
     float: left;
+    margin: 0 0 0 -720px;
 }
 
 #entry-info dl {
@@ -222,9 +279,114 @@ em {
 }
 
 #entry-info dd {
-    margin: 0 10px 0.625em;
+    margin: 0 10px;
     
     font-family: "YanoneKaffeesatz regular", sans-serif;
+}
+
+#entry-info img {
+    display: block;
+}
+
+#entry-info ul {
+    margin: 0.625em 0;
+    padding: 0;
+}
+
+#entry-info li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#entry-info .permalink {
+    margin: 0 10px;
+}
+
+.permalink {
+    font-size: 0.69em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.permalink a {
+    color: #FC6;
+    text-decoration: inherit;
+}
+.permalink a:hover,
+.permalink a:active {
+    color: #F60;
+    text-decoration: underline;
+}
+
+/* List of entries on a month page. This is mostly for the old-style
+ entries, which are single paragraphs linking to articles. */
+#entry-list {
+    display: block;
+    float: left;
+    width: 640px;
+    margin: 0 80px 0 0;
+    padding: 0 0 3em 0;
+}
+
+#entry-list h2 {
+    font-size: 2em;
+    clear: both;
+    margin: 0 10px 0.5em;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    line-height: 1;
+    color: #630;
+}
+
+#entry-list h2 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#entry-list a.more {
+    float: right;
+}
+
+#entry-list p {
+    margin: 0 10px 1.25em 90px;
+}
+
+.entry-list-entry-info {
+    float: left;
+    width: 60px;
+    margin: 0 10px;
+}
+
+.entry-list-entry-info img {
+    display: block;
+    width: 64px;
+}
+
+.date {
+    width: 62px; /* Make the total width match the icon images */
+    border: 1px solid #444;
+}
+.date-day {
+    font-size: 2em;
+    display: block;
+    
+    font-family: "YanoneKaffeesatz Bold", sans-serif;
+    text-align: center;
+    line-height: 1;
+}
+
+.date-month {
+    display: block;
+    padding: 0 0 0.5em 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    text-align: center;
+    line-height: 1;
+}
+
+.permalink {
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
 
 #entry-nav {
@@ -235,7 +397,8 @@ em {
     width: 240px;
 }
 
-#entry-nav h2 {
+#entry-nav h2,
+#tags h2 {
     font-size: 1.25em;
     margin: 0 10px;
     padding: 0;
@@ -250,9 +413,34 @@ em {
     font-size: 1.25em;
     margin: 1em 10px 0;
     padding: 0;
+    clear: both;
     
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     color: #630;
+}
+
+#entry-nav h4,
+#entry-nav h5 {
+    font-size: 1em;
+    margin: 0 4px;
+    padding: 0 5px;
+    clear: left;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    color: #630;
+    background-color: rgba(255, 239, 0, 0.2);
+    border: 1px solid #444;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-bottom: none;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-bottom-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-bottom-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-bottomright: 0;
 }
 
 #entry-nav ul {
@@ -260,13 +448,106 @@ em {
     padding: 0;
 }
 
-#entry-nav li {
+#tags ul {
     margin: 0 10px;
+    padding: 0;
+}
+
+#entry-nav li,
+#tags li {
+    margin: 0;
     padding: 0;
     
     list-style-type: none;
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
+
+#entry-nav li ul,
+#tags li ul {
+    float: left;
+    margin: 0 4px;
+    width: 220px;
+    padding: 0 5px 5px;
+    background-color: rgba(255, 239, 0, 0.2);
+    border: 1px solid #444;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-top: none;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-top-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    border-top-right-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -moz-border-radius-topright: 0;
+}
+
+
+#entry-nav li li ul,
+#tags li li ul {
+    width: 200px;
+}
+
+#entry-nav a,
+#entry-nav strong {
+    display: block;
+    float: left;
+    padding: 2px 10px;
+    text-decoration: inherit;
+}
+
+#entry-nav .w a,
+#entry-nav .w strong {
+    float: none;
+}
+
+#entry-nav a:hover {
+    background-color: #FFF;
+    -moz-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 3px;
+} 
+#entry-nav a:active {
+    background-color: #FFF;
+    -moz-box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
+} 
+
+#entry-nav small {
+    font-size: 0.846em;
+    color: #666;
+}
+
+#entry-nav a span {
+    display: block;
+    font-size: 0.692em;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#tags {
+    float: left;
+    width: 160px;
+}
+
+#matching-entries h2 {
+    font-size: 2em;
+    margin: .25em 10px 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    line-height: 1;
+}
+#matching-entries ul {
+    margin: 0;
+    padding: 0;
+}
+
+#matching-entries li {
+    margin: 0.625em 10px;
+    list-style-type: none;
+}
+
 
 code {
     font-size: 0.9167em;
@@ -284,7 +565,7 @@ pre {
     padding: 0.6em 9px 0.65em 9px;
     
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #BB0;
+    /* background-color: #BB0; */
     border: 1px solid #BB0;
     border-radius: 0.5em;
     -moz-border-radius: 0.5em;
@@ -294,6 +575,10 @@ pre {
 div.image-left {
     float: left;
     margin: 0.625em 20px 0.625em 10px;
+}
+div.image-right {
+    float: right;
+    margin: 0.625em -70px 0.625em 20px;
 }
 div.image-full-width {
     margin: 0.625em 10px;
@@ -321,4 +606,76 @@ div.framed-3u {
 
 div.framed-4u {
     width: 300px;
+}
+
+table {
+    /* border-collapse: collapse; */
+    /*
+    font-size: 0.9167em;
+    margin: 0.68em 10px;
+    padding: 0.6em 10px 0.76em 19px;
+    */
+    font-size: 1em;
+    margin: 0.625em 10px 0.625em 30px;
+    padding: 0.6em 4px 0.65em 4px;
+    
+    border: 1px solid #BB0;
+    border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+}
+
+td, th {
+    padding: 0.1em 5px;
+    text-align: left;
+}
+
+th {
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    color: #630;
+}
+
+
+@media only all and (min-width: 1240px) {
+}
+
+/* Widescreen means 15 units instead of 12 for 1180px + margins */
+@media only all and (min-width: 1240px) {
+    #banner h1 {
+        width: 1180px;
+    }
+    #page {
+        width: 1200px;
+    }
+    #entry-nav {
+        width: 480px;
+    }
+    #entry-nav nav {
+        display: block;
+        float: left;
+        width: 240px;
+    }
+}
+
+/* Narrow layout means 9 units for 700px + margins */
+@media only all and (max-width: 1000px) {
+    #banner h1 {
+        width: 700px;
+    }
+    #page {
+        width: 720px;
+    }
+    #entry-nav {
+        width: 640px;
+    }
+    #entry-nav nav {
+        display: block;
+        float: left;
+        width: 240px;
+        margin: 0 0 0 80px;
+    }
+}
+
+body {
+    -webkit-transition: width 1s ease-in;
 }

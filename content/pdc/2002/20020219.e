@@ -14,4 +14,5 @@
     </p>
   </body>
   <dc:subject>tarot</dc:subject>
+  <dc:subject>svg</dc:subject>
 </entry>

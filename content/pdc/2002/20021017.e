@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021017" icon="../wp/icon-64x64.png">
+<entry date="20021017" icon="../1998/wp-64x64.png">
   <h>Must ... ignore ... HLink!</h>
   <body>
     <p>
@@ -125,6 +125,10 @@
       that&rsquo;s what I&nbsp;work with every day...
     </p>
   </body>
+  <dc:subject>xmtml2</dc:subject>
+    <dc:subject>hlink</dc:subject>
+    <dc:subject>xml</dc:subject>
+    <dc:subject>standards</dc:subject>
 </entry>
 
 

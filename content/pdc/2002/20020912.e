@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020912" icon="../wp/icon-64x64.png">
+<entry date="20020912" icon="../1998/wp-64x64.png">
   <h>Version numbers in namespaces considered harmful</h>
   <body>
     <p>
@@ -81,4 +81,7 @@
       the quite-sane <code>http://www.w3.org/2000/svg</code>.
     </p>
   </body>
+  <dc:subject>rss</dc:subject>
+  <dc:subject>xml</dc:subject>
+  <dc:subject>xmlns</dc:subject>
 </entry>

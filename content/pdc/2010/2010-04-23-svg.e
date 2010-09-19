@@ -7,11 +7,11 @@ The old system used text files, one per entry, to generate static HTML;
 the new system uses the same text files as before—warts and all.
 
 <div class="svg svg-left image-left framed framed-4u">
-    <embed src="../2001/jeremy-and-damian.svg" type="image/svg+xml"
+    <embed src="http://static.alleged.org.uk/pdc/2001/jeremy-and-damian.svg" type="image/svg+xml"
         width="215.788" height="278.979" />
 </div>
 Along the way I am uncovering old articles about SVG. Back in 2000, XML
-was the future—XHTML was going to replace HTML, SVG was going to replace
+was The Future: XHTML was going to replace HTML, SVG was going to replace
 Flash, and so on. 
 
 Alas! SVG on the web got set back severely when the working group got

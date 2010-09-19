@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021012" icon="../wp/icon-64x64.png">
+<entry date="20021012" icon="../1998/wp-64x64.png">
   <h>Namespaces annoyances in RSS</h>
   <body>
     <p>
@@ -41,4 +41,7 @@
       <a href="rss091.xml">my experimental RSS feed</a>.
     </p>
   </body>
+  <dc:subject>rss</dc:subject>
+    <dc:subject>xmlns</dc:subject>
+    <dc:subject>alleged</dc:subject>
 </entry>

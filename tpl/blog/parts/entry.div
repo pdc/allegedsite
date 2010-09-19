@@ -1,0 +1,32 @@
+<article data-date="{{ entry.published|date:"c"}}" id="entry">
+  <div id="entry-body">
+    {{ entry.body|safe }}
+  </div>
+  
+  <div id="entry-info">
+    <dl>
+      {% if entry.image %}
+      <dt>Author</dt>
+      <dd>
+        <img src="{{ entry.image.src }}" alt="X" />
+      </dd>
+      {% endif %}
+      <dt>Published</dt>
+      <dd class="date">
+        <span class="date-day">{{ entry.published|date:"j" }}</span>
+        <span class="date-month">{{ entry.published|date:"F" }}</span>
+      </dd>
+      <dt>Topics</dt>
+      <dd>
+        <ul>
+          {% for tag in entry.tags %}
+          <li>
+            <a href="{% url blog_tag plus_separated_tags=tag %}">{{ tag }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </dd>
+    </dl>
+    <div class="permalink"><a href="{{ e.href }}">Permalink</a></div>
+  </div>
+</article>

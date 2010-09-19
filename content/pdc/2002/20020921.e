@@ -43,4 +43,5 @@
     </p>
   </body>
   <dc:subject>network</dc:subject>
+  <dc:subject>hardware</dc:subject>
 </entry>

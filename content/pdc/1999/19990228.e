@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19990228" icon="bike/19980529d-64x64.jpeg">
+<entry date="19990228" icon="../bike/19980529d-64x64.jpeg">
 	<h1>Another bicycle written off</h1>
 	<body>
 		<p>
@@ -12,7 +12,7 @@
 			Since this has the hub gears, it is probably the most expensive
 			part of the bike...
 			I&nbsp;won't bother
-			going through <a href="bike/">my bike page</a> to 
+			going through <a href="bike.html">my bike page</a> to 
 			translate the present tense into the past,
 			because (I&nbsp;hope) soon it will be true again.
 			I&nbsp;intend to replace my bike with one just like it.  
@@ -23,4 +23,5 @@
 		</p>
 	</body>
 	<dc:subject>bike</dc:subject>
+	<dc:subject>updated</dc:subject>
 </entry>

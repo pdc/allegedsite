@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011110" icon="icon-64x64.png">
+<entry date="20011110" icon="../icon-64x64.png">
   <h1>Parts unknown</h1>
   <body>
     <p>
@@ -21,4 +21,6 @@
       to add it to the site...
     </p>
   </body>
+  <dc:subject>cheapassgames</dc:subject>
+  <dc:subject>diary</dc:subject>
 </entry>

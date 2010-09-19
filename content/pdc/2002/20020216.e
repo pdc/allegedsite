@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020216" icon="wp/icon-64x64.png">
+<entry date="20020216" icon="../1998/wp-64x64.png">
   <h>Alternatives to Webclasses</h>
   <body>
     <p>
@@ -13,4 +13,8 @@
       object-oriented web platform, programmed in Python or Perl. 
     </p>
   </body>
+  <dc:subject>framework</dc:subject>
+    <dc:subject>webclasses</dc:subject>
+    <dc:subject>cocoon</dc:subject>
+    <dc:subject>zope</dc:subject>
 </entry>

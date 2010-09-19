@@ -15,5 +15,5 @@
       <!--<img src="darren-beach.jpg" width="120" height="99" alt="Darren
       tries to feed me a toy car" align="left" />-->
   <dc:subject>photos</dc:subject>
-  <dc:subject>personal</dc:subject>
+  <dc:subject>family</dc:subject>
 </entry>

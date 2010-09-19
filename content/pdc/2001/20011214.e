@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011214" icon="icon-64x64.png">
+<entry date="20011214" icon="../icon-64x64.png">
   <h1>I am at least 13 years old</h1>
   <body>
     <p>
@@ -21,4 +21,8 @@
       fashionable!).  But that is probably enough ego frenzy for now.
     </p>
   </body>
+  <dc:subject>self</dc:subject>
+  <dc:subject>netnews</dc:subject>
+  <dc:subject>usenet</dc:subject>
+  <dc:subject>google</dc:subject>
 </entry>

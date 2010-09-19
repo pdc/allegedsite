@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20000821" icon="2000/fab-icon-64x64.png">
+<entry date="20000821" icon="fab-icon-64x64.png">
   <h1>My Fabulous Life</h1>
   <body>
     I have uploaded 
@@ -10,4 +10,6 @@
     panels on some page sized a bit over A4, and cut and folded in to
     a 16-page comic.
   </body>
+  <dc:subject>comic</dc:subject>
+    <dc:subject>caption</dc:subject>
 </entry>

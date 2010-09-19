@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20030114" icon="../wp/icon-64x64.png">
+<entry date="20030114" icon="../1998/wp-64x64.png">
   <h>Marks of Quotation</h>
   <body>
     <p> 

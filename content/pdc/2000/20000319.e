@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20000319" icon="2000/cafe-64x64.png">
+<entry date="20000319" icon="cafe-64x64.png">
   <h1>SEAHORSE cartoon</h1>
   <body>
     The first cartoon drawing I&rsquo;ve done in ages.  This is the <a
@@ -9,5 +9,8 @@
     I&rsquo;ve posted here to reassure friends I haven&rsquo;t
     entirely stopped drawing.
   </body>
+  <dc:subject>cartoon</dc:subject>
+    <dc:subject>seahorse</dc:subject>
+    <dc:subject>work</dc:subject>
 </entry>
 	

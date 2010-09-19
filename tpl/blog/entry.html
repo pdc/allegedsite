@@ -1,94 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% extends "blog/base.html" %}
 {% load markup %}
-<html lang="en-GB">
-  <head>
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  	<title>{{ entry.title }} - Blog</title>
-  	<meta name="author" content="Damian Cugley">
-  	<link rel="stylesheet" type="text/css" href="{{ settings.STATIC_URL }}style/blog.css" />
-  </head>
-  <body>
-    <div id="banner">
-      <b><a href="{% url blog_entry %}">Alleged Archive</a></b>
-      <h1>{{ entry.title }}</h1>
-    </div>
-    <div id="page">
-      <div id="entry-body">
-        {{ entry.body|markdown }}
-      </div>
-      
-      <div id="entry-info">
-        <dl>
-          <dt>Author</dt>
-          <dd>Damian Cugley</dd>
-          <dt>Published</dt>
-          <dd>{{ entry.published|date:"j N Y" }}</dd>
-          <dt>Topics</dt>
-          <dd>
-            <ul>
-              {% for tag in entry.tags %}
-              <li>
-                <a href="{% url blog_tag plus_separated_tags=tag %}">{{ tag }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </dd>
-        </dl>
-      </div>
-      
-      <div id="entry-nav">
-        <h2>Other Entries</h2>
-        <ul>
-          {% with entry.prev as e %}
-            {% if e %}
-            <li>
-              <a href="{{ e.href }}" rel="prev">Past: ‘{{ e.title }}’ 
-                <small>{{ e.published|date:"j N"}}</small></a>
-            </li>
-            {% endif %}
-          {% endwith %}
-          {% with entry.next as e %}
-            {% if e %}
-            <li>
-              <a href="{{ e.href }}" rel="next">Future: ‘{{ e.title }}’ 
-                <small>{{ e.published|date:"j N"}}</small></a>
-            </li>
-            {% endif %}
-          {% endwith %}
-        </ul>
-    		{% if this_month %}
-      	<h3>{{ entry.published|date:"F Y" }}</h3>
-      	<ul>
-      	  {% for e in this_month %}      	    
-          <li>
-      	    {% ifequal e entry %}
-            <strong>‘{{ e.title }}’ 
-              <small>{{ e.published|date:"j N"}}</small></strong>
-      	    {% else %}
-            <a href="{{ e.href }}"‘{{ e.title }}’
-              <small>{{ e.published|date:"j N"}}</small></a>
-            {% endifequal %}
-          </li>
-			    {% endfor %}
-			  </ul>
-			  {% endif %}
-    		{% if years %}
-      	<h3>Jump</h3>
-      	<ul>
-      	  {% for e in years %}      	    
-          <li>
-      	    {% ifequal e entry %}
-            <strong>‘{{ e.title }}’ 
-              <small>{{ e.published|date:"Y"}}</small></strong>
-      	    {% else %}
-            <a href="{{ e.href }}" rel="prev">‘{{ e.title }}’ 
-              <small>{{ e.published|date:"Y"}}</small></a>
-            {% endifequal %}
-          </li>
-			    {% endfor %}
-			  </ul>
-			  {% endif %}
-      </page>
-    </div>
-  </body>
-</html>
+
+{% block meta %}
+	<link rel="alternate" type="application/atom+xml" href="{% url blog_atom %}" />
+{% endblock %}
+
+{% block title %}{{ entry.title }} - Alleged Articles{% endblock %}
+{% block heading %}{{ entry.title }}{% endblock %}
+
+{% block content %}
+    {% include "blog/parts/entry.div" %}
+    {% include "blog/parts/entry-nav.div" %}
+{% endblock %}

@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021108" icon="../wp/icon-64x64.png">
+<entry date="20021108" icon="../1998/wp-64x64.png">
   <h>Things your mother didn&rsquo;t tell you</h>
   <body>
     <p>

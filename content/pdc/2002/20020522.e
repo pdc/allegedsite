@@ -15,5 +15,6 @@
       href="http://www.sitsvac.org/booking.html">COMICS 2002</a>.
     </p>
   </body>
-  <dc:subject>tarot</dc:subject>
+  <dc:subject>svg</dc:subject>
+  <dc:subject>toy</dc:subject>
 </entry>

@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19990110" icon="icon-64x64.png">
+<entry date="19990110" icon="../icon-64x64.png">
   <h1>5 Years on the Web</h1>
   <body>
     I&rsquo;ve been on the WWW since 1993, on and off, if anybody cares.
@@ -13,5 +13,7 @@
     standard.
     That server is long gone now, of course.  
   </body>
+  <dc:subject>alleged</dc:subject>
+    <dc:subject>comlab</dc:subject>
 </entry>
 	

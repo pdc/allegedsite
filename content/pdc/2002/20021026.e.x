@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021026" icon="icon-64x64.png">
+<entry date="20021026" icon="../icon-64x64.png">
   <h1>Aged zinester</h1>
   <body>
     <a href="http://livejournal.com/~andypop/">Andy Roberts</a> is

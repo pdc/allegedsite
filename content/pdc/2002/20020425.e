@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020425" icon="../wp/icon-64x64.png">
+<entry date="20020425" icon="../1998/wp-64x64.png">
   <h>SVG: embed or object?</h>
   <body>
     <p>
@@ -38,4 +38,5 @@
   <dc:subject>svg</dc:subject>
   <dc:subject>safari</dc:subject>
   <dc:subject>html</dc:subject>
+  <dc:subject>updated</dc:subject>
 </entry>

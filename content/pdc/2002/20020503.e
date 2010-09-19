@@ -12,5 +12,7 @@ we were allowed back on the bridge again.  I borrowed Jeremy&rsquo;s
 newest digital camera for the occasion and took <a
 href="maymorning/">some photos</a>.
     </p>
-  </body>
+  </body>  
+  <dc:subject>photos</dc:subject>
+  <dc:subject>oxford</dc:subject>
 </entry>

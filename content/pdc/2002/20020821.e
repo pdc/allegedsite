@@ -8,4 +8,6 @@
       very &lsquo;noir&rsquo; mystery story starring C. Evidence.
     </p>
   </body>
+  <dc:subject>jeremy</dc:subject>
+  <dc:subject>tws</dc:subject>  
 </entry>

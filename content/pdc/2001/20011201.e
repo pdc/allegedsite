@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011201" icon="../img/red-ribbon-64x64.png">
+<entry date="20011201" icon="red-ribbon-64x64.png">
   <h1>World AIDS Day</h1>
   <body>
     <p>
@@ -33,4 +33,7 @@
       needs.  
     </p>
   </body>
+  <dc:subject>hiv</dc:subject>
+    <dc:subject>aids</dc:subject>
+    <dc:subject>seahorse</dc:subject>
 </entry>

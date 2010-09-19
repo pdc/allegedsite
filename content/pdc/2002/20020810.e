@@ -18,4 +18,5 @@
     </p>
   </body>
   <dc:subject>tarot</dc:subject>
+  <dc:subject>xml</dc:subject>
 </entry>

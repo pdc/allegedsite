@@ -54,4 +54,6 @@
       as possible. 
     </p>
   </body>
+  <dc:subject>topicmaps</dc:subject>
+  <dc:subject>metadata</dc:subject>
 </entry>

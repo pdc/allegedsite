@@ -19,4 +19,6 @@
 
     </p>
   </body>
+  <dc:subject>ramsgate</dc:subject>
+  <dc:subject>photos</dc:subject>
 </entry>

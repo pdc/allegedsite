@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011129" icon="../img/caption94-64x64.png">
+<entry date="20011129" icon="http://caption.org/img/caption94-64x64.gif">
   <h1>Caption 2001 photos</h1>
   <body>
     <p>
@@ -12,4 +12,6 @@
     </p>
 
   </body>
+  <dc:subject>caption</dc:subject>
+    <dc:subject>photos</dc:subject>
 </entry>

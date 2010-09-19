@@ -1,0 +1,34 @@
+{% extends "blog/base.html" %}
+{% load markup %}
+
+{% block meta %}
+    {# OpenID links should be set via config, obviously. If I ever want this to be reusable. #}
+	<link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
+	<link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
+	
+	{# Link to Atom feed. #}
+	<link rel="alternate" type="application/atom+xml" href="{% url blog_atom %}" />
+{% endblock %}
+
+{% block title %}Damian Cugley{% endblock %}
+{% block heading %}Damian Cugley{% endblock %}
+
+{% block content %}
+    <section id="flow">
+        {% include "blog/parts/entry.div" %}
+    </section>
+    {% include "blog/parts/entry-nav.div" %}
+    <aside id="exits">
+        <h2>Exits</h2>
+        <nav>
+            <ul>
+                <li><a id="twitter-link" href="http://twitter.com/damiancugley">Twitter</a></li>
+            </ul>
+        </nav>
+    </aside>
+{% endblock %}
+
+{% block trailingjs %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ settings.STATIC_URL }}js/blog-dash.js"></script>
+{% endblock %}

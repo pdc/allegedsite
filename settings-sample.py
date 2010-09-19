@@ -15,12 +15,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'a.db'             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'NAME': 'a.db',
+        'ENGINE': 'django.db.backends.sqlite3',        
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -56,7 +56,10 @@ ADMIN_MEDIA_PREFIX = '/media/'
 SNAPTIONER_LIBRARY_DIR = expand_path('albums')
 SNAPTIONER_LIBRARY_URL = 'http://localhost/~pdc/snaptioner/albums/'
 
-STATIC_URL = 'http://localhost/~pdc/snaptioner/static/'
+BLOG_DIR = expand_path('content/pdc')
+BLOG_CACHE_ENTRIES = False
+
+STATIC_URL = 'http://localhost/~pdc/alleged/'
 
 
 # Make this unique, and don't share it with anybody.
@@ -101,4 +104,5 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     
     'alleged.snaptioner',
+    'alleged.blog',
 )

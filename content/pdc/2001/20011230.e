@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011230" icon="icon-64x64.png">
+<entry date="20011230" icon="../icon-64x64.png">
   <h1>Tate Modern: Surrealism</h1>
   <body>
     <p>
@@ -43,4 +43,8 @@
       staggered home feeling very culturally stimulated.
     </p>
   </body>
+  <dc:subject>diary</dc:subject>
+    <dc:subject>gallery</dc:subject>
+    <dc:subject>tatemodern</dc:subject>
+    <dc:subject>london</dc:subject>
 </entry>

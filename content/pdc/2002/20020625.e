@@ -29,5 +29,7 @@
       brother and sisters and I&nbsp;live in six cities in two continents)...
     </p>
   </body>
-  <dc:subject>tarot</dc:subject>
+  <dc:subject>diary</dc:subject>
+  <dc:subject>family</dc:subject>
+  <dc:subject>ramsgate</dc:subject>
 </entry>

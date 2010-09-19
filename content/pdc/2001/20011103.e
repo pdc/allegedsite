@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20011104" icon="icon-64x64.png">
+<entry date="20011104" icon="../icon-64x64.png">
   <h1>New format!</h1>
   <body>
     <p> I&rsquo;ve been envying my friends with all their
@@ -32,4 +32,6 @@
     I&nbsp;plan to partially automate the
     <em>creation</em> of new entries.  </p>
   </body>
+  <dc:subject>alleged</dc:subject>
+    <dc:subject>tclhtml</dc:subject>
 </entry>

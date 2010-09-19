@@ -64,7 +64,10 @@
       not break the bank, right?
     </p>
   </body>
-  <dc:subject>personal</dc:subject>
+  <dc:subject>diary</dc:subject>
+  <dc:subject>consignia</dc:subject>
+  <dc:subject>royalmail</dc:subject>
+  <dc:subject>xmas</dc:subject>
 </entry>
 
 

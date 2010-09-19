@@ -21,4 +21,5 @@
   </body>
   <dc:subject>rss</dc:subject>
   <dc:subject>livejournal</dc:subject>
+  <dc:subject>updated</dc:subject>
 </entry>

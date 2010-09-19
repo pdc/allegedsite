@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="19980425" icon="../img/caption94-64x64.png">
+<entry date="19980425" icon="http://caption.org/img/caption94-64x64.gif">
   <h1>CAPTION97 photo album</h1>
   <body>
     I took almost 200 pictures of small-press-comics folk
@@ -14,5 +14,6 @@
   </body>
   <dc:subject>photos</dc:subject>
   <dc:subject>caption</dc:subject>
+  <dc:subject>updated</dc:subject>
 </entry>
 	

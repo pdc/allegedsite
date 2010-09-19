@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20021031" icon="../wp/icon-64x64.png">
+<entry date="20021031" icon="../1998/wp-64x64.png">
   <h>RSS valid, again (ahem)</h>
   <body>
     <p>
@@ -14,4 +14,5 @@
     </p>
   </body>
   <dc:subject>rss</dc:subject>
+  <dc:subject>validation</dc:subject>
 </entry>

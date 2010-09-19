@@ -1,5 +1,5 @@
 <!-- -*-HTML-*- -->
-<entry date="20020508" icon="../wp/icon-64x64.png">
+<entry date="20020508" icon="../1998/wp-64x64.png">
   <h>Fixed on Mozilla?</h>
   <body>
     <p>
@@ -31,4 +31,7 @@
       <code>mime_types.txt</code> made no difference <code>:-(</code>.
     </p>
   </body>
+  <dc:subject>mozilla</dc:subject>
+  <dc:subject>standards</dc:subject>
+  <dc:subject>thttpd</dc:subject>
 </entry>

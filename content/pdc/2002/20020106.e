@@ -49,4 +49,7 @@
     
   </body>
   <dc:subject>tarot</dc:subject>
+  <dc:subject>svg</dc:subject>
+    <dc:subject>svgfonts</dc:subject>
+    <dc:subject>typeography</dc:subject>
 </entry>
