@@ -1,7 +1,17 @@
+// -*-coding: UTF-8 -*-
+
 $(document).ready(function () {
     var monthAbbrs = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
     function pad2(n) {
         return n < 10 ? '0' + n : n
+    }
+    
+    // The text uses HTML escapes for ampersands etc.,
+    // so I could just use jQuery’s html method here,
+    // but do I want to trust Twitter to be immune to XSS attacks?
+    // Instead I reverse the HTML escaping jQuery’s text method will apply.
+    function unentity(text) {
+        return text.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
     }
     
     var flowElt = $('#flow');
@@ -15,24 +25,58 @@ $(document).ready(function () {
         success: function (data, textStatus, request) {
             twitterLink.parent().removeClass('loading');
             for (var i in data.results) {
+                var className = 'twitter';
                 var tweet = data.results[i];
-                if (tweet.text.substr(0, 3) == 'RT ') {
-                    // Skip my retweets since I don’t have any easy way to supply thier user icon.
+                if (tweet.text.substr(0, 1) == '@') {
+                    // Skip replies since they don’t usually make sense in isolation.
                     continue;
+                }
+                var isRetweet = (tweet.text.substr(0, 3) == 'RT ');
+                if (isRetweet) {
+                    className += ' retweet';
+                } else {
+                    className += ' tweet';
                 }
                 var m = /(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d\d?) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d\d:\d\d:\d\d) \+0000/.exec(tweet.created_at)
                 var mon = (monthAbbrs.indexOf(m[3]) + 4) / 4;
                 var when = m[4] + '-' + pad2(mon) + '-' + pad2(m[2]) + 'T' + m[5];
+                var whenFormatted = m[2] + ' ' + m[3] + ' ' + m[4];
                 var articleElt = $('<article>').attr({
-                    'class': 'twitter',
+                    'class': className,
                     'data-date': when
                 });
-                $('<img>').attr({
-                    'src': tweet.profile_image_url,
-                    'alt': ''
-                }).appendTo(articleElt);
-                var pElt = $('<p>').appendTo(articleElt).text(tweet.text);
-                $(flowElt).append(articleElt);
+                if (isRetweet) {
+                    m = /^RT @([^:]+): (.*)$/.exec(unentity(tweet.text));
+                    var other = m[1];
+                    text = m[2];
+                    var pElt = $('<p>').appendTo(articleElt);
+                    $('<q>').text(text).appendTo(pElt);
+                    pElt.append(' —');
+                    $('<a>').attr('href', 'http://twitter.com/' + other).text(other).appendTo(pElt);
+                } else {
+                    $('<img>').attr({
+                        'src': tweet.profile_image_url,
+                        'alt': ''
+                    }).appendTo(articleElt);
+                    $('<p>').appendTo(articleElt).text(unentity(tweet.text));
+                }
+                
+                var details = $('<small>').appendTo(articleElt);
+                $('<a>').attr({
+                    href: 'http://twitter.com/' + other + '/status/' + tweet.id,
+                    title: when
+                }).text(whenFormatted + ' ').append('<b>#</b><br>(Twitter)').appendTo(details);
+                
+                var isInserted = false;
+                $(flowElt).find('article').each(function (i) {
+                    if ($(this).attr('data-date') < when) {
+                        articleElt.insertBefore(this);   
+                        isInserted = true;                     
+                    }
+                });
+                if (!isInserted) {
+                    $(flowElt).prepend(articleElt);
+                }
             }
         }
     })

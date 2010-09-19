@@ -1,4 +1,10 @@
 <article data-date="{{ entry.published|date:"c"}}" id="entry">
+    {% if is_index %}
+    <header>
+        <p>Latest Alleged Article</p>
+        <h2>{{ entry.title }}</h2>
+    </header>
+    {% endif %}
   <div id="entry-body">
     {{ entry.body|safe }}
   </div>
