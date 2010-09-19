@@ -63,7 +63,7 @@ $(document).ready(function () {
                 
                 var details = $('<small>').appendTo(articleElt);
                 $('<a>').attr({
-                    href: 'http://twitter.com/' + other + '/status/' + tweet.id,
+                    href: 'http://twitter.com/' + (isRetweet ? other : 'damiancugley') + '/status/' + tweet.id,
                     title: when
                 }).text(whenFormatted + ' ').append('<b>#</b><br>(Twitter)').appendTo(details);
                 
