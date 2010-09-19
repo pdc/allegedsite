@@ -14,6 +14,21 @@
 {% block heading %}Damian Cugley{% endblock %}
 
 {% block content %}
-    {% include "blog/parts/entry.div" %}
+    <section id="flow">
+        {% include "blog/parts/entry.div" %}
+    </section>
     {% include "blog/parts/entry-nav.div" %}
+    <aside id="exits">
+        <h2>Exits</h2>
+        <nav>
+            <ul>
+                <li><a id="twitter-link" href="http://twitter.com/damiancugley">Twitter</a></li>
+            </ul>
+        </nav>
+    </aside>
+{% endblock %}
+
+{% block trailingjs %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ settings.STATIC_URL }}js/blog-dash.js"></script>
 {% endblock %}

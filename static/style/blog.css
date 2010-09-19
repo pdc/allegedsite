@@ -170,8 +170,34 @@ em {
     -webkit-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px;
 }
 
+#flow {
+    float: left;
+    width: 640px;
+    background: #FED;
+}
+
 #page-after {
     clear: both;
+}
+
+article {
+    display: block;
+    float: left;
+    width: 640px;
+    background: #EDC;
+    margin: 0 0 1.25em;
+}
+
+article.twitter {
+    min-height: 48px;
+}
+
+article.twitter img {
+    float: left;
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 16px 5px 26px; /* Breaking the grid by 4px because the article icon does. */
 }
 
 #entry-body {
@@ -209,11 +235,11 @@ em {
     line-height: 1;
 }
 
-#entry-body p {
+article p {
     margin: 0 10px;
 }
 
-#entry-body p+p {
+article p+p {
     text-indent: 30px;
 }
 
