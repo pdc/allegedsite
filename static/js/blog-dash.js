@@ -52,7 +52,7 @@ $(document).ready(function () {
                     var pElt = $('<p>').appendTo(articleElt);
                     $('<q>').text(text).appendTo(pElt);
                     pElt.append(' —');
-                    $('<a>').attr('href', 'http://twitter.com/' + other).text(other).appendTo(pElt);
+                    $('<a>').attr('href', 'http://twitter.com/' + other).text('@' + other).appendTo(pElt);
                 } else {
                     $('<img>').attr({
                         'src': tweet.profile_image_url,
