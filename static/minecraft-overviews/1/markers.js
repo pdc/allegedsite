@@ -1,1 +1,1 @@
-var markerData=[{"msg": "Spawn", "y": 67, "z": -136, "x": 45}]
+var markerData=[{"msg": "Spawn", "y": 67, "x": 45, "chunk": [13, 8], "z": -136, "type": "spawn"}]
