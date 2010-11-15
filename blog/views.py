@@ -1,15 +1,18 @@
 # Encoding: UTF-8
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.template import RequestContext
+from django.views.decorators.cache import cache_page
 from django.shortcuts import render_to_response 
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django.conf import settings
 
 from datetime import date
+import json
 
 from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
+from alleged.blog.fromatom import get_flickr
 
 def add_hrefs(entries):
     for entry in entries:
@@ -229,3 +232,29 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
             
     vars['links'] = [(rel, request.build_absolute_uri(href)) for (rel, href) in links]
     return vars
+    
+    
+def render_json(view):
+    """Decorator for view function returning a dictionary to be rendered as JSON.
+    
+    Write the view function as usual, except it returns a dict
+    not a response object.
+    If the function being decorated returns an HttpResponse subclass 
+    instead, that is returned unchanged.
+    """
+    def decorated_view(request, *args, **kwargs):
+        resp = view(request, *args, **kwargs)
+        if isinstance(resp, HttpResponse):
+            return resp
+        data = json.dumps(resp)
+        return HttpResponse(data, mimetype='application/json')
+    return decorated_view
+    
+# @cache_page(1)
+@render_json
+def from_flickr(request):
+    ndix = get_flickr(settings.FLICKR_ATOM_URL)
+    if not ndix:
+        HttpResponseServerError('Could not get Atom data from Flickr')
+    ndix['success'] = True
+    return ndix

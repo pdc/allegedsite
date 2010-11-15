@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:flickr="urn:flickr:"
+      xmlns:media="http://search.yahoo.com/mrss/">
+
+  <title>Uploads from Damian Cugley</title>
+  <link rel="self" href="http://api.flickr.com/services/feeds/photos_public.gne?id=14145351@N00&amp;lang=en-us&amp;format=atom" />
+  <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/"/>
+  <id>tag:flickr.com,2005:/photos/public/65260</id>
+  <icon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</icon>
+  <subtitle></subtitle>
+  <updated>2010-10-31T12:59:51Z</updated>
+  <generator uri="http://www.flickr.com/">Flickr</generator>
+
+  <entry>
+    <title>Technicolor Brain Bowl with Attendant Lizard</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131737708/"/>
+    <id>tag:flickr.com,2005:/photo/5131737708</id>
+    <published>2010-10-31T12:59:51Z</published>
+    <updated>2010-10-31T12:59:51Z</updated>
+    <dc:date.Taken>2010-10-31T00:38:45-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131737708/&quot; title=&quot;Technicolor Brain Bowl with Attendant Lizard&quot;&gt;&lt;img src=&quot;http://farm2.static.flickr.com/1346/5131737708_2a774d3564_m.jpg&quot; width=&quot;240&quot; height=&quot;160&quot; alt=&quot;Technicolor Brain Bowl with Attendant Lizard&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tim’s got a plastic brain; Angharad brought dry ice.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm2.static.flickr.com/1346/5131737708_05ae944014_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="bowl" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="brain" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="dryice" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Angharad</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131135753/"/>
+    <id>tag:flickr.com,2005:/photo/5131135753</id>
+    <published>2010-10-31T12:59:42Z</published>
+    <updated>2010-10-31T12:59:42Z</updated>
+    <dc:date.Taken>2010-10-31T00:17:32-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131135753/&quot; title=&quot;Angharad&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4037/5131135753_d212a2de57_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Angharad&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;She brought dry ice.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4037/5131135753_d5c4e22656_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="dryice" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Crisp of Doom</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131736934/"/>
+    <id>tag:flickr.com,2005:/photo/5131736934</id>
+    <published>2010-10-31T12:59:33Z</published>
+    <updated>2010-10-31T12:59:33Z</updated>
+    <dc:date.Taken>2010-10-30T23:22:06-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131736934/&quot; title=&quot;Crisp of Doom&quot;&gt;&lt;img src=&quot;http://farm2.static.flickr.com/1211/5131736934_f3a88cc196_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Crisp of Doom&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm2.static.flickr.com/1211/5131736934_cee02c7a02_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Alex and Aphra</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131736580/"/>
+    <id>tag:flickr.com,2005:/photo/5131736580</id>
+    <published>2010-10-31T12:59:24Z</published>
+    <updated>2010-10-31T12:59:24Z</updated>
+    <dc:date.Taken>2010-10-30T22:45:11-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131736580/&quot; title=&quot;Alex and Aphra&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4018/5131736580_4f047b3c3b_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Alex and Aphra&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aphra towers over all.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4018/5131736580_4f4ce16df5_o.jpg" />
+    <category term="baby" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Jo and Alex</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131134683/"/>
+    <id>tag:flickr.com,2005:/photo/5131134683</id>
+    <published>2010-10-31T12:59:16Z</published>
+    <updated>2010-10-31T12:59:16Z</updated>
+    <dc:date.Taken>2010-10-30T22:30:51-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131134683/&quot; title=&quot;Jo and Alex&quot;&gt;&lt;img src=&quot;http://farm2.static.flickr.com/1046/5131134683_ea6266748f_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;Jo and Alex&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm2.static.flickr.com/1046/5131134683_cefea6d8c1_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Mission to Norway</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131134185/"/>
+    <id>tag:flickr.com,2005:/photo/5131134185</id>
+    <published>2010-10-31T12:59:05Z</published>
+    <updated>2010-10-31T12:59:05Z</updated>
+    <dc:date.Taken>2010-10-30T22:30:33-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131134185/&quot; title=&quot;Mission to Norway&quot;&gt;&lt;img src=&quot;http://farm2.static.flickr.com/1325/5131134185_18e177def7_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;Mission to Norway&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It has badgers in it, apparently.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm2.static.flickr.com/1325/5131134185_d90b51fa61_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Alex’s Skull Shirt</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131133791/"/>
+    <id>tag:flickr.com,2005:/photo/5131133791</id>
+    <published>2010-10-31T12:58:55Z</published>
+    <updated>2010-10-31T12:58:55Z</updated>
+    <dc:date.Taken>2010-10-30T21:55:03-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131133791/&quot; title=&quot;Alex’s Skull Shirt&quot;&gt;&lt;img src=&quot;http://farm2.static.flickr.com/1340/5131133791_8a30acecde_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Alex’s Skull Shirt&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm2.static.flickr.com/1340/5131133791_0285c4a752_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Aphra</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131735058/"/>
+    <id>tag:flickr.com,2005:/photo/5131735058</id>
+    <published>2010-10-31T12:58:45Z</published>
+    <updated>2010-10-31T12:58:45Z</updated>
+    <dc:date.Taken>2010-10-30T21:54:18-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131735058/&quot; title=&quot;Aphra&quot;&gt;&lt;img src=&quot;http://farm2.static.flickr.com/1193/5131735058_e4084c9d3e_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;Aphra&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm2.static.flickr.com/1193/5131735058_5f3b180332_o.jpg" />
+    <category term="baby" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Irresistable Bat</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131734438/"/>
+    <id>tag:flickr.com,2005:/photo/5131734438</id>
+    <published>2010-10-31T12:58:30Z</published>
+    <updated>2010-10-31T12:58:30Z</updated>
+    <dc:date.Taken>2010-10-30T16:32:25-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131734438/&quot; title=&quot;Irresistable Bat&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4130/5131734438_b4fe1e26ed_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Irresistable Bat&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It has a CE mark so I was able to rationalize buying it on the grounds I could give it to one of the multitude of friends’ babies born this year.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4130/5131734438_59d08b8c36_o.jpg" />
+    <category term="halloween" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="toy" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="bat" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>I Heart Combibos</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131098277/"/>
+    <id>tag:flickr.com,2005:/photo/5131098277</id>
+    <published>2010-10-31T12:43:38Z</published>
+    <updated>2010-10-31T12:43:38Z</updated>
+    <dc:date.Taken>2010-10-30T16:35:41-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131098277/&quot; title=&quot;I Heart Combibos&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4040/5131098277_83021a924f_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;I Heart Combibos&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I was determined to avoid the flat white coffee innovation as a flash-in-the-pan fad for overly monied coffee fans, but I do find them quite tasty.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4040/5131098277_a4c9db8689_o.jpg" />
+    <category term="coffee" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="café" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Late Butterfly</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5131079967/"/>
+    <id>tag:flickr.com,2005:/photo/5131079967</id>
+    <published>2010-10-31T12:35:32Z</published>
+    <updated>2010-10-31T12:35:32Z</updated>
+    <dc:date.Taken>2010-10-17T15:37:45-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5131079967/&quot; title=&quot;Late Butterfly&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4001/5131079967_5594ff71a9_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Late Butterfly&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In  my garden&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4001/5131079967_0d8f456043_o.jpg" />
+    <category term="macro" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="butterfly" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="garden" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Suprvillains Know the Importance of Colour Theming</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5068732707/"/>
+    <id>tag:flickr.com,2005:/photo/5068732707</id>
+    <published>2010-10-10T21:12:54Z</published>
+    <updated>2010-10-10T21:12:54Z</updated>
+    <dc:date.Taken>2010-10-10T12:15:41-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5068732707/&quot; title=&quot;Suprvillains Know the Importance of Colour Theming&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4154/5068732707_d6d9e9ecf8_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Suprvillains Know the Importance of Colour Theming&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If the rhododendron were still in flower it would be red as well.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4154/5068732707_884700d5ae_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="red" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="rhododendron" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Tight Fit</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5069340638/"/>
+    <id>tag:flickr.com,2005:/photo/5069340638</id>
+    <published>2010-10-10T21:12:42Z</published>
+    <updated>2010-10-10T21:12:42Z</updated>
+    <dc:date.Taken>2010-10-10T12:16:04-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5069340638/&quot; title=&quot;Tight Fit&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4088/5069340638_057a026112_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Tight Fit&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4088/5069340638_2e67854726_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="red" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="rhododendron" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Room for More</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5069335720/"/>
+    <id>tag:flickr.com,2005:/photo/5069335720</id>
+    <published>2010-10-10T21:11:14Z</published>
+    <updated>2010-10-10T21:11:14Z</updated>
+    <dc:date.Taken>2010-10-10T12:18:13-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5069335720/&quot; title=&quot;Room for More&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4113/5069335720_da5bd52e12_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Room for More&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[http://www.flickr.com/photos/pdc/2499484896]&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4113/5069335720_1505b850ae_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="red" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="rhododendron" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Tim, Jeremy, and Harlequin</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5023557263/"/>
+    <id>tag:flickr.com,2005:/photo/5023557263</id>
+    <published>2010-09-25T21:01:43Z</published>
+    <updated>2010-09-25T21:01:43Z</updated>
+    <dc:date.Taken>2010-09-25T18:52:22-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5023557263/&quot; title=&quot;Tim, Jeremy, and Harlequin&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4145/5023557263_50503b4281_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;Tim, Jeremy, and Harlequin&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;During a brief simulated virtual tour of the renovated bedroom.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4145/5023557263_2ed987ac56_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Ruth</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5024165142/"/>
+    <id>tag:flickr.com,2005:/photo/5024165142</id>
+    <published>2010-09-25T21:01:33Z</published>
+    <updated>2010-09-25T21:01:33Z</updated>
+    <dc:date.Taken>2010-09-25T18:49:06-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5024165142/&quot; title=&quot;Ruth&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4127/5024165142_df2bb1c384_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Ruth&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;During a brief simulated virtual tour of the renovated bedroom.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4127/5024165142_ca2c31beee_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Pap the Cat</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5024164752/"/>
+    <id>tag:flickr.com,2005:/photo/5024164752</id>
+    <published>2010-09-25T21:01:23Z</published>
+    <updated>2010-09-25T21:01:23Z</updated>
+    <dc:date.Taken>2010-09-25T18:48:55-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5024164752/&quot; title=&quot;Pap the Cat&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4087/5024164752_9521b5b768_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Pap the Cat&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;During a brief simulated virtual tour of the renovated bedroom.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4087/5024164752_cfcd64727d_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Jeremy and Harequin</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5023556013/"/>
+    <id>tag:flickr.com,2005:/photo/5023556013</id>
+    <published>2010-09-25T21:01:13Z</published>
+    <updated>2010-09-25T21:01:13Z</updated>
+    <dc:date.Taken>2010-09-25T18:48:24-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5023556013/&quot; title=&quot;Jeremy and Harequin&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4109/5023556013_baab2fca87_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Jeremy and Harequin&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;During a brief simulated virtual tour of the renovated bedroom.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4109/5023556013_04ef09033c_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Squared 2</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5023555605/"/>
+    <id>tag:flickr.com,2005:/photo/5023555605</id>
+    <published>2010-09-25T21:01:03Z</published>
+    <updated>2010-09-25T21:01:03Z</updated>
+    <dc:date.Taken>2010-09-25T17:34:37-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5023555605/&quot; title=&quot;Squared 2&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4149/5023555605_35690812a5_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;Squared 2&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;On Jeremy and Tim’s Patio&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4149/5023555605_086c7e748b_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+  <entry>
+    <title>Squared 1</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/5023555079/"/>
+    <id>tag:flickr.com,2005:/photo/5023555079</id>
+    <published>2010-09-25T21:00:51Z</published>
+    <updated>2010-09-25T21:00:51Z</updated>
+    <dc:date.Taken>2010-09-25T17:34:23-08:00</dc:date.Taken>
+    <content type="html">			&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+	
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/5023555079/&quot; title=&quot;Squared 1&quot;&gt;&lt;img src=&quot;http://farm5.static.flickr.com/4126/5023555079_ea83751754_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;Squared 1&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;On Jeremy and Tim’s Patio.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.static.flickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm5.static.flickr.com/4126/5023555079_a7f46dcd58_o.jpg" />
+    <category term="autumn" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2010" scheme="http://www.flickr.com/photos/tags/" />
+  </entry>
+
+
+</feed>

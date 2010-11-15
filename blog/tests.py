@@ -8,6 +8,7 @@ Replace these with more appropriate tests for your application.
 
 from django.test import TestCase
 from alleged.blog.entries import *
+from alleged.blog.fromatom import *
 
 import os
 from datetime import datetime, date, timedelta
@@ -547,3 +548,84 @@ class TestThisMonthList(TestCase, BlogTestMixin):
         self.assertEqual(['C', 'A', 'B'], [x.title for x in by_year[2010]])
         self.assertEqual(['D'], [x.title for x in by_year[2009]])
         self.assertEqual(['E'], [x.title for x in by_year[2008]])
+        
+        
+FIXTURE_DIR = os.path.join(os.path.dirname(__file__), 'test_data')
+class TestJsonfromAtom(TestCase):
+    def fixture_data(self, file_name, from_encoding=None):
+        """Find a test file and return its contents.
+        
+        Arguments --
+            file_name -- names the file within the fixtures directory
+            from_encoding -- if not None, then convert the file data to 
+                a Unicode string using this encoding
+                
+        """
+        file_path = os.path.join(FIXTURE_DIR, file_name)
+        with open(file_path, 'rb') as strm:
+            data = strm.read()
+        if from_encoding:
+            data = data.decode(from_encoding)
+        return data
+        
+    def test_from_flickr(self):
+        data = self.fixture_data('from_flickr.atom')
+        ndix = nested_dicts_from_atom(data)
+        self.assertDictContainsSubsetRecursive({
+            'entriesByDay': [
+                {
+                    'date': '2010-10-31T12:59:51Z',
+                    'entries': [
+                        {
+                            'title': 'Technicolor Brain Bowl with Attendant Lizard',
+                            'href': 'http://www.flickr.com/photos/pdc/5131737708/',
+                            'square': {'href': 'http://farm2.static.flickr.com/1346/5131737708_2a774d3564_s.jpg'},
+                            'thumbnail': {'href': 'http://farm2.static.flickr.com/1346/5131737708_2a774d3564_t.jpg'},
+                            'enclosure': {
+                                'href': 'http://farm2.static.flickr.com/1346/5131737708_05ae944014_o.jpg',
+                            }
+                        },
+                        {'title': 'Angharad'},
+                        {'title': 'Crisp of Doom'}
+                    ]
+                },
+                {
+                    'date': '2010-10-10T21:12:54Z',
+                    'entries': [
+                        {'title': 'Suprvillains Know the Importance of Colour Theming'},
+                        {'title': 'Tight Fit'},
+                    ]
+                }
+            ]
+        }, ndix)
+        
+    def assertDictContainsSubsetRecursive(self, expected, actual):
+        complaints = list(self.check_subset(expected, actual, ''))
+        if complaints:
+            self.fail(';\n    '.join(complaints))
+        
+    def check_subset(self, expected, actual, key_prefix):
+        for key, expected_val in expected.items():
+            key_path = '{prefix}[{key}]'.format(prefix=key_prefix, key=key)
+            if not key in actual:
+                yield 'Expected dict to contain key {key_path}'.format(key_path=key_path)
+                break
+            actual_val = actual[key]
+            if hasattr(expected_val, 'items'):
+                for msg in self.check_subset(expected_val, actual_val, key_path):
+                    yield msg
+            elif isinstance(expected_val, list):
+                if not isinstance(actual_val, list):
+                    yield 'expected a list at {key_path}'
+                    break
+                for i, (xv, av) in enumerate(zip(expected_val, actual_val)):
+                    for msg in self.check_subset(xv, av, '{key_path}[{i}]'.format(key_path=key_path, i=i)):
+                        yield msg
+            else:
+                if expected_val != actual_val:
+                    yield 'At key {key_path}, expected {expected!r} but got {actual!r}'.format(
+                        key_path=key_path,
+                        expected=expected_val,
+                        actual=actual_val)
+    
+    

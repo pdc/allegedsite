@@ -182,7 +182,7 @@ em {
 article {
     display: block;
     float: left;
-    width: 800px;
+    width: 720px;
     margin: 0 0 0.625em;
 }
 
@@ -212,6 +212,7 @@ article.retweet p {
     margin-left: 90px;
 }
 article.twitter small {
+    font-size: 100%;
     float: left;
     width: 140px;
     margin: 0 0 0 10px;
@@ -228,6 +229,27 @@ article.twitter small a:hover b,
 article.twitter small a:active b {
     text-decoration: underline;
     color: #938;
+}
+
+article.flickr a {
+    float: left;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    margin: 8px 6px 8px 10px;
+}
+article.flickr img {
+    display: block;
+    margin: auto auto;
+}
+article.flickr small {
+    font-size: 0.8125em;
+    float: right;
+    width: 140px;
+    margin: 0 10px;
+    
+    color: #678;
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
 
 #entry-body {
