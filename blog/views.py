@@ -250,7 +250,7 @@ def render_json(view):
         return HttpResponse(data, mimetype='application/json')
     return decorated_view
     
-# @cache_page(1)
+@cache_page(1800)
 @render_json
 def from_flickr(request):
     ndix = get_flickr(settings.FLICKR_ATOM_URL)
