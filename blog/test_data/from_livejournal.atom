@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- If you are running a bot please visit this policy page outlining rules you must respect. http://www.livejournal.com/bots/ -->
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:lj="http://www.livejournal.com">
+  <id>urn:lj:livejournal.com:atom1:damiancugley</id>
+  <title>Damian writes</title>
+  <subtitle>Nobody understands me</subtitle>
+  <author>
+    <name>Damian Cugley</name>
+  </author>
+  <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/"/>
+  <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom"/>
+  <updated>2010-11-21T18:14:24Z</updated>
+  <lj:journal userid="1145403" username="damiancugley" type="personal"/>
+  <link rel="service.feed" type="application/x.atom+xml" href="http://damiancugley.livejournal.com/data/atom" title="Damian writes"/>
+  <link rel="hub" href="http://pubsubhubbub.appspot.com/"/>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:105302</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/105302.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=105302"/>
+    <title>Sister in Storage</title>
+    <published>2010-11-21T18:08:48Z</published>
+    <updated>2010-11-21T18:14:24Z</updated>
+    <category term="family"/>
+    <content type="html">&lt;a title="photo sharing" href="http://www.flickr.com/photos/pdc/5193039154/"&gt;&lt;img alt="" src="http://farm6.static.flickr.com/5082/5193039154_6632f62a1f.jpg" align="right" /&gt;&lt;/a&gt;Mum was visiting from Malta&amp;mdash;her current home, since that is where &lt;a href="http://spiritatsea.blogspot.com/"&gt;her yacht&lt;/a&gt; is&amp;mdash;and so naturally Saturday found her and my brother and me down at &lt;a href="http://www.bigyellow.co.uk/"&gt;Big Yellow Self-Storage&lt;/a&gt; to collect my sister Rachel&amp;rsquo;s gear from there for transfer to the Big Yellow in Guildford, where she lives. The store is all bare metal and bright yellow paint, so I took the opportunity to take some photos of Mike and Rachel in this odd environment.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:105137</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/105137.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=105137"/>
+    <title>Family time</title>
+    <published>2010-11-08T08:25:48Z</published>
+    <updated>2010-11-08T08:25:48Z</updated>
+    <content type="html">This weekend has conveniently kept me pretty busy, running around to dine with bands, meet local comics artists in the &lt;a href="http://www.maddingcrowd.co.uk/"&gt;Far from the Madding Crowd&lt;/a&gt;, meeting more people in cafés, watch fireworks (the &lt;a href="http://www.oxfordfireworks.co.uk/"&gt;annual spectacular from the Rotary Club&lt;/a&gt;), and on Sunday receive a visit from my nephew Alex. He brought his parents along for the ride:&lt;br /&gt;&lt;br /&gt;&lt;a href="http://www.flickr.com/photos/pdc/5155706630/" title="Timer Shot by Damian Cugley, on Flickr"&gt;&lt;img src="http://farm2.static.flickr.com/1147/5155706630_6dbb482961.jpg" width="500" height="333" alt="Timer Shot" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;(Click through for more pictures of Alex looking cute.)</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:104705</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/104705.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=104705"/>
+    <title>Ian Cugley, 1945–2010</title>
+    <published>2010-11-06T12:06:43Z</published>
+    <updated>2010-11-07T19:25:01Z</updated>
+    <category term="ian cugley"/>
+    <category term="family"/>
+    <content type="html">&lt;img src="http://www.icugley.freeserve.co.uk/home.gif" align="right" alt="" /&gt;On Thursday morning, I received the news my father died of a heart attack. I know few of my friends had actually met him—he was too ill to travel for the last few years—but he was a nice guy with a whimsical good humour that you might have enjoyed meeting.&lt;br /&gt;&lt;br /&gt;Professionally he was a composer and a teacher. For a while he made his living as a watercolour painter. There is a &lt;a href="http://en.wikipedia.org/wiki/Ian_Cugley"&gt;biographical sketch on Wikipedia&lt;/a&gt; based largely on &lt;a href="http://www.icugley.freeserve.co.uk/biog/"&gt;his official web site&lt;/a&gt;. I have not been able to find any recordings of his musical works online, though &lt;a href="http://catalogue.nla.gov.au/Search/Home?lookfor=author:%22Cugley%2C%20Ian%2C%201945-%22&amp;amp;iknowwhatimean=1"&gt;some of his scores&lt;/a&gt; are available from the National Library of Australia in Canberra.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Edited it add&lt;/b&gt; Thanks for the condolences.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:104405</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/104405.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=104405"/>
+    <title>Jigsaw: A 10K Web Application</title>
+    <published>2010-08-22T09:44:58Z</published>
+    <updated>2010-09-01T22:34:20Z</updated>
+    <category term="jigsaw"/>
+    <category term="programming"/>
+    <category term="svg"/>
+    <lj:music>Röyksopp, ‘Sparks’</lj:music>
+    <content type="html">&lt;br /&gt;As a side project I am working on an entry for the &lt;a href="http://10k.aneventapart.com/"&gt;10K Apart competition&lt;/a&gt; which is due quite soon so I will not talk about it much yet since I still have work to do.&lt;br /&gt;&lt;br /&gt;Start at &lt;a href="http://jigsaw.alleged.org.uk/"&gt;&lt;strong&gt;http://jigsaw.alleged.org.uk/&lt;/strong&gt;&lt;/a&gt;,&amp;nbsp;enter a Flickr tag and &lt;strike&gt;press the &lt;em&gt;Next&lt;/em&gt; to get button to one of Flickr&amp;rsquo;s most interesting photos with that tag. Then&lt;/strike&gt; press the &lt;em&gt;Jigsaw&lt;/em&gt; button to see a jigsaw made from that picture.&amp;nbsp;The jigsaw pieces will snap together when you bring matching pieces together, and you can then drag the hunks of puzzle around as you work out where they belong in the finished picture.&amp;nbsp;The trick is you don&amp;rsquo;t know what it will look like until you finish the puzzle!&lt;br /&gt;&lt;br /&gt;If you like, you can enter an image URL of your own. Animated GIFs will work on some browsers, which is moderately amusing.&lt;br /&gt;&lt;br /&gt;This game requires support for SVG and JavaScript in your web browser. Tested in the latest Apple Safari, Google Chrome, Opera, and Mozilla Firefox. Testing in IE9 pending!&lt;br /&gt;&lt;br /&gt;If you want to gaze upon the un-minimized code, it is &lt;a href="http://github.com/pdc/jigsaw"&gt;available on GitHub&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Update&lt;/b&gt; (23:30): You now switch between entering Flickr tags or specifying the picture URL rather than having to go through two steps.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Update&lt;/b&gt; (24 August): My Jigsaw is now &lt;a href="http://10k.aneventapart.com/Entry/269"&gt;entry #169 on the 10K Apart site&lt;/a&gt;. If you would like to vote for my entry I would really appreciate it!&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Update&lt;/b&gt; (1 Sept.). I have given it its own micro-site, &lt;a href="http://jigsawr.org/"&gt;http://jigsawr.org/&lt;/a&gt;&amp;nbsp;and written &lt;a href="http://www.alleged.org.uk/pdc/2010/08/30.html"&gt;a couple of blog posts about it&lt;/a&gt;.&amp;nbsp;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:104076</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/104076.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=104076"/>
+    <title>Stags in the Woods</title>
+    <published>2010-07-25T10:02:02Z</published>
+    <updated>2010-07-25T10:02:02Z</updated>
+    <category term="entz"/>
+    <category term="stag"/>
+    <content type="html">&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;img width="250" height="190" hspace="10" align="right" alt="" src="http://www.royaloxfordhotel.co.uk/i/cafe-coco-pictures/large/coco-coffee.jpg" /&gt;&lt;div&gt;Ian&amp;rsquo;s stag do was &lt;a href="http://www.outdoorlaser.com/"&gt;laser tagging&lt;/a&gt; in the woods&amp;mdash;exhausting but great fun. Given how hot we got it was probably just as well we weren&amp;rsquo;t further encumbered with coveralls and a face-covering helmet as required for paintballing. After hasty cleaning up we joined with the hen party, who had been honing their tree- and rope-climbing skills separately, for a combined assault on &lt;a href="http://www.royaloxfordhotel.co.uk/cafe-coco/"&gt;Caf&amp;eacute; CoCo&lt;/a&gt;. &lt;br /&gt;&lt;br /&gt;I don&amp;rsquo;t have any photos of the lasering, so here is a picture of&amp;nbsp;a creamy cappuccino instead.&lt;br /&gt;&amp;nbsp;&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:103437</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/103437.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=103437"/>
+    <title>Forgot to post: New job</title>
+    <published>2010-05-23T22:45:52Z</published>
+    <updated>2010-05-23T22:45:52Z</updated>
+    <content type="html">I have not yet mentioned this online, but last week I handed in my notice at OCC and I have accepted a position at an outfit called Optimor with offices in Summertown. &lt;br /&gt;&lt;br /&gt;I’ve had a week or so of being so absurdly indispensable I have not yet managed to get started on winding up my existing projects. At this rate I shall end up working until the end of the final hour trying to hand over client files.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:103008</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/103008.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=103008"/>
+    <title>Thoughts on Voting</title>
+    <published>2010-05-09T16:53:08Z</published>
+    <updated>2010-05-09T16:53:08Z</updated>
+    <category term="voting"/>
+    <category term="idea"/>
+    <category term="politics"/>
+    <content type="html">&lt;p&gt;Having just wandered about Oxford city centre in search of fair votes. So what do I suggest we replace the current system with?
+&lt;/p&gt;
+&lt;p&gt;
+My main criteria for a voting system are&lt;ul&gt;&lt;li&gt;I can vote sincerely (I don&amp;rsquo;t need to vote tactically);&lt;/li&gt;&lt;li&gt;The results are fairly fair;&lt;/li&gt;&lt;li&gt;The results are fairly easy to understand and trace back to who voted how;&lt;/li&gt;&lt;li&gt;The system is fairly easy to describe to the electorate.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;My suggestion is to use &lt;a href="http://www.scottish.parliament.uk/vli/education/resources/learningresources/higherElections.htm"&gt;Additional Member System (as used in the Scottish Parliament, Welsh and London Assemblies and in Germany, apparently)&lt;/a&gt;: when you vote, you choose an MPs as your consistency MP, and also the party from whose list additional MPs will be drawn. The additional MPs are chosen so that the total numbers are &amp;lsquo;roughly proportional&amp;rsquo;. The result is that you get both an MP who is &amp;lsquo;my MP&amp;rsquo; &lt;i&gt;and&lt;/i&gt; you get a parliament with numbers roughly aligned with overall party popularity. The great advantage of this system compared to the myriad other possibilities is that it is already in use, so it is fairly simple to say &amp;lsquo;use the Scottish system&amp;rsquo; rather than describe some completely different method. A variation with the terrible name &lt;a href="http://www.electoral-reform.org.uk/votingsystems/systems4.htm#AV+"&gt;Alternative Vote Plus&lt;/a&gt; has been recommended by the Independent Commission on the Voting System (chaired by Lord Jenkins of Hillhead). &lt;/p&gt;
+&lt;p&gt;The downside is that you end up with two sorts of MP, some of whom are basically party people and some constituency people. There is a risk that they will have different levels of access to ministers, say.&lt;/p&gt;
+&lt;p&gt;
+My second idea is to take a step back and consider the different roles of the Commons and the Lords. The Commons is where government and opposition parties debate policy and vote in legislation; the main role of the Lords is scrutiny of legislation. Its undemocratic nature is, well, undemocratic, but it does give lords a certain independence and depth of experience as they do not have to worry about being deselected or even the party whip. The Law Lords and Bishops can also be seen as a way to incorporate specialists in legal and ethical matters. (I realize that ethics is not the exclusive preserve of Anglican clergy, but it is a useful approximation to a justification for their presence in the House of Lords). My proposal therefore is to make constituency representatives in to ‘elected barons’, representing their constituents’ interests in the House of Lords. The Commons could then be a straight party-list vote, or STV or something.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:102784</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/102784.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=102784"/>
+    <title>Democracy Demonstration</title>
+    <published>2010-05-09T13:27:45Z</published>
+    <updated>2010-05-09T13:27:45Z</updated>
+    <content type="html">&lt;div style="text-align: left; padding: 3px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/4591558104/" title="photo sharing"&gt;&lt;img src="http://farm5.static.flickr.com/4012/4591558104_2199f7f57e.jpg" style="border: solid 2px #000000;" alt="" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span style="font-size: 0.8em; margin-top: 0px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/4591558104/"&gt;Christie&lt;/a&gt;, originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;.&lt;/span&gt;&lt;/div&gt;&lt;p&gt;The crowd calling for electoral reform in London were addressed by Nick Clegg. We had to make our own entertainment, whether it be tying purple rags to each other or inflating purple balloons. Our epoch-defining march was a sort of confused amble from the front door of the Town Hall to Cornmarket to Bonn Square, where there was room for us to mill about and make some speeches. J.P. sang a song!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:102531</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/102531.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=102531"/>
+    <title>Today’s Breakfast Companion</title>
+    <published>2010-04-07T08:17:11Z</published>
+    <updated>2010-04-07T08:17:11Z</updated>
+    <content type="html">A blackbird was outside my kitchen window eating berries from the ivy this morning. This was slightly awkward as I didn’t want to move in case I scared him off but I had already put the milk on the stove …</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:102326</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/102326.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=102326"/>
+    <title>damiancugley @ 2010-04-05T22:24:00</title>
+    <published>2010-04-05T21:24:50Z</published>
+    <updated>2010-04-05T21:24:50Z</updated>
+    <category term="rant"/>
+    <category term="stupid"/>
+    <content type="html">I am converting my old galleries for my new web site and all I want to do is display an index page to a gallery with a smaller version of some of the images in that gallery.&lt;br /&gt;&lt;br /&gt;Fine. Simple. Create a URL for the thumbnail, and when it is invoked, load the image, resize it, and return the shrunken version. In production, get Nginx to cache the results so they don’t get recalculated more than once a year.&lt;br /&gt;&lt;br /&gt;Simple, except that I cannot install the Python Imaging Library on Mac OS X. Neither can anyone else, it appears (if you consult Google)—there are many pages with recipes for installing PIL, all the many comments following reporting that it does not work. I think the underlying problem is that the PIL Python module depends on a C extension called _imagine which is compiled in 64-bit mode, and that this in turn relies on libjpeg, an antediluvian library implemented in COBOL that is compiled in 32-bit mode. I tried changing the makefile for libjpeg to add the -arch x86_64 option, which may or may not have worked (I can’t find the dynamic library file it allegedly creates), but alas! the 32-bit version installed by MacPorts takes precedence. Even when I delete the files, the deleted files take precedence over the ones I install in /usr/local. The port command also fails to uninstall its version of libjpeg.&lt;br /&gt;&lt;br /&gt;So I gave up on using PIL and decided that, fuck it, I would just spent half an hour writing a shell script to generate all the thumbnails with NetPBM and use those. At which point I discovered my attempts to sort out PIL had broken libjpeg and its command-line programs so I can’t do that either.&lt;br /&gt;&lt;br /&gt;This is a stupid fucking situation caused by Apple’s abdication of responsibility for including a decent packaging system with Mac OS X. Every other Unix-like operating system lives or dies by the quality of its package management, but Apple have allowed three different, incompatible, differently incomplete packaging solutions emerge to fill the vacuum.&lt;br /&gt;&lt;br /&gt;I have some hopes for &lt;a href="http://mxcl.github.com/homebrew/"&gt;Homebrew&lt;/a&gt;, the third contender for package manager for Mac OS X: it is the first one to be created for Mac OS X from the start rather than ported from a different platform; it does not attempt to install replacements for software you already have; it shares its database of available packages through Git, which is elegant and clever. I would uninstall MacPorts (assuming it can be uninstalled) and switch to Homebrew tonight if it had a recipe for NetPBM. Given time I might create a formula myself, but right now I want to actually get on with what I was working on.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:102023</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/102023.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=102023"/>
+    <title>Sorry I missed your party</title>
+    <published>2010-03-28T14:26:19Z</published>
+    <updated>2010-03-28T14:26:45Z</updated>
+    <content type="html">Woke up early yesterday (despite being up too late the night before), which gave me a chance to do some chores before cycling in to town to get the bus to London to go to Web and minicomics thing. And I felt perfectly fine until the very last twisty bit of the journey, when I started feeling a bit car-sick. I took a migraine pill and expected it to pass but I just got worse and by the time I got to Queen Mary’s Great Hall I was only able to spend a few minutes talking to someone before having to totter round to the Gents to contemplate the porcelain. So vague plans to take a spin around the con and then try to track down friends’ fortieth birthday parties, stag does, or just dinners in Oxford went out of the window and I took on a new mission, which was to get back home without puking in any of the trains or busses on the way. I did manage to observe Earth Hour, though, by dint of spending the evening lying down in the dark. :-P</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:101644</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/101644.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=101644"/>
+    <title>My Mother is at Sea</title>
+    <published>2010-03-18T19:14:47Z</published>
+    <updated>2010-03-18T19:14:47Z</updated>
+    <content type="html">&lt;a href="http://spiritatsea.blogspot.com/"&gt;She&lt;/a&gt; has intermittent web access and I was wondering if there is a web app for entering her past and future positions (lat and lon or by name) and displaying them on a map for her children to look at? The names I have heard in this connection are &lt;a href="http://www.dopplr.com/"&gt;Dopplr &lt;/a&gt;and &lt;a href="http://fireeagle.yahoo.net/"&gt;Fire Eagle&lt;/a&gt;&amp;nbsp;but I have never used any of them. Has anyone used these and can recommend them? Or have another site to suggest?</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:101399</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/101399.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=101399"/>
+    <title>Apropos my previous post, I just had an idea</title>
+    <published>2009-10-20T08:28:55Z</published>
+    <updated>2009-10-23T08:21:48Z</updated>
+    <category term="sexism"/>
+    <category term="idea"/>
+    <content type="html">In addition to ‘Talk Like a Pirate Day’ we could have ‘Write Like a Bisexual Day’, the idea that on that day all soaps and TV dramas have to write dialogue as if everyone were assumed to be bisexual and just happens to be involved with a member of the whichever sex they are involved with a member of on other days. I’m not talking about radical alterations to the plots, just changing dialogue from ‘One day you’ll meet a girl you really like’ to ‘One day you’ll meet a girl or boy you really like’ or, more elegantly perhaps, ‘One day you’ll meet someone with whom you truly click’. And so on.&lt;br /&gt;&lt;br /&gt;One of the complications is that many of expressions used to refer to romance don’t work: complaining that your classmate for being obsessed with boys and girls it does not convey the same implication that what you are really complaining about is excessive snogging.&lt;br /&gt;&lt;br /&gt;I think this could be interesting in several ways, one of which is that it shows up the amount of sexist and heteronormative language people are exposed to on a daily basis from soaps, which (along with daytime talk shows) are the arbiters of public mores these days.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:101296</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/101296.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=101296"/>
+    <title>Archers has a SILENCE=DEATH moment</title>
+    <published>2009-10-18T10:33:44Z</published>
+    <updated>2009-10-18T10:35:27Z</updated>
+    <category term="archers"/>
+    <category term="bbc"/>
+    <category term="rant"/>
+    <content type="html">They’re doing a storyline in &lt;i&gt;The Archers&lt;/i&gt; about a hotelier trying to suppress reports of a footballer making a homophobic assault on her staff. Meanwhile, in the real world we have discovered this week that (a) suppressing photos gets them plastered all over the internet, and (b) homophobia is a career-limiting move these days, even for &lt;i&gt;Daily Mail&lt;/i&gt; journalists.&lt;br /&gt;&lt;br /&gt;Ian and Adam arguing about Ian’s not wanting to make a fuss sounded like &lt;i&gt;Eastenders&lt;/i&gt; from 1989. Ian could have said he didn’t want to report the incident because it might well finish the career of the idiot who popped him. Adam could retort that having to get a proper job would be no worse punishment than he deserves, or perhaps, cynically, that the public’s distaste for homophobia only applies when it is directed at celebrities. Anything other than ‘Ooo, I don’t want to  make a fuss’.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:100875</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/100875.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=100875"/>
+    <title>Not dead, just visiting</title>
+    <published>2009-06-13T10:41:51Z</published>
+    <updated>2009-06-13T10:41:51Z</updated>
+    <content type="html">&lt;div style="text-align: left; padding: 3px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/3588051771/" title="photo sharing"&gt;&lt;img src="http://farm4.static.flickr.com/3337/3588051771_f51fface39.jpg" style="border: solid 2px #000000;" alt="" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span style="font-size: 0.8em; margin-top: 0px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/3588051771/"&gt;Mum took this&lt;/a&gt;, originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;.&lt;/span&gt;&lt;/div&gt;&lt;p&gt;My sister Kate flew over from Australia to see my other sister Rachel and her new baby boy Alex. This being a rare opportunity for a family assemblage, my brother Mike and my mother separately came down from Scotland so we could then spend a couple of weeks visiting each other in various permutations—Mike and I taking the train to Guildford to visit Rachel, Alex and Andy and then with them visiting Kate (who in a last-minute change of plan was stopping over at the local hospital rather than her b&amp;b), then back to Oxford for a day of recovery before an expedition to London to visit the British Museum and Forbidden Planet, the train again to Kent to visit my Dad and his family, and then a few days back at work before Kate, Rachel, Alex and Mum came to visit me here in Oxford.&lt;br /&gt;&lt;br /&gt;The upshot of this is that I have been a bit tired and behind in my chores, and my Flickr photo stream is stuffed with pictures of my baby nephew, who I think is super cute but people not blood-related may feel less excited by.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:100434</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/100434.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=100434"/>
+    <title>Family</title>
+    <published>2009-04-09T08:17:22Z</published>
+    <updated>2009-04-09T08:17:22Z</updated>
+    <category term="family"/>
+    <content type="html">Thanks to the wonders of satnav, today’s visit to Guildford happened yesterday. The occasion was the birth, two months premature, of my newest nephew. Even having been forewarned that he is tiny, my first impression is that he is startlingly tiny. He is expected to literally triple in weight over the next several weeks.&lt;br /&gt;&lt;br /&gt;His mother, my sister Rachel, looked tired and is under strict orders to take a lot of bed rest—but looking much better than she did a few days ago, Andy says. They are still trying to decide what name to give their son—though there is a slight lean in the direction of Alexander, or possibly Sikandar, the Indian equivalent.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:99833</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/99833.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=99833"/>
+    <title>Klub Kakofanney begins the Weekend</title>
+    <published>2009-02-08T21:32:05Z</published>
+    <updated>2009-02-08T21:47:54Z</updated>
+    <category term="space heroes of the people"/>
+    <category term="photos"/>
+    <category term="gig"/>
+    <lj:music>Space Heroes of the People, ‘Barbie is Robot’, Motorway to Moscow e.p.</lj:music>
+    <content type="html">&lt;div style="text-align: left; padding: 3px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/3259586485/" title="photo sharing"&gt;&lt;img src="http://farm4.static.flickr.com/3504/3259586485_9856e7d2f7.jpg" style="border: solid 2px #000000;" alt="" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span style="font-size: 0.8em; margin-top: 0px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/3259586485/"&gt;Space Heroes of the People&lt;/a&gt;, originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;.&lt;/span&gt;&lt;/div&gt;&lt;p&gt;Last night I slithered and slid over the snowy streets of Oxford to see Space Heroes of the People and two other very fine bands at the Wheatsheaf.&lt;/p&gt;&lt;p&gt;&lt;a href="http://myspace.com/picturebookaregreat"&gt;Picture Book&lt;/a&gt; are on tour from somewhere far away and were great fun. &lt;a href="http://myspace.com/spaceheroesofthepeople"&gt;Space Heroes of the People&lt;/a&gt; have a new song since I last saw them, not to mention new remixes of some of the ones I am familiar with. And now with live vocals replacing the vocal samples, thanks to a new vocoder. The evening was rounded out with the band whose name I have temporarily forgotten (Rabbit Spleen Happenstance or somesuch) who played 1920s jazz while wearing hats.&lt;/p&gt;&lt;p&gt;As always I tried taking a few snaps of the band on stage, and as usual the dim lighting mostly defeated my little pocket camera. The guys in Picture Book in particular moved too rapidly for my camera to even believe they existed. Some people were taking photos with much more impressive-looking equipment, so there are probably better shots out there somewhere, linked to from &lt;a href="http://flickr.com/photos/tags/lastfm%3Aevent%3D855593/interesting/"&gt;the Last.fm entry for this gig&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pleased to see also that &lt;span class='ljuser ljuser-name_cleanskies' lj:user='cleanskies' style='white-space:nowrap'&gt;&lt;a href='http://cleanskies.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://cleanskies.livejournal.com/'&gt;&lt;b&gt;cleanskies&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; has made it and is now fit enough to be going out again. Afterwards &lt;span class='ljuser ljuser-name_oxfordslacker' lj:user='oxfordslacker' style='white-space:nowrap'&gt;&lt;a href='http://oxfordslacker.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://oxfordslacker.livejournal.com/'&gt;&lt;b&gt;oxfordslacker&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; and I helped carry the instruments, on the strength of which I got a lift home, which was a relief—I had left my bike behind in the underground car park at work after wrenching my knee earlier in the week falling off because of the snow and ice.&lt;/p&gt;
+
+&lt;p&gt;Saturday I spent doing the usual catch-up of household chores like taking the compost thingy down to the bottom of the garden, which felt a little more adventurous than usual because the garden was all over refrozen snow and lit with brilliant sunshine. I remembered my big clunky boots this time and made cracks in the snowy crust on the way down. (If you click through to my Flickr photostream there are photos of some other mysterious footprints I found.) The big boots and the crunchy refrozen snow also allowed me to stomp confidently in to town to visit the comics shop.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:99516</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/99516.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=99516"/>
+    <title>Alternative Press Fair (Sunday)</title>
+    <published>2009-02-02T22:58:45Z</published>
+    <updated>2009-02-02T22:58:45Z</updated>
+    <content type="html">&lt;div style="text-align: left; padding: 3px;"&gt;&lt;a href="http://www.flickr.com/photos/boycrazyboy/3245577226/" title="photo sharing"&gt;&lt;img src="http://farm4.static.flickr.com/3427/3245577226_43cac94c97.jpg" style="border: solid 2px #000000;" alt="" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span style="font-size: 0.8em; margin-top: 0px;"&gt;&lt;a href="http://www.flickr.com/photos/boycrazyboy/3245577226/"&gt;Damian Cugley, Alternative Press Fair, Euston, Sunday 1st February 2009&lt;/a&gt;, originally uploaded by &lt;a href="http://www.flickr.com/people/boycrazyboy/"&gt;boycrazyboy&lt;/a&gt;.&lt;/span&gt;&lt;/div&gt;&lt;p&gt;I went to the &lt;a href="http://comicsandzines.wordpress.com/2008/11/21/alternative-press-fair-london-2009/#comments"&gt;Alternative Press Fair&lt;/a&gt; at the St Aloysius Social Centre in&lt;br /&gt;London as a last-minute substitute for &lt;span class='ljuser ljuser-name_cleanskies' lj:user='cleanskies' style='white-space:nowrap'&gt;&lt;a href='http://cleanskies.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://cleanskies.livejournal.com/'&gt;&lt;b&gt;cleanskies&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; (who is not yet fit to travel after her accident last week), doing my best to hawk copies of &lt;a href="http://www.whoresofmensa.com/"&gt;&lt;i&gt;Whores of Mensa&lt;/i&gt;&lt;/a&gt; (whose title is even harder to explain when the explainer is male), some of Jeremy’s and my comics. &lt;br /&gt;&lt;br /&gt;For a wonder I remembered ahead of time to try making some signs with the names and prices on. If I had been really clever I would have though to bring along some masking tape to attach them to things with. &lt;br /&gt;&lt;br /&gt;The venue itself is a kind of underground church hall with a pub nestling  at one end. It still has its Christmas decorations up (or perhaps they were Chinese New Year decorations). I was sharing a table with &lt;span class='ljuser ljuser-name_sinasham' lj:user='sinasham' style='white-space:nowrap'&gt;&lt;a href='http://sinasham.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://sinasham.livejournal.com/'&gt;&lt;b&gt;sinasham&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; and his &lt;cite&gt;Juvenilia&lt;/cite&gt; (a rollup of all his strips from the early 1990s when he was a teen-ager). They had covered the pool tables with some sort of tabletop, thus providing a large communal table in similar style to the CAPTION table at CAPTION, except with the added attraction of fringed lampshades overhead. &lt;br /&gt;&lt;br /&gt;A great diversity of publications on display—from polemics and non-comics through per-zines, minicomics to professional comics like the &lt;a href="http://thedfc.co.uk/"&gt;DFC&lt;/a&gt; as &lt;a href="http://jabberworks.livejournal.com/168502.html"&gt;documented&lt;/a&gt; by &lt;span class='ljuser ljuser-name_jabberworks' lj:user='jabberworks' style='white-space:nowrap'&gt;&lt;a href='http://jabberworks.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://jabberworks.livejournal.com/'&gt;&lt;b&gt;jabberworks&lt;/b&gt;&lt;/a&gt;&lt;/span&gt;. &lt;br /&gt;&lt;br /&gt;It‘s a different experience for me seeing an event like this from behind the table—watching punters float past, examine every comic in detail and then buy nothing, and noticing some comics are looked at a lot an never bought while others aren’t initially picked up but many people who do look inside buy them. Sticking things to the front of comics does appear to be a universal improver. I was given plenty of time to meditate upon the feebleness of my efforts on the covers of my comics, not to mention seeing anew the defects in the artwork as people flicked through them. &lt;br /&gt;&lt;br /&gt;I left before the evening fun began. In retrospect this was very wise—the snowfall was already well underway, and there were news reports of visitors to London being trapped overnight by the blizzard. Now to tot up the takings and see how much I owe Jeremy …&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:99102</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/99102.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=99102"/>
+    <title>Went to work despite the snow …</title>
+    <published>2009-02-02T20:40:22Z</published>
+    <updated>2009-02-02T20:40:22Z</updated>
+    <category term="commute"/>
+    <category term="snow"/>
+    <category term="uinjury"/>
+    <category term="work"/>
+    <content type="html">… and there was a power cut, so I spent most of the day sitting about trying to work out how to get anything useful done without computer or network.&lt;br /&gt;&lt;br /&gt;I fell over a couple of times on the way in—it is strangely treacherous snow, different from what I am used to from fresh-fallen snow—before deciding to change my route to follow main roads (gritted and swept) rather than avoiding them as I usually do. During the afternoon my knee has started hurting, so I am being extra careful with it and trying to avoid situations that require dodging.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:98862</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/98862.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=98862"/>
+    <title>Weekend jollity</title>
+    <published>2009-01-27T18:05:02Z</published>
+    <updated>2009-01-27T18:05:02Z</updated>
+    <category term="weekend"/>
+    <category term="party"/>
+    <content type="html">It occurred to me too late that the collision between Chinese New Year, Burns Night, and Australia Day might have been used as an excuse for some Sino-Australian haggis-appreciation evening. As it was I had a shopping list Jeremy wrote while in a morphine daze, including a few things I didn't manage to find, such as 'tiny haggises' and 'swarm of jellyfish'. Nobody seemed to mind too much. &lt;br /&gt;&lt;br /&gt;Australia day, like Burns Night has traditional dress (blue singlets rather than kilts), traditional tipple (lager in units called stubbies rather than whisky in units called drams), and traditional food (singed sausages rather than broiled haggis). We substituted sensible winter clothing, Australian wines, and sausages pan-fried or grilled on the stove (having learned in previous years that actually trying to run a barbecue in an English winter is a mug's game). &lt;br /&gt;&lt;br /&gt;As is often the case with barbecues, the generosity of my guests meant I had a near-infinite amount of leftover bread and sausages, not to mention a pie and some prawns I forgot to take out of the fridge. I took a selection of the leftover food up the hill to &lt;span class='ljuser ljuser-name_cleanskies' lj:user='cleanskies' style='white-space:nowrap'&gt;&lt;a href='http://cleanskies.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://cleanskies.livejournal.com/'&gt;&lt;b&gt;cleanskies&lt;/b&gt;&lt;/a&gt;&lt;/span&gt;'s new gaff so she can consume them during her convalescence. She's still recovering from the triple whammy of the accident, the surgery, and the painkillers, but is doing better than yesterday.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:98754</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/98754.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=98754"/>
+    <title>Jeremy Progress</title>
+    <published>2009-01-23T22:13:51Z</published>
+    <updated>2009-01-25T23:32:53Z</updated>
+    <category term="plaster"/>
+    <category term="jeremy dennis"/>
+    <category term="wrist"/>
+    <content type="html">After a slight delay, &lt;a href="http://twitter.com/cleanskies/status/1143153268"&gt;Jeremy’s been operated on and has been told that tomorrow (Saturday), after they have put a final topcoat on her cast, she will be released from the hospital&lt;/a&gt;. Yay!&lt;br /&gt;&lt;br /&gt;Update (Sunday): She has been released and was therefore able to attend her own party … she is still very, very tired, which I guess is a combination of the energy needed by her healing bones and the after-effects of surgery. She also now contains metal pins that will have to be removed when the cast comes off in a month’s time.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:98493</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/98493.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=98493"/>
+    <title>Jeremy in hospital</title>
+    <published>2009-01-21T21:17:08Z</published>
+    <updated>2009-01-22T17:57:31Z</updated>
+    <category term="hospital"/>
+    <category term="jeremy dennis"/>
+    <category term="wrist"/>
+    <content type="html">&lt;span class='ljuser ljuser-name_cleanskies' lj:user='cleanskies' style='white-space:nowrap'&gt;&lt;a href='http://cleanskies.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://cleanskies.livejournal.com/'&gt;&lt;b&gt;cleanskies&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; has fallen on the icy pavement and broken her wrist, thus &lt;a href="http://twitter.com/cleanskies/status/1136556492"&gt;finding herself in hospital&lt;/a&gt; with vague plans to have surgery tomorrow and maybe stick around for a few days chilling.&lt;br /&gt;&lt;br /&gt;This is a public post so I won’t name the hospital—if you want to visit but can’t see the friends-locked version of this post, then please leave a comment.&lt;br /&gt;&lt;br /&gt;• Edited to add:  It all happened as she was stepping around someone on an icy pavement: her foot shot out from under her and she fell backwards on to her left arm on the kerb, breaking both arm bones hear the wrist and dislocating it. Apparently out of the flurry of people slipping on the ice this morning, Jeremy’s injuries were the most spectacular. The joint has been relocated (if that’s the right term) and she now has a half-cast and plaster bundle and a hefty-looking sling hanging from a hook over her bed. She can walk about the place if she wants by hanging the sling around her neck in the usual way. &lt;span class='ljuser ljuser-name_timscience' lj:user='timscience' style='white-space:nowrap'&gt;&lt;a href='http://timscience.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://timscience.livejournal.com/'&gt;&lt;b&gt;timscience&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; and I have visited and she is as comfortable as can be expected under the circs.&lt;br /&gt;&lt;br /&gt;• Edited again to add: She has her mobile and nowadays you are allowed to use them in hospital, so you can phone or text her.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:97665</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/97665.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=97665"/>
+    <title>Stir-fried random</title>
+    <published>2008-12-08T21:18:53Z</published>
+    <updated>2008-12-08T21:18:53Z</updated>
+    <category term="personal"/>
+    <content type="html">Spent the weekend drawing a cartoon about computer security policy for my employers. Now all I need to do is shrink it to fit in a 460px-wide column.&lt;br /&gt;&lt;br /&gt;My brother has received the piece of paper from the Home Office that says he is allowed to work for a living, and has been since 1984. This will be exciting news for his employers who have been waiting eleven months to pay him for his first month’s work.&lt;br /&gt;&lt;br /&gt;Spent an hour today helping a colleague figure out how to create a new program that interoperates with a system I wrote six months ago. Most of the time was spent with me relearning how my system works.&lt;br /&gt;&lt;br /&gt;Accidentally made a super-sized stir fry for dinner. I have discovered that M&amp;S sell very tasty noodles, but have carefully sized the packets so you automatically make either too few or too many.</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:97318</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/97318.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=97318"/>
+    <title>Midwinter Comics Retreat 2008</title>
+    <published>2008-11-30T20:05:31Z</published>
+    <updated>2008-12-02T00:12:10Z</updated>
+    <category term="comics"/>
+    <category term="mcr"/>
+    <content type="html">&lt;div style="text-align: left; padding: 3px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/3071689730/" title="photo sharing"&gt;&lt;img src="http://farm4.static.flickr.com/3190/3071689730_c455c9b517.jpg" style="border: solid 2px #000000;" alt="" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span style="font-size: 0.8em; margin-top: 0px;"&gt;&lt;a href="http://www.flickr.com/photos/pdc/3071689730/"&gt;Man with a Plan&lt;/a&gt;, originally uploaded by &lt;a href="http://www.flickr.com/people/pdc/"&gt;Damian Cugley&lt;/a&gt;.&lt;/span&gt;&lt;/div&gt;&lt;p&gt;Once a year a dozen or so comics fans disappear in to a cottage on &lt;a href="http://maps.google.co.uk/maps?f=q&amp;amp;hl=en&amp;amp;geocode=&amp;amp;q=wickwar&amp;amp;sll=53.800651,-4.064941&amp;amp;sspn=12.844022,28.300781&amp;amp;ie=UTF8&amp;amp;ll=51.593899,-2.386723&amp;amp;spn=0.000823,0.001727&amp;amp;t=h&amp;amp;z=19"&gt;a farm near Wickwar in South Gloucestershire&lt;/a&gt; and emerge with a collaboratively written and drawn comic book. At least that’s the theory—last year we got carried away with ‘shortcuts’ like mixing in a photo-story section that ended up with the comic not being complete until the following &lt;a href="http://caption.org/"&gt;CAPTION&lt;/a&gt;, nine months later. This year &lt;span class='ljuser ljuser-name_discipline_lad' lj:user='discipline_lad' style='white-space:nowrap'&gt;&lt;a href='http://discipline-lad.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://discipline-lad.livejournal.com/'&gt;&lt;b&gt;discipline_lad&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; had a plan: the story will open with our discovering Doctor Kraken, who then relates spine-tingling tails about each of the curious objects we brought. The idea is to have just enough structure to enable us to be working on our pages in parallel without the problems we’ve had in stitching the independently produced pages in to some sort of narrative. We also had more people willing to draw a page or two, which helps spread the load. As a result we actually seem to have finished the story before the end of the weekend, which is great! Our host &lt;span class='ljuser ljuser-name_badasstronaut' lj:user='badasstronaut' style='white-space:nowrap'&gt;&lt;a href='http://badasstronaut.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://badasstronaut.livejournal.com/'&gt;&lt;b&gt;badasstronaut&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; has also been refining her game, allowing her to stuff us full of delicious food more efficiently and with less stress, leaving her more time to join in the comix-drawing fun.&lt;/p&gt;
+&lt;p&gt;Our new techniques left us with enough leisure time to go for a short amble to the village to seek a shop selling earplugs and paper. We sought but did not find. We did have a drink in the local pub, however, where a local shooting party were hanging out in their traditional leggings, garters, tweed jackets, etc. Their concession to modern living is that have free wi-fi there, but since they advertise it only in the toilets I did not discover this until we were on our way out. Maybe next year it will be possible to twitter from the MCR mid-afternoon pub break. Who knows what the future may bring?&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://www.flickr.com/photos/motodraconis/3071031469/in/photostream/"&gt;Colorized story segment&lt;/a&gt; by &lt;span class='ljuser ljuser-name_jinty' lj:user='jinty' style='white-space:nowrap'&gt;&lt;a href='http://jinty.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://jinty.livejournal.com/'&gt;&lt;b&gt;jinty&lt;/b&gt;&lt;/a&gt;&lt;/span&gt; and &lt;span class='ljuser ljuser-name_motodraconis' lj:user='motodraconis' style='white-space:nowrap'&gt;&lt;a href='http://motodraconis.livejournal.com/profile'&gt;&lt;img src='http://l-stat.livejournal.com/img/userinfo.gif?v=1' alt='[info]' width='17' height='17' style='vertical-align: bottom; border: 0; padding-right: 1px;'/&gt;&lt;/a&gt;&lt;a href='http://motodraconis.livejournal.com/'&gt;&lt;b&gt;motodraconis&lt;/b&gt;&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://jinty.livejournal.com/529914.html"&gt;Jenni’s journal entry for the MCR&lt;/a&gt;, more detailed than this one&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://motodraconis.livejournal.com/202098.html"&gt;Motodraconis’s has her comic in it&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://badasstronaut.livejournal.com/1054951.html"&gt;Debra&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://crazycrone.livejournal.com/576126.html"&gt;Lee&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://percyprune.livejournal.com/479278.html"&gt;Other Lee&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <id>urn:lj:livejournal.com:atom1:damiancugley:97227</id>
+    <link rel="alternate" type="text/html" href="http://damiancugley.livejournal.com/97227.html"/>
+    <link rel="self" type="text/xml" href="http://damiancugley.livejournal.com/data/atom/?itemid=97227"/>
+    <title>Swedish Robot Draws a Portrait of my LiveJournal</title>
+    <published>2008-11-21T11:07:26Z</published>
+    <updated>2008-11-21T11:13:35Z</updated>
+    <category term="robot"/>
+    <category term="myers-briggs type indicator"/>
+    <category term="analysis"/>
+    <content type="html">&lt;a href="http://www.typealyzer.com/index.php?lang=en"&gt;Apparently&lt;/a&gt; my LiveJournal looks like this:&lt;br /&gt;&lt;br /&gt;&lt;a href="http://www.typealyzer.com/images/ESTP.gif"&gt;&lt;img src="http://www.typealyzer.com/images/ESTP.gif" alt="" align="left" style="margin: 0 12px 0 0; padding: 4px; border: 4px solid #999; -moz-border-radius: 6px; -webkit-border-radius: 6px; background-color: #FFF; height: 9em;"&gt;ESTP - The Doers&lt;/a&gt;. The active and play-ful type. They are especially attuned to people and things around them and often full of energy, talking, joking and engaging in physical out-door activities. &lt;br /&gt;&lt;br /&gt;The Doers are happiest with action-filled work which craves their full attention and focus. They might be very impulsive and more keen on starting something new than following it through. They might have a problem with sitting still or remaining inactive for any period of time.&lt;br /&gt;&lt;br /&gt;Whereas &lt;a href="http://www.alleged.org.uk/pdc/"&gt;my blog&lt;/a&gt; looks like this:&lt;br /&gt;&lt;br /&gt;&lt;a href="http://www.typealyzer.com/images/ISTP.gif"&gt;&lt;img src="http://www.typealyzer.com/images/ISTP.gif" alt="" align="right" style="margin: 0 0 0 12px; padding: 4px; border: 4px solid #999; -moz-border-radius: 6px; -webkit-border-radius: 6px; background-color: #FFF; height: 9em;"&gt;ISTP - The Mechanics&lt;/a&gt;. The independent and problem-solving type. They are especially attuned to the demands of the moment are masters of responding to challenges that arise spontaneously. They generally prefer to think things out for themselves and often avoid inter-personal conflicts. &lt;br /&gt;&lt;br /&gt;The Mechanics enjoy working together with other independent and highly skilled people and often like seek fun and action both in their work and personal life. They enjoy adventure and risk such as in driving race cars or working as policemen and firefighters.&lt;br /&gt;&lt;br /&gt;(Via &lt;a href="http://lonelysandwich.com/post/60757861/typealyzer-intp"&gt;Lonely sandwich&lt;/a&gt;)</content>
+  </entry>
+</feed>

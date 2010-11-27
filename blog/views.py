@@ -12,7 +12,7 @@ from datetime import date
 import json
 
 from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
-from alleged.blog.fromatom import get_flickr
+from alleged.blog.fromatom import get_flickr, get_livejournal
 
 def add_hrefs(entries):
     for entry in entries:
@@ -256,5 +256,14 @@ def from_flickr(request):
     ndix = get_flickr(settings.FLICKR_ATOM_URL)
     if not ndix:
         HttpResponseServerError('Could not get Atom data from Flickr')
+    ndix['success'] = True
+    return ndix
+
+@cache_page(1800)
+@render_json
+def from_livejournal(request):
+    ndix = get_livejournal(settings.LIVEJOURNAL_ATOM_URL)
+    if not ndix:
+        HttpResponseServerError('Could not get Atom data from LiveJournal')
     ndix['success'] = True
     return ndix

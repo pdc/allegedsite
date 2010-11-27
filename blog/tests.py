@@ -570,11 +570,11 @@ class TestJsonfromAtom(TestCase):
         
     def test_from_flickr(self):
         data = self.fixture_data('from_flickr.atom')
-        ndix = nested_dicts_from_atom(data)
+        ndix = nested_dicts_from_atom(data, group_by='published')
         self.assertDictContainsSubsetRecursive({
-            'entriesByDay': [
+            'entryGroups': [
                 {
-                    'date': '2010-10-31T12:59:51Z',
+                    'published': '2010-10-31T12:59:51Z',
                     'entries': [
                         {
                             'title': 'Technicolor Brain Bowl with Attendant Lizard',
@@ -590,11 +590,32 @@ class TestJsonfromAtom(TestCase):
                     ]
                 },
                 {
-                    'date': '2010-10-10T21:12:54Z',
+                    'published': '2010-10-10T21:12:54Z',
                     'entries': [
                         {'title': 'Suprvillains Know the Importance of Colour Theming'},
                         {'title': 'Tight Fit'},
                     ]
+                }
+            ]
+        }, ndix)
+        
+    def test_from_livejournal(self):
+        data = self.fixture_data('from_livejournal.atom')
+        ndix = nested_dicts_from_atom(data)
+        self.assertDictContainsSubsetRecursive({
+            'entries': [
+                {
+                    'id': 'urn:lj:livejournal.com:atom1:damiancugley:105302',
+                    'published': '2010-11-21T18:08:48Z',
+                    'href': 'http://damiancugley.livejournal.com/105302.html',
+                    'title': 'Sister in Storage',
+                    'content': u'Mum was visiting from Malta\u2014her current home, since that is where her yacht is\u2014and so naturally Saturday found her and my brother and me down at Big Yellow Self-Storage to collect my sister Rachel’s gear from there for transfer to the Big Yellow in Guildford, where she lives. The store is all bare metal and bright yellow paint, so I took the opportunity to take some photos of Mike and Rachel in this odd environment.',
+                },
+                {
+                    'title': 'Family time'
+                },
+                {
+                    'title': u'Ian Cugley, 1945–2010'
                 }
             ]
         }, ndix)

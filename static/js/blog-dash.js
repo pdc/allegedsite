@@ -18,15 +18,25 @@ $(document).ready(function () {
     var flowElt = $('#flow');
     var insertIntoFlow = function (articleElt, when) {
         var isInserted = false;
-        $(flowElt).find('article').each(function (i) {
-            var then = $(this).attr('data-date');
-            if (!isInserted && then < when) { // Reverse chronomogical order
-                articleElt.insertBefore(this);   
-                isInserted = true;                     
+        
+        // Binary chop to find first existing article with date before this one.
+        // Reverse chronological order means we insert our article before it.
+        var articleElts = $(flowElt).find('article').toArray();
+        var lo = 0, hi = articleElts.length;
+        while (lo < hi) {
+            var m = Math.floor((lo + hi) / 2);
+            var existingArticle = articleElts[m];
+            var then = existingArticle.getAttribute('data-date');
+            if (then < when) {
+                hi = m;
+            } else {
+                lo = m + 1;
             }
-        });
-        if (!isInserted) {
-            $(flowElt).prepend(articleElt);
+        }
+        if (hi < articleElts.length) {
+            articleElt.insertBefore(articleElts[hi]); 
+        } else {
+            $(flowElt).append(articleElt);
         }  
     };
     
@@ -96,9 +106,9 @@ $(document).ready(function () {
         format: 'json',
         success: function (data, textStatus, request) {
             if (data && data.success) {
-                for (var i in data.entriesByDay) {
-                    var dateData = data.entriesByDay[i];
-                    var date = dateData.date;
+                for (var i in data.entryGroups) {
+                    var dateData = data.entryGroups[i];
+                    var date = dateData.published;
                     var entries = dateData.entries;
                     var articleElt = $('<article>').attr({
                         'data-date': date,
@@ -119,8 +129,41 @@ $(document).ready(function () {
                     }         
                     var detailsElt = $('<small>').appendTo(articleElt);
                     detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on Flickr')
-                    insertIntoFlow(articleElt, date)   
+                    insertIntoFlow(articleElt, date);
                 }
+            }
+        }
+    });
+    
+    // Let’s try LiveJournal next
+    var u = '/pdc/from/livejournal';
+    var livejournalLink = $('#livejournal-link');
+    livejournalLink.parent().addClass('loading');
+    $.ajax({
+        url: u,
+        format: 'json',
+        success: function (data, textStatus, request) {
+            if (data && data.success) {
+                for (var j = 0; j < data.entries.length; ++j) {
+                    var entry = data.entries[j];
+                    var date = entry.published;
+                    
+                    var articleElt = $('<article>').attr({
+                        'class': 'livejournal entry',
+                        'data-date': date,
+                        'data-id': entry.id
+                    });
+                    
+                    var headingElt = $('<b>').appendTo(articleElt);
+                    var linkElt = $('<a>').attr({
+                        href: entry.href,
+                    }).text(entry.title || entry.content.substr(0, 64));
+                    linkElt.appendTo(headingElt);
+                    
+                    var detailsElt = $('<small>').appendTo(articleElt);
+                    detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on LiveJournal')
+                    insertIntoFlow(articleElt, date);
+                }         
             }
         }
     });

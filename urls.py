@@ -35,7 +35,8 @@ urlpatterns = (
         (r'^pdc/feeds/articles-archive-(?P<page_no>[1-9][0-9]*)$', 'atom', blog_args, 'blog_atom_archive'),
         (r'^pdc/feeds/articles-paged(?P<page_no>-[1-9][0-9]*)$', 'atom', blog_args, 'blog_atom_archive'),
         (r'^pdc/tags/(?P<plus_separated_tags>[a-z0-9+-]+)$', 'filtered_by_tag', blog_args, 'blog_tag'),
-        (r'^pdc/from/flickr$', 'from_flickr', {}, 'from_flickr'))
+        (r'^pdc/from/flickr$', 'from_flickr', {}, 'from_flickr'),
+        (r'^pdc/from/livejournal$', 'from_livejournal', {}, 'from_livejournal'))
     + patterns('',
         (r'^albums/', include('alleged.snaptioner.urls'))
         # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
