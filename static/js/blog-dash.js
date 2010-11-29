@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     var monthAbbrs = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
-    var monthAbbrevs = 'Jan.|Feb.|March|May|June|July|Aug.|Sept.|Oct.|Nov.|Dec.'.split('|');
+    var monthAbbrevs = 'Jan.|Feb.|March|April|May|June|July|Aug.|Sept.|Oct.|Nov.|Dec.'.split('|');
     function pad2(n) {
         return n < 10 ? '0' + n : n
     }
@@ -24,7 +24,7 @@ $(document).ready(function () {
         var articleElts = $(flowElt).find('article').toArray();
         var lo = 0, hi = articleElts.length;
         while (lo < hi) {
-            var m = Math.floor((lo + hi) / 2);
+            var m = Math.floor((lo + hi) / 2); // Is there a better way to express integer division in JavaScript?
             var existingArticle = articleElts[m];
             var then = existingArticle.getAttribute('data-date');
             if (then < when) {
@@ -154,14 +154,19 @@ $(document).ready(function () {
                         'data-id': entry.id
                     });
                     
-                    var headingElt = $('<b>').appendTo(articleElt);
+                    var headingElt = $('<h2>').appendTo(articleElt);
                     var linkElt = $('<a>').attr({
                         href: entry.href,
                     }).text(entry.title || entry.content.substr(0, 64));
                     linkElt.appendTo(headingElt);
                     
+                    var contentElt = $('<p>').appendTo(articleElt);
+                    contentElt.text(entry.content)
+                    
                     var detailsElt = $('<small>').appendTo(articleElt);
-                    detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on LiveJournal')
+                    $('<a>').attr('href', entry.href)
+                        .text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on LiveJournal')
+                        .appendTo(detailsElt);
                     insertIntoFlow(articleElt, date);
                 }         
             }

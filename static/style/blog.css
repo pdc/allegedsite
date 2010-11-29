@@ -186,28 +186,75 @@ article {
     margin: 0 0 0.625em;
 }
 
+article h2 {
+    font-size: 1.25em;
+    margin: 0.833em 10px 0.167em;
+    padding: 0;
+    
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    line-height: 1;
+    color: #600;
+    background: transparent;
+}
+
+article h2 a {
+    text-decoration: none;
+    color: inherit;
+}
+article h2 a:hover,
+article h2 a:active {
+    text-decoration: underline;
+}
+
+article p {
+    float: left;
+    width: 460px;
+    margin: 0 10px;
+}
+
+article header p {
+    float: none;
+}
+
+article small {
+    font-size: 0.8125em;
+    float: right;
+    width: 140px;
+    margin: 0 10px;
+    
+    color: #678;
+    font-family: "YanoneKaffeesatz Regular", sans-serif;
+}
+
+article small a:link,
+article small a:visited {
+    text-decoration: none;
+    color: #678;
+}
+article small a:hover,
+article small a:active {
+    text-decoration: underline;
+    color: #938;
+}
+
+
 article.twitter {
     font-size: 0.8125em;
     font-family: Verdana, sans-serif;
 }
 
 article.tweet {
-    min-height: 48px;
+    min-height: 32px;
 }
 
 article.twitter img {
     float: left;
     display: block;
-    width: 48px;
-    height: 48px;
-    margin: 0 6px 5px 26px; /* Breaking the grid by 4px because the article icon does. */
+    width: 32px;
+    height: 32px;
+    margin: 2px 6px 3px 42px; /* Breaking the grid by 4px because the article icon does. */
 }
 
-article.twitter p {
-    float: left;
-    width: 460px;
-    margin: 0 10px;
-}
 article.retweet p {
     margin-left: 90px;
 }
@@ -220,8 +267,8 @@ article.twitter small {
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
 
-
-article.twitter small a {
+article.twitter small a:hover,
+article.twitter small a:active {
     text-decoration: none;
     color: #678;
 }
@@ -242,14 +289,19 @@ article.flickr img {
     display: block;
     margin: auto auto;
 }
-article.flickr small {
-    font-size: 0.8125em;
-    float: right;
-    width: 140px;
-    margin: 0 10px;
-    
-    color: #678;
-    font-family: "YanoneKaffeesatz Regular", sans-serif;
+
+article.livejournal {
+    background-image: url(livejournal.png);
+    background-position: 42px 1.25em ; /* Breaking the grid by 4px because the article icon does. */;
+    background-repeat: no-repeat;
+}
+
+article.livejournal h2 {
+    margin-left: 90px;
+}
+
+article.livejournal p {
+    margin-left: 90px;
 }
 
 #entry-body {

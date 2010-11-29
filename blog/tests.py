@@ -620,6 +620,18 @@ class TestJsonfromAtom(TestCase):
             ]
         }, ndix)
         
+    def test_summary_from_content_html(self):
+        html = '<p>HEllo, world</p>'
+        self.assertEqual('HEllo, world', summary_from_content(html))
+        
+    def test_summary_from_content_no_tags(self):
+        html = '<a href="foo">LiveJournal</a> does <i>not</i> do paragraph tags!'
+        self.assertEqual('LiveJournal does not do paragraph tags!', summary_from_content(html))
+        
+    def test_summary_from_content_brbr(self):
+        html = 'LiveJournal does not do paragraph tags!<br /><br />Instead they use BR tags.'
+        self.assertEqual(u'LiveJournal does not do paragraph tags! …', summary_from_content(html))
+        
     def assertDictContainsSubsetRecursive(self, expected, actual):
         complaints = list(self.check_subset(expected, actual, ''))
         if complaints:

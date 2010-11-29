@@ -82,7 +82,7 @@ def entry_from_element(entry_elt):
                         'href': 'http://farm{farmID}.static.flickr.com/{serverID}/{id}_{secret}_{letter}.jpg'.format(**flickrIDs)
                     }
             if prop_elt.get('type') == 'html':
-                entry['content'] = text_from_escaped_html(prop_elt.text)
+                entry['content'] = summary_from_content(prop_elt.text)
     return entry
     
     
@@ -91,17 +91,23 @@ def named_entity_sub(m):
     n = name2codepoint[m.group(1)]
     return unichr(n)
     
+break_re = re.compile(r'(?:<br ?/?>){2}|</p>')
 tag_re = re.compile(r'</?\w+(\s+\w+=("[^"]*"|\'[^\']*\'))*\s*/?>')
     
-def text_from_escaped_html(html):
+def summary_from_content(text, type='html'):
     """Given Atom’s escaped HTML, return text.
     
     Atom’s HTML has been escaped and looks like &lt;img src="..."&gt;.
     When we parse the XML we get something like <img src="....">
     We want to strip out the tags and leave plain text.
     """
-    html_sans_tags = tag_re.sub('', html)
-    text = named_entity_re.sub(named_entity_sub, html_sans_tags)
+    text = text.strip()
+    if type == 'html':
+        m = break_re.search(text)
+        if m and m.end(0) < len(text):
+            text = u'{text} …'.format(text=text[:m.start(0)])
+        text = tag_re.sub('', text)
+        text = named_entity_re.sub(named_entity_sub, text)
     return text
     
 def get_flickr(flickr_url):
