@@ -172,4 +172,46 @@ $(document).ready(function () {
             }
         }
     });
+    
+    // Let’s try YouTube next
+    var u = '/pdc/from/youtube';
+    var youtubeLink = $('#youtube-link');
+    youtubeLink.parent().addClass('loading');
+    $.ajax({
+        url: u,
+        format: 'json',
+        success: function (data, textStatus, request) {
+            if (data && data.success) {
+                for (var j = 0; j < data.entries.length; ++j) {
+                    var entry = data.entries[j];
+                    var date = entry.published;
+                    
+                    var articleElt = $('<article>').attr({
+                        'class': 'youtube video',
+                        'data-date': date,
+                        'data-id': entry.id
+                    });
+                    
+                    var headingElt = $('<h2>').appendTo(articleElt);
+                    var linkElt = $('<a>').attr({
+                        href: entry.href,
+                    }).text(entry.title || entry.content.substr(0, 64));
+                    linkElt.appendTo(headingElt);
+                    $('<img>').attr({
+                        alt: 'Video',
+                        src: entry.poster.href
+                    }).prependTo(linkElt);
+                    
+                    var contentElt = $('<p>').appendTo(articleElt);
+                    contentElt.text(entry.content)
+                    
+                    var detailsElt = $('<small>').appendTo(articleElt);
+                    $('<a>').attr('href', entry.href)
+                        .text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on YouTube')
+                        .appendTo(detailsElt);
+                    insertIntoFlow(articleElt, date);
+                }         
+            }
+        }
+    });
 })

@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:gd="http://schemas.google.com/g/2005" gd:etag="W/&quot;CkEHR38-cCp7ImA9Wx9SFUo.&quot;">
+    <id>tag:youtube.com,2008:user:damiancugley:uploads</id>
+    <updated>2010-12-05T17:37:16.158Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+    <title>Uploads by damiancugley</title>
+    <logo>http://www.youtube.com/img/pic_youtubelogo_123x63.gif</logo>
+    <link rel="related" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley?v=2"/>
+    <link rel="alternate" type="text/html" href="http://www.youtube.com/profile_videos?user=damiancugley"/>
+    <link rel="hub" href="http://pubsubhubbub.appspot.com"/>
+    <link rel="http://schemas.google.com/g/2005#feed" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?v=2"/>
+    <link rel="http://schemas.google.com/g/2005#batch" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/batch?v=2"/>
+    <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?start-index=1&amp;max-results=25&amp;orderby=published&amp;v=2"/>
+    <link rel="service" type="application/atomsvc+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?alt=atom-service&amp;v=2"/>
+    <author>
+        <name>damiancugley</name>
+        <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+    </author>
+    <generator version="2.0" uri="http://gdata.youtube.com/">YouTube data API</generator>
+    <openSearch:totalResults>21</openSearch:totalResults>
+    <openSearch:startIndex>1</openSearch:startIndex>
+    <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+    <entry gd:etag="W/&quot;D0IGRH47eCp7ImA9Wx5bFU8.&quot;">
+        <id>tag:youtube.com,2008:video:49cy7-hTAb4</id>
+        <published>2010-10-31T11:45:25.000Z</published>
+        <updated>2010-10-31T11:45:25.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 8: Before-Hallowe'en Tour</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=49cy7-hTAb4&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/49cy7-hTAb4/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=49cy7-hTAb4&amp;amp;feature=youtube_gdata"&gt;Minehouse 8: Before-Hallowe&amp;#39;en Tour&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Recorded the day before the much-anticipated Hallowe&amp;#39;en update. As I contemplate the possibility of exploring my world a little more now biomes are to be added to the mix, I thought this was as good a time as any to review my existing home base(s). Warning: I don&amp;#39;t have any startling megastructures, so people who don&amp;#39;t know me may not find much to hold their interest.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+22&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;10:06&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=49cy7-hTAb4&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/49cy7-hTAb4?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;Ak4GRX47eCp7ImA9Wx5bFU8.&quot;">
+        <id>tag:youtube.com,2008:video:_zGzDgmzwq8</id>
+        <published>2010-10-30T11:19:34.000Z</published>
+        <updated>2010-10-31T12:42:04.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 7: The Underwater Dungeon Part Two</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=_zGzDgmzwq8&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/_zGzDgmzwq8/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=_zGzDgmzwq8&amp;amp;feature=youtube_gdata"&gt;Minehouse 7: The Underwater Dungeon Part Two&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Second of two parts (three if you count #4, More Monsters Than Necessary as a prologue). Having made safe the underwater dungeon, I begin convert it in to a water trap and arrow factory.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+38&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;12:09&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=_zGzDgmzwq8&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/_zGzDgmzwq8?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CEICRn47eCp7ImA9Wx5UGUs.&quot;">
+        <id>tag:youtube.com,2008:video:_1lo8RT82mo</id>
+        <published>2010-10-24T22:06:16.000Z</published>
+        <updated>2010-10-24T23:22:47.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 5: The Underwater Dungeon Part One</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=_1lo8RT82mo&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/_1lo8RT82mo/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=_1lo8RT82mo&amp;amp;feature=youtube_gdata"&gt;Minehouse 5: The Underwater Dungeon Part One&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;In More Monsters than Necessary I showed you an underwater dungeon I found in my ceiling. This video shows how I started tackling the task of excavating it without either flooding my minerail tunnel or getting myself killed. I will upload part 2 in a few days time.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+142&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;06:13&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=_1lo8RT82mo&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/_1lo8RT82mo?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;Ak8MR347eCp7ImA9Wx5UGU4.&quot;">
+        <id>tag:youtube.com,2008:video:QoyNQHE2kpc</id>
+        <published>2010-10-24T12:29:58.000Z</published>
+        <updated>2010-10-24T16:48:06.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 6: Minerail Works at Last</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=QoyNQHE2kpc&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/QoyNQHE2kpc/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=QoyNQHE2kpc&amp;amp;feature=youtube_gdata"&gt;Minehouse 6: Minerail Works at Last&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;After my earlier failed attempt using fancy double boosters I have redone my very small minecart railway with more efficient boosters and a neater redstone circuit controlling the points. This is much less ambitious than some people&amp;#39;s minetrack systems, but it was challenging enough for me.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+23&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;04:30&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=QoyNQHE2kpc&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/QoyNQHE2kpc?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DU8DRH47eCp7ImA9Wx5UF0o.&quot;">
+        <id>tag:youtube.com,2008:video:bTQrgW-F_qo</id>
+        <published>2010-10-22T19:41:23.000Z</published>
+        <updated>2010-10-22T20:04:35.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 4: Minerail fail</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=bTQrgW-F_qo&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/bTQrgW-F_qo/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=bTQrgW-F_qo&amp;amp;feature=youtube_gdata"&gt;Minehouse 4: Minerail fail&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;It started so well&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+22&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;02:10&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=bTQrgW-F_qo&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/bTQrgW-F_qo?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;Ck8GRH47eCp7ImA9Wx5UE0k.&quot;">
+        <id>tag:youtube.com,2008:video:INvkvorBRso</id>
+        <published>2010-10-17T18:40:25.000Z</published>
+        <updated>2010-10-17T18:40:25.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 3: More Monsters Than Necessary</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=INvkvorBRso&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/INvkvorBRso/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=INvkvorBRso&amp;amp;feature=youtube_gdata"&gt;Minehouse 3: More Monsters Than Necessary&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;I discovered an underwater dungeon in my ceiling!&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+197&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:04&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=INvkvorBRso&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/INvkvorBRso?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DkIEQX47eCp7ImA9Wx5UGUs.&quot;">
+        <id>tag:youtube.com,2008:video:TvhFwU3BsW8</id>
+        <published>2010-10-17T09:45:59.000Z</published>
+        <updated>2010-10-24T23:55:00.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 2: Skeletons under Glass</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=TvhFwU3BsW8&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/TvhFwU3BsW8/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=TvhFwU3BsW8&amp;amp;feature=youtube_gdata"&gt;Minehouse 2: Skeletons under Glass&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;My glass-based skeleton-combatting technique&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+188&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;1
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;00:20&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=TvhFwU3BsW8&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/TvhFwU3BsW8?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CEUBRn47eCp7ImA9Wx5UEkg.&quot;">
+        <id>tag:youtube.com,2008:video:WPvWB19ZYGQ</id>
+        <published>2010-10-16T18:04:17.000Z</published>
+        <updated>2010-10-16T18:04:17.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Building Beacon II (Minecraft)</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=WPvWB19ZYGQ&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/WPvWB19ZYGQ/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=WPvWB19ZYGQ&amp;amp;feature=youtube_gdata"&gt;Building Beacon II (Minecraft)&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;As I was perched on top of a stack of gravel building part of a glass sculpture called Beacon II (Water), I looked up from my block-placing and suddenly noticed the fantastic view from up there. You will see that I am using Excess and Narc0tiq&amp;#39;s automatic self-tidying scaffolding. But I need to work on my aim when it comes to the high jump.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+31&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:42&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=WPvWB19ZYGQ&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/WPvWB19ZYGQ?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;Ak4DQH47eCp7ImA9Wx5UEk8.&quot;">
+        <id>tag:youtube.com,2008:video:SIFFyV_oRp0</id>
+        <published>2010-10-16T11:36:11.000Z</published>
+        <updated>2010-10-16T11:36:11.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Minehouse 1: The Underpool</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=SIFFyV_oRp0&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/SIFFyV_oRp0/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=SIFFyV_oRp0&amp;amp;feature=youtube_gdata"&gt;Minehouse 1: The Underpool&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;When I started my minehouse in the middle of an island I underestimated how big a circle I was plotting out and ended up overlapping the ocean so that my original plan of having the central platform hanging over a void went out the window. So instead I have turned the shoreline in to a waterfall in to a pool under my home platform.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+240&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:26&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=SIFFyV_oRp0&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/SIFFyV_oRp0?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;C0EEQn47eCp7ImA9Wx9SFE4.&quot;">
+        <id>tag:youtube.com,2008:video:kWy5hwuY7t4</id>
+        <published>2010-10-03T21:08:11.000Z</published>
+        <updated>2010-12-04T03:00:03.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Matrixcraft</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=kWy5hwuY7t4&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/kWy5hwuY7t4/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=kWy5hwuY7t4&amp;amp;feature=youtube_gdata"&gt;Matrixcraft&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Larking about with textures in Minecraft. I thought I would try replacing the terrain image with hexadecimal numbers to see whether I could turn it in to something resembling the code view in the Matrix films. The music is &amp;#39;Revelawesome&amp;#39;, stolen from the Homestruck the sound track to the webcomic MSPaint Adventures, at mspaintadventures.com&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+87&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;2
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;00:39&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=20"&gt;Gaming&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=kWy5hwuY7t4&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/kWy5hwuY7t4?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DEUNSH47eCp7ImA9WxNaFE0.&quot;">
+        <id>tag:youtube.com,2008:video:i_XkiLHOwzE</id>
+        <published>2009-11-28T10:57:44.000Z</published>
+        <updated>2009-11-28T11:04:59.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>TOSS sfx shot (first attempt)</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=i_XkiLHOwzE&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/i_XkiLHOwzE/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=i_XkiLHOwzE&amp;amp;feature=youtube_gdata"&gt;TOSS sfx shot (first attempt)&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Your chance to point and laugh at my attempts to produce an animated sfx shot using Google Sketchup 7 and Apple iMovie 09. I almost managed it, too, except that something about my green-screen clip causes it to not register properly. The wrong green? Subject too small? Too yellow? Maybe I shall work out what went wrong in future.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+46&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;00:55&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=1"&gt;Film &amp;amp; Animation&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=i_XkiLHOwzE&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/i_XkiLHOwzE?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CUYERn47eCp7ImA9Wx5TGUQ.&quot;">
+        <id>tag:youtube.com,2008:video:nY_JbqejU5c</id>
+        <published>2008-06-21T01:19:40.000Z</published>
+        <updated>2010-08-05T07:25:07.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Space Heroes of the People: Motorway to Moscow Live</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=nY_JbqejU5c&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/nY_JbqejU5c/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=nY_JbqejU5c&amp;amp;feature=youtube_gdata"&gt;Space Heroes of the People: Motorway to Moscow Live&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Space Heroes of the People &amp;#39;Motorway to Moscow&amp;#39;, live at the Wheatsheaf in Oxford, 30 May 2008&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+209&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;03:15&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=10"&gt;Music&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=nY_JbqejU5c&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/nY_JbqejU5c?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DEMGQX47eCp7ImA9Wx5RGE0.&quot;">
+        <id>tag:youtube.com,2008:video:4WXEIg_jfR4</id>
+        <published>2008-06-15T16:46:42.000Z</published>
+        <updated>2010-08-26T07:07:00.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Pandaemonium Picnic (Finale)</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=4WXEIg_jfR4&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/4WXEIg_jfR4/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=4WXEIg_jfR4&amp;amp;feature=youtube_gdata"&gt;Pandaemonium Picnic (Finale)&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;A musical performance held in Harcourt Arboretum on 14 and 15 June 2008.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+292&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;1
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:45&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=19"&gt;Travel &amp;amp; Events&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=4WXEIg_jfR4&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/4WXEIg_jfR4?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DEAFQn47eCp7ImA9WxBXFE8.&quot;">
+        <id>tag:youtube.com,2008:video:yt77SgCZL3k</id>
+        <published>2008-05-18T22:46:14.000Z</published>
+        <updated>2010-01-25T13:38:33.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Little Cat 2</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=yt77SgCZL3k&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/yt77SgCZL3k/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=yt77SgCZL3k&amp;amp;feature=youtube_gdata"&gt;Little Cat 2&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;A little black kitten visited our garden to explore it while we were trying to get on with a little bit of gardening.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+78&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:01&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=15"&gt;Pets &amp;amp; Animals&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=yt77SgCZL3k&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/yt77SgCZL3k?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;A0QHRn47eCp7ImA9WxdSEUg.&quot;">
+        <id>tag:youtube.com,2008:video:d9lABG8JIl4</id>
+        <published>2008-05-18T22:22:36.000Z</published>
+        <updated>2008-05-19T01:08:57.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Little Cat</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=d9lABG8JIl4&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/d9lABG8JIl4/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=d9lABG8JIl4&amp;amp;feature=youtube_gdata"&gt;Little Cat&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;A little black kitten visited our garden this afternoon.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+71&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;1
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:14&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=15"&gt;Pets &amp;amp; Animals&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=d9lABG8JIl4&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/d9lABG8JIl4?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DkQDRX47eCp7ImA9Wx5RF00.&quot;">
+        <id>tag:youtube.com,2008:video:1NBcILEZIm4</id>
+        <published>2007-12-27T19:16:33.000Z</published>
+        <updated>2010-08-25T02:46:14.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Mechanical Kangaroo</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=1NBcILEZIm4&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/1NBcILEZIm4/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=1NBcILEZIm4&amp;amp;feature=youtube_gdata"&gt;Mechanical Kangaroo&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Two-Leg Jumping Type. A transparent, orange, electric kangaroo, as assembled on Boxing Day afternoon.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+701&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;00:45&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=24"&gt;Entertainment&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=1NBcILEZIm4&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/1NBcILEZIm4?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CE8DQ347eCp7ImA9WxBTFkw.&quot;">
+        <id>tag:youtube.com,2008:video:RebIy3pgUXg</id>
+        <published>2007-12-15T14:16:23.000Z</published>
+        <updated>2009-12-12T10:14:32.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Fireworks 2006</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=RebIy3pgUXg&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/RebIy3pgUXg/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=RebIy3pgUXg&amp;amp;feature=youtube_gdata"&gt;Fireworks 2006&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Adrian &amp;amp; Jo&amp;#39;s fireworks party in 2006&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+147&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;0
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:44&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=24"&gt;Entertainment&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=RebIy3pgUXg&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/RebIy3pgUXg?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CEADQn47eCp7ImA9Wx5REEk.&quot;">
+        <id>tag:youtube.com,2008:video:FFYClY-OEZw</id>
+        <published>2007-08-27T21:32:58.000Z</published>
+        <updated>2010-08-17T10:59:33.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Mudnose the Unconquered</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=FFYClY-OEZw&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/FFYClY-OEZw/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=FFYClY-OEZw&amp;amp;feature=youtube_gdata"&gt;Mudnose the Unconquered&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Flying a radio-controlled pterodactyl on Port Meadow in Oxford, England.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+148&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;1
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:22&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=24"&gt;Entertainment&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=FFYClY-OEZw&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/FFYClY-OEZw?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CkEGQ347eCp7ImA9Wx5SF0s.&quot;">
+        <id>tag:youtube.com,2008:video:GlESMTruV70</id>
+        <published>2006-08-26T10:43:43.000Z</published>
+        <updated>2010-08-14T04:37:02.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Jeremy Dennis and the Rocket of Doom</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=GlESMTruV70&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/GlESMTruV70/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=GlESMTruV70&amp;amp;feature=youtube_gdata"&gt;Jeremy Dennis and the Rocket of Doom&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Thrilling, or at least short, sequel to Airship Versus Rocket.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+719&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;3
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;01:01&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=24"&gt;Entertainment&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=GlESMTruV70&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/GlESMTruV70?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;DE8BR347eCp7ImA9Wx9SEkQ.&quot;">
+        <id>tag:youtube.com,2008:video:rqC4Octfplo</id>
+        <published>2006-08-25T23:24:13.000Z</published>
+        <updated>2010-12-02T13:34:16.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Airship Versus Rocket</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=rqC4Octfplo&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/rqC4Octfplo/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=rqC4Octfplo&amp;amp;feature=youtube_gdata"&gt;Airship Versus Rocket&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;A scientific experiment to determine the results of pitting the Solar Airship against the Rocket of Doom, taking place on Port Meadow, Oxford, England on 20 August 2006.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+34353&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;32
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;02:50&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=24"&gt;Entertainment&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=rqC4Octfplo&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/rqC4Octfplo?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+    <entry gd:etag="W/&quot;CUEMRn47eCp7ImA9Wx5RGU8.&quot;">
+        <id>tag:youtube.com,2008:video:dWdhgylwcHw</id>
+        <published>2006-07-05T22:16:08.000Z</published>
+        <updated>2010-08-27T15:41:27.000Z</updated>
+        <category scheme="http://schemas.google.com/g/2005#kind" term="http://gdata.youtube.com/schemas/2007#video"/>
+        <title>Mad Mechanical Horse (Cowley Road Carnival 2006)</title>
+        <content type="html">&lt;div style="color: #000000;font-family: Arial, Helvetica, sans-serif;     font-size:12px; font-size: 12px; width: 555px;"&gt;
+&lt;table cellspacing="0" cellpadding="0" border="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="140" valign="top" rowspan="2"&gt;&lt;div style="border: 1px solid #999999; margin: 0px 10px 5px 0px;"&gt;&lt;a href="http://www.youtube.com/watch?v=dWdhgylwcHw&amp;amp;feature=youtube_gdata"&gt;&lt;img alt="" src="http://i.ytimg.com/vi/dWdhgylwcHw/default.jpg"&gt;&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width="256" valign="top"&gt;&lt;div style="font-size: 12px; font-weight: bold;"&gt;&lt;a style="font-size: 15px; font-weight: bold;                  font-decoration: none;" href="http://www.youtube.com/watch?v=dWdhgylwcHw&amp;amp;feature=youtube_gdata"&gt;Mad Mechanical Horse (Cowley Road Carnival 2006)&lt;/a&gt;
+&lt;br&gt;&lt;/div&gt;
+&lt;div style="font-size: 12px; margin: 3px 0px;"&gt;&lt;span&gt;Once a year we close Cowley Road to cars and fill it with food stalls, music stages, a parade, and other street performers. Here are a few shots of one of the more surprising street entertainments.&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; line-height: 1.4em; padding-left: 20px;             padding-top: 1px;" width="146" valign="top"&gt;&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;From:&lt;/span&gt;
+&lt;a href="http://www.youtube.com/profile?user=damiancugley"&gt;damiancugley&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Views:&lt;/span&gt;
+2473&lt;/div&gt;
+&lt;div style="white-space: nowrap;text-align: left"&gt;&lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_full_11x11.gif"&gt; &lt;img style="border: 0px none; margin: 0px; padding: 0px;                    vertical-align: middle; font-size: 11px;" align="top" alt="" src="http://gdata.youtube.com/static/images/icn_star_empty_11x11.gif"&gt;&lt;/div&gt;
+&lt;div style="font-size: 11px;"&gt;3
+&lt;span style="color: #666666; font-size: 11px;"&gt;ratings&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;Time:&lt;/span&gt;
+&lt;span style="color: #000000; font-size: 11px; font-weight: bold;"&gt;00:49&lt;/span&gt;&lt;/td&gt;
+&lt;td style="font-size: 11px; padding-left: 20px;"&gt;&lt;span style="color: #666666; font-size: 11px;"&gt;More in&lt;/span&gt;
+&lt;a href="http://www.youtube.com/categories_portal?c=24"&gt;Entertainment&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+        <link rel="alternate" type="text/html" href="http://www.youtube.com/watch?v=dWdhgylwcHw&amp;feature=youtube_gdata"/>
+        <link rel="self" type="application/atom+xml" href="http://gdata.youtube.com/feeds/base/users/damiancugley/uploads/dWdhgylwcHw?v=2"/>
+        <author>
+            <name>damiancugley</name>
+            <uri>http://gdata.youtube.com/feeds/base/users/damiancugley</uri>
+        </author>
+    </entry>
+</feed>

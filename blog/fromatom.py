@@ -29,6 +29,19 @@ FLICKR_IMAGE_RE = re.compile(r"""
     )?
     \.jpg"
     """, re.VERBOSE)
+    
+YOUTUBE_POSTER_RE = re.compile(r"""
+    <img \s
+    alt="" \s
+    src="(?P<url> http://i.ytimg.com/vi/.*/default.jpg )"
+    ></a>
+""", re.VERBOSE)
+
+SPAN_RE = re.compile(r"""
+    <span>
+    (?P<content> .* )
+    </span>
+""", re.VERBOSE)
 
 def nested_dicts_from_atom(xml_data, group_by=None):
     """Convert from Atom to a similified format amenable to JSON."""
@@ -73,7 +86,8 @@ def entry_from_element(entry_elt):
         elif prop_elt.tag == ATOM_ID:
             entry['id'] = prop_elt.text
         elif prop_elt.tag == ATOM_CONTENT:
-            m = FLICKR_IMAGE_RE.search(prop_elt.text)
+            text = prop_elt.text
+            m = FLICKR_IMAGE_RE.search(text)
             if m:
                 flickrIDs = m.groupdict()
                 for (rel, letter) in (('square', 's'), ('thumbnail', 't')):
@@ -81,8 +95,16 @@ def entry_from_element(entry_elt):
                     entry[rel] = {
                         'href': 'http://farm{farmID}.static.flickr.com/{serverID}/{id}_{secret}_{letter}.jpg'.format(**flickrIDs)
                     }
+            m = YOUTUBE_POSTER_RE.search(text)
+            if m:
+                entry['poster'] = {
+                    'href': m.group('url')
+                }
+                m = SPAN_RE.search(text)
+                if m:
+                    text = m.group('content')
             if prop_elt.get('type') == 'html':
-                entry['content'] = summary_from_content(prop_elt.text)
+                entry['content'] = summary_from_content(text)
     return entry
     
     
@@ -110,16 +132,14 @@ def summary_from_content(text, type='html'):
         text = named_entity_re.sub(named_entity_sub, text)
     return text
     
-def get_flickr(flickr_url):
-    http = httplib2.Http(settings.HTTPLIB2_CACHE_DIR)
-    resp, body = http.request(flickr_url, 'GET')
-    if resp.status == 200:
-        return nested_dicts_from_atom(body, group_by='published')
 
-def get_livejournal(livejournal_url):
+def get_flickr(flickr_url): return get_atom(flickr_url, group_by='published')
+def get_livejournal(livejournal_url): return get_atom(livejournal_url)
+def get_youtube(youtube_url): return get_atom(youtube_url)
+        
+def get_atom(atom_url, **kwargs):
     http = httplib2.Http(settings.HTTPLIB2_CACHE_DIR)
-    resp, body = http.request(livejournal_url, 'GET')
+    resp, body = http.request(atom_url, 'GET')
     if resp.status == 200:
-        return nested_dicts_from_atom(body)
-
+        return nested_dicts_from_atom(body, **kwargs)
     

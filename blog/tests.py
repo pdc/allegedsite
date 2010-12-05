@@ -619,6 +619,25 @@ class TestJsonfromAtom(TestCase):
                 }
             ]
         }, ndix)
+
+    def test_from_youtube(self):
+        data = self.fixture_data('from_youtube.atom')
+        ndix = nested_dicts_from_atom(data)
+        self.assertDictContainsSubsetRecursive({
+            'entries': [
+                {
+                    'id': 'tag:youtube.com,2008:video:49cy7-hTAb4',
+                    'published': '2010-10-31T11:45:25.000Z',
+                    'href': 'http://www.youtube.com/watch?v=49cy7-hTAb4&feature=youtube_gdata',
+                    'title': 'Minehouse 8: Before-Hallowe\'en Tour',
+                    'content': 'Recorded the day before the much-anticipated Hallowe&#39;en update. As I contemplate the possibility of exploring my world a little more now biomes are to be added to the mix, I thought this was as good a time as any to review my existing home base(s). Warning: I don&#39;t have any startling megastructures, so people who don&#39;t know me may not find much to hold their interest.',
+                    'poster': {
+                        'href': 'http://i.ytimg.com/vi/49cy7-hTAb4/default.jpg',
+                    }
+                },
+            ]
+        }, ndix)
+        
         
     def test_summary_from_content_html(self):
         html = '<p>HEllo, world</p>'

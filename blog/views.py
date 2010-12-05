@@ -12,7 +12,7 @@ from datetime import date
 import json
 
 from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
-from alleged.blog.fromatom import get_flickr, get_livejournal
+from alleged.blog.fromatom import get_flickr, get_livejournal, get_youtube
 
 def add_hrefs(entries):
     for entry in entries:
@@ -250,20 +250,25 @@ def render_json(view):
         return HttpResponse(data, mimetype='application/json')
     return decorated_view
     
+    
+    
+def from_atom(func, url, label):
+    ndix = func(url)
+    if not ndix:
+        HttpResponseServerError('Could not get Atom data from {label}'.format(label=label))
+    ndix['success'] = True
+    return ndix
+    
 @cache_page(1800)
 @render_json
 def from_flickr(request):
-    ndix = get_flickr(settings.FLICKR_ATOM_URL)
-    if not ndix:
-        HttpResponseServerError('Could not get Atom data from Flickr')
-    ndix['success'] = True
-    return ndix
-
+    return from_atom(get_flickr, settings.FLICKR_ATOM_URL, 'Flickr')
+    
 @cache_page(1800)
 @render_json
 def from_livejournal(request):
-    ndix = get_livejournal(settings.LIVEJOURNAL_ATOM_URL)
-    if not ndix:
-        HttpResponseServerError('Could not get Atom data from LiveJournal')
-    ndix['success'] = True
-    return ndix
+    return from_atom(get_livejournal, settings.LIVEJOURNAL_ATOM_URL, 'LiveJournal')
+
+@render_json
+def from_youtube(request):
+    return from_atom(get_youtube, settings.YOUTUBE_ATOM_URL, 'YouTube')
