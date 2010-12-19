@@ -128,7 +128,15 @@ $(document).ready(function () {
                         photoElt.appendTo(articleElt);                        
                     }         
                     var detailsElt = $('<small>').appendTo(articleElt);
-                    detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on Flickr')
+                    detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on Flickr');
+                    
+                    $('<h2>')
+                        .text(
+                            entries.length > 1 
+                            ? ('I uploaded ' + entries.length + ' photos') 
+                            : 'I uploaded a photo')
+                        .prependTo(articleElt);
+                    
                     insertIntoFlow(articleElt, date);
                 }
             }

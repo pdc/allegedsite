@@ -207,10 +207,11 @@ article h2 a:active {
     text-decoration: underline;
 }
 
-article p {
+article.tweet p,
+article.video p {
     float: left;
-    width: 460px;
     margin: 0 10px;
+    width: 460px;
 }
 
 article header p {
@@ -257,7 +258,9 @@ article.twitter img {
 }
 
 article.retweet p {
-    margin-left: 90px;
+    float: left;
+    margin: 0 10px 0 90px;
+    width: 460px;
 }
 article.twitter small {
     font-size: 100%;
@@ -385,11 +388,12 @@ article header h2 {
     line-height: 1;
 }
 
-article p {
+article#entry p {
     margin: 0 10px;
+    width: 460px;
 }
 
-article p+p {
+article#entry p+p {
     text-indent: 30px;
 }
 

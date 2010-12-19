@@ -250,8 +250,6 @@ def render_json(view):
         return HttpResponse(data, mimetype='application/json')
     return decorated_view
     
-    
-    
 def from_atom(func, url, label):
     ndix = func(url)
     if not ndix:
