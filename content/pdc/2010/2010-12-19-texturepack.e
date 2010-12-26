@@ -1,6 +1,7 @@
 Date: 2010-12-19
-Image: ../icon-64x64.png
+Image: groovystipple-64x64.png
 Title: GroovyStipple, a texture pack for Minecraft
+Topics: groovystipple minecraft
 
 [Minecraft][] is a silly video game that is not yet complete but can be
 yours for €9.95 until 20 December. The game world is rendered as a
@@ -37,13 +38,13 @@ progress.
 
 You can get the ZIP files here:
 
-* [groovystipple.zip][]
-* [smoothstipple.zip][]
+* [GroovyStipple][]
+* [SmoothStipple][]
 
 To install them, click on Mods and Textures in the Minecraft main menu,
 use it to visit the textures directory and copy or move the ZIP files
 there.
 
   [Minecraft]: http://minecraft.net/
-  [groovystipple.zip]: http://static.alleged.org.uk/pdc/2010/groovystipple.zip
-  [smoothstipple.zip]: http://static.alleged.org.uk/pdc/2010/smoothstipple.zip
+  [groovystipple]: http://static.alleged.org.uk/pdc/2010/groovystipple.zip
+  [smoothstipple]: http://static.alleged.org.uk/pdc/2010/smoothstipple.zip
