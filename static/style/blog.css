@@ -80,7 +80,7 @@
 body {
     margin: 0;
     padding: 0;
-    
+
     font-family: "GentiumBookBasicRegular", "Palatino", "Book Antiqua", serif;
     line-height: 1.25; /* Default is 16px on 20px */
     background-color: #EEE;
@@ -101,7 +101,7 @@ a:active {
 
 em {
     font-family: "GentiumBookBasicItalic", "Palatino", "Book Antiqua", serif;
-    
+
 }
 
 #banner {
@@ -111,7 +111,7 @@ em {
     min-height: 7.5em;
     margin: 0;
     padding: 0;
-    
+
     background: #182834 url(banners/banner-2008-12-26.jpeg) left 50% no-repeat;
     border-bottom: 4px solid #123;
 }
@@ -119,8 +119,8 @@ em {
 #banner b {
     font-size: 2em;
     display: block;
-    padding: 0 10px;    
-    
+    padding: 0 10px;
+
     font-weight: normal;
     font-family: "Whitehall", sans-serif;
     text-transform: uppercase;
@@ -152,7 +152,7 @@ em {
     width: 940px;
     margin: 0.3em auto -6px;
     padding: 0.1em 20px 6px;
-    
+
     font-weight: bold;
     font-family: "YanoneKaffeesatz Bold", sans-serif;
     color: #310;
@@ -164,7 +164,7 @@ em {
     width: 960px;
     margin: 0 auto 20px;
     padding: 20px 10px;
-    
+
     background-color: #FFF;
     -moz-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 5px;
@@ -191,7 +191,7 @@ article h2 {
     font-size: 1.25em;
     margin: 0.833em 10px 0.167em;
     padding: 0;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     line-height: 1;
     color: #600;
@@ -223,7 +223,7 @@ article small {
     float: right;
     width: 140px;
     margin: 0 10px;
-    
+
     color: #678;
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
@@ -267,7 +267,7 @@ article.twitter small {
     float: left;
     width: 140px;
     margin: 0 0 0 10px;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
 
@@ -317,7 +317,7 @@ article.youtube img { /* Poster image: 120px by 90px */
     left: 10px;
     top: 1em;
     padding: 9px;
-    
+
     border: 1px outset #AB0;
     border-radius: 6px;
     -moz-border-radius: 6px;
@@ -353,7 +353,7 @@ article.youtube p {
     font-size: 1.5em;
     margin: 0.833em 10px 0.167em;
     padding: 0;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     line-height: 1;
     color: #600;
@@ -363,7 +363,7 @@ article.youtube p {
 article header p {
     font-size: 1em;
     margin: 1.25em 10px 0;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -373,17 +373,17 @@ article header p {
 article header h2 {
     font-size: 2em;
     margin: 0 10px 0.5em;
-    
+
     font-weight: bold;
     font-family: "YanoneKaffeesatz Bold", sans-serif;
     color: #310;
-    line-height: 1;    
+    line-height: 1;
 }
 
 #entry-body h2 {
     font-size: 1.25em;
     margin: 1em 10px 0;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     line-height: 1;
 }
@@ -397,7 +397,7 @@ article#entry p+p {
     text-indent: 30px;
 }
 
-#entry-body ol, 
+#entry-body ol,
 #entry-body ul {
     margin: 0.625em 0;
     padding: 0;
@@ -427,14 +427,14 @@ article#entry p+p {
 #entry-info dt {
     display: none;
     margin: 0 10px;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     color: #036;
 }
 
 #entry-info dd {
     margin: 0 10px;
-    
+
     font-family: "YanoneKaffeesatz regular", sans-serif;
 }
 
@@ -487,7 +487,7 @@ article#entry p+p {
     font-size: 2em;
     clear: both;
     margin: 0 10px 0.5em;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     line-height: 1;
     color: #630;
@@ -524,7 +524,7 @@ article#entry p+p {
 .date-day {
     font-size: 2em;
     display: block;
-    
+
     font-family: "YanoneKaffeesatz Bold", sans-serif;
     text-align: center;
     line-height: 1;
@@ -533,7 +533,7 @@ article#entry p+p {
 .date-month {
     display: block;
     padding: 0 0 0.5em 0;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     text-align: center;
     line-height: 1;
@@ -558,8 +558,8 @@ aside h2,
     font-size: 1.25em;
     margin: 0 10px;
     padding: 0;
-    
-    
+
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     text-transform: uppercase;
     color: #630;
@@ -570,7 +570,7 @@ aside h2,
     margin: 1em 10px 0;
     padding: 0;
     clear: both;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     color: #630;
 }
@@ -581,7 +581,7 @@ aside h2,
     margin: 0 4px;
     padding: 0 5px;
     clear: left;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     color: #630;
     background-color: rgba(255, 239, 0, 0.2);
@@ -615,7 +615,7 @@ aside li,
 #tags li {
     margin: 0;
     padding: 0;
-    
+
     list-style-type: none;
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
@@ -665,12 +665,12 @@ aside li li ul,
     background-color: #FFF;
     -moz-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 3px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 3px;
-} 
+}
 #entry-nav a:active {
     background-color: #FFF;
     -moz-box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
-} 
+}
 
 #entry-nav small {
     font-size: 0.846em;
@@ -693,7 +693,7 @@ aside li li ul,
 #matching-entries h2 {
     font-size: 2em;
     margin: .25em 10px 0;
-    
+
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     line-height: 1;
 }
@@ -726,7 +726,7 @@ pre {
     font-size: 1em;
     margin: 0.625em 10px 0.625em 30px;
     padding: 0.6em 9px 0.65em 9px;
-    
+
     font-family: Arial, Helvetica, sans-serif;
     /* background-color: #BB0; */
     border: 1px solid #BB0;
@@ -743,7 +743,9 @@ div.image-right {
     float: right;
     margin: 0.625em -70px 0.625em 20px;
 }
-div.image-full-width {
+div.image-full-width img {
+    display: block;
+    float: left;
     margin: 0.625em 10px;
 }
 
@@ -754,17 +756,17 @@ div.svg embed {
 
 div.framed {
     padding: 10px 0;
-    
+
     background-color: #FFF;
     border-radius: 0.8em;
     -moz-border-radius: 0.4em;
     -webkit-border-radius: 0.4em;
-    -moz-box-shadow: #000 1px 1px 3px; 
-    -webkit-box-shadow: #000 1px 1px 3px;    
+    -moz-box-shadow: #000 1px 1px 3px;
+    -webkit-box-shadow: #000 1px 1px 3px;
 }
 
 div.framed-3u {
-    width: 220px;   
+    width: 220px;
 }
 
 div.framed-4u {
@@ -781,7 +783,7 @@ table {
     font-size: 1em;
     margin: 0.625em 10px 0.625em 30px;
     padding: 0.6em 4px 0.65em 4px;
-    
+
     border: 1px solid #BB0;
     border-radius: 0.5em;
     -moz-border-radius: 0.5em;
