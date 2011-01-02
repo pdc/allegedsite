@@ -4,9 +4,9 @@ $(document).ready(function () {
     var monthAbbrs = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
     var monthAbbrevs = 'Jan.|Feb.|March|April|May|June|July|Aug.|Sept.|Oct.|Nov.|Dec.'.split('|');
     function pad2(n) {
-        return n < 10 ? '0' + n : n
+        return n < 10 ? '0' + (+n) : n
     }
-    
+
     // The text uses HTML escapes for ampersands etc.,
     // so I could just use jQuery’s html method here,
     // but do I want to trust Twitter to be immune to XSS attacks?
@@ -14,11 +14,11 @@ $(document).ready(function () {
     function unentity(text) {
         return text.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
     }
-    
+
     var flowElt = $('#flow');
     var insertIntoFlow = function (articleElt, when) {
         var isInserted = false;
-        
+
         // Binary chop to find first existing article with date before this one.
         // Reverse chronological order means we insert our article before it.
         var articleElts = $(flowElt).find('article').toArray();
@@ -34,12 +34,12 @@ $(document).ready(function () {
             }
         }
         if (hi < articleElts.length) {
-            articleElt.insertBefore(articleElts[hi]); 
+            articleElt.insertBefore(articleElts[hi]);
         } else {
             $(flowElt).append(articleElt);
-        }  
+        }
     };
-    
+
     var twitterLink = $('#twitter-link');
     var u = twitterLink.attr('href');
     u = 'http://search.twitter.com/search.json?q=from:' + u.replace(/^.*\//, '');
@@ -85,18 +85,18 @@ $(document).ready(function () {
                     }).appendTo(articleElt);
                     $('<p>').appendTo(articleElt).text(unentity(tweet.text));
                 }
-                
+
                 var details = $('<small>').appendTo(articleElt);
                 $('<a>').attr({
                     href: 'http://twitter.com/' + (isRetweet ? other : 'damiancugley') + '/status/' + tweet.id,
                     title: when
                 }).text(whenFormatted + ' ').append('on Twitter <b>#</b>').appendTo(details);
-                
+
                 insertIntoFlow(articleElt, when);
             }
         }
     });
-    
+
     // Now someting similar for Flickr
     var u = '/pdc/from/flickr';
     var flickrLink = $('#flickr-link');
@@ -116,7 +116,7 @@ $(document).ready(function () {
                     });
                     for (var j in entries) {
                         var entry = entries[j];
-                        
+
                         var photoElt = $('<a>').attr({
                             href: entry.href,
                             title: entry.title
@@ -125,24 +125,24 @@ $(document).ready(function () {
                             src: entry.square.href,
                             alt: '[image]'
                         }).appendTo(photoElt);
-                        photoElt.appendTo(articleElt);                        
-                    }         
+                        photoElt.appendTo(articleElt);
+                    }
                     var detailsElt = $('<small>').appendTo(articleElt);
                     detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on Flickr');
-                    
+
                     $('<h2>')
                         .text(
-                            entries.length > 1 
-                            ? ('I uploaded ' + entries.length + ' photos') 
+                            entries.length > 1
+                            ? ('I uploaded ' + entries.length + ' photos')
                             : 'I uploaded a photo')
                         .prependTo(articleElt);
-                    
+
                     insertIntoFlow(articleElt, date);
                 }
             }
         }
     });
-    
+
     // Let’s try LiveJournal next
     var u = '/pdc/from/livejournal';
     var livejournalLink = $('#livejournal-link');
@@ -155,32 +155,32 @@ $(document).ready(function () {
                 for (var j = 0; j < data.entries.length; ++j) {
                     var entry = data.entries[j];
                     var date = entry.published;
-                    
+
                     var articleElt = $('<article>').attr({
                         'class': 'livejournal entry',
                         'data-date': date,
                         'data-id': entry.id
                     });
-                    
+
                     var headingElt = $('<h2>').appendTo(articleElt);
                     var linkElt = $('<a>').attr({
                         href: entry.href,
                     }).text(entry.title || entry.content.substr(0, 64));
                     linkElt.appendTo(headingElt);
-                    
+
                     var contentElt = $('<p>').appendTo(articleElt);
                     contentElt.text(entry.content)
-                    
+
                     var detailsElt = $('<small>').appendTo(articleElt);
                     $('<a>').attr('href', entry.href)
                         .text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on LiveJournal')
                         .appendTo(detailsElt);
                     insertIntoFlow(articleElt, date);
-                }         
+                }
             }
         }
     });
-    
+
     // Let’s try YouTube next
     var u = '/pdc/from/youtube';
     var youtubeLink = $('#youtube-link');
@@ -193,13 +193,13 @@ $(document).ready(function () {
                 for (var j = 0; j < data.entries.length; ++j) {
                     var entry = data.entries[j];
                     var date = entry.published;
-                    
+
                     var articleElt = $('<article>').attr({
                         'class': 'youtube video',
                         'data-date': date,
                         'data-id': entry.id
                     });
-                    
+
                     var headingElt = $('<h2>').appendTo(articleElt);
                     var linkElt = $('<a>').attr({
                         href: entry.href,
@@ -209,16 +209,16 @@ $(document).ready(function () {
                         alt: 'Video',
                         src: entry.poster.href
                     }).prependTo(linkElt);
-                    
+
                     var contentElt = $('<p>').appendTo(articleElt);
                     contentElt.text(entry.content)
-                    
+
                     var detailsElt = $('<small>').appendTo(articleElt);
                     $('<a>').attr('href', entry.href)
                         .text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' on YouTube')
                         .appendTo(detailsElt);
                     insertIntoFlow(articleElt, date);
-                }         
+                }
             }
         }
     });
