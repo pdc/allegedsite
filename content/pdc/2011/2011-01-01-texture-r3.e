@@ -1,14 +1,15 @@
 Title: GroovyStipple R3: Signs and Portents
 Date: 2011-01-01
 Topics: groovystipple minecraft
-Image: ../icon-64x64.png
+Image: ../2010/groovystipple-64x64.png
 
 Spurred by a [comment on Reddit][1] I thought I would have a go at
-adding items to my [Minecraft][] texture packs. The trick here is that the
-way you do this is by taking an existing texture pack and unpacking it to
-find out which files you need to modify and to try to guess the layout
-of the image.
+adding items to my [Minecraft][] texture packs. So far I have added textures for signs and boats.
 
+The format for texture packs is more or less undocumented so the
+approach I have taken to making mine is to take an existing texture pack
+and unpacking it to find out which files you need to modify and to try
+to guess the layout of the image.
 
 ## Sign and Boat
 
@@ -34,8 +35,10 @@ explicit:
     <a href="groovystipple-9.png"><img src="groovystipple-9-220w.png" alt="(sign screenshot)" width="220" /></a>
 </div>
 
-(Click on the first image to see it smaller.) Once I had that pat I draw
-my own woody textures on their own layers.
+(The image is blown up to make it easier to see. Click to see it smaller.)
+
+Once I had that pat I draw
+my own woody textures on their own layers:
 
 <div class="image-full-width">
     <a href="groovystipple-sign-2.png"><img src="groovystipple-sign-2.png" alt="(sign graphics)" width="220" /></a>
@@ -49,7 +52,8 @@ order.
 
 I used the same approach with the boat texture. This one is a little
 more complicated because it is not obvious at first how the boat’s shape
-will be decomposed in to blocks.
+will be decomposed in to blocks. After some experimentation, here is the
+template I cam up with for boats:
 
 <div class="image-full-width">
     <a href="groovystipple-boat-1.png"><img src="groovystipple-boat-1.png" alt="(boat graphics)" width="220" /></a>
@@ -91,9 +95,6 @@ use it to visit the textures directory and copy or move the ZIP files
 there.
 
 
----
-
-© 2011 Damian Cugley
 
   [1]: http://www.reddit.com/r/Minecraft/comments/eof2z/groovystipple_a_texture_pack_for_minecraft/
   [2]: http://www.minecraftforum.net/viewtopic.php?f=25&t=46707
