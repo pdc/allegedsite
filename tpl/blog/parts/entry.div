@@ -8,7 +8,7 @@
   <div id="entry-body">
     {{ entry.body|safe }}
   </div>
-  
+
   <div id="entry-info">
     <dl>
       {% if entry.image %}
@@ -33,6 +33,6 @@
         </ul>
       </dd>
     </dl>
-    <div class="permalink"><a href="{{ e.href }}">Permalink</a></div>
+    <div class="permalink"><a href="{{ entry.href }}">Permalink</a></div>
   </div>
 </article>
