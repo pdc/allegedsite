@@ -3,7 +3,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.template import RequestContext
 from django.views.decorators.cache import cache_page
-from django.shortcuts import render_to_response 
+from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django.conf import settings
@@ -15,6 +15,7 @@ from alleged.blog.entries import get_entries as get_entries_uncached, get_entry,
 from alleged.blog.fromatom import get_flickr, get_livejournal, get_youtube
 
 def add_hrefs(entries):
+    """Ensure that the entries in this list have hrefs."""
     for entry in entries:
         if not hasattr(entry, 'href'):
             entry.href = reverse('blog_entry', kwargs={
@@ -24,7 +25,14 @@ def add_hrefs(entries):
             })
 
 def get_entries(blog_dir, blog_url, image_url):
-    """Get the lust of blog entries."""
+    """Get the list of blog entries.
+
+    Arguments --
+        blog_dir -- contains subdirectories named after years.
+        blog_url -- the common prefix to blog entries; ends with a slash.
+        image_url -- the common prefix for images referred to by blog entries;
+            ends with a slash.
+    """
     if settings.BLOG_CACHE_ENTRIES:
         blog_key = 'blog:%s' % blog_dir
         entries = cache.get(blog_key)
@@ -36,16 +44,16 @@ def get_entries(blog_dir, blog_url, image_url):
                     entry.load()
             cache.set(blog_key, entries)
         return entries
-    
+
     entries = get_entries_uncached(blog_dir, blog_url, image_url)
     add_hrefs(entries)
     return entries
-    
+
 def get_toc(blog_dir, blog_url, image_url):
     entries = get_entries(blog_dir, blog_url, image_url)
     toc = get_toc_uncached(entries)
     return toc
-    
+
 def get_named_article(blog_dir, blog_url, image_url, year, name):
     article_key = 'blog:%s,%d,%s' % (blog_dir, year, name)
     entries = cache.get(article_key)
@@ -53,9 +61,23 @@ def get_named_article(blog_dir, blog_url, image_url, year, name):
         article = get_named_article_uncached(blog_dir, blog_url, image_url, year, name)
         #cache.set(blog_key, article)
     return article
-    
+
 def render_with(default_template_name, mimetype='text/html'):
-    """Decorator for request handlers. the decorated function returns a dict of template args."""
+    """Decorator for request handlers.
+
+    The decorated function returns a dict of template args.
+    These are rendered with the named template.
+
+    Arguments --
+        default_template_name -- names the template, if the
+            dictionary does not include an entry ‘template_name’.
+        mimetype -- the MIME content-type for the
+            response; default is 'text/html'.
+
+    Returns --
+        Either a dictionary of template args,
+        or an HttpResponse obejct to return verbatim.
+    """
     def decorator(func):
         def decorated_func(request, *args, **kwargs):
             result = func(request, *args, **kwargs)
@@ -63,13 +85,15 @@ def render_with(default_template_name, mimetype='text/html'):
                 return result
             template_name = result.pop('template_name') if 'template_name' in result else default_template_name
             template_args = result
-            return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype) 
+            return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype)
         return decorated_func
     return decorator
-    
-    
+
 def get_year_months(entries, y):
-    # Find the last aeticle in each month in this year,
+    """Find the last article in each month in this year.
+
+    These are used as the per-month article index.
+    """
     this_year_months = {}
     by_year = entries.get_by_year()
     this_year = by_year[y or date.today().year]
@@ -77,19 +101,20 @@ def get_year_months(entries, y):
         this_year_months[e.published.month] = e
     return sorted(this_year_months.items())
 
+
 @render_with('blog/index.html')
 def index_view(request, blog_dir, blog_url, image_url):
     entries = get_entries(blog_dir, blog_url, image_url)
     entry, this_month, years = get_entry(entries, None, None, None)
     return {
-        'entries': entries,   
+        'entries': entries,
         'entry': entry,
-        'this_month': this_month, 
+        'this_month': this_month,
         'years': years,
         'this_year_months': get_year_months(entries, entry.published.year),
         'is_index': True,
     }
-    
+
 @render_with('blog/entry.html')
 def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
     entries = get_entries(blog_dir, blog_url, image_url)
@@ -97,16 +122,16 @@ def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
     m = month and int(month, 10)
     d = day and int(day, 10)
     entry, this_month, years = get_entry(entries, y, m, d)
-    
+
     return {
-        'entries': entries,   
+        'entries': entries,
         'entry': entry,
-        'this_month': this_month, 
+        'this_month': this_month,
         'years': years,
         'this_year_months': get_year_months(entries, y),
         'is_index': False,
     }
-    
+
 @render_with('blog/month_entries.html')
 def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None):
     entries = get_entries(blog_dir, blog_url, image_url)
@@ -114,17 +139,17 @@ def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None)
     m = month and int(month, 10)
     d = None
     entry, this_month, years = get_entry(entries, y, m, d)
-    
+
     return {
         'entry': entry,
-        'entries': entries,  
-        'this_month': this_month,  
+        'entries': entries,
+        'this_month': this_month,
         'prev': this_month[0].prev,
         'next': this_month[-1].next,
         'years': years,
         'this_year_months': get_year_months(entries, y),
     }
-    
+
 @render_with('blog/filtered_by_tag.html')
 def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags):
     tags = sorted(plus_separated_tags.split('+'))
@@ -136,12 +161,12 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
             info_tags = list(tags)
             info_tags.remove(info.tag)
             info.href = reverse('blog_tag', kwargs={'plus_separated_tags': '+'.join(sorted(info_tags))})
-        
+
     for info in matching_entries.available_tag_infos:
         info_tags = list(tags)
         info_tags.append(info.tag)
         info.href = reverse('blog_tag', kwargs={'plus_separated_tags': '+'.join(sorted(info_tags))})
-        
+
     return {
         'tags': tags,
         'plus_separated_tags': plus_separated_tags,
@@ -165,12 +190,25 @@ def named_article(request, blog_dir, blog_url, image_url, year, name):
         'years': years,
         'this_year_months': get_year_months(entries, y),
     }
-    
+
 ATOM_PAGE_SIZE = 15
 @render_with('blog/atom.xml', mimetype='application/atom+xml')
 def atom(request, blog_dir, blog_url, image_url, page_no=None):
+    """Generate one of the ATOM feed pages.
+
+    The page number contrls which entries are included in the page.
+    Just to be tricky, I am attempting to include archive-style
+    feed and latest-changes-type feed in one system:
+
+    • Positive pages are archive pages, counting up from earliest page.
+
+    • Negative pages are paged-feed pages, counting down from -1 being the second-most-recent.
+
+    • There is no page 0. Instead we have page None for the subscription page
+      (which is the most-recent page in the paged-feed pages).
+    """
     entries = get_entries(blog_dir, blog_url, image_url)
-    
+
     # Just to be tricky:
     # • Positive pages are archive pages, counting up from earliest page.
     # • Negative pages are paged-feed pages, counting down from -1 being the second-most-recent.
@@ -178,11 +216,11 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     #   (which is the most-recent page in the paged-feed pages).
     if page_no is not None:
         page_no = int(page_no)
-    subset = (entries[(page_no - 1) * ATOM_PAGE_SIZE : page_no * ATOM_PAGE_SIZE] 
-        if page_no 
+    subset = (entries[(page_no - 1) * ATOM_PAGE_SIZE : page_no * ATOM_PAGE_SIZE]
+        if page_no
         else entries[-ATOM_PAGE_SIZE:])
     subset.reverse()
-    
+
     vars = {
         'page_no': page_no,
         'absolute_page_no': -page_no if page_no and page_no < 0 else page_no,
@@ -193,7 +231,7 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
         'is_archive': page_no and page_no > 0,
         'is_paged': page_no and page_no < 0,
     }
-    
+
     prev_page_no = ((1 + (len(entries) - 1) // ATOM_PAGE_SIZE)
         if page_no is None
         else (page_no - 1) if page_no > 1
@@ -201,15 +239,15 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
         else None)
     next_page_no = (-1
         if page_no is None
-        else (page_no + 1) 
-        if page_no > 0 and page_no * ATOM_PAGE_SIZE < len(entries) 
+        else (page_no + 1)
+        if page_no > 0 and page_no * ATOM_PAGE_SIZE < len(entries)
         else (page_no - 1)
         if page_no < 0 and (page_no - 1) * ATOM_PAGE_SIZE + len(entries) > 0
         else None)
-    
+
     links = [
         ('self',
-            reverse('blog_atom_archive', kwargs={'page_no': page_no}) 
+            reverse('blog_atom_archive', kwargs={'page_no': page_no})
             if page_no else reverse('blog_atom')),
     ]
     if page_no:
@@ -218,7 +256,7 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
         links.insert(0, (None, blog_url))
     for name, p_no in [('prev', prev_page_no), ('next', next_page_no)]:
         if p_no:
-            rel = ('previous' 
+            rel = ('previous'
                 if name == 'prev' and p_no < 0
                 else '{name}{archived}'.format(name=name, archived='-archive' if p_no > 0 else ''))
             href = request.build_absolute_uri(
@@ -226,20 +264,20 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
             links.append((rel, href))
     if not page_no or page_no < 0:
         links.append(('first', reverse('blog_atom')))
-        
+
         p = -((len(entries) - 1) // ATOM_PAGE_SIZE)
         links.append(('last', reverse('blog_atom_archive', kwargs={'page_no': p})))
-            
+
     vars['links'] = [(rel, request.build_absolute_uri(href)) for (rel, href) in links]
     return vars
-    
-    
+
+
 def render_json(view):
     """Decorator for view function returning a dictionary to be rendered as JSON.
-    
+
     Write the view function as usual, except it returns a dict
     not a response object.
-    If the function being decorated returns an HttpResponse subclass 
+    If the function being decorated returns an HttpResponse subclass
     instead, that is returned unchanged.
     """
     def decorated_view(request, *args, **kwargs):
@@ -249,19 +287,19 @@ def render_json(view):
         data = json.dumps(resp)
         return HttpResponse(data, mimetype='application/json')
     return decorated_view
-    
+
 def from_atom(func, url, label):
     ndix = func(url)
     if not ndix:
         HttpResponseServerError('Could not get Atom data from {label}'.format(label=label))
     ndix['success'] = True
     return ndix
-    
+
 @cache_page(1800)
 @render_json
 def from_flickr(request):
     return from_atom(get_flickr, settings.FLICKR_ATOM_URL, 'Flickr')
-    
+
 @cache_page(1800)
 @render_json
 def from_livejournal(request):
