@@ -749,6 +749,19 @@ div.image-full-width img {
     margin: 0.625em 10px;
 }
 
+
+div.video-full-width {
+  float: left;
+  width: 100%;
+}
+
+div.video-full-width iframe,
+div.video-full-width object {
+    display: block;
+    float: left;
+    margin: 0.625em 10px 0.625em -70px;
+}
+
 div.svg embed {
     display: block;
     margin: 0 auto;

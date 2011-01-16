@@ -21,6 +21,12 @@ square with three-dimensional animals. The main difference from the
 default sheep is I have moved the eyes to the side of the head and given
 the wool curls to match the wool-block texture.
 
+**Update**. I have managed to get a sheep to stay in one place long enough to video it:
+
+<div class="video-full-width">
+    <iframe title="YouTube video player" class="youtube-player" type="text/html" width="540" height="333" src="http://www.youtube.com/embed/glX5aqaCZmM" frameborder="0"></iframe>
+</div>
+
 ## Grass
 
 The new biome system assigns grass a different colour depending on which
