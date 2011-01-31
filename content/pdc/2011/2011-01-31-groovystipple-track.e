@@ -3,14 +3,17 @@ Date: 2011-01-31
 Topics: groovystipple minecraft
 Image: ../2010/groovystipple-64x64.png
 
-
 Mine-cart tracks in [Minecraft][] have two textures: straight track and
 a 90° corner. You can run diagonal lines, and carts will happily travel
 on them in a straight 45° line, but because it is rendered using corner
 pieces, it looks like a wriggly line. This vexes people who do not think
-that train tracks don’t look right when they make abrupt turns. I have
+that train tracks don&rsquo;t look right when they make abrupt turns. I have
 created an alternative version of my GroovyStipple texture pack that
 substitutes a 45° track piece for the corner.
+
+<div class="video-full-width">
+    <iframe title="YouTube video player" class="youtube-player" type="text/html" width="540" height="333" src="http://www.youtube.com/embed/jCy_Xzsxtog" frameborder="0" allowFullScreen></iframe>
+</div>
 
 This is possible partly because I have started a new project, [Minecraft Texture Maker][].
 The roadmap comes  in three levels of sophistication:
@@ -102,6 +105,5 @@ there.
   [groovystipple alt]: http://static.alleged.org.uk/pdc/2011/groovystipple_alt.zip
   [smoothstipple]: http://static.alleged.org.uk/pdc/2010/smoothstipple.zip
   [smoothstipple alt]: http://static.alleged.org.uk/pdc/2011/smoothstipple_alt.zip
-
-
   [Minecraft Texture Maker]: https://github.com/pdc/minecraft-texture-maker
+  [JSON]: http://www.json.org/
