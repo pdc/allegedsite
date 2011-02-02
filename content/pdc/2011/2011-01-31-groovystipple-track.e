@@ -7,9 +7,13 @@ Mine-cart tracks in [Minecraft][] have two textures: straight track and
 a 90° corner. You can run diagonal lines, and carts will happily travel
 on them in a straight 45° line, but because it is rendered using corner
 pieces, it looks like a wriggly line. This vexes people who do not think
-that train tracks don&rsquo;t look right when they make abrupt turns. I have
-created an alternative version of my GroovyStipple texture pack that
-substitutes a 45° track piece for the corner.
+that train tracks don&rsquo;t look right when they make abrupt turns.
+
+I have created an alternative version of my GroovyStipple texture pack
+that substitutes a 45° track piece for the corner. Here is a short video
+showing bother versions. Sorry the voiceover is slightly out of sync—I
+am still working out what incantation I need to perform in iMovie to edit
+audio.
 
 <div class="video-full-width">
     <iframe title="YouTube video player" class="youtube-player" type="text/html" width="540" height="333" src="http://www.youtube.com/embed/jCy_Xzsxtog" frameborder="0" allowFullScreen></iframe>
@@ -102,8 +106,8 @@ there.
 
   [Minecraft]: http://minecraft.net/
   [groovystipple]: http://static.alleged.org.uk/pdc/2010/groovystipple.zip
-  [groovystipple alt]: http://static.alleged.org.uk/pdc/2011/groovystipple_alt.zip
+  [groovystipple alt]: http://static.alleged.org.uk/pdc/2011/groovystipple-alt.zip
   [smoothstipple]: http://static.alleged.org.uk/pdc/2010/smoothstipple.zip
-  [smoothstipple alt]: http://static.alleged.org.uk/pdc/2011/smoothstipple_alt.zip
+  [smoothstipple alt]: http://static.alleged.org.uk/pdc/2011/smoothstipple-alt.zip
   [Minecraft Texture Maker]: https://github.com/pdc/minecraft-texture-maker
   [JSON]: http://www.json.org/
