@@ -106,8 +106,8 @@ there.
 
   [Minecraft]: http://minecraft.net/
   [groovystipple]: http://static.alleged.org.uk/pdc/2010/groovystipple.zip
-  [groovystipple alt]: http://static.alleged.org.uk/pdc/2011/groovystipple-alt.zip
+  [groovystipple alt]: http://static.alleged.org.uk/pdc/2011/groovystipple_alt.zip
   [smoothstipple]: http://static.alleged.org.uk/pdc/2010/smoothstipple.zip
-  [smoothstipple alt]: http://static.alleged.org.uk/pdc/2011/smoothstipple-alt.zip
+  [smoothstipple alt]: http://static.alleged.org.uk/pdc/2011/smoothstipple_alt.zip
   [Minecraft Texture Maker]: https://github.com/pdc/minecraft-texture-maker
   [JSON]: http://www.json.org/
