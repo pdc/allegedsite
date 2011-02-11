@@ -544,7 +544,8 @@ article#entry p+p {
 }
 
 #exits,
-#entry-nav {
+#entry-nav,
+#flattr {
     display: block;
     float: left;
     margin: 0;
@@ -563,6 +564,10 @@ aside h2,
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     text-transform: uppercase;
     color: #630;
+}
+
+#flattr iframe {
+  margin: 1em 10px;
 }
 
 #entry-nav h3 {
