@@ -25,8 +25,8 @@ Python on Karmic are not compatible with Lucid. This was relatively easy
 to fix. First I logged in with SSH using the `alleged` login, then
 disposed of the old virtualenv and created a fresh one:
 
-    alleged@titania$ mv ~/virtualenv/alleged{,-karmic} alleged@titania$
-    virtualenv --no-site-packages --distribute ~/virtualenv/alleged
+    alleged@titania$ mv ~/virtualenv/alleged{,-karmic}
+    alleged@titania$ virtualenv --no-site-packages --distribute ~/virtualenv/alleged
 
 The list of packages I need to install (including Django) is all
 recorded for in `REQUIREMENTS`, so I can reconstruct the
