@@ -1,0 +1,94 @@
+Title: Packaged versus Build-From-Source
+Date: 2011-01-23
+Topics: distribution
+Image: ../icon-64x64.png
+
+There are two ways to package software up for easy installation: as a
+set of compiled files that merely need to be copied in to the right
+places on disk, or as source code that must be compiled and linked
+before being installed. Which
+approach makes sense for packaging systems retrofitted to Mac OS X? It
+isn‘t as simple a question as it seems at first.
+
+Other Operating Systems
+=======================
+
+GNU/Linux distributions are mostly defined by their package-management software.
+Most, like [Debian][] and [Ubuntu][], concentrate on
+the former approach, pre-building compiled binary packages for various
+CPU architectures so you only need to download the correct package;
+[Gentoo][]’s distinctive flavour comes from a policy of only shipping
+source and rebuilding everything.
+
+Advantages of compiled binaries are that the work of compilation is done
+once (and deposited on a central web site) and exploited by many
+people. Installing a package with `apt-get` or `aptitude` is quick
+(assuming a fast network connection).
+
+The advantage of the
+build-everything-from-source approach is better customization and in
+some cases more compact and efficient binary code (because unwanted
+features can be eliminated at compile time). A precompiled package must
+instead have all the options available, with a run-time configuration
+file used to decide which features are actually enabled. The downside to
+source-only distros is the time to do the compilation—on older hardware,
+building the X Window System can take more than 24 hours. Without a fast-enough
+system, it may be your computer spends most of its time compiling the
+latest security updates hand has little time for whatever it is you
+wanted to use your computer for.
+
+Proprietary systems are more homogenous and do not need as sophisticated
+a package-management system. Microsoft Windows systems have always gone
+for the pre-compiled approach, though with increasing amounts of
+installer logic added to cope with the fact that application files have
+to be installed in various places about the user’s system. Microsoft do
+not bother with any automated system for locating and downloading the
+correct version of a package. This makes sense when you have a
+homogenous operating system: there is no need to compile more than one
+version of the software. This falls down somewhat when Microsoft take it
+in to their heads to have multiple flavours of Windows (32-bit, 64-bit)
+or optional platforms (like .NET), introducing dependencies between
+applications and other packages that users must attend to themselves.
+
+Mac OS X Applications
+=====================
+
+Apple with Mac OS X set about eliminating all the ways the
+just-copy-files approach to installation goes wrong. First they
+specified the way Application files are organized so that for a normal
+app everything goes in single directory (which the Finder displays as an
+icon rather than a folder). Second, there is no separate 64-bit version
+of Mac OS, so there is no need to choose different downloads depending
+on that. Third, bundles can contain both PowerPC and x86 binary code, so
+there is no need to have separate bundles depending on your CPU
+architecture. Most installations consist of grabbing the bundle (often
+wrapped in a disk image archive) and dropping it in to your
+`Applications` folder. More elaborate packages can have an installer
+program—much like the Windows ones—but these are only needed when extra
+frameworks need to be installed in addition to the application itself.
+
+What they do not do is have any nice way to install packages and
+libraries as dependencies of an app, let alone for the use of
+programmers. People developing Mac OS X apps get the Xcode system nicely
+set up for them, but for generic Unix programming (developing web sites
+in Django, writing utilities to fiddle with Minecraft maps, etc.), you
+are on your own. This makes sense commerically—the overwhelming majority
+of Apple customers are not developers, and the overwhelming majority of
+developers are Xcode developers, and those of us who remain are a
+vanishingly small fraction of Apple’s customer base (no matter how
+important we may feel ourselves to be!).
+
+Instead there are several projects porting existing packaging systems to
+Mac OS X: [MacPorts][] is a port of the [FreeBSD Ports][] system,
+[Fink][] is adapted from Debian’s [APT][], and [Homebrew][] has been
+recently created from scratch to be the easiest and most
+flexible way to install the UNIX tools Apple didn’t include with OS X.
+
+  [Ubuntu]: http://www.ubuntu.com/
+  [Debian]: http://debian.org/
+  [Gentoo]: http://www.gentoo.org/
+  [MacPorts]: http://www.macports.org/
+  [FreeBSD Ports]: http://www.freebsd.org/ports/
+  [Fink]: http://www.finkproject.org/
+  [APT]: http://wiki.debian.org/Apt
+  [Homebrew]: http://mxcl.github.com/homebrew/

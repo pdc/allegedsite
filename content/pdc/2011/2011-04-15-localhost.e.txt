@@ -1,0 +1,11 @@
+Title: localhost Rage
+Date: 2011-04-15
+Topics:
+Image: ../icon-64x64.png
+
+First sentence starts here.
+
+
+---
+
+© 2011 Damian Cugley

@@ -23,7 +23,7 @@ Here are 3 packs I have prepared this way for people waiting for updates:
     <tbody>
         <tr>
             <td><a href="http://www.eldpack.com/">Eldpack</a></td>
-            <td><a href="http://static.alleged.org.uk/pdc/2011/eldpack_v3.3+beta1.3.zip">eldpack_v3.3+beta1.3.zip</a></td>
+            <td><s>eldpack_v3.3+beta1.3.zip</s></td>
         </tr>
         <tr>
             <td><a href="http://www.minecraftforum.net/viewtopic.php?f=1021&t=46707">Frenden</a></td>
@@ -39,6 +39,8 @@ Here are 3 packs I have prepared this way for people waiting for updates:
 These are obviously not as good as the upcoming versions will be, but it
 will enable you to carry on playing Minecraft while waiting for the real
 thing to be released.
+
+Update (27 Feb.): Eldpack 3.4 supports Beta 1.3 so my ersatz pack no longer required.
 
 How it works
 ============
@@ -66,7 +68,7 @@ fields of the new pack. The result is [pixelade+beta1.3.zip][3].
 Er, this will not make much sense until I get the recipe syntax for
 Texturepacker documented. In the meantime use the links above and enjoy!
 
- [1]: 02/26.html
+ [1]: 02/23.html
  [2]: http://www.minecraftforum.net/viewtopic.php?f=1021&t=164560
  [3]: http://static.alleged.org.uk/pdc/2011/pixelade+beta1.3.zip
  [Texturepacker]: http://pdc.github.com/texturepacker/
