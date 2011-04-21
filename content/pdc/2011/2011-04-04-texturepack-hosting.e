@@ -15,12 +15,15 @@ Off the top of my head:
 - [Minecraft Textures][] and [Texturecraft][] are fairly new and only have a small number of entries so far;
 - [r/mctexturepacks][1] on Reddit seems to be dead.
 
-The biggest problem is with the hosting services, which tend to like to
-provide download links that cannot be used to download the fie
+The biggest problem is with the commercial hosting services, which tend to like to
+provide download links that cannot be used to download the file
 directly: they instead show a page which performs a redirect to the actual data
 file, or, worse, to a page full of adverts in which the user much click
 a further button to get the download. These shenanigans rather undermine
 my attempts to allow [Texturejam][] to rely on their existing hosting.
+
+On the other hand [Texturecraft][] provides a straightforward download
+link direct to the ZIP file, which for my purposes is ideal.
 
 I have also been having an exasperating time creating examples of the
 Beta-1.3 upgrade—often I fight Mediafire for a copy of the texture pack,
@@ -29,6 +32,8 @@ and discover that there was a newer version of the pack on a different
 texture-pack-hosting service that makes the whole exercise redundant.
 Grr. I am beginning to think that finding a way to disentangle this mess
 might be a useful service in its own right.
+
+
 
   [Texture_Pack]: http://www.minecraftwiki.net/wiki/Texture_Pack
   [Texturejam]: http://texturejam.org.uk/

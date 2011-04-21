@@ -1,6 +1,6 @@
-Title: Tetxurejam
+Title: New Project: Tetxurejam
 Date: 2011-03-27
-Topics:
+Topics: minecraft texturejam django python
 Image: ../icon-64x64.png
 
 I have created a web app called [Texturejam][] to host remixes of

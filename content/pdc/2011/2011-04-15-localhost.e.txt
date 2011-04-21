@@ -3,9 +3,35 @@ Date: 2011-04-15
 Topics:
 Image: ../icon-64x64.png
 
-First sentence starts here.
+When developing web sites, one needs to work with a copy of the site on
+ones own computer. There is a special hostname `localhost` that always
+means the computer you are working on—it never means anything else. So
+it is very annoying when web browsers second-guess me and, on failing to
+connect to `http://localhost:8080/`, ask me where I meant to type
+`http://localhost.com:8000/`.
 
+On my home computer I am running three localhost servers right now:
 
----
+- `http://localhost/` is Apple‘s ‘web sharing’ server (an instance of Apache HTTPD);
+- `http://localhost:8000/` is a working copy of <http://alleged.org.uk/>; and
+- `http://localhost:8004/` is a working copy of <http://texturejam.org.uk/>
 
-© 2011 Damian Cugley
+The port numbers in between are used when I am working on
+<http://spreadsite.org/> or <http://jeremyday.org.uk/>, but those
+servers are not running right now.
+
+At work I have an six web servers running on my workstation between
+working copies of parts of the web app and tools used in diagnosing
+problems with user accounts.
+
+# Why ‘localhost’?
+
+In ancient times, when computers were shared by many people all
+connecting with terminals via serial lines, the term _host_ (or
+_terminal host_) was used for the computer that you connected to. Often
+a given _site_ (university or research lab) had just the one host.
+
+When networking between hosts was introduced, people talked of _remote
+hosts_ (in a different site, connected via a network) and your
+_local host_ (the one hosting your terminal). This usage survives as a
+fossil in terms like _hostname_ and the conventional name `localhost`.
