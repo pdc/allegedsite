@@ -1,7 +1,7 @@
 Title: New Project: Tetxurejam
 Date: 2011-03-27
 Topics: minecraft texturejam django python
-Image: ../icon-64x64.png
+Image: dirt_jam.png
 
 I have created a web app called [Texturejam][] to host remixes of
 Minecraft texture packs. The idea is to host [Texturepacker][] in a form
