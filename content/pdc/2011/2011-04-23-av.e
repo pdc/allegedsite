@@ -1,5 +1,5 @@
 Title: Quick Thoughts on Alternative Vote
-Date: 2011-04-22
+Date: 2011-04-23
 Topics: voting
 Image: ../icon-64x64.png
 
