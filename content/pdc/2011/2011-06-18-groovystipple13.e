@@ -1,6 +1,6 @@
 Title: Belated GroovyStipple R13
 Date: 2011-06-18
-Topics:
+Topics: minecraft groovystipple
 Image: ../icon-64x64.png
 
 Minecraft Betas 1.6 introduced tall grass and ferns.
