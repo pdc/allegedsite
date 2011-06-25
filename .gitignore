@@ -4,3 +4,4 @@ test_blog
 settings.py
 tmp
 out.xml
+*.db
