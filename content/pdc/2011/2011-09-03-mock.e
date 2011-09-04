@@ -12,7 +12,7 @@ itself.
 
 Python has a nifty third-party package called [Mock][] that supplies a
 mock-object class and a method decorator `patch` that can be used to patch existing
-objects with mocks. Here’s an example from the tests for [Texturepacker][]
+objects with mocks. Here’s an example from the tests for [Texturepacker][]:
 
     import unittest
     from mock import Mock, patch
@@ -40,7 +40,7 @@ function was called and with the args as expected.
 
 To understand the pun in the headline, you merely need to know that we
 often use ‘mock’ as a verb meaning replacing a real object with a mock
-one.
+one—and that, strictly speaking, some of our mocks are really stubs.
 
 Yesterday I was working on code that fetches billing information for
 users, adding checks that the bills are current (rather than being three
@@ -68,9 +68,6 @@ I managed to patch the `time.time` library function with a stub:
             self.assertEqual(datetime(2011, 6, 21), datetime.now())
 
 Voilà! I mock time!
-
-
-
 
 
   [Test-Driven Development]: http://c2.com/cgi/wiki?TestDrivenDevelopment
