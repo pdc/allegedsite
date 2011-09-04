@@ -65,7 +65,7 @@ var overviewerConfig = {
         /**
          * This controls how close you can zoom in.
          */
-        'maxZoom':      7,
+        'maxZoom':      8,
         /**
          * Center on this point, in world coordinates. Should be an array, ex:
          * [0,0,0]
@@ -153,5 +153,5 @@ var overviewerConfig = {
      *      {'label': 'Overlay', 'path': 'overlay/tiles', 'overlay': true}
      *  ]
      */
-    'mapTypes':         [{"path": "tiles", "overlay": false, "imgformat": "png", "bg_color": "#1A1A1A", "label": "Normal"}]
+    'mapTypes':         [{"path": "lighting", "overlay": false, "imgformat": "png", "bg_color": "#1A1A1A", "label": "Lighting"}]
 };

@@ -153,5 +153,5 @@ var overviewerConfig = {
      *      {'label': 'Overlay', 'path': 'overlay/tiles', 'overlay': true}
      *  ]
      */
-    'mapTypes':         [{"path": "tiles", "overlay": false, "imgformat": "png", "bg_color": "#1A1A1A", "label": "Normal"}]
+    'mapTypes':         [{"path": "lighting", "overlay": false, "imgformat": "png", "bg_color": "#1A1A1A", "label": "Lighting"}]
 };
