@@ -3,7 +3,7 @@ Date: 2011-09-03
 Topics: programming  testing python pun
 Image: ../icon-64x64.png
 
-I believe in [Test-Driven Development][] but had somehow hand never
+I believe in [Test-Driven Development][] but had somehow had never
 gotten around to using [mock object][]s until a few months ago. They’re
 super-useful when testing classes that write to files or query remote
 databases or what-have-you, or when the rest of your system is big and
@@ -38,9 +38,9 @@ some systems. By replacing the built-in `open` function with a fake
 (`mock_open`) I can make it return a known value and also check that the
 function was called and with the args as expected.
 
-To understand the pun in the headline, you merely need to know that we
-often use ‘mock’ as a verb meaning replacing a real object with a mock
-one—and that, strictly speaking, some of our mocks are really stubs.
+To understand the pun in the headline, you need to know that we often
+use ‘mock’ as a verb meaning replacing a real object with a mock one—and
+that, strictly speaking, some of our mocks are really stubs.
 
 Yesterday I was working on code that fetches billing information for
 users, adding checks that the bills are current (rather than being three
