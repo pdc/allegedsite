@@ -25,7 +25,7 @@ First, enumerate your licences:
 - Big car, Minibus
 - Bus, HGV
 
-Second, to get a motorcycle licence, in addition to a written exam and
+Second, **new rule:** to get a motorcycle licence, in addition to a written exam and
 practical test, you need to have a clean scooter licence at least one
 year old. In the same way, a clean 2-year-old motorcycle licence is a
 prerequisite for the car driving test, and so on. Thus by the time you
