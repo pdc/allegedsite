@@ -1,4 +1,4 @@
-Title: Idea: Cycle Lane Warning Signs
+Title: Idea: Hazard Signs for Cycle Lanes
 Date: 2011-12-04
 Topics: cycling design idea
 
