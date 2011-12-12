@@ -3,16 +3,18 @@
 {% block title %}{{ article.title }} - Alleged Articles{% endblock %}
 {% block heading %}{{ article.title }}{% endblock %}
 
+{% block projectwonderfule %}{% endblock %}
+
 {% block content %}
       <div id="article-body">
     	{{ article.body|safe }}
       </div>
-      
+
       <div id="entry-nav">
     		{% if years %}
       	<h3>Article Archive by Year</h3>
       	<ul id="years">
-      	  {% for e in years %}      	    
+      	  {% for e in years %}
           <li>
             <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}">{{ e.published|date:"Y"}}</a>
           </li>
