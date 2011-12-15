@@ -31,19 +31,6 @@
     </script>
     <!-- End Project Wonderful Ad Box Loader -->
     {% endblock %}
-
-    <div id="banner">
-      {% block trail %}
-      <b><a href="{% url blog_entry %}">Alleged Archive</a></b>
-      {% endblock %}
-      <h1>{% block heading %}Blog Entry{% endblock %}</h1>
-    </div>
-    <div id="page">
-      {% block content %}
-      {% endblock %}
-      <div id="page-after"></div>
-    </div>
-    {% block trailingjs %}{% endblock %}
     {% block flattrjs %}
 <script type="text/javascript">
 /* <![CDATA[ */
@@ -57,5 +44,18 @@
 /* ]]> */
 </script>
     {% endblock %}
+
+    <div id="banner">
+      {% block trail %}
+      <b><a href="{% url blog_entry %}">Alleged Archive</a></b>
+      {% endblock %}
+      <h1>{% block heading %}Blog Entry{% endblock %}</h1>
+    </div>
+    <div id="page">
+      {% block content %}
+      {% endblock %}
+      <div id="page-after"></div>
+    </div>
+    {% block trailingjs %}{% endblock %}
   </body>
 </html>
