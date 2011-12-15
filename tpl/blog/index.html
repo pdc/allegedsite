@@ -10,8 +10,10 @@
 	<link rel="alternate" type="application/atom+xml" href="{% url blog_atom %}" />
 {% endblock %}
 
-{% block title %}Damian Cugley{% endblock %}
-{% block heading %}Damian Cugley{% endblock %}
+{% block title %}Damian Cugley’s Alleged Articles{% endblock %}
+{% block heading %}Damian Cugley’s Alleged Articles{% endblock %}
+{% block trail %}
+{% endblock %}
 
 {% block content %}
     <section id="flow">
@@ -26,7 +28,6 @@ href="http://www.alleged.org.uk/pdc/"></a>
     </aside>
 
     {% include "blog/parts/entry-nav.div" %}
-
 
     <aside id="exits">
         <h2>Elsewhere</h2>
