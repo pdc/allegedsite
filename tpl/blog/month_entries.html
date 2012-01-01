@@ -6,9 +6,9 @@
 {% block content %}
       <div id="entry-list">
     		{% if this_month %}
-      	  {% for e in this_month %}   
+      	  {% for e in this_month %}
     		  <h2><a href="{{ e.href }}" rel="prev">{{ e.title }}</a></h2>
-    		    
+
           <div class="entry-list-entry-info">
             {% if e.image %}
             <img src="{{ e.image.src }}" alt="" />
@@ -20,20 +20,20 @@
             <!-- <div class="permalink"><a href="{{ e.href }}">Permalink</a></div> -->
           </div>
           {{ e.summary|safe }}
-      	
+
 			    {% endfor %}
 			  {% else %}
 			  <p>No article in this month.</p>
 			  {% endif %}
       </div>
-      
+
       <div id="entry-nav">
         <h2>Other Months</h2>
         <ul>
           {% with prev as e %}
             {% if e %}
             <li>
-              <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}" rel="prev"><span>Older:</span> 
+              <a href="{% url blog_month year=e.published|date:"Y",month=e.published|date:"m" %}" rel="prev"><span>Older:</span>
                {{ e.published|date:"N Y"}}</a>
             </li>
             {% endif %}
@@ -50,7 +50,7 @@
     		{% if years %}
       	<h3>Article Archive by Month</h3>
       	<ul id="years">
-      	  {% for e in years %}      	    
+      	  {% for e in years %}
           <li>
       	    {% ifequal e.published.year entry.published.year %}
             <h4>{{ e.published|date:"Y"}}</h4>
