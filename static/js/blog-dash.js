@@ -1,6 +1,12 @@
 // -*-coding: UTF-8 -*-
 
 $(document).ready(function () {
+    // How many entries to show from each of the feeds.
+    var maxTweets = 1;
+    var maxLivejournal = 1;
+    var maxGalleries = 1;
+    var maxVideos = 1;
+
     var monthAbbrs = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
     var monthAbbrevs = 'Jan.|Feb.|March|April|May|June|July|Aug.|Sept.|Oct.|Nov.|Dec.'.split('|');
     function pad2(n) {
@@ -49,6 +55,7 @@ $(document).ready(function () {
         dataType: 'jsonp',
         success: function (data, textStatus, request) {
             twitterLink.parent().removeClass('loading');
+            var tweetCount = 0;
             for (var i in data.results) {
                 var className = 'twitter';
                 var tweet = data.results[i];
@@ -93,6 +100,10 @@ $(document).ready(function () {
                 }).text(whenFormatted + ' ').append('on Twitter <b>#</b>').appendTo(details);
 
                 insertIntoFlow(articleElt, when);
+
+                if (++tweetCount >= maxTweets) {
+                    break;
+                }
             }
         }
     });
@@ -106,6 +117,7 @@ $(document).ready(function () {
         format: 'json',
         success: function (data, textStatus, request) {
             if (data && data.success) {
+                var flickrCount = 0;
                 for (var i in data.entryGroups) {
                     var dateData = data.entryGroups[i];
                     var date = dateData.published;
@@ -138,6 +150,10 @@ $(document).ready(function () {
                         .prependTo(articleElt);
 
                     insertIntoFlow(articleElt, date);
+
+                    if (++flickrCount >= maxGalleries) {
+                        break;
+                    }
                 }
             }
         }
@@ -152,7 +168,8 @@ $(document).ready(function () {
         format: 'json',
         success: function (data, textStatus, request) {
             if (data && data.success) {
-                for (var j = 0; j < data.entries.length; ++j) {
+                var n = (data.entries.length > maxLivejournal ? maxLivejournal : data.entries.length)
+                for (var j = 0; j < n; ++j) {
                     var entry = data.entries[j];
                     var date = entry.published;
 
@@ -190,7 +207,8 @@ $(document).ready(function () {
         format: 'json',
         success: function (data, textStatus, request) {
             if (data && data.success) {
-                for (var j = 0; j < data.entries.length; ++j) {
+                var n = (data.entries.length > maxVideos ? maxVideos : data.entries.length)
+                for (var j = 0; j < n; ++j) {
                     var entry = data.entries[j];
                     var date = entry.published;
 
