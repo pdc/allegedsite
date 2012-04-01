@@ -548,12 +548,17 @@ article#entry p+p {
 
 #exits,
 #entry-nav,
-#flattr {
+#flattr,
+#share {
     display: block;
     float: left;
     margin: 0;
     padding: 0;
     width: 240px;
+}
+
+#share {
+    padding-bottom: 1em;
 }
 
 aside h2,
@@ -563,14 +568,14 @@ aside h2,
     margin: 0 10px;
     padding: 0;
 
-
     font-family: "YanoneKaffeesatz Regular", sans-serif;
     text-transform: uppercase;
     color: #630;
 }
 
-#flattr iframe {
-  margin: 1em 10px;
+#flattr iframe,
+#share iframe {
+  margin: 0 10px;
 }
 
 #entry-nav h3 {

@@ -24,23 +24,23 @@
           {% endwith %}
         </ul>
     </nav>
-        
-    <nav>	  
+
+    <nav>
     	<h3>Article Archives by Date</h3>
       	<ul id="years">
-      	  {% for year_e in years %}      	    
+      	  {% for year_e in years %}
           <li>
       	    {% ifequal year_e.published.year entry.published.year %}
-    
+
           	<h4>{{ entry.published|date:"Y" }}</h4>
           	<ul>
-          	  {% for month, e in this_year_months %}   
+          	  {% for month, e in this_year_months %}
                 <li>
     	     	      {% ifequal month entry.published.month %}
       	     	      {% if this_month %}
       	            <h5>{{ e.published|date:"F" }} ({{ this_month|length }})</h5>
       	            <ul class="w">
-                  	  {% for e in this_month %}   
+                  	  {% for e in this_month %}
                         <li>
                     	  {% ifequal e.published entry.published %}
                     	    <strong><q>{{ e.title }}</q> <small>{{ e.published|date:"j F" }}</small></strong>
@@ -51,7 +51,7 @@
                       </li>
             			  </ul>
                   </li>
-                  {% else %}    	     	      
+                  {% else %}
                   <li>
               	    <a href="{% url blog_month year=e.published.year|stringformat:"02d",month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
                   </li>
@@ -64,7 +64,7 @@
                 {% endifequal %}
     			    {% endfor %}
     			  </ul>
-	  
+
       	    {% else %}
             <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
             {% endifequal %}
