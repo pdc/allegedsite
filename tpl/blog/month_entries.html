@@ -5,7 +5,7 @@
 
 {% block content %}
       <div id="entry-list">
-    		{% if this_month %}
+	{% if this_month %}
       	  {% for e in this_month %}
     		  <h2><a href="{{ e.href }}" rel="prev">{{ e.title }}</a></h2>
 
