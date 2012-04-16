@@ -64,7 +64,7 @@ In XP, the schedule is still expressed in terms of stories—liiterally a stack
 of story cards with a rubber band around them—whereas in Scrum the task board
 shows tasks, not stories. In Kanban there are no stories, only queues of
 tasks, planned and unplanned (in other words,  development tasks mixed in with
-maintenance tasks and defects).
+maintenance tasks and defects). This is only confusing if you call tasks stories.
 
 So how does this matter to Kanbo? If I want it to be applicable to a variety
 of develpment styles, then it may be it needs to change whether the cards it
