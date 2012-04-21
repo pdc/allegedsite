@@ -137,6 +137,12 @@ work well enough. It might be clever or it might be dumb, I’m never sure
 which. In either case you can look at [the code in GitHub][7] to see how it
 works or tell me where I have missed a corner case. Share and enjoy!
 
+**Update: 2012-04-16.** The downside to this approach is that the sorting is
+happening in my app instead of in the database (both are running on the same
+VPS at present, so it makes little odds). My tester has revealed that if he
+adds enough stories (say, 20,000) he can make the sorting  take so long  the
+request times out, so some more work is obviously needed.
+
 
 
   [1]: http://en.wikipedia.org/wiki/Progressive_enhancement
