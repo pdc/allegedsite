@@ -21,6 +21,10 @@ check it could work at all, and then with this incantation:
 
     sudo ./run | (cd log;  sudo ./run)
 
+(And before you ask, I would not suggest you run commands like that (with
+`sudo`) casually. The great thing about the `run` scripts is they are simple
+enough to scrutinise first!)
+
 The first howler was forgetting to run
 
     sudo chmod +x run log/run

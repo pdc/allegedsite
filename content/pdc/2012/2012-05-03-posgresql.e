@@ -24,9 +24,9 @@ If you are more up-to-date you will have 12.04 and use PostgreSQL 9.1.
 
 The only real gotcha with installing it is the peculiar names given to the
 supporting packages. For my purposes I need the Python driver and the server.
-The Python adapter is not called `postgres`, `postgresql`, `pypostgresql` or
-anything sensible like that. It is a wrapper around the PostgreSQL library,
-which naturally is not called `libprostgres` or libpostgresql`, but  `libpq`.
+The Python adapter is not called `postgresql` or
+anything sensible like that but `psycopg2`. It is a wrapper around the PostgreSQL library,
+which naturally is not called `libpostgresql`, but  `libpq`.
 The upshot of which is you have to do the following commands:
 
     sudo aptitude install libpq-dev
