@@ -74,6 +74,7 @@ The aim here is to create a system with these properties:
 
 - It will be fairly clear for site owners how they should write it.
 
-- it says what we a re doing (tracking) rather than discussing details of mechanism (cookies).
+- It says what we are doing (tracking) rather than discussing details of mechanism (cookies).
 
 It would not entirely eliminate the tendency to train users in to just clicking Accept Tracking without thinking, but it would help.
+
