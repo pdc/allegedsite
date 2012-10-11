@@ -1,6 +1,6 @@
-Title: CAPTION Web Sites of the Past
+Title: CAPTION Web Site 1998–2011
 Date: 2012-09- 13
-Topics: caption web design
+Topics: caption web design portfolio
 
 Some friends and I started a small comics convention in Oxford called
 [CAPTION][] a few years ago—so long ago, in fact, that it predates web sites
@@ -8,7 +8,7 @@ for events like or anything like that. I started created  brochure sites for
 CAPTION from 1998 (though I think that [SpaceCAPTION1999][] was the first to have
 a real promotional site). Reading through the old archives it’s interesting
 seeing the capabilites of web styling—and my facility with them—improving from
-year to year
+year to year. So here is a slideshow!
 
 <div class="image-full-width slide">
     <img src="caption98-1080.png" width="540" alt="(screenshot)">
@@ -138,8 +138,9 @@ and pasted on to the page, represented by the shadows and tilting. I turned
 the CAPTION stick-figure logo in to a fake stamp.
 
 I have knocked together a simple slideshow which should work adequately in
-most browsers. Some older versions of IE might have troiuble with
-showing negative margins correctly; apologies if this affects you.
+most browsers. Some older versions of IE might have troiuble with showing
+negative margins correctly; apologies if this affects you. Without JavaScript
+it should just turn in to a long article with images in it.
 
 <style type="text/css">
 #slideshow {
@@ -174,7 +175,7 @@ article#entry #slideshow p {
     margin: 0.625em 0 1.25em;
 }
 
-.slide {
+#slideshow .slide {
     float: left;
     width: 540px;
     margin: 0 20px 0 0;
