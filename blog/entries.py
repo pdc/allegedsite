@@ -4,7 +4,7 @@
 entries.py
 
 Created by Damian Cugley on 2010-04-17.
-© 2010 Damian Cugley.
+© 2010–2012 Damian Cugley.
 """
 
 import os

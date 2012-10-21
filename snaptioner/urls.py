@@ -6,7 +6,7 @@ essential_args = {
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
 
-urlpatterns = patterns('alleged.snaptioner.views',
+urlpatterns = patterns('snaptioner.views',
     (r'^$', 'album_list', essential_args, 'album_list'),
     (r'^(?P<album_name>[a-z0-9-]+)/$', 'album_detail', essential_args, 'album_detail'),
     (r'^(?P<album_name>[a-z0-9-]+)/(?P<image_name>[a-z0-9.-]+)$', 'image_detail', essential_args, 'image_detail')
