@@ -7,8 +7,8 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from blog.entries import *
-from blog.fromatom import *
+from alleged.blog.entries import *
+from alleged.blog.fromatom import *
 
 import os
 from datetime import datetime, date, timedelta

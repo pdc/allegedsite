@@ -2,10 +2,11 @@
 
 import os
 
+project_root = os.path.dirname(os.path.dirname(__file__))
 def expand_path(partial_path):
-    return os.path.join(os.path.dirname(__file__), partial_path)
+    return os.path.join(project_root, partial_path)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -47,11 +48,6 @@ MEDIA_ROOT = ''
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = ''
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
-
 SNAPTIONER_LIBRARY_DIR = expand_path('albums')
 SNAPTIONER_LIBRARY_URL = 'http://localhost:8080/snaptioner/albums/'
 
@@ -66,14 +62,14 @@ YOUTUBE_ATOM_URL = 'http://gdata.youtube.com/feeds/base/users/damiancugley/uploa
 STATICFILES_DIRS = (
     expand_path('static'),
 )
-STATIC_URL = 'http://localhost:8080/alleged/'
-STATIC_ROOT = '/Users/pdc/Sites/alleged'
+STATIC_URL = 'http://static.alleged.org.uk/'
+STATIC_ROOT = '/home/alleged/static'
 
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = 'alleged'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'XXXXX'
+SECRET_KEY = '0&^f^h^uwgxa&yj=6=^8+-_aa7+-co)8y9h1h6#tnz)4btgotf'
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -83,7 +79,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'allegedsite.urls'
+ROOT_URLCONF = 'alleged.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -93,7 +89,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.staticfiles',
 
-    'snaptioner',
-    'blog',
-    'frontpage',
+    'alleged.snaptioner',
+    'alleged.blog',
+    'alleged.frontpage',
 )

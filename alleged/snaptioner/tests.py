@@ -6,7 +6,7 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from snaptioner.albums import get_albums, get_album
+from alleged.snaptioner.albums import get_albums, get_album
 
 ALBUM_DIR = 'albums'
 

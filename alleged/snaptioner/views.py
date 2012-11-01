@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
-from snaptioner.albums import get_albums
+from alleged.snaptioner.albums import get_albums
 
 def render_with(template_name):
     def decorator(func):

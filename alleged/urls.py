@@ -21,7 +21,7 @@ snaptioner_args = {
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
 urlpatterns = (
-    patterns('blog.views',
+    patterns('alleged.blog.views',
         (r'^$', 'front_page', updated_dict(blog_args, is_svg_wanted=True), 'front_page'),
         (r'^ancient-browser-support$', 'front_page', updated_dict(blog_args, is_svg_wanted=False), 'front_page_sans_svg'),
         (r'^pdc/$', 'index_view', blog_args, 'blog_entry'),
@@ -39,7 +39,7 @@ urlpatterns = (
         (r'^pdc/from/livejournal$', 'from_livejournal', {}, 'from_livejournal'),
         (r'^pdc/from/youtube$', 'from_youtube', {}, 'from_youtube'))
     + patterns('',
-        (r'^albums/', include('snaptioner.urls'))
+        (r'^albums/', include('alleged.snaptioner.urls'))
         # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
         # to INSTALLED_APPS to enable admin documentation:
         # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
