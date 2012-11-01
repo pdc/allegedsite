@@ -5,7 +5,6 @@ import os
 def expand_path(partial_path):
     return os.path.join(os.path.dirname(__file__), partial_path)
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -54,47 +53,37 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 SNAPTIONER_LIBRARY_DIR = expand_path('albums')
-SNAPTIONER_LIBRARY_URL = 'http://localhost/~pdc/snaptioner/albums/'
+SNAPTIONER_LIBRARY_URL = 'http://localhost:8080/snaptioner/albums/'
 
 BLOG_DIR = expand_path('content/pdc')
 BLOG_CACHE_ENTRIES = False
 
-STATIC_URL = 'http://localhost/~pdc/alleged/'
+HTTPLIB2_CACHE_DIR = '/Users/pdc/Library/Caches/httplib2'
+FLICKR_ATOM_URL = 'http://api.flickr.com/services/feeds/photos_public.gne?id=14145351@N00&lang=en-us&format=atom'
+LIVEJOURNAL_ATOM_URL = 'http://damiancugley.livejournal.com/data/atom'
+YOUTUBE_ATOM_URL = 'http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?alt=atom&v=2&orderby=published'
 
+STATICFILES_DIRS = (
+    expand_path('static'),
+)
+STATIC_URL = 'http://localhost:8080/alleged/'
+STATIC_ROOT = '/Users/pdc/Sites/alleged'
+
+CACHE_MIDDLEWARE_SECONDS = 30
+CACHE_MIDDLEWARE_KEY_PREFIX = 'alleged'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '0&^f^h^uwgxa&yj=6=^8+-_aa7+-co)8y9h1h6#tnz)4btgotf'
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
-)
+SECRET_KEY = 'XXXXX'
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'allegedsite.urls'
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    expand_path('tpl'),
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = [
-    "django.core.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    'alleged.template_context_processors.settings',
-]
-
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -102,7 +91,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.markup',
+    'django.contrib.staticfiles',
 
-    'alleged.snaptioner',
-    'alleged.blog',
+    'snaptioner',
+    'blog',
+    'frontpage',
 )
