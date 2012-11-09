@@ -393,7 +393,7 @@ article header h2 {
 
 article#entry p {
     margin: 0 10px;
-    width: 460px;
+    width: 540px;
 }
 
 article#entry p+p {
@@ -737,6 +737,7 @@ pre {
     padding: 0.6em 10px 0.76em 19px;
     */
     font-size: 1em;
+    width: auto;
     margin: 0.625em 10px 0.625em 30px;
     padding: 0.6em 9px 0.65em 9px;
 
