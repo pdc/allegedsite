@@ -3,7 +3,6 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.template import RequestContext
 from django.views.decorators.cache import cache_page
-from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django.conf import settings
@@ -11,6 +10,7 @@ from django.conf import settings
 from datetime import date
 import json
 
+from alleged.decorators import render_with
 from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
 from alleged.blog.fromatom import get_flickr, get_livejournal, get_youtube
 
@@ -61,33 +61,6 @@ def get_named_article(blog_dir, blog_url, image_url, year, name):
         article = get_named_article_uncached(blog_dir, blog_url, image_url, year, name)
         #cache.set(blog_key, article)
     return article
-
-def render_with(default_template_name, mimetype='text/html'):
-    """Decorator for request handlers.
-
-    The decorated function returns a dict of template args.
-    These are rendered with the named template.
-
-    Arguments --
-        default_template_name -- names the template, if the
-            dictionary does not include an entry ‘template_name’.
-        mimetype -- the MIME content-type for the
-            response; default is 'text/html'.
-
-    Returns --
-        Either a dictionary of template args,
-        or an HttpResponse obejct to return verbatim.
-    """
-    def decorator(func):
-        def decorated_func(request, *args, **kwargs):
-            result = func(request, *args, **kwargs)
-            if isinstance(result, HttpResponse):
-                return result
-            template_name = result.pop('template_name') if 'template_name' in result else default_template_name
-            template_args = result
-            return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype)
-        return decorated_func
-    return decorator
 
 def get_year_months(entries, y):
     """Find the last article in each month in this year.
@@ -171,12 +144,6 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
         'tags': tags,
         'plus_separated_tags': plus_separated_tags,
         'matching_entries': matching_entries,
-    }
-
-@render_with('front_page.html')
-def front_page(request, blog_dir, blog_url, image_url, is_svg_wanted):
-    return {
-        'is_svg_wanted': is_svg_wanted,
     }
 
 @render_with('blog/named_article.html')
