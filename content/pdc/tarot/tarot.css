@@ -1,0 +1,174 @@
+/* Time-stamp: <pdc 2003-12-01> */
+
+:link {
+    color: #063;
+}
+
+:visited {
+    color: #033;
+}
+
+:link:hover, :visited:hover {
+    background-color: #E8E8E0;
+    color: #C60;
+    text-decoration: underline;
+}
+
+:active {
+    color: #F90;
+    text-decoration: underline;
+}
+
+abbr, acronym {
+    font-style: inherit;
+    border-bottom: 1px dotted #063;
+}
+
+body, html {
+    font-size: 100%;
+    font-family: garamond, baskerville, palatino, serif;
+    line-height: 1.4;
+
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F0;
+    color: #003;
+}
+
+code {
+    font-family: futura, futura medium, sans-serif;
+}
+
+dd {
+    margin: 0.25em 0 1em 72pt;
+}
+
+div#body {
+}
+
+div#picturemenu {
+    float: left;
+    width: 100%;
+    margin: 0;
+    border: 1px dotted #FFF;
+}
+
+#picturemenu div {
+    width: 120px;
+    float: left;
+}
+
+dl {
+    max-width: 36em;
+}
+
+dt {
+    margin: 1em 0 0 48pt;
+    font-weight: bold;
+    color: #900;
+}
+
+form#chooseDeal {
+    margin: 0 0 1em 0;
+    /*
+    padding: 0.25em 0.5em;
+    border-top: 1px dotted #900;
+    */
+    background-color: #F0F0E8;
+    border-bottom: 1px dotted #900;
+}
+
+h1 {
+    margin: 0px;
+    padding: 0.25em 0.5em 0.5em;
+    background-color: #F0F0E8;
+    color: #900;
+    text-align: center;
+}
+
+h2 {
+    margin: 1.2em 1em 0.5em 48pt;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: italic;
+    color: #900;
+}
+
+p img {
+    margin: 0 6pt;
+    border: 1px solid #999;
+    padding: 6pt;
+    -moz-border-radius: 6pt;
+}
+
+#pictureMenu p img {
+    margin: 0;
+}
+
+#trail img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    vertical-align: middle;
+}
+
+#chooseDeal input {
+    display: inline;
+}
+
+#chooseDeal label {
+    font-style: italic;
+}
+
+p {
+    margin: 0 1em 1em 48pt;
+    max-width: 36em;
+}
+
+#chooseDeal p {
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 100%;
+}
+
+#picturemenu p {
+    font-style: italic;
+    color: #900;
+}
+
+#picturemenu div p {
+    text-align: center;
+}
+
+p#surtitle {
+    margin: 0;
+    padding: 0.25em 0.5em;
+    background-color: #F0F0E8;
+    color: #600;
+}
+
+p#trail {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.25em 0.5em;
+    border-bottom: 1px dotted #900;
+    font-style: italic;
+}
+
+#chooseDeal select {
+    margin-right: 1em;
+}
+
+table#twoDoors {
+    margin: 1em auto;
+    border: 5px double #F0F0E8;
+}
+
+#twoDoors td {
+    padding: 0.5em 1em;
+}
+
+#twoDoors a {
+    display: block;
+}

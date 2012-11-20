@@ -32,7 +32,7 @@ svgFiles = 	$(trumpsFiles) \
 		$(courtFiles)
 
 
-$(htmlFiles):	 tarotDefs.tcl ../abbrDefs.tcl
+$(htmlFiles):	 ../pdcDefs.tcl tarotDefs.tcl ../abbrDefs.tcl
 
 png.html: 	$(svgFiles:%.svg=%-100w.png) \
 		$(svgFiles:%.svg=%-360h.png) \

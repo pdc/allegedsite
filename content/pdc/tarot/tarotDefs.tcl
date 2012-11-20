@@ -24,10 +24,10 @@ proc titleFor {card} {
 }
 
 proc beginBody {{extraLink ""}} {
-    push p id=trail 
-    emit "[a* href=../../ "title=Alleged Literature home page" \
-	    [img ../../img/alleged-03@32x16.png \
-	    "alt=Alleged Literature"]] &rarr;"
+    push p id=trail
+    ##emit "[a* href=../../ "title=Alleged Literature home page" \
+    ##	    [img ../../img/alleged-03@32x16.png \
+    ##	    "alt=Alleged Literature"]] &rarr;"
     emit "[a ../ "Damian Cugley"] &rarr;"
     if {[string compare [htmlInfo outFileName] index.html] != 0} {
 	emit "[a ./ "Alleged Tarot 2002"] &rarr;"
