@@ -5,7 +5,7 @@ source tarotDefs.tcl
 beginDocument {
     title "Alleged Tarot - Alleged Literature"
     stylesheet tarot.css
-    link ../../favicon.ico "rel=shortcut icon" 
+    link ../../favicon.ico "rel=shortcut icon"
 }
 
 beginBody
@@ -41,26 +41,26 @@ div id=picturemenu {
     h2 "Index pages in pure SVG: "
 
     div {
-	p "[a trumps0.svgz \
+	p "[a trumps0.svg \
 		"[img 0-fool-100w.png alt=Trumps]\
 		[br]Trumps"]
 	"
     }
     div {
-	p "[a wands.svgz  \
+	p "[a wands.svg  \
 		"[img wands-ace-100w.png alt=Wands]\
 		[br]Wands"]"
     }
     div {
-	p "[a cups.svgz "[img cups-ace-100w.png alt=Cups]\
+	p "[a cups.svg "[img cups-ace-100w.png alt=Cups]\
 		[br]Cups"]"
     }
     div {
-	p "[a swords.svgz "[img swords-ace-100w.png alt=Swords]\
+	p "[a swords.svg "[img swords-ace-100w.png alt=Swords]\
 		[br]Swords"]"
     }
     div {
-	p "[a coins.svgz "[img coins-ace-100w.png alt=Coins]\
+	p "[a coins.svg "[img coins-ace-100w.png alt=Coins]\
 		[br]Coins"]"
     }
 }

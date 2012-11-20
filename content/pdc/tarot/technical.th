@@ -5,7 +5,7 @@ source tarotDefs.tcl
 beginDocument {
     title "Technical - Alleged Tarot - Alleged Literature"
     stylesheet tarot.css
-    link ../../favicon.ico "rel=shortcut icon" 
+    link ../../favicon.ico "rel=shortcut icon"
 }
 
 beginBody
@@ -14,7 +14,7 @@ h1 "Technical info"
 
 h2 Format
 
-p " 
+p "
 [a* href=viiii-hermit-svg.html "title=Link to VIIII. The Hermit (SVG)"\
 	[img viiii-hermit-100w.png align=left \
 	"alt=(Link to VIIII. The Hermit)" \
@@ -30,7 +30,7 @@ files.
 p " Why [SVG]?  Because [SVGZ] is a more compact format for the sorts
 of images I&nbsp;am creating even than [PNG]&mdash;and in addition
 supports higher resolution, zoom and pan, and interactivity.  For
-example, the 360-pixel-high [PNG] of 
+example, the 360-pixel-high [PNG] of
 
 [a v-pope-svg.html [img v-pope-64x64.png align=right alt=] The Pope] is
 14237&nbsp;bytes; the compressed [SVG] version is 8725&nbsp;bytes
@@ -39,7 +39,7 @@ and includes the title and keywords,
 [em and] you can zoom in see a tiny stick man I&nbsp;included as a joke.
 "
 
-p "The pips cards (like the 
+p "The pips cards (like the
 
 [a coins-6-svg.html [img coins-6-64x64.png align=left alt=] \
 Six of Coins]) exploit
@@ -67,7 +67,7 @@ p " [a wands-5-svg.html [img wands-5-64x64.png align=left\
 "alt=(Link to Five of Wands)"]] A the time
 of writing, the easiest way to view [SVG] files if you are using
 Netscape Navigator, Microsoft Internet Explorer, or Mozilla 0.9.x (on Linux)
-is 
+is
 
 [a http://www.adobe.com/ Adobe]&rsquo;s
 
@@ -80,16 +80,16 @@ in version 2.0.
 p id=notmozilla "Note that, alas!
 SVG Viewer 3.0 is [em not] compatible with Mozilla&nbsp;1.0
 because of a change to the plug-in architecture of
-the  0.9.x series that was introduced 
-when the [API] was frozen for 1.0 
+the  0.9.x series that was introduced
+when the [API] was frozen for 1.0
 (Bugzilla [a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=133567#c30 \
 "title=Crash because Adobe SVG plugin used an unfrozen interface which changed its prototype"\
 133567],
 [a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=115528#c8\
 "title=Adobe needs frozen interfaces for its SVG plugin to be able to expose methods to scripts" 115528]
-), 
+),
 
-and Mozilla&rsquo;s built-in [SVG] support is not ready for serious use 
+and Mozilla&rsquo;s built-in [SVG] support is not ready for serious use
 ([a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=85803 \
 "title=SVG should print as vector graphics" 85803],
 [a* href=http://bugzilla.mozilla.org/show_bug.cgi?id=111152 \
@@ -101,17 +101,17 @@ and Mozilla&rsquo;s built-in [SVG] support is not ready for serious use
 "
 
 p "
-Another option is 
+Another option is
 [a* "href=http://xml.apache.org/batik/" \
 "title=Batik SVG Toolkit&mdash;Apache.org" Batik],
-the Java-based [SVG] tool kit being developed by the 
+the Java-based [SVG] tool kit being developed by the
 [a http://www.apache.org/ Apache]   Project.
 Batik 1.1.1 includes a simple interactive viewer for [SVG]
 files (amongst other things).
-I&nbsp;hear the upcoming version 1.5 
+I&nbsp;hear the upcoming version 1.5
 includes support for scripting and animation.
 To use it to view the tarot cards on this site,
-visit [a wands.svgz [code http://www.alleged.org.uk/pdc/tarot/wands.svgz]].
+visit [a wands.svg [code http://www.alleged.org.uk/pdc/tarot/wands.svg]].
 This has links to [SVG] pages for the other suits
 and for trumps.
 "
@@ -121,7 +121,7 @@ and for trumps.
 p "
 These are the options I&nbsp;have tried out myself,
 or friends have told me work for them.
-There are other [SVG] viewing options 
+There are other [SVG] viewing options
 
 [a http://www.w3.org/Graphics/SVG/SVG-Implementations.htm8#viewer listed]
  on the [W3C]&rsquo;s site.
@@ -129,17 +129,17 @@ There are other [SVG] viewing options
 
 h2 Changes
 
-p " 
+p "
 [a xiii-death-svg.html [img xiii-death-64x64.png align=left]]
 
-As of 5 March 2002, 
+As of 5 March 2002,
 [strong "I have removed the &lsquo;simple&rsquo; versions of the
 cards"] This is because I&nbsp;have run out of space on the site.  If
 you were in fact relying on the &lsquo;simple&rsquo; files, then
-please let me know and I&rsquo;ll see if anything can be done.  
+please let me know and I&rsquo;ll see if anything can be done.
 Also, the <strong>SVG files are stored as compressed SVG</strong>
-(<code>.svgz</code>), a convention understood by Adobe&rsquo;s viewer,
-and, I&nbsp;hope, other viewers.  
+(<code>.svg</code>), a convention understood by Adobe&rsquo;s viewer,
+and, I&nbsp;hope, other viewers.
 Given this reduces the disc space required typically from  69&nbsp;K to 16&nbsp;K, this is a reduction I&nbsp;cannot ignore.
 "
 

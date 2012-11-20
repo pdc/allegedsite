@@ -2,15 +2,15 @@
 # Time-stamp: <pdc 2003-11-29>
 
 # Each card has a symbolic name.
-# For the trumps, it is prefixed with the roman numerals 
+# For the trumps, it is prefixed with the roman numerals
 # for the card's ordinal (with 0 used for the Fool);
 # the definite article is elided:
-# 
+#
 #  0-fool, i-magician, ii-papess, ...
 #
 # For the suits, it is the suit name followed by the rank:
 #
-#  wands-ace, wands-2, wands-3, ..., wands-10, 
+#  wands-ace, wands-2, wands-3, ..., wands-10,
 #  wands-page, wands-knight, wands-queen, wands-king
 #
 # The suits are called wands, cups, swords, and coins.
@@ -18,7 +18,7 @@
 # For each of these we can define several array entries:
 #
 #  cardDescs(CARD) -- a multi-paragraph discussion of its interpretation
-#  STATEKeywords(CARD) -- keywords for the card; the state is 
+#  STATEKeywords(CARD) -- keywords for the card; the state is
 #    either upright or reversed
 #  cardTitles(CARD) -- the title of the card, if it cannot be deduced
 #    from CARD easily.
@@ -130,7 +130,7 @@ array set reversedKeywords {
     xiii-death "traumatic change, delayed change"
     xiiii-temperance "moodiness, uncertainty"
     xv-devil "intolerable situation, escape"
-    xvi-tower "preventable misfortune, disappointing blow" 
+    xvi-tower "preventable misfortune, disappointing blow"
     xvii-star "hope, delayed fulfilment"
     xviii-moon "fears, phobias, despair"
     xviiii-sun "daydreaming, disillusionment"
@@ -298,7 +298,7 @@ set cardDescs(ii-papess) {
     idea that mystery and the hidden are an essential part of life,
     rather than an exception to the rule.  "
 
-    p " In this aspect the card is also known as Juno (the most most
+    p " In this aspect the card is also known as Juno (the most
     powerful of the Roman godesses, governing marriage, and identified
     with the Greek goddess Hera).  The connection is with the
     Women&rsquo;s Mysteries of the classical world."
@@ -309,7 +309,7 @@ set cardDescs(ii-papess) {
     [a http://www.queenofpentacles.com/articles/boaz_jachin.html "the
     two pillars in front of Solomon&rsquo;s temple in the Bible"]).
     They are coloured black and white representing female and male
-    principles, the same colours used in the 
+    principles, the same colours used in the
 
     [a http://chinesefortunecalendar.com/yinyang.htm "Chinese Yin-Yang
     symbol"].  The Alpha and Omega suggest that everything (or all
@@ -319,7 +319,7 @@ set cardDescs(ii-papess) {
 }
 
 set cardDescs(iii-empress) {
-    
+
     p " The Empress is here associated with Demeter or Ceres (goddess
     of fertility and the seasons).  The bounty of nature is
     represented through civilized symbols: the grain and fruit she
@@ -370,7 +370,7 @@ set cardDescs(v-pope) {
     of the cards.  The reason for this is that my original Pebble
     Tarot was based on the tarot deck I&nbsp;had at the time&mdash;the
 
-    [a http://www.aeclectic.net/tarot/1jjswiss/index.html "1JJ Swiss tarot"], 
+    [a http://www.aeclectic.net/tarot/1jjswiss/index.html "1JJ Swiss tarot"],
 
     and that uses the old card names.  My Pope was
     the most popular card amongst my friends, and if I&nbsp;wanted to
@@ -381,12 +381,12 @@ set cardDescs(v-pope) {
     world), so below (in the material world)&rsquo;.  The Hierophant
     is often decorated with a pentacle; I&nbsp;have alluded to that in
     the five-pointed star on his Pope hat.  "
-    
+
 }
 
 
 set cardDescs(vi-lovers) {
-    
+
     p "In modern decks, this card shows a couple
     embracing.  I&nbsp;have followed an older tradition showing suitor
     apparently choosing between two women.  This card represents
@@ -442,7 +442,7 @@ set cardDescs(viii-justice) {
     errors were made.  On the other hand, my virtual deck tends
     whimsically to be modelled on the older decks, and so I&nbsp;have
     followed the older numbering. "
-    
+
     p "Justice and other abstract concepts have been depicted as women
     since Classical times because in Greek abstract nouns have the
     feminine gender.  "
@@ -458,7 +458,7 @@ set cardDescs(viii-justice) {
 }
 
 set cardDescs(xi-strength) {
-    
+
     p "In some decks this is card VIII&mdash;a modification designed
     to make the tarot deck better match the order of the signs of the
     zodiac (since Leo preceeds Libra in the zodiac).  If you see the
@@ -540,7 +540,7 @@ set cardDescs(wands-ace) {
 
 }
 
-set cardDescs(wands-2) { 
+set cardDescs(wands-2) {
 
     p "The Ace of Wands symbolizes the beginning of a new enterprise;
     the Two can mean you are thinking about how to take the next
@@ -570,7 +570,7 @@ set cardDescs(wands-3) {
     plans for a grand project (the creativity sense of the number 3),
     and waiting to see how they turn out (with some optimisim, because
     3 is lucky)."
-    
+
 }
 
 set cardDescs(wands-4) {
@@ -596,7 +596,7 @@ set cardDescs(wands-4) {
 }
 
 set cardDescs(wands-5) {
-    
+
     p "After the stability of 4, the number 5 represents disruption
     and discord; to Discordians, it is Eris&rsquo;s own number.  The
     fives are generaly inauspicious cards in tarot, but when balanced
@@ -648,23 +648,23 @@ set cardDescs(cups-2) {
 }
 
 set cardDescs(cups-3) {
- 
+
     p "The number 3 represents creativity and creation, and combined
     with the watery, emotional suit of cups, this means a birth,
     literal or figurative (as in emotional or creative growth).  Three
     is a lucky number, and so this card also suggests a happy family
     life and good fourtune in matters of the heart."
 
-    p "My glowing baby stick-figure is supposed to evoke 
+    p "My glowing baby stick-figure is supposed to evoke
 
-    [a http://keithharing.com/ "Keith Haring"]&rsquo;s 
+    [a http://keithharing.com/ "Keith Haring"]&rsquo;s
 
     [a http://keithharing.com/art/cards/cards/classic_f10.gif "glowing baby"]
 pictures.  "
 }
 
 set cardDescs(cups-4) {
-    
+
     p "The number 4 represents stability and solidity.  Combined with
     the suit of cups (traditionally considered to be feminine and
     therefore traditionally considered passive), this leads to an
@@ -694,7 +694,7 @@ set cardDescs(swords-ace) {
     suit of Spades engraved on the blade."
 }
 
-set cardDescs(swords-2) { 
+set cardDescs(swords-2) {
 
     p "Swords represent military matters: strife, judicial matters,
     strategy and abstract thought.  Twos represent combination of or
@@ -708,7 +708,7 @@ set cardDescs(swords-2) {
 
 
 set cardDescs(coins-ace) {
-    
+
     p "Coins stand for the financial and commercial side of life (that
     is, money).  Coins also stands for the element of Earth,
     symbolizing physical feelings, practical skills, fertility and
@@ -730,7 +730,7 @@ King. I have exaggerated its size to make it ore like a throne than a normal cha
 
 set cardDescs(wands-king) {
     p "The chair is another Charles Rennie Mackintosh design from the
-early years of the twentieth century, listed as 
+early years of the twentieth century, listed as
 House for an Art Lover Carver
 Chair.  (I&nbsp;dont&rsquo;t have the exact date because I&nbsp;found
 it in a modern furniture catalogue!)  "
@@ -739,12 +739,12 @@ it in a modern furniture catalogue!)  "
 
 
 set cardDescs(cups-queen) {
-    p "The chair is the Ball (of Globe) chair, designed by Eero Aarnio
+    p "The chair is the Ball (or Globe) chair, designed by Eero Aarnio
 around 1963&ndash;65.  I&nbsp;chose it because of its shape&mdash;it
 is one of the most cup-like famous chair designs, so particularly
 appropriate to this, the most feminine of Cups cards (the Queens and
 the suit of Cups both being the associated with the feminine element
-of water)."  
+of water)."
 
 }
 
@@ -755,7 +755,11 @@ The Egg chair was also used by Dr No in the James Bond film of the same name."
 
 set cardDescs(swords-queen) {
     p "
-The scales, water jug and photograph are supposed to symbolize the three zodiac signs associated with the suit of Swords (Libra, Aquarius, and Gemini).  Why exactly Aquarius is an air sign is beyond me.  The book represents knowlege and intellectual pursuits.  Her crown is decorated with the symbol of the suit os spades, the modern equivalent of the tarot suit of swords.
+The scales, water jug and photograph are supposed to symbolize the three
+zodiac signs associated with the suit of Swords (Libra, Aquarius, and Gemini).
+Why exactly Aquarius is an air sign is beyond me.  The book represents
+knowlege and intellectual pursuits.  Her crown is decorated with the symbol of
+the suit of spades, the modern equivalent of the tarot suit of swords.
 "
     p "The chair is based on one designed by Otto Wagner for the &lsquo;Die Zeit&rsquo; telegraph office, 1902."
 
@@ -763,10 +767,10 @@ The scales, water jug and photograph are supposed to symbolize the three zodiac 
 
 set cardDescs(swords-king) {
     p "
-    The symbols in the background are of course those of the three zodiac signs associated with this suit.  
+    The symbols in the background are of course those of the three zodiac signs associated with this suit.
 "
 
-p "The King&rsquo;s chair is a stick-figure version of the 
+p "The King&rsquo;s chair is a stick-figure version of the
 [a http://www.hermanmiller.com/CDA/product/0,1469,c201-pss1-p8,00.html Aeron],
 designed by Donald Chadwick and William Stumpf in 1992.  As well as
 having a name suggestive of air, the Aristotlian element associated

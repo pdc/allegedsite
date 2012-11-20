@@ -11,7 +11,7 @@ array set modeTitles {
     png "PNG"
 }
 
-# Generate the image 
+# Generate the image
 proc ii {name {big 0}} {
     global mode uprightKeywords reversedKeywords
 
@@ -20,10 +20,10 @@ proc ii {name {big 0}} {
     switch $mode {
 	svg {
 	    if {$big} {
-		return [svg $fileName-card3.svgz width=300 height=435 \
+		return [svg $fileName-card3.svg width=300 height=435 \
 			"alt=You need the SVG plug-in"]
 	    } else {
-		return [svg $fileName-card3.svgz width=100 height=145 \
+		return [svg $fileName-card3.svg width=100 height=145 \
 			"alt=You need the SVG plug-in"]
 	    }
 	}
@@ -93,7 +93,7 @@ proc emitSuitPrevNextTr {name mode} {
 	    $name dummy suit rank]} {
 	set n [lsearch -exact $allSuits $suit]
 	set someSuits [lreplace $allSuits $n $n]
-	emitSuitTr $someSuits $rank $mode 
+	emitSuitTr $someSuits $rank $mode
     }
 }
 
@@ -180,20 +180,20 @@ proc cardNumber {card} {
     }
     return $base
 }
-	
+
 
 proc cardCompare {a b} {
     return [expr [cardNumber $a] - [cardNumber $b]]
-} 
+}
 
 set svgFiles  [concat [glob "\[ivx0\]*-card3.svg"] \
 	[glob "{wands,cups,swords,coins}-*-card3.svg"]]
 set names {}
 foreach svgFile $svgFiles {
-    set name [string range $svgFile 0 [expr [string length $svgFile] - 11]] 
+    set name [string range $svgFile 0 [expr [string length $svgFile] - 11]]
     lappend names $name
 }
-set names [lsort -command cardCompare $names] 
+set names [lsort -command cardCompare $names]
 
 set nCols 3
 
@@ -219,7 +219,7 @@ foreach name $names {
 
 	####surTitle  "Alleged Tarot ($modeTitles($mode))"
 	h1 [titleFor $name]
-	
+
 	table class=layout width=100% border=0 cellspacing=4 {
 	    emitPrevNextTr $name $mode
 	    tr {
@@ -262,17 +262,17 @@ foreach name $names {
 
 	if {[string compare $mode svg] == 0} {
 	    p "
-	    If you do not see the graphics on this page, please try instead the 
+	    If you do not see the graphics on this page, please try instead the
 	    [a $name-png.html PNG version].
 	    "
 	} else {
 	    p "
-	    If your browser supports 
-	    [SVG], then you should visit the 
+	    If your browser supports
+	    [SVG], then you should visit the
 	    [a $name-svg.html SVG version] of this page.
 	    It is so much more cool!
 	    "
-	}		
+	}
 
 
 	endBody
@@ -291,8 +291,8 @@ foreach mode $modes {
     h1 "Index of all the cards  ($modeTitles($mode))"
 
     p "
-    Each of the small images on this page links to a larger 
-    picture of the complete card with commentary.  
+    Each of the small images on this page links to a larger
+    picture of the complete card with commentary.
     "
 
     push table border=0 cellspacing=4 align=center
@@ -301,11 +301,11 @@ foreach mode $modes {
     set nCols 4
     foreach name $names {
 	if {$iCol == 0} {
-	    push tr align=center 
+	    push tr align=center
 	    set iCol 1
 	} elseif {[incr iCol] > $nCols} {
 	    pop
-	    push tr align=center 
+	    push tr align=center
 	    set iCol 1
 	}
 	set title [titleFor $name]
@@ -314,9 +314,9 @@ foreach mode $modes {
     pop
     pop
 
-    p "These index images are in 
+    p "These index images are in
     [acronym* "title=Portable Network Graphics" PNG] format.
-    The pages for the cards are in 
+    The pages for the cards are in
     [acronym* "title=Scalable Vector Graphics" SVG]."
 
     endBody

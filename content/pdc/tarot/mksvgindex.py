@@ -19,7 +19,7 @@ templ = """<?xml version="1.0"?>
     <!ENTITY menuLinkStyle "font-family: Even; font-size: 13px; fill: blue; text-decoration: underline">
     <!ENTITY menuSelStyle "font-family: Even; font-size: 13px; fill: black; text-decoration: none">
 	]>
-<svg 
+<svg
     viewBox="0 0 650 510"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -28,7 +28,7 @@ templ = """<?xml version="1.0"?>
     <defs>
      	<font id="font-1" horiz-adv-x="12">
     	    <font-face
-    		    font-family="Even" 
+    		    font-family="Even"
     		    font-weight="normal"
     		    units-per-em="18"
     		    horiz-origin-x="1.5"
@@ -41,11 +41,11 @@ templ = """<?xml version="1.0"?>
     		    ideographic="6" hanging="6">
     	    </font-face>
     	    <missing-glyph horiz-adv-x="11"
-    	    	    d="M1,0  v12  h9  v-12  z 
+    	    	    d="M1,0  v12  h9  v-12  z
     	    	    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
     	    <glyph unicode=" " horiz-adv-x="6" d=""/>
     	    <glyph unicode="!" horiz-adv-x="3.5"
-    	    	    d="M1,0  v1.5  h1.5  v-1.5  z 
+    	    	    d="M1,0  v1.5  h1.5  v-1.5  z
     	    	    M1,3  v9  h1.5  v-9  z"/>
     	    <glyph unicode=":" horiz-adv-x="4"
     	            d="M1,0 h2 v2  h-2  z
@@ -104,7 +104,7 @@ templ = """<?xml version="1.0"?>
     	            9,1.25 9.5,2.75
     	            V5  h-3  V6.5  h4.5  V1.25
     	            q-1,-1.5 -4.5,-1.5
-    	            Q1,-0.25 1,5.825  z"/>	            
+    	            Q1,-0.25 1,5.825  z"/>
     	    <glyph unicode="h" horiz-adv-x="11"
     	    		d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
     	    		h-1.5  v5.25  h-6  v-5.25  z"/>
@@ -161,7 +161,7 @@ templ = """<?xml version="1.0"?>
     	            Q10.5,4 9.75,3  Q8.5,5 5.25,5
     	            V3.5  Q8,3.5 8.5,1.75
     	            Q8,1.25 6.5,1.25  z"/>
-    	            
+
     	    <glyph unicode="r" horiz-adv-x="10"
     	            d="M1,0  V12  H2.5  V9.5
     	            Q4,12.25 9,12.25  V10.75
@@ -174,7 +174,7 @@ templ = """<?xml version="1.0"?>
             		 Q2.5,1.25 1,2.75 V1.25 Q2.5,-0.25 5.25,-0.25
             		 Q10,-0.25 10,3.4 Q10,7.05 5.25,7.05
             		 Q2.25,7.05 2.25,8.9 Q2.25,10.75 5.25,10.75
-            		 Q7.77632,10.75 9.27632,9.25z"/>      
+            		 Q7.77632,10.75 9.27632,9.25z"/>
     	    <glyph unicode="t" horiz-adv-x="11"
     	            d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
     	    <glyph unicode="u" horiz-adv-x="12"
@@ -185,7 +185,7 @@ templ = """<?xml version="1.0"?>
     	            V12  z"/>
         	<glyph unicode="v" horiz-adv-x="12"
         	        d=" M0.5,12 L5.5,0 H6.5 L11.5,12
-        	        H10.1154 L6,2.12308 L1.88462,12z"/>	            
+        	        H10.1154 L6,2.12308 L1.88462,12z"/>
             <!-- slope = 0.375 -->
             <!-- stroke horiz thickness = 1.6 -->
             <!-- stroke thickness = 1.49813 -->
@@ -220,7 +220,7 @@ templ = """<?xml version="1.0"?>
     	        <!-- em dash -->
  	     	    <glyph unicode="&#x2014;" horiz-adv-x="18"
     	            d="M1,5.25  h16  v1.5  h-16  z"/>
- 
+
     	</font>
     </defs>
     <rect x="-50" y="-50" width="750" height="610"
@@ -292,7 +292,7 @@ def dictSub(dict, m):
 atRe = re.compile(r'@[A-Z]+@')
 
 cardTempl = """
-    <a id="templ" xlink:show="new" xlink:href="@BASE@@CARD@-card3.svgz">
+    <a id="templ" xlink:show="new" xlink:href="@BASE@@CARD@-card3.svg">
     	    <g transform="@TRANSFORM@">
                 <rect x="0" y="0" width="124" height="160" rx="5" ry="5"
                         fill="#F8F8F0" stroke="none"/>
@@ -332,10 +332,10 @@ def emitTrumps(output, beg, end, startX, startY):
         y = startY + (i - beg) / cardsPerRow* cardAdvY;
         dict['TRANSFORM'] = 'translate(%d,%d)' % ( x, y)
         text = atRe.sub(lambda m, d=dict: dictSub(d, m), cardTempl)
-        output.write(text)        
+        output.write(text)
 
 linkTempl = """
-    <a xlink:href="@BASE@@FILE@.svgz">
+    <a xlink:href="@BASE@@FILE@.svg">
         <g transform="translate(@X@,@Y@)">
             <rect x="-10" y="-13" width="115" height="18"
                     fill="#FFFFFF" stroke="#000000" opacity="0.75"/>
@@ -392,31 +392,29 @@ def rom(n):
 def doSuits():
     p = templ.find('@CARDS@')
     for i in range(4):
-        fileName = suitNames[i] + '.svgz'
-        zipWriter = gzip.GzipFile(opts['dir'] + '/' + fileName, 'wb', 9)
-        output = codecs.lookup('utf-8')[3](zipWriter)
-        output.write(templ[:p])
-        emitSuitCards(output, i, 3, 4)
-        emitMenu(output, 1, i, 540, 370)
-        output.write(templ[p + 7:])
-        output.reset()
-        zipWriter.close()
-        print 'Wrote compressed SVG to', fileName
+        fileName = suitNames[i] + '.svg'
+        with open(opts['dir'] + '/' + fileName, 'wb') as strm:
+            output = codecs.lookup('utf-8')[3](strm)
+            output.write(templ[:p])
+            emitSuitCards(output, i, 3, 4)
+            emitMenu(output, 1, i, 540, 370)
+            output.write(templ[p + 7:])
+            output.reset()
+            print 'Wrote SVG to', fileName
 
 def doTrumps():
     p = templ.find('@CARDS@')
     chunk = 12
     for i in range(0, 22, chunk):
-        fileName = ('trumps%d' % i) + '.svgz'
-        zipWriter = gzip.GzipFile(opts['dir'] + '/' + fileName, 'wb', 9)
-        output = codecs.lookup('utf-8')[3](zipWriter)
-        output.write(templ[:p])
-        emitTrumps(output, i, min(i + chunk, 22), 3, 4)
-        emitMenu(output, 0, i, 540, 370)
-        output.write(templ[p + 7:])
-        output.reset()
-        zipWriter.close()
-        print 'Wrote SVG to', fileName
+        fileName = ('trumps%d' % i) + '.svg'
+        with open(opts['dir'] + '/' + fileName, 'wb') as strm:
+            output = codecs.lookup('utf-8')[3](strm)
+            output.write(templ[:p])
+            emitTrumps(output, i, min(i + chunk, 22), 3, 4)
+            emitMenu(output, 0, i, 540, 370)
+            output.write(templ[p + 7:])
+            output.reset()
+            print 'Wrote SVG to', fileName
 
 
 for arg in sys.argv:
@@ -426,6 +424,6 @@ for arg in sys.argv:
         print pr[0], '=', pr[1]
     else:
         opts[pr[0]] = None
-        
+
 doSuits()
 doTrumps()

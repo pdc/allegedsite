@@ -15,16 +15,16 @@ pipsFiles =	wands-2.svg cups-2.svg swords-2.svg coins-2.svg \
 		wands-7.svg cups-7.svg swords-7.svg coins-7.svg \
 		wands-8.svg cups-8.svg swords-8.svg coins-8.svg \
 		wands-9.svg cups-9.svg swords-9.svg coins-9.svg \
-		wands-ten.svg cups-ten.svg swords-ten.svg coins-ten.svg 
+		wands-ten.svg cups-ten.svg swords-ten.svg coins-ten.svg
 
 courtFiles =	wands-page.svg wands-knight.svg wands-queen.svg wands-king.svg\
 		cups-page.svg cups-knight.svg cups-queen.svg cups-king.svg \
 		swords-page.svg swords-knight.svg\
 		swords-queen.svg swords-king.svg \
-		coins-page.svg coins-knight.svg coins-queen.svg coins-king.svg 
+		coins-page.svg coins-knight.svg coins-queen.svg coins-king.svg
 
-svgzFiles =	wands.svgz cups.svgz swords.svgz coins.svgz \
-		trumps0.svgz trumps12.svgz
+indexSvgFiles =	wands.svg cups.svg swords.svg coins.svg \
+		trumps0.svg trumps12.svg
 
 svgFiles = 	$(trumpsFiles) \
 		wands-ace.svg cups-ace.svg swords-ace.svg coins-ace.svg \
@@ -36,9 +36,9 @@ $(htmlFiles):	 tarotDefs.tcl ../abbrDefs.tcl
 
 png.html: 	$(svgFiles:%.svg=%-100w.png) \
 		$(svgFiles:%.svg=%-360h.png) \
-		tarotDefs.tcl 
+		tarotDefs.tcl
 
-svg.html: 	$(svgFiles:%.svg=%-card3.svgz) \
+svg.html: 	$(svgFiles:%.svg=%-card3.svg) \
 		tarotDefs.tcl descs.tcl
 
 
@@ -58,20 +58,16 @@ svg.html: 	$(svgFiles:%.svg=%-card3.svgz) \
 	python ppmtocmap.py $*
 	cat tmp.cmap > $@
 
-$(pipsFiles:.svg=-card3.svg): pips-templ.xml 
-$(trumpsFiles:.svg=-card3.svg): trumps-templ.xml 
-$(courtFiles:.svg=-card3.svg): trumps-templ.xml 
+$(pipsFiles:.svg=-card3.svg): pips-templ.xml
+$(trumpsFiles:.svg=-card3.svg): trumps-templ.xml
+$(courtFiles:.svg=-card3.svg): trumps-templ.xml
 
-
-%.svgz:		%.svg
-	gzip -v -c -9 $< > $@
-
-$(svgzFiles): 	mksvgindex.py
+$(indexSvgFiles): 	mksvgindex.py
 	$(PYTHON) mksvgindex.py dir=.
 
 install: install-svg-timestamp install-png-timestamp
 
-install-svg-timestamp: $(svgFiles:.svg=-card3.svgz) $(svgzFiles)
+install-svg-timestamp: $(svgFiles:.svg=-card3.svg) $(indexSvgFiles)
 	cp -p $? $(htmlDir)
 	date > $@
 
