@@ -1,0 +1,283 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+[
+    <!ENTITY style "font-family: Even, sans-serif; font-size: 12px;">
+    <!ENTITY style2 "font-family: lucida sans, verdana, arial, helvetica, sans-serif; font-size: 15px; fill:white; stroke: none;">
+]>
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:lo="http://www.alleged.org.uk/pdc/tarot/"
+    xmlns:a3="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+    a3:scriptImplementation="Adobe"
+        viewBox="0 0 1000 750"
+        onload="ol()">
+    <title>Alleged Tarot 2002 reading</title>
+    <desc>A tarot reading</desc>
+
+    <defs>
+        <lo:layouts>
+            <lo:layout id="three">
+                <lo:card col="0" row="0" title="past"></lo:card>
+                <lo:card col="1" row="0" title="present"></lo:card>
+                <lo:card col="2" row="0" title="future"></lo:card>
+            </lo:layout>
+            <lo:layout id="six">
+                <lo:card col=" 0" row="0  " title="querant"></lo:card>
+                <lo:card col=" 2" row="0.5" title="relationships"></lo:card>
+                <lo:card col=" 2" row="1.5" title="finances"></lo:card>
+                <lo:card col=" 0" row="2  " title="career"></lo:card>
+                <lo:card col="-2" row="1.5" title="health"></lo:card>
+                <lo:card col="-2" row="0.5" title="travel"></lo:card>
+            </lo:layout>
+            <lo:layout id="horseshoe">
+                <lo:card col="0.0" row=" 0"   title="past"></lo:card>
+                <lo:card col="0.5" row="-1"   title="present"></lo:card>
+                <lo:card col="1.5" row="-1.5" title="future"></lo:card>
+                <lo:card col="2.5" row="-2"   title="best course of action"></lo:card>
+                <lo:card col="3.5" row="-1.5" title="other people"></lo:card>
+                <lo:card col="4.5" row="-1"   title="obstacles"></lo:card>
+                <lo:card col="5.0" row=" 0"   title="outcome"></lo:card>
+            </lo:layout>
+            <lo:layout id="celtic">
+                <lo:card col=" 0  " row=" 0  " title="current influences"/>
+                <lo:card col=" 0  " row=" 0  " rotate="90" title="obstacles"/>
+                <lo:card col=" 0  " row="-1  " title="specific goals"/>
+                <lo:card col=" 1.5" row=" 0  " title="past foundations"/>
+                <lo:card col=" 0  " row=" 1  " title="past events"/>
+                <lo:card col="-1.5" row=" 0  " title="future influences"/>
+                <lo:card col=" 3  " row=" 1.5" title="querant"/>
+                <lo:card col=" 3  " row=" 0.5" title="home &amp; environment"/>
+                <lo:card col=" 3  " row="-0.5" title="inner emotions"/>
+                <lo:card col=" 3  " row="-1.5" title="final result"/>
+            </lo:layout>
+            <lo:layout id="yesno">
+                <lo:card col="0" row="0  " title="outcome"/>
+                <lo:card col="1" row="0  " title="hinderances"/>
+                <lo:card col="2" row="0  " title="help"/>
+                <lo:card col="3" row="0.5" title="question"/>
+                <lo:card col="2" row="1  " title="help"/>
+                <lo:card col="1" row="1  " title="hinderances"/>
+                <lo:card col="0" row="1  " title="outcome"/>
+            </lo:layout>
+        </lo:layouts>
+        <font id="font-1" horiz-adv-x="12">
+            <font-face
+                font-family="Even"
+                font-weight="normal"
+                units-per-em="18"
+                horiz-origin-x="1.5"
+                horiz-adv-x="10"
+                cap-height="12"
+                x-height="9"
+                ascent="12"
+                descent="0"
+                alphabetic="0" mathematical="6"
+                ideographic="6" hanging="6">
+            </font-face>
+            <missing-glyph horiz-adv-x="11"
+                    d="M1,0  v12  h9  v-12  z
+                    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
+            <glyph unicode=" " horiz-adv-x="6" d=""/>
+            <glyph unicode="!" horiz-adv-x="3.5"
+                    d="M1,0  v1.5  h1.5  v-1.5  z
+                    M1,3  v9  h1.5  v-9  z"/>
+            <glyph unicode=":" horiz-adv-x="4"
+                    d="M1,0 h2 v2  h-2  z
+                    M1,6  h2 v2  h-2  z"/>
+            <glyph unicode=";" horiz-adv-x="4"
+                    d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+                    q1,0 1,0.5  0,0.5 -1,0.5  z
+                    M1,6  h2 v2  h-2  z"/>
+            <glyph unicode="0" horiz-adv-x="11"
+                    d="M5.5,-0.25  Q10,-0.25 10,5.825
+                    Q10,12.25 5.5,12.25  Q1,12.25 1,5.825
+                    Q1,-0.25 5.5,-0.25  z
+                    M5.5,1.25  Q2.5,1.25 2.5,5.825
+                    Q2.5,10.75 5.5,10.75  Q8.5,10.75 8.5,5.825
+                    Q8.5,1.25 5.5,1.25  z
+                    "/>
+            <glyph unicode="." horiz-adv-x="4"
+                    d="M1,0 h2 v2  h-2  z"/>
+            <glyph unicode="," horiz-adv-x="4"
+                    d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+                    q1,0 1,0.5  0,0.5 -1,0.5  z"/>
+            <glyph unicode="a" horiz-adv-x="11"
+                    d="M5.5,8  q-4.5,0 -4.5,-4  t4.5,-4.25
+                    q3,0 3,1.75  v-1.5  h1.5  v7
+                    q0,5.25 -4.5,5.25
+                    q-2.5,0 -3.5,-1.5  v-1.5  q1,1.5 3.5,1.5
+                    q3,0  3,-3  z
+                    M8.5,6.25  v-3.25  q0,-1.75 -3,-1.75
+                    t-3,2.75 3,2.5 z"/>
+            <glyph unicode="c" horiz-adv-x="12"
+                    d="M1,5.825
+                    Q1,12 6.5,12.25
+                    q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+                    Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+                    q2.5,0 4.5,1.5  v-1.5   q-1,-1.5 -4.5,-1.5
+                    Q1,-0.25 1,5.825  z"/>
+            <glyph unicode="d" horiz-adv-x="11.5"
+                    d="M1,0  H4.5
+                    Q11,0 11,5.825  11,12 4.5,12
+                    H1  z
+                    M2.5,1.5  V10.5  H4.5
+                    Q9.5,10.5  9.5,5.825  9.5,1.5 4.5,1.5
+                    z"/>
+            <glyph unicode="e" horiz-adv-x="13"
+                    d="M12,5  q0,7 -5.5,7.25  t-5.5,-6.25 5.5,-6.25
+                    q3.5,0 4.5,1.5  v1.5  q-2,-1.5 -4.5,-1.5
+                    q-4,0 -4,3.75  z
+                    M2.5,6.5  q0,4.25 4,4.25 t4,-4.25  z"/>
+            <glyph unicode="f" horiz-adv-x="8"
+                    d="M1,0  h1.5  v5  h4  v1.5  h-4  v4  h5  v1.5  h-6.5  z"/>
+            <glyph unicode="g" horiz-adv-x="12"
+                    d="M1,5.825
+                    Q1,12 6.5,12.25
+                    q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+                    Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+                    9,1.25 9.5,2.75
+                    V5  h-3  V6.5  h4.5  V1.25
+                    q-1,-1.5 -4.5,-1.5
+                    Q1,-0.25 1,5.825  z"/>
+            <glyph unicode="h" horiz-adv-x="11"
+                    d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
+                    h-1.5  v5.25  h-6  v-5.25  z"/>
+            <glyph unicode="i" horiz-adv-x="4.5"
+                    d="M1.5,0  h1.5  v12  h-1.5  z"/>
+            <glyph unicode="j" horiz-adv-x="8"
+                    d="M0,1  Q1,-0.25 3,-0.25
+                    Q7,-0.25 7,5.75  V12  h-1.5  V5.75
+                    Q5.5,1.25 3,1.25  Q1,1.25 0,2.5  Z"/>
+            <glyph unicode="k" horiz-adv-x="11"
+                    d="M1,0 L1,12 L2.5,12 L2.5,6.75 L8.5,12 L10.5,12 L4.175,6.5 L11,0 L9,0 L2.5,6.25 L2.5,0 z"/>
+
+            <glyph unicode="l" horiz-adv-x="8"
+                    d="M1,0  v12  h1.5  v-10.5  h5.5  v-1.5  z"/>
+            <glyph unicode="m" horiz-adv-x="18"
+                    d="M1,0  V12  h1.5  v-2
+                    Q3,12.25 5.325,12.25  9.75,12.25 9,6.75
+                    8.25,12.25 12.625,12.25   17,12.25 17,5.825
+                    V0  h-1.5  V5.85
+                    Q15.5,10.75 12.625,10.75  9.75,10.75 9.75,5.85
+                    V0  h-1.5  V5.85
+                    Q8.25,10.75 5.325,10.75  3,10.75 2.5,8
+                    V0  z"/>
+            <glyph unicode="n" horiz-adv-x="11"
+                    d="M1,0  V12  h1.5  v-2
+                    Q3,12.25 5.5,12.25  10,12.25 10,5.825
+                    V0  h-1.5  V5.85
+                    Q8.5,10.75 5.5,10.75  3,10.75 2.5,8
+                    V0  z"/>
+            <glyph unicode="o" horiz-adv-x="13"
+                    d="M6.5,-0.25  Q12,-0.25 12,5.825
+                    Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+                    Q1,-0.25 6.5,-0.25  z
+                    M6.5,1.25  Q2.5,1.25 2.5,5.825
+                    Q2.5,10.75 6.5,10.75  Q10.5,10.75 10.5,5.825
+                    Q10.5,1.25 6.5,1.25  z"/>
+            <glyph unicode="p" horiz-adv-x="10.5"
+                    d="M1,0  H2.5  V4.5  H4.5
+                    Q10,4.5 10,8.25  10,12 4.5,12
+                    H1  z
+                    M2.5,6  V10.5  H4.5
+                    Q8.5,10.5  8.5,8.25  8.5,6 4.5,6
+                    z"/>
+            <glyph unicode="q" horiz-adv-x="13"
+                    d="M6.5,-0.25
+                    Q8,-0.25 9.5,0.5  11,-0.25 12.5,-0.25
+                    V1.25  Q11,1.25 10.75,1.7  Q12,3 12,5.825
+                    Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+                    Q1,-0.25 6.5,-0.25  z
+                    M6.5,1.25  Q2.5,1.25 2.5,5.825
+                    Q2.5,10.75 6.5,10.75
+                    Q10.5,10.75 10.5,5.825
+
+                    Q10.5,4 9.75,3  Q8.5,5 5.25,5
+                    V3.5  Q8,3.5 8.5,1.75
+                    Q8,1.25 6.5,1.25  z"/>
+
+            <glyph unicode="r" horiz-adv-x="10"
+                    d="M1,0  V12  H2.5  V9.5
+                    Q4,12.25 9,12.25  V10.75
+                    Q4,10.75 2.5,7.5
+                    V0  z"/>
+            <glyph unicode="s" horiz-adv-x="11"
+                    d=" M9.27632,10.75 Q7.77632,12.25 5.25,12.25
+                     Q0.75,12.25 0.75,8.9 Q0.75,5.55 5.25,5.55
+                     Q8.5,5.55 8.5,3.4 Q8.5,1.25 5.25,1.25
+                     Q2.5,1.25 1,2.75 V1.25 Q2.5,-0.25 5.25,-0.25
+                     Q10,-0.25 10,3.4 Q10,7.05 5.25,7.05
+                     Q2.25,7.05 2.25,8.9 Q2.25,10.75 5.25,10.75
+                     Q7.77632,10.75 9.27632,9.25z"/>
+            <glyph unicode="t" horiz-adv-x="11"
+                    d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
+            <glyph unicode="u" horiz-adv-x="12"
+                    d="M11,12  V0  h-1.5  v+1
+                    Q8,-0.25 5.5,-0.25  1,-0.25 1,5.825
+                    V12  h1.5  V5.85
+                    Q2.5,1.25 5.5,1.25  8,1.25 9.5,3
+                    V12  z"/>
+            <glyph unicode="v" horiz-adv-x="12"
+                    d=" M0.5,12 L5.5,0 H6.5 L11.5,12
+                    H10.1154 L6,2.12308 L1.88462,12z"/>
+            <!-- slope = 0.375 -->
+            <!-- stroke horiz thickness = 1.6 -->
+            <!-- stroke thickness = 1.49813 -->
+            <!-- top vertex wd = 1.2 -->
+            <glyph unicode="w" horiz-adv-x="18"
+                    d="M0,12
+                    L4.5,0
+                    L5.5,0
+                    L9,9.33333
+                    L12.5,0
+                    L13.5,0
+                    L18,12
+                    L16.4,12
+                    L13,2.93333
+                    L9.6,12
+                    L8.4,12
+                    L5,2.93333
+                    L1.6,12
+                    z"/>
+            # t = 1.33233979136
+            # u = 1.6182885906
+            # v = 6.24981371088
+            <glyph unicode="x" horiz-adv-x="12"
+                d=" M0.5,0 L5.19086,6.24981 L0.875,12
+                 H2.49329 L6,7.32787 L9.50671,12
+                 H11.125 L6.80914,6.24981 L11.5,0
+                 H9.88171 L6,5.17176 L2.11829,0z"/>
+        </font>
+
+        <g id="templ">
+            <a id="templA"
+                    xlink:href="coins-queen-card3.svg">
+                <rect width="120" height="160" rx="5" ry="5"
+                        stroke="none" fill="#F8F8F0"/>
+                <image id="templImage"
+                        x="10" y="11.5" width="100" height="137"
+                        xlink:href="coins-queen-100w.png"
+                />
+                <text id="templText" style="&style;"
+                    x="10" y="148.5" transform="rotate(-90, 10,148.5)"
+                ></text>
+                <text id="templSig" style="&style2;"
+                    x="0" y="-2"
+                ></text>
+            </a>
+        </g>
+        <script xlink:href="dealer.js" type="text/javascript">
+        </script>
+    <script type="text/javascript">
+    </script>
+    </defs>
+
+
+    <rect x="0" y="0" width="1000" height="750" rx="15" ty="15"
+            stroke="none" fill="green"/>
+    <text x="30" y="220" style="font-family: Even, sans-serif; font-size: 120px"
+            stroke="white" stroke-width="2" fill="#66CC66">
+        alleged tarot
+    </text>
+</svg>
