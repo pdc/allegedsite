@@ -1,6 +1,6 @@
 ## AUTOMATICALLY GENERATED ##
 # pdc/tarot/Makefile: makefile for ROOTDIR/pdc/tarot/*.html
-# Generated 2007-02-09 by thmkmf 5.1.6 (2004-03-22).
+# Generated 2012-11-21 by thmkmf 5.1.6 (2004-03-22).
 # This makefile requires GNU make.
 
 THC             = /Users/pdc/bin/thc
@@ -9,7 +9,7 @@ SHELL           = /bin/sh
 INSTALL_HTML    = cp -p
 
 srcRootDir      = ../..
-htmlRootDir     = /Users/pdc/Sites/alleged.org.uk/
+htmlRootDir     = ../web
 subDir          = pdc/tarot
 htmlDir         = $(htmlRootDir)/$(subDir)
 
@@ -26,13 +26,15 @@ inFiles         = about-svg.th\
 subDirs         = 
 
 # Explicit rules
-htmlFiles	= $(inFiles:.th=.html)
-filesFiles	= $(inFiles:.th=.files)
+htmlFiles   = $(inFiles:.th=.html)
+filesFiles  = $(inFiles:.th=.files)
 
-all:		$(htmlFiles)
+all:        $(htmlFiles)
 
 install:	$(htmlFiles)
-	for i in `cat $(filesFiles)`; do $(INSTALL_HTML) $$i $(htmlDir)/$$i; done
+	for i in `cat $(filesFiles)`; do\
+		$(INSTALL_HTML) $$i $(htmlDir)/$$i;\
+	done
 	for i in $(subDirs); do (cd $$i; $(MAKE) install); done
 
 subdirs:
@@ -44,7 +46,7 @@ clean:
 	for i in $(subDirs); do (cd $$i; $(MAKE) clean); done
 
 # Implicit rules
-.SUFFIXES:	.th .html
+.SUFFIXES:    .th .html
 
 .th.html:
 	$(THC)  --html_root $(htmlRootDir) --subdir $(subDir) $<
