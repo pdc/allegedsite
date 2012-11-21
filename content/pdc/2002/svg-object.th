@@ -12,7 +12,7 @@ beginBody
 h1 "SVG: object or embed?"
 
 p " There are five elements for embedding objects in HTML.
-Leaving aside [code img], [code iframe], and [code applet], 
+Leaving aside [code img], [code iframe], and [code applet],
 there are two tags that look plausible for [SVG]:"
 
 ul {
@@ -30,11 +30,11 @@ ul {
 p " The [code embed] syntax was introduced with Netscape
 Navigator&nbsp;2, but has never been part of any [HTML] standard.
 This is partly because it cannot fit in to [XML] (or [SGML]) because
-its syntax depends on the type of the embedded content.  The 
+its syntax depends on the type of the embedded content.  The
 
-[code object] tag is much better thought out, 
+[code object] tag is much better thought out,
 
-<del>and 
+<del>and
 
 works with all modern browsers (such as Microsoft Internet Explorer
 3.0 and later, Mozilla, Netscape Navigator 6.x, Opera, et al.).</del>
@@ -43,7 +43,7 @@ works with all modern browsers (such as Microsoft Internet Explorer
 until 2008.</ins>
 
 [a http://developer.netscape.com/docs/manuals/htmlguid/tags14.htm#tags:OBJECT\
-"According to  Netscape&rsquo;s documentaion"], 
+"According to  Netscape&rsquo;s documentaion"],
 it also works for [NN]&nbsp;4.x, but in tests it seems to get
 confused if there is no [code embed] within it.
 "
@@ -52,15 +52,15 @@ p "Does this mean that, as [a* "title=Embedding SVG in HTML"\
 href=http://www.protocol7.com/svg-wiki/?EmbedingSvgInHTML \
 "suggested by the [SVG] Wiki"],
 one must choose which tag to use according to what browsers will be used?
-Well, no.  The [code object] tag 
+Well, no.  The [code object] tag
 <del>allows us</del>
 <ins>will allow us</ins> to embed an [code embed]
-tag within it, to be rendered if the [code object] tag is 
+tag within it, to be rendered if the [code object] tag is
 not understood:"
 
-pre -encode {<object data="foo.svgz" type="image/svg+xml"
+pre -encode {<object data="foo.svg" type="image/svg+xml"
     width="400" height="300">
-  <embed src="foo.svgz" type="image/svg+xml"
+  <embed src="foo.svg" type="image/svg+xml"
       width="400" height="300"
       pluginspage="http://www.adobe.com/svg/viewer/install/" />
 </object>}
@@ -80,7 +80,7 @@ old web browsers&mdash;didn&rsquo;t [NN]&nbsp;4 come out in 1996?<ins>&mdash;and
 h2 "Well-formed vs. valid (X)HTML"
 
 p "
-The [code embed] tag can be made 
+The [code embed] tag can be made
 [em well-formed]
 by inserting a space and a slash before the closing [code [gt]],
 (as described in [a http://www.w3.org/TR/xhtml1/#guidelines \
@@ -97,12 +97,12 @@ that specify standard [HTML]&nbsp;4.  "
 p "
 Of course one can supply one&rsquo;s own [DTD] and thus
 change the definition of [q valid]:
-either by 
+either by
 [a* href=http://www.pinkjuice.com/howto/RubySVG/#tips_embedding \
 "title=Embedding in HTML/XHTML (Pinkjuice.com)"\
 "editing the [DTD]"], or by
 adding definitions in the internal [DTD] subset
-(outlined in the 
+(outlined in the
 [a* "title=Embedding SVG in HTML"\
 	href=http://www.protocol7.com/svg-wiki/?EmbedingSvgInHTML\
 	"SVGWiki entry cited above"]).
@@ -129,7 +129,7 @@ I&nbsp;should change it to use an inner [code embed]&mdash;or possibly
 content in a different format entirely, such as [PNG].</del>"
 
 p "[strong Update (14 February 2004).] Safari 1.0 [em crashes] when I&nbsp;use
-[SVG] embedded with the [code object] tag.  For this reason, 
+[SVG] embedded with the [code object] tag.  For this reason,
 
 [a ../2003/11/23.html "I have removed [code object] tags from this
 site"]; I&nbsp;will reconsider this decision in 2008, when we can

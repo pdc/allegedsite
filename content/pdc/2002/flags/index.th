@@ -13,7 +13,7 @@ p "
 h1 "Australian Flags, 1901&mdash;2002"
 
 p "These graphics files were created by me, Damian Cugley
-using SVG and referring to the Australian 
+using SVG and referring to the Australian
 [a http://www.ausflag.com.au/info/flagsact.html Flags Act 1953]
 for information about the size, shape and positions of the features of the flag.  Union Jack instructions from
 [a http://www.jdawiseman.com/papers/union-jack/union-jack.html "Julian Wiseman&rsquo;s web site"].
@@ -28,44 +28,44 @@ h2 "Modern Australian Flags"
 p "[img au1908-240h.png "alt=(blue flag)"]
 [img au1908-64h.png "alt=(small blue flag)"][br]
 National flag (for government, civil, and military use on land).
-[a au1908.svgz SVG]"
+[a au1908.svg SVG]"
 
 p "[img au1908red-240h.png "alt=(red flag)"][br]
 Merchant ensign (for Australian merchant ships at sea, and, optionally,
 for private vessels registered in Australia,
 who may choose instead to fly the national flag).
-[a au1908red.svgz SVG]"
+[a au1908red.svg SVG]"
 
 h2 "Historical Australian flags"
 
 p "[img au1901-240h.png "alt=(blue flag)"][br]
 Government flag 1901&ndash;1903 (for government use on land).
-[a au1901.svgz SVG]"
+[a au1901.svg SVG]"
 
 p "[img au1901red-240h.png "alt=(red flag)"][br]
 Merchant ensign and civil flag 1901&ndash;1903
-(for commercial ships registered in Australia, 
+(for commercial ships registered in Australia,
 and for priviate citizens to fly on land).
-[a au1901.svgz SVG]"
+[a au1901.svg SVG]"
 
 
 p "[img au1903-240h.png "alt=(blue flag)"][br]
 Government flag 1903&ndash;1908 (for government use on land).
-[a au1903.svgz SVG]"
+[a au1903.svg SVG]"
 
 # p "[img au1903red-240h.png "alt=(red flag)"][br]
-# Merchant ensign and civil flag 1903&ndash;1908. [a au1908red.svgz SVG]"
+# Merchant ensign and civil flag 1903&ndash;1908. [a au1908red.svg SVG]"
 
 h2 "Pre-Australian flags"
 
 p "
 Union Flag, 1606&ndash;1800.
 This would have flown over the New South Wales colony from 1788.
-[a gb1606.svgz SVG]"
+[a gb1606.svg SVG]"
 
 p "Union Flag, 1801&ndash;.
-This would have flown over the colony from 1 January 1801 
+This would have flown over the colony from 1 January 1801
 until the creation of the Australian flag
-(and was still in use as late as the 1960s). [a gb1801.svgz SVG]"
+(and was still in use as late as the 1960s). [a gb1801.svg SVG]"
 
 endDocument
