@@ -42,6 +42,7 @@ def install_tclhtml():
         with cd(env.src_dir):
             run('git clone git://github.com/pdc/tclhtml.git')
     with cd(tclhtml_dir):
+        run('rm -f install.html')
         run('git pull')
         run('./configure --prefix=/home/{0}'.format(env.site_name))
         run('make install')
