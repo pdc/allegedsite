@@ -36,7 +36,9 @@ pngFiles =	$(svgFiles:.svg=-100w.png) \
 		$(svgFiles:.svg=-64x64.png)
 
 moreFiles = 	title@600x60.gif \
-		tarot.css
+		tarot.css \
+		deal.svg \
+		dealer.js
 
 
 # Additional dependencies:
