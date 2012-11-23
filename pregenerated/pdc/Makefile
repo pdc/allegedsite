@@ -14,7 +14,7 @@ subDir          = pdc
 htmlDir         = $(srcRootDir)/$(htmlRootDir)/$(subDir)
 
 inFiles         = 
-subDirs         = 2003 tarot
+subDirs         = tarot
 
 # Explicit rules
 all:        subdirs

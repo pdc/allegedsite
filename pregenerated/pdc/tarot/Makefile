@@ -23,7 +23,7 @@ inFiles         = about-svg.th\
 		referrers.th\
 		svg.th\
 		technical.th
-subDirs         =
+subDirs         = 
 
 # Explicit rules
 htmlFiles   = $(inFiles:.th=.html)
