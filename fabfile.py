@@ -67,6 +67,7 @@ def deploy():
             run('./manage.py collectstatic --noinput')
 
         with cd('pregenerated'):
+            run('thmkmf -r ../web')
             run('make install')
 
     run('touch /etc/uwsgi/emperor.d/{0}.ini'.format(env.site_name))

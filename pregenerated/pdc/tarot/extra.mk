@@ -50,7 +50,7 @@ svg.html: 	$(svgFiles:%.svg=%-card3.svg) \
 
 %.svg: 		%.sk.svg %.cmap cmapAdjust.py
 	python fixsvg.py $*.sk.svg
-	cp -p cmyk.cmap cmyk.cmap~
+	@cp -p cmyk.cmap cmyk.cmap~
 	cat $*.cmap > cmyk.cmap
 	python cmapAdjust.py $*
 
