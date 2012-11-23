@@ -5,3 +5,4 @@ settings.py
 tmp
 out.xml
 *.db
+web/pdc/tarot/
