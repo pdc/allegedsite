@@ -68,12 +68,14 @@ $(indexSvgFiles): 	mksvgindex.py
 install: install-svg-timestamp install-png-timestamp
 
 install-svg-timestamp: $(svgFiles:.svg=-card3.svg) $(indexSvgFiles)
+	mkdir -p $(htmlDir)
 	cp -p $? $(htmlDir)
 	date > $@
 
 install-png-timestamp:  $(svgFiles:.svg=-100w.png) \
 		$(svgFiles:.svg=-360h.png) \
 		$(svgFiles:.svg=-64x64.png)
+	mkdir -p $(htmlDir)
 	cp -p $? $(htmlDir)
 	date > $@
 

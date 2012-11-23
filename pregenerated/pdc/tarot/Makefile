@@ -1,6 +1,6 @@
 ## AUTOMATICALLY GENERATED ##
 # pdc/tarot/Makefile: makefile for ROOTDIR/pdc/tarot/*.html
-# Generated 2012-11-21 by thmkmf 5.1.6 (2004-03-22).
+# Generated 2012-11-23 by thmkmf 5.1.6 (2004-03-22).
 # This makefile requires GNU make.
 
 THC             = /Users/pdc/bin/thc
@@ -11,7 +11,7 @@ INSTALL_HTML    = cp -p
 srcRootDir      = ../..
 htmlRootDir     = ../web
 subDir          = pdc/tarot
-htmlDir         = $(htmlRootDir)/$(subDir)
+htmlDir         = $(srcRootDir)/$(htmlRootDir)/$(subDir)
 
 inFiles         = about-svg.th\
 		about.th\
@@ -23,15 +23,16 @@ inFiles         = about-svg.th\
 		referrers.th\
 		svg.th\
 		technical.th
-subDirs         = 
+subDirs         =
 
 # Explicit rules
 htmlFiles   = $(inFiles:.th=.html)
 filesFiles  = $(inFiles:.th=.files)
 
-all:        $(htmlFiles)
+all:        $(htmlFiles) subdirs
 
 install:	$(htmlFiles)
+	mkdir -p $(htmlDir)
 	for i in `cat $(filesFiles)`; do\
 		$(INSTALL_HTML) $$i $(htmlDir)/$$i;\
 	done
