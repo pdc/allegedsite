@@ -10,27 +10,26 @@ INSTALL_HTML    = cp -p
 
 srcRootDir      = .
 htmlRootDir     = ../web
-subDir          = .
-htmlDir         = $(srcRootDir)/$(htmlRootDir)/$(subDir)
+pathFromRoot    = .
+htmlDir         = $(srcRootDir)/$(htmlRootDir)/$(pathFromRoot)
 
-inFiles         = 
-subDirs         = pdc
+subdirs         = pdc
 
 # Explicit rules
 all:        subdirs
 
 install:	
-	for i in $(subDirs); do (cd $$i; $(MAKE) install); done
+	for i in $(subdirs); do (cd $$i; $(MAKE) install); done
 
 subdirs:
-	for i in $(subDirs); do (cd $$i; $(MAKE) all subdirs); done
+	for i in $(subdirs); do (cd $$i; $(MAKE) all); done
 
 clean:
-	for i in $(subDirs); do (cd $$i; $(MAKE) clean); done
+	for i in $(subdirs); do (cd $$i; $(MAKE) clean); done
 
 # Implicit rules
 .SUFFIXES:    .th .html
 
 .th.html:
-	$(THC)  --html_root $(htmlRootDir) --subdir $(subDir) $<
+	$(THC)  --html_root $(htmlRootDir) --subdir $(pathFromRoot) $<
 

@@ -10,8 +10,8 @@ INSTALL_HTML    = cp -p
 
 srcRootDir      = ../..
 htmlRootDir     = ../web
-subDir          = pdc/tarot
-htmlDir         = $(srcRootDir)/$(htmlRootDir)/$(subDir)
+pathFromRoot    = pdc/tarot
+htmlDir         = $(srcRootDir)/$(htmlRootDir)/$(pathFromRoot)
 
 inFiles         = about-svg.th\
 		about.th\
@@ -23,34 +23,28 @@ inFiles         = about-svg.th\
 		referrers.th\
 		svg.th\
 		technical.th
-subDirs         = 
 
 # Explicit rules
 htmlFiles   = $(inFiles:.th=.html)
 filesFiles  = $(inFiles:.th=.files)
 
-all:        $(htmlFiles) subdirs
+all:        $(htmlFiles)
 
 install:	$(htmlFiles)
 	mkdir -p $(htmlDir)
 	for i in `cat $(filesFiles)`; do\
 		$(INSTALL_HTML) $$i $(htmlDir)/$$i;\
 	done
-	for i in $(subDirs); do (cd $$i; $(MAKE) install); done
-
-subdirs:
-	for i in $(subDirs); do (cd $$i; $(MAKE) all subdirs); done
 
 clean:
 	rm -f `cat $(filesFiles)` $(filesFiles)
 	rm -f $(htmlFiles) img.data
-	for i in $(subDirs); do (cd $$i; $(MAKE) clean); done
 
 # Implicit rules
 .SUFFIXES:    .th .html
 
 .th.html:
-	$(THC)  --html_root $(htmlRootDir) --subdir $(subDir) $<
+	$(THC)  --html_root $(htmlRootDir) --subdir $(pathFromRoot) $<
 
 
 # Extra rules

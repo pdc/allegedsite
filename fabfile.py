@@ -6,6 +6,9 @@ from fabric.api import local, settings, abort, run, cd, env, sudo, prefix
 from fabric.contrib.console import confirm
 from fabric.contrib.files import exists
 
+import logging
+logging.basicConfig( level=logging.INFO )
+
 env.hosts = ['alleged@spreadsite.org']
 env.site_name = 'alleged'
 env.virtualenv = env.site_name
