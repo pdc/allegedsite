@@ -31,6 +31,15 @@ svgFiles = 	$(trumpsFiles) \
 		$(pipsFiles) \
 		$(courtFiles)
 
+pngFiles =	$(svgFiles:.svg=-100w.png) \
+		$(svgFiles:.svg=-360h.png) \
+		$(svgFiles:.svg=-64x64.png)
+
+moreFiles = 	title@600x60.gif \
+		tarot.css
+
+
+# Additional dependencies:
 
 $(htmlFiles):	 ../pdcDefs.tcl tarotDefs.tcl ../abbrDefs.tcl
 
@@ -42,6 +51,7 @@ svg.html: 	$(svgFiles:%.svg=%-card3.svg) \
 		tarotDefs.tcl descs.tcl
 
 
+# Additional rules:
 
 %-card3.svg: 	%.svg mkcard3.tcl descs.tcl
 	tclsh mkcard3.tcl $* > $@
@@ -72,11 +82,10 @@ install-svg-timestamp: $(svgFiles:.svg=-card3.svg) $(indexSvgFiles)
 	cp -p $? $(htmlDir)
 	date > $@
 
-install-png-timestamp:  $(svgFiles:.svg=-100w.png) \
-		$(svgFiles:.svg=-360h.png) \
-		$(svgFiles:.svg=-64x64.png)
+install-png-timestamp:  $(pngFiles) $(moreFiles)
 	mkdir -p $(htmlDir)
-	cp -p $? $(htmlDir)
+	cp -p $(pngFiles) $(htmlDir)
+	cp -p $(moreFiles) $(htmlDir)
 	date > $@
 
 .SUFFIXES: .png .tga
