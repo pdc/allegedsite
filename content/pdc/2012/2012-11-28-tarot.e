@@ -1,5 +1,6 @@
-Title: The Alleged Tarot 2002
+Title: Attic Pluck: Alleged Tarot 2002
 Topics: tarot svg python make
+Date: 2012-11-28
 
 It has taken only ten years but we now have SVG support as good as it was ten
 years ago using Adobe’s SVG Viewer plug-in in Netscape 4. I have decided it is
