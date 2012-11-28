@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Damian Cugley</title>
+        <link href="{% static "style/whyhello.css" %}"  rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <h1>Damian Cugley</h1>
+        </header>
+        <div id="main">
+            <section id="about">
+                <div class="intro">
+                    <p>
+                        An Australian-born web developer living and working in Oxford, England.
+                    </p>
+                </div>
+                <div class="latest">
+                    <p>
+                        As well as commercial work, I have built several side projects for the fun of it, such as:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <p>
+                                <a href="http://caption.org/">CAPTION</a> is Oxford’s annual comics convention, and I designed and built its website.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://jigsawr.org/">Jigsawr</a> is an instant virtual jigsaw creator, orioginally
+                                created as a entry in a 10K website contest.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://kanbo.me.uk/">Kanbo</a> is a work-in-progress task board for agile project management.
+                            </p>
+                        </li>
+                    </ul>
+                    <p>
+                        My current favourite web-development framework is Django.
+                    </p>
+                </div>
+                <aside>
+                    <img src="{% static "pdc/2012/cracked-440w.jpeg" %}" alt="" width="220" height="220">
+                </aside>
+            </section>
+            <section id="articles">
+                <h2>Alleged Articles</h2>
+                <div class="intro">
+                    <p>
+                        I occasionally write articles on technical stuff.
+                    <p>
+                </div>
+                <div class="latest">
+                    <p>The most recent one is:</p>
+                    <h3> <a href="{{ entry.href }}">{{ entry.title }}</a></h3>
+                    <dl>
+                        <dt>Summary</dt>
+                        <dd><p>{{ entry.summary|safe }}</p></dd>
+                        <dt>Published</dt>
+                        <dd>{{ entry.published|date:"j F Y" }}</dd>
+                        <dt>Topics</dt>
+                        <dd>
+                            {% for tag in entry.tags %}
+                                <a href="{% url blog_tag plus_separated_tags=tag %}">{{ tag }}</a>
+                            {% endfor %}
+                        </dd>
+                    </dl>
+                </div>
+                <div class="archive">
+                    <h3>Archives by Year</h3>
+                    <ul>
+                        {% for year_e in years %}
+                        <li>
+                            <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+            <section id="elsewhere">
+                <h2>More from Damian</h2>
+                <div class="intro">
+                    <p>Horses for courses</p>
+                </div>
+                <div class="latest">
+                    <ul>
+                        <li>
+                            <p>
+                                <a id="flickr-link" href="http://www.flickr.com/photos/pdc/">Flickr</a>
+                                is where I publish my photos.
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                <a id="github-link" href="http://github.com/pdc">GitHub</a>
+                                has my source code.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a id="livejournal-link" href="http://damiancugley.livejournal.com/">LiveJournal</a> hosts my online journal.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a id="twitter-link" href="http://twitter.com/damiancugley">Twitter</a> is for posts too short for LiveJournal.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a id="tumblr-link" href="http://pdc.tumblr.com/">Tumblr</a> is where I link to interesting things I find online.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <aside>
+                    <p>I also have photos from before Flickr in my  <a href="/albums/">Ancient Photo Albums</a>.</p>
+                </aside>
+            </section>
+        </div>
+    </body>
+</html>

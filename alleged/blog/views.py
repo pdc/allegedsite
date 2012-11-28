@@ -12,7 +12,7 @@ import json
 
 from alleged.decorators import render_with
 from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
-from alleged.blog.fromatom import get_flickr, get_livejournal, get_youtube
+from alleged.fromatom import get_flickr, get_livejournal, get_youtube
 
 def add_hrefs(entries):
     """Ensure that the entries in this list have hrefs."""

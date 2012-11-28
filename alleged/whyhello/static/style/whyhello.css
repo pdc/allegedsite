@@ -1,0 +1,140 @@
+
+@font-face {
+    font-family: 'GentiumBookBasicRegular';
+    src: url('gentium/GenBkBasR.eot');
+    src: local('Gentium Book Basic'), local('GentiumBookBasic'), url('gentium/GenBkBasR.woff') format('woff'), url('gentium/GenBkBasR.ttf') format('truetype'), url('gentium/GenBkBasR.svg#GentiumBookBasic') format('svg');
+}
+
+@font-face {
+    font-family: 'GentiumBookBasicItalic';
+    src: url('gentium/GenBkBasI.eot');
+    src: local('Gentium Book Basic'), local('GentiumBookBasic-Italic'), url('gentium/GenBkBasI.woff') format('woff'), url('gentium/GenBkBasI.ttf') format('truetype'), url('gentium/GenBkBasI.svg#GentiumBookBasic-Italic') format('svg');
+}
+
+@font-face {
+    font-family: 'GentiumBookBasicBold';
+    src: url('gentium/GenBkBasB.eot');
+    src: local('Gentium Book Basic'), local('GentiumBookBasic-Bold'), url('gentium/GenBkBasB.woff') format('woff'), url('gentium/GenBkBasB.ttf') format('truetype'), url('gentium/GenBkBasB.svg#GentiumBookBasic-Bold') format('svg');
+}
+
+@font-face {
+    font-family: 'GentiumBookBasicBoldItalic';
+    src: url('gentium/GenBkBasBI.eot');
+    src: local('Gentium Book Basic'), local('GentiumBookBasic-BoldItalic'), url('gentium/GenBkBasBI.woff') format('woff'), url('gentium/GenBkBasBI.ttf') format('truetype'), url('gentium/GenBkBasBI.svg#GentiumBookBasic-BoldItalic') format('svg');
+}
+
+body {
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    line-height: 1.25;
+}
+
+#main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#main p {
+    font-family: GentiumBookBasicRegular;
+}
+
+section {
+    float: left;
+    margin: 0 0 1.25em;
+    width: 960px;
+}
+
+section h2 {
+    font-size: 1.4em;
+    margin: 0 10px 0.5em;
+}
+
+section>div {
+    float: left;
+}
+
+.intro {
+    width: 160px;
+}
+
+.latest {
+    width: 480px;
+}
+
+aside,
+.archive {
+    float: right;
+    width: 240px;
+}
+
+section p,
+section li {
+    margin: 0 10px 0.61125em;
+}
+
+section h3 {
+    font-size: 1.2em;
+    margin: 0 10px 0.5em;
+}
+
+section .archive h3 {
+    font-size: 1em;
+}
+
+section dl {
+    font-size: 0.8125em;
+    margin: 1.5em 0 0 0;
+    padding: 0;
+}
+
+section dt {
+    float: left;
+    width: 60px;
+    margin: 0 10px 0.613em;
+}
+
+section dd {
+    float: left;
+    width: 380px;
+    margin: 0 10px 0.613em;
+}
+
+section dd p {
+    font-size: 1.23em;
+    margin: 0;
+}
+
+.archive ul {
+    font-size: 0.8125em;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.archive li {
+    float: left;
+    width: 30px;
+    margin: 0.2em 5px;
+    list-style-type: none;
+}
+
+.archive li:first-child {
+    margin-left: 45px;
+}
+
+.latest ul {
+    margin: 0;
+    padding: 0;
+}
+
+.latest li {
+    margin:  0 10px 0.3125em;
+    list-style-type: none;
+}
+
+.latest li p {
+    margin: 0;
+}
+
+section .more {
+    font-family:  "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-size: 0.8125em;
+}

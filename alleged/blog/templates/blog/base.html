@@ -1,4 +1,5 @@
-{% load staticfiles %}<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load staticfiles %}
 <html lang="en-GB">
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -47,7 +48,7 @@
 
     <div id="banner">
       {% block trail %}
-      <b><a href="{% url blog_entry %}">Damian Cugley’s Alleged Articles</a></b>
+      <b><a href="{% url why_hello_im %}">Damian Cugley’s Alleged Articles</a></b>
       {% endblock %}
       <h1>{% block heading %}Blog Entry{% endblock %}</h1>
     </div>

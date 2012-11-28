@@ -25,8 +25,10 @@ urlpatterns = (
         (r'^$', 'front_page', updated_dict(blog_args, is_svg_wanted=True), 'front_page'),
         (r'^ancient-browser-support$', 'front_page', updated_dict(blog_args, is_svg_wanted=False), 'front_page_sans_svg'),
     )
+    + patterns('alleged.whyhello.views',
+        ('^pdc/$', 'why_hello_im', blog_args, 'why_hello_im'),
+    )
     + patterns('alleged.blog.views',
-        (r'^pdc/$', 'index_view', blog_args, 'blog_entry'),
         (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$',
             'entry_view', blog_args, 'blog_entry'),
         (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])\.html$',
