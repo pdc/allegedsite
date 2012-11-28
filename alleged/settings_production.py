@@ -92,4 +92,5 @@ INSTALLED_APPS = (
     'alleged.snaptioner',
     'alleged.blog',
     'alleged.frontpage',
+    'alleged.whyhello',
 )
