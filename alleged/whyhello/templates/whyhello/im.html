@@ -8,6 +8,11 @@
              <script src="html5shiv.js"></script>
         <![endif]-->
         <link href="{% static "style/whyhello.css" %}"  rel="stylesheet" type="text/css">
+
+        <link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
+        <link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
+
+        <link rel="alternate" type="application/atom+xml" href="{% url blog_atom %}" />
     </head>
     <body>
         <header>
