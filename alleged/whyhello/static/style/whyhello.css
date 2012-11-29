@@ -112,6 +112,23 @@ section li {
     margin: 0 10px 0.61125em;
 }
 
+.latest li  p.twitter {
+    font-size: 0.8125em;
+    margin: 0 10px 1.5em 10px;
+    padding-left: 30px;
+}
+p.twitter img {
+    display: block;
+    float: left;
+    margin: 0.25em 6px 0.5em -30px;
+    width: 24px;
+    height: 24px;
+}
+p.twitter small {
+    font-size: 0.8462em;
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+}
+
 section h3 {
     font-size: 1.2em;
     margin: 0 10px 0.5em;
