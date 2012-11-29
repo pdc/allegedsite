@@ -23,14 +23,46 @@
     src: local('Gentium Book Basic'), local('GentiumBookBasic-BoldItalic'), url('gentium/GenBkBasBI.woff') format('woff'), url('gentium/GenBkBasBI.ttf') format('truetype'), url('gentium/GenBkBasBI.svg#GentiumBookBasic-BoldItalic') format('svg');
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     line-height: 1.25;
+
+    background: #EEF;
+}
+
+header {
+    background: #182834 url(banners/banner-2008-12-26.jpeg) left 50% no-repeat;
+    border-bottom: 4px solid #123;
+}
+
+header h1 {
+    font-size: 3em;
+    font-weight: 100;
+    padding: 1em 20px 0.75em;
+
+    color: #FFF;
+    text-shadow: #000 1px 1px 2px;
 }
 
 #main {
     width: 960px;
-    margin: 0 auto;
+    margin: -2.5em auto 20px;
+    padding: 3em 10px 20px;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #FFF;
+}
+
+#main:after {
+    clear: both;
+    content: '.';
+    height: 0;
+    overflow: hidden;
 }
 
 #main p {
@@ -39,7 +71,8 @@ body {
 
 section {
     float: left;
-    margin: 0 0 1.25em;
+    margin: 0;
+    padding: 0.75em 0;
     width: 960px;
 }
 
@@ -60,10 +93,18 @@ section>div {
     width: 480px;
 }
 
+#articles .latest {
+    width: 560px;
+}
+
 aside,
 .archive {
     float: right;
     width: 240px;
+}
+
+aside#photo {
+    margin-top: -2.5em;
 }
 
 section p,
@@ -94,7 +135,7 @@ section dt {
 
 section dd {
     float: left;
-    width: 380px;
+    width: 460px;
     margin: 0 10px 0.613em;
 }
 
