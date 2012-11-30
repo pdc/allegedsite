@@ -1,4 +1,4 @@
-Title: Getting a One-Time Application Password When Setting Up an Android Phone
+Title: Setting Up an Android Phone When You Have Two-Factor Authentication
 Topics: google android authentication security
 Date: 2012-11-29
 
