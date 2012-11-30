@@ -19,6 +19,7 @@ install: all
 clean:
 	rm -f $(argfiles)
 	rm -f websafe.ppm win.ppm
+	rm -f favicon.ico
 
 favicon.ico: $(argfiles)
 	$(PPMTOWINICON) -and -output=$@ $(argfiles)
