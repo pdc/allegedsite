@@ -122,6 +122,12 @@ section li {
     font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-weight: 500;
 }
+#elsewhere h4 {
+    margin: 0.3125em 0 ;
+    font-size: 1em;
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-weight: 400;
+}
 #elsewhere small {
     display: block;
     float: left;
@@ -143,6 +149,11 @@ section li {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+
+.latest li .livejournal p {
+    font-size: 0.8125em;
+    margin: 0.5em 0 1.5em 80px; /* adding 30px to allow for overlapping icon */
+}
 
 .latest li  p.twitter {
     font-size: 0.8125em;
