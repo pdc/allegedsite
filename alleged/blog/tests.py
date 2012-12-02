@@ -589,31 +589,31 @@ class TestJsonfromAtom(TestCase):
         return data
 
     def test_from_flickr(self):
-        data = self.fixture_data('from_flickr.atom')
+        data = self.fixture_data('from_flickr_2012.atom')
         ndix = nested_dicts_from_atom(data, group_by='published')
         self.assertDictContainsSubsetRecursive({
             'entryGroups': [
                 {
-                    'published': '2010-10-31T12:59:51Z',
+                    'published': '2012-11-29T18:36:38Z',
                     'entries': [
                         {
-                            'title': 'Technicolor Brain Bowl with Attendant Lizard',
-                            'href': 'http://www.flickr.com/photos/pdc/5131737708/',
-                            'square': {'href': 'http://farm2.static.flickr.com/1346/5131737708_2a774d3564_s.jpg'},
-                            'thumbnail': {'href': 'http://farm2.static.flickr.com/1346/5131737708_2a774d3564_t.jpg'},
+                            'title': 'Set Type (Reversed)',
+                            'href': 'http://www.flickr.com/photos/pdc/8229589533/',
+                            'square': {'href': 'http://farm9.staticflickr.com/8483/8229589533_681832d5ef_s.jpg'},
+                            'thumbnail': {'href': 'http://farm9.staticflickr.com/8483/8229589533_681832d5ef_t.jpg'},
                             'enclosure': {
-                                'href': 'http://farm2.static.flickr.com/1346/5131737708_05ae944014_o.jpg',
+                                'href': 'http://farm9.staticflickr.com/8483/8229589533_681832d5ef_b.jpg',
                             }
                         },
-                        {'title': 'Angharad'},
-                        {'title': 'Crisp of Doom'}
+                        {'title': 'Set Type'},
+                        {'title': 'Font Menu'}
                     ]
                 },
                 {
-                    'published': '2010-10-10T21:12:54Z',
+                    'published': '2012-11-22T19:40:17Z',
                     'entries': [
-                        {'title': 'Suprvillains Know the Importance of Colour Theming'},
-                        {'title': 'Tight Fit'},
+                        {'title': 'Baroness Orczy, By the Gods Beloved'},
+                        {'title': 'Is the Any Better Recommendation than the name of Orczy'},
                     ]
                 }
             ]

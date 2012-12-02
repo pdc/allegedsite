@@ -122,7 +122,7 @@ section li {
 .latest li  p.twitter {
     font-size: 0.8125em;
     margin: 0 10px 1.5em 10px;
-    padding-left: 30px;
+    padding-left: 35px;
 }
 p.twitter img {
     display: block;
@@ -132,6 +132,27 @@ p.twitter img {
     height: 24px;
 }
 p.twitter small {
+    font-size: 0.8462em;
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+}
+
+
+.latest li  p.flickr {
+    font-size: 0.8125em;
+    margin: 0.5em 10px 1.5em 10px;
+    padding-left: 35px;
+}
+p.flickr img {
+    /* Images are 75x75 but we show them half size; in the retinatastic fugure this will make sense */
+    display: block;
+    float: left;
+    width: 37.5px;
+    height: 37.5px;
+    margin: 0 2.5px 2.5px 0;
+}
+p.flickr small {
+    display: block;
+    margin: 0 0 0.5em;
     font-size: 0.8462em;
     font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }

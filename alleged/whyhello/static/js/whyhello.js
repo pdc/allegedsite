@@ -67,4 +67,52 @@ $(function () {
             }
         }
     });
+
+
+    // Now someting similar for Flickr
+    var u = '/pdc/from/flickr';
+    var flickrLink = $('#flickr-link'),
+        flickrItem = flickrLink.parents('li').eq(0);
+
+    flickrItem.addClass('loading');
+    $.ajax({
+        url: u,
+        format: 'json',
+        success: function (data, textStatus, request) {
+            if (data && data.success) {
+                var flickrCount = 0;
+                for (var i in data.entryGroups) {
+                    var dateData = data.entryGroups[i];
+                    var date = dateData.published;
+                    var entries = dateData.entries;
+                    var articleElt = $('<p>').attr({
+                        'data-date': date,
+                        'class': 'flickr photos'
+                    });
+                    for (var j in entries) {
+                        var entry = entries[j];
+
+                        var photoElt = $('<a>').attr({
+                            href: entry.href,
+                            title: entry.title
+                        });
+                        $('<img>').attr({
+                            src: entry.square.href,
+                            alt: '[image]'
+                        }).appendTo(photoElt);
+                        photoElt.appendTo(articleElt);
+                    }
+                    var detailsElt = $('<small>').prependTo(articleElt);
+                    detailsElt.text('Latest uploads: ' + date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1]);
+                    articleElt.append($('<br clear="left">'));
+
+                    flickrItem.append(articleElt);
+
+                    if (++flickrCount >= maxGalleries) {
+                        break;
+                    }
+                }
+            }
+        }
+    });
 });

@@ -12,12 +12,14 @@ from django.conf import settings
 ATOM = 'http://www.w3.org/2005/Atom'
 for name in ['feed', 'entry', 'id', 'title', 'link', 'published', 'content']:
     globals()['ATOM_{NAME}'.format(NAME=name.upper())] = '{' + ATOM + '}' + name
-    
+
+
+# http://farm9.staticflickr.com/8483/8229589533_681832d5ef_b.jpg
 FLICKR_IMAGE_RE = re.compile(r"""
     <img \s
     src="http://farm
     (?P<farmID> [0-9]+ )
-    \.static\.flickr\.com/
+    \.static\.?flickr\.com/
     (?P<serverID> [0-9]+ )
     /
     (?P<id> [0-9]+ )
@@ -29,7 +31,7 @@ FLICKR_IMAGE_RE = re.compile(r"""
     )?
     \.jpg"
     """, re.VERBOSE)
-    
+
 YOUTUBE_POSTER_RE = re.compile(r"""
     <img \s
     alt="" \s
@@ -64,7 +66,7 @@ def nested_dicts_from_atom(xml_data, group_by=None):
                     last_date = published
             entries.append(entry)
     return result
-    
+
 def entry_from_element(entry_elt):
     entry = {}
     for prop_elt in entry_elt:
@@ -93,7 +95,7 @@ def entry_from_element(entry_elt):
                 for (rel, letter) in (('square', 's'), ('thumbnail', 't')):
                     flickrIDs['letter'] = letter
                     entry[rel] = {
-                        'href': 'http://farm{farmID}.static.flickr.com/{serverID}/{id}_{secret}_{letter}.jpg'.format(**flickrIDs)
+                        'href': 'http://farm{farmID}.staticflickr.com/{serverID}/{id}_{secret}_{letter}.jpg'.format(**flickrIDs)
                     }
             m = YOUTUBE_POSTER_RE.search(text)
             if m:
@@ -106,19 +108,19 @@ def entry_from_element(entry_elt):
             if prop_elt.get('type') == 'html':
                 entry['content'] = summary_from_content(text)
     return entry
-    
-    
+
+
 named_entity_re = re.compile(r'\&(\w+);')
 def named_entity_sub(m):
     n = name2codepoint[m.group(1)]
     return unichr(n)
-    
+
 break_re = re.compile(r'(?:<br ?/?>){2}|</p>')
 tag_re = re.compile(r'</?\w+(\s+\w+=("[^"]*"|\'[^\']*\'))*\s*/?>')
-    
+
 def summary_from_content(text, type='html'):
     """Given Atom’s escaped HTML, return text.
-    
+
     Atom’s HTML has been escaped and looks like &lt;img src="..."&gt;.
     When we parse the XML we get something like <img src="....">
     We want to strip out the tags and leave plain text.
@@ -131,15 +133,14 @@ def summary_from_content(text, type='html'):
         text = tag_re.sub('', text)
         text = named_entity_re.sub(named_entity_sub, text)
     return text
-    
+
 
 def get_flickr(flickr_url): return get_atom(flickr_url, group_by='published')
 def get_livejournal(livejournal_url): return get_atom(livejournal_url)
 def get_youtube(youtube_url): return get_atom(youtube_url)
-        
+
 def get_atom(atom_url, **kwargs):
     http = httplib2.Http(settings.HTTPLIB2_CACHE_DIR)
     resp, body = http.request(atom_url, 'GET')
     if resp.status == 200:
         return nested_dicts_from_atom(body, **kwargs)
-    
