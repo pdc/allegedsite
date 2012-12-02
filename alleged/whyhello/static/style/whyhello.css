@@ -92,10 +92,6 @@ section>div {
 }
 
 .latest {
-    width: 480px;
-}
-
-#articles .latest {
     width: 560px;
 }
 
@@ -119,10 +115,25 @@ section li {
     margin: 0 10px 0.61125em;
 }
 
+
+#elsewhere h3 {
+    margin: 0 ;
+    font-size: 1em;
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-weight: 500;
+}
+#elsewhere small {
+    display: block;
+    float: left;
+    width: 60px;
+    margin: 0.5em 20px 1.5em 0;
+    font-size: 0.6875em;
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+}
+
 .latest li  p.twitter {
     font-size: 0.8125em;
-    margin: 0 10px 1.5em 10px;
-    padding-left: 35px;
+    margin: 0.5em 0 1.5em 110px; /* adding 30px to allow for overlapping icon */
 }
 p.twitter img {
     display: block;
@@ -131,16 +142,10 @@ p.twitter img {
     width: 24px;
     height: 24px;
 }
-p.twitter small {
-    font-size: 0.8462em;
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-}
-
 
 .latest li  p.flickr {
     font-size: 0.8125em;
-    margin: 0.5em 10px 1.5em 10px;
-    padding-left: 35px;
+    margin: 0.5em 0 1.5em 10px;
 }
 p.flickr img {
     /* Images are 75x75 but we show them half size; in the retinatastic fugure this will make sense */
@@ -149,12 +154,6 @@ p.flickr img {
     width: 37.5px;
     height: 37.5px;
     margin: 0 2.5px 2.5px 0;
-}
-p.flickr small {
-    display: block;
-    margin: 0 0 0.5em;
-    font-size: 0.8462em;
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
 
 section h3 {

@@ -53,11 +53,11 @@ $(function () {
                 }).appendTo(articleElt);
                 $('<p>').appendTo(articleElt).text(unentity(tweet.text));
 
-                var details = $('<small>').appendTo(articleElt);
+                var details = $('<small>').appendTo(twitterItem);
                 $('<a>').attr({
                     href: 'http://twitter.com/' + (isRetweet ? other : 'damiancugley') + '/status/' + tweet.id,
                     title: when
-                }).text(whenFormatted + ' ').append('on Twitter <b>#</b>').appendTo(details);
+                }).text(whenFormatted + ' ').append('<b>#</b>').appendTo(details);
 
                 twitterItem.append(articleElt);
 
@@ -102,9 +102,10 @@ $(function () {
                         }).appendTo(photoElt);
                         photoElt.appendTo(articleElt);
                     }
-                    var detailsElt = $('<small>').prependTo(articleElt);
-                    detailsElt.text('Latest uploads: ' + date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1]);
                     articleElt.append($('<br clear="left">'));
+
+                    var detailsElt = $('<small>').appendTo(flickrItem);
+                    detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1]);
 
                     flickrItem.append(articleElt);
 
