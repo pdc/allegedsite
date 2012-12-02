@@ -52,7 +52,7 @@ SNAPTIONER_LIBRARY_DIR = expand_path('albums')
 SNAPTIONER_LIBRARY_URL = 'http://static.alleged.org.uk/albums/'
 
 BLOG_DIR = expand_path('content/pdc')
-BLOG_CACHE_ENTRIES = True
+BLOG_CACHE_ENTRIES = False
 
 HTTPLIB2_CACHE_DIR = '/home/alleged/cache'
 FLICKR_ATOM_URL = 'http://api.flickr.com/services/feeds/photos_public.gne?id=14145351@N00&lang=en-us&format=atom'

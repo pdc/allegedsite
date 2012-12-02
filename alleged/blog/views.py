@@ -24,7 +24,7 @@ def add_hrefs(entries):
                 'day': '%02d' % entry.published.day,
             })
 
-def get_entries(blog_dir, blog_url, image_url):
+def get_entries_cached(blog_dir, blog_url, image_url):
     """Get the list of blog entries.
 
     Arguments --
@@ -50,7 +50,7 @@ def get_entries(blog_dir, blog_url, image_url):
     return entries
 
 def get_toc(blog_dir, blog_url, image_url):
-    entries = get_entries(blog_dir, blog_url, image_url)
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
     toc = get_toc_uncached(entries)
     return toc
 
@@ -77,7 +77,7 @@ def get_year_months(entries, y):
 
 @render_with('blog/index.html')
 def index_view(request, blog_dir, blog_url, image_url):
-    entries = get_entries(blog_dir, blog_url, image_url)
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
     entry, this_month, years = get_entry(entries, None, None, None)
     return {
         'entries': entries,
@@ -90,7 +90,7 @@ def index_view(request, blog_dir, blog_url, image_url):
 
 @render_with('blog/entry.html')
 def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
-    entries = get_entries(blog_dir, blog_url, image_url)
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
     y = year and int(year)
     m = month and int(month, 10)
     d = day and int(day, 10)
@@ -107,7 +107,7 @@ def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
 
 @render_with('blog/month_entries.html')
 def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None):
-    entries = get_entries(blog_dir, blog_url, image_url)
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
     y = year and int(year)
     m = month and int(month, 10)
     d = None
@@ -150,7 +150,7 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
 def named_article(request, blog_dir, blog_url, image_url, year, name):
     y = year and int(year)
     article = get_named_article(blog_dir, blog_url, image_url, y, name)
-    entries = get_entries(blog_dir, blog_url, image_url) # Needed for archive navigation
+    entries = get_entries_cached(blog_dir, blog_url, image_url) # Needed for archive navigation
     entry, this_month, years = get_entry(entries, y, None, None)
     return {
         'article': article,
@@ -174,7 +174,7 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     • There is no page 0. Instead we have page None for the subscription page
       (which is the most-recent page in the paged-feed pages).
     """
-    entries = get_entries(blog_dir, blog_url, image_url)
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
 
     # Just to be tricky:
     # • Positive pages are archive pages, counting up from earliest page.
