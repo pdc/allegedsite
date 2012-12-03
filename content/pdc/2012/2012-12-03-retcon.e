@@ -7,7 +7,7 @@ Here is my understanding of the word _retcon_ and my part in its coining.
 Background
 ----------
 
-In the summer of 1989 I was an intern at Hewlett Packard. They had their own
+In the summer of 1988 I was an intern at Hewlett Packard. They had their own
 special netnews-like system, and it was gatewayed with USENET newsgroups,
 including `rec.arts.comics`.
 
