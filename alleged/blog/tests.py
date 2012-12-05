@@ -708,7 +708,7 @@ class TestGithubJsonFromAtom(TestCase):
 
     def test_content(self):
         expected = """<div class="details">
-  <a class="gravatar" href="/pdc"><img height="30" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="30" /></a>
+  <a class="gravatar" href="https://github.com/pdc"><img height="30" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="30" /></a>
 
     <div class="commits pusher-is-only-committer">
       <ul>
@@ -716,7 +716,7 @@ class TestGithubJsonFromAtom(TestCase):
           <span title="pdc">
             <img height="16" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="16" />
           </span>
-          <code><a href="/pdc/allegedsite/commit/342763c80c5a0f132a5a098ca710aefaf739e8ab">342763c</a></code>
+          <code><a href="https://github.com/pdc/allegedsite/commit/342763c80c5a0f132a5a098ca710aefaf739e8ab">342763c</a></code>
           <div class="message">
             <blockquote>
               Change date of summer
