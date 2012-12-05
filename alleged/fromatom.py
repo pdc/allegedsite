@@ -156,7 +156,8 @@ def get_youtube(youtube_url): return get_atom(youtube_url)
 def get_github(github_url): return get_atom(github_url)
 
 def get_atom(atom_url, **kwargs):
-    http = httplib2.Http(settings.HTTPLIB2_CACHE_DIR)
+    http = httplib2.Http(settings.HTTPLIB2_CACHE_DIR,
+        disable_ssl_certificate_validation=('github' in atom_url))
     resp, body = http.request(atom_url, 'GET')
     if resp.status == 200:
         return nested_dicts_from_atom(body, **kwargs)
