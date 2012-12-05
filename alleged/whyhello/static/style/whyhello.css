@@ -105,7 +105,11 @@ aside#photo img {
 
 section p,
 section li {
-    margin: 0 10px 0.61125em;
+    margin: 0 10px 0.6125em;
+}
+
+section li.loaded {
+    margin-bottom: 1.25em;
 }
 
 
@@ -178,7 +182,7 @@ p.flickr img {
 }
 
 .latest li li {
-    margin-left: 80px
+    margin: 0 0 0.3125em 80px;
 }
 
 .latest li li img {

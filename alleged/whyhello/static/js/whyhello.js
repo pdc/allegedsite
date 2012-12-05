@@ -132,6 +132,7 @@ $(function () {
             url: urlForJsonifiedFeed,
             format: 'json',
             success: function (data, textStatus, request) {
+                itemElt.removeClass('loading').addClass('loaded');
                 if (data && data.success) {
                     var n = (data.entries.length > maxEntries ? maxEntries : data.entries.length)
                     for (var j = 0; j < n; ++j) {
