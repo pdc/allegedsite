@@ -11,25 +11,13 @@
     src: local('Gentium Book Basic'), local('GentiumBookBasic-Italic'), url('gentium/GenBkBasI.woff') format('woff'), url('gentium/GenBkBasI.ttf') format('truetype'), url('gentium/GenBkBasI.svg#GentiumBookBasic-Italic') format('svg');
 }
 
-@font-face {
-    font-family: 'GentiumBookBasicBold';
-    src: url('gentium/GenBkBasB.eot');
-    src: local('Gentium Book Basic'), local('GentiumBookBasic-Bold'), url('gentium/GenBkBasB.woff') format('woff'), url('gentium/GenBkBasB.ttf') format('truetype'), url('gentium/GenBkBasB.svg#GentiumBookBasic-Bold') format('svg');
-}
-
-@font-face {
-    font-family: 'GentiumBookBasicBoldItalic';
-    src: url('gentium/GenBkBasBI.eot');
-    src: local('Gentium Book Basic'), local('GentiumBookBasic-BoldItalic'), url('gentium/GenBkBasBI.woff') format('woff'), url('gentium/GenBkBasBI.ttf') format('truetype'), url('gentium/GenBkBasBI.svg#GentiumBookBasic-BoldItalic') format('svg');
-}
-
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     line-height: 1.25;
 
     background: #EEF;
@@ -43,9 +31,10 @@ header {
 
 header h1 {
     font-size: 3em;
-    font-weight: 100;
     padding: 1em 20px 0.75em;
 
+    font-family: "Gibson-Light", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-weight: 100;
     color: #FFF;
     text-shadow: #000 1px 1px 2px;
 }
@@ -61,6 +50,7 @@ header h1 {
 }
 
 #main:after {
+    display: block;
     clear: both;
     content: '.';
     height: 0;
@@ -81,6 +71,9 @@ section {
 section h2 {
     font-size: 1.4em;
     margin: 0 10px 0.5em;
+
+    font-family: "Gibson-SemiBold", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-weight: normal;
 }
 
 section>div {
@@ -119,13 +112,13 @@ section li {
 #elsewhere h3 {
     margin: 0 ;
     font-size: 1em;
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-weight: 500;
 }
 #elsewhere h4 {
-    margin: 0.3125em 0 ;
+    margin: 0.5em 0 ;
     font-size: 0.8125em;
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-weight: 400;
 }
 #elsewhere small {
@@ -134,7 +127,7 @@ section li {
     width: 60px;
     margin: 0.5em 20px 1.5em 0;
     font-size: 0.6875em;
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
 
 #elsewhere a {
@@ -198,7 +191,7 @@ p.flickr img {
 }
 
 .details code {
-    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-size: 0.8125em;
 }
 .details blockquote {
@@ -271,6 +264,6 @@ section dd p {
 }
 
 section .more {
-    font-family:  "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-size: 0.8125em;
 }
