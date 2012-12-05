@@ -8,11 +8,10 @@ from django.core.cache import cache
 from django.conf import settings
 
 from datetime import date
-import json
 
-from alleged.decorators import render_with
+from alleged.decorators import render_with, render_json
 from alleged.blog.entries import get_entries as get_entries_uncached, get_entry, get_toc as get_toc_uncached, get_named_article as get_named_article_uncached
-from alleged.fromatom import get_flickr, get_livejournal, get_youtube
+from alleged.fromatom import get_flickr, get_livejournal, get_youtube, get_github
 
 def add_hrefs(entries):
     """Ensure that the entries in this list have hrefs."""
@@ -239,22 +238,6 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     return vars
 
 
-def render_json(view):
-    """Decorator for view function returning a dictionary to be rendered as JSON.
-
-    Write the view function as usual, except it returns a dict
-    not a response object.
-    If the function being decorated returns an HttpResponse subclass
-    instead, that is returned unchanged.
-    """
-    def decorated_view(request, *args, **kwargs):
-        resp = view(request, *args, **kwargs)
-        if isinstance(resp, HttpResponse):
-            return resp
-        data = json.dumps(resp)
-        return HttpResponse(data, mimetype='application/json')
-    return decorated_view
-
 def from_atom(func, url, label):
     ndix = func(url)
     if not ndix:
@@ -272,6 +255,12 @@ def from_flickr(request):
 def from_livejournal(request):
     return from_atom(get_livejournal, settings.LIVEJOURNAL_ATOM_URL, 'LiveJournal')
 
+#@cache_page(1800)
+@render_json
+def from_github(request):
+    return from_atom(get_github, settings.GITHUB_ATOM_URL, 'GitHub')
+
+@cache_page(1800)
 @render_json
 def from_youtube(request):
     return from_atom(get_youtube, settings.YOUTUBE_ATOM_URL, 'YouTube')

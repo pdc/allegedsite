@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:flickr="urn:flickr:user"
+      xmlns:media="http://search.yahoo.com/mrss/">
+
+  <title>Uploads from Damian Cugley</title>
+  <link rel="self" href="http://api.flickr.com/services/feeds/photos_public.gne?id=14145351@N00&amp;lang=en-us&amp;format=atom" />
+  <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/"/>
+  <id>tag:flickr.com,2005:/photos/public/65260</id>
+  <icon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</icon>
+  <subtitle></subtitle>
+  <updated>2012-11-29T18:36:38Z</updated>
+  <generator uri="http://www.flickr.com/">Flickr</generator>
+
+<entry>
+    <title>Set Type (Reversed)</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229589533/"/>
+    <id>tag:flickr.com,2005:/photo/8229589533</id>
+    <published>2012-11-29T18:36:38Z</published>
+    <updated>2012-11-29T18:36:38Z</updated>
+    <flickr:date_taken>2012-11-29T18:35:25-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-29T18:35:25-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229589533/&quot; title=&quot;Set Type (Reversed)&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8483/8229589533_681832d5ef_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;Set Type (Reversed)&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The set type, reversed to make it magically readable!&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8483/8229589533_681832d5ef_b.jpg" />
+    <category term="reversed" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Set Type</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229543913/"/>
+    <id>tag:flickr.com,2005:/photo/8229543913</id>
+    <published>2012-11-29T18:15:16Z</published>
+    <updated>2012-11-29T18:15:16Z</updated>
+    <flickr:date_taken>2012-11-28T22:56:17-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:56:17-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229543913/&quot; title=&quot;Set Type&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8066/8229543913_044cfa9589_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;Set Type&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We each got to set one sentence to go under our linocut.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8066/8229543913_044cfa9589_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Font Menu</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229533735/"/>
+    <id>tag:flickr.com,2005:/photo/8229533735</id>
+    <published>2012-11-29T18:11:00Z</published>
+    <updated>2012-11-29T18:11:00Z</updated>
+    <flickr:date_taken>2012-11-28T22:15:05-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:15:05-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229533735/&quot; title=&quot;Font Menu&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8341/8229533735_3f26f306ec_m.jpg&quot; width=&quot;240&quot; height=&quot;240&quot; alt=&quot;Font Menu&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just part of the collection of typecases in the shop.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8341/8229533735_3f26f306ec_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Bodoni 18 Ultra Italic</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229532065/"/>
+    <id>tag:flickr.com,2005:/photo/8229532065</id>
+    <published>2012-11-29T18:10:18Z</published>
+    <updated>2012-11-29T18:10:18Z</updated>
+    <flickr:date_taken>2012-11-28T22:14:54-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:14:54-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229532065/&quot; title=&quot;Bodoni 18 Ultra Italic&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8203/8229532065_975c0fcddb_m.jpg&quot; width=&quot;240&quot; height=&quot;160&quot; alt=&quot;Bodoni 18 Ultra Italic&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I found this round the back.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8203/8229532065_975c0fcddb_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Kathy and Proof</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8230593750/"/>
+    <id>tag:flickr.com,2005:/photo/8230593750</id>
+    <published>2012-11-29T18:08:55Z</published>
+    <updated>2012-11-29T18:08:55Z</updated>
+    <flickr:date_taken>2012-11-28T22:07:14-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:07:14-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8230593750/&quot; title=&quot;Kathy and Proof&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8482/8230593750_5ee4d93419_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;Kathy and Proof&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8482/8230593750_5ee4d93419_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Proof</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8230593504/"/>
+    <id>tag:flickr.com,2005:/photo/8230593504</id>
+    <published>2012-11-29T18:08:49Z</published>
+    <updated>2012-11-29T18:08:49Z</updated>
+    <flickr:date_taken>2012-11-28T22:06:11-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:06:11-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8230593504/&quot; title=&quot;Proof&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8343/8230593504_ae10b6b9a0_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Proof&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8343/8230593504_ae10b6b9a0_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Kathy’s Proof</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8230593304/"/>
+    <id>tag:flickr.com,2005:/photo/8230593304</id>
+    <published>2012-11-29T18:08:43Z</published>
+    <updated>2012-11-29T18:08:43Z</updated>
+    <flickr:date_taken>2012-11-28T22:06:47-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:06:47-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8230593304/&quot; title=&quot;Kathy’s Proof&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8061/8230593304_9b0a9cf053_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Kathy’s Proof&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8061/8230593304_9b0a9cf053_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Bus Lino Work In Progress</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8230592924/"/>
+    <id>tag:flickr.com,2005:/photo/8230592924</id>
+    <published>2012-11-29T18:08:33Z</published>
+    <updated>2012-11-29T18:08:33Z</updated>
+    <flickr:date_taken>2012-11-28T22:07:47-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-28T22:07:47-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8230592924/&quot; title=&quot;Bus Lino Work In Progress&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8062/8230592924_88fa73de65_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Bus Lino Work In Progress&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Our project is to create illustrations for a calendar to be printed letterpress style.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8062/8230592924_88fa73de65_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="green" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="printing" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="linocut" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="letterpress" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Choral</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229522283/"/>
+    <id>tag:flickr.com,2005:/photo/8229522283</id>
+    <published>2012-11-29T18:06:01Z</published>
+    <updated>2012-11-29T18:06:01Z</updated>
+    <flickr:date_taken>2012-11-23T20:39:51-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-23T20:39:51-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229522283/&quot; title=&quot;Choral&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8485/8229522283_7352d4695f_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Choral&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8485/8229522283_7352d4695f_b.jpg" />
+    <category term="" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>IMG_3405</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229522007/"/>
+    <id>tag:flickr.com,2005:/photo/8229522007</id>
+    <published>2012-11-29T18:05:54Z</published>
+    <updated>2012-11-29T18:05:54Z</updated>
+    <flickr:date_taken>2012-11-23T20:39:03-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-23T20:39:03-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229522007/&quot; title=&quot;IMG_3405&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8207/8229522007_e239d7e201_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;IMG_3405&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8207/8229522007_e239d7e201_b.jpg" />
+    <category term="" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Applying Fake Wood to the Real Fake Wood</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8229518879/"/>
+    <id>tag:flickr.com,2005:/photo/8229518879</id>
+    <published>2012-11-29T18:04:30Z</published>
+    <updated>2012-11-29T18:04:30Z</updated>
+    <flickr:date_taken>2012-11-23T14:56:31-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-23T14:56:31-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8229518879/&quot; title=&quot;Applying Fake Wood to the Real Fake Wood&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8057/8229518879_9cf537f2b1_m.jpg&quot; width=&quot;160&quot; height=&quot;240&quot; alt=&quot;Applying Fake Wood to the Real Fake Wood&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8057/8229518879_9cf537f2b1_b.jpg" />
+    <category term="" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Baroness Orczy, By the Gods Beloved</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8209548510/"/>
+    <id>tag:flickr.com,2005:/photo/8209548510</id>
+    <published>2012-11-22T19:40:17Z</published>
+    <updated>2012-11-22T19:40:17Z</updated>
+    <flickr:date_taken>2012-11-17T18:14:04-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T18:14:04-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8209548510/&quot; title=&quot;Baroness Orczy, By the Gods Beloved&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8486/8209548510_ba839c873a_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;Baroness Orczy, By the Gods Beloved&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Starts with schoolboy japery. She also wrote the Scarlet Pimpernell.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8486/8209548510_ba839c873a_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Is the Any Better Recommendation than the name of Orczy</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8209548208/"/>
+    <id>tag:flickr.com,2005:/photo/8209548208</id>
+    <published>2012-11-22T19:40:09Z</published>
+    <updated>2012-11-22T19:40:09Z</updated>
+    <flickr:date_taken>2012-11-17T18:14:12-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T18:14:12-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8209548208/&quot; title=&quot;Is the Any Better Recommendation than the name of Orczy&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8490/8209548208_3500576fa2_m.jpg&quot; width=&quot;240&quot; height=&quot;180&quot; alt=&quot;Is the Any Better Recommendation than the name of Orczy&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Baroness Orczy, &lt;i&gt;By the Gods Beloved&lt;/i&gt;&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8490/8209548208_3500576fa2_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>Monica M. Hutchings, Hundredfold</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8209542268/"/>
+    <id>tag:flickr.com,2005:/photo/8209542268</id>
+    <published>2012-11-22T19:37:28Z</published>
+    <updated>2012-11-22T19:37:28Z</updated>
+    <flickr:date_taken>2012-11-17T17:55:11-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:55:11-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8209542268/&quot; title=&quot;Monica M. Hutchings, Hundredfold&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8067/8209542268_059051c0f5_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;Monica M. Hutchings, Hundredfold&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One of dozens of 1940s hardback fiction that turned up in one donation last weekend. The format somehow reminds me of boarding houses and stacks of &lt;i&gt;Readers Digest&lt;/i&gt; magazines.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8067/8209542268_059051c0f5_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>D. L. Leach, Cleveland View</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8208449543/"/>
+    <id>tag:flickr.com,2005:/photo/8208449543</id>
+    <published>2012-11-22T19:36:23Z</published>
+    <updated>2012-11-22T19:36:23Z</updated>
+    <flickr:date_taken>2012-11-17T17:55:02-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:55:02-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8208449543/&quot; title=&quot;D. L. Leach, Cleveland View&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8482/8208449543_0fb21d81a7_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;D. L. Leach, Cleveland View&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One of dozens of 1940s hardback fiction that turned up in one donation last weekend. The format somehow reminds me of boarding houses and stacks of &lt;i&gt;Readers Digest&lt;/i&gt; magazines.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8482/8208449543_0fb21d81a7_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>The Saint Sees it Through</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8208446283/"/>
+    <id>tag:flickr.com,2005:/photo/8208446283</id>
+    <published>2012-11-22T19:34:57Z</published>
+    <updated>2012-11-22T19:34:57Z</updated>
+    <flickr:date_taken>2012-11-17T17:10:19-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:10:19-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8208446283/&quot; title=&quot;The Saint Sees it Through&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8059/8208446283_d22eda8ae3_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;The Saint Sees it Through&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We had a pile of Saint books with lurid covers. In those days stick men were not shy about wearing pink.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8059/8208446283_d22eda8ae3_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="pulpfiction" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="thesaint" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>The Saint on the Spanish Main</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8209532960/"/>
+    <id>tag:flickr.com,2005:/photo/8209532960</id>
+    <published>2012-11-22T19:33:18Z</published>
+    <updated>2012-11-22T19:33:18Z</updated>
+    <flickr:date_taken>2012-11-17T17:09:55-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:09:55-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8209532960/&quot; title=&quot;The Saint on the Spanish Main&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8338/8209532960_df065a9f97_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;The Saint on the Spanish Main&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Stick figure attempts to blend in with the locals, revels in stereotypes.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8338/8209532960_df065a9f97_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="pulpfiction" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="thesaint" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>The Saint Goes On</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8208438435/"/>
+    <id>tag:flickr.com,2005:/photo/8208438435</id>
+    <published>2012-11-22T19:31:23Z</published>
+    <updated>2012-11-22T19:31:23Z</updated>
+    <flickr:date_taken>2012-11-17T17:09:32-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:09:32-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8208438435/&quot; title=&quot;The Saint Goes On&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8201/8208438435_15fa0bf26c_m.jpg&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;The Saint Goes On&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Fuzzy red Saint stick figure&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8201/8208438435_15fa0bf26c_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="pulpfiction" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="thesaint" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>The Saint Plays with Fire</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8209522212/"/>
+    <id>tag:flickr.com,2005:/photo/8209522212</id>
+    <published>2012-11-22T19:28:44Z</published>
+    <updated>2012-11-22T19:28:44Z</updated>
+    <flickr:date_taken>2012-11-17T17:08:57-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:08:57-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8209522212/&quot; title=&quot;The Saint Plays with Fire&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8205/8209522212_078845510a_m.jpg&quot; width=&quot;160&quot; height=&quot;240&quot; alt=&quot;The Saint Plays with Fire&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We had a pile of Saint books with lurid covers. I&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8205/8209522212_078845510a_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="pulpfiction" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="thesaint" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+<entry>
+    <title>The Saint Bids Diamonds</title>
+    <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/pdc/8209521804/"/>
+    <id>tag:flickr.com,2005:/photo/8209521804</id>
+    <published>2012-11-22T19:28:34Z</published>
+    <updated>2012-11-22T19:28:34Z</updated>
+    <flickr:date_taken>2012-11-17T17:08:42-08:00</flickr:date_taken>
+    <dc:date.Taken>2012-11-17T17:08:42-08:00</dc:date.Taken>
+    <content type="html">           &lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/pdc/&quot;&gt;Damian Cugley&lt;/a&gt; posted a photo:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/pdc/8209521804/&quot; title=&quot;The Saint Bids Diamonds&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8480/8209521804_1f19679633_m.jpg&quot; width=&quot;160&quot; height=&quot;240&quot; alt=&quot;The Saint Bids Diamonds&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Later reprints of the Saint with surreal covers.&lt;/p&gt;</content>
+    <author>
+      <name>Damian Cugley</name>
+      <uri>http://www.flickr.com/people/pdc/</uri>
+      <flickr:nsid>14145351@N00</flickr:nsid>
+      <flickr:buddyicon>http://farm1.staticflickr.com/1/buddyicons/14145351@N00.jpg?1150358638#14145351@N00</flickr:buddyicon>
+    </author>
+    <link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/2.0/deed.en_GB" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm9.staticflickr.com/8480/8209521804_1f19679633_b.jpg" />
+    <category term="winter" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="england" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="book" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="noflash" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="indoors" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="cover" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxford" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="pulpfiction" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="secondhand" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="2012" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="thesaint" scheme="http://www.flickr.com/photos/tags/" />
+    <category term="oxfambookshop" scheme="http://www.flickr.com/photos/tags/" />
+</entry>
+
+
+</feed>

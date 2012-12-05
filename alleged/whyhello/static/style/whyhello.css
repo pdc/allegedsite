@@ -68,7 +68,7 @@ header h1 {
 }
 
 #main p {
-    font-family: GentiumBookBasicRegular;
+    font-family: GentiumBookBasicRegular, serif;
 }
 
 section {
@@ -124,7 +124,7 @@ section li {
 }
 #elsewhere h4 {
     margin: 0.3125em 0 ;
-    font-size: 1em;
+    font-size: 0.8125em;
     font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-weight: 400;
 }
@@ -150,7 +150,7 @@ section li {
 }
 
 
-.latest li .livejournal p {
+.latest li article p {
     font-size: 0.8125em;
     margin: 0.5em 0 1.5em 80px; /* adding 30px to allow for overlapping icon */
 }
@@ -179,6 +179,33 @@ p.flickr img {
     height: 37.5px;
     margin: 0 2.5px 2.5px 0;
 }
+
+.details .gravatar {
+    display: none;
+}
+
+.latest li li {
+    margin-left: 80px
+}
+
+.latest li li img {
+    vertical-align: middle;
+}
+
+.details li div,
+.details blockquote {
+    display: inline;
+}
+
+.details code {
+    font-family: "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-size: 0.8125em;
+}
+.details blockquote {
+    font-family: GentiumBookBasicRegular, serif;
+    font-size: 0.8125em;
+}
+
 
 section h3 {
     font-size: 1.2em;

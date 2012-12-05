@@ -571,25 +571,25 @@ class TestThisMonthList(TestCase, BlogTestMixin):
 
 
 FIXTURE_DIR = os.path.join(os.path.dirname(__file__), 'test_data')
+def fixture_data(file_name, from_encoding=None):
+    """Find a test file and return its contents.
+
+    Arguments --
+        file_name -- names the file within the fixtures directory
+        from_encoding -- if not None, then convert the file data to
+            a Unicode string using this encoding
+
+    """
+    file_path = os.path.join(FIXTURE_DIR, file_name)
+    with open(file_path, 'rb') as strm:
+        data = strm.read()
+    if from_encoding:
+        data = data.decode(from_encoding)
+    return data
+
 class TestJsonfromAtom(TestCase):
-    def fixture_data(self, file_name, from_encoding=None):
-        """Find a test file and return its contents.
-
-        Arguments --
-            file_name -- names the file within the fixtures directory
-            from_encoding -- if not None, then convert the file data to
-                a Unicode string using this encoding
-
-        """
-        file_path = os.path.join(FIXTURE_DIR, file_name)
-        with open(file_path, 'rb') as strm:
-            data = strm.read()
-        if from_encoding:
-            data = data.decode(from_encoding)
-        return data
-
     def test_from_flickr(self):
-        data = self.fixture_data('from_flickr_2012.atom')
+        data = fixture_data('from_flickr_2012.atom')
         ndix = nested_dicts_from_atom(data, group_by='published')
         self.assertDictContainsSubsetRecursive({
             'entryGroups': [
@@ -620,7 +620,7 @@ class TestJsonfromAtom(TestCase):
         }, ndix)
 
     def test_from_livejournal(self):
-        data = self.fixture_data('from_livejournal.atom')
+        data = fixture_data('from_livejournal.atom')
         ndix = nested_dicts_from_atom(data)
         self.assertDictContainsSubsetRecursive({
             'entries': [
@@ -641,7 +641,7 @@ class TestJsonfromAtom(TestCase):
         }, ndix)
 
     def test_from_youtube(self):
-        data = self.fixture_data('from_youtube.atom')
+        data = fixture_data('from_youtube.atom')
         ndix = nested_dicts_from_atom(data)
         self.assertDictContainsSubsetRecursive({
             'entries': [
@@ -657,19 +657,6 @@ class TestJsonfromAtom(TestCase):
                 },
             ]
         }, ndix)
-
-
-    def test_summary_from_content_html(self):
-        html = '<p>HEllo, world</p>'
-        self.assertEqual('HEllo, world', summary_from_content(html))
-
-    def test_summary_from_content_no_tags(self):
-        html = '<a href="foo">LiveJournal</a> does <i>not</i> do paragraph tags!'
-        self.assertEqual('LiveJournal does not do paragraph tags!', summary_from_content(html))
-
-    def test_summary_from_content_brbr(self):
-        html = 'LiveJournal does not do paragraph tags!<br /><br />Instead they use BR tags.'
-        self.assertEqual(u'LiveJournal does not do paragraph tags! …', summary_from_content(html))
 
     def assertDictContainsSubsetRecursive(self, expected, actual):
         complaints = list(self.check_subset(expected, actual, ''))
@@ -699,4 +686,77 @@ class TestJsonfromAtom(TestCase):
                         key_path=key_path,
                         expected=expected_val,
                         actual=actual_val)
+
+
+
+class TestGithubJsonFromAtom(TestCase):
+    def setUp(self):
+        data = fixture_data('from_github.atom')
+        self.result = nested_dicts_from_atom(data)
+
+    def test_id(self):
+        self.assertEqual('tag:github.com,2008:PushEvent/1635994159', self.result['entries'][0]['id'])
+
+    def test_published(self):
+        self.assertEqual('2012-12-03T20:20:07Z', self.result['entries'][0]['published'])
+
+    def test_href(self):
+        self.assertEqual('https://github.com/pdc/allegedsite/compare/678ff58ede...342763c80c', self.result['entries'][0]['href'])
+
+    def test_title(self):
+        self.assertEqual('pdc pushed to master at pdc/allegedsite', self.result['entries'][0]['title'])
+
+    def test_content(self):
+        expected = """<div class="details">
+  <a class="gravatar" href="/pdc"><img height="30" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="30" /></a>
+
+    <div class="commits pusher-is-only-committer">
+      <ul>
+        <li>
+          <span title="pdc">
+            <img height="16" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="16" />
+          </span>
+          <code><a href="/pdc/allegedsite/commit/342763c80c5a0f132a5a098ca710aefaf739e8ab">342763c</a></code>
+          <div class="message">
+            <blockquote>
+              Change date of summer
+            </blockquote>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>"""
+        self.assert_text_containing_equivalent_xml(expected, self.result['entries'][0]['html'])
+
+    def assert_text_containing_equivalent_xml(self, text1, text2):
+        elt1 = et.XML(text1.encode('UTF-8'))
+        elt2 = et.XML(text2.encode('UTF-8'))
+        self.assert_equivalent_elt(elt1, elt2)
+
+    def assert_equivalent_elt(self, elt1, elt2):
+        self.assertEqual(elt1.tag, elt2.tag)
+        for k, v in elt1.attrib.items():
+            self.assertEqual(elt2.attrib[k], v)
+        for ee1, ee2 in zip(elt1, elt2):
+            self.assert_equivalent_elt(ee1, ee2)
+
+
+
+
+
+
+
+class TestSummaryFromContent(TestCase):
+    def test_summary_from_content_html(self):
+        html = '<p>HEllo, world</p>'
+        self.assertEqual('HEllo, world', summary_from_content(html))
+
+    def test_summary_from_content_no_tags(self):
+        html = '<a href="foo">LiveJournal</a> does <i>not</i> do paragraph tags!'
+        self.assertEqual('LiveJournal does not do paragraph tags!', summary_from_content(html))
+
+    def test_summary_from_content_brbr(self):
+        html = 'LiveJournal does not do paragraph tags!<br /><br />Instead they use BR tags.'
+        self.assertEqual(u'LiveJournal does not do paragraph tags! …', summary_from_content(html))
+
 

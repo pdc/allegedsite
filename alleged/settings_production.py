@@ -58,6 +58,7 @@ HTTPLIB2_CACHE_DIR = '/home/alleged/cache'
 FLICKR_ATOM_URL = 'http://api.flickr.com/services/feeds/photos_public.gne?id=14145351@N00&lang=en-us&format=atom'
 LIVEJOURNAL_ATOM_URL = 'http://damiancugley.livejournal.com/data/atom'
 YOUTUBE_ATOM_URL = 'http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?alt=atom&v=2&orderby=published'
+GITHUB_ATOM_URL = 'https://github.com/pdc.atom'
 
 STATICFILES_DIRS = (
     expand_path('static'),

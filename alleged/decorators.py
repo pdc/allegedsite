@@ -3,6 +3,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+import json
 
 def render_with(default_template_name, mimetype='text/html'):
     """Decorator for request handlers.
@@ -30,3 +31,19 @@ def render_with(default_template_name, mimetype='text/html'):
             return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype)
         return decorated_func
     return decorator
+
+def render_json(view):
+    """Decorator for view function returning a dictionary to be rendered as JSON.
+
+    Write the view function as usual, except it returns a dict
+    not a response object.
+    If the function being decorated returns an HttpResponse subclass
+    instead, that is returned unchanged.
+    """
+    def decorated_view(request, *args, **kwargs):
+        resp = view(request, *args, **kwargs)
+        if isinstance(resp, HttpResponse):
+            return resp
+        data = json.dumps(resp)
+        return HttpResponse(data, mimetype='application/json')
+    return decorated_view

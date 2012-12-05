@@ -4,6 +4,7 @@ $(function () {
     var maxLivejournal = 1;
     var maxGalleries = 1;
     var maxVideos = 1;
+    var maxGithub = 3;
 
     var monthAbbrs = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
     var monthAbbrevs = 'Jan.|Feb.|March|April|May|June|July|Aug.|Sept.|Oct.|Nov.|Dec.'.split('|');
@@ -116,46 +117,96 @@ $(function () {
         }
     });
 
-    // Let’s try LiveJournal next
-    var u = '/pdc/from/livejournal';
-    var livejournalLink = $('#livejournal-link'),
-        livejournalItem = livejournalLink.parents('li').eq(0);
-
-    livejournalItem.addClass('loading');
-    $.ajax({
-        url: u,
-        format: 'json',
-        success: function (data, textStatus, request) {
-            if (data && data.success) {
-                var n = (data.entries.length > maxLivejournal ? maxLivejournal : data.entries.length)
-                for (var j = 0; j < n; ++j) {
-                    var entry = data.entries[j];
-                    var date = entry.published;
-
-                    var articleElt = $('<article>').attr({
-                        'class': 'livejournal entry',
-                        'data-date': date,
-                        'data-id': entry.id
-                    });
-
-                    var headingElt = $('<h4>').appendTo(articleElt);
-                    var linkElt = $('<a>').attr({
-                        href: entry.href,
-                    }).text(entry.title || entry.content.substr(0, 64));
-                    linkElt.appendTo(headingElt);
-
-                    var contentElt = $('<p>').appendTo(articleElt);
-                    contentElt.text(entry.content)
-
-                    var detailsElt = $('<small>').appendTo(livejournalItem);
-                    $('<a>').attr('href', entry.href)
-                        .text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' ')
-                        .append('<b>#</b>')
-                        .appendTo(detailsElt);
-
-                    articleElt.appendTo(livejournalItem)
+    // Helper function for adding feed item(s) to ego page.
+    // Arguments --
+    //     linkSelector -- how jQuery finds the A tag linking to the site
+    //      urlForJsonifiedFeed -- how to download the feed
+    //      maxEntries -- show at most this many items
+    //      articleFromEntry -- function taking an entry & returning HTML element
+    //      detailsFromEntry -- function taking entry & returning HTML element
+    function addItemsFromAtom(linkSelector, urlForJsonifiedFeed, maxEntries, articleFromEntry, detailsFromEntry) {
+        var linkElt = $(linkSelector),
+            itemElt = linkElt.parents('li').eq(0);
+        itemElt.addClass('loading');
+        $.ajax({
+            url: urlForJsonifiedFeed,
+            format: 'json',
+            success: function (data, textStatus, request) {
+                if (data && data.success) {
+                    var n = (data.entries.length > maxEntries ? maxEntries : data.entries.length)
+                    for (var j = 0; j < n; ++j) {
+                        var entry = data.entries[j];
+                        itemElt.append(detailsFromEntry(entry));
+                        itemElt.append(articleFromEntry(entry));
+                    }
                 }
             }
-        }
-    });
+        });
+    }
+    // An example implementation of a detailsFromEntry function.
+    //  Returns the date & a link to the article in question.
+    function clickableDateFromEntry(entry) {
+        var date = entry.published;
+        var detailsElt = $('<small>');
+        $('<a>').attr('href', entry.href)
+            .text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1] + ' ')
+            .append('<b>#</b>')
+            .appendTo(detailsElt);
+        return detailsElt;
+    }
+
+    addItemsFromAtom('#livejournal-link', '/pdc/from/livejournal', maxLivejournal,
+        function (entry) {
+            var date = entry.published;
+            var articleElt = $('<article>').attr({
+                'data-date': date,
+                'data-id': entry.id
+            });
+
+            var headingElt = $('<h4>').appendTo(articleElt);
+            var linkElt = $('<a>').attr({
+                href: entry.href,
+            }).text(entry.title || entry.content.substr(0, 64));
+            linkElt.appendTo(headingElt);
+
+            var contentElt = $('<p>').appendTo(articleElt);
+            contentElt.text(entry.content)
+
+            return articleElt;
+        },
+        clickableDateFromEntry
+    );
+
+    addItemsFromAtom('#github-link', '/pdc/from/github', maxGithub,
+        function (entry) {
+            var date = entry.published;
+            var articleElt = $('<article>').attr({
+                'data-date': date,
+                'data-id': entry.id
+            });
+
+            var headingElt = $('<h4>').appendTo(articleElt);
+            var linkElt = $('<a>').attr({
+                href: entry.href,
+            }).text(entry.title || entry.content.substr(0, 64));
+            linkElt.appendTo(headingElt);
+
+            if (typeof (entry.html) !== 'undefined') {
+                var contentElt = $(entry.html);
+            } else {
+                var content = entry.content;
+                content = content.replace(entry.title, '');
+                content = content.replace(/[ADFJMONS][acbegihmlonpsrutvy]+ \d\d, \d\d\d\d/, '')
+                content = content.replace(/<!-- .* -->/, '')
+                content = content.replace(/View comparison for these \d+ commits »/, '')
+
+                var contentElt = $('<p>');
+                contentElt.text(content)
+            }
+            articleElt.append(contentElt);
+
+            return articleElt;
+        },
+        clickableDateFromEntry
+    );
 });

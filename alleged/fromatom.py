@@ -39,6 +39,10 @@ YOUTUBE_POSTER_RE = re.compile(r"""
     ></a>
 """, re.VERBOSE)
 
+GITHUB_SNIFF_RE = re.compile("""
+    <span \s class="mega-icon
+    """, re.VERBOSE)
+
 SPAN_RE = re.compile(r"""
     <span>
     (?P<content> .* )
@@ -105,6 +109,8 @@ def entry_from_element(entry_elt):
                 m = SPAN_RE.search(text)
                 if m:
                     text = m.group('content')
+            if GITHUB_SNIFF_RE.search(text):
+                entry['html'] = html_from_github_content(text)
             if prop_elt.get('type') == 'html':
                 entry['content'] = summary_from_content(text)
     return entry
@@ -134,10 +140,20 @@ def summary_from_content(text, type='html'):
         text = named_entity_re.sub(named_entity_sub, text)
     return text
 
+def html_from_github_content(text):
+    text = text.replace(u'&raquo;', u'\u2019') # Argh
+    xml = '<x>{0}</x>'.format(text.encode('UTF-8'))
+    content_elt = et.XML(xml)
+    for elt in content_elt:
+        if elt.get('class') == 'details':
+            return et.tostring(elt, 'utf-8', 'xml').decode('UTF-8')
+
+
 
 def get_flickr(flickr_url): return get_atom(flickr_url, group_by='published')
 def get_livejournal(livejournal_url): return get_atom(livejournal_url)
 def get_youtube(youtube_url): return get_atom(youtube_url)
+def get_github(github_url): return get_atom(github_url)
 
 def get_atom(atom_url, **kwargs):
     http = httplib2.Http(settings.HTTPLIB2_CACHE_DIR)

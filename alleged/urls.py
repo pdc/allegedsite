@@ -41,7 +41,9 @@ urlpatterns = (
         (r'^pdc/tags/(?P<plus_separated_tags>[a-z0-9+-]+)$', 'filtered_by_tag', blog_args, 'blog_tag'),
         (r'^pdc/from/flickr$', 'from_flickr', {}, 'from_flickr'),
         (r'^pdc/from/livejournal$', 'from_livejournal', {}, 'from_livejournal'),
-        (r'^pdc/from/youtube$', 'from_youtube', {}, 'from_youtube'))
+        (r'^pdc/from/youtube$', 'from_youtube', {}, 'from_youtube'),
+        (r'^pdc/from/github$', 'from_github', {}, 'from_github'),
+    )
     + patterns('',
         (r'^albums/', include('alleged.snaptioner.urls'))
         # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
