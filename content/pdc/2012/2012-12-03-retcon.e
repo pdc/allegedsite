@@ -13,16 +13,16 @@ including `rec.arts.comics`.
 
 At that time,  fans of mainstream comics (meaning superhero comics published
 by DC and Marvel) were used to treating comic-book continuity seriously, and
-writing in if they spotted contradictions.  This is not in itself odd: you
-would expect consistency between episodes of any serial. What made it
-problematic was that  over the years more and more quirky facts would be
-established for the sake of one story  or another: over time  these
-accumulated in to  a straitjacket for writers and a barrier for new readers.
+writing in if they spotted contradictions.  This is not in itself odd—you
+would expect consistency between episodes of any serial—but in comics the
+serial had lasted four or five decades. Over the years more and more quirky
+facts would be established for the sake of one story  or another, accumulating
+in to  a straitjacket for writers and a barrier for new readers.
 
 When, in the early 1980s, British writer Alan Moore was given  _Swamp Thing_
-to play with, his first  arc started with ‘Anatomy Lesson’, in which the
+to write, his first  proper story was ‘Anatomy Lesson’, in which the
 protagonist discovers he is not a man transformed in to a monster, but a plant
-creature with the memories of a man. At a stroke he had opened the way to all
+creature with the memories of a man. At a stroke this opened the way to all
 sorts of trippy stories as Swamp Thing exploreed his newly discovered
 potential—and yet continuity had been preserved: the facts of old stories (at
 least most of them) remained undisturbed.
@@ -58,16 +58,19 @@ to be wrong. We can use it as a noun, as in
 
 Or as a verb, like so:
 
-> Swamp Thing was retconned from a transformed scientist in to a plant elemental.
+> Swamp Thing was retconned in to a plant elemental.
+
+It means something like ‘was discovered always to have in fact been a plant elemental’.
 
 It was not a completely new concept: the obvious non-comics-book example is
 the return of  Sherlock Holmes  after apparently having fallen to his death, a
-perfect example of continuity (the ‘facts’ of the story) being preserved but
+perfect example of continuity (the ‘facts’ of the story) being preserved, but
 the interpretation altered through the revelation of new information.
 
-Neither was the term new—unbeknownst to me, Roy Thomas had used the phrase
-*retroactive continuity* to refer to his comics’ addition of stories set in
-the past that affect  characters in other comics set in the present.
+Neither was the term new—unbeknownst to me, in the early eighties, Roy Thomas
+had used the phrase *retroactive continuity* to refer to his comics’ stories
+set in the past that revealed things about  characters in other comics set in
+the present.
 
 The word *retcon* was used by other people and appeared in the [`r.a.c` FAQ][3].
 
@@ -75,23 +78,21 @@ Retcon Mutation
 --------
 
 The thing is, the term was obsolete almost from the start: DC had decided that
-continuity could be discarded. Today rewrites, reboots, and reimagining of
-characters are a commonplace. Carefully slipping new facts in to an old
+continuity could be discarded, and today rewrites, reboots, and reimagining of
+characters are a commonplace. it follows that carefully slipping new facts in to an old
 storyline is no longer necessary, and in fact is  pointless since there are no
 old storylines left and any oldish storylines will be overwritten soon anyway.
 
 People started using *retcon* to refer to changes to history generally,
 whether it preserves continuity or not. For example, post-_Crisis_, Supergirl
 was retconned from Superman’s cousin to  non-Kryptonian alien matrix thing.
-This usage is reasonable given that using the original definition strictly
-would make it pretty much irrelevant today.
 
 In the TV series _Torchwood_, people who have witnessed things they should not
-are addressed with a ‘little misdirection, a little retcon …’ (suggesting
-editing of memories or of evidence). In a later episode the amnesia drug they
-use turns out to be called Retcon; I think this detail was added to justify
-the earlier casual (mis)use of the word. In other words, the drug
-Retcon *was itself a retcon*.
+are addressed with a ‘little misdirection, a little retcon …’ (the context
+implying that it meant editing of memories or falsification of evidence). In a
+later episode the amnesia drug they use turns out to be called Retcon; I think
+this detail was added to justify the earlier  (mis)use of the word. In other
+words, the drug Retcon *was itself a retcon*.
 
 Is Retcon a Word?
 -------------------
@@ -103,7 +104,7 @@ This is unfortunate as  *retcon* and *retroactive continuity* are not
 synonyms. While you can just about claim that Swamp Thing being a plant
 elemental is retroactive continuity in the sense Roy Thomas used it, you can’t
 say that  the reboot of Supergirl was, much less the recent  New 52
-effort from DC. The new 52 is more or less the opposite of what retroactive
+effort from DC. The New 52 is more or less the opposite of what retroactive
 continuity is about: facts are not preserved, so *there is no continuity*,
 retroactive or otherwise. But it does fit within the broader definition of
 *retcon*.
