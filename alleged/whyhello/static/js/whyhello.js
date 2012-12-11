@@ -214,27 +214,37 @@ $(function () {
     var useSlides = true;
     if (useSlides) {
         // Enough about feeds. How about sideshowiness?
+        var stride = 1042;
+
+        // Find selected slide, if any:
+        var selectedID = $('#main section').eq(0).attr('id');
+        var  m = /^#slide-(.*)$/.exec(location.hash);
+        if (m) {
+            var selectedID = m[1];
+        }
+
         $('#main section').wrapAll('<div class="slideshow">');
         var slider = $('#main .slideshow');
         var navBar = $('<nav>').appendTo('#main');
         $('#main section').each(function (linkIndex) {
-            var label = $('h2', this).eq(0).text() || 'Who';
+            var section = $(this);
+            var isSelected = (selectedID == section.attr('id'));
+            var label = $('h2', section).eq(0).text() || 'Who';
             label = label.replace(/from Damian|Alleged /, '');
             var link = $('<span>')
                 .text(label)
                 .click(function () {
-                    var left = (-1042 * linkIndex);
-                    slider.animate({
-                        left: left
-                    }, {
-                        duration: 300,
-                    });
+                    slider.animate({left:  (-stride * linkIndex)}, {duration: 300});
                     $('span.sel', navBar).removeClass('sel');
                     $(this).addClass('sel');
+                    location.hash = '#slide-' + section.attr('id');
                 })
                 .appendTo(navBar);
+            if (isSelected) {
+                link.addClass('sel');
+                slider.animate({left:  (-stride * linkIndex)}, {duration: 300});
+            }
         });
-        $('span', navBar).eq(0).addClass('sel');
         $('#main').removeClass('scrolling').addClass('has-slideshow');
     }
 });
