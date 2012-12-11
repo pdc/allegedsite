@@ -105,7 +105,8 @@ section {
     border-radius: 2px;
 }
 
-.main.scrolling {
+.scrolling {
+    width: 960px;
     margin: -2.5em auto 20px;
 }
 
@@ -130,6 +131,7 @@ section {
 .scrolling section {
     float: left;
     width: 960px;
+    margin: 0 0 2em;
 }
 
 section h2 {

@@ -211,28 +211,30 @@ $(function () {
         clickableDateFromEntry
     );
 
-
-    // Enough about feeds. How about sideshowiness?
-    $('#main section').wrapAll('<div class="slideshow">');
-    var slider = $('#main .slideshow');
-    var navBar = $('<nav>').appendTo('#main');
-    $('#main section').each(function (linkIndex) {
-        var label = $('h2', this).eq(0).text() || 'Who';
-        label = label.replace(/from Damian|Alleged /, '');
-        var link = $('<span>')
-            .text(label)
-            .click(function () {
-                var left = (-1042 * linkIndex);
-                slider.animate({
-                    left: left
-                }, {
-                    duration: 300,
-                });
-                $('span.sel', navBar).removeClass('sel');
-                $(this).addClass('sel');
-            })
-            .appendTo(navBar);
-    });
-    $('span', navBar).eq(0).addClass('sel');
-    $('#main').removeClass('scrolling').addClass('has-slideshow')
+    var useSlides = true;
+    if (useSlides) {
+        // Enough about feeds. How about sideshowiness?
+        $('#main section').wrapAll('<div class="slideshow">');
+        var slider = $('#main .slideshow');
+        var navBar = $('<nav>').appendTo('#main');
+        $('#main section').each(function (linkIndex) {
+            var label = $('h2', this).eq(0).text() || 'Who';
+            label = label.replace(/from Damian|Alleged /, '');
+            var link = $('<span>')
+                .text(label)
+                .click(function () {
+                    var left = (-1042 * linkIndex);
+                    slider.animate({
+                        left: left
+                    }, {
+                        duration: 300,
+                    });
+                    $('span.sel', navBar).removeClass('sel');
+                    $(this).addClass('sel');
+                })
+                .appendTo(navBar);
+        });
+        $('span', navBar).eq(0).addClass('sel');
+        $('#main').removeClass('scrolling').addClass('has-slideshow');
+    }
 });
