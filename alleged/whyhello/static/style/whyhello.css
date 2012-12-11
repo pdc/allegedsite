@@ -1,6 +1,7 @@
 /*
 * Warm grey: #B6AFA2;
 * Cool grey: #6B7281
+* Cool grey dark #35383F
 */
 
 @font-face {
@@ -28,6 +29,18 @@ body {
     background-color: #B7AFA2;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid #6B7281;
+}
+a:hover,
+a:active {
+    color: #C30;
+    border-color: #C30;
+}
+
+
 header {
     background: #182834 url(banners/banner-2008-12-26.jpeg) left 50% no-repeat;
     border-bottom: 4px solid #123;
@@ -43,17 +56,60 @@ header h1 {
     text-shadow: #000 1px 1px 2px;
 }
 
-#main {
+.has-slideshow {
+    position: relative;
+    margin: -2.5em 20px 20px;
+}
+
+.slideshow {
+    position: absolute;
+    width: 4168px; /* 4 * (2 * 30 + 960 + 2 + 2 * 10) */
+}
+
+.has-slideshow nav {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+}
+
+nav span {
+    font-size: 0.8125em;
+    display: block;
+    float: left;
+    margin: 10px;
+
+    font-weight: 600;
+    color: #35383F;
+    cursor: pointer;
+}
+
+nav span.sel {
+    border-top: ;
+    color: #000;
+    margin-top: 5px;
+    border-top: 3px solid #C30;
+    padding-top: 2px;
+}
+
+section {
     width: 960px;
-    margin: -2.5em auto 20px;
-    padding: 3em 10px 20px;
+}
+
+.scrolling,
+.slideshow section {
+    padding: 4em 10px 20px;
 
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid #FFF;
     box-shadow: rgba(54, 57, 65, 0.5) 1px 1px 3px;
+    border-radius: 2px;
 }
 
-#main:after {
+.main.scrolling {
+    margin: -2.5em auto 20px;
+}
+
+.main:after {
     display: block;
     clear: both;
     content: '.';
@@ -61,14 +117,18 @@ header h1 {
     overflow: hidden;
 }
 
-#main p {
+.main p {
     font-family: GentiumBookBasicRegular, serif;
 }
 
-section {
+.slideshow section {
     float: left;
-    margin: 0;
-    padding: 0.75em 0;
+    margin: 0 30px;
+    width: 960px;
+}
+
+.scrolling section {
+    float: left;
     width: 960px;
 }
 
@@ -137,20 +197,6 @@ section li.loaded {
     font-size: 0.6875em;
     font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
-
-#elsewhere a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid #6B7281;
-}
-#elsewhere a:hover,
-#elsewhere a:active {
-    color: #C30;
-    border-color: #C30;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-
 .latest li article p {
     font-size: 0.8125em;
     margin: 0.5em 0 1.5em 80px; /* adding 30px to allow for overlapping icon */
