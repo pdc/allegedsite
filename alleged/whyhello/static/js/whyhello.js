@@ -66,6 +66,7 @@ $(function () {
                     break;
                 }
             }
+            checkSliderHeight();
         }
     });
 
@@ -113,6 +114,7 @@ $(function () {
                         break;
                     }
                 }
+                checkSliderHeight();
             }
         }
     });
@@ -140,6 +142,7 @@ $(function () {
                         itemElt.append(detailsFromEntry(entry));
                         itemElt.append(articleFromEntry(entry));
                     }
+                    checkSliderHeight();
                 }
             }
         });
@@ -226,6 +229,7 @@ $(function () {
         $('#main section').wrapAll('<div class="slideshow">');
         var slider = $('#main .slideshow');
         var navBar = $('<nav>').appendTo('#main');
+        var maxHeight = 0;
         $('#main section').each(function (linkIndex) {
             var section = $(this);
             var isSelected = (selectedID == section.attr('id'));
@@ -238,6 +242,7 @@ $(function () {
                     $('span.sel', navBar).removeClass('sel');
                     $(this).addClass('sel');
                     location.hash = '#slide-' + section.attr('id');
+                    checkSliderHeight();
                 })
                 .appendTo(navBar);
             if (isSelected) {
@@ -245,6 +250,16 @@ $(function () {
                 slider.animate({left:  (-stride * linkIndex)}, {duration: 300});
             }
         });
-        $('#main').removeClass('scrolling').addClass('has-slideshow');
+        $('#main')
+            .removeClass('scrolling')
+            .addClass('has-slideshow')
+            .css({
+                width: stride,
+            });
+        checkSliderHeight();
+    }
+    function checkSliderHeight() {
+        var height = $('#main .slideshow').height();
+        $('#main').css('height', height + 5);
     }
 });

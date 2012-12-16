@@ -1,5 +1,6 @@
 /*
 * Warm grey: #B6AFA2;
+* #DBD7D0 00 paler version
 * Cool grey: #6B7281
 * Cool grey dark #35383F
 */
@@ -26,7 +27,7 @@ body {
     line-height: 1.25;
 
     background: #EEF;
-    background-color: #B7AFA2;
+    background-color: #DBD7D0;
 }
 
 a {
@@ -59,6 +60,7 @@ header h1 {
 .has-slideshow {
     position: relative;
     margin: -2.5em 20px 20px;
+    overflow: hidden;
 }
 
 .slideshow {
