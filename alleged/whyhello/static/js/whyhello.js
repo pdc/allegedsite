@@ -217,7 +217,6 @@ $(function () {
     var useSlides = true;
     if (useSlides) {
         // Enough about feeds. How about sideshowiness?
-        var stride = 1042;
 
         // Find selected slide, if any:
         var selectedID = $('#main section').eq(0).attr('id');
@@ -225,7 +224,6 @@ $(function () {
         if (m) {
             var selectedID = m[1];
         }
-
 
         $('#main')
             .removeClass('scrolling')
