@@ -43,6 +43,8 @@ a:active {
 
 
 header {
+    display: block;
+    width: 100%;
     background: #182834 url(banners/banner-2008-12-26.jpeg) left 50% no-repeat;
     border-bottom: 4px solid #123;
 }
@@ -65,7 +67,6 @@ header h1 {
 
 .slideshow {
     position: absolute;
-    width: 4168px; /* 4 * (2 * 30 + 960 + 2 + 2 * 10) */
 }
 
 .has-slideshow nav {

@@ -226,38 +226,54 @@ $(function () {
             var selectedID = m[1];
         }
 
-        $('#main section').wrapAll('<div class="slideshow">');
+
+        $('#main')
+            .removeClass('scrolling')
+            .addClass('has-slideshow');
+        $('#main section').wrapAll('<div class="slideshow">').wrap('<div class="slide">');
         var slider = $('#main .slideshow');
         var navBar = $('<nav>').appendTo('#main');
-        var maxHeight = 0;
-        $('#main section').each(function (linkIndex) {
-            var section = $(this);
-            var isSelected = (selectedID == section.attr('id'));
-            var label = $('h2', section).eq(0).text() || 'Who';
+        var maxHeight = 0,
+            maxWidth = 0,
+            nextXPos = 0;
+        $('.slide', slider).each(function (linkIndex) {
+            var slide = $(this);
+            var isSelected = (selectedID == $('section', slide).attr('id'));
+
+            // Calculate the x-coordinate to slide the slider to to show this slide.
+            var slideXPos = nextXPos;
+            var slideWidth = slide.width();
+            nextXPos += slideWidth;
+            if (slideWidth > maxWidth) {
+                maxWidth = slideWidth;
+            }
+
+            // Add the link (tab) for this slide to the top of the page.
+            var label = $('h2', slide).eq(0).text() || 'Who';
             label = label.replace(/from Damian|Alleged /, '');
             var link = $('<span>')
                 .text(label)
                 .click(function () {
-                    slider.animate({left:  (-stride * linkIndex)}, {duration: 300});
+                    slider.animate({left:  -slideXPos}, {duration: 300});
                     $('span.sel', navBar).removeClass('sel');
                     $(this).addClass('sel');
-                    location.hash = '#slide-' + section.attr('id');
+                    location.hash = '#slide-' + $('section', slide).attr('id');
                     checkSliderHeight();
                 })
                 .appendTo(navBar);
+
             if (isSelected) {
                 link.addClass('sel');
-                slider.animate({left:  (-stride * linkIndex)}, {duration: 300});
+                slider.css('left', -slideXPos);
             }
         });
-        $('#main')
-            .removeClass('scrolling')
-            .addClass('has-slideshow')
-            .css({
-                width: stride,
-            });
+
+        // Make the slider wide enough for all slides to sit side-by-side.
+        slider.css('width', nextXPos);
+        $('#main').css('width', maxWidth);
         checkSliderHeight();
     }
+
     function checkSliderHeight() {
         var height = $('#main .slideshow').height();
         $('#main').css('height', height + 5);
