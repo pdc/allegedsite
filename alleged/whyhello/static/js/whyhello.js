@@ -228,48 +228,70 @@ $(function () {
         $('#main')
             .removeClass('scrolling')
             .addClass('has-slideshow');
-        $('#main section').wrapAll('<div class="slideshow">').wrap('<div class="slide">');
-        var slider = $('#main .slideshow');
+        var slideCount =  $('#main section')
+            .wrapAll('<div class="slideshow">')
+            .wrap('<div class="slide">')
+            .size();
+        var slider = $('#main div.slideshow');
         var navBar = $('<nav>').appendTo('#main');
-        var maxHeight = 0,
-            maxWidth = 0,
-            nextXPos = 0;
+
+        $('div.slide', slider).each(function (slideIndex) {
+            $(this).attr('data-slide-index', slideIndex);
+        });
+
+        // Width of the slideshow is generally 6, 9, 12, 15, or 18 units
+        // where a unit is 80 pixels.
+        var
+            widthInUnits,
+            slideWidth,
+            selectedIndex;
+
+        function calculateSlideshowGeometry() {
+            if (widthInUnits) {
+                $(body).removeClass('units-' + widthInUnits);
+            }
+            var marginFudge = 60,
+                unitPixels = 80,
+                unitQuantum = 3;
+            var widthInUnits = Math.floor(($(window).width() - marginFudge) / unitQuantum / unitPixels) * unitQuantum;
+            $('body').addClass('units-' + widthInUnits);
+
+            $('section', slider).width(unitPixels * widthInUnits);
+            slideWidth = $('div.slide', slider).eq(0).width();
+            selectedIndex = $('section#' + selectedID).parent('div.slide').attr('data-slide-index');
+            slider
+                .width(slideCount * slideWidth)
+                .css('left', -selectedIndex * slideWidth);
+            $('#main').width(slideWidth);
+
+            checkSliderHeight();
+        }
+
         $('.slide', slider).each(function (linkIndex) {
             var slide = $(this);
-            var isSelected = (selectedID == $('section', slide).attr('id'));
 
-            // Calculate the x-coordinate to slide the slider to to show this slide.
-            var slideXPos = nextXPos;
-            var slideWidth = slide.width();
-            nextXPos += slideWidth;
-            if (slideWidth > maxWidth) {
-                maxWidth = slideWidth;
-            }
-
-            // Add the link (tab) for this slide to the top of the page.
             var label = $('h2', slide).eq(0).text() || 'Who';
             label = label.replace(/from Damian|Alleged /, '');
             var link = $('<span>')
                 .text(label)
                 .click(function () {
-                    slider.animate({left:  -slideXPos}, {duration: 300});
+                    selectedID = $('section', slide).attr('id');
+                    location.hash = '#slide-' + selectedID;
+
+                    selectedIndex = slide.attr('data-slide-index');
+                    slider.animate({left:  -selectedIndex * slideWidth}, {duration: 300});
                     $('span.sel', navBar).removeClass('sel');
                     $(this).addClass('sel');
-                    location.hash = '#slide-' + $('section', slide).attr('id');
+
                     checkSliderHeight();
                 })
                 .appendTo(navBar);
-
-            if (isSelected) {
-                link.addClass('sel');
-                slider.css('left', -slideXPos);
-            }
         });
 
-        // Make the slider wide enough for all slides to sit side-by-side.
-        slider.css('width', nextXPos);
-        $('#main').css('width', maxWidth);
-        checkSliderHeight();
+        $(window).resize(function () {
+            calculateSlideshowGeometry();
+        });
+        calculateSlideshowGeometry();
     }
 
     function checkSliderHeight() {

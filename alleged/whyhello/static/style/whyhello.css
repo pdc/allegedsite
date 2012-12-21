@@ -94,8 +94,9 @@ nav span.sel {
     padding-top: 2px;
 }
 
-section {
+.scrolling {
     width: 960px;
+    margin: -2.5em auto 20px;
 }
 
 .scrolling,
@@ -108,9 +109,8 @@ section {
     border-radius: 2px;
 }
 
-.scrolling {
-    width: 960px;
-    margin: -2.5em auto 20px;
+.slide {
+    float: left;
 }
 
 .main:after {
@@ -325,4 +325,13 @@ section dd p {
 section .more {
     font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
     font-size: 0.8125em;
+}
+
+/* We use media queries to adjust for screen size in scrolling case.
+    In Slideshow mode, the JavaScript takes care of resizing stuff. */
+@media screen and (max-width: 1080px) {
+    .scrolling section,
+    .scrolling {
+        width: 720px; /* 9u */
+    }
 }
