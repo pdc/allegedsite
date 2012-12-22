@@ -61,7 +61,7 @@ header h1 {
 
 .has-slideshow {
     position: relative;
-    margin: -2.5em 20px 20px;
+    margin: -2.5em auto 20px;
     overflow: hidden;
 }
 
@@ -109,6 +109,21 @@ nav span.sel {
     border-radius: 2px;
 }
 
+/* Comment this section out in production!
+.scrolling,
+.slideshow section {
+    background-image: url(grid-even.png);
+    background-position: 50% 50%;
+}
+
+.units-9 .scrolling,
+.units-9 .slideshow section,
+.units-15 .scrolling,
+.units-15 .slideshow section  {
+    background-image: url(grid-odd.png);
+}
+/**/
+
 .slide {
     float: left;
 }
@@ -145,6 +160,18 @@ section h2 {
     font-weight: normal;
 }
 
+.units-15 section h2,
+.units-18 section h2 {
+    float: left;
+    margin: 0 10px;
+}
+.units-15 section h2 {
+    width: 220px;
+}
+.units-18 section h2 {
+    width: 220px;
+}
+
 section>div {
     float: left;
 }
@@ -153,8 +180,21 @@ section>div {
     width: 160px;
 }
 
+.units-18 .intro {
+    width: 240px;
+}
+
 .latest {
     width: 560px;
+}
+
+.units-6 .latest,
+.units-9 #about .latest {
+    width: 320px;
+}
+
+.units-18 .latest {
+    width: 640px;
 }
 
 aside,
@@ -163,14 +203,27 @@ aside,
     width: 240px;
 }
 
+.units-6 aside,
+.units-9 .archive {
+    float: left;
+    margin: 1.25em 0 0 160px;
+}
+
 aside#photo {
     margin-top: -2.5em;
 }
 
+.units-6 aside#photo,
+.units-9 aside#photo  {
+    margin-top: 0;
+}
+
 aside#photo img {
     display: block;
+    margin:  0 10px;
     box-shadow: rgba(54, 57, 65, 0.75) 1px 1px 2px;
 }
+
 
 section p,
 section li {
@@ -284,6 +337,10 @@ section dd {
     float: left;
     width: 460px;
     margin: 0 10px 0.613em;
+}
+
+.units-18 section dd {
+    width: 540px;
 }
 
 section dd p {

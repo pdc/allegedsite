@@ -245,15 +245,20 @@ $(function () {
             widthInUnits,
             slideWidth,
             selectedIndex;
+        var marginFudge = 80,
+            unitPixels = 80,
+            unitQuantum = 3;
 
         function calculateSlideshowGeometry() {
             if (widthInUnits) {
-                $(body).removeClass('units-' + widthInUnits);
+                $('body').removeClass('units-' + widthInUnits);
             }
-            var marginFudge = 60,
-                unitPixels = 80,
-                unitQuantum = 3;
-            var widthInUnits = Math.floor(($(window).width() - marginFudge) / unitQuantum / unitPixels) * unitQuantum;
+            widthInUnits = Math.floor(($(window).width() - marginFudge) / unitQuantum / unitPixels) * unitQuantum;
+            if (widthInUnits < 9) { // TODO. Create 6- and 4-unit layouts
+                widthInUnits = 9;
+            } else if (widthInUnits > 18) {
+                widthInUnits = 18;
+            }
             $('body').addClass('units-' + widthInUnits);
 
             $('section', slider).width(unitPixels * widthInUnits);
