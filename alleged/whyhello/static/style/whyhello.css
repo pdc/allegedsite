@@ -87,7 +87,6 @@ nav span {
 }
 
 nav span.sel {
-    border-top: ;
     color: #000;
     margin-top: 5px;
     border-top: 3px solid #C30;
@@ -104,9 +103,12 @@ nav span.sel {
     padding: 4em 10px 20px;
 
     background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    /*
     border: 1px solid #FFF;
     box-shadow: rgba(54, 57, 65, 0.5) 1px 1px 3px;
     border-radius: 2px;
+    */
 }
 
 /* Comment this section out in production!
@@ -160,6 +162,8 @@ section h2 {
     font-weight: normal;
 }
 
+/* Layout of the contents of a section */
+
 .units-15 section h2,
 .units-18 section h2 {
     float: left;
@@ -176,25 +180,46 @@ section>div {
     float: left;
 }
 
-.intro {
+.intro,
+.units-9 #about .intro {
     width: 160px;
 }
-
+#about .intro,
 .units-18 .intro {
     width: 240px;
+}
+
+.units-15 #about .intro {
+    font-size: 1.375em;
+    width: 320px;
+}
+
+.units-18 #about .intro {
+    font-size: 1.375em;
+    width: 480px;
 }
 
 .latest {
     width: 560px;
 }
 
+#about .latest {
+    width: 480px;
+}
+
 .units-6 .latest,
 .units-9 #about .latest {
     width: 320px;
 }
+.units-15 #about .latest{
+    width: 560px;
+    font-size: 1.25em;
+}
 
-.units-18 .latest {
+.units-18 .latest,
+.units-18 #about .latest  {
     width: 640px;
+    font-size: 1.25em;
 }
 
 aside,
@@ -213,9 +238,21 @@ aside#photo {
     margin-top: -2.5em;
 }
 
-.units-6 aside#photo,
-.units-9 aside#photo  {
+.units-6 aside#photo {
     margin-top: 0;
+}
+
+
+#about .intro p {
+    font-family: inherit;
+    font-weight: 300;
+    font-family: "Gibson-Light", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    font-size: 1.25em;
+}
+.units-9 #about .intro p {
+    font-size: 1.0625em;
+    font-weight: 400;
+    font-family: "Gibson-Regular", "Neue Haaz Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
 
 aside#photo img {

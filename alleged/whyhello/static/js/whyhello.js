@@ -292,7 +292,7 @@ $(function () {
                     checkSliderHeight();
                 })
                 .appendTo(navBar);
-            if (slideID == selectedID) {
+            if (slideID === selectedID) {
                 link.addClass('sel');
             }
         });
