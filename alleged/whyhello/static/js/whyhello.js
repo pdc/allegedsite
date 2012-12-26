@@ -273,14 +273,15 @@ $(function () {
         }
 
         $('.slide', slider).each(function (linkIndex) {
-            var slide = $(this);
+            var slide = $(this),
+                slideID = $('section', slide).attr('id');
 
             var label = $('h2', slide).eq(0).text() || 'Who';
             label = label.replace(/from Damian|Alleged /, '');
             var link = $('<span>')
                 .text(label)
                 .click(function () {
-                    selectedID = $('section', slide).attr('id');
+                    selectedID = slideID;
                     location.hash = '#slide-' + selectedID;
 
                     selectedIndex = slide.attr('data-slide-index');
@@ -291,6 +292,9 @@ $(function () {
                     checkSliderHeight();
                 })
                 .appendTo(navBar);
+            if (slideID == selectedID) {
+                link.addClass('sel');
+            }
         });
 
         $(window).resize(function () {
