@@ -231,6 +231,12 @@ article small {
     font-family: "YanoneKaffeesatz Regular", sans-serif;
 }
 
+article .image-right small {
+    float: none;
+    display: block;
+    margin: 0;
+}
+
 article small a:link,
 article small a:visited {
     text-decoration: none;
@@ -756,6 +762,10 @@ div.image-left {
 div.image-right {
     float: right;
     margin: 0.625em -70px 0.625em 20px;
+}
+.image-left imag,
+.image-right img {
+    display: block;
 }
 div.image-full-width img {
     display: block;
