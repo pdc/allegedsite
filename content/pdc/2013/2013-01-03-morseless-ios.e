@@ -82,7 +82,7 @@ The iPhone automatically creates applies the shiny effects and crops it to a rou
 </div>
 </blockquote>
 
-This particular app does need any navigation, so we can tall iOS it is OK to suppress the address bar:
+This particular app does need any navigation, so we can tell iOS it is OK to suppress the address bar:
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
@@ -98,7 +98,7 @@ Main steps for this app were
 3. (Optional) Links to icon images
 4. Check the interaction does not depend on non-touch events like mouseovers.
 
-The second and fourth steps are the ones that will require most effort in a nontrivial application.
+The second and fourth steps are the ones that will require serious effort in a nontrivial application.
 
 
   [Morseless]: http://morseless.me.uk/
