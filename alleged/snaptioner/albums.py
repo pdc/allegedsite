@@ -1,34 +1,47 @@
-#!/usr/bin/env python
 # encoding: utf-8
 """
-untitled.py
+albums.py -- routines for reading lists of photos in a legacy format
 
 Created by Damian Cugley on 2010-03-31.
-Copyright © 2010 __MyCompanyName__. All rights reserved.
+© 2010, 2014 Damian Cugley. All rights reserved.
 """
 
 import sys
 import os
 import csv
 from collections import Sequence
+from django.utils import safestring
+from django.utils.functional import cached_property
+from markdown import Markdown
+
+
+formatter = Markdown()
+
 
 class Image(object):
+    # __slots__ = 'file_name', 'name', 'score', 'people', 'description', 'prev', 'next'
     def __init__(self, name, score):
         self.name = name
         self.score = score
         self.people = []
+
+    @cached_property
+    def description_formatted(self):
+        """An HTMLified version of the description field."""
+        return safestring.mark_safe(
+            formatter.convert(self.description))
 
 
 class Album(Sequence):
     def __init__(self, library_dir, album_name, metadata):
         self.dir_name = os.path.join(library_dir, album_name)
         self.name = album_name
-        
+
         self.title = metadata['Title']
         self.photographer = metadata['Photographer']
         self.description = metadata['Description']
         self.old_href = metadata['URL']
-        
+
         self.images = []
         self.images_by_name = {}
         prev = None
@@ -38,7 +51,7 @@ class Album(Sequence):
                 if score == 'Discard':
                     continue
                 image = Image(image_name, score)
-                self.images.append(image)   
+                self.images.append(image)
                 self.images_by_name[image.name] = image
                 p = image_name.find('-')
                 if p:
@@ -50,7 +63,7 @@ class Album(Sequence):
                 prev = image
         if prev:
             prev.next = None
-                
+
         # Attemp to match file names to image names.
         for file_name in os.listdir(self.dir_name):
             p = file_name.rfind('.')
@@ -59,7 +72,7 @@ class Album(Sequence):
                 image = self.images_by_name.get(image_name)
                 if image:
                     image.file_name = file_name
-                    
+
         with open(os.path.join(self.dir_name, 'descs.dat'), 'rt') as input:
             for line in input:
                 if line:
@@ -69,7 +82,7 @@ class Album(Sequence):
                     image =  self.images_by_name.get(image_name)
                     if image:
                         image.description = description
-                        
+
         with open(os.path.join(self.dir_name, 'people.dat'), 'rt') as input:
             for line in input:
                 if line:
@@ -79,30 +92,31 @@ class Album(Sequence):
                     image =  self.images_by_name.get(image_name)
                     if image:
                         image.people.append(person)
-        
+
     def __len__(self):
         return len(self.images)
-        
+
     def __getitem__(self, key):
-        return self.images[key]        
-        
+        return self.images[key]
+
     def __iter__(self):
         return self.images.__iter__()
-        
+
     def __contains__(self, desired_image):
         for image in self.images:
             if image.name == desired_image.name:
                 return True
         return False
-        
+
     def __repr__(self):
         return 'Album(%s, %s)' % (repr(os.path.dirname(self.dir_name)), repr(self.name))
-        
+
     def __unicode__(self):
         return self.name
-        
+
     def __str__(self):
         return unicode(self).encode('utf-8')
+
 
 def _albums_iter(library_dir, album_metadata):
     for dir_name, subdirs, files in os.walk(library_dir):
@@ -113,27 +127,27 @@ def _albums_iter(library_dir, album_metadata):
             subdirs.remove('.xvpics')
         except ValueError:
             pass
-            
-            
+
+
 class Library(object):
     """A collection of albums.
-    
+
     Each album is a directory within this directory.
     There may be a file albums.csv that gives extra metadata.
     """
     def __init__(self, library_dir):
         self.dir_name = library_dir
-        
+
         album_metadata = {}
         with open(os.path.join(library_dir, 'albums.csv'), 'rb') as input:
             reader = csv.DictReader(input)
             for meta in reader:
                 album_metadata[meta['Album']] = meta
-        
+
         self.albums = dict((album.name, album) for album in _albums_iter(library_dir, album_metadata))
-    
-    
-_libraries = {}            
+
+
+_libraries = {}
 def get_albums(library_dir):
     global _libraries
     library = _libraries.get(library_dir)
@@ -141,8 +155,7 @@ def get_albums(library_dir):
         library = Library(library_dir)
         _libraries[library_dir] = library
     return library.albums
-    
+
 def get_album(library_dir, name):
     return get_albums(library_dir)[name]
-            
-        
+

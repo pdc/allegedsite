@@ -25,6 +25,7 @@ class LibraryTestCase(TestCase):
             self.assertEqual(get_album(ALBUM_DIR, album_name), album)
             self.assertEqual(album_name, album.name)
 
+
 class AlbumTestCase(TestCase):
     def setUp(self):
         self.album = get_album(ALBUM_DIR, 'ukwebcomix2004')
@@ -41,6 +42,9 @@ class AlbumTestCase(TestCase):
 
     def test_desc(self):
         self.assertEqual('Mardou with diminutive Antionette, the ice-hearted heroine of her comic Spiro.', self.album[1].description)
+
+    def test_desc_formatted(self):
+        self.assertHTMLEqual('<p>Mardou with diminutive Antionette, the ice-hearted heroine of her comic Spiro.</p>', self.album[1].description_formatted)
 
     def test_people(self):
         self.assertEqual(['Craig Conlan', 'Jenni Scott'], self.album[3].people)

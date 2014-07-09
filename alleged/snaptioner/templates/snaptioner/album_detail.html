@@ -1,5 +1,4 @@
 {% extends "snaptioner/base.html" %}
-{% load markup %}
 {% load staticfiles %}
 
 {% block title %}{{ album.title }} Album{% endblock %}
@@ -24,7 +23,7 @@
 {% endblock %}
 
 {% block localnav %}
-    {{ album.description|markdown }}
+    {{ album.description_formatted }}
 
 {% endblock %}
 
