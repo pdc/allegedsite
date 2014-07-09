@@ -40,7 +40,7 @@ YOUTUBE_POSTER_RE = re.compile(r"""
 """, re.VERBOSE)
 
 GITHUB_SNIFF_RE = re.compile("""
-    <span \s class="mega-icon
+    <span \s class="mega-octicon
     """, re.VERBOSE)
 
 SPAN_RE = re.compile(r"""
@@ -122,7 +122,7 @@ def named_entity_sub(m):
     return unichr(n)
 
 break_re = re.compile(r'(?:<br ?/?>){2}|</p>')
-tag_re = re.compile(r'</?\w+(\s+\w+=("[^"]*"|\'[^\']*\'))*\s*/?>')
+tag_re = re.compile(r'</?\w+(\s+[\w-]+=("[^"]*"|\'[^\']*\'))*\s*/?>')
 
 def summary_from_content(text, type='html'):
     """Given Atom’s escaped HTML, return text.
