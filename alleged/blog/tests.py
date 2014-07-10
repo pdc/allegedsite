@@ -695,31 +695,31 @@ class TestGithubJsonFromAtom(TestCase):
         self.result = nested_dicts_from_atom(data)
 
     def test_id(self):
-        self.assertEqual('tag:github.com,2008:PushEvent/1635994159', self.result['entries'][0]['id'])
+        self.assertEqual('tag:github.com,2008:PushEvent/2173402038', self.result['entries'][0]['id'])
 
     def test_published(self):
-        self.assertEqual('2012-12-03T20:20:07Z', self.result['entries'][0]['published'])
+        self.assertEqual('2014-07-06T10:54:30Z', self.result['entries'][0]['published'])
 
     def test_href(self):
-        self.assertEqual('https://github.com/pdc/allegedsite/compare/678ff58ede...342763c80c', self.result['entries'][0]['href'])
+        self.assertEqual('https://github.com/pdc/allegedsite/compare/55a1fe817e...e5c5b96ce1', self.result['entries'][0]['href'])
 
     def test_title(self):
         self.assertEqual('pdc pushed to master at pdc/allegedsite', self.result['entries'][0]['title'])
 
     def test_content(self):
         expected = """<div class="details">
-  <a class="gravatar" href="https://github.com/pdc"><img height="30" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="30" /></a>
+  <a href="https://github.com/pdc"><img alt="Damian Cugley" class="gravatar js-avatar" data-user="90414" height="30" src="https://avatars1.githubusercontent.com/u/90414?s=140" width="30" /></a>
 
     <div class="commits pusher-is-only-committer">
       <ul>
         <li>
           <span title="pdc">
-            <img height="16" src="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="16" />
+            <img alt="Damian Cugley" class=" js-avatar" data-user="90414" height="16" src="https://avatars1.githubusercontent.com/u/90414?s=140" width="16" />
           </span>
-          <code><a href="https://github.com/pdc/allegedsite/commit/342763c80c5a0f132a5a098ca710aefaf739e8ab">342763c</a></code>
+          <code><a href="https://github.com/pdc/allegedsite/commit/e5c5b96ce19c09760ef2358c3828723ccec897a8">e5c5b96</a></code>
           <div class="message">
             <blockquote>
-              Change date of summer
+              Add article about cycle lanes
             </blockquote>
           </div>
         </li>

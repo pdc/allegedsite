@@ -3,44 +3,44 @@
   <id>tag:github.com,2008:/pdc</id>
   <link type="text/html" rel="alternate" href="https://github.com/pdc"/>
   <link type="application/atom+xml" rel="self" href="https://github.com/pdc.atom"/>
-  <title>pdc's Activity</title>
-  <updated>2012-12-03T20:20:07Z</updated>
+  <title>pdc&#39;s Activity</title>
+  <updated>2014-07-06T10:54:30Z</updated>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635994159</id>
-    <published>2012-12-03T20:20:07Z</published>
-    <updated>2012-12-03T20:20:07Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/678ff58ede...342763c80c"/>
+    <id>tag:github.com,2008:PushEvent/2173402038</id>
+    <published>2014-07-06T10:54:30Z</published>
+    <updated>2014-07-06T10:54:30Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/55a1fe817e...e5c5b96ce1"/>
     <title type="html">pdc pushed to master at pdc/allegedsite</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-03T20:20:07Z&quot; title=&quot;2012-12-03 20:20:07&quot;&gt;December 03, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2014-07-06T10:54:30Z&quot; is=&quot;relative-time&quot;&gt;July 06, 2014&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/allegedsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/342763c80c5a0f132a5a098ca710aefaf739e8ab&quot;&gt;342763c&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/e5c5b96ce19c09760ef2358c3828723ccec897a8&quot;&gt;e5c5b96&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Change date of summer
+              Add article about cycle lanes
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
@@ -50,41 +50,41 @@
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635993815</id>
-    <published>2012-12-03T20:19:30Z</published>
-    <updated>2012-12-03T20:19:30Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/4639e0bbdd...678ff58ede"/>
+    <id>tag:github.com,2008:PushEvent/2172901394</id>
+    <published>2014-07-05T10:02:48Z</published>
+    <updated>2014-07-05T10:02:48Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/04a7ca2120...55a1fe817e"/>
     <title type="html">pdc pushed to master at pdc/allegedsite</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-03T20:19:30Z&quot; title=&quot;2012-12-03 20:19:30&quot;&gt;December 03, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2014-07-05T10:02:48Z&quot; is=&quot;relative-time&quot;&gt;July 05, 2014&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/allegedsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/678ff58ede3d24d2b4f1bd3e84808f0f2bd2a706&quot;&gt;678ff58&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/55a1fe817e9e476ae1128fb6bba89879b208a30d&quot;&gt;55a1fe8&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Add article about RETCON
+              Belatedly publish 2012 article about Dango 1.4
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
@@ -94,41 +94,97 @@
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635387350</id>
-    <published>2012-12-02T16:59:12Z</published>
-    <updated>2012-12-02T16:59:12Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/2c7c886998...4639e0bbdd"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
+    <id>tag:github.com,2008:PushEvent/2164559279</id>
+    <published>2014-06-30T07:58:48Z</published>
+    <updated>2014-06-30T07:58:48Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/spreadsite/compare/1b67cc4059...cde1a7b4da"/>
+    <title type="html">pdc pushed to master at pdc/spreadsite</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-02T16:59:12Z&quot; title=&quot;2012-12-02 16:59:12&quot;&gt;December 02, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2014-06-30T07:58:48Z&quot; is=&quot;relative-time&quot;&gt;June 30, 2014&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/spreadsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/spreadsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/spreadsite&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/4639e0bbdd84f58c7ba33b555f9f9e335e4cf2b6&quot;&gt;4639e0b&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/cde1a7b4da147ac558b2ca518ba155dd4ceb900a&quot;&gt;cde1a7b&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Don’t cache blog entries – it causes an infinite loop!
+              Merge branch &#39;master&#39; of github.com:pdc/spreadsite
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;pdc&quot;&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/1d7a6f00ed994c4e1c51cb411edb33dbc875a7bc&quot;&gt;1d7a6f0&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Update fanfilms resource library s little
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/spreadsite/compare/1b67cc4059...cde1a7b4da&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2163850149</id>
+    <published>2014-06-29T09:03:16Z</published>
+    <updated>2014-06-29T09:03:16Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/spreadsite/compare/e3c151bba6...1b67cc4059"/>
+    <title type="html">pdc pushed to master at pdc/spreadsite</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-06-29T09:03:16Z&quot; is=&quot;relative-time&quot;&gt;June 29, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/spreadsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/spreadsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/spreadsite&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;pdc&quot;&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/1b67cc4059708b0b9e2528beb9e48f3777dbf23d&quot;&gt;1b67cc4&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Remove stray reference to markup module
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
@@ -138,41 +194,41 @@
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635383630</id>
-    <published>2012-12-02T16:40:26Z</published>
-    <updated>2012-12-02T16:40:26Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/0a1199081f...2c7c886998"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
+    <id>tag:github.com,2008:PushEvent/2163840049</id>
+    <published>2014-06-29T08:32:58Z</published>
+    <updated>2014-06-29T08:32:58Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/spreadsite/compare/ecd0c8d580...e3c151bba6"/>
+    <title type="html">pdc pushed to master at pdc/spreadsite</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-02T16:40:26Z&quot; title=&quot;2012-12-02 16:40:26&quot;&gt;December 02, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2014-06-29T08:32:58Z&quot; is=&quot;relative-time&quot;&gt;June 29, 2014&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/spreadsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/spreadsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/spreadsite&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/2c7c88699804bac929cf15fb242097bd61ea747f&quot;&gt;2c7c886&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/e3c151bba69d2e71dd4e0053e87ca4ed880951db&quot;&gt;e3c151b&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Correct erroneous httplib2 cache setting
+              Add formatted description property to library
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
@@ -182,97 +238,41 @@
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635381550</id>
-    <published>2012-12-02T16:30:25Z</published>
-    <updated>2012-12-02T16:30:25Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/2f8245d24b...0a1199081f"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
+    <id>tag:github.com,2008:PushEvent/2163580722</id>
+    <published>2014-06-28T19:17:30Z</published>
+    <updated>2014-06-28T19:17:30Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/spreadsite/compare/c85d5ee01e...ecd0c8d580"/>
+    <title type="html">pdc pushed to master at pdc/spreadsite</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-02T16:30:25Z&quot; title=&quot;2012-12-02 16:30:25&quot;&gt;December 02, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2014-06-28T19:17:30Z&quot; is=&quot;relative-time&quot;&gt;June 28, 2014&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/spreadsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/spreadsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/spreadsite&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/0a1199081f12395771dd31b0a302f39a04b34925&quot;&gt;0a11990&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/ecd0c8d58071245ecdb9681494aee181f119d37c&quot;&gt;ecd0c8d&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Add LiveJournal to ego page
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/fba57f25bba55a1a22a998847baa51461643f2f0&quot;&gt;fba57f2&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Make links in Elseqhwere section of ego page more subtle
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/2f8245d24b...0a1199081f&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1635373271</id>
-    <published>2012-12-02T15:48:30Z</published>
-    <updated>2012-12-02T15:48:30Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/0a56e33da0...2f8245d24b"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-02T15:48:30Z&quot; title=&quot;2012-12-02 15:48:30&quot;&gt;December 02, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/2f8245d24ba08bd20924620221ad112617d0a5ca&quot;&gt;2f8245d&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Tweak the layout of Atom content on ego page
+              Remove redundant &quot;markup&quot; reference
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
@@ -282,41 +282,41 @@
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635366049</id>
-    <published>2012-12-02T15:08:58Z</published>
-    <updated>2012-12-02T15:08:58Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/307ffba1ee...0a56e33da0"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
+    <id>tag:github.com,2008:PushEvent/2163579792</id>
+    <published>2014-06-28T19:15:18Z</published>
+    <updated>2014-06-28T19:15:18Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/spreadsite/compare/f87b344077...c85d5ee01e"/>
+    <title type="html">pdc pushed to master at pdc/spreadsite</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-02T15:08:58Z&quot; title=&quot;2012-12-02 15:08:58&quot;&gt;December 02, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2014-06-28T19:15:18Z&quot; is=&quot;relative-time&quot;&gt;June 28, 2014&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/spreadsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/spreadsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/spreadsite&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/0a56e33da0a45bc70c5ecef9a1a4de1c23540fbf&quot;&gt;0a56e33&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/c85d5ee01ebadbd597193006f121ed62876e9241&quot;&gt;c85d5ee&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Add Flickr uploads to ego page
+              Upgrade to Django 1.6
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
@@ -326,1083 +326,811 @@
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1635365022</id>
-    <published>2012-12-02T15:03:50Z</published>
-    <updated>2012-12-02T15:03:50Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/ebe1aa3a27...307ffba1ee"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
+    <id>tag:github.com,2008:WatchEvent/2140312843</id>
+    <published>2014-06-12T15:36:19Z</published>
+    <updated>2014-06-12T15:36:19Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/nickstenning/honcho"/>
+    <title type="html">pdc starred nickstenning/honcho</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
 
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-12-02T15:03:50Z&quot; title=&quot;2012-12-02 15:03:50&quot;&gt;December 02, 2012&lt;/time&gt;
-&lt;/div&gt;
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/nickstenning/honcho&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;nickstenning/honcho&lt;/a&gt;
+  &lt;/div&gt;
 
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/307ffba1ee7b4fcadf4431f8408385894186e2bd&quot;&gt;307ffba&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Also remove favicon.ico when make clean
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/3d14c05149f288f0e35014f79c125937cd4271c9&quot;&gt;3d14c05&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Restore Makefile for favicon
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/ebe1aa3a27...307ffba1ee&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1634597268</id>
-    <published>2012-11-30T11:46:27Z</published>
-    <updated>2012-11-30T11:46:27Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/9eb52baa96...ebe1aa3a27"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-30T11:46:27Z&quot; title=&quot;2012-11-30 11:46:27&quot;&gt;November 30, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/ebe1aa3a27c2995dc00e3efbe822bb3a22dc62bd&quot;&gt;ebe1aa3&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Ignore makefiles in the pregenerated directories
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/daf94ecf7ca51e0500a6561eb123658608f3f18f&quot;&gt;daf94ec&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add working files for the favicon
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/d072657016990fcf532292047bf19acdc5424483&quot;&gt;d072657&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Change background of ego page
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/9eb52baa96...ebe1aa3a27&quot;&gt;1 more commit &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1634321857</id>
-    <published>2012-11-29T22:44:24Z</published>
-    <updated>2012-11-29T22:44:24Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/39c472285e...9eb52baa96"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-29T22:44:24Z&quot; title=&quot;2012-11-29 22:44:24&quot;&gt;November 29, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/9eb52baa96fd7b5438b480d41d40a3c4c3be3a19&quot;&gt;9eb52ba&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add article about Google application passwords
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1633958483</id>
-    <published>2012-11-29T12:51:34Z</published>
-    <updated>2012-11-29T12:51:34Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/1f9e3736be...39c472285e"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-29T12:51:34Z&quot; title=&quot;2012-11-29 12:51:34&quot;&gt;November 29, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/39c472285ebf3b9e20ff0de48fee376b5416e6f2&quot;&gt;39c4722&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add Twitter tweet to ego page
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/339d13858dc17f5875b6c59cfe88af7320069f69&quot;&gt;339d138&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add OpenID and Atom links
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/1f9e3736be...39c472285e&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1633896367</id>
-    <published>2012-11-29T10:34:38Z</published>
-    <updated>2012-11-29T10:34:38Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/c803685ae2...1f9e3736be"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-29T10:34:38Z&quot; title=&quot;2012-11-29 10:34:38&quot;&gt;November 29, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/1f9e3736be8f5835aed6b809fa419890eb64be87&quot;&gt;1f9e373&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Typo
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1633890710</id>
-    <published>2012-11-29T10:22:38Z</published>
-    <updated>2012-11-29T10:22:38Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/f3fd9a5060...c803685ae2"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-29T10:22:38Z&quot; title=&quot;2012-11-29 10:22:38&quot;&gt;November 29, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/c803685ae27655bfc021e185e2df10cedfea7ebb&quot;&gt;c803685&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add banner image to ego page
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/e5001a03efb60fdfbef9a11787a56de34591227b&quot;&gt;e5001a0&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add HTML5 shiv to ego page
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/f3fd9a5060...c803685ae2&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1633642990</id>
-    <published>2012-11-28T22:46:54Z</published>
-    <updated>2012-11-28T22:46:54Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/91d6b3fd20...f3fd9a5060"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-28T22:46:54Z&quot; title=&quot;2012-11-28 22:46:54&quot;&gt;November 28, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/f3fd9a5060c76c0b67334b0e834d878dd637b0bf&quot;&gt;f3fd9a5&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Enable the new module in the production settings
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1633475524</id>
-    <published>2012-11-28T18:26:34Z</published>
-    <updated>2012-11-28T18:26:34Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/3ac80fd7a5...91d6b3fd20"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-28T18:26:34Z&quot; title=&quot;2012-11-28 18:26:34&quot;&gt;November 28, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/91d6b3fd207951e8d3a31bc12c35f887518847a1&quot;&gt;91d6b3f&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              New proto-portfolio page
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1632696146</id>
-    <published>2012-11-27T16:11:29Z</published>
-    <updated>2012-11-27T16:11:29Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/901802de82...3ac80fd7a5"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-27T16:11:29Z&quot; title=&quot;2012-11-27 16:11:29&quot;&gt;November 27, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/3ac80fd7a554acfa67240f5246f5b36be6db1829&quot;&gt;3ac80fd&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Update title of previous article
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/849b923b89109d147d98d674f4fca754b98ab4a8&quot;&gt;849b923&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Add article about exhuming the Alleged Tarot
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/901802de82...3ac80fd7a5&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:GollumEvent/1631662390</id>
-    <published>2012-11-25T21:09:03Z</published>
-    <updated>2012-11-25T21:09:03Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/textureupdater/wiki/Process"/>
-    <title type="html">pdc edited the pdc/textureupdater wiki</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- gollum --&gt;
-&lt;span class=&quot;mega-icon mega-icon-wiki&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-25T21:09:03Z&quot; title=&quot;2012-11-25 21:09:03&quot;&gt;November 25, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;edited&lt;/span&gt; the &lt;a href=&quot;/pdc/textureupdater&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/textureupdater&lt;/a&gt; wiki
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-  &lt;div class=&quot;commits&quot;&gt;
-    &lt;ul&gt;
-        &lt;li&gt;
-          Edited
-          &lt;a href=&quot;/pdc/textureupdater/wiki/Process&quot;&gt;Process&lt;/a&gt;.
-            &lt;a href=&quot;/pdc/textureupdater/wiki/Process/_compare/67cc474^...67cc474&quot;&gt;View the diff &amp;#187;&lt;/a&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-06-12T15:36:19Z&quot; is=&quot;relative-time&quot;&gt;June 12, 2014&lt;/time&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:GollumEvent/1631662297</id>
-    <published>2012-11-25T21:08:39Z</published>
-    <updated>2012-11-25T21:08:39Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/textureupdater/wiki/Process"/>
-    <title type="html">pdc created the pdc/textureupdater wiki</title>
+    <id>tag:github.com,2008:ForkEvent/2139845830</id>
+    <published>2014-06-12T10:33:06Z</published>
+    <updated>2014-06-12T10:33:06Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/celery-flower-heroku"/>
+    <title type="html">pdc forked jorilallo/celery-flower-heroku to pdc/celery-flower-heroku</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- gollum --&gt;
-&lt;span class=&quot;mega-icon mega-icon-wiki&quot;&gt;&lt;/span&gt;
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- fork --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;
 
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-25T21:08:39Z&quot; title=&quot;2012-11-25 21:08:39&quot;&gt;November 25, 2012&lt;/time&gt;
-&lt;/div&gt;
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;forked&lt;/span&gt; &lt;a href=&quot;https://github.com/jorilallo/celery-flower-heroku&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;jorilallo/celery-flower-heroku&lt;/a&gt; to &lt;a href=&quot;https://github.com/pdc/celery-flower-heroku&quot; class=&quot;css-truncate css-truncate-target&quot; title=&quot;pdc/celery-flower-heroku&quot;&gt;pdc/celery-flower-heroku&lt;/a&gt;
+  &lt;/div&gt;
 
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; the &lt;a href=&quot;/pdc/textureupdater&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/textureupdater&lt;/a&gt; wiki
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-  &lt;div class=&quot;commits&quot;&gt;
-    &lt;ul&gt;
-        &lt;li&gt;
-          Created
-          &lt;a href=&quot;/pdc/textureupdater/wiki/Process&quot;&gt;Process&lt;/a&gt;.
-            &lt;blockquote&gt;&lt;/blockquote&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-06-12T10:33:06Z&quot; is=&quot;relative-time&quot;&gt;June 12, 2014&lt;/time&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:GollumEvent/1631654766</id>
-    <published>2012-11-25T20:36:22Z</published>
-    <updated>2012-11-25T20:36:22Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/textureupdater/wiki/Home"/>
-    <title type="html">pdc created the pdc/textureupdater wiki</title>
+    <id>tag:github.com,2008:WatchEvent/2027895951</id>
+    <published>2014-03-24T14:08:37Z</published>
+    <updated>2014-03-24T14:08:37Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/umpirsky/country-list"/>
+    <title type="html">pdc starred umpirsky/country-list</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- gollum --&gt;
-&lt;span class=&quot;mega-icon mega-icon-wiki&quot;&gt;&lt;/span&gt;
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
 
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-25T20:36:22Z&quot; title=&quot;2012-11-25 20:36:22&quot;&gt;November 25, 2012&lt;/time&gt;
-&lt;/div&gt;
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/umpirsky/country-list&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;umpirsky/country-list&lt;/a&gt;
+  &lt;/div&gt;
 
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; the &lt;a href=&quot;/pdc/textureupdater&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/textureupdater&lt;/a&gt; wiki
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-  &lt;div class=&quot;commits&quot;&gt;
-    &lt;ul&gt;
-        &lt;li&gt;
-          Created
-          &lt;a href=&quot;/pdc/textureupdater/wiki/Home&quot;&gt;Home&lt;/a&gt;.
-            &lt;blockquote&gt;&lt;/blockquote&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-03-24T14:08:37Z&quot; is=&quot;relative-time&quot;&gt;March 24, 2014&lt;/time&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1631654336</id>
-    <published>2012-11-25T20:34:12Z</published>
-    <updated>2012-11-25T20:34:12Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/textureupdater/compare/25203dda2a...b8b7827144"/>
+    <id>tag:github.com,2008:PushEvent/2026824438</id>
+    <published>2014-03-23T10:26:34Z</published>
+    <updated>2014-03-23T10:26:34Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/spreadsite/compare/ebac510f1b...f87b344077"/>
+    <title type="html">pdc pushed to master at pdc/spreadsite</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-03-23T10:26:34Z&quot; is=&quot;relative-time&quot;&gt;March 23, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/spreadsite/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/spreadsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/spreadsite&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;pdc&quot;&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/f87b34407780cf653b41e43071fc05b83ac4c31f&quot;&gt;f87b344&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Merge branch &#39;master&#39; of github.com:pdc/spreadsite
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;pdc&quot;&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/spreadsite/commit/69e784ab03d6e96cca0816c157347e1894df39e0&quot;&gt;69e784a&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Change to new-style url tags in templates
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/spreadsite/compare/ebac510f1b...f87b344077&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PullRequestEvent/2010928003</id>
+    <published>2014-03-11T13:46:47Z</published>
+    <updated>2014-03-11T13:46:47Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/jamesls/fakeredis/pull/41"/>
+    <title type="html">pdc opened pull request jamesls/fakeredis#41</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- pull_request --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-pull-request&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-03-11T13:46:47Z&quot; is=&quot;relative-time&quot;&gt;March 11, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;opened&lt;/span&gt; pull request &lt;a href=&quot;https://github.com/jamesls/fakeredis/pull/41&quot;&gt;jamesls/fakeredis#41&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message&quot;&gt;
+    &lt;blockquote&gt;Add Vagrantfile and a bootstrap file for provisioning redis&lt;/blockquote&gt;
+      &lt;div class=&quot;pull-info&quot;&gt;
+        &lt;span class=&quot;octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+        &lt;em&gt;1&lt;/em&gt; commit with
+        &lt;em&gt;170&lt;/em&gt; additions and
+        &lt;em&gt;0&lt;/em&gt; deletions
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/2010887299</id>
+    <published>2014-03-11T13:17:02Z</published>
+    <updated>2014-03-11T13:17:02Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/fakeredis/compare/vagrant"/>
+    <title type="html">pdc created branch vagrant at pdc/fakeredis</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; branch &lt;a href=&quot;/pdc/fakeredis/tree/vagrant&quot; class=&quot;css-truncate css-truncate-target branch-link&quot; title=&quot;vagrant&quot;&gt;&lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;vagrant&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/fakeredis&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/fakeredis&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-03-11T13:17:02Z&quot; is=&quot;relative-time&quot;&gt;March 11, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PullRequestEvent/2010884921</id>
+    <published>2014-03-11T13:15:11Z</published>
+    <updated>2014-03-11T13:15:11Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/jamesls/fakeredis/pull/40"/>
+    <title type="html">pdc opened pull request jamesls/fakeredis#40</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- pull_request --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-pull-request&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-03-11T13:15:11Z&quot; is=&quot;relative-time&quot;&gt;March 11, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;opened&lt;/span&gt; pull request &lt;a href=&quot;https://github.com/jamesls/fakeredis/pull/40&quot;&gt;jamesls/fakeredis#40&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message&quot;&gt;
+    &lt;blockquote&gt;Fix for KeyError when removing a numeric member from a zset&lt;/blockquote&gt;
+      &lt;div class=&quot;pull-info&quot;&gt;
+        &lt;span class=&quot;octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+        &lt;em&gt;1&lt;/em&gt; commit with
+        &lt;em&gt;6&lt;/em&gt; additions and
+        &lt;em&gt;1&lt;/em&gt; deletion
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/2010876932</id>
+    <published>2014-03-11T13:08:46Z</published>
+    <updated>2014-03-11T13:08:46Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/fakeredis/compare/zrem"/>
+    <title type="html">pdc created branch zrem at pdc/fakeredis</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; branch &lt;a href=&quot;/pdc/fakeredis/tree/zrem&quot; class=&quot;css-truncate css-truncate-target branch-link&quot; title=&quot;zrem&quot;&gt;&lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;zrem&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/fakeredis&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/fakeredis&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-03-11T13:08:46Z&quot; is=&quot;relative-time&quot;&gt;March 11, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2010585649</id>
+    <published>2014-03-11T08:40:53Z</published>
+    <updated>2014-03-11T08:40:53Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/fakeredis/compare/e0f94aaf6b...b450fb0bcc"/>
+    <title type="html">pdc pushed to master at pdc/fakeredis</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-03-11T08:40:53Z&quot; is=&quot;relative-time&quot;&gt;March 11, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/fakeredis/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/fakeredis&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/fakeredis&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits &quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;jamesls&quot;&gt;
+            &lt;img alt=&quot;James Saryerwinnie&quot; class=&quot; js-avatar&quot; data-user=&quot;368057&quot; height=&quot;16&quot; src=&quot;https://avatars3.githubusercontent.com/u/368057?s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/fakeredis/commit/aeb7b4b28acb6cf598203969bd8f50eb1bc4e1e3&quot;&gt;aeb7b4b&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Add a gitignore file
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;jamesls&quot;&gt;
+            &lt;img alt=&quot;James Saryerwinnie&quot; class=&quot; js-avatar&quot; data-user=&quot;368057&quot; height=&quot;16&quot; src=&quot;https://avatars3.githubusercontent.com/u/368057?s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/fakeredis/commit/e34b2a72bdeae31ec1d2c07f66a84471c0c87db1&quot;&gt;e34b2a7&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Close connection to redis after test finishes
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/fakeredis/compare/e0f94aaf6b...b450fb0bcc&quot;&gt;123 more commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:IssueCommentEvent/1997899107</id>
+    <published>2014-02-28T11:07:34Z</published>
+    <updated>2014-02-28T11:07:34Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/npm/npm/issues/4805#issuecomment-36340761"/>
+    <title type="html">pdc commented on issue npm/npm#4805</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- issue_comment --&gt;
+&lt;span class=&quot;mega-octicon octicon-comment-discussion&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-02-28T11:07:34Z&quot; is=&quot;relative-time&quot;&gt;February 28, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;commented&lt;/span&gt; on issue &lt;a href=&quot;https://github.com/npm/npm/issues/4805#issuecomment-36340761&quot; title=&quot;Not able to install any package on ec2 &quot;&gt;npm/npm#4805&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message markdown-body&quot;&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;I am deploying to Heroku and have the same issue, &lt;a href=&quot;https://gist.github.com/pdc/9269038&quot;&gt;logged in this gist&lt;/a&gt;. In my case I am deploying to EC2 through Heroku.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/1997881250</id>
+    <published>2014-02-28T10:48:51Z</published>
+    <updated>2014-02-28T10:48:51Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/npm/npm"/>
+    <title type="html">pdc starred npm/npm</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/npm/npm&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;npm/npm&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-02-28T10:48:51Z&quot; is=&quot;relative-time&quot;&gt;February 28, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/1996258723</id>
+    <published>2014-02-27T10:02:46Z</published>
+    <updated>2014-02-27T10:02:46Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/trustyuri/trustyuri-spec"/>
+    <title type="html">pdc starred trustyuri/trustyuri-spec</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/trustyuri/trustyuri-spec&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;trustyuri/trustyuri-spec&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-02-27T10:02:46Z&quot; is=&quot;relative-time&quot;&gt;February 27, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/1979132328</id>
+    <published>2014-02-13T11:04:27Z</published>
+    <updated>2014-02-13T11:04:27Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/jmoiron/johnny-cache"/>
+    <title type="html">pdc starred jmoiron/johnny-cache</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/jmoiron/johnny-cache&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;jmoiron/johnny-cache&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-02-13T11:04:27Z&quot; is=&quot;relative-time&quot;&gt;February 13, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/1960635183</id>
+    <published>2014-01-29T11:07:06Z</published>
+    <updated>2014-01-29T11:07:06Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/smn/django-dirtyfields"/>
+    <title type="html">pdc starred smn/django-dirtyfields</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/smn/django-dirtyfields&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;smn/django-dirtyfields&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-01-29T11:07:06Z&quot; is=&quot;relative-time&quot;&gt;January 29, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:IssueCommentEvent/1866593065</id>
+    <published>2013-10-23T15:23:41Z</published>
+    <updated>2013-10-23T15:23:41Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/boto/boto/issues/1669#issuecomment-26914358"/>
+    <title type="html">pdc commented on issue boto/boto#1669</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- issue_comment --&gt;
+&lt;span class=&quot;mega-octicon octicon-comment-discussion&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2013-10-23T15:23:41Z&quot; is=&quot;relative-time&quot;&gt;October 23, 2013&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;commented&lt;/span&gt; on issue &lt;a href=&quot;https://github.com/boto/boto/issues/1669#issuecomment-26914358&quot; title=&quot;content-type meta tag gets improperly escaped upon upload to S3&quot;&gt;boto/boto#1669&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message markdown-body&quot;&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;I have a similar problem – in this case with Boto 2.15 + django-storages 1.1.8  I tried using the &lt;code&gt;Key&lt;/code&gt; method &lt;code&gt;copy&lt;/code&gt; to update the metadata and it cha…&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PullRequestEvent/1853379046</id>
+    <published>2013-10-09T16:41:25Z</published>
+    <updated>2013-10-09T16:41:25Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/ailabs/django-auth-remember/pull/7"/>
+    <title type="html">pdc opened pull request ailabs/django-auth-remember#7</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- pull_request --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-pull-request&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2013-10-09T16:41:25Z&quot; is=&quot;relative-time&quot;&gt;October 09, 2013&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;opened&lt;/span&gt; pull request &lt;a href=&quot;https://github.com/ailabs/django-auth-remember/pull/7&quot;&gt;ailabs/django-auth-remember#7&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message&quot;&gt;
+    &lt;blockquote&gt;Changes for Django 1.5 custom user model&lt;/blockquote&gt;
+      &lt;div class=&quot;pull-info&quot;&gt;
+        &lt;span class=&quot;octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+        &lt;em&gt;3&lt;/em&gt; commits with
+        &lt;em&gt;36&lt;/em&gt; additions and
+        &lt;em&gt;18&lt;/em&gt; deletions
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/1853374867</id>
+    <published>2013-10-09T16:37:36Z</published>
+    <updated>2013-10-09T16:37:36Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/photocrowd/django-auth-remember/compare/f23c02585a...a20315b8ce"/>
+    <title type="html">pdc pushed to master at photocrowd/django-auth-remember</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2013-10-09T16:37:36Z&quot; is=&quot;relative-time&quot;&gt;October 09, 2013&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/photocrowd/django-auth-remember/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/photocrowd/django-auth-remember&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;photocrowd/django-auth-remember&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits &quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;Damian Cugley&quot;&gt;
+            &lt;img alt=&quot;&quot; height=&quot;16&quot; src=&quot;https://1.gravatar.com/avatar/2420af5970af69c1b614000dd308de62?d=https%3A%2F%2Fassets-cdn.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;amp;r=x&amp;amp;s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/photocrowd/django-auth-remember/commit/a20315b8ce95ab138dbb8e0940920197844562b2&quot;&gt;a20315b&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Add section to README about custom user model
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/1853372212</id>
+    <published>2013-10-09T16:35:09Z</published>
+    <updated>2013-10-09T16:35:09Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/photocrowd/django-auth-remember/compare/af88c09a59...f23c02585a"/>
+    <title type="html">pdc pushed to master at photocrowd/django-auth-remember</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2013-10-09T16:35:09Z&quot; is=&quot;relative-time&quot;&gt;October 09, 2013&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/photocrowd/django-auth-remember/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/photocrowd/django-auth-remember&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;photocrowd/django-auth-remember&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits &quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;Damian Cugley&quot;&gt;
+            &lt;img alt=&quot;&quot; height=&quot;16&quot; src=&quot;https://1.gravatar.com/avatar/2420af5970af69c1b614000dd308de62?d=https%3A%2F%2Fassets-cdn.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;amp;r=x&amp;amp;s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/photocrowd/django-auth-remember/commit/f23c02585a4c52781826ca73e98175b280937d50&quot;&gt;f23c025&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Modifications to work with a custom user model
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/1853206709</id>
+    <published>2013-10-09T14:20:55Z</published>
+    <updated>2013-10-09T14:20:55Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/photocrowd/django-auth-remember/compare/c0a0ef3bc2...af88c09a59"/>
+    <title type="html">pdc pushed to master at photocrowd/django-auth-remember</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2013-10-09T14:20:55Z&quot; is=&quot;relative-time&quot;&gt;October 09, 2013&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/photocrowd/django-auth-remember/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/photocrowd/django-auth-remember&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;photocrowd/django-auth-remember&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits &quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;Damian Cugley&quot;&gt;
+            &lt;img alt=&quot;&quot; height=&quot;16&quot; src=&quot;https://1.gravatar.com/avatar/2420af5970af69c1b614000dd308de62?d=https%3A%2F%2Fassets-cdn.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;amp;r=x&amp;amp;s=140&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/photocrowd/django-auth-remember/commit/af88c09a5937a0b63add75021a9cf995cff7ec97&quot;&gt;af88c09&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Get user model from settings (required for Django 1.5)
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:IssuesEvent/1792019295</id>
+    <published>2013-07-30T10:56:46Z</published>
+    <updated>2013-07-30T10:56:46Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/jezdez/django_compressor/issues/429"/>
+    <title type="html">pdc opened issue django-compressor/django-compressor#429</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- issues --&gt;
+&lt;span class=&quot;mega-octicon octicon-issue-opened&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2013-07-30T10:56:46Z&quot; is=&quot;relative-time&quot;&gt;July 30, 2013&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;opened&lt;/span&gt; issue &lt;a href=&quot;https://github.com/jezdez/django_compressor/issues/429&quot; title=&quot;UnicodeDecodeError with LESS file containing Unicode in comment&quot;&gt;django-compressor/django-compressor#429&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message&quot;&gt;
+    &lt;blockquote&gt;
+      UnicodeDecodeError with LESS file containing Unicode in comment
+    &lt;/blockquote&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:FollowEvent/1707577310</id>
+    <published>2013-04-05T07:54:52Z</published>
+    <updated>2013-04-05T07:54:52Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/Korvar"/>
+    <title type="html">pdc started following Korvar</title>
+    <author>
+      <name>pdc</name>
+      <email>pdc@alleged.org.uk</email>
+      <uri>https://github.com/pdc</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
+    <content type="html">&lt;!-- follow --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-person&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;started following&lt;/span&gt; &lt;a href=&quot;https://github.com/Korvar&quot;&gt;Korvar&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2013-04-05T07:54:52Z&quot; is=&quot;relative-time&quot;&gt;April 05, 2013&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/1698340756</id>
+    <published>2013-03-22T08:47:12Z</published>
+    <updated>2013-03-22T08:47:12Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/textureupdater/compare/b8b7827144...583388f02b"/>
     <title type="html">pdc pushed to master at pdc/textureupdater</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-25T20:34:12Z&quot; title=&quot;2012-11-25 20:34:12&quot;&gt;November 25, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2013-03-22T08:47:12Z&quot; is=&quot;relative-time&quot;&gt;March 22, 2013&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/textureupdater&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/textureupdater&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/textureupdater/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/textureupdater&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/textureupdater&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/textureupdater/commit/b8b7827144d5ea2a36eae51e1c906ef4b6c8c4ca&quot;&gt;b8b7827&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/textureupdater/commit/583388f02b9e32144c7e623ed92767f7db6fbde5&quot;&gt;583388f&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Updates for Release 1.4
+              Updates for Minecraft 1.4
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/textureupdater/commit/ef4d4583d6e7df62b190dca3e5c1d08a1fc5f4fa&quot;&gt;ef4d458&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/textureupdater/commit/c851ea8ca1397fd817850286549c6cfa76430bfa&quot;&gt;c851ea8&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Updates for Minecrat 1.3
+              Initial attempot at Fabricifying this project
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/textureupdater/compare/25203dda2a...b8b7827144&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/textureupdater/compare/b8b7827144...583388f02b&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </content>
   </entry>
   <entry>
-    <id>tag:github.com,2008:PushEvent/1631159130</id>
-    <published>2012-11-23T17:50:42Z</published>
-    <updated>2012-11-23T17:50:42Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/de88a4b3f8...901802de82"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
+    <id>tag:github.com,2008:PushEvent/1683616924</id>
+    <published>2013-02-28T20:05:50Z</published>
+    <updated>2013-02-28T20:05:50Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/pdc/caption/compare/0df3be262b...6677de9f0b"/>
+    <title type="html">pdc pushed to master at pdc/caption</title>
     <author>
       <name>pdc</name>
       <email>pdc@alleged.org.uk</email>
       <uri>https://github.com/pdc</uri>
     </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/90414?s=30"/>
     <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
 
 &lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T17:50:42Z&quot; title=&quot;2012-11-23 17:50:42&quot;&gt;November 23, 2012&lt;/time&gt;
+  &lt;time datetime=&quot;2013-02-28T20:05:50Z&quot; is=&quot;relative-time&quot;&gt;February 28, 2013&lt;/time&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/pdc/caption/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/pdc/caption&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/caption&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;a href=&quot;https://github.com/pdc&quot;&gt;&lt;img alt=&quot;Damian Cugley&quot; class=&quot;gravatar js-avatar&quot; data-user=&quot;90414&quot; height=&quot;30&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
 
     &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
       &lt;ul&gt;
         &lt;li&gt;
           &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
+            &lt;img alt=&quot;Damian Cugley&quot; class=&quot; js-avatar&quot; data-user=&quot;90414&quot; height=&quot;16&quot; src=&quot;https://avatars1.githubusercontent.com/u/90414?s=140&quot; width=&quot;16&quot; /&gt;
           &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/901802de829ca1abaf53bdc2a30d942465686997&quot;&gt;901802d&lt;/a&gt;&lt;/code&gt;
+          &lt;code&gt;&lt;a href=&quot;/pdc/caption/commit/6677de9f0bf40d5f331da8a3fb1fb45c7404d704&quot;&gt;6677de9&lt;/a&gt;&lt;/code&gt;
           &lt;div class=&quot;message&quot;&gt;
             &lt;blockquote&gt;
-              Add deal.svg and dealer.js
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631158114</id>
-    <published>2012-11-23T17:48:00Z</published>
-    <updated>2012-11-23T17:48:00Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/660e87691b...de88a4b3f8"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T17:48:00Z&quot; title=&quot;2012-11-23 17:48:00&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/de88a4b3f8ca7908172ca579b5ca32d0adab1f50&quot;&gt;de88a4b&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Also copy CSS and title banner
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631150097</id>
-    <published>2012-11-23T17:26:02Z</published>
-    <updated>2012-11-23T17:26:02Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/tclhtml/compare/214435c5bc...02cd618174"/>
-    <title type="html">pdc pushed to master at pdc/tclhtml</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T17:26:02Z&quot; title=&quot;2012-11-23 17:26:02&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/tclhtml&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/tclhtml&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/tclhtml/commit/02cd61817421aa59500d891b00a08c05301ad267&quot;&gt;02cd618&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Normalize image paths to avoid references to not-yet-existent directo…
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631143181</id>
-    <published>2012-11-23T17:08:20Z</published>
-    <updated>2012-11-23T17:08:20Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/32f2901acc...660e87691b"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T17:08:20Z&quot; title=&quot;2012-11-23 17:08:20&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/660e87691bc19a5200c7798703f6d36cf73aa899&quot;&gt;660e876&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Even more don’t fail if cmyk.cmap missing;
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631135551</id>
-    <published>2012-11-23T16:49:53Z</published>
-    <updated>2012-11-23T16:49:53Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/645e814ff5...32f2901acc"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T16:49:53Z&quot; title=&quot;2012-11-23 16:49:53&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/32f2901accc70a5953de3384b1b7045321d44449&quot;&gt;32f2901&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Ignore output dir of Tarot
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/ff06233cc8a88e3491bbf03fad0d3bae9bbca2a6&quot;&gt;ff06233&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Make Tarot makefile work with cmyk.cmap missing
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/pdc/allegedsite/compare/645e814ff5...32f2901acc&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631134920</id>
-    <published>2012-11-23T16:48:17Z</published>
-    <updated>2012-11-23T16:48:17Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/tclhtml/compare/6a1a71a7ba...214435c5bc"/>
-    <title type="html">pdc pushed to master at pdc/tclhtml</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T16:48:17Z&quot; title=&quot;2012-11-23 16:48:17&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/tclhtml&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/tclhtml&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/tclhtml/commit/214435c5bc89a8becfbd32161f53f4c3427c4ce6&quot;&gt;214435c&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Correct bug in lookup of image files
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631122029</id>
-    <published>2012-11-23T16:18:20Z</published>
-    <updated>2012-11-23T16:18:20Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/d01145990a...645e814ff5"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T16:18:20Z&quot; title=&quot;2012-11-23 16:18:20&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/645e814ff58247a5de456db9144977e45ca154b9&quot;&gt;645e814&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Another Makefile fix
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631121712</id>
-    <published>2012-11-23T16:17:35Z</published>
-    <updated>2012-11-23T16:17:35Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/tclhtml/compare/299a000577...6a1a71a7ba"/>
-    <title type="html">pdc pushed to master at pdc/tclhtml</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T16:17:35Z&quot; title=&quot;2012-11-23 16:17:35&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/tclhtml&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/tclhtml&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/tclhtml/commit/6a1a71a7bae2f5c71e930ece02fb7fbdee272ad9&quot;&gt;6a1a71a&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Prune subdirs from Makefiles if no TclHTML files
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631004042</id>
-    <published>2012-11-23T11:40:51Z</published>
-    <updated>2012-11-23T11:40:51Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/80aee3b119...d01145990a"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T11:40:51Z&quot; title=&quot;2012-11-23 11:40:51&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/d01145990abf8ae5d91e2b734cc00fcc13383b6c&quot;&gt;d011459&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Remove spurious 2003 subdir from Makefile;
-            &lt;/blockquote&gt;
-          &lt;/div&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <id>tag:github.com,2008:PushEvent/1631003687</id>
-    <published>2012-11-23T11:39:44Z</published>
-    <updated>2012-11-23T11:39:44Z</updated>
-    <link type="text/html" rel="alternate" href="https://github.com/pdc/allegedsite/compare/a4cf02daa2...80aee3b119"/>
-    <title type="html">pdc pushed to master at pdc/allegedsite</title>
-    <author>
-      <name>pdc</name>
-      <email>pdc@alleged.org.uk</email>
-      <uri>https://github.com/pdc</uri>
-    </author>
-    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"/>
-    <content type="html">&lt;!-- push --&gt;
-&lt;span class=&quot;mega-icon mega-icon-commit&quot;&gt;&lt;/span&gt;
-
-&lt;div class=&quot;time&quot;&gt;
-  &lt;time class=&quot;js-relative-date&quot; datetime=&quot;2012-11-23T11:39:44Z&quot; title=&quot;2012-11-23 11:39:44&quot;&gt;November 23, 2012&lt;/time&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/pdc&quot;&gt;pdc&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to master at &lt;a href=&quot;/pdc/allegedsite&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;pdc/allegedsite&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;details&quot;&gt;
-  &lt;a href=&quot;/pdc&quot; class=&quot;gravatar&quot;&gt;&lt;img height=&quot;30&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
-
-    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
-      &lt;ul&gt;
-        &lt;li&gt;
-          &lt;span title=&quot;pdc&quot;&gt;
-            &lt;img height=&quot;16&quot; src=&quot;https://secure.gravatar.com/avatar/cdb2971213234ed1f05942e71178d3e3?s=140&amp;amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot; width=&quot;16&quot; /&gt;
-          &lt;/span&gt;
-          &lt;code&gt;&lt;a href=&quot;/pdc/allegedsite/commit/80aee3b119d95f6e22a77fcd7f651424f96b40ed&quot;&gt;80aee3b&lt;/a&gt;&lt;/code&gt;
-          &lt;div class=&quot;message&quot;&gt;
-            &lt;blockquote&gt;
-              Updated Makefiles for pregenertated content
+              Copy 2013 style to 2013 so site does not crash
             &lt;/blockquote&gt;
           &lt;/div&gt;
         &lt;/li&gt;
