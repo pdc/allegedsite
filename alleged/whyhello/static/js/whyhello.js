@@ -9,7 +9,7 @@ $(function () {
     var monthAbbrs = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
     var monthAbbrevs = 'Jan.|Feb.|March|April|May|June|July|Aug.|Sept.|Oct.|Nov.|Dec.'.split('|');
     function pad2(n) {
-        return n < 10 ? '0' + (+n) : n
+        return n < 10 ? '0' + (+n) : n;
     }
 
     // The text uses HTML escapes for ampersands etc.,
@@ -81,6 +81,7 @@ $(function () {
         format: 'json',
         success: function (data, textStatus, request) {
             if (data && data.success) {
+                var coda = flickrItem.find('p:last-child');
                 var flickrCount = 0;
                 for (var i in data.entryGroups) {
                     var dateData = data.entryGroups[i];
@@ -105,10 +106,11 @@ $(function () {
                     }
                     articleElt.append($('<br clear="left">'));
 
-                    var detailsElt = $('<small>').appendTo(flickrItem);
+                    var detailsElt = $('<small>').insertBefore(coda);
                     detailsElt.text(date.substr(8, 2) + ' ' + monthAbbrevs[date.substr(5, 2) - 1]);
 
-                    flickrItem.append(articleElt);
+                    //flickrItem.append(articleElt);
+                    articleElt.insertBefore(coda);
 
                     if (++flickrCount >= maxGalleries) {
                         break;
