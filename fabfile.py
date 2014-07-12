@@ -18,7 +18,7 @@ env.src_dir = 'src'
 env.bin_dir = '/home/alleged/bin'
 
 def update_requirements():
-    local("pip freeze | egrep -v 'Fabric|pycrypto|ssh' > REQUIREMENTS")
+    local("pip freeze | egrep -v 'Fabric|pycrypto|ssh' > requirements.txt")
 
 def test():
     with settings(warn_only=True):
@@ -64,7 +64,7 @@ def deploy():
         run('cp {0}/settings_production.py {0}/settings.py'.format(env.settings_subdir))
 
         with prefix('. /home/{0}/virtualenvs/{1}/bin/activate'.format(env.site_name, env.virtualenv)):
-            run('pip install -r REQUIREMENTS')
+            run('pip install -r requirements.txt')
             run('./manage.py collectstatic --noinput')
 
         with cd('pregenerated'):

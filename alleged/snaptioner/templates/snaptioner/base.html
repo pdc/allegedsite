@@ -31,7 +31,7 @@
                 <span>({{ album|length }} photos)</span>
               </strong>
               {% else %}
-              <a href="{% url album_detail album_name=other.name %}">
+              <a href="{% url 'album_detail' album_name=other.name %}">
                 <b>{{ other.title }}</b>
                 <span>({{ other|length }} photos)</span>
               </a>

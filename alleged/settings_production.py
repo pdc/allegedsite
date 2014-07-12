@@ -6,6 +6,11 @@ project_root = os.path.dirname(os.path.dirname(__file__))
 def expand_path(partial_path):
     return os.path.join(project_root, partial_path)
 
+ALLOWED_HOSTS = [
+    'localhost:8000',
+    'alleged.org.uk',
+]
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 

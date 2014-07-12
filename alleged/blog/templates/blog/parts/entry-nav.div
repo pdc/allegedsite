@@ -53,13 +53,13 @@
                   </li>
                   {% else %}
                   <li>
-              	    <a href="{% url blog_month year=e.published.year|stringformat:"02d",month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
+              	    <a href="{% url 'blog_month' year=e.published.year|stringformat:"02d" month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
                   </li>
                   {% endif %}
 
     	     	    {% else %}
                 <li>
-            	    <a href="{% url blog_month year=e.published.year|stringformat:"02d",month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
+            	    <a href="{% url 'blog_month' year=e.published.year|stringformat:"02d" month=month|stringformat:"02d" %}">{{ e.published|date:"F" }}</a>
                 </li>
                 {% endifequal %}
     			    {% endfor %}

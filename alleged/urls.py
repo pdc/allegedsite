@@ -1,5 +1,12 @@
-from django.conf.urls.defaults import *
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
+from django.conf.urls import url, include
 from django.conf import settings
+import alleged.frontpage.views
+import alleged.whyhello.views
+import alleged.blog.views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -20,37 +27,36 @@ snaptioner_args = {
     'library_dir': settings.SNAPTIONER_LIBRARY_DIR,
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
-urlpatterns = (
-    patterns('alleged.frontpage.views',
-        (r'^$', 'front_page', updated_dict(blog_args, is_svg_wanted=True), 'front_page'),
-        (r'^ancient-browser-support$', 'front_page', updated_dict(blog_args, is_svg_wanted=False), 'front_page_sans_svg'),
-    )
-    + patterns('alleged.whyhello.views',
-        ('^pdc/$', 'why_hello_im', blog_args, 'why_hello_im'),
-    )
-    + patterns('alleged.blog.views',
-        (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$',
-            'entry_view', blog_args, 'blog_entry'),
-        (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])\.html$',
-            'month_entries', blog_args, 'blog_month'),
-        (r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<name>[a-z0-9_-]+)\.html$',
-            'named_article', blog_args, 'blog_named_article'),
-        (r'^pdc/feeds/articles$', 'atom', blog_args, 'blog_atom'),
-        (r'^pdc/feeds/articles-archive-(?P<page_no>[1-9][0-9]*)$', 'atom', blog_args, 'blog_atom_archive'),
-        (r'^pdc/feeds/articles-paged(?P<page_no>-[1-9][0-9]*)$', 'atom', blog_args, 'blog_atom_archive'),
-        (r'^pdc/tags/(?P<plus_separated_tags>[a-z0-9+-]+)$', 'filtered_by_tag', blog_args, 'blog_tag'),
-        (r'^pdc/from/flickr$', 'from_flickr', {}, 'from_flickr'),
-        (r'^pdc/from/livejournal$', 'from_livejournal', {}, 'from_livejournal'),
-        (r'^pdc/from/youtube$', 'from_youtube', {}, 'from_youtube'),
-        (r'^pdc/from/github$', 'from_github', {}, 'from_github'),
-    )
-    + patterns('',
-        (r'^albums/', include('alleged.snaptioner.urls'))
-        # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
-        # to INSTALLED_APPS to enable admin documentation:
-        # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+urlpatterns = [
+    url(r'^$', alleged.frontpage.views.front_page, updated_dict(blog_args, is_svg_wanted=True), 'front_page'),
+    url(r'^ancient-browser-support$', alleged.frontpage.views.front_page, updated_dict(blog_args, is_svg_wanted=False), 'front_page_sans_svg'),
 
-        # Uncomment the next line to enable the admin:
-        # (r'^admin/', include(admin.site.urls)),
-    )
-)
+    url(r'^pdc/$', alleged.whyhello.views.why_hello_im, blog_args, 'why_hello_im'),
+
+    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$',
+        alleged.blog.views.entry_view, blog_args, 'blog_entry'),
+    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])\.html$',
+        alleged.blog.views.month_entries, blog_args, 'blog_month'),
+    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<name>[a-z0-9_-]+)\.html$',
+        alleged.blog.views.named_article, blog_args, 'blog_named_article'),
+    url(r'^pdc/feeds/articles$',
+        alleged.blog.views.atom, blog_args, 'blog_atom'),
+    url(r'^pdc/feeds/articles-archive-(?P<page_no>[1-9][0-9]*)$',
+        alleged.blog.views.atom, blog_args, 'blog_atom_archive'),
+    url(r'^pdc/feeds/articles-paged(?P<page_no>-[1-9][0-9]*)$',
+        alleged.blog.views.atom, blog_args, 'blog_atom_archive'),
+    url(r'^pdc/tags/(?P<plus_separated_tags>[a-z0-9+-]+)$',
+        alleged.blog.views.filtered_by_tag, blog_args, 'blog_tag'),
+    url(r'^pdc/from/flickr$', alleged.blog.views.from_flickr, {}, 'from_flickr'),
+    url(r'^pdc/from/livejournal$', alleged.blog.views.from_livejournal, {}, 'from_livejournal'),
+    url(r'^pdc/from/youtube$', alleged.blog.views.from_youtube, {}, 'from_youtube'),
+    url(r'^pdc/from/github$', alleged.blog.views.from_github, {}, 'from_github'),
+
+    url(r'^albums/', include('alleged.snaptioner.urls'))
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
+    # to INSTALLED_APPS to enable admin documentation:
+    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    # (r'^admin/', include(admin.site.urls)),
+]

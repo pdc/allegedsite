@@ -13,7 +13,7 @@
         <link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
         <link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
 
-        <link rel="alternate" type="application/atom+xml" href="{% url blog_atom %}" />
+        <link rel="alternate" type="application/atom+xml" href="{% url 'blog_atom' %}" />
     </head>
     <body>
         <header>
@@ -85,7 +85,7 @@
                         <dt>Topics</dt>
                         <dd>
                             {% for tag in entry.tags %}
-                                <a href="{% url blog_tag plus_separated_tags=tag %}">{{ tag }}</a>
+                                <a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a>
                             {% endfor %}
                         </dd>
                     </dl>
