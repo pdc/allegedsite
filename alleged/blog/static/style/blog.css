@@ -82,7 +82,7 @@ body {
     padding: 0;
 
     font-family: "GentiumBookBasicRegular", "Palatino", "Book Antiqua", serif;
-    line-height: 1.25; /* Default is 16px on 20px */
+    line-height: 1.375; /* Default is 16px on 20px */
     background-color: #EEE;
 }
 
@@ -191,12 +191,14 @@ article {
 }
 
 article h2 {
-    font-size: 1.25em;
-    margin: 0.833em 10px 0.167em;
+    font-size: 1.375em;
+    /* Aiming for height + margin to be 2 lines = 44px */
+    margin: 0.5em 10px 0.25em;
     padding: 0;
 
     font-family: "YanoneKaffeesatz Regular", sans-serif;
-    line-height: 1;
+    font-weight: normal;
+    line-height: 1.25;
     color: #600;
     background: transparent;
 }
@@ -359,12 +361,14 @@ article.youtube p {
 }
 
 #entry-body h1 {
-    font-size: 1.5em;
-    margin: 0.833em 10px 0.167em;
+    font-size: 1.65em;
+    /* Want total to be 3 lines, which is now 2.5em */
+    margin: 0.75em 10px 0.25em;
     padding: 0;
 
     font-family: "YanoneKaffeesatz Regular", sans-serif;
-    line-height: 1;
+    font-weight: normal;
+    line-height: 1.5;
     color: #600;
     background: transparent;
 }
@@ -390,11 +394,11 @@ article header h2 {
 }
 
 #entry-body h2 {
-    font-size: 1.25em;
+/*    font-size: 1.25em;
     margin: 1em 10px 0;
 
     font-family: "YanoneKaffeesatz Regular", sans-serif;
-    line-height: 1;
+    line-height: 1;*/
 }
 
 article#entry p {
