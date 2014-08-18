@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=UTF-8>
+        <title>Experiment 0</title>
+        <style>
+            body {
+                margin: 0;
+                background: #F8F4F2;
+            }
+            .viewport {
+                position: relative;
+                height: 480px;
+                background: #E8E4E2 url(bg-480h.jpeg) 50% 50% no-repeat;
+            }
+            h1 {
+                position: absolute;
+                left: 12px;
+                top: 12px;
+                margin: 0;
+
+                font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+                font-size: 120px;
+                font-weight: 200;
+                color: #FFF;
+                text-shadow: #000 0 0 3px;
+            }
+            .lte-480 {/*
+                height: 300px;
+                background: #E8E4E2 url(bg-300h.jpeg) 50% 50% no-repeat;*/
+            }
+            .lte-480 h1 {
+                    bottom: 0px;
+                    font-size: 60px;
+                    width: 300px;
+                    margin: 0 auto;
+            }
+            @media screen and (max-width: 480px) {
+                .percent100 {/*
+                    height: 300px;
+                    background: #E8E4E2 url(bg-300h.jpeg) 50% 50% no-repeat;*/
+                }
+                h1 {
+                    top: 0px;
+                    font-size: 48px;
+                    width: 300px;
+                    margin: 0 auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="viewport percent100" style="width: 100%">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">100%</div>
+
+        <div class="viewport" style="width: 1920px">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">1920px</div>
+
+        <div class="viewport" style="width: 1440px">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">1440px</div>
+
+        <div class="viewport" style="width: 1024px">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">1024px</div>
+
+        <div class="viewport lte-768" style="width: 768px">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">768px</div>
+
+        <div class="viewport lte-768 lte-480" style="width: 480px">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">480px</div>
+
+        <div class="viewport lte-768 lte-480 lte-320" style="width: 320px">
+            <h1>Goldenwall</h1>
+        </div>
+        <div class="caption">320px</div>
+    </body>
+</html>

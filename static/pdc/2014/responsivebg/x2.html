@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=UTF-8>
+        <title>Experiment II</title>
+        <style>
+            body {
+                margin: 0;
+                background: #F8F4F2;
+            }
+            .viewport {
+                position: relative;
+                height: 480px;
+                background: #E8E4E2 url(t-1920.jpeg) 66% 33% no-repeat;
+                background-size: cover;
+            }
+            h1 {
+                position: absolute;
+                left: 12px;
+                top: 12px;
+                margin: 0;
+                width: 400px;
+
+                font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+                font-size: 60px;
+                font-weight: 200;
+                color: #FFF;
+                text-shadow: #963 1px 0 0;
+            }
+            .lte-480 {
+                background: #E8E4E2 url(t-480.jpeg) 66% 33% no-repeat;
+                height: 300px;
+            }
+            .lte-480 h1 {
+                    font-size: 36px;
+                    width: 200px;
+                    padding: 12px 0;
+                    margin: 0 auto;
+            }
+            @media screen and (max-width: 480px) {
+                .percent100 {
+                    background-image: url(t-480.jpeg);
+                    height: 360px;
+                }
+                .percent100 h1 {
+                    font-size: 48px;
+                    width: 300px;
+                    padding: 12px 0;
+                    margin: 0 auto;
+                }
+            }
+            @media screen and (min-width: 1200px) {
+                .percent100 h1 {
+                    font-size: 96px;
+                    width: 640px;
+                    padding: 12px 0;
+                    margin: 0 auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="viewport percent100" style="width: 100%">
+            <h1>The Mystery of the Cranked T</h1>
+        </div>
+        <div class="caption">100%</div>
+
+        <div class="viewport" style="width: 1024px">
+            <h1>The Mystery of the Cranked T</h1>
+        </div>
+        <div class="caption">1024px</div>
+
+        <div class="viewport lte-768" style="width: 768px">
+            <h1>The Mystery of the Cranked T</h1>
+        </div>
+        <div class="caption">768px</div>
+
+        <div class="viewport lte-768 lte-480" style="width: 480px">
+            <h1>The Mystery of the Cranked T</h1>
+        </div>
+        <div class="caption">480px</div>
+
+        <div class="viewport lte-768 lte-480 lte-320" style="width: 320px">
+            <h1>The Mystery of the Cranked T</h1>
+        </div>
+        <div class="caption">320px</div>
+    </body>
+</html>
