@@ -230,7 +230,7 @@ article small {
     margin: 0 10px;
 
     color: #678;
-    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    /*font-family: "YanoneKaffeesatz Regular", sans-serif;*/
 }
 
 article .image-right small {
@@ -441,7 +441,7 @@ article#entry p+p {
     display: none;
     margin: 0 10px;
 
-    font-family: "YanoneKaffeesatz Regular", sans-serif;
+    /*font-family: "YanoneKaffeesatz Regular", sans-serif;*/
     color: #036;
 }
 
