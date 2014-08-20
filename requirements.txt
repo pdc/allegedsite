@@ -1,6 +1,5 @@
 Django==1.6.5
 Markdown==2.4.1
-distribute==0.6.27
 httplib2==0.9
 lxml==3.3.5
 pytz==2014.4
