@@ -74,11 +74,11 @@ debugging the site, you could try instead using something like this:
 
     Access-Control-Allow-Origin: http://alleged.org.uk
 
-The recommendation and RFC do not tell you what you shoukld do if you have
+The recommendation and RFC do not tell you what you should do if you have
 more than one origin; the usual convention is to repeat the header or to
 repeat values, separated by commas, but on the other hand the RFC suggests
 space-separated values, whereas on the third hand the W3C recommendation says
-this probably does not work. Instead your serve needs to echo back the
+this probably does not work. Instead your server needs to echo back the
 `Origin` header of the request (assuming it is on the access list). This makes
 it seem to me that this was not particularly well thought through, but what do
 I know?
@@ -96,8 +96,8 @@ presence of an `Origin` header:
         add_header 'Access-Control-Allow-Origin' "$http_origin";
     }
 
-The problem here is that the `if` directive in Nginx is confusingly not
-evaluated at thhe same time as the rest of the config and this is confusing to
+The problem here is that the `if` directive in Nginx is not
+evaluated at the same time as the rest of the config and this is confusing to
 get right. If you want to actually exploit the new features then the [Enable
 CORS][6] site has a [more elaborate sample config][5].
 
@@ -123,6 +123,15 @@ I say ‘something like this’ because I just stopped when I got it just about
 working, and it is possible there are some fields in this document that could
 be omitted to simplify it.
 
+
+## Conclusion
+
+Web fonts stopped working because a feature designed to protect against
+malicious JavaScript code was expanded to cover web fonts. The solution is
+relatively simple—assuming you control the relevant web server—but requires
+reading through a pile of complex, poorly organized, and contradictory
+documentation for a feature far removed from the center of expertise of either
+your web designer or your ops person. What a mess.
 
 
 
