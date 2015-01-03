@@ -1,0 +1,35 @@
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.dimens {
+    clear: both;
+    height: 20px;
+    position: relative;
+    margin: 0 auto;
+
+    >span {
+        position: absolute;
+        display: block;
+        font-size: 13px;
+        line-height: 20px;
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        text-align: center;
+
+        box-sizing: border-box;
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+
+        &:before {
+            content: "\2190";
+            float: left;
+        }
+        &:after {
+            content: "\2192";
+            float: right;
+        }
+    }
+}
