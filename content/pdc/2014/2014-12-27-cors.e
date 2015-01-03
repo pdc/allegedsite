@@ -2,7 +2,10 @@ Title: Why my Web Fonts Suddenly Stopped Working
 Date: 2014-12-27
 Topics: css webfont cors
 
-New versions of briwsers have cone out that extend the `Access-Control-Allow-Origin` header to control access to fonts as well as to JavaScript files. This means that on all my sites—personal and professional—that use webfonts, they have reverted to using already-available fonts, with ugly results.
+New versions of browsers have come out that extend the `Access-Control-Allow-Origin` header to control access to fonts as well as to JavaScript files. This means that on all my sites—personal and professional—that use webfonts, they have reverted to using default fonts, with ugly results.
+
+
+## Detection
 
 To check that this is what is causing your site to lose its custom fonts, activate the developer tools on your browser. On Chrome the console is full of messages like this:
 
