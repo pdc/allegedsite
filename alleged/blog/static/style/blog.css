@@ -49,7 +49,7 @@
 	src: local('☺'), url('yanonekaffeesatz/yanonekaffeesatz-light.woff') format('woff'), url('yanonekaffeesatz/yanonekaffeesatz-light.ttf') format('truetype'), url('yanonekaffeesatz/yanonekaffeesatz-light.svg#webfont') format('svg');
 }
 
-
+/*
 
 @font-face {
 	font-family: 'GentiumBookBasicRegular';
@@ -73,15 +73,13 @@
 	font-family: 'GentiumBookBasicBoldItalic';
 	src: url('gentium/GenBkBasBI.eot');
 	src: local('Gentium Book Basic'), local('GentiumBookBasic-BoldItalic'), url('gentium/GenBkBasBI.woff') format('woff'), url('gentium/GenBkBasBI.ttf') format('truetype'), url('gentium/GenBkBasBI.svg#GentiumBookBasic-BoldItalic') format('svg');
-}
-
-
+}*/
 
 body {
     margin: 0;
     padding: 0;
 
-    font-family: "GentiumBookBasicRegular", "Palatino", "Book Antiqua", serif;
+    font-family: 'Alegreya', "Palatino", "Book Antiqua", serif;
     line-height: 1.375; /* Default is 16px on 20px */
     background-color: #EEE;
 }
@@ -738,7 +736,9 @@ aside li li ul,
 
 code {
     font-size: 0.9167em;
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
 }
 
 pre {
@@ -752,12 +752,13 @@ pre {
     margin: 0.625em 10px 0.625em 30px;
     padding: 0.6em 9px 0.65em 9px;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Fira Sans', sans-serif;
+    /*font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
+    font-weight: 500;
+    line-height: 1.1;
     /* background-color: #BB0; */
     border: 1px solid #BB0;
     border-radius: 0.5em;
-    -moz-border-radius: 0.5em;
-    -webkit-border-radius: 0.5em;
 }
 
 div.image-left {

@@ -1,0 +1,84 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.dimens {
+  clear: both;
+  height: 20px;
+  position: relative;
+  margin: 0 auto;
+}
+.dimens > span {
+  position: absolute;
+  display: block;
+  font-size: 13px;
+  line-height: 20px;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+.dimens > span:before {
+  content: "\2190";
+  float: left;
+}
+.dimens > span:after {
+  content: "\2192";
+  float: right;
+}
+.number {
+  font-size: 160px;
+  line-height: 180px;
+  text-align: center;
+  height: 180px;
+}
+.number-1 {
+  font-family: "Alegreya";
+  font-weight: 900;
+  color: #cc0000;
+  background-color: #f5cca3;
+}
+.number-2 {
+  font-family: "Fanwood Text";
+  color: #cccc00;
+  background-color: #ccf5a3;
+}
+.number-3 {
+  font-family: "Diplomata";
+  color: #00cc00;
+  background-color: #a3f5cc;
+}
+.number-4 {
+  font-family: "Arbutus";
+  font-weight: 900;
+  color: #00cccc;
+  background-color: #a3ccf5;
+}
+.number-5 {
+  font-family: "Abril Fatface";
+  color: #0000cc;
+  background-color: #cca3f5;
+}
+.number-6 {
+  font-family: "Fira Sans";
+  font-weight: 500;
+  color: #cc00cc;
+  background-color: #f5a3cc;
+}
+.number-list {
+  margin: 0 auto;
+  padding: 0;
+  width: 630px;
+}
+.number-list > li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 33.33333333%;
+}
+.number {
+  margin: 15px;
+}
