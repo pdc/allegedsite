@@ -2,12 +2,18 @@
 <html lang="en-GB">
     <head>
         <meta charset=UTF-8>
-        <link href='http://fonts.googleapis.com/css?family=Fira+Sans:500|Fanwood+Text|Arbutus|Diplomata|Alegreya:900|Abril+Fatface&text=123456' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Fanwood+Text|Arbutus|Diplomata|Alegreya:900|Abril+Fatface&text=123456' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Fira+Sans:500' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="grid2.css" type="text/css">
     </head>
     <body>
+        <div class="intro">
+            <p>
+                Six cards laid out in a grid with a fixed total width of 600&thinsp;px and a gutter of 30&thinsp;px between them. This is an example for <a href="http://alleged.org.uk/pdc/2015/01/03.html">an article about responsive grids with Less CSS</a>.
+            </p>
+        </div>
         <div class="dimens" style="width: 630px">
-            <span style="left: 15px; width: 600px">600px</span>
+            <span style="left: 15px; width: 600px">600&thinsp;px</span>
         </div>
         <ul class="number-list">
             <li>
@@ -30,9 +36,10 @@
             </li>
         </ul>
         <div class="dimens" style="width: 630px">
-            <span style="left: 15px; width: 180px">180px</span>
-            <span style="left: 0; padding-top: 20px; width: 210px">210px</span>
-            <span style="left: 0; padding-top: 40px; width: 630px">630px</span>
+            <span style="left: 15px; width: 180px">(33% &minus; 30&thinsp;px)</span>
+            <span style="left: 225px; width: 180px">(33% &minus; 30&thinsp;px)</span>
+            <span style="left: 435px; width: 180px">(33% &minus; 30&thinsp;px)</span>
+            <span style="left: 0; padding-top: 20px; width: 630px">600&thinsp;px + 30&thinsp;px</span>
         </div>
     </body>
 </html>
