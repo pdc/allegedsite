@@ -65,40 +65,53 @@ html {
   color: #cc00cc;
   background-color: #f5a3cc;
 }
-.dimens {
-  clear: both;
-  height: 20px;
-  position: relative;
-  margin: 0 auto;
-}
-.dimens > span {
-  position: absolute;
-  display: block;
-  font-size: 13px;
-  line-height: 20px;
-  font-family: "Fira Sans", sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-}
-.dimens > span:before {
-  content: "\2190";
-  float: left;
-}
-.dimens > span:after {
-  content: "\2192";
-  float: right;
-}
 .card-list {
-  margin: 15px auto;
+  margin: 0 auto;
   padding: 0;
-  width: 600px;
+}
+.card-list:after {
+  content: "";
+  display: block;
+  clear: left;
+  height: 0;
+  overflow: hidden;
 }
 .card-list > li {
   display: block;
   float: left;
   margin: 0;
   padding: 0;
-  width: 33.33333333%;
+}
+@media (max-width: 379px) {
+  .card-list {
+    max-width: 230px;
+  }
+  .card-list > li {
+    width: 100%;
+  }
+}
+@media (min-width: 380px) and (max-width: 569px) {
+  .card-list {
+    max-width: 460px;
+  }
+  .card-list > li {
+    width: 50%;
+  }
+  .card-list > li:nth-of-type(2n + 1) {
+    clear: left;
+  }
+}
+@media (min-width: 570px) {
+  .card-list {
+    max-width: 690px;
+  }
+  .card-list > li {
+    width: 33.33333333%;
+  }
+  .card-list > li:nth-of-type(3n + 1) {
+    clear: left;
+  }
+}
+.card {
+  margin: 15px;
 }

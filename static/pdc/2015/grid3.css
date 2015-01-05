@@ -12,30 +12,19 @@ html {
   font-family: "Fira Sans", sans-serif;
   line-height: 1.25em;
 }
-.dimens {
-  clear: both;
-  height: 20px;
-  position: relative;
+.credits {
+  min-width: 250px;
+  max-width: 630px;
+  margin: 20px 15px;
   margin: 0 auto;
 }
-.dimens > span {
-  position: absolute;
-  display: block;
-  font-size: 13px;
-  line-height: 20px;
+.credits p {
+  margin: 1.25em 15px;
   font-family: "Fira Sans", sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
+  line-height: 1.25em;
 }
-.dimens > span:before {
-  content: "\2190";
-  float: left;
-}
-.dimens > span:after {
-  content: "\2192";
-  float: right;
+.card p {
+  font-family: "Fanwood Text", serif;
 }
 .number {
   font-size: 160px;
@@ -76,40 +65,40 @@ html {
   color: #cc00cc;
   background-color: #f5a3cc;
 }
-.number-list {
+.card-list {
   margin: 0 auto;
   padding: 0;
 }
-.number-list > li {
+.card-list > li {
   display: block;
   float: left;
   margin: 0;
   padding: 0;
 }
 @media (max-width: 379px) {
-  .number-list {
+  .card-list {
     max-width: 230px;
   }
-  .number-list > li {
+  .card-list > li {
     width: 100%;
   }
 }
 @media (min-width: 380px) and (max-width: 569px) {
-  .number-list {
+  .card-list {
     max-width: 460px;
   }
-  .number-list > li {
+  .card-list > li {
     width: 50%;
   }
 }
 @media (min-width: 570px) {
-  .number-list {
+  .card-list {
     max-width: 690px;
   }
-  .number-list > li {
+  .card-list > li {
     width: 33.33333333%;
   }
 }
-.number {
+.card {
   margin: 15px;
 }

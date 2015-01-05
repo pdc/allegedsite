@@ -2,8 +2,9 @@
 
 # List of top-level LESS files.
 topfiles = grid1.less \
-	grid2.less\
-	grid3.less
+	grid2.less \
+	grid3.less \
+	grid5.less
 
 
 LESSC = lessc

@@ -1,6 +1,6 @@
 Title: Responsive Grids of Cards with Less CSS
 Date: 2015-01-03
-Topics: css
+Topics: css less
 
 One of the problems with CSS is that you can do most layouts in many different
 ways, because most layouts only work by accident.  The trick is to find a way
@@ -34,37 +34,26 @@ The HTML can be anything you like but it seems to me the semantic approach is
 to use `ul` and `li` elements, since the grid is really just a list of items
 laid out in a particular way:
 
-    <ul class="number-list">
+    <ul class="card-list">
         <li>
-            <div class="number">1</div>
+            <div class="card">…</div>
         </li>
         <li>
-            <div class="number">2</div>
+            <div class="card">…</div>
         </li>
-        <li>
-            <div class="number">3</div>
-        </li>
-        <li>
-            <div class="number">4</div>
-        </li>
-        <li>
-            <div class="number">5</div>
-        </li>
-        <li>
-            <div class="number">6</div>
-        </li>
+        …
     </ul>
 
 The CSS sets them all to float left and be 1/3 the width of the available
 space. When using Less you can make this relationship explicit by using nested
 definitions and the `percentage` function:
 
-    .number-list {
+    .card-list {
         margin: 0 auto;
         padding: 0;
         width: 600px;
 
-        >li {
+        > li {
             display: block;
             float: left;
             margin: 0;
@@ -86,7 +75,7 @@ visible width of the grid:
 
     @gap: 30px;
 
-    .number-list {
+    .card-list {
         …
         width: (600px + @gap);
 
@@ -95,7 +84,7 @@ visible width of the grid:
         }
     }
 
-    .number {
+    .card {
         margin: (@gap / 2);
     }
 
@@ -134,9 +123,9 @@ maximum number of cards per row should be 3 (since our six cards will always
 make a grid that way).
 
 With Less we can embed the media-queries within the description of
-`.number-list` so that the entire story of how the it changes is in one place:
+`.card-list` so that the entire story of how the it changes is in one place:
 
-    .number-list {
+    .card-list {
         margin: 0 auto;
         padding: 0;
 
