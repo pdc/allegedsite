@@ -8,13 +8,11 @@ Created by Damian Cugley on 2010-04-17.
 """
 
 import os
-from email.parser import HeaderParser
 import re
-from datetime import date, datetime
+from datetime import datetime
 from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
-#from xml.etree.ElementTree import fromstring, parse, tostring
 from lxml.etree import fromstring, tostring
 import htmlentitydefs
 
@@ -29,6 +27,8 @@ date_re = re.compile('^(199[0-9]|20[0-9][0-9])-?([0-1][0-9])-?([0-3][0-9])')
 MUNGE_TRANSITION_DATE = datetime(2003, 6, 1, 12, 0)
 
 entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
+
+
 def _unentity_sub(m):
     name = m.group(0)[1:-1]
     code = htmlentitydefs.name2codepoint.get(name)
@@ -36,13 +36,18 @@ def _unentity_sub(m):
         return '&%s;' % name
     return '&#x%X;' % code
 
+
 def unentity(s):
     return entity_re.sub(_unentity_sub, s)
 
+
 numeric_char_ref_re = re.compile(r'\&#([0-9]+);')
+
+
 def _numeric_char_ref_sub(m):
     n = int(m.group(1), 10)
     return unichr(n)
+
 
 def expand_numeric_character_references(s):
     return numeric_char_ref_re.sub(_numeric_char_ref_sub, s)
@@ -63,12 +68,12 @@ class HrefsTreeprocessor(Treeprocessor):
                 e.set('src', munge_url(self.image_url, e.get('src')))
             else:
                 self.run(e)
-        return root
 
 absolute_url_re = re.compile('^[a-z+-.]+:|^/')
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 img_or_embed_re = re.compile(r'(<(?:img|embed|script)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 image_file_name_re = re.compile(r'.*\.(?:jpg|jpeg|gif|png)$')
+
 
 def munge_url(url, more_url):
     """Generate a URL that will work in the published page.
@@ -88,6 +93,7 @@ def munge_url(url, more_url):
         more_url = more_url[3:]
     return url + more_url
 
+
 def make_link_sub(usual_url, image_url):
     def sub(m):
         original_url = m.group(2)[1:-1]
@@ -95,10 +101,12 @@ def make_link_sub(usual_url, image_url):
         return '%s"%s"%s' % (m.group(1), new_url, m.group(3))
     return sub
 
+
 def munge_html(html, blog_url, image_url):
     html = a_re.sub(make_link_sub(blog_url, image_url), html)
     html = img_or_embed_re.sub(make_link_sub(image_url, image_url), html)
     return html
+
 
 class HrefsPostprocessor(Postprocessor):
     def __init__(self, markdown, blog_url, image_url, *args, **kwargs):
@@ -109,12 +117,18 @@ class HrefsPostprocessor(Postprocessor):
 
     def run(self, text):
         for i in range(self.markdown.htmlStash.html_counter):
-            html, safe  = self.markdown.htmlStash.rawHtmlBlocks[i]
+            html, safe = self.markdown.htmlStash.rawHtmlBlocks[i]
             html = munge_html(html, self.blog_url, self.image_url)
             self.markdown.htmlStash.rawHtmlBlocks[i] = (html, safe)
         return text
 
+
 class HrefsExtension(Extension):
+    config = {
+        'blog_url': ['.', 'base URL of blog'],
+        'image_url': ['.', 'Base URL for images'],
+    }
+
     def extendMarkdown(self, md, md_globals):
         md.treeprocessors.add('hrefs', HrefsTreeprocessor(
             self.getConfig('blog_url'),
@@ -124,11 +138,14 @@ class HrefsExtension(Extension):
             self.getConfig('blog_url'),
             self.getConfig('image_url')), '<raw_html')
 
+
 class Image(object):
     def __init__(self, src):
         self.src = src
 
+
 body_re = re.compile(r'<body[^>]*>(.*)</body>', re.DOTALL)
+
 
 class Entry(object):
     def __init__(self, root_dir_path, dir_path, file_name, blog_url, image_url):
@@ -137,7 +154,8 @@ class Entry(object):
         if m:
             y, mon, d = int(m.group(1), 10), int(m.group(2), 10), int(m.group(3), 10)
             self.published = datetime(y, mon, d, 12, 0, 0)
-            self.href = ('%s%d/%02d/%02d.html' % (blog_url, y, mon, d)
+            self.href = (
+                '%s%d/%02d/%02d.html' % (blog_url, y, mon, d)
                 if self.published >= MUNGE_TRANSITION_DATE
                 else '%s%d/%02d.html#e%d%02d%02d' % (blog_url, y, mon, y, mon, d))
             self.slug = file_name[11:-2]
@@ -182,7 +200,7 @@ class Entry(object):
             elif e.tag == 'body':
                 body = tostring(e)
                 if body.startswith('<?xml '):
-                    body = body[39:] # Remove unwanted XML prolog.
+                    body = body[39:]  # Remove unwanted XML prolog.
                 body = body_re.sub('\\1', body)
                 body = body.strip()
                 body = expand_numeric_character_references(body)
@@ -193,12 +211,14 @@ class Entry(object):
                 print e.tag, 'unknown'
 
     def load_markdown(self, text):
-        """New Markdown-based format, with RFC-style headers preceding the body."""
-        href_extension = HrefsExtension({
-            'blog_url': [self.munged_blog_url, 'WTF'],
-            'image_url': [self.munged_image_url, 'OMG'],
-        })
-        converter = Markdown(extensions=['meta', href_extension])
+        """Load entry in the new Markdown-based format
+
+        This has RFC-style headers preceding the body.
+        """
+        href_extension = HrefsExtension(
+            blog_url=self.munged_blog_url,
+            image_url=self.munged_image_url)
+        converter = Markdown(extensions=['markdown.extensions.meta', href_extension])
         self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
         self._title = ', '.join(converter.Meta['title'])
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
@@ -241,6 +261,7 @@ class Entry(object):
             self.load()
         return self._image
 
+
 def get_entries(dir_path, blog_url, image_url, reverse=False):
     entries = EntryList(entries_iter(dir_path, blog_url, image_url))
     entries.sort(key=lambda entry: entry.published, reverse=reverse)
@@ -255,11 +276,13 @@ def get_entries(dir_path, blog_url, image_url, reverse=False):
         prev.next = None
     return entries
 
+
 def entries_iter(dir_path, blog_url, image_url):
     for subdir_path, subdirs, files in os.walk(dir_path):
         for file_name in files:
             if file_name.endswith('.e'):
                 yield Entry(dir_path, subdir_path, file_name, blog_url, image_url)
+
 
 def get_entry(entries, year, month, day):
     entries_by_year = entries.get_by_year()
@@ -334,15 +357,18 @@ class EntryList(list):
                         pass
                 else:
                     available_tag_counts[tag] = available_tag_counts.get(tag, 0) + 1
-        new_list.available_tag_infos = [TagInfo(tag, count)
-                for (tag, count) in sorted(available_tag_counts.items())]
+        new_list.available_tag_infos = [
+            TagInfo(tag, count)
+            for (tag, count) in sorted(available_tag_counts.items())]
         return new_list
+
 
 def get_toc(entries):
     return EntryList(entries)
 
 
 yet_another_re = re.compile(r'<([^<>]+\S)\s*/>')
+
 
 class Article(object):
     """In older entries, the entry is a summary and links to a named article.
@@ -379,6 +405,7 @@ class Article(object):
         self.body = munge_html(self.body, '%s%d/' % (blog_url, year), '%s%d/' % (image_url, year))
 
         self.href = '%s%d/%s.html' % (blog_url, year, name)
+
 
 def get_named_article(dir_path, blog_url, image_url, year, name):
     return Article(dir_path, blog_url, image_url, year, name)
