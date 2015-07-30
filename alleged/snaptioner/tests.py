@@ -10,6 +10,7 @@ from alleged.snaptioner.albums import get_albums, get_album
 
 ALBUM_DIR = 'albums'
 
+
 class LibraryTestCase(TestCase):
     def setUp(self):
         self.albums = get_albums(ALBUM_DIR)
@@ -41,13 +42,18 @@ class AlbumTestCase(TestCase):
         self.assertEqual('01hairshop.jpg', self.album[0].file_name)
 
     def test_desc(self):
-        self.assertEqual('Mardou with diminutive Antionette, the ice-hearted heroine of her comic Spiro.', self.album[1].description)
+        self.assertEqual(
+            'Mardou with diminutive Antionette, the ice-hearted heroine of her comic Spiro.',
+            self.album[1].description)
 
     def test_desc_formatted(self):
-        self.assertHTMLEqual('<p>Mardou with diminutive Antionette, the ice-hearted heroine of her comic Spiro.</p>', self.album[1].description_formatted)
+        self.assertHTMLEqual(
+            '<p>Mardou with diminutive Antionette, the ice-hearted heroine of her comic Spiro.</p>',
+            self.album[1].description_formatted)
 
     def test_people(self):
         self.assertEqual(['Craig Conlan', 'Jenni Scott'], self.album[3].people)
+
 
 class AviemoreTestCase(TestCase):
     def setUp(self):
@@ -72,6 +78,7 @@ class AviemoreTestCase(TestCase):
         self.assertEqual(self.album[1], self.album[0].next)
         self.assertEqual(self.album[2], self.album[1].next)
         self.assertEqual(None, self.album[-1].next)
+
 
 class C98TestCase(TestCase):
     def setUp(self):

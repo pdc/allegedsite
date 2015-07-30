@@ -5,10 +5,12 @@ from django.conf.urls import url
 from django.conf import settings
 import alleged.snaptioner.views
 
+
 essential_args = {
     'library_dir': settings.SNAPTIONER_LIBRARY_DIR,
     'library_url': settings.SNAPTIONER_LIBRARY_URL,
 }
+
 
 urlpatterns = [
     url(r'^$',

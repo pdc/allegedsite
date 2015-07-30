@@ -9,7 +9,7 @@ output.write(input.read())
 input.close()
 output.close()
 
-im = Image.open('shadow.png');
+im = Image.open('shadow.png')
 print im.size
 w, h = im.size
 im.save('shadow.gif')
@@ -30,5 +30,3 @@ im2.save('shadowtopleft.png')
 im2 = Image.new('RGB', (24, 200), (255, 255, 255))
 im2.paste(im.crop((w - 24, 0, w, 200)), (0, 0, 24, 200))
 im2.save('shadowtopright.png')
-
-

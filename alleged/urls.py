@@ -18,10 +18,12 @@ blog_args = {
     'image_url': settings.STATIC_URL + 'pdc/',
 }
 
+
 def updated_dict(d, *args, **kwargs):
     result = dict(d)
     result.update(*args, **kwargs)
     return result
+
 
 snaptioner_args = {
     'library_dir': settings.SNAPTIONER_LIBRARY_DIR,
@@ -29,7 +31,8 @@ snaptioner_args = {
 }
 urlpatterns = [
     url(r'^$', alleged.frontpage.views.front_page, updated_dict(blog_args, is_svg_wanted=True), 'front_page'),
-    url(r'^ancient-browser-support$', alleged.frontpage.views.front_page, updated_dict(blog_args, is_svg_wanted=False), 'front_page_sans_svg'),
+    url(r'^ancient-browser-support$', alleged.frontpage.views.front_page, updated_dict(blog_args, is_svg_wanted=False),
+        'front_page_sans_svg'),
 
     url(r'^pdc/$', alleged.whyhello.views.why_hello_im, blog_args, 'why_hello_im'),
 

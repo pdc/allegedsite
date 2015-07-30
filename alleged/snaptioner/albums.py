@@ -6,7 +6,6 @@ Created by Damian Cugley on 2010-03-31.
 © 2010, 2014 Damian Cugley. All rights reserved.
 """
 
-import sys
 import os
 import csv
 from collections import Sequence
@@ -79,7 +78,7 @@ class Album(Sequence):
                     parts = line.split(':')
                     image_name = parts.pop(0)
                     description = ':'.join(parts[:-1])
-                    image =  self.images_by_name.get(image_name)
+                    image = self.images_by_name.get(image_name)
                     if image:
                         image.description = description
 
@@ -89,7 +88,7 @@ class Album(Sequence):
                     parts = line.split(':')
                     image_name = parts.pop(0)
                     person = ' '.join(parts[:-1])
-                    image =  self.images_by_name.get(image_name)
+                    image = self.images_by_name.get(image_name)
                     if image:
                         image.people.append(person)
 
@@ -148,6 +147,8 @@ class Library(object):
 
 
 _libraries = {}
+
+
 def get_albums(library_dir):
     global _libraries
     library = _libraries.get(library_dir)
@@ -156,6 +157,6 @@ def get_albums(library_dir):
         _libraries[library_dir] = library
     return library.albums
 
+
 def get_album(library_dir, name):
     return get_albums(library_dir)[name]
-

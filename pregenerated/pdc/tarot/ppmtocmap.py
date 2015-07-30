@@ -1,25 +1,28 @@
 #!/usr/bin/python
 
-import sys, os.path, cStringIO
+import cStringIO
+import os
+import sys
 
 """Adobe Illustrator and Sketch differ in how they translate CMYK to RGB.
 This script takes two raster images of the same SVG file
 which differ only in CMYK model, and attempts to generate a
 simple map from RGB triplets in the 'bad' colours to the 'good' colours."""
 
+
 class QuickAndDirtyImage:
     """Represents a PPM file. It must be in raw mode!"""
-    def __init__(self, fileName):
-        self.load(fileName)
+    def __init__(self, file_name):
+        self.load(file_name)
 
-    def load(self, fileName):
+    def load(self, file_name):
         """Read data from specified file."""
-        print fileName + ':'
-        input = open(fileName, 'rb')
+        print file_name + ':'
+        input = open(file_name, 'rb')
 
         magic = input.read(2)
-        if magic == 'P6' or magic == 'P3':            
-            self.data = input.read()        # everything except the P6            
+        if magic == 'P6' or magic == 'P3':
+            self.data = input.read()        # everything except the P6
             self.pos = 1                    # skip 1st whitespace character
             self.width = self._nextNum()
             self.height = self._nextNum()
@@ -59,7 +62,7 @@ class QuickAndDirtyImage:
                 while d[p] != '\n' and p < l:
                     p = p + 1
             p = p + 1
-            
+
         beg = p
         while d[p] in '0123456789' and p < l:
             p = p + 1
@@ -80,41 +83,45 @@ class QuickAndDirtyImage:
 
         return tuple(map(ord, self.data[off:off + 3]))
 
-def makeCmap(bad, good, cmap={}):
+
+def make_cmap(bad, good, cmap={}):
     """Generate a cmap dictionary from 2 images, one bad and one good."""
     xf = float(good.width) / bad.width
     yf = float(good.height) / bad.height
     for y in xrange(0, bad.height):
-        # if y % 50 == 0 : print y
+        # if y % 50 == 0: print y
         ygood = int(y * yf)
         for x in xrange(0, bad.width):
             xgood = int(x * xf)
             b = bad.pixel(x, y)
             g = good.pixel(xgood, ygood)
-            if cmap.has_key(b):
+            if b in cmap:
                 cmap[b][g] = cmap[b].get(g, 0) + 1
             else:
-                cmap[b] = {g : 1}
+                cmap[b] = {g: 1}
     print 'Generated CMAP with', len(cmap), 'entries.'
     return cmap
 
-def writeCmap(map, output):
+
+def write_cmap(map, output):
     """Write the map as a CMAP file --
     one line per entry, with the bad and good colours as hexadecimal rrggbb."""
     items = cmap.items()
     items.sort()
     for bad, dict in items:
         for good, cnt in dict.items():
-            output.write('%02x%02x%02x %02X%02X%02X %d\n' \
+            output.write('%02x%02x%02x %02X%02X%02X %d\n'
                          % (bad + good + (cnt,)))
 
-def rrggbbToRgb(rrggbb):
+
+def rrggbb_to_rgb(rrggbb):
     r = int(rrggbb[0:2], 16)
     g = int(rrggbb[2:4], 16)
     b = int(rrggbb[4:6], 16)
     return r, g, b
 
-def readCmap(input, map):
+
+def read_cmap(input, map):
     """Read in a CMAP file."""
     for line in input.readlines():
         pos = line.find('#')
@@ -124,38 +131,39 @@ def readCmap(input, map):
         if line:
             xs = line.split()
             bad, good, cnt = xs
-            bad = rrggbbToRgb(bad)
-            good = rrggbbToRgb(good)
+            bad = rrggbb_to_rgb(bad)
+            good = rrggbb_to_rgb(good)
             cnt = int(cnt)
-            if not map.has_key(bad):
-                map[bad] = { good : cnt }
-            elif not map[bad].has_key(good):
+            if bad not in map:
+                map[bad] = {good: cnt}
+            elif good not in map[bad]:
                 map[bad][good] = cnt
             else:
                 map[bad][good] += cnt
+
 
 if __name__ == '__main__':
     # dir = 'F:\\tarot'
     dir = '.'
 
-    cmap = { }
+    cmap = {}
     cmapName = os.path.join(dir, 'tmp.cmap')
     if os.path.exists(cmapName):
         input = open(cmapName, 'rt')
-        readCmap(input, cmap)
+        read_cmap(input, cmap)
         input.close()
         print 'Read', len(cmap), 'CMAP entries from', cmapName
-    
+
     for arg in sys.argv[1:]:
         b = arg
         if arg[-4:] == '.ppm':
             b = arg[:-4]
         bad = QuickAndDirtyImage(os.path.join(dir, b + '.sk.ppm'))
         good = QuickAndDirtyImage(os.path.join(dir, b + '.ppm'))
-        cmap = makeCmap(bad, good, cmap)
-        
+        cmap = make_cmap(bad, good, cmap)
+
     cmapName = os.path.join(dir, 'tmp.cmap')
     output = open(cmapName, 'wt')
-    writeCmap(cmap, output)
+    write_cmap(cmap, output)
     output.close()
     print 'Wrote CMAP to', cmapName
