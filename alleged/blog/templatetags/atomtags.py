@@ -3,6 +3,7 @@ from alleged.blog.entries import unentity
 
 register = template.Library()
 
+
 @register.filter
 def rfc3339(value):
     """Format the value as an RFC 3339 date-time value.

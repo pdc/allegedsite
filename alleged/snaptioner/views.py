@@ -1,12 +1,9 @@
-# Create your views here.
-
-import os
-from cStringIO import StringIO
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from alleged.snaptioner.albums import get_albums
+
 
 def render_with(template_name):
     def decorator(func):
@@ -18,11 +15,13 @@ def render_with(template_name):
         return decorated_func
     return decorator
 
+
 def get_albums_with_hrefs(library_dir, library_url):
     albums = get_albums(library_dir)
     for album in albums.values():
         album.href = reverse('album_detail', kwargs={'album_name': album.name})
     return albums
+
 
 def get_album_with_srcs(library_url, albums, album_name):
     album = albums[album_name]
@@ -37,6 +36,7 @@ def get_album_with_srcs(library_url, albums, album_name):
             image.small_thumbnail_src = '%s/thumbs/%s-s110x140.jpeg' % (image.src[:q], image.src[q + 1:p])
     return album
 
+
 @render_with('snaptioner/album_list.html')
 def album_list(request, library_dir, library_url):
     albums = get_albums_with_hrefs(library_dir, library_url)
@@ -46,6 +46,7 @@ def album_list(request, library_dir, library_url):
         'albums': sorted(albums.values(), key=lambda album: album.name),
     }
 
+
 @render_with('snaptioner/album_detail.html')
 def album_detail(request, library_dir, library_url, album_name):
     albums = get_albums_with_hrefs(library_dir, library_url)
@@ -54,6 +55,7 @@ def album_detail(request, library_dir, library_url, album_name):
         'albums': sorted(albums.values(), key=lambda album: album.name),
         'album': album,
     }
+
 
 @render_with('snaptioner/image_detail.html')
 def image_detail(request, library_dir, library_url, album_name, image_name):
@@ -70,19 +72,3 @@ def image_detail(request, library_dir, library_url, album_name, image_name):
         'album': album,
         'image': image,
     }
-
-##def image_thumbnail(request, library_dir, library_url, album_name, image_name, max_width, max_height):
-##    albums = get_albums_with_hrefs(library_dir, library_url)
-##    album = albums[album_name]
-##    for image in album:
-##        if image.name == image_name:
-##            break
-##    else:
-##        raise Http404()
-##    im = Image.open(os.path.join(library_dir, album_name, image.file_name))
-##    max_width = int(max_width)
-##    max_height = int(max_height)
-##    im.thumbnail((max_height, max_width), Image.ANTIALIAS)
-##    io = StringIO()
-##    im.save(io, 'PNG')
-##    return HttpResponse(io.getvalue(), mimetype='image/png')

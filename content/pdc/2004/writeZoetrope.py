@@ -14,7 +14,7 @@ PREAMBLE = """<svg xmlns="http://www.w3.org/2000/svg"
     <title>Zoetrope blank for CAPTION 2004</title>
     <rect x="0" y="0" width="%(width).1f" height="%(height).1f"
             fill="#FFF" stroke="none"/>
-""" % { 'width' : PAGE_WIDTH, 'height' : PAGE_HEIGHT }
+""" % {'width': PAGE_WIDTH, 'height': PAGE_HEIGHT}
 
 POSTAMBLE = """
 </svg>
@@ -30,11 +30,13 @@ SLOT_HEIGHT = 0.25 * HEIGHT
 NTABS = 2 * DIVISIONS
 TAB_HEIGHT = 5
 
+
 def writeFile(output):
     output.write(PREAMBLE)
     writeDisc(output)
     writeRect(output)
     output.write(POSTAMBLE)
+
 
 def writeDisc(output):
     """Write a disc of the right size."""
@@ -46,6 +48,7 @@ def writeDisc(output):
     output.write('    <circle cx="%.2f" cy="%.2f" r="%.2f"\n'
                  '            stroke="#000" stroke-width="0.15" fill="#FFF"/>\n'
                  % (x, y, 1))
+
 
 def writeRect(output):
     x = 0.5 * (PAGE_WIDTH - WIDTH)
@@ -60,15 +63,14 @@ def writeRect(output):
     output.write('            L%.2f,%.2f z"\n'
                  '            stroke="#000" stroke-width="0.15" fill="#FFF"/>\n'
                  % (x, y + HEIGHT))
-        
+
     for i in range(DIVISIONS + 1):
         rx = x + (DIVISIONS + 1 - i) * WIDTH / (DIVISIONS + 1) - SLOT_WIDTH
         ry = y + 0.5 * SLOT_HEIGHT
-        output.write('    <rect x="%.2f" y="%.2f" width="%.2f" height="%.2f"\n'
-                 '            stroke="#000" stroke-width="0.15" fill="#FFF"/>\n'
-                 % (rx, ry, SLOT_WIDTH, SLOT_HEIGHT))
-
-    
+        output.write(
+            '    <rect x="%.2f" y="%.2f" width="%.2f" height="%.2f"\n'
+            '            stroke="#000" stroke-width="0.15" fill="#FFF"/>\n'
+            % (rx, ry, SLOT_WIDTH, SLOT_HEIGHT))
 
 
 writeFile(sys.stdout)

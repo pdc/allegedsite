@@ -2,6 +2,7 @@
 
 import os
 
+
 def expand_path(partial_path):
     return os.path.join(os.path.dirname(__file__), partial_path)
 

@@ -1,19 +1,17 @@
 # Encoding: UTF-8
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
-
-Replace these with more appropriate tests for your application.
-"""
-
-from django.test import TestCase
-from alleged.blog.entries import *
-from alleged.fromatom import *
 
 import os
-from datetime import datetime, date, timedelta
+from datetime import datetime
+
+from django.test import TestCase
+from xml.etree import ElementTree as ET  # noqa
+
+from alleged.blog.entries import get_entries, get_entry, get_toc, get_named_article
+from alleged.fromatom import nested_dicts_from_atom, summary_from_content
+
 
 BASE_DIR = 'test_blog'
+
 
 class BlogTestMixin(object):
     def prepare_test_blog_dir(self):
@@ -26,6 +24,7 @@ class BlogTestMixin(object):
             for subdir, subdirs, files in os.walk(BASE_DIR):
                 for file_name in files:
                     os.unlink(os.path.join(subdir, file_name))
+
 
 class SimpleTest(TestCase, BlogTestMixin):
     def setUp(self):
@@ -47,7 +46,9 @@ class SimpleTest(TestCase, BlogTestMixin):
 
     def test_freskish_markdown_extension(self):
         with open(os.path.join(BASE_DIR, '2010/2010-05-08-zum.e'), 'wt') as output:
-            output.write(u'Title: FOO\nTopics: alpha beta\n\nBAR\n\n    Hullo\n    ≈\n    World\n\nBAZ\n'.encode('UTF-8'))
+            output.write(
+                u'Title: FOO\nTopics: alpha beta\n\nBAR\n\n'
+                u'    Hullo\n    ≈\n    World\n\nBAZ\n'.encode('UTF-8'))
         entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
         e = entries[0]
         self.assertEqual(u'<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
@@ -171,7 +172,8 @@ class SimpleTest(TestCase, BlogTestMixin):
     def test_with_namepsaces_supplied(self):
         with open(os.path.join(BASE_DIR, '2003/20031228.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
-<entry date="20031228" icon="picky-80x80.png" xmlns="http://www.alleged.org.uk/2003/um" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<entry date="20031228" icon="picky-80x80.png"
+        xmlns="http://www.alleged.org.uk/2003/um" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <h>Dates Dates Dates</h>
   <body>
     <p>
@@ -310,8 +312,6 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
         self.assertEqual(expected, e.body)
         self.assertEqual(set(['graphics', 'percy']), e.tags)
 
-
-
     def test_href_not_munging_external_link(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello [world](http://google.com/)\n')
@@ -324,21 +324,27 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
             output.write('Title: Links!\n\nHello ![world](x.jpg)\n')
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
-        self.assertEqual('<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>', entry.body)
+        self.assertEqual(
+            '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>',
+            entry.body)
 
     def test_src_munging_img(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <img alt="world" src="x.jpg" />\n')
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
-        self.assertEqual('<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>', entry.body)
+        self.assertEqual(
+            '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>',
+            entry.body)
 
     def test_src_munging_embed(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <embed src="zergukk.svg" type="image/svg" />\n')
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
-        self.assertEqual('<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>', entry.body)
+        self.assertEqual(
+            '<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>',
+            entry.body)
 
     def test_src_munging_embed_unsvgz(self):
         """When including a SVG file iwth the old-style .svgz ending, change it to .svg."""
@@ -346,7 +352,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
             output.write('Title: Links!\n\nHello <embed src="zergukk.svgz" type="image/svg" />\n')
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
-        self.assertEqual('<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>', entry.body)
+        self.assertEqual(
+            '<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>',
+            entry.body)
 
     def test_find_by_tag(self):
         """Create a bunch of entries and show that you get the correct ones in the filtered list."""
@@ -396,8 +404,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
         self.assertEqual([], ae_entries.available_tag_infos)
 
         # List of selected tags is always alphabetically ordered.
-        self.assertEqual(['a', 'e'], [info.tag
-                for info in toc.filter(tag='e').filter(tag='a').selected_tag_infos])
+        self.assertEqual(['a', 'e'], [
+            info.tag
+            for info in toc.filter(tag='e').filter(tag='a').selected_tag_infos])
 
     def test_entry_image_yes(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-17-testa.e'), 'wt') as output:
@@ -474,7 +483,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
       </ul>
     </div>
     <div class="links">
-      <p><a title="Link to an XML summary in RSS 2.0 format" href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif" alt="XML" width="36" height="14" border="0" /></a></p>
+      <p><a title="Link to an XML summary in RSS 2.0 format"
+        href="../rss091.xml" type="text/xml"><img src="../../img/xml.gif"
+        alt="XML" width="36" height="14" border="0" /></a></p>
     </div>
   </body>
 </html>""")
@@ -499,7 +510,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
     <div id="body">
       <h1>My recently deceased bike</h1>
       <p class="initial">
-        <a href="19980529g.jpg"><img src="19980529g-stamp.jpg" align="right" alt="[Link to bike photo&mdash;22K JPEG]" width="86" height="64" border="0" /></a>
+        <a href="19980529g.jpg"><img src="19980529g-stamp.jpg" align="right"
+            alt="[Link to bike photo&mdash;22K JPEG]" width="86" height="64" border="0" /></a>
 
         This is my new bike (at least, new in Summer 1998).
       </p>
@@ -508,12 +520,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
 </html>""")
         article = get_named_article(BASE_DIR, '/blog/', '/im/', 1998, 'bike')
         expected = u"""<p class="initial">
-        <a href="/im/1998/19980529g.jpg"><img src="/im/1998/19980529g-stamp.jpg" align="right" alt="[Link to bike photo\u201422K JPEG]" width="86" height="64" border="0" /></a>
+        <a href="/im/1998/19980529g.jpg"><img src="/im/1998/19980529g-stamp.jpg"
+            align="right" alt="[Link to bike photo\u201422K JPEG]" width="86" height="64" border="0" /></a>
 
         This is my new bike (at least, new in Summer 1998).
       </p>"""
         actual = article.body
-        self.assertEqualStrings(expected, actual)
+        self.assertHTMLEqual(expected, actual)
 
     def assertEqualStrings(self, expected, actual):
         if expected == actual:
@@ -522,8 +535,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
             beg = i - 5 if i > 5 else 0
             end = i + 15
             indent = ' ' * (i - beg + 2)
-            self.assertEqual(expected[i], actual[i], 'Strings differ at position %d\n %r\n %r\n %s^'
-                % (i, expected[beg:end], actual[beg:end], indent))
+            self.assertEqual(
+                expected[i],
+                actual[i],
+                ('Strings differ at position %d\n %r\n %r\n %s^'
+                    % (i, expected[beg:end], actual[beg:end], indent)))
+
 
 class TestThisMonthList(TestCase, BlogTestMixin):
     """Create a bunch of entries and show that you get the correct ones in the this_month list."""
@@ -571,6 +588,8 @@ class TestThisMonthList(TestCase, BlogTestMixin):
 
 
 FIXTURE_DIR = os.path.join(os.path.dirname(__file__), 'test_data')
+
+
 def fixture_data(file_name, from_encoding=None):
     """Find a test file and return its contents.
 
@@ -586,6 +605,7 @@ def fixture_data(file_name, from_encoding=None):
     if from_encoding:
         data = data.decode(from_encoding)
     return data
+
 
 class TestJsonfromAtom(TestCase):
     def test_from_flickr(self):
@@ -629,7 +649,12 @@ class TestJsonfromAtom(TestCase):
                     'published': '2010-11-21T18:08:48Z',
                     'href': 'http://damiancugley.livejournal.com/105302.html',
                     'title': 'Sister in Storage',
-                    'content': u'Mum was visiting from Malta\u2014her current home, since that is where her yacht is\u2014and so naturally Saturday found her and my brother and me down at Big Yellow Self-Storage to collect my sister Rachel’s gear from there for transfer to the Big Yellow in Guildford, where she lives. The store is all bare metal and bright yellow paint, so I took the opportunity to take some photos of Mike and Rachel in this odd environment.',
+                    'content': u'Mum was visiting from Malta\u2014her current home, '
+                            u'since that is where her yacht is\u2014and so naturally Saturday found her '
+                            u'and my brother and me down at Big Yellow Self-Storage to collect my sister '
+                            u'Rachel’s gear from there for transfer to the Big Yellow in Guildford, where '
+                            u'she lives. The store is all bare metal and bright yellow paint, so I took the '
+                            u'opportunity to take some photos of Mike and Rachel in this odd environment.',
                 },
                 {
                     'title': 'Family time'
@@ -650,7 +675,11 @@ class TestJsonfromAtom(TestCase):
                     'published': '2010-10-31T11:45:25.000Z',
                     'href': 'http://www.youtube.com/watch?v=49cy7-hTAb4&feature=youtube_gdata',
                     'title': 'Minehouse 8: Before-Hallowe\'en Tour',
-                    'content': 'Recorded the day before the much-anticipated Hallowe&#39;en update. As I contemplate the possibility of exploring my world a little more now biomes are to be added to the mix, I thought this was as good a time as any to review my existing home base(s). Warning: I don&#39;t have any startling megastructures, so people who don&#39;t know me may not find much to hold their interest.',
+                    'content': 'Recorded the day before the much-anticipated Hallowe&#39;en update. '
+                            'As I contemplate the possibility of exploring my world a little more now biomes are to be '
+                            'added to the mix, I thought this was as good a time as any to review my existing home '
+                            'base(s). Warning: I don&#39;t have any startling megastructures, so people who '
+                            'don&#39;t know me may not find much to hold their interest.',
                     'poster': {
                         'href': 'http://i.ytimg.com/vi/49cy7-hTAb4/default.jpg',
                     }
@@ -666,7 +695,7 @@ class TestJsonfromAtom(TestCase):
     def check_subset(self, expected, actual, key_prefix):
         for key, expected_val in expected.items():
             key_path = '{prefix}[{key}]'.format(prefix=key_prefix, key=key)
-            if not key in actual:
+            if key not in actual:
                 yield 'Expected dict to contain key {key_path}'.format(key_path=key_path)
                 break
             actual_val = actual[key]
@@ -688,7 +717,6 @@ class TestJsonfromAtom(TestCase):
                         actual=actual_val)
 
 
-
 class TestGithubJsonFromAtom(TestCase):
     def setUp(self):
         data = fixture_data('from_github.atom')
@@ -701,22 +729,27 @@ class TestGithubJsonFromAtom(TestCase):
         self.assertEqual('2014-07-06T10:54:30Z', self.result['entries'][0]['published'])
 
     def test_href(self):
-        self.assertEqual('https://github.com/pdc/allegedsite/compare/55a1fe817e...e5c5b96ce1', self.result['entries'][0]['href'])
+        self.assertEqual(
+            'https://github.com/pdc/allegedsite/compare/55a1fe817e...e5c5b96ce1',
+            self.result['entries'][0]['href'])
 
     def test_title(self):
         self.assertEqual('pdc pushed to master at pdc/allegedsite', self.result['entries'][0]['title'])
 
     def test_content(self):
         expected = """<div class="details">
-  <a href="https://github.com/pdc"><img alt="Damian Cugley" class="gravatar js-avatar" data-user="90414" height="30" src="https://avatars1.githubusercontent.com/u/90414?s=140" width="30" /></a>
+  <a href="https://github.com/pdc"><img alt="Damian Cugley" class="gravatar js-avatar" data-user="90414" height="30"
+        src="https://avatars1.githubusercontent.com/u/90414?s=140" width="30" /></a>
 
     <div class="commits pusher-is-only-committer">
       <ul>
         <li>
           <span title="pdc">
-            <img alt="Damian Cugley" class=" js-avatar" data-user="90414" height="16" src="https://avatars1.githubusercontent.com/u/90414?s=140" width="16" />
+            <img alt="Damian Cugley" class=" js-avatar" data-user="90414" height="16"
+                    src="https://avatars1.githubusercontent.com/u/90414?s=140" width="16" />
           </span>
-          <code><a href="https://github.com/pdc/allegedsite/commit/e5c5b96ce19c09760ef2358c3828723ccec897a8">e5c5b96</a></code>
+          <code><a
+                href="https://github.com/pdc/allegedsite/commit/e5c5b96ce19c09760ef2358c3828723ccec897a8">e5c5b96</a></code>
           <div class="message">
             <blockquote>
               Add article about cycle lanes
@@ -729,8 +762,8 @@ class TestGithubJsonFromAtom(TestCase):
         self.assert_text_containing_equivalent_xml(expected, self.result['entries'][0]['html'])
 
     def assert_text_containing_equivalent_xml(self, text1, text2):
-        elt1 = et.XML(text1.encode('UTF-8'))
-        elt2 = et.XML(text2.encode('UTF-8'))
+        elt1 = ET.XML(text1.encode('UTF-8'))
+        elt2 = ET.XML(text2.encode('UTF-8'))
         self.assert_equivalent_elt(elt1, elt2)
 
     def assert_equivalent_elt(self, elt1, elt2):
@@ -739,11 +772,6 @@ class TestGithubJsonFromAtom(TestCase):
             self.assertEqual(elt2.attrib[k], v)
         for ee1, ee2 in zip(elt1, elt2):
             self.assert_equivalent_elt(ee1, ee2)
-
-
-
-
-
 
 
 class TestSummaryFromContent(TestCase):
@@ -758,5 +786,3 @@ class TestSummaryFromContent(TestCase):
     def test_summary_from_content_brbr(self):
         html = 'LiveJournal does not do paragraph tags!<br /><br />Instead they use BR tags.'
         self.assertEqual(u'LiveJournal does not do paragraph tags! …', summary_from_content(html))
-
-

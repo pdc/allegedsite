@@ -3,6 +3,8 @@
 import os
 
 project_root = os.path.dirname(os.path.dirname(__file__))
+
+
 def expand_path(partial_path):
     return os.path.join(project_root, partial_path)
 

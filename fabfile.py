@@ -2,12 +2,12 @@
 # Run these commands with fab
 
 import os
-from fabric.api import local, settings, abort, run, cd, env, sudo, prefix
+from fabric.api import local, settings, abort, run, cd, env, prefix
 from fabric.contrib.console import confirm
 from fabric.contrib.files import exists
 
 import logging
-logging.basicConfig( level=logging.INFO )
+logging.basicConfig(level=logging.INFO)
 
 env.hosts = ['alleged@spreadsite.org']
 env.site_name = 'alleged'
@@ -17,8 +17,10 @@ env.django_apps = ['blog', 'snaptioner', 'frontpage']
 env.src_dir = 'src'
 env.bin_dir = '/home/alleged/bin'
 
+
 def update_requirements():
     local("pip freeze | egrep -v 'Fabric|pycrypto|ssh|distribute' > requirements.txt")
+
 
 def test():
     with settings(warn_only=True):
@@ -26,11 +28,14 @@ def test():
     if result.failed and not confirm("Tests failed. Continue anyway?"):
         abort("Aborting at user request.")
 
+
 def push():
     local('git push')
 
+
 def mkdir(dir_path):
     run('if [ ! -d {0} ]; then mkdir {0}; fi'.format(dir_path))
+
 
 def install_tclhtml():
     mkdir(env.src_dir)
@@ -46,7 +51,6 @@ def install_tclhtml():
         run('git pull')
         run('./configure --prefix=/home/{0}'.format(env.site_name))
         run('make install')
-
 
 
 def deploy():

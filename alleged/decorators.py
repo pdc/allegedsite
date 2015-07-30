@@ -1,9 +1,10 @@
 # -*-coding: UTF-8-*-
 
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
+from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 import json
+
 
 def render_with(default_template_name, mimetype='text/html'):
     """Decorator for request handlers.
@@ -28,9 +29,10 @@ def render_with(default_template_name, mimetype='text/html'):
                 return result
             template_name = result.pop('template_name') if 'template_name' in result else default_template_name
             template_args = result
-            return render_to_response(template_name, template_args, RequestContext(request), mimetype=mimetype)
+            return render_to_response(template_name, template_args, RequestContext(request), content_type=mimetype)
         return decorated_func
     return decorator
+
 
 def render_json(view):
     """Decorator for view function returning a dictionary to be rendered as JSON.

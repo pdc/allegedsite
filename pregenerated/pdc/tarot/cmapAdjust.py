@@ -2,13 +2,14 @@ import os.path
 import re
 import sys
 
+
 class CMap:
     '''Colour converter using a file for info.'''
-    def __init__(self, fileName):
-        '''Read colourmap data from fileName.'''
+    def __init__(self, file_name):
+        '''Read colourmap data from file_name.'''
         self.ctr = 0
-        self._map = { } 
-        input = open(fileName, 'r')
+        self._map = {}
+        input = open(file_name, 'r')
         for line in input.readlines():
             pos = line.find('#')
             if pos >= 0:
@@ -21,10 +22,10 @@ class CMap:
                     bad = bad.lower()
                     good = good.upper()
                     cnt = int(cnt)
-                    if (not self._map.has_key(bad)) or self._map[bad][1] < cnt:
+                    if (bad not in self._map) or self._map[bad][1] < cnt:
                         self._map[bad] = (good, cnt)
-        #for key, val in self._map.items():
-        #    print key, '->', val[0], '(', val[1], ')'
+        # for key, val in self._map.items():
+        #     print key, '->', val[0], '(', val[1], ')'
 
     def mapColour(self, rrggbb):
         '''Map the proffered CSS colour, expressed as 6 hexadecimal digits.'''
@@ -33,46 +34,48 @@ class CMap:
         return self._map[rrggbb][0]  # exception if colour undefined!
 
 
-def backupFileAndReadAll(inFileName, outFileName=None):
-    if not outFileName:
-        outFileName = inFileName
+def backupFileAndReadAll(in_file_name, out_file_name=None):
+    if not out_file_name:
+        out_file_name = in_file_name
 
-    isBackUp = os.path.exists(outFileName)
+    is_backup = os.path.exists(out_file_name)
 
-    if isBackUp:
-        dir, name = os.path.split(outFileName)
+    if is_backup:
+        dir, name = os.path.split(out_file_name)
         bkdir = os.path.join(dir, 'Backups')
         if os.path.exists(bkdir):
-            bakFileName = os.path.join(bkdir, name)
+            bakfile_name = os.path.join(bkdir, name)
         else:
-            bakFileName = outFileName + '.bak'
-            
-        input = open(outFileName, 'rb')
+            bakfile_name = out_file_name + '.bak'
+
+        input = open(out_file_name, 'rb')
         content = input.read()
         input.close()
-        
-        output = open(bakFileName, 'wb')
+
+        output = open(bakfile_name, 'wb')
         output.write(content)
         output.close()
-        print 'Wrote backup to', bakFileName
+        print 'Wrote backup to', bakfile_name
 
-    if not isBackUp or outFileName != inFileName:
-        input = open(inFileName, 'rb')
+    if not is_backup or out_file_name != in_file_name:
+        input = open(in_file_name, 'rb')
         content = input.read()
         input.close()
-        
+
     return content
-    
-def processFile(cmap, inFileName, outFileName=None):
-    if not outFileName:
-        outFileName = inFileName
-    print inFileName + ':'
-    text = backupFileAndReadAll(inFileName, outFileName)
-    colourRE = re.compile('#([a-f0-9]{6})', re.IGNORECASE)
-    text = colourRE.sub(lambda m: '#' + cmap.mapColour(m.group(1)), text)
-    output = open(outFileName, 'wb')
+
+
+def processFile(cmap, in_file_name, out_file_name=None):
+    if not out_file_name:
+        out_file_name = in_file_name
+    print in_file_name + ':'
+    text = backupFileAndReadAll(in_file_name, out_file_name)
+    colour_re = re.compile('#([a-f0-9]{6})', re.IGNORECASE)
+    text = colour_re.sub(lambda m: '#' + cmap.mapColour(m.group(1)), text)
+    output = open(out_file_name, 'wb')
     output.write(text)
-    print 'Wrote output to', outFileName
+    print 'Wrote output to', out_file_name
+
 
 if __name__ == '__main__':
     # dir = 'F:\\tarot'
@@ -89,4 +92,3 @@ if __name__ == '__main__':
         inFile = os.path.join(dir, b + '.sk.svg')
         outFile = os.path.join(dir, b + '.svg')
         processFile(cmap, inFile, outFile)
-    
