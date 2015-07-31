@@ -19,7 +19,10 @@ env.bin_dir = '/home/alleged/bin'
 
 
 def update_requirements():
-    local("pip freeze | egrep -v 'Fabric|pycrypto|ssh|distribute' > requirements.txt")
+    local(
+        "pip freeze "
+        "| egrep -v 'Fabric|pycrypto|ssh|distribute|cffi|ecdsa|greenlet|mccabe|paramiko|readline' "
+        "> requirements.txt")
 
 
 def test():
