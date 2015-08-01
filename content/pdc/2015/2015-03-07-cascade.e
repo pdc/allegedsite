@@ -146,9 +146,9 @@ meaning—links in running text—we should use plain `a` tags. But when I thoug
 about it I realized we mostly use `a` tags for something else; traditional
 links are the exception not the rule.
 
-I changed the HTML to add a `link` class to  `a` tags that are intended to
+I changed the HTML to add a `lnk` class to  `a` tags that are intended to
 look like links, and then the CSS required become much simpler and less
-repepatative:
+repetative:
 
     .lnk {
         color: @logo_clr;
@@ -185,7 +185,7 @@ simpler than the real version, where there were many times more link
 variations and the code was scattered throughout the CSS codebase.)
 
 The upshot of this is that you want to reduce the use of the cascade and
-part of achiving this is to surface the meanings in explicit CSS classes
+part of achieving this is to surface the meanings in explicit CSS classes
 rather than cleverly infering them from context. Where in some standard
 generalized markup language one might have defined a document type that
 matched what your document actually needed and write things like the
