@@ -5,9 +5,9 @@
 
 {% with entry.prev as e %}
     {% if e %}
-                        <li class="archive-links-nextprev">
+                        <li class="archive-links-nextprev archive-link">
                             <b>Older</b>
-                                <a href="{{ e.href }}" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
+                                <a href="{{ e.href }}" class="" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
                                 </a>
                         </li>
     {% endif %}
@@ -15,9 +15,9 @@
 
 {% with entry.next as e %}
     {% if e %}
-                        <li class="archive-links-nextprev">
+                        <li class="archive-links-nextprev archive-link">
                             <b>Newer</b>
-                                <a href="{{ e.href }}" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
+                                <a href="{{ e.href }}" class="archive-link" rel="next"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
                                 </a>
                         </li>
     {% endif %}
@@ -36,17 +36,22 @@
         {% for month, e in this_year_months %}
             {% if month == entry.published.month and this_month %}
                                 <li class="archive-links-month-active">
-                                    <b>{{ e.published|date:"F" }}</b> ({{ this_month|length }})
+                                    <b>{{ e.published|date:"F" }}</b>
                                     <ul>
                 {% for e in this_month %}
                     {% if e.published == entry.published %}
-                                        <li class="archive-link-active">
-                                            <strong><q>{{ e.title }}</q></strong>
+                                        <li class="archive-link archive-link-active">
+                                            <strong>
+                                                <q>{{ e.title }}</q>
+                                                <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F" }}</time>
+                                            </strong>
                     {% else %}
                                         <li class="archive-link">
-                                            <a href="#"><q>{{ e.title }}</q></a>
+                                            <a href="{{ e.href }}">
+                                                <q>{{ e.title }}</q>
+                                                <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F" }}</time>
+                                            </a>
                     {% endif %}
-                                            <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F" }}</time>
                                         </li>
                 {% endfor %}
                                     </ul>

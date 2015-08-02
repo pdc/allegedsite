@@ -24,21 +24,11 @@
         &:active {
             color: @hl-clr;
             text-decoration: underline;
-            background: #FED;
+            background-color: fade(@hl-clr, 10%);
         }
     }
     b {
         padding: 0 10px;
-    }
-    q {
-        &:before {
-
-        }
-    }
-    time {
-        display: block;
-        font-size: 13px;
-        line-height: 16px;
     }
 }
 
@@ -60,19 +50,6 @@
     }
 }
 
-.archive-links-nextprev {
-    b {
-        float: left;
-        font-weight: normal;
-    }
-    a {
-        .yr-indent;
-        padding-top: 8px;
-        padding-bottom: 8px;
-
-        line-height: 20px;
-    }
-}
 
 .archive-links-year {
     float: left;
@@ -106,15 +83,46 @@
         padding-left: 10px;  // Match the `a` tag in the links
     }
     @media (min-width: (6 * @yr-max + 1px)) and (max-width: (@max-main + @min-aside)), (min-width: (@max-main + @max-aside)) {
-        > b {
-            float: left;
-        }
+
         > ul {
-            margin-left: (2 * @yr-max);
+            margin-left: (@yr-max);
+        }
+        a, strong {
+            width: 220px;
         }
     }
 }
 
-.archive-link-active {
+.archive-link {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
 
+    a, strong {
+        display: block;
+    }
+    q {
+        &:before {
+            content: "‘";
+        }
+        &:after {
+            content: "’";
+        }
+    }
+    time {
+        display: block;
+
+        font-size: 13px;
+        line-height: 16px;
+    }
+}
+
+.archive-links-nextprev {
+    b {
+        float: left;
+        font-weight: normal;
+    }
+    a {
+        .yr-indent;
+    }
 }
