@@ -1,0 +1,92 @@
+@import "defs.less";
+
+
+body {
+    margin: 0;
+
+    .body-fnt-inactive;
+    font-weight: @normal-wt;
+    font-size: 16px;
+    line-height: 1.25;
+    -webkit-text-size-adjust: none;
+
+    color: #222;
+    background: #FFF;
+
+    .wf-active & {
+        .body-fnt;
+    }
+}
+
+.forme {
+    @media (min-width: (@max-main + @max-aside + @max-gap + 1px)) {
+        margin-right: auto;
+        margin-left: auto;
+        width: (@max-main + @max-aside + @max-gap);
+    }
+}
+
+main {
+    .topbar-mg;
+
+    // Center it if there is no room for sidebar alongside
+    @media (min-width: (@max-main + 1px)) and (max-width: (@max-main + @min-aside)) {
+        width: @max-main;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // Show to left of sidebar if there is room
+    @media (min-width: (@max-main + @min-aside + 1px)) {
+        width: @max-main;
+        float: left;
+    }
+}
+
+aside {
+    @media (min-width: (@max-main + 1px)) and (max-width: (@max-main + @min-aside)) {
+        // Centred below main content
+        margin-right: auto;
+        margin-left: auto;
+        width: @max-main;
+    }
+    @media (min-width: (@max-main + @min-aside + 1px)) {
+        .topbar-mg;
+    }
+    @media (min-width: (@max-main + @min-aside + 1px)) and (max-width: (@max-main + @max-aside)) {
+        width: @min-aside;
+        float: right;
+    }
+    @media (min-width: (@max-main + @max-aside + 1px)) {
+        width: @max-aside;
+        float: right;
+    }
+
+    h2 {
+        margin-top: 10px;
+        margin-bottom: 0;
+
+        .body-fnt-inactive;
+        font-size: 1em;
+
+        .wf-active & {
+            .body-fnt;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+}
+
+
+@import "topbar.less";
+@import "article.less";
+@import "ad.less";
+@import "share-links.less";
+@import "archive-links.less";

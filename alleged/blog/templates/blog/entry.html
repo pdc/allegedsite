@@ -7,22 +7,28 @@
 {% block projectwonderfule %}{% endblock %}
 
 {% block title %}{{ entry.title }} - Alleged Articles{% endblock %}
-{% block heading %}{{ entry.title }}{% endblock %}
 
-{% block content %}
+{% block main %}
     {% include "blog/parts/entry.div" %}
-    {% include "blog/parts/project-wonderful.div" %}
+{% endblock %}
 
-    <aside id="share">
-      <h2>Share this article</h2>
-      <a href="https://twitter.com/share?url=http://alleged.org.uk{{ entry.href }}&amp;via=damiancugley" class="twitter-share-button" data-lang="en">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      <a class="FlattrButton" style="display:none;"
-          href="http://alleged.org.uk{{ entry.href }}"
-          title="{{ entry.title }}"
-          data-flattr-uid="pdc"
-          data-flattr-button="compact">{{ entry.summary }}</a>
-    </aside>
+{% block aside %}
+                <div class="share-links">
+                    <h2>Share this article</h2>
+                    <ul>
+                        <li class="share-link">
+                            <a href="https://twitter.com/share?url=http://alleged.org.uk{{ entry.href }}&amp;via=damiancugley" class="twitter-share-button" data-lang="en">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </li>
+                        <li class="share-link">
+                          <a class="FlattrButton" style="display:none;"
+                              href="http://alleged.org.uk{{ entry.href }}"
+                              title="{{ entry.title }}"
+                              data-flattr-uid="pdc"
+                              data-flattr-button="compact">{{ entry.summary }}</a>
+                        </li>
+                    </ul>
+                </div>
 
     {% include "blog/parts/entry-nav.div" %}
 {% endblock %}

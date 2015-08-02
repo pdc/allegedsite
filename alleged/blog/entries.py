@@ -69,6 +69,7 @@ class HrefsTreeprocessor(Treeprocessor):
             else:
                 self.run(e)
 
+
 absolute_url_re = re.compile('^[a-z+-.]+:|^/')
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 img_or_embed_re = re.compile(r'(<(?:img|embed|script)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
@@ -374,7 +375,7 @@ class Article(object):
     """In older entries, the entry is a summary and links to a named article.
 
     Articles were formatted using TclHTML. For the moment I am using
-    the HTML oputput as input for the new site—this class strips off all the
+    the HTML output as input for the new site—this class strips off all the
     navigation clutter and returns the HTML of the artile as a lump of HTML elements.
     """
     class DoesNotExist(Exception):

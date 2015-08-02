@@ -1,38 +1,20 @@
-<article data-date="{{ entry.published|date:"c"}}" id="entry">
-    {% if is_index %}
-    <header>
-        <p>Latest Alleged Article</p>
-        <h2>{{ entry.title }}</h2>
-    </header>
-    {% endif %}
-  <div id="entry-body">
-    {{ entry.body|safe }}
-  </div>
+{% if entry.image %}
+                <img src="{{ entry.image.src }}" class="main-avatar" alt="" width=64 height=64>
+{% endif %}
 
-  <div id="entry-info">
-    <dl>
-      {% if entry.image %}
-      <dt>Author</dt>
-      <dd>
-        <img src="{{ entry.image.src }}" alt="X" />
-      </dd>
-      {% endif %}
-      <dt>Published</dt>
-      <dd class="date">
-        <span class="date-day">{{ entry.published|date:"j" }}</span>
-        <span class="date-month">{{ entry.published|date:"F" }}</span>
-      </dd>
-      <dt>Topics</dt>
-      <dd>
-        <ul>
-          {% for tag in entry.tags %}
-          <li>
-            <a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </dd>
-    </dl>
-    <div class="permalink"><a href="{{ entry.href }}">Permalink</a></div>
-  </div>
-</article>
+                <h1>{{ entry.title }}</h1>
+
+                {{ entry.body|safe }}
+
+                <footer class="article-footer">
+                    <div class="article-meta">
+                        <time class="article-date" datetime="{{ entry.published|date:'c' }}">{{ entry.published|date:"j F Y" }}</time>
+                    </div>
+                    <ul class="article-tag-list">
+{% for tag in entry.tags %}
+                        <li><a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a></li>
+{% endfor %}
+                    </ul>
+                    <div class="article-permalink"><a href="{{ entry.href }}" title="permalink">#</a></div>
+                </footer>
+

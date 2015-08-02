@@ -1,0 +1,41 @@
+@import "defs.less";
+
+.topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .topbar-ht;
+
+    color: #FFF;
+    background: @hl-clr;
+
+    li {
+        display: inline-block;
+        padding: 10px;
+    }
+}
+
+.topbar-home {
+  // Styling for logo
+}
+
+.topbar-byline {
+    float: right;
+}
+
+.link-subtle {
+    color: inherit;
+    text-decoration: inherit;
+    border-bottom: 1px solid;
+
+    &:hover, &:active {
+    }
+}
+
+.topbar .link-subtle {
+    border-color: rgba(255, 255, 255, 0.5);
+    &:hover, &:active {
+        border-color: #FFF;
+    }
+}
