@@ -13,6 +13,7 @@ from datetime import datetime
 from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
+from markdown.extensions.toc import TocExtension, TocTreeprocessor
 from lxml.etree import fromstring, tostring
 import htmlentitydefs
 
@@ -140,6 +141,33 @@ class HrefsExtension(Extension):
             self.getConfig('image_url')), '<raw_html')
 
 
+class RelativeTocTreeprocessor(TocTreeprocessor):
+    def __init__(self, *args, **kwargs):
+        super(RelativeTocTreeprocessor, self).__init__(*args, **kwargs)
+        self.is_base_level_adjusted = False
+
+    def set_level(self, elem):
+        ''' Adjust header level according to base level. '''
+        tag_level = int(elem.tag[-1])
+        if not self.is_base_level_adjusted:
+            self.base_level = self.base_level + 1 - tag_level
+            self.is_base_level_adjusted = True
+        level = tag_level + self.base_level
+        if level > 6:
+            level = 6
+        elem.tag = 'h%d' % level
+
+
+class RelativeTocExtension(TocExtension):
+    """Like TocExtension except that the base level is adjusted to suit the first heading
+
+    If the document contains only 2nd-level headings
+    then base_level param is adjusted so that 2nd-level
+    headings get mapped on the the desired base level.
+    """
+    TreeProcessorClass = RelativeTocTreeprocessor
+
+
 class Image(object):
     def __init__(self, src):
         self.src = src
@@ -219,7 +247,8 @@ class Entry(object):
         href_extension = HrefsExtension(
             blog_url=self.munged_blog_url,
             image_url=self.munged_image_url)
-        converter = Markdown(extensions=['markdown.extensions.meta', href_extension])
+        header_extension = RelativeTocExtension(baselevel=2)
+        converter = Markdown(extensions=['markdown.extensions.meta', href_extension, header_extension])
         self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
         self._title = ', '.join(converter.Meta['title'])
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()

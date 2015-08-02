@@ -21,7 +21,7 @@ include $(dir)/Rules.mk
 # in subdirectories
 
 .PHONY: targets
-targets:    $(TARGETS)
+targets: $(TARGETS)
 
 .PHONEY: clean
 clean:
@@ -31,10 +31,7 @@ clean:
 realclean: clean
 	rm -f $(REALCLEAN)
 
-.PHONEY: clean
+.PHONEY: depend
 depend: $(DEPEND)
 
-
-
-
-
+-include $(DEPEND)

@@ -18,7 +18,7 @@ class BlogTestMixin(object):
         if not os.path.exists(BASE_DIR):
             os.mkdir(BASE_DIR)
         else:
-            for y in ['1998', '2002', '2003', '2008', '2009', '2010']:
+            for y in ['1998', '2002', '2003', '2008', '2009', '2010', '2015']:
                 if not os.path.exists(os.path.join(BASE_DIR, y)):
                     os.mkdir(os.path.join(BASE_DIR, y))
             for subdir, subdirs, files in os.walk(BASE_DIR):
@@ -37,7 +37,7 @@ class SimpleTest(TestCase, BlogTestMixin):
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('FOO', e.title)
-        self.assertEqual('<p>BAR\nBAZ</p>', e.body)
+        self.assertHTMLEqual('<p>BAR\nBAZ</p>', e.body)
         self.assertEqual(datetime(2010, 4, 17, 12, 0, 0), e.published)
         self.assertEqual('testa', e.slug)
         self.assertEqual('/masterblog/2010/04/17.html', e.href)
@@ -51,29 +51,29 @@ class SimpleTest(TestCase, BlogTestMixin):
                 u'    Hullo\n    ≈\n    World\n\nBAZ\n'.encode('UTF-8'))
         entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
         e = entries[0]
-        self.assertEqual(u'<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
+        self.assertHTMLEqual(u'<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
 
     def test_archaic(self):
         with open(os.path.join(BASE_DIR, '19970611.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
 <entry date="19970611" icon="1997/19980529h-stamp.jpg">
-  <h1>CAPTION96 Photo album</h1>
-  <body>
-    This is <a href="http://caption.org/1996/pdc/">a selection of
-    images</a> collected at the <a
-    href="http://caption.org/1996/">CAPTION96</a> comics convention (in the
-    summer of 1996).
-    Attentive readers will have noticed that there is almost a
-    year-long gap between the con and the photo album.  This is partly
-    explained by the amount a manual labour involved in scanning all
-    those 7&times;5 photos on my none-too-fast scanner and moving the
-    files from the Mac with the scanner to the Linux box with all my
-    web site stuff on.
-    <strong>Update:</strong>
-    With the creation of the <a href="http://caption.org/">CAPTION</a>
-    web site, this album has moved home and in the process has been
-    redesigned with a less archaic  look.
-  </body>
+    <h1>CAPTION96 Photo album</h1>
+    <body>
+        This is <a href="http://caption.org/1996/pdc/">a selection of
+        images</a> collected at the <a
+        href="http://caption.org/1996/">CAPTION96</a> comics convention (in the
+        summer of 1996).
+        Attentive readers will have noticed that there is almost a
+        year-long gap between the con and the photo album.  This is partly
+        explained by the amount a manual labour involved in scanning all
+        those 7&times;5 photos on my none-too-fast scanner and moving the
+        files from the Mac with the scanner to the Linux box with all my
+        web site stuff on.
+        <strong>Update:</strong>
+        With the creation of the <a href="http://caption.org/">CAPTION</a>
+        web site, this album has moved home and in the process has been
+        redesigned with a less archaic  look.
+    </body>
 </entry>""")
         entries = get_entries(BASE_DIR, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
@@ -92,7 +92,7 @@ class SimpleTest(TestCase, BlogTestMixin):
     With the creation of the <a href="http://caption.org/">CAPTION</a>
     web site, this album has moved home and in the process has been
     redesigned with a less archaic  look."""
-        self.assertEqual(expected, e.body)
+        self.assertHTMLEqual(expected, e.body)
         self.assertEqual(datetime(1997, 6, 11, 12, 0, 0), e.published)
         self.assertEqual('', e.slug or '')
 
@@ -100,20 +100,20 @@ class SimpleTest(TestCase, BlogTestMixin):
         with open(os.path.join(BASE_DIR, '19980425.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
 <entry date="19980425" icon="http://caption.org/img/caption94-64x64.gif">
-  <h1>CAPTION97 photo album</h1>
-  <body>
-    I took almost 200 pictures of small-press-comics folk
-    at the convention
-    <a href="http://caption.org/1997/">EuroCAPTION97</a>.  Here's
-    <a href="http://caption.org/1997/pdc/">the finished album</a>,
-    with many of the duff pictures discarded.
-    <strong>Update:</strong>
-    With the creation of the <a href="http://caption.org/">CAPTION</a>
-    web site, this album has moved home and in the process has been
-    redesigned with a less archaic  look.
-  </body>
-  <dc:subject>photos</dc:subject>
-  <dc:subject>caption</dc:subject>
+      <h1>CAPTION97 photo album</h1>
+      <body>
+            I took almost 200 pictures of small-press-comics folk
+            at the convention
+            <a href="http://caption.org/1997/">EuroCAPTION97</a>.  Here's
+            <a href="http://caption.org/1997/pdc/">the finished album</a>,
+            with many of the duff pictures discarded.
+            <strong>Update:</strong>
+            With the creation of the <a href="http://caption.org/">CAPTION</a>
+            web site, this album has moved home and in the process has been
+            redesigned with a less archaic  look.
+      </body>
+      <dc:subject>photos</dc:subject>
+      <dc:subject>caption</dc:subject>
 </entry>""")
         entries = get_entries(BASE_DIR, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
@@ -128,7 +128,7 @@ class SimpleTest(TestCase, BlogTestMixin):
     With the creation of the <a href="http://caption.org/">CAPTION</a>
     web site, this album has moved home and in the process has been
     redesigned with a less archaic  look."""
-        self.assertEqual(expected, e.body)
+        self.assertHTMLEqual(expected, e.body)
         self.assertEqual(datetime(1998, 4, 25, 12, 0), e.published)
         self.assertEqual('', e.slug or '')
         self.assert_('photos' in e.tags)
@@ -138,20 +138,20 @@ class SimpleTest(TestCase, BlogTestMixin):
         with open(os.path.join(BASE_DIR, '2002/20021229.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
 <entry date="20021229" icon="../tarot/x-wheel-100w.png">
-  <h>Alleged Tarot: a better dial-a-reading</h>
-  <body>
-    <p>
-      My <a href="../tarot/">Alleged Tarot 2002</a> project has been
-      stuck with an ersatz dealer for far too long (since
-      <a href="08.html#e20020809">August</a>, in fact).  I&nbsp;have
-      now added to the <a href="../tarot/aboutDealer.html">JavaScript
-      used for the dealer</a> so it takes a question and converts that
-      to a seed number, rather than requiring the querent to supply
-      their own.  Entering the question corresponds to the shuffling
-      of the deck that you do in a tarot deal in real life.
-    </p>
-  </body>
-  <dc:subject>tarot</dc:subject>
+      <h>Alleged Tarot: a better dial-a-reading</h>
+      <body>
+            <p>
+                  My <a href="../tarot/">Alleged Tarot 2002</a> project has been
+                  stuck with an ersatz dealer for far too long (since
+                  <a href="08.html#e20020809">August</a>, in fact).  I&nbsp;have
+                  now added to the <a href="../tarot/aboutDealer.html">JavaScript
+                  used for the dealer</a> so it takes a question and converts that
+                  to a seed number, rather than requiring the querent to supply
+                  their own.  Entering the question corresponds to the shuffling
+                  of the deck that you do in a tarot deal in real life.
+            </p>
+      </body>
+      <dc:subject>tarot</dc:subject>
 </entry>""")
         entries = get_entries(BASE_DIR, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
@@ -167,9 +167,9 @@ class SimpleTest(TestCase, BlogTestMixin):
       their own.  Entering the question corresponds to the shuffling
       of the deck that you do in a tarot deal in real life.
     </p>"""
-        self.assertEqual(expected, e.body)
+        self.assertHTMLEqual(expected, e.body)
 
-    def test_with_namepsaces_supplied(self):
+    def test_with_namespaces_supplied(self):
         with open(os.path.join(BASE_DIR, '2003/20031228.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
 <entry date="20031228" icon="picky-80x80.png"
@@ -198,7 +198,7 @@ class SimpleTest(TestCase, BlogTestMixin):
       on my behalf.  This time it was not month #0 that caused
       problems, but, predictably perhaps, month #13.  Feh.
     </p>"""
-        self.assertEqual(expected, e.body)
+        self.assertHTMLEqual(expected, e.body)
 
     def test_entry_list_chron(self):
         with open(os.path.join(BASE_DIR, '2010/2010-03-02-foo.e'), 'wt') as output:
@@ -279,38 +279,115 @@ class SimpleTest(TestCase, BlogTestMixin):
       their own.  Entering the question corresponds to the shuffling
       of the deck that you do in a tarot deal in real life.
     </p>"""
-        self.assertEqual(expected, e.body)
+        self.assertHTMLEqual(expected, e.body)
         self.assertEqual('/images/tarot/x-wheel-100w.png', e.image.src)
 
     def test_um(self):
         with open(os.path.join(BASE_DIR, '2003/20030703.e'), 'wt') as out_stream:
             out_stream.write("""<!-- -*-HTML-*- -->
-<entry date="20030703" icon="../../2005/percy/1/1a1.jpg"
-xmlns="http://www.alleged.org.uk/2003/um"
-xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
-  <h>Percy Street, Page 1</h>
-  <body>
-    <p>
-      If you&rsquo;ve been wondering why I&rsquo;ve not added anything
-      to my site for the last few weeks, it&rsquo;s because I have
-      been spending my spare time playing with <a href="06/12.html">my new graphics tablet</a> instead.
-    </p>
-  </body>
-  <dc:subject>graphics</dc:subject>
-  <dc:subject>percy</dc:subject>
-</entry>
-""")
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
-        self.assertEqual(1, len(entries))
-        e = entries[0]
+                <entry date="20030703" icon="../../2005/percy/1/1a1.jpg"
+                xmlns="http://www.alleged.org.uk/2003/um"
+                xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
+                  <h>Percy Street, Page 1</h>
+                  <body>
+                    <p>
+                      If you&rsquo;ve been wondering why I&rsquo;ve not added anything
+                      to my site for the last few weeks, it&rsquo;s because I have
+                      been spending my spare time playing with <a href="06/12.html">my new graphics tablet</a> instead.
+                    </p>
+                  </body>
+                  <dc:subject>graphics</dc:subject>
+                  <dc:subject>percy</dc:subject>
+                </entry>
+            """)
+        e = self.get_entry()
+
         self.assertEqual('Percy Street, Page 1', e.title)
         expected = u"""<p>
-      If you\u2019ve been wondering why I\u2019ve not added anything
-      to my site for the last few weeks, it\u2019s because I have
-      been spending my spare time playing with <a href="/blog/2003/06/12.html">my new graphics tablet</a> instead.
-    </p>"""
-        self.assertEqual(expected, e.body)
+              If you\u2019ve been wondering why I\u2019ve not added anything
+              to my site for the last few weeks, it\u2019s because I have
+              been spending my spare time playing with <a href="/blog/2003/06/12.html">my
+              new graphics tablet</a> instead.
+            </p>"""
+        self.assertHTMLEqual(expected, e.body)
         self.assertEqual(set(['graphics', 'percy']), e.tags)
+
+    def test_markdown(self):
+        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+            out_stream.write("""Title: Title of entry
+Topics: foo bar baz
+Date: 2015-08-02
+
+First paragraph
+
+Second paragraph
+""")
+        e = self.get_entry()
+
+        self.assertEqual('Title of entry', e.title)
+        expected = u"""
+            <p>
+              First paragraph
+            </p>
+            <p>
+              Second paragraph
+            </p>"""
+        self.assertHTMLEqual(expected, e.body)
+        self.assertEqual(['foo', 'bar', 'baz'], e.tags)
+
+    def test_markdown_h1_becomes_h2(self):
+        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+            out_stream.write("""Title: Title of entry
+Topics: foo bar baz
+Date: 2015-08-02
+
+First paragraph
+
+# Heading 1
+
+Second paragraph
+
+## Heading 2
+""")
+        e = self.get_entry()
+
+        expected = u"""
+            <p>
+              First paragraph
+            </p>
+            <h2 id="heading-1">Heading 1</h2>
+            <p>
+              Second paragraph
+            </p>
+            <h3 id="heading-2">Heading 2</h3>
+            """
+        self.assertHTMLEqual(expected, e.body)
+
+    def test_markdown_toplevel_h2_remains_h2(self):
+        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+            out_stream.write("""Title: Title of entry
+
+First paragraph
+
+## Heading 1
+
+Second paragraph
+
+### Heading 2
+""")
+        e = self.get_entry()
+
+        expected = u"""
+            <p>
+              First paragraph
+            </p>
+            <h2 id="heading-1">Heading 1</h2>
+            <p>
+              Second paragraph
+            </p>
+            <h3 id="heading-2">Heading 2</h3>
+            """
+        self.assertHTMLEqual(expected, e.body)
 
     def test_href_not_munging_external_link(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
@@ -527,6 +604,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1" href="../../2005/percy/1/">
       </p>"""
         actual = article.body
         self.assertHTMLEqual(expected, actual)
+
+    def get_entry(self, index=-1, expected_count=1):
+        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        self.assertEqual(expected_count, len(entries))
+        e = entries[index]
+        return e
 
     def assertEqualStrings(self, expected, actual):
         if expected == actual:

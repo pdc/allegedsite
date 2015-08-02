@@ -25,11 +25,6 @@ REALCLEAN := $(REALCLEAN) $(depend_$(d))
 DEPEND := $(DEPEND) $(depend_$(d))
 
 
-# Updating dependencies
-
--include $(DEPS_$(d))
-
-
 # Pop this dir off the stack
 
 d := $(dirstack_$(sp))
