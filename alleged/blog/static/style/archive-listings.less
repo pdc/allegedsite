@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import "defs.less";
+
+
+@min-text: 320px;
+@min-avatar: 48px;
+
+.archive-listing {
+    @media (min-width: (@min-text + @min-avatar)) {
+        position: relative;
+        padding-left: (@min-avatar + 20px);
+    }
+
+    time {
+        display: block;
+        margin: 0 10px;
+
+        font-size: 13px;
+        line-height: 16px;
+    }
+}
+
+.archive-listing-avatar {
+    @media (max-width: (@min-text + @min-avatar - 1px)) {
+        display: block;
+        margin: 0 auto;
+        width: 32px;
+        height: 32px;
+    }
+    @media (min-width: (@min-text + @min-avatar)) {
+        position: absolute;
+        left: 10px;
+        top: 4px;
+        width: @min-avatar;
+        height: @min-avatar;
+    }
+}

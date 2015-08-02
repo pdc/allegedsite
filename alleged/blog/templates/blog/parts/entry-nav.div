@@ -7,8 +7,7 @@
     {% if e %}
                         <li class="archive-links-nextprev archive-link">
                             <b>Older</b>
-                                <a href="{{ e.href }}" class="" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
-                                </a>
+                            <a href="{{ e.href }}" class="" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
                         </li>
     {% endif %}
 {% endwith %}
@@ -17,8 +16,7 @@
     {% if e %}
                         <li class="archive-links-nextprev archive-link">
                             <b>Newer</b>
-                                <a href="{{ e.href }}" class="archive-link" rel="next"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
-                                </a>
+                            <a href="{{ e.href }}" class="archive-link" rel="next"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
                         </li>
     {% endif %}
 {% endwith %}
