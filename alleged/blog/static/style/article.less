@@ -74,6 +74,50 @@ p + p {
     table {
         margin: 20px 10px;
     }
+
+    ul, ol {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    li {
+        margin: 10px 10px 10px 50px;
+
+        p {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    ol {
+        counter-reset: ol;
+
+        li {
+            display: block;
+            counter-increment: ol;
+
+            &:before {
+                content: counters(ol, '.') ".";
+                float: left;
+                width: 30px;
+                margin-left: -40px;
+                padding-right: 10px;
+                text-align: right;
+            }
+        }
+    }
+
+    blockquote {
+        margin:  20px 0;
+        padding: 10px 0;
+        background-color: (fade(@hl-clr, 5%));
+
+        > ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
 }
 
 
@@ -96,6 +140,7 @@ p + p {
         width: 540px;
     }
 }
+
 .image-near-full-width {
     margin: 20px 0;
 
