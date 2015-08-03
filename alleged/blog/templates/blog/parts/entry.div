@@ -1,3 +1,5 @@
+
+            <article class="entry">
 {% if entry.image %}
                 <img src="{{ entry.image.src }}" class="main-avatar" alt="" width=64 height=64>
 {% endif %}
@@ -6,15 +8,16 @@
 
                 {{ entry.body|safe }}
 
-                <footer class="article-footer">
-                    <div class="article-meta">
-                        <time class="article-date" datetime="{{ entry.published|date:'c' }}">{{ entry.published|date:"j F Y" }}</time>
+                <footer class="entry-footer">
+                    <div>
+                        <time class="entry-date" datetime="{{ entry.published|date:'c' }}">{{ entry.published|date:"j F Y" }}</time>
                     </div>
-                    <ul class="article-tag-list">
+                    <ul class="entry-tag-list">
 {% for tag in entry.tags %}
                         <li><a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a></li>
 {% endfor %}
                     </ul>
-                    <div class="article-permalink"><a href="{{ entry.href }}" title="permalink">#</a></div>
+                    <div class="entry-permalink"><a href="{{ entry.href }}" title="permalink">#</a></div>
                 </footer>
+            </article>
 

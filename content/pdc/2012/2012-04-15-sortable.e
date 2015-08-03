@@ -9,7 +9,7 @@ rearranging things is drag-and-drop, and second, relational databases are
 notoriously wedded to the idea that entities are an unordered set, so how
 should the order be represented?
 
-<blockquote>
+<blockquote class="image-near-full-width">
 <div>
     <img src="kanbo-wip-2.png" width=-"405" height="210" alt="(screenshot)" />
 </div>
@@ -110,7 +110,7 @@ The point here is that a drag-and-drop rearrangement only needs to change at mos
 <i>b</i> , we need to change the successor field of <i>a</i>, <i>f</i> , and
 <i>g</i> (the predecessor of <i>f</i>):
 
-<blockquote>
+<blockquote class="image-near-full-width">
     <div>
         <img src="kanbo-diagram-1.png" width="324" height="189" alt="(diagram)" />
     </div>
