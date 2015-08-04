@@ -117,47 +117,94 @@ p + p {
             margin-bottom: 0;
         }
     }
-
 }
 
+
+// Images
+//
+// Blocks of images have 10px between them and 20px before and after.
+// Single images have 20px before and after and 10px on the sides.
+// On small screens they are constrained to the width of the viewport.
+// The following definitions are intended to work whether there is
+// a single image or several.
+
+.constrained-to-full-width() {
+    box-sizing: border-box;
+    width: 100%;
+
+    img {
+        // Using box-sizing so we can constrain the width
+        // of the image plus its padding.
+        // box-sizing: border-box;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.image-full-width,
+.image-full-width-plus,
+.image-near-full-width,
+.image-left,
+.image-right {
+    margin: 20px 0 10px;
+    padding: 0 10px;
+    word-spacing: (10px - 4px);  //I want the gap to be 10px and it seems I have to subtract the default 4px
+    .contains-its-floats;
+
+    img {
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 559px) {
+        .constrained-to-full-width;
+    }
+}
 
 .image-full-width {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 0 10px;
-
-    @media (max-width: 559px) {
-        box-sizing: border-box;
-        width: 100%;
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-    }
     @media (min-width: 560px) {
-        width: 540px;
+        width: 560px;
     }
 }
 
-.image-near-full-width {
-    margin: 20px 0;
-
-    @media (max-width: 559px) {
-        box-sizing: border-box;
-        padding: 0 10px;
-        width: 100%;
-
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
+.image-full-width-plus {
+    // This image is wider than the text.
+    // When there isn’t room to extend beyond the text, squash it down:
+    @media (min-width: 560px) and (max-width: 719px){
+        .constrained-to-full-width;
     }
+    // When there is space, center it
+    @media (min-width: 720px) and (max-width: (@max-main + @min-aside - 1px)) {
+        margin-left: -40px;
+        margin-right: -40px;
+        width: 560px;
+    }
+    // When there isn’t room to extend beyond the text, squash it down:
+    @media (min-width: (@max-main + @min-aside)) and (max-width: (@max-main + @max-aside + @max-gap + 159px)) {
+        .constrained-to-full-width;
+    }
+    // When there is space, project it in to the left margin:
+    @media (min-width: (@max-main + @max-aside + @max-gap + 160px)) {
+        margin-left: -80px;
+        width: 560px;
+    }
+}
+
+.image-near-full-width { // Indented like a blockquote
     @media (min-width: 560px) {
-        padding: 0 10px 0 30px;
+        padding: 0 10px 0 50px;
         width: 520px;
+    }
+}
+
+.image-left {
+    @media (min-width: 560px) {
+        float: left;
+    }
+}
+
+.image-right {
+    @media (min-width: 560px) {
+        float: right;
     }
 }
 
@@ -170,6 +217,11 @@ p + p {
     border-top: 1px dotted @hl-clr;
 
     .contains-its-floats;
+
+    ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 
 .entry-date {
