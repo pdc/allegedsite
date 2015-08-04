@@ -18,6 +18,21 @@
         font-size: 13px;
         line-height: 16px;
     }
+
+    .link-subtle {
+        border-bottom-color: (fade(@hl-clr, 25%));
+
+        &:hover,
+        &:active {
+            color: @hl-clr;
+            border-bottom-color: @hl-clr;
+        }
+    }
+
+    .more {
+        float: right;
+        font-weight: 500;
+    }
 }
 
 .archive-listing-avatar {

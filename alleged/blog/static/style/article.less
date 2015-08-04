@@ -54,22 +54,6 @@ p + p {
 }
 
 .entry {
-    p a {
-        // text-decoration: none;
-        // border-bottom: 1px solid (fade(@hl-clr, 25%));
-
-        &:link {
-            color: (darken(@hl-clr, 10%, relative));
-        }
-        &:visited {
-            color: (darken(@hl-clr, 25%, relative));
-        }
-        &:hover,
-        &:active {
-            color: @hl-clr;
-            border-bottom-color: @hl-clr;
-        }
-    }
 
     table {
         margin: 20px 10px;
@@ -119,6 +103,23 @@ p + p {
     }
 }
 
+
+    p a {
+        // text-decoration: none;
+        // border-bottom: 1px solid (fade(@hl-clr, 25%));
+
+        &:link {
+            color: (darken(@hl-clr, 10%, relative));
+        }
+        &:visited {
+            color: (darken(@hl-clr, 25%, relative));
+        }
+        &:hover,
+        &:active {
+            color: @hl-clr;
+            border-bottom-color: @hl-clr;
+        }
+    }
 
 // Images
 //
@@ -209,12 +210,13 @@ p + p {
 }
 
 .entry-footer {
-    margin-top: 10px;
+    margin: 10px 0;
     padding: 10px;
 
     font-size: 13px;
     line-height: 20px;
     border-top: 1px dotted @hl-clr;
+    border-bottom: 1px solid @hl-clr;
 
     .contains-its-floats;
 
