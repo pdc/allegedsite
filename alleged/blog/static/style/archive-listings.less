@@ -5,6 +5,7 @@
 @min-text: 320px;
 @min-avatar: 48px;
 
+
 .archive-listing {
     @media (min-width: (@min-text + @min-avatar)) {
         position: relative;
@@ -48,5 +49,51 @@
         top: 4px;
         width: @min-avatar;
         height: @min-avatar;
+    }
+}
+
+.archive-tag-list {
+    ul {
+        padding: 0;
+        margin: 0 10px;
+        .contains-its-floats;
+        word-spacing: (10px - 4px);
+    }
+}
+
+.archive-tag {
+    display: inline-block;
+    margin: 10px 0;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        display: block;
+        padding: 0 15px;
+
+        line-height: 30px;
+        white-space: nowrap;
+        background-color: #DDD;
+        border-radius: 0.5em;
+
+        &:hover,
+        &:active {
+            color: @hl-clr;
+            background-color: (fade(@hl-clr, 25%));
+
+            i {
+                text-decoration: underline;
+            }
+        }
+    }
+    > i { // Used for tags that are not links!
+        display: block;
+        padding: 0 15px;
+
+        line-height: 30px;
+        white-space: nowrap;
+        background-color: #DDD;
+        border-radius: 0.5em;
     }
 }

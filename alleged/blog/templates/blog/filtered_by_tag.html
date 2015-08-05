@@ -2,45 +2,60 @@
 {% block title %}{{ plus_separated_tags }} - Browse by tag - Alleged Articles{% endblock %}
 {% block heading %}Browse by tag{% endblock %}
 
-{% block projectwonderfule %}{% endblock %}
+{% block projectwonderfull %}{% endblock %}
+{% block projectwonderfulljs %}{% endblock %}
 
-{% block content %}
-    <div id="tags">
-      <div id="tags-specified">
-        <h2>Selected tags</h2>
-        <ul>
-          {% for info in matching_entries.selected_tag_infos %}
-          <li>
-            {% if info.href %}
-            <a href="{{ info.href }}"><i>{{ info.tag }}</i> x</a>
-            {% else %}
-            <i>{{ info.tag }}</i>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% if matching_entries.available_tag_infos %}
-      <div id="tags-available">
-        <h2>Available tags</h2>
-        <ul>
-          {% for info in matching_entries.available_tag_infos %}
-          <li>
-            <a href="{{ info.href }}"><i>{{ info.tag }}</i> ({{ info.count }})</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
-    </div>
-    <div id="matching-entries">
-      <h2>{{ matching_entries|length }} Matching Entr{{ matching_entries|pluralize:"y,ies" }}</h2>
-      <ul>
-        {% for entry in matching_entries %}
-        <li>
-          <a href="{{ entry.href }}">‘{{ entry.title }}’ <small>{{ entry.published|date:"j N Y" }}</small></a>
-        </li>
+{% block main %}
+        <div class="archive-tag-list-list">
+            <div class="archive-tag-list">
+                <h2>Selected tag{{ matching_entries.selected_tag_infos|pluralize }}</h2>
+    {% if matching_entries.selected_tag_infos|length > 1 %}
+                <p>Broaden your search by removing a tag</p>
+    {% endif %}
+                <ul>
+    {% for info in matching_entries.selected_tag_infos %}
+        {% if info.href %}
+                    <li class="archive-tag archive-tag-deletable">
+                        <a href="{{ info.href }}"><i>{{ info.tag }}</i> <span>×</span></a>
+        {% else %}
+                    <li class="archive-tag">
+                        <i>{{ info.tag }}</i>
+        {% endif %}
+                    </li>
+    {% endfor %}
+                </ul>
+            </div>
+    {% if matching_entries.available_tag_infos %}
+            <div class="archive-tag-list">
+                <h2>Available tag{{ matching_entries.available_tag_infos|pluralize }}</h2>
+        {% if matching_entries|length > 1 %}
+                <p>Narrow your search by adding tags</p>
+        {% endif %}
+                <ul>
+        {% for info in matching_entries.available_tag_infos %}
+                    <li class="archive-tag">
+                        <a href="{{ info.href }}"><i>{{ info.tag }}</i> <span>({{ info.count }})</span></a>
+                    </li>
         {% endfor %}
-      </ul>
-    </div>
+                </ul>
+            </div>
+    {% endif %}
+        </div>
+        <div class="archive-listing-section">
+            <h1>{{ matching_entries|length }} matching {{ matching_entries|pluralize:"entry,entries" }}</h1>
+    {% for e in matching_entries %}
+            <article class="archive-listing">
+        {% if e.image %}
+                <a href="{{ e.href }}"><img src="{{ e.image.src }}" alt="" class="archive-listing-avatar"></a>
+        {% endif %}
+                <h2><a href="{{ e.href }}" class="link-subtle">{{ e.title }}</a></h2>
+
+                {{ e.summary|safe }}
+
+                <footer>
+                    <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F Y" }}</time>
+                </footer>
+            </article>
+    {% endfor %}
+        </div>
 {% endblock %}
