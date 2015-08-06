@@ -69,6 +69,7 @@ def deploy():
     with cd(code_dir):
         run('git pull')
         run('cp {0}/settings_production.py {0}/settings.py'.format(env.settings_subdir))
+        run('make')
 
         with prefix('. /home/{0}/virtualenvs/{1}/bin/activate'.format(env.site_name, env.virtualenv)):
             run('pip install -r requirements.txt')
