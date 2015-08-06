@@ -6,3 +6,5 @@ tmp
 out.xml
 *.db
 web/pdc/tarot/
+min.css
+*.d

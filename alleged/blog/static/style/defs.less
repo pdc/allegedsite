@@ -1,0 +1,63 @@
+// Layout
+
+@max-main: 560px;
+@min-aside: 320px;
+@max-aside: (5 * 80px);
+@max-gap: 80px;
+
+@min-ad: (236px + 20px);
+@min-sharing: 160px;
+
+
+// Just for a change, the topbar size depends on teh height of the viewport not its width
+
+@topbar-ht-1: 720px;
+@topbar-ht-2: 960px;
+
+.topbar-mg() {
+    @media (max-height: @topbar-ht-1) {
+        margin-top: 60px;
+    }
+    @media (min-height: (@topbar-ht-1 + 1px)) and (max-height: @topbar-ht-2) {
+        margin-top: 120px;
+    }
+    @media (min-height: (@topbar-ht-2 + 1px)) {
+        margin-top: 240px;
+    }
+}
+
+
+// Style
+
+@hl-clr: #B0A;
+@lo-clr: #123;
+
+@normal-wt: 400;
+@bold-wt: 700;
+
+.body-fnt-inactive() {
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+.body-fnt() {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.hl-fnt-inactive() {
+    font-family: Times New Roman, Times, serif;
+}
+
+.hl-fnt() {
+    font-family: 'Alegreya', serif;
+}
+
+
+.contains-its-floats() {
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+        height: 0;
+        overflow: hidden;
+    }
+}

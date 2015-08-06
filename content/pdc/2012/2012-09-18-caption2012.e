@@ -84,7 +84,7 @@ days, with hardbound covers with litho illustrations and pulp paper inside.
 I got the paper textures used in the background by scanning the
 endpapers of my late father’s _Complete works of Shakespeare_.
 
-<div class="image-full-width" style="width:720px">
+<div class="image-full-width-plus">
     <img src="http://origin.myfonts.com/s/aw/original/110/0/56718.png" width="360" height="180" alt="(type sample)" />
     <img src="http://origin.myfonts.com/s/aw/original/140/0/72141.png" width="200" height="200" alt="(type sample)" />
     <br clear="all" />

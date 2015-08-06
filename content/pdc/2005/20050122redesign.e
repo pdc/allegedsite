@@ -1,20 +1,20 @@
 Title: Redesign for my moribund web site
-Topics: css 
+Topics: css
 Date: 20050122
 Icon: ../icon-64x64.png
 
 After months of apparent inactivity, you may have noticed that I have
 redesigned my site. At least, I have changed the visual design: the
-navigation is unchanged for now. Mostly the changes are in the CSS. 
+navigation is unchanged for now. Mostly the changes are in the CSS.
 
 I had two things I wanted to do.
 First, to create a light-on-dark design (I have long been impressed by
 John Gruber's pleasingly simple design for [Daring Fireball][2]), and,
-second, to work out a proper grid-based layout, one with a 
+second, to work out a proper grid-based layout, one with a
 minimum of lines and graphics, focussing on the text. The latter is something
 I've had in mind for a while, but my interest was rekindled by [Khoi
 Vinh][3]'s web site [Subtraction][4], which has a visual design based
-purely on typography, with almost no graphics or even colour. 
+purely on typography, with almost no graphics or even colour.
 
 Grid design
 -------
@@ -24,7 +24,7 @@ about grids from when was reading up about typography back when I was a
 student, and later, as I worked for the University. I did my best to
 realize magazine-style layouts in [TeX][5] by writing my own output
 routines. I even designed a font family, [Malvern][6] ([documentation
-in TeX format][7]). The folly of youth, eh? 
+in TeX format][7]). The folly of youth, eh?
 
 There are plenty of ways to lay out information on a page that do not
 use an explicit grid.  Making the results harmonious and readable can be
@@ -72,7 +72,7 @@ Colour scheming
 Blue has always been my signature colour (I have three brothers and
 sisters, so our possessions were colour-coded to prevent arguments). The
 particular dark blue I ended up using for the background is #123 (meaning the same as
-#112233, i.e., red 17, green 34, blue 51). This isn't web-safe in the
+\#112233, i.e., red 17, green 34, blue 51). This isn't web-safe in the
 old-fashioned sense, which is something of a departure for me, but it is
 [web-smart][8], meaning suitable for any display with thousands of
 colours or better.
@@ -85,7 +85,7 @@ Colour scheme systems (mono, contrast, triads, etc.) are the equivalent
 for colour of the grid system. The simplest (apart from monochrome) is for most of the page to be shades or tints of one colour,
 and to use a single contrasting colour for highlights.
 My contrast colour (used for links) is my old favourite
-#F90, which is close enough to being the mathematical complement of #123.
+\#F90, which is close enough to being the mathematical complement of #123.
 Visited links are the bleached-out version #FC9. For the banner at the
 top of the main body of the page, I took a photo by [Jenni Scott][9] and
 cropped it to approximately the right proportions and then colourized it
@@ -100,7 +100,7 @@ HTML changes
 I did not quite do all this without touching the HTML. First of all, I
 created this as a new CSS file rather than replacing the old one; in
 Mozilla Firefox, use the View &rarr; Page Style menu to see how the page
-looks in the old theme. 
+looks in the old theme.
 
 Second, in order to move the list of categories from the bottom of the
 article to the left column, I had to move it in the HTML as well. I also
@@ -118,10 +118,10 @@ look so far.
 
   [1]: /2005/percy/
   [2]: http://daringfireball.net/
-  [3]: http://www.subtraction.com/about/ 
+  [3]: http://www.subtraction.com/about/
   [4]: http://www.subtraction.com/
   [5]: http://www.tug.org/ "TeX Users' Group"
   [6]: http://www.tug.org/tex-archive/fonts/malvern/
   [7]: http://www.tug.org/tex-archive/fonts/malvern/doc/maman.tex
-  [8]: http://www.ficml.org/jemimap/style/color/wheel.html 
+  [8]: http://www.ficml.org/jemimap/style/color/wheel.html
   [9]: http://www.comixminx.net/

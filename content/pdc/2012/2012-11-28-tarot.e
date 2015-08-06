@@ -8,12 +8,12 @@ about time I resurrected my 2002 project, the Alleged Tarot.
 
 (Yes, this is yet another post about the site itself. I need to get out more.)
 
-<div class="image-full-width" style="padding: 1.23em 0;  height: 137px">
-    <img src="http://alleged.org.uk/pdc/tarot/0-fool-100w.png" style="margin: 0 10px 0 10px" width="100" height="137" alt="(0. The Fool)">
-    <img src="http://alleged.org.uk/pdc/tarot/iiii-emperor-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(IV. The Emperor)">
-    <img src="http://alleged.org.uk/pdc/tarot/viii-justice-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(VIII. Justice)">
-    <img src="http://alleged.org.uk/pdc/tarot/xii-hanged-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XII. The Hanged Man)">
-    <img src="http://alleged.org.uk/pdc/tarot/xvi-tower-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XVI. The Tower)">
+<div class="image-full-width">
+    <img src="http://alleged.org.uk/pdc/tarot/0-fool-100w.png" width="100" height="137" alt="(0. The Fool)">
+    <img src="http://alleged.org.uk/pdc/tarot/iiii-emperor-100w.png" width="100" height="137" alt="(IV. The Emperor)">
+    <img src="http://alleged.org.uk/pdc/tarot/viii-justice-100w.png" width="100" height="137" alt="(VIII. Justice)">
+    <img src="http://alleged.org.uk/pdc/tarot/xii-hanged-100w.png" width="100" height="137" alt="(XII. The Hanged Man)">
+    <img src="http://alleged.org.uk/pdc/tarot/xvi-tower-100w.png" width="100" height="137" alt="(XVI. The Tower)">
 </div>
 
 What Has Gone Before
@@ -32,12 +32,12 @@ descriptions and interactive elements. This whole elaborate scheme is
 automated through a program called Make (young folk can try to imagine Rake or
 Ant before they invented Ruby or XML).
 
-<div class="image-full-width" style="padding: 1.23em 0;  height: 137px">
-    <img src="http://alleged.org.uk/pdc/tarot/wands-ace-100w.png" style="margin: 0 10px 0 10px" width="100" height="137" alt="(0. The Fool)">
-    <img src="http://alleged.org.uk/pdc/tarot/wands-4-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(IV. The Emperor)">
-    <img src="http://alleged.org.uk/pdc/tarot/wands-5-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(VIII. Justice)">
-    <img src="http://alleged.org.uk/pdc/tarot/wands-7-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XII. The Hanged Man)">
-    <img src="http://alleged.org.uk/pdc/tarot/wands-queen-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XVI. The Tower)">
+<div class="image-full-width">
+    <img src="http://alleged.org.uk/pdc/tarot/wands-ace-100w.png" width="100" height="137" alt="(0. The Fool)">
+    <img src="http://alleged.org.uk/pdc/tarot/wands-4-100w.png" width="100" height="137" alt="(IV. The Emperor)">
+    <img src="http://alleged.org.uk/pdc/tarot/wands-5-100w.png" width="100" height="137" alt="(VIII. Justice)">
+    <img src="http://alleged.org.uk/pdc/tarot/wands-7-100w.png" width="100" height="137" alt="(XII. The Hanged Man)">
+    <img src="http://alleged.org.uk/pdc/tarot/wands-queen-100w.png" width="100" height="137" alt="(XVI. The Tower)">
 </div>
 
 Because in 2002 SVG was still a slightly obscure, emergent standard, supported only if you had
@@ -45,26 +45,26 @@ taken the trouble to install Adobe’s plug-in, I also provided a version using
 PNG files. The ancient software on the Mac could not generate PNGs, only an
 obsolete format called Targa, so another chain of converters was originally
 used to get them sorted as well. To make things more interesting, the
-conversion from Illustrator’s CMYK colourspace to  RGB was a bit weird and had
+conversion from Illustrator’s CMYK colour space to  RGB was a bit weird and had
 to be adjusted as well.
 
 So What Went Wrong?
 ===================
 
-The Mozilla project wanted to relase version 1.0, which would freeze the API
-used for plug-ins. In order to have an API they coild commit to supporting
+The Mozilla project wanted to release version 1.0, which would freeze the API
+used for plug-ins. In order to have an API they could commit to supporting
 forever, they made changes from the 0.9 version which broke Adobe’s
 plug-in—worse, the breakage was something that caused a crash, with no way to
-check for compatibility beforehand. Adobe abandonned work on the plug-in.  SVG
+check for compatibility beforehand. Adobe abandoned work on the plug-in.  SVG
 was banished to the outer darkness, handing Macromedia an
-effective monopoly on vector graphics online.
+effective monopoly on vector graphics on-line.
 
-<div class="image-full-width" style="padding: 1.23em 0;  height: 137px">
-    <img src="http://alleged.org.uk/pdc/tarot/cups-ace-100w.png" style="margin: 0 10px 0 10px" width="100" height="137" alt="(0. The Fool)">
-    <img src="http://alleged.org.uk/pdc/tarot/cups-3-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(IV. The Emperor)">
-    <img src="http://alleged.org.uk/pdc/tarot/cups-7-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(VIII. Justice)">
-    <img src="http://alleged.org.uk/pdc/tarot/cups-ten-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XII. The Hanged Man)">
-    <img src="http://alleged.org.uk/pdc/tarot/cups-king-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XVI. The Tower)">
+<div class="image-full-width">
+    <img src="http://alleged.org.uk/pdc/tarot/cups-ace-100w.png" width="100" height="137" alt="(0. The Fool)">
+    <img src="http://alleged.org.uk/pdc/tarot/cups-3-100w.png" width="100" height="137" alt="(IV. The Emperor)">
+    <img src="http://alleged.org.uk/pdc/tarot/cups-7-100w.png" width="100" height="137" alt="(VIII. Justice)">
+    <img src="http://alleged.org.uk/pdc/tarot/cups-ten-100w.png" width="100" height="137" alt="(XII. The Hanged Man)">
+    <img src="http://alleged.org.uk/pdc/tarot/cups-king-100w.png" width="100" height="137" alt="(XVI. The Tower)">
 </div>
 
 Five years later a new strange browser war broke out as the Mozilla, Webkit,
@@ -94,12 +94,12 @@ also discovered that past me had the bright idea of making the Python program
 [`mksvgindex.py`][6] produce the SVG index files already compressed, so I had
 to change the program to prevent this.
 
-<div class="image-full-width" style="padding: 1.23em 0;  height: 137px">
-    <img src="http://alleged.org.uk/pdc/tarot/swords-ace-100w.png" style="margin: 0 10px 0 10px" width="100" height="137" alt="(0. The Fool)">
-    <img src="http://alleged.org.uk/pdc/tarot/swords-3-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(IV. The Emperor)">
-    <img src="http://alleged.org.uk/pdc/tarot/swords-5-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(VIII. Justice)">
-    <img src="http://alleged.org.uk/pdc/tarot/swords-9-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XII. The Hanged Man)">
-    <img src="http://alleged.org.uk/pdc/tarot/swords-knight-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XVI. The Tower)">
+<div class="image-full-width">
+    <img src="http://alleged.org.uk/pdc/tarot/swords-ace-100w.png" width="100" height="137" alt="(0. The Fool)">
+    <img src="http://alleged.org.uk/pdc/tarot/swords-3-100w.png" width="100" height="137" alt="(IV. The Emperor)">
+    <img src="http://alleged.org.uk/pdc/tarot/swords-5-100w.png" width="100" height="137" alt="(VIII. Justice)">
+    <img src="http://alleged.org.uk/pdc/tarot/swords-9-100w.png" width="100" height="137" alt="(XII. The Hanged Man)">
+    <img src="http://alleged.org.uk/pdc/tarot/swords-knight-100w.png" width="100" height="137" alt="(XVI. The Tower)">
 </div>
 
 This at least gets it so that [the index pages][8] work no worse than they did in 2002.
@@ -124,12 +124,12 @@ has a couple of interesting bugs.
 
 
 
-<div class="image-full-width" style="padding: 1.23em 0;  height: 137px">
-    <img src="http://alleged.org.uk/pdc/tarot/coins-ace-100w.png" style="margin: 0 10px 0 10px" width="100" height="137" alt="(0. The Fool)">
-    <img src="http://alleged.org.uk/pdc/tarot/coins-5-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(IV. The Emperor)">
-    <img src="http://alleged.org.uk/pdc/tarot/coins-8-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(VIII. Justice)">
-    <img src="http://alleged.org.uk/pdc/tarot/coins-ten-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XII. The Hanged Man)">
-    <img src="http://alleged.org.uk/pdc/tarot/coins-king-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XVI. The Tower)">
+<div class="image-full-width">
+    <img src="http://alleged.org.uk/pdc/tarot/coins-ace-100w.png" width="100" height="137" alt="(0. The Fool)">
+    <img src="http://alleged.org.uk/pdc/tarot/coins-5-100w.png" width="100" height="137" alt="(IV. The Emperor)">
+    <img src="http://alleged.org.uk/pdc/tarot/coins-8-100w.png" width="100" height="137" alt="(VIII. Justice)">
+    <img src="http://alleged.org.uk/pdc/tarot/coins-ten-100w.png" width="100" height="137" alt="(XII. The Hanged Man)">
+    <img src="http://alleged.org.uk/pdc/tarot/coins-king-100w.png" width="100" height="137" alt="(XVI. The Tower)">
 </div>
 
 One of the problems was juggling partial paths: `srcRootDir`, the path from
@@ -157,12 +157,12 @@ Finally
 =======
 
 
-<div class="image-full-width" style="padding: 1.23em 0;  height: 137px">
-    <img src="http://alleged.org.uk/pdc/tarot/v-pope-100w.png" style="margin: 0 10px 0 10px" width="100" height="137" alt="(0. The Fool)">
-    <img src="http://alleged.org.uk/pdc/tarot/viiii-hermit-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(IV. The Emperor)">
-    <img src="http://alleged.org.uk/pdc/tarot/xiii-death-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(VIII. Justice)">
-    <img src="http://alleged.org.uk/pdc/tarot/xvii-star-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XII. The Hanged Man)">
-    <img src="http://alleged.org.uk/pdc/tarot/xxi-world-100w.png" style="margin: 0 10px 0 0" width="100" height="137" alt="(XVI. The Tower)">
+<div class="image-full-width">
+    <img src="http://alleged.org.uk/pdc/tarot/v-pope-100w.png" width="100" height="137" alt="(0. The Fool)">
+    <img src="http://alleged.org.uk/pdc/tarot/viiii-hermit-100w.png" width="100" height="137" alt="(IV. The Emperor)">
+    <img src="http://alleged.org.uk/pdc/tarot/xiii-death-100w.png" width="100" height="137" alt="(VIII. Justice)">
+    <img src="http://alleged.org.uk/pdc/tarot/xvii-star-100w.png" width="100" height="137" alt="(XII. The Hanged Man)">
+    <img src="http://alleged.org.uk/pdc/tarot/xxi-world-100w.png" width="100" height="137" alt="(XVI. The Tower)">
 </div>
 
 You can now visit the [Alleged Tarot][10] site and see it restored to how it looked in 2002, warts and all.

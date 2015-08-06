@@ -1,63 +1,97 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 {% load staticfiles %}
+
+
 <html lang="en-GB">
-  <head>
-  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  	<title>{% block title %}Blog Entry{% endblock %}</title>
-  	<meta name="author" content="Damian Cugley">
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link href='http://fonts.googleapis.com/css?family=Fira+Sans:500|Alegreya:400italic,400,700' rel='stylesheet' type='text/css'>
-  	<link rel="stylesheet" type="text/css" href="{% static 'style/blog.css' %}" />
-  	{% block meta %}{% endblock %}
-  </head>
-  <body>
-    {% block projectwonderfuljs %}
-    <!-- Project Wonderful Ad Box Loader -->
-    <!-- Put this after the <body> tag at the top of your page -->
-    <script type="text/javascript">
-       (function(){function pw_load(){
-          if(arguments.callee.z)return;else arguments.callee.z=true;
-          var d=document;var s=d.createElement('script');
-          var x=d.getElementsByTagName('script')[0];
-          s.type='text/javascript';s.async=true;
-          s.src='//www.projectwonderful.com/pwa.js';
-          x.parentNode.insertBefore(s,x);}
-       if (window.attachEvent){
-        window.attachEvent('DOMContentLoaded',pw_load);
-        window.attachEvent('onload',pw_load);}
-       else{
-        window.addEventListener('DOMContentLoaded',pw_load,false);
-        window.addEventListener('load',pw_load,false);}})();
-    </script>
-    <!-- End Project Wonderful Ad Box Loader -->
-    {% endblock %}
-    {% block flattrjs %}
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Blog Entry{% endblock %}</title>
+        <meta name="author" content="Damian Cugley">
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <meta name="viewport" content="initial-scale=1.0">
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: { families: [ 'Alegreya:700:latin',
+                        'Fira+Sans:400,400italic,500,700:latin' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+    	<link rel="stylesheet" type="text/css" href="{% static 'style/min.css' %}" />
+
+{% block meta %}
+{% endblock %}
+    </head>
+    <body>
+{% block projectwonderfuljs %}
+        <!-- Project Wonderful Ad Box Loader -->
+        <!-- Put this after the <body> tag at the top of your page -->
+        <script type="text/javascript">
+             (function(){function pw_load(){
+                    if(arguments.callee.z)return;else arguments.callee.z=true;
+                    var d=document;var s=d.createElement('script');
+                    var x=d.getElementsByTagName('script')[0];
+                    s.type='text/javascript';s.async=true;
+                    s.src='//www.projectwonderful.com/pwa.js';
+                    x.parentNode.insertBefore(s,x);}
+             if (window.attachEvent){
+                window.attachEvent('DOMContentLoaded',pw_load);
+                window.attachEvent('onload',pw_load);}
+             else{
+                window.addEventListener('DOMContentLoaded',pw_load,false);
+                window.addEventListener('load',pw_load,false);}})();
+        </script>
+        <!-- End Project Wonderful Ad Box Loader -->
+{% endblock %}
+{% block flattrjs %}
 <script type="text/javascript">
 /* <![CDATA[ */
-    (function() {
-        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto&uid=pdc&language=en_GB&category=text';
-        t.parentNode.insertBefore(s, t);
-    })();
+        (function() {
+                var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto&uid=pdc&language=en_GB&category=text';
+                t.parentNode.insertBefore(s, t);
+        })();
 /* ]]> */
 </script>
-    {% endblock %}
+{% endblock %}
 
-    <div id="banner">
-      {% block trail %}
-      <b><a href="{% url 'why_hello_im' %}">Damian Cugley’s Alleged Articles</a></b>
-      {% endblock %}
-      <h1>{% block heading %}Blog Entry{% endblock %}</h1>
-    </div>
-    <div id="page">
-      {% block content %}
-      {% endblock %}
-      <div id="page-after"></div>
-    </div>
-    {% block trailingjs %}{% endblock %}
-  </body>
+        <div class="forme">
+            <main>
+{% block main %}
+{% endblock %}
+            </main>
+            <aside>
+                <nav id="topbar" class="topbar">
+                    <ul>
+                        <li class="topbar-home">
+                            <a href="{% url 'why_hello_im' %}" class="link-subtle">Alleged Articles</a>
+                        </li>
+                        <li class="topbar-byline">
+                            by <a href="{% url 'why_hello_im' %}" class="link-subtle">Damian Cugley</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="ad">
+                    <!-- Project Wonderful Ad Box Code -->
+                    <div id="pw_adbox_60600_6_0"></div>
+                    <!-- End Project Wonderful Ad Box Code -->
+                </div>
+{% block aside %}
+{% endblock %}
+            </aside>
+{% block trailingjs %}
+{% endblock %}
+    </body>
 </html>

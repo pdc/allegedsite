@@ -25,11 +25,11 @@ This is expressed in the (ideal) form of words classically used to describe them
 
 <table>
     <tr>
-        <td>As a</td>
+        <td>As&nbsp;a</td>
         <td style="border-bottom: 1px solid #000">&nbsp;</td>
-        <td>, I want to</td>
+        <td>,&nbsp;I&nbsp;want&nbsp;to</td>
         <td style="border-bottom: 1px solid #000">&nbsp;</td>
-        <td>so that</td>
+        <td>so&nbsp;that</td>
         <td style="border-bottom: 1px solid #000">&nbsp;</td>
         <td>.</td>
     </tr>

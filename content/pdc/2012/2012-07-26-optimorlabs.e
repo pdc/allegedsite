@@ -11,7 +11,7 @@ it, so I took it on myself.
 
 This is what I came up with:
 
-<div style="margin: 1.23em 10px">
+<div class="image-full-width-plus">
 <a href="optimorlabs-screenshot-1.png"><img src="optimorlabs-screenshot-1.png" width="620" height="325"  alt="(screenshot 1)" /></a>
 </div>
 
@@ -27,7 +27,7 @@ professional-looking than before.
 
 The simple gird is designed to spread across a widescreen displays  and switch to a vertical layout on a 768px-wide iPad-style screen.
 
-<div style="margin: 1.23em 10px">
+<div class="image-full-width-plus">
 <a href="optimorlabs-screenshot-2.png"><img src="optimorlabs-screenshot-2.png" width="620"  height="335"  alt="(screenshot 2)" /></a>
 </div>
 

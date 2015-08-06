@@ -1,0 +1,19 @@
+
+@import "defs.less";
+
+.share-links {
+    .contains-its-floats;
+
+    li {
+        float: left;
+        margin: 10px;
+    }
+
+
+    @media (min-width: (@min-ad + @min-sharing)) and (max-width: (@max-main + @min-aside)) {
+        float: left;
+        width: @min-sharing;
+        height: 114px;
+        margin-bottom: 10px;
+    }
+}

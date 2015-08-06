@@ -1,0 +1,302 @@
+@import "defs.less";
+
+h1, h2, h3 {
+    .hl-fnt-inactive;
+    font-weight: @bold-wt;
+
+    .wf-active & {
+        .hl-fnt;
+    }
+}
+
+h1 {
+    @media (max-width: 480px) {
+        font-size: 30px;
+    }
+    @media (min-width: 481px) {
+        font-size: 40px;
+    }
+    margin: 40px 10px 20px;
+}
+h2 {
+    font-size: 21px;
+    margin: 20px 10px 10px;
+}
+h3 {
+    font-size: 18px;
+    margin: 10px 10px 0;
+}
+p {
+    margin: 0 10px;
+}
+p + p {
+    margin-top: 1.25em;
+}
+
+.main-avatar {
+    position: absolute;
+    left: 50%;
+    margin-left: -32px;
+    z-index: 2;
+
+    // Vertical positioning depends on viewport ht
+    @media (max-height: @topbar-ht-1) {
+        width: 48px;
+        height: 48px;
+        top: 0;
+    }
+    @media (min-height: (@topbar-ht-1 + 1px)) and (max-height: @topbar-ht-2) {
+        top: (80px - 32px);
+    }
+    @media (min-height: (@topbar-ht-2 + 1px)) {
+        top: (200px - 32px);
+    }
+}
+
+.entry {
+
+    table {
+        margin: 20px 10px;
+    }
+
+    ul, ol {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    li {
+        margin: 10px 10px 10px 50px;
+
+        p {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    ol {
+        counter-reset: ol;
+
+        li {
+            display: block;
+            counter-increment: ol;
+
+            &:before {
+                content: counters(ol, '.') ".";
+                float: left;
+                width: 30px;
+                margin-left: -40px;
+                padding-right: 10px;
+                text-align: right;
+            }
+        }
+    }
+
+    blockquote {
+        margin:  20px 0;
+        padding: 10px 0;
+        background-color: (fade(@hl-clr, 5%));
+
+        > ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+    p a {
+        // text-decoration: none;
+        // border-bottom: 1px solid (fade(@hl-clr, 25%));
+
+        &:link {
+            color: (darken(@hl-clr, 10%, relative));
+        }
+        &:visited {
+            color: (darken(@hl-clr, 25%, relative));
+        }
+        &:hover,
+        &:active {
+            color: @hl-clr;
+            border-bottom-color: @hl-clr;
+        }
+    }
+
+// Images
+//
+// Blocks of images have 10px between them and 20px before and after.
+// Single images have 20px before and after and 10px on the sides.
+// On small screens they are constrained to the width of the viewport.
+// The following definitions are intended to work whether there is
+// a single image or several.
+
+.constrained-to-full-width() {
+    box-sizing: border-box;
+    width: 100%;
+
+    img {
+        // Using box-sizing so we can constrain the width
+        // of the image plus its padding.
+        // box-sizing: border-box;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.image-full-width,
+.image-full-width-plus,
+.image-near-full-width,
+.image-left,
+.image-right {
+    margin: 20px 0 10px;
+    padding: 0 10px;
+    word-spacing: (10px - 4px);  //I want the gap to be 10px and it seems I have to subtract the default 4px
+    .contains-its-floats;
+
+    img {
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 559px) {
+        .constrained-to-full-width;
+    }
+}
+
+.image-full-width {
+    @media (min-width: 560px) {
+        width: 560px;
+    }
+}
+
+.image-full-width-plus {
+    // This image is wider than the text.
+    // When there isn’t room to extend beyond the text, squash it down:
+    @media (min-width: 560px) and (max-width: 719px){
+        .constrained-to-full-width;
+    }
+    // When there is space, center it
+    @media (min-width: 720px) and (max-width: (@max-main + @min-aside - 1px)) {
+        margin-left: -40px;
+        margin-right: -40px;
+        width: 560px;
+    }
+    // When there isn’t room to extend beyond the text, squash it down:
+    @media (min-width: (@max-main + @min-aside)) and (max-width: (@max-main + @max-aside + @max-gap + 159px)) {
+        .constrained-to-full-width;
+    }
+    // When there is space, project it in to the left margin:
+    @media (min-width: (@max-main + @max-aside + @max-gap + 160px)) {
+        margin-left: -80px;
+        width: 560px;
+    }
+}
+
+.image-near-full-width { // Indented like a blockquote
+    @media (min-width: 560px) {
+        padding: 0 10px 0 50px;
+        width: 520px;
+    }
+}
+
+.image-left {
+    @media (min-width: 560px) {
+        float: left;
+    }
+}
+
+.image-right {
+    @media (min-width: 560px) {
+        float: right;
+    }
+}
+
+.entry-footer {
+    margin: 10px 0;
+    padding: 10px;
+
+    font-size: 13px;
+    line-height: 20px;
+    border-top: 1px dotted @hl-clr;
+    border-bottom: 1px solid @hl-clr;
+
+    .contains-its-floats;
+
+    ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.entry-date {
+    float: left;
+}
+
+.entry-date-on {
+    color: @hl-clr;
+    text-decoration: underline;
+}
+
+.entry-tag-list {
+    float: left;
+    margin: 0;
+    padding: 0;
+
+    li {
+        float: left;
+        margin: 0 0 0 10px;
+        display: block;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        display: block;
+        padding: 0 10px;
+
+        line-height: 20px;
+        white-space: nowrap;
+        background: #DDD;
+        border-radius: 6px;
+
+        &:hover,
+        &:active {
+            text-decoration: underline;
+            color: @hl-clr;
+            background-color: (fade(@hl-clr, 25%));
+        }
+    }
+}
+
+.entry-permalink {
+    float: left;
+    margin: 0 0 0 10px;
+
+    a {
+        color: (fade(@hl-clr, 50%));
+        text-decoration: inherit;
+
+        &:hover {
+            color: @hl-clr;
+        }
+    }
+
+}
+
+code, tt {
+    font-family: sans-serif;
+    font-weight: 500;
+    color: @lo-clr;
+
+    .wf-active & {
+        font-family: 'Fira Sans', sans-serif;
+    }
+}
+
+pre {
+    box-sizing: border-box;
+    margin: 20px 0;
+    padding: 10px;
+    width: 100%;
+    overflow-x: auto;
+
+    background: (fade(@lo-clr, 5%));
+}
