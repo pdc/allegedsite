@@ -6,6 +6,17 @@
 @min-avatar: 48px;
 
 
+.archive-listing-section {
+    h1 {
+        font-size: 30px;
+        line-height: 1.2;
+        i {
+            .body-fnt;
+            font-size: 0.9em;
+        }
+    }
+}
+
 .archive-listing {
     @media (min-width: (@min-text + @min-avatar)) {
         position: relative;
@@ -50,6 +61,11 @@
         width: @min-avatar;
         height: @min-avatar;
     }
+}
+
+.archive-tag-list-list {
+    clear: both;
+    padding-top: 10px;
 }
 
 .archive-tag-list {

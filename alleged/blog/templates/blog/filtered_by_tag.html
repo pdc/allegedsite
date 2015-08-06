@@ -5,7 +5,40 @@
 {% block projectwonderfull %}{% endblock %}
 {% block projectwonderfulljs %}{% endblock %}
 
+
 {% block main %}
+        <div class="archive-listing-section">
+            <h1>
+                {{ matching_entries|length }} {{ matching_entries|pluralize:"entry,entries" }} tagged
+
+        {% for t in tags %}{% if forloop.last %}{% if tags|length > 2 %}, and
+            {% elif tags|length == 2 %}
+                and
+            {% endif %}
+        {% elif not forloop.first %},
+        {% endif %}
+                <i>{{ t }}</i>{% endfor %}
+
+            </h1>
+    {% for e in matching_entries %}
+            <article class="archive-listing">
+        {% if e.image %}
+                <a href="{{ e.href }}"><img src="{{ e.image.src }}" alt="" class="archive-listing-avatar"></a>
+        {% endif %}
+                <h2><a href="{{ e.href }}" class="link-subtle">{{ e.title }}</a></h2>
+
+                {{ e.summary|safe }}
+
+                <footer>
+                    <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F Y" }}</time>
+                </footer>
+            </article>
+    {% endfor %}
+        </div>
+{% endblock %}
+
+
+{% block aside %}
         <div class="archive-tag-list-list">
             <div class="archive-tag-list">
                 <h2>Selected tag{{ matching_entries.selected_tag_infos|pluralize }}</h2>
@@ -40,22 +73,5 @@
                 </ul>
             </div>
     {% endif %}
-        </div>
-        <div class="archive-listing-section">
-            <h1>{{ matching_entries|length }} matching {{ matching_entries|pluralize:"entry,entries" }}</h1>
-    {% for e in matching_entries %}
-            <article class="archive-listing">
-        {% if e.image %}
-                <a href="{{ e.href }}"><img src="{{ e.image.src }}" alt="" class="archive-listing-avatar"></a>
-        {% endif %}
-                <h2><a href="{{ e.href }}" class="link-subtle">{{ e.title }}</a></h2>
-
-                {{ e.summary|safe }}
-
-                <footer>
-                    <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F Y" }}</time>
-                </footer>
-            </article>
-    {% endfor %}
         </div>
 {% endblock %}
