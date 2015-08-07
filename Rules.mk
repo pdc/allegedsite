@@ -31,10 +31,10 @@ dev-requirements.txt: dev-requirements.in
 # in subdirectories
 
 .PHONY: targets
-targets: $(TARGETS) $(requirements_files_txt)
+targets: $(TARGETS)
 
 .PHONEY: requirements
-requirements: requirements.txt dev-requirements.txt
+requirements: $(requirements_files_txt)
 
 .PHONEY: clean
 clean:
