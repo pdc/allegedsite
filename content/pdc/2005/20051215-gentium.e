@@ -15,7 +15,7 @@ All the Latin you Can Eat
 -----
 
 You may be wondering what the fuss is about when I say all of the latin
-script; wasn't Latin written with just the capital letters *A*--*Z*
+script; wasn't Latin written with just the capital letters *A*–*Z*
 (minus *J* and *W*)? Well, yes, but we use 'latin' to mean all the
 scripts descended from that alphabet, which means modern fonts all
 include national letters like German eszet <i>&szlig;</i>, Iceland's <i>&eth;</i> and
@@ -32,7 +32,7 @@ represent the local phonemes, so Gentium has <i>&#x0180;</i>,
 some are used in Anglo-Saxon).  On my system, the only other
 font including these characters in Lucida Grande (which is not
 available on Windows).  On Windows, I expect they are in Arial Unicode or
-Lucida Sans Unicode, which are not available on Mac OS X. 
+Lucida Sans Unicode, which are not available on Mac OS X.
 
 There are
 other cross-platform fonts available with very large repertoires, such
@@ -55,7 +55,7 @@ to the [SIL Open Font Licence][OFL]:
 > cannot be released under any other type of license.
 
 Some of the other aformentioned fonts are restricted to non-commerical work,
-or require payment, or have other restrictions. 
+or require payment, or have other restrictions.
 
 
 Type Design Inspires Typography
@@ -67,8 +67,8 @@ extra letters added.  That's the real reason why I am using it: I don't actually
 be able to include African and Vietnamese text on my site on a regular
 basis, but I like the way Gentium looks.
 
-> The design is intended to be highly readable, reasonably compact, and visually attractive. 
-> The additional 'extended' Latin letters are designed to naturally harmonize 
+> The design is intended to be highly readable, reasonably compact, and visually attractive.
+> The additional 'extended' Latin letters are designed to naturally harmonize
 > with the traditional 26 ones. Diacritics are treated with careful thought and
 > attention to their use. Gentium also supports both ancient and modern Greek,
 > including a number of alternate forms. These fonts were originally the product
@@ -81,7 +81,7 @@ lower case letters like *b* and *l* be fractionally taller than capital letters;
 Gentium makes this difference stronger: AbCdEfGhIjKlMnOpQrStUvWxYz. This
 makes it look nicer in Languages like German that use many Capital
 Letters because every Noun is capitalized. It also suits text with lots
-of TLAs such as my rants about SVG and HTML and XSLT and XML and MU. 
+of TLAs such as my rants about SVG and HTML and XSLT and XML and MU.
 
 A week or two ago I read the introduction to [The Elements of
 Typographic Style Applied to the Web][3] and this prompted me to ponder
@@ -115,7 +115,7 @@ started a fresh stylesheet with
         margin: 0;
         padding: 0;
     }
-    
+
     body {
         font-size: 100%;
         font-family: "Gentium", "GentiumAlt", serif;
@@ -148,7 +148,7 @@ Compatibility
 
 So, gentle reader, if you want to see this page as I think it looks
 best, visit the [Gentium][] web site and download and install the font
-(presuming you are not using a work PC which forbids such behaviour). 
+(presuming you are not using a work PC which forbids such behaviour).
 
 In Firefox 1.5 (Mac OS X) I see strange layout, where the word space between italic
 and roman text is wrong, leading to overlaps:
@@ -183,7 +183,7 @@ here's a screen grab:
 </blockquote>
 
 Windows does not use anti-aliasing on the font at this size, so it looks
-a little more ragged than on the Mac.  
+a little more ragged than on the Mac.
 
 I need to make some changes to the CSS to suit Microsoft Internet
 Explorer since it does not understand [CSS2][]'s <code>[max-width][7]</code>
@@ -195,11 +195,11 @@ I have now modified my pages to work in IE. First off, the tag-line
 paragraph now has an `id` attribute, so it can be selected with
 
     p#tagline { ... }
-    
+
 rather than
 
     #body>p { ... }
-    
+
 Second, I have added an IE-specific stylesheet using the newly noticed
 [IE-specific conditional comments syntax][8], as follows:
 
@@ -213,7 +213,7 @@ important principle: when adding code to cope with bugs in browsers,
 err on the side of assuming future browsers are less buggy than old
 ones.  Do not repeat the mistake of the ASP .NET team, who hard-coded in
 to their software an assumption that all versions of Mozilla would be
-identical to Netscape 4.x---which means ASP .NET will not serve modern
+identical to Netscape 4.x—which means ASP .NET will not serve modern
 HTML to Mozilla or Firefox.
 
 **Update (17 December).**  I have decided that Bugzilla bug [283902][]
@@ -222,17 +222,15 @@ cut-down version of this page as a [test case][9] with a [screen
 grab][10] where you can compare the Safari and Firefox rendering.
 
 
-
-
-
-
-
+**Update (7 August 2015).**  My new style sheet uses [Fira Sans][11], which is
+available as a webfont in Google’s collection and also covers those Latin-B
+code points (which I use only in this article, but still).
 
 
 
   [reddit]: http://reddit.com/
   [gentium]: http://scripts.sil.org/gentium
-  [0180]: http://www.unicode.org/charts/PDF/U0180.pdf
+  [U0180]: http://www.unicode.org/charts/PDF/U0180.pdf
   [cardo]: http://scholarsfonts.net/cardofnt.html
   [junicode]: http://www.engl.virginia.edu/OE/junicode/junicode.html
   [OFL]: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=OFL
@@ -248,3 +246,4 @@ grab][10] where you can compare the Safari and Firefox rendering.
   [8]: http://www.quirksmode.org/css/condcom.html
   [9]: gentium-test.html
   [10]: gentium-test.png
+  [11]: http://www.carrois.com/en/fira-4-1/
