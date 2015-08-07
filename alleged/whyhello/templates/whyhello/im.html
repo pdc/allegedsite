@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -7,8 +8,8 @@
         <!--[if lt IE 9]>
              <script src="html5shiv.js"></script>
         <![endif]-->
-        <link href="{% static "fonts/gibson/gibson.css" %}"  rel="stylesheet" type="text/css">
-        <link href="{% static "style/whyhello.css" %}"  rel="stylesheet" type="text/css">
+        <link href="{% static 'fonts/gibson/gibson.css' %}"  rel="stylesheet" type="text/css">
+        <link href="{% static 'style/whyhello.css' %}"  rel="stylesheet" type="text/css">
 
         <link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
         <link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
@@ -143,7 +144,7 @@
                 </aside>
             </section>
         </div>
-        <script type="text/javascript" src="{% static "js/jquery-1.8.3.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/whyhello.js" %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/whyhello.js' %}"></script>
     </body>
 </html>
