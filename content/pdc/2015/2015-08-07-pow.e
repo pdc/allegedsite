@@ -234,3 +234,6 @@ Styles are optional. Font-family styles are especially optional and webfonts
 (if supported at all) are probably a bad idea, since we don’t really want an
 image format to be dependent on other resources and downloading fonts might
 present security risks.
+
+  [Pillow]: https://pillow.readthedocs.org/
+  [2]: https://en.wikipedia.org/wiki/Content_negotiation
