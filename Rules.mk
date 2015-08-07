@@ -9,6 +9,17 @@ all: targets
 dir := alleged/blog/static/style
 include $(dir)/Rules.mk
 
+requirements_files_in=requirements.in dev-requirements.in
+requirements_files_txt=$(requirements_files_in:.in=.txt)
+
+REALCLEAN := $(REALCLEAN) $(requirements_files_txt)
+
+requirements.txt: requirements.in
+	$(PIPCOMPILE) $< > $@
+
+dev-requirements.txt: dev-requirements.in
+	$(PIPCOMPILE) $< > $@
+
 
 # Generic rules
 
@@ -16,12 +27,14 @@ include $(dir)/Rules.mk
 	$(LESSC) $(LESSFLAGS) -M $< $@ > $*.d.next && mv $*.d.next $*.d
 
 
-
 # Variables TARGETS, CLEAN, and REALCLEAN may be added to by Rules.mk fragments
 # in subdirectories
 
 .PHONY: targets
-targets: $(TARGETS)
+targets: $(TARGETS) $(requirements_files_txt)
+
+.PHONEY: requirements
+requirements: requirements.txt dev-requirements.txt
 
 .PHONEY: clean
 clean:
@@ -30,7 +43,6 @@ clean:
 .PHONEY: realclean
 realclean: clean
 	rm -f $(REALCLEAN)
-
 .PHONEY: depend
 depend: $(DEPEND)
 

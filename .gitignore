@@ -8,3 +8,4 @@ out.xml
 web/pdc/tarot/
 min.css
 *.d
+dev-requirements.txt
