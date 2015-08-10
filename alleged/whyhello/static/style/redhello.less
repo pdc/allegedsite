@@ -1,0 +1,234 @@
+
+@import "../../../blog/static/style/defs.less";
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    line-height: 1.25;
+
+    .wf-active & {
+        font-family: "Fira Sans", sans-serif;
+    }
+}
+
+header {
+    background-color: #999;
+    packground-position: 50% 50%;
+    background-size: cover;
+
+    @media (max-width: 512px) {
+        background-image: url(../pdc/2015/structural-512x200.jpeg);
+    }
+    @media (min-width: 513px) {
+        background-image: url(../pdc/2015/structural-1024x400.jpeg);
+    }
+}
+
+h1 {
+    margin: 0;
+
+    font-weight: 300;
+    line-height: 1;
+    text-align: center;
+    color: #FFF;
+    text-shadow: #000 0 0 1px;
+
+    @media (max-height: 360px) {
+        padding: 30px 10px 20px;
+        font-size: 30px;
+    }
+    @media (min-height: 361px) {
+        padding: 50px 10px 20px;
+        font-size: 45px;
+    }
+}
+
+h2 {
+    margin: 20px 10px 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+p {
+    margin: 0 10px;
+
+    + p {
+        margin-top: 20px;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0 10px 10px 30px;
+    padding: 0;
+
+    p {
+        margin: 0;
+    }
+}
+
+.about {
+    // The portrait is added with pure CSS
+    &:before {
+        content: '';
+        display: block;
+
+        background-image: url(../pdc/2015/byantonia-super-s140.png);
+        background-position: 50% 50%;
+        background-size: 100%;
+
+        // When narrow, show image above text
+        @media (max-width: 479px) {
+            @media (max-height: 399px) {
+                margin: -15px auto 20px;
+                width: 70px;
+                height: 70px;
+            }
+
+            @media (min-height: 400px) {
+                margin: -20px auto 30px;
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (min-width: 480px) {
+            float: left;
+            margin: 0 10px;
+            width: 140px;
+            height: 140px;
+        }
+    }
+    @media (min-width: 480px) {
+        padding-bottom: 20px;
+    }
+}
+
+.about > div {
+    @media (min-width: 480px) {
+        margin-left: 160px;
+    }
+}
+
+.about-intro {
+    margin: 20px 0;
+    font-size: 20px;
+    line-height: 1.25;
+}
+
+
+.articles,
+.archive,
+.projects,
+.elsewhere {
+    @media (min-width: 480px) {
+        clear: both;
+        padding-top: 20px;
+        margin-left: 160px;
+
+        h2 {
+            float: left;
+            margin-top: 0;
+            margin-left: -150px;
+            width: 140px;
+
+            font-size: 1em;
+        }
+    }
+}
+
+.articles {
+    max-width: 640px;
+}
+
+
+.projects {
+    .a-tags-are-links;
+}
+
+
+.entry {
+    padding: 10px 0 0;
+    margin: 10px 0;
+
+    background-color: (fade(@hl-clr, 5%));
+    border-top: 1px solid @hl-clr;
+}
+
+.entry-summary {
+    .a-tags-are-links;
+    .contains-its-floats;
+
+    .more {
+        float: right;
+        white-space: nowrap;
+    }
+}
+
+h3 {
+    padding: 0 10px 10px;
+    margin: 0;
+
+    font-size: 1em;
+    font-weight: 700;
+
+    .a-tags-are-links;
+
+    li & {
+        padding: 0;
+    }
+}
+
+@import "../../../blog/static/style/entry-footer.less";
+
+.archive-list {
+    margin: 0;
+    padding: 0;
+
+    .contains-its-floats;
+}
+
+.archive-list-year {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+    line-height: 2;
+
+    .a-tags-are-links;
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    @media (max-width: (160px + 10 * 64px - 1px)) {
+        width: (percentage(1/5));
+        &:first-child {
+            margin-left: (percentage(1/5));
+        }
+    }
+    @media (min-width: (160px + 10 * 64px)) and (max-width: (160px + 20 * 64px - 1px)) {
+        width: (percentage(1/10));
+        &:first-child {
+            margin-left: (percentage(6/10));
+        }
+    }
+    @media (min-width: (160px + 20 * 64px)) {
+        width: (percentage(1/20));
+    }
+}
+
+.external {
+    margin-top: 20px;
+
+}

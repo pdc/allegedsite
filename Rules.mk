@@ -9,6 +9,9 @@ all: targets
 dir := alleged/blog/static/style
 include $(dir)/Rules.mk
 
+dir := alleged/whyhello/static/style
+include $(dir)/Rules.mk
+
 requirements_files_in=requirements.in dev-requirements.in
 requirements_files_txt=$(requirements_files_in:.in=.txt)
 

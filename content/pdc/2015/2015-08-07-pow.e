@@ -50,7 +50,7 @@ easy to implement or not will depend on the details of how image objects are
 represented.
 
 If image objects are raster data divorced from their original file—like
-`Image` instances in [Pillow][1] for example—then it will be hard to implement
+`Image` instances in [Pillow][] for example—then it will be hard to implement
 POW well. The expedient solutuion will be to have the POW loader create a
 high-resolution raster when it is first loaded, which gets resampled when the
 image is displayed.
