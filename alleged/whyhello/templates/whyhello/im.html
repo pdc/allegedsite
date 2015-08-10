@@ -51,12 +51,12 @@
                 </div>
             </section>
 
-            <section id="articles">
+            <section class="articles">
                 <h2>Alleged Articles</h2>
                 <div class="intro">
                     <p>
                         I occasionally write articles on technical stuff.
-                    <p>
+                    </p>
                 </div>
                 <div class="latest">
                     <p>The most recent one is:</p>
@@ -73,18 +73,18 @@
                             <li><a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a></li>
 {% endfor %}
                         </ul>
-                    </dl>
-                </div>
-                <div class="archive">
-                    <h3>Article archive</h3>
-                    <ul class="archive-list">
+                    </footer>
+                </article>
+            </section>
+            <section class="archive">
+                <h2>Article archive</h2>
+                <ul class="archive-list">
 {% for year_e in years %}
-                        <li class="archive-list-year">
-                            <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
-                        </li>
+                    <li class="archive-list-year">
+                        <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
+                    </li>
 {% endfor %}
-                    </ul>
-                </div>
+                </ul>
             </section>
 
             <section class="projects">
@@ -104,7 +104,7 @@
                         </li>
                         <li>
                             <p>
-                                <a href="http://morseless.me.uk/">Morseless</a> is a simple translator for Morese code originally inspired by <a href="http://www.mspaintadventures.com/?s=6&p=005172">Serentiy in Homestuck</a>!
+                                <a href="http://morseless.me.uk/">Morseless</a> is a simple translator for Morse code originally inspired by <a href="http://www.mspaintadventures.com/?s=6&p=005172">Serenity in Homestuck</a>!
                             </p>
                         </li>
                         <li>
@@ -116,7 +116,7 @@
                 </div>
             </section>
 
-            <section id="elsewhere">
+            <section class="elsewhere">
                 <h2>Other interests</h2>
                 <div class="intro">
                     <p>Latest updates on other sites</p>

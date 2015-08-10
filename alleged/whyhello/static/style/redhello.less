@@ -14,7 +14,16 @@ body {
 }
 
 header {
-    background-color: #F9D;
+    background-color: #999;
+    packground-position: 50% 50%;
+    background-size: cover;
+
+    @media (max-width: 512px) {
+        background-image: url(../pdc/2015/structural-512x200.jpeg);
+    }
+    @media (min-width: 513px) and (max-width: 512px) {
+        background-image: url(../pdc/2015/structural-1024x400.jpeg);
+    }
 }
 
 h1 {
@@ -24,6 +33,7 @@ h1 {
     line-height: 1;
     text-align: center;
     color: #FFF;
+    text-shadow: #000 0 0 1px;
 
     @media (max-height: 360px) {
         padding: 30px 10px 20px;
@@ -65,16 +75,42 @@ li {
 }
 
 .about {
+    // The portrait is added with pure CSS
     &:before {
         content: '';
         display: block;
-        width: 140px;
-        height: 140px;
-        margin: -20px auto 30px;
 
         background-image: url(../pdc/2015/byantonia-super-s140.png);
         background-position: 50% 50%;
-        background-size: 140px;
+        background-size: 100%;
+
+        // When narrow, show image above text
+        @media (max-width: 479px) {
+            @media (max-height: 399px) {
+                margin: -15px auto 20px;
+                width: 70px;
+                height: 70px;
+            }
+
+            @media (min-height: 400px) {
+                margin: -20px auto 30px;
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (min-width: 480px) {
+            float: left;
+            margin: 0 10px;
+            width: 140px;
+            height: 140px;
+        }
+    }
+}
+
+.about > div {
+    @media (min-width: 480px) {
+        margin-left: 160px;
     }
 }
 
@@ -82,6 +118,31 @@ li {
     margin: 20px 0;
     font-size: 20px;
     line-height: 1.25;
+}
+
+
+.articles,
+.archive,
+.projects,
+.elsewhere {
+    @media (min-width: 480px) {
+        clear: both;
+        padding-top: 20px;
+        margin-left: 160px;
+
+        h2 {
+            float: left;
+            margin-top: 0;
+            margin-left: -150px;
+            width: 140px;
+
+            font-size: 1em;
+        }
+    }
+}
+
+.articles {
+    max-width: 640px;
 }
 
 
@@ -134,22 +195,33 @@ h3 {
 .archive-list-year {
     float: left;
     display: block;
-    width: 64px;
     margin: 0;
     padding: 0;
 
     text-align: center;
     line-height: 2;
 
-    &:first-child {
-        margin-left: 64px;
-    }
-
     .a-tags-are-links;
 
     a {
         display: block;
         text-decoration: none;
+    }
+
+    @media (max-width: (160px + 10 * 64px - 1px)) {
+        width: (percentage(1/5));
+        &:first-child {
+            margin-left: (percentage(1/5));
+        }
+    }
+    @media (min-width: (160px + 10 * 64px)) and (max-width: (160px + 20 * 64px - 1px)) {
+        width: (percentage(1/10));
+        &:first-child {
+            margin-left: (percentage(6/10));
+        }
+    }
+    @media (min-width: (160px + 20 * 64px)) {
+        width: (percentage(1/20));
     }
 }
 
