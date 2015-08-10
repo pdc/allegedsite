@@ -61,3 +61,22 @@
         overflow: hidden;
     }
 }
+
+.lnk {
+    &:link {
+        color: (darken(@hl-clr, 10%, relative));
+    }
+    &:visited {
+        color: (darken(@hl-clr, 20%, relative));
+    }
+    &:hover,
+    &:active {
+        color: @hl-clr;
+    }
+}
+
+.a-tags-are-links() {
+    a {
+        .lnk;
+    }
+}

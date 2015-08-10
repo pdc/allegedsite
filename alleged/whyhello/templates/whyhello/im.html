@@ -5,11 +5,28 @@
     <head>
         <meta charset="UTF-8">
         <title>Damian Cugley</title>
+        <meta name="author" content="Damian Cugley">
+
         <!--[if lt IE 9]>
              <script src="html5shiv.js"></script>
         <![endif]-->
-        <link href="{% static 'fonts/gibson/gibson.css' %}"  rel="stylesheet" type="text/css">
-        <link href="{% static 'style/whyhello.css' %}"  rel="stylesheet" type="text/css">
+        <meta name="viewport" content="initial-scale=1.0">
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: { families: [
+                        'Fira+Sans:300,400,700:latin' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <link href="{% static 'style/redhello.css' %}"  rel="stylesheet" type="text/css">
 
         <link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
         <link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
@@ -21,37 +38,62 @@
             <h1>Damian Cugley</h1>
         </header>
         <div id="main" class="main scrolling">
-            <section id="about">
-                <div class="intro">
+            <section class="about">
+                <div class="about-intro">
                     <p>
                         I am an Australian web developer living and working in Oxford, England.
                     </p>
                 </div>
-                <div class="latest">
+                <div class="about-latest">
                     <p>
-                        My favourite framework is Django (Python) but I know from experience I can get the job done in
-                        any number of other systems. I’ve done my fair share of application and system programming as well.
-                    </p>
-                    <p>
-                     I love beautiful, useful things, so I work hard on code quality and I appreciate good design and typography.
+                         I love creating web sites that are both beautiful and useful.
                     </p>
                 </div>
-                <aside id="photo">
-                    <img src="{% static "pdc/2012/cracked-440w.jpeg" %}" alt="" width="220" height="220">
-                </aside>
             </section>
-            <section id="projects">
-                <h2>Projects</h2>
+
+            <section id="articles">
+                <h2>Alleged Articles</h2>
                 <div class="intro">
                     <p>
-                        As well as commercial work, I have built several side projects for the fun of it.
-                    </p>
+                        I occasionally write articles on technical stuff.
+                    <p>
                 </div>
                 <div class="latest">
+                    <p>The most recent one is:</p>
+                </div>
+                <article class="entry">
+                    <h3> <a href="{{ entry.href }}">{{ entry.title }}</a></h3>
+                    <div class="entry-summary">
+                        {{ entry.summary|safe }}
+                    </div>
+                    <footer class="entry-footer">
+                        <time class="entry-date" datetime="{{ entry.published|date:'c' }}">{{ entry.published|date:"j F Y" }}</time>
+                        <ul class="entry-tag-list">
+{% for tag in entry.tags %}
+                            <li><a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a></li>
+{% endfor %}
+                        </ul>
+                    </dl>
+                </div>
+                <div class="archive">
+                    <h3>Article archive</h3>
+                    <ul class="archive-list">
+{% for year_e in years %}
+                        <li class="archive-list-year">
+                            <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
+                        </li>
+{% endfor %}
+                    </ul>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Side projects</h2>
+                <div class="projects-latest">
                     <ul>
                         <li>
                             <p>
-                                <a href="http://caption.org/">CAPTION</a> is Oxford’s annual comics convention, and I designed and built its website.
+                                <a href="http://caption.org/">CAPTION</a> is Oxford’s annual comics convention, and I designed and built its website from 1997–2013.
                             </p>
                         </li>
                         <li>
@@ -62,80 +104,52 @@
                         </li>
                         <li>
                             <p>
-                                <a href="http://kanbo.me.uk/">Kanbo</a> is a work-in-progress task board for agile project management.
+                                <a href="http://morseless.me.uk/">Morseless</a> is a simple translator for Morese code originally inspired by <a href="http://www.mspaintadventures.com/?s=6&p=005172">Serentiy in Homestuck</a>!
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="http://kanbo.me.uk/">Kanbo</a> is a proof-of-concept task board for agile project management.
                             </p>
                         </li>
                     </ul>
                 </div>
             </section>
-            <section id="articles">
-                <h2>Alleged Articles</h2>
-                <div class="intro">
-                    <p>
-                        I occasionally write articles on technical stuff.
-                    <p>
-                </div>
-                <div class="latest">
-                    <p>The most recent one is:</p>
-                    <h3> <a href="{{ entry.href }}">{{ entry.title }}</a></h3>
-                    <dl>
-                        <dt>Summary</dt>
-                        <dd><p>{{ entry.summary|safe }}</p></dd>
-                        <dt>Published</dt>
-                        <dd>{{ entry.published|date:"j F Y" }}</dd>
-                        <dt>Topics</dt>
-                        <dd>
-                            {% for tag in entry.tags %}
-                                <a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a>
-                            {% endfor %}
-                        </dd>
-                    </dl>
-                </div>
-                <div class="archive">
-                    <h3>Archives by Year</h3>
-                    <ul>
-                        {% for year_e in years %}
-                        <li>
-                            <a href="{{ year_e.href }}">{{ year_e.published.year }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </section>
+
             <section id="elsewhere">
-                <h2>More from Damian</h2>
+                <h2>Other interests</h2>
                 <div class="intro">
                     <p>Latest updates on other sites</p>
                 </div>
                 <div class="latest">
-                    <ul>
-                        <li>
+                    <ul class="external-list">
+                        <li class="external">
+                            <h3>
+                                Code on <a id="github-link" class="lnk" href="http://github.com/pdc">GitHub</a>
+                            </h3>
+                        </li>
+                        <li class="external">
                             <h3>
                                 Photos on <a id="flickr-link" href="http://www.flickr.com/photos/pdc/">Flickr</a>
                             </h3>
                             <p>
-                                (and also <a id="photocrowd-link" href="http://www.photocrowd.com/pdc">Photocrowd</a>
-                                and my <a href="/albums/">Ancient Photo Albums</a>)
+                                I also have photos on <a id="photocrowd-link" class="lnk" href="http://www.photocrowd.com/pdc">Photocrowd</a>
+                                and my <a class="lnk" href="/albums/">Ancient Photo Albums</a>
                             </p>
                         </li>
-                        <li>
+                        <li class="external">
                             <h3>
-                                Diary on <a id="livejournal-link" href="http://damiancugley.livejournal.com/">LiveJournal</a>
+                                Tweets on <a id="twitter-link" class="lnk" href="http://twitter.com/damiancugley">Twitter</a>
                             </h3>
                         </li>
-                        <li>
+                        <li class="external">
                             <h3>
-                                Tweets on <a id="twitter-link" href="http://twitter.com/damiancugley">Twitter</a>
+                                Links on <a id="tumblr-link" class="lnk" href="http://pdc.tumblr.com/">Tumblr</a>
                             </h3>
                         </li>
-                        <li>
+                        <li class="external">
                             <h3>
-                                Links on <a id="tumblr-link" href="http://pdc.tumblr.com/">Tumblr</a>
-                            </h3>
-                        </li>
-                        <li>
-                            <h3>
-                                Code on <a id="github-link" href="http://github.com/pdc">GitHub</a>
+                                Diary on <a id="livejournal-link" class="lnk" href="http://damiancugley.livejournal.com/">LiveJournal</a>
                             </h3>
                         </li>
                     </ul>
@@ -145,6 +159,6 @@
             </section>
         </div>
         <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/whyhello.js' %}"></script>
+        {# <script type="text/javascript" src="{% static 'js/whyhello.js' %}"></script> #}
     </body>
 </html>
