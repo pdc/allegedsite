@@ -15,14 +15,28 @@ body {
 
 header {
     background-color: #999;
-    packground-position: 50% 50%;
+    background-position: 50% 50%;
     background-size: cover;
 
-    @media (max-width: 512px) {
-        background-image: url(../pdc/2015/structural-512x200.jpeg);
+    @media (max-height: 360px) {
+        // Height is 80px
+        background-image: url(bnr2015a-1440x80.jpeg);
     }
-    @media (min-width: 513px) {
-        background-image: url(../pdc/2015/structural-1024x400.jpeg);
+
+    @media (min-height: 361px) {
+        // Height is 120px
+        @media (max-width: (floor(768px * 120 / 200))) {
+            background-image: url(bnr2015a-768x200.jpeg);
+        }
+        @media (min-width: (floor(768px * 120 / 200 + 1px))) and (max-width: (floor(1024px * 120 / 200))) {
+            background-image: url(bnr2015a-1024x200.jpeg);
+        }
+        @media (min-width: (floor(1024px * 120 / 200 + 1px))) and (max-width: (floor(1536px * 120 / 200))) {
+            background-image: url(bnr2015a-1536x200.jpeg);
+        }
+        @media (min-width: (floor(1536px * 120 / 200 + 1px))) {
+            background-image: url(bnr2015a-2880x160.jpeg);
+        }
     }
 }
 
@@ -40,7 +54,7 @@ h1 {
         font-size: 30px;
     }
     @media (min-height: 361px) {
-        padding: 50px 10px 20px;
+        padding: 50px 10px 25px;
         font-size: 45px;
     }
 }
@@ -71,6 +85,13 @@ li {
 
     p {
         margin: 0;
+    }
+}
+
+.main {
+    @media (min-width: 961px) {
+        width: 960px;
+        margin: 40px auto;
     }
 }
 
@@ -131,7 +152,6 @@ li {
     @media (min-width: 480px) {
         clear: both;
         padding-top: 20px;
-        margin-left: 160px;
 
         h2 {
             float: left;
@@ -141,6 +161,13 @@ li {
 
             font-size: 1em;
         }
+    }
+
+    @media (min-width: 480px) and (max-width: 639px) {
+        margin-left: 160px;
+    }
+    @media (min-width: 640px) {
+        margin-left: 320px;
     }
 }
 
