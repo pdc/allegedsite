@@ -1,7 +1,11 @@
+{% load static from staticfiles %}
+
 
             <article class="entry">
-{% if entry.image %}
+{% if entry.image and not entry.image.is_fallback %}
                 <img src="{{ entry.image.src }}" class="main-avatar" alt="" width=64 height=64>
+{% else %}
+                <img src="{% static 'pdc/2015/byantonia-super-s140.png' %}" class="main-avatar main-avatar-fallback" alt="" width=140 height=140>
 {% endif %}
 
                 <h1>{{ entry.title }}</h1>
