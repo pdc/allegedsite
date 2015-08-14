@@ -4,7 +4,7 @@
 entries.py
 
 Created by Damian Cugley on 2010-04-17.
-© 2010–2012 Damian Cugley.
+© 2010,2012 Damian Cugley.
 """
 
 import os
@@ -169,8 +169,9 @@ class RelativeTocExtension(TocExtension):
 
 
 class Image(object):
-    def __init__(self, src):
+    def __init__(self, src, is_fallback=False):
         self.src = src
+        self.is_fallback = is_fallback
 
 
 body_re = re.compile(r'<body[^>]*>(.*)</body>', re.DOTALL)
@@ -252,7 +253,12 @@ class Entry(object):
         self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
         self._title = ', '.join(converter.Meta['title'])
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
-        self._image = Image(munge_url(self.munged_image_url, converter.Meta.get('image', ['../icon-64x64.png'])[0]))
+
+        src_list = converter.Meta.get('image')
+        if src_list:
+            self._image = Image(munge_url(self.munged_image_url, src_list[-1]))
+        else:
+            self._image = Image(munge_url(self.munged_image_url, '../icon-64x64.png'), is_fallback=True)
 
     @property
     def title(self):
