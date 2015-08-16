@@ -388,6 +388,13 @@ Second paragraph
             """
         self.assertHTMLEqual(expected, e.body)
 
+    def test_invents_title_when_none_specified(self):
+        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+            out_stream.write('\n\nQuick notes on an entry I will finish off soon')
+        e = self.get_entry()
+
+        self.assertHTMLEqual('Untitled entry', e.title)
+
     def test_href_not_munging_external_link(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello [world](http://google.com/)\n')

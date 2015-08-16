@@ -251,7 +251,7 @@ class Entry(object):
         header_extension = RelativeTocExtension(baselevel=2)
         converter = Markdown(extensions=['markdown.extensions.meta', href_extension, header_extension])
         self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
-        self._title = ', '.join(converter.Meta['title'])
+        self._title = ', '.join(converter.Meta.get('title', ['Untitled entry']))
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
 
         src_list = converter.Meta.get('image')
