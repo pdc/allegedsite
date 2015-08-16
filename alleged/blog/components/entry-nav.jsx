@@ -58,14 +58,14 @@ var EntryNavEntry = React.createClass({
         const ymd = this.props.year + '-' + this.props.month + '-' + this.props.day;
         const dmy = this.props.day + ' ' + this.props.monthLabel + ' ' + this.props.year;
         if (this.props.isActive) {
-            return (<li className="archive-link article-link-active">
+            return (<li className="entry-link entry-link-active">
                     <strong>
                         <q>{this.props.title}</q>
                         <time dateTime={ymd}>{dmy}</time>
                     </strong>
                 </li>);
         } else {
-            return (<li className="archive-link">
+            return (<li className="entry-link">
                     <a href={this.props.href}>
                         <q>{this.props.title}</q>
                         <time dateTime={ymd}>{dmy}</time>
@@ -92,7 +92,7 @@ var EntryNavMonth = React.createClass({
             e => (<EntryNavEntry key={e.day} title={e.title} isActive={e.isActive}
                     year={this.props.year} month={this.props.month} monthLabel={this.props.label} day={e.day}
                     href={e.href} />));
-        return (<li className="entry-nav-month">
+        return (<li className="entry-nav-month entry-nav-month-active">
                 <b>{this.props.label}</b>
                 <ul>
                     {entryComponents}

@@ -12,7 +12,6 @@ d := $(dir)
 
 # Local variables include the subdir in their name
 
-dst_$(d) = $(d)/../
 top_$(d) = $(d)/entry-nav.jsx
 targets_$(d) = $(top_$(d):.jsx=.js)
 # depend_$(d) = $(top_$(d):.jsx=.d)

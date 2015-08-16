@@ -1,16 +1,19 @@
 {% extends "blog/base.html" %}
+{% load static from staticfiles %}
+
 
 {% block meta %}
 	<link rel="alternate" type="application/atom+xml" href="{% url 'blog_atom' %}" />
 {% endblock %}
 
-{% block projectwonderfule %}{% endblock %}
 
 {% block title %}{{ entry.title }} - Alleged Articles{% endblock %}
+
 
 {% block main %}
     {% include "blog/parts/entry.div" %}
 {% endblock %}
+
 
 {% block aside %}
                 <div class="share-links">
@@ -37,9 +40,9 @@
 {% block trailingjs %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="script/entry_nav.js"></script>
+        <script src="{% static 'js/entry-nav.js' %}"></script>
         <script>
-            var EntryStore = new EntryStore({
+            var entryStore = new EntryStore({
                 data: {
                     minYear: 1997,
                     maxYear: 2015,
@@ -85,6 +88,6 @@
                 },
                 yearDataApi: 'year-data.json',
             });
-            activateEntryNav(EntryStore, new Date(), 'example');
+            activateEntryNav(entryStore, new Date({{ entry.published.year }}, {{ entry.published.month }} - 1, {{ entry.published.day }}), 'entry-nav');
       </script>
 {% endblock %}

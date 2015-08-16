@@ -5,7 +5,7 @@
 
 {% with entry.prev as e %}
     {% if e %}
-                        <li class="entry-nav-nextprev archive-link">
+                        <li class="entry-nav-nextprev entry-link">
                             <b>Older</b>
                             <a href="{{ e.href }}" class="" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
                         </li>
@@ -14,9 +14,9 @@
 
 {% with entry.next as e %}
     {% if e %}
-                        <li class="entry-nav-nextprev archive-link">
+                        <li class="entry-nav-nextprev entry-link">
                             <b>Newer</b>
-                            <a href="{{ e.href }}" class="archive-link" rel="next"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
+                            <a href="{{ e.href }}" class="entry-link" rel="next"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
                         </li>
     {% endif %}
 {% endwith %}
@@ -38,13 +38,13 @@
                                     <ul>
                 {% for e in this_month %}
                     {% if e.published == entry.published %}
-                                        <li class="archive-link archive-link-active">
+                                        <li class="entry-link entry-link-active">
                                             <strong>
                                                 <q>{{ e.title }}</q>
                                                 <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F" }}</time>
                                             </strong>
                     {% else %}
-                                        <li class="archive-link">
+                                        <li class="entry-link">
                                             <a href="{{ e.href }}">
                                                 <q>{{ e.title }}</q>
                                                 <time datetime="{{ e.published|date:'c' }}">{{ e.published|date:"j F" }}</time>

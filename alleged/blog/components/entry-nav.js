@@ -77,7 +77,7 @@ var EntryNavEntry = React.createClass({
         if (this.props.isActive) {
             return React.createElement(
                 'li',
-                { className: 'archive-link article-link-active' },
+                { className: 'entry-link entry-link-active' },
                 React.createElement(
                     'strong',
                     null,
@@ -96,7 +96,7 @@ var EntryNavEntry = React.createClass({
         } else {
             return React.createElement(
                 'li',
-                { className: 'archive-link' },
+                { className: 'entry-link' },
                 React.createElement(
                     'a',
                     { href: this.props.href },
@@ -146,7 +146,7 @@ var EntryNavMonth = React.createClass({
         });
         return React.createElement(
             'li',
-            { className: 'entry-nav-month' },
+            { className: 'entry-nav-month entry-nav-month-active' },
             React.createElement(
                 'b',
                 null,

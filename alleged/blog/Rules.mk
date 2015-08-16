@@ -20,7 +20,9 @@ include $(dir)/Rules.mk
 # Local variables include the subdir in their name
 
 # This says we want the outputs of components to go in static/js
-targets_$(d) = $(targets_$(d)/components:$(d)/components/%.js:$(d)/static/js/%.js)
+# targets_$(d) = $(targets_$(d)/components:$(d)/components/%.js=$(d)/static/js/%.js)
+# I have not got the above to work so here it is explicitly:
+targets_$(d) = $(d)/static/js/entry-nav.js
 # depend_$(d) = $(top_$(d):.jsx=.d)
 
 
