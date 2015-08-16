@@ -2,7 +2,7 @@
 
 // This fits in to the width of the sidebar
 
-.archive-links {
+.entry-nav {
     position: relative;
     clear: both;
 
@@ -51,19 +51,19 @@
 }
 
 
-.archive-links-year {
+.entry-nav-year {
     float: left;
     .yr-wd;
 }
 
-.archive-links-year-active,
-.archive-links-month-active  {
+.entry-nav-year-active,
+.entry-nav-month-active  {
     clear: both;
     background-color: fade(@hl-clr, 10%);
     .contains-its-floats;
 }
 
-.archive-links-year-active {
+.entry-nav-year-active {
     > b {
         float: left;
         .yr-wd;
@@ -75,10 +75,10 @@
     }
 }
 
-.archive-links-month {
+.entry-nav-month {
 }
 
-.archive-links-month-active {
+.entry-nav-month-active {
     strong {
         padding-left: 10px;  // Match the `a` tag in the links
     }
@@ -117,7 +117,7 @@
     }
 }
 
-.archive-links-nextprev {
+.entry-nav-nextprev {
     b {
         float: left;
         font-weight: normal;

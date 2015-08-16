@@ -32,3 +32,59 @@
 
     {% include "blog/parts/entry-nav.div" %}
 {% endblock %}
+
+
+{% block trailingjs %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="script/entry_nav.js"></script>
+        <script>
+            var EntryStore = new EntryStore({
+                data: {
+                    minYear: 1997,
+                    maxYear: 2015,
+                    years: {
+                        2015: {
+                            months: [
+                                {
+                                    month: 4,
+                                    label: 'April',
+                                    entries: [
+                                        {
+                                            title: 'Volcenos are Rad',
+                                            day: 1,
+                                            href: 'http://example.com/foo.html'
+                                        }
+                                    ]
+                                },
+                                {
+                                    month: 8,
+                                    label: 'August',
+                                    entries: [
+                                        {
+                                            title: 'Hatching Dragons',
+                                            day: 9,
+                                            href: 'http://example.com/foo.html'
+                                        },
+                                        {
+                                            title: 'Trancendant Reckoning with Destiny',
+                                            day: 14,
+                                            href: 'http://example.com/foo.html',
+                                            isActive: true,
+                                        },
+                                        {
+                                            title: 'Spuffy Paloo',
+                                            day: 28,
+                                            href: 'http://example.com/foo.html'
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    },
+                },
+                yearDataApi: 'year-data.json',
+            });
+            activateEntryNav(EntryStore, new Date(), 'example');
+      </script>
+{% endblock %}

@@ -6,11 +6,14 @@ all: targets
 
 # Subdirectories
 
-dir := alleged/blog/static/style
+dir := alleged/blog
 include $(dir)/Rules.mk
 
 dir := alleged/whyhello/static/style
 include $(dir)/Rules.mk
+
+
+# Defintiions of this built at this level
 
 requirements_files_in=requirements.in dev-requirements.in
 requirements_files_txt=$(requirements_files_in:.in=.txt)
@@ -22,12 +25,6 @@ requirements.txt: requirements.in
 
 dev-requirements.txt: dev-requirements.in
 	$(PIPCOMPILE) $< > $@
-
-
-# Generic rules
-
-.less.css:
-	$(LESSC) $(LESSFLAGS) -M $< $@ > $*.d.next && mv $*.d.next $*.d
 
 
 # Variables TARGETS, CLEAN, and REALCLEAN may be added to by Rules.mk fragments
