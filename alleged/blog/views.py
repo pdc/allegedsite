@@ -1,12 +1,14 @@
 # Encoding: UTF-8
 
+import json
+from datetime import date
+
+from django.utils import safestring
 from django.http import HttpResponseServerError
 from django.views.decorators.cache import cache_page
 from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django.conf import settings
-
-from datetime import date
 
 from alleged.decorators import render_with, render_json
 from alleged.blog.entries import (
@@ -108,6 +110,7 @@ def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
         'this_month': this_month,
         'years': years,
         'this_year_months': get_year_months(entries, y),
+        'react_data_json': safestring.mark_safe(json.dumps(entries.get_react_data(entry))),
         'is_index': False,
     }
 

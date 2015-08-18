@@ -43,49 +43,7 @@
         <script src="{% static 'js/entry-nav.js' %}"></script>
         <script>
             var entryStore = new EntryStore({
-                data: {
-                    minYear: 1997,
-                    maxYear: 2015,
-                    years: {
-                        2015: {
-                            months: [
-                                {
-                                    month: 4,
-                                    label: 'April',
-                                    entries: [
-                                        {
-                                            title: 'Volcenos are Rad',
-                                            day: 1,
-                                            href: 'http://example.com/foo.html'
-                                        }
-                                    ]
-                                },
-                                {
-                                    month: 8,
-                                    label: 'August',
-                                    entries: [
-                                        {
-                                            title: 'Hatching Dragons',
-                                            day: 9,
-                                            href: 'http://example.com/foo.html'
-                                        },
-                                        {
-                                            title: 'Trancendant Reckoning with Destiny',
-                                            day: 14,
-                                            href: 'http://example.com/foo.html',
-                                            isActive: true,
-                                        },
-                                        {
-                                            title: 'Spuffy Paloo',
-                                            day: 28,
-                                            href: 'http://example.com/foo.html'
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    },
-                },
+                data: {{ react_data_json }},
                 yearDataApi: 'year-data.json',
             });
             activateEntryNav(entryStore, new Date({{ entry.published.year }}, {{ entry.published.month }} - 1, {{ entry.published.day }}), 'entry-nav');
