@@ -4,9 +4,10 @@
 entries.py
 
 Created by Damian Cugley on 2010-04-17.
-© 2010,2012 Damian Cugley.
+© 2010, 2012, 2015 Damian Cugley.
 """
 
+import calendar
 import os
 import re
 from datetime import datetime
@@ -251,7 +252,7 @@ class Entry(object):
         header_extension = RelativeTocExtension(baselevel=2)
         converter = Markdown(extensions=['markdown.extensions.meta', href_extension, header_extension])
         self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
-        self._title = ', '.join(converter.Meta['title'])
+        self._title = ', '.join(converter.Meta.get('title', ['Untitled entry']))
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
 
         src_list = converter.Meta.get('image')
@@ -397,6 +398,56 @@ class EntryList(list):
             TagInfo(tag, count)
             for (tag, count) in sorted(available_tag_counts.items())]
         return new_list
+
+    def get_react_year_data(self, year):
+        month_datas = []
+        month = None
+        beg = None
+        year_entries = self.get_by_year()[year]
+
+        def get_month_data(month, xs):
+            return {
+                'month': month,
+                'label': calendar.month_name[month],
+                'entries': [{
+                    'day': x.published.day,
+                    'title': x.title,
+                    'href': x.href,
+                } for x in xs],
+            }
+
+        for i, entry in enumerate(year_entries):
+            if entry.published.month != month:
+                if month:
+                    month_datas.append(get_month_data(month, year_entries[beg:i]))
+                beg = i
+                month = entry.published.month
+        if beg < len(year_entries):
+            month_datas.append(get_month_data(month, year_entries[beg:]))
+
+        return {
+            'months': month_datas,
+        }
+
+    def get_react_data(self, entry):
+        years = self.get_by_year().keys()
+        year = entry.published.year
+        year_data = self.get_react_year_data(year)
+
+        for month_data in year_data['months']:
+            if month_data['month'] == entry.published.month:
+                for entry_data in month_data['entries']:
+                    if entry_data['day'] == entry.published.day:
+                        entry_data['isActive'] = True
+                        break
+
+        return {
+            'minYear': min(years),
+            'maxYear': max(years),
+            'years': {
+                year: year_data,
+            },
+        }
 
 
 def get_toc(entries):
