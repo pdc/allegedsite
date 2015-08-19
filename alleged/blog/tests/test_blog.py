@@ -1,15 +1,18 @@
 # Encoding: UTF-8
 
+import json
 import os
 from datetime import datetime
 import textwrap
 
+from django.core.urlresolvers import reverse
 from django.test import TestCase
-from mock import ANY
+from mock import patch, ANY
 from xml.etree import ElementTree as ET  # noqa
 
 from alleged.blog.entries import get_entries, get_entry, get_toc, get_named_article
 from alleged.fromatom import nested_dicts_from_atom, summary_from_content
+from alleged.blog import views
 
 
 BASE_DIR = 'test_blog'
@@ -720,6 +723,16 @@ class TestThisMonthList(TestCase, BlogTestMixin):
         expected2 = self.entries.get_react_year_data(2010)
         expected2['months'][1]['entries'][0]['isActive'] = True
         self.assertEqual(expected2, react_data['years'][2010])
+
+    def test_react_year_api(self):
+        path = reverse('blog-react-api')
+        with patch.object(views, 'get_entries_cached', lambda blog_dir, blog_url, image_url: self.entries):
+            response = self.client.get(path + '?year=2010')
+
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('application/json', response['Content-Type'].split(';')[0])
+        obj = json.loads(response.content)
+        self.assertEqual(self.entries.get_react_year_data(2010), obj)
 
 
 FIXTURE_DIR = os.path.join(os.path.dirname(__file__), 'test_data')

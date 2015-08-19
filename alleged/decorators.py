@@ -47,5 +47,5 @@ def render_json(view):
         if isinstance(resp, HttpResponse):
             return resp
         data = json.dumps(resp)
-        return HttpResponse(data, mimetype='application/json')
+        return HttpResponse(data, content_type='application/json; charset=UTF-8')
     return decorated_view

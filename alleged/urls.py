@@ -36,12 +36,15 @@ urlpatterns = [
 
     url(r'^pdc/$', alleged.whyhello.views.why_hello_im, blog_args, 'why_hello_im'),
 
-    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$',
-        alleged.blog.views.entry_view, blog_args, 'blog_entry'),
-    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<month>[012][0-9])\.html$',
-        alleged.blog.views.month_entries, blog_args, 'blog_month'),
-    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/(?P<name>[a-z0-9_-]+)\.html$',
-        alleged.blog.views.named_article, blog_args, 'blog_named_article'),
+    url(r'^pdc/(?P<year>[12][09][0-9][0-9])/', include([
+        url(r'^(?P<month>[012][0-9])/(?P<day>[0-3][0-9])\.html$',
+            alleged.blog.views.entry_view, blog_args, 'blog_entry'),
+        url(r'^(?P<month>[012][0-9])\.html$',
+            alleged.blog.views.month_entries, blog_args, 'blog_month'),
+        url(r'^(?P<name>[a-z0-9_-]+)\.html$',
+            alleged.blog.views.named_article, blog_args, 'blog_named_article'),
+    ])),
+    url(r'^pdc/react\.json$', alleged.blog.views.react_api, blog_args, 'blog-react-api'),
     url(r'^pdc/feeds/articles$',
         alleged.blog.views.atom, blog_args, 'blog_atom'),
     url(r'^pdc/feeds/articles-archive-(?P<page_no>[1-9][0-9]*)$',

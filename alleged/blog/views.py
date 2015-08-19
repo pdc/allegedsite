@@ -115,6 +115,15 @@ def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
     }
 
 
+@cache_page(1800)
+@render_json
+def react_api(request, blog_dir, blog_url, image_url):
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
+    year = int(request.GET.get('year', 0), 10)
+    data = entries.get_react_year_data(year)
+    return data
+
+
 @render_with('blog/month_entries.html')
 def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None):
     entries = get_entries_cached(blog_dir, blog_url, image_url)

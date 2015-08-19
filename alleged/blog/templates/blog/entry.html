@@ -44,7 +44,7 @@
         <script>
             var entryStore = new EntryStore({
                 data: {{ react_data_json }},
-                yearDataApi: 'year-data.json',
+                yearDataApi: '{% url "blog-react-api" %}',
             });
             activateEntryNav(entryStore, new Date({{ entry.published.year }}, {{ entry.published.month }} - 1, {{ entry.published.day }}), 'entry-nav');
       </script>
