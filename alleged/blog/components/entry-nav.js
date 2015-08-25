@@ -161,13 +161,17 @@ var EntryNavMonth = React.createClass({
     }
 });
 
+var COLLAPSED = 0,
+    LOADING = 1,
+    EXPANDING = 2,
+    EXPANDED = 3,
+    COLLAPSING = 4;
+var APPEARANCE_NAMES = ['collapsed', 'loading', 'expanding', 'expanded', 'collapsing'];
 var EntryNavYear = React.createClass({
     displayName: 'EntryNavYear',
 
     getInitialState: function getInitialState() {
-        var isActive = this.props.isActive;
         var isReady = this.props.entryStore.checkYearDataReady(this.props.year);
-        var isLoading = isActive && !isReady;
         var month = this.props.month;
         if (!month && isReady) {
             var yearData = this.props.entryStore.getYearData(this.props.year);
@@ -177,9 +181,7 @@ var EntryNavYear = React.createClass({
         }
         return {
             month: month,
-            isLoading: isLoading,
-            isAppearing: false,
-            isAppearingActive: false
+            appearance: !this.props.isActive ? COLLAPSED : isReady ? EXPANDED : LOADING
         };
     },
 
@@ -190,35 +192,28 @@ var EntryNavYear = React.createClass({
     },
 
     componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-        var _this3 = this;
-
         if (nextProps.isActive && !this.props.isActive) {
-            this.loadYearData();
-
-            // Trigger the animated appearance
-            this.setState({ isAppearing: true });
-            window.setTimeout(function () {
-                _this3.setState({ isAppearingActive: true }, function () {
-                    var elt = React.findDOMNode(_this3);
-                    elt.addEventListener('transitionend', _this3.handleTransitionEnd, true);
-                    elt.addEventListener('webkitTransitionEnd', _this3.handleTransitionEnd, true);
-                });
-            }, 1);
+            var isReady = this.props.entryStore.checkYearDataReady(this.props.year);
+            if (!isReady) {
+                this.loadYearData();
+            } else {
+                this.startTransition(EXPANDING);
+            }
+        } else if (!nextProps.isActive && this.props.isActive) {
+            this.startTransition(COLLAPSING);
         }
     },
 
     loadYearData: function loadYearData() {
-        var _this4 = this;
+        var _this3 = this;
 
         var isReady = this.props.entryStore.checkYearDataReady(this.props.year);
 
         if (!isReady) {
-            this.setState({ isLoading: true });
+            this.setState({ appearance: LOADING });
             this.props.entryStore.loadYearData(this.props.year, function (year, yearData) {
-                _this4.setState({
-                    isLoading: false,
-                    month: yearData.months[0].month
-                });
+                _this3.setState({ month: yearData.months[0].month });
+                _this3.startTransition(EXPANDING);
             });
         }
     },
@@ -229,8 +224,28 @@ var EntryNavYear = React.createClass({
         });
     },
 
+    startTransition: function startTransition(appearance) {
+        var _this4 = this;
+
+        // We transition between states so we can use CSS transitions on
+        this.setState({ appearance: appearance }, function () {
+            // At this point we have set the root elt to the start state of the transition.
+            // We want to add a CSS class after one tick to trigger the transition.
+            window.setTimeout(function () {
+                var elt = React.findDOMNode(_this4);
+                $(elt).addClass('entry-nav-year-' + APPEARANCE_NAMES[appearance] + '-active');
+                elt.addEventListener('transitionend', _this4.handleTransitionEnd, true);
+                elt.addEventListener('webkitTransitionEnd', _this4.handleTransitionEnd, true);
+            }, 1);
+        });
+    },
+
     handleTransitionEnd: function handleTransitionEnd(ev) {
-        this.setState({ isAppearing: false, isAppearingActive: false });
+        if (this.state.appearance === EXPANDING) {
+            this.setState({ appearance: EXPANDED });
+        } else if (this.state.appearance === COLLAPSING) {
+            this.setState({ appearance: COLLAPSED });
+        }
 
         var elt = React.findDOMNode(this);
         elt.removeEventListener('transitionend', this.handleTransitionEnd);
@@ -245,10 +260,11 @@ var EntryNavYear = React.createClass({
     render: function render() {
         var _this5 = this;
 
-        if (!this.props.isActive) {
+        var isCollapsed = this.state.appearance === COLLAPSED;
+        if (this.state.appearance === COLLAPSED) {
             return React.createElement(
                 'li',
-                { className: 'entry-nav-year' },
+                { className: 'entry-nav-year entry-nav-year-collapsed' },
                 React.createElement(
                     'a',
                     { href: '#', onClick: this.handleClick },
@@ -264,16 +280,7 @@ var EntryNavYear = React.createClass({
                 entries: m.entries,
                 onMonthActivate: _this5.handleMonthActivate });
         });
-        var className = 'entry-nav-year-active';
-        if (this.state.isLoading) {
-            className += ' entry-nav-year-loading';
-        }
-        if (this.state.isAppearing) {
-            className += ' entry-nav-year-appearing';
-        }
-        if (this.state.isAppearingActive) {
-            className += ' entry-nav-year-appearing-active';
-        }
+        var className = 'entry-nav-year-active entry-nav-year-' + APPEARANCE_NAMES[this.state.appearance];
         return React.createElement(
             'li',
             { className: className },
@@ -284,7 +291,7 @@ var EntryNavYear = React.createClass({
             ),
             React.createElement(
                 'ul',
-                { ref: 'transitioning' },
+                null,
                 monthComponents
             )
         );

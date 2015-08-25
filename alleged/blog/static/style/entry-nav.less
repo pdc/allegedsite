@@ -93,15 +93,34 @@
     }
 }
 
-.entry-nav-year-appearing ul {
+// This defines the start appearance of the expansion animation
+.entry-nav-year-expanding ul,
+.entry-nav-year-collapsing-active ul {
     max-height: 0;
-    transition: max-height 0.15s ease-out;
+    transition: max-height 250ms ease-out;
     overflow: hidden;
 }
 
-.entry-nav-year-appearing-active ul {
+// This defines the end appearance of the expansion animation.
+// Note that the JavaScript requires there be a transition of some sort!
+.entry-nav-year-expanding-active ul,
+.entry-nav-year-collapsing ul {
     max-height: 500px;
-    transition: max-height 0.25s ease-in;
+    transition: max-height 250ms ease-in;
+}
+
+
+// This defines the start appearance of the collapsitfabion animation.
+// Note that the JavaScript requires there be a transition of some sort!
+.entry-nav-year-collapsing ul {
+    max-height: 500px;
+    transition: max-height 150ms ease-in;
+    overflow: hidden;
+}
+
+// This defines the start appearance of the expansion animation
+.entry-nav-year-collapsing-active ul {
+    max-height: 0;
 }
 
 .entry-nav-month {
