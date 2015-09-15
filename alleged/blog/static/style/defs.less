@@ -35,20 +35,23 @@
 @normal-wt: 400;
 @bold-wt: 700;
 
-.body-fnt-inactive() {
-    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+.body-fnt-1() {
+    font-family: "Trebuchet MS", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    letter-spacing: 0.002em;
+
+    .wf-firasans-n4-active & {
+        font-family: "Fira Sans", sans-serif;
+    }
 }
 
-.body-fnt() {
-    font-family: 'Fira Sans', sans-serif;
-}
+.hl-fnt-1() {
+    font-family: "Georgia", "Times New Roman", "Times", serif;
+    font-weight: 700;
 
-.hl-fnt-inactive() {
-    font-family: Times New Roman, Times, serif;
-}
-
-.hl-fnt() {
-    font-family: 'Alegreya', serif;
+    .wf-alegreya-n7-active & {
+        font-family: "Alegreya", serif;
+        letter-spacing: inherit;
+    }
 }
 
 
