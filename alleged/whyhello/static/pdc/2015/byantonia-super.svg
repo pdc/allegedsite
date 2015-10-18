@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="800" height="800" viewPort="0 0 600 600">
+        width="600" height="600" viewBox="0 0 600 600">
     <defs>
         <clipPath id="s">
             <path d="M300,0 C300,300 300,300 0,300 S-300,300 -300,0 -300,-300 0,-300 300,-300 300,0Z"/>
         </clipPath>
     </defs>
 
-    <g transform="translate(400,400)">
+    <g transform="translate(300,300)">
         <rect x="-300" y="-300" width="600" height="600" clip-path="url(#s)"/>
         <image x="-300" y="-300" width="600" height="600" clip-path="url(#s)"
             xlink:href="byantonia.jpeg"/>

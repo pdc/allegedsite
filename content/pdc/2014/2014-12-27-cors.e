@@ -106,7 +106,8 @@ debugging the site, you could try instead using something like this:
     Access-Control-Allow-Origin: http://alleged.org.uk
 
 The recommendation and RFC do not tell you what you should do if you have
-more than one origin; the usual convention is to repeat the header or to
+more than one origin; the usual convention for HTTP headers
+is to repeat the header or to
 repeat values, separated by commas, but on the other hand the RFC suggests
 space-separated values, whereas on the third hand the W3C recommendation says
 this probably does not work. Instead your server needs to echo back the
@@ -166,6 +167,11 @@ documentation for a feature far removed from the center of expertise of either
 your web designer or your ops person. What a mess.
 
 
+## See also
+
+In [Part II][] I discuss the invisibilty of text while fonts are downloading.
+
+
 
   [1]: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/
   [2]: http://en.wikipedia.org/wiki/Content_Security_Policy
@@ -173,3 +179,4 @@ your web designer or your ops person. What a mess.
   [4]: http://tools.ietf.org/html/rfc6454
   [5]: http://enable-cors.org/server_nginx.html
   [6]: http://enable-cors.org/
+  [Part II]: ../2015/09/15.html

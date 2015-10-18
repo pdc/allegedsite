@@ -83,7 +83,7 @@ For example, my current experiment uses a mixin definition like this (using
 This effectively reinstates FOUT in preference to LOUT: at first you see
 [Trebuchet MS][], but once the font is loaded the CSS class is added and you
 see Fira Sans. The letter-spacing tweak is an attempt to make the metrics a
-close enough match that the page does not shuffle around too much. 
+close enough match that the page does not shuffle around too much.
 
 Some people have advocated hybrid solutions, with the text remaining blank for
 a short period of time waiting for the font to arrive, and then if it does not
@@ -101,8 +101,15 @@ problem there will surely be special features added to a future iteration of
 CSS to make all that work redundant. Watch this space!
 
 
+# See also
+
+An article on upcoming [Preload Hints For Web Fonts][3] by Bram Stein,
+a web de­vel­oper work­ing on font serv­ing at Adobe Type­kit.
+
+
   [1]: ../2014/12/27.html
   [2]: https://github.com/typekit/webfontloader
+  [3]: http://www.bramstein.com/writing/preload-hints-for-web-fonts.html
   [Less]: http://lesscss.org/
   [alegreya]: http://www.huertatipografica.com/en/fonts/alegreya-ht-pro
   [Trebuchet MS]: http://www.microsoft.com/typography/fonts/family.aspx?FID=2
