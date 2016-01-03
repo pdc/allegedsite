@@ -8,32 +8,33 @@
         <meta name="google-site-verification" content="G36DSP1rXXLZryW5q79Va7Oiz6mVE-1qV4myQ7hLGfs" />
         <link rel="stylesheet" href="{% static "style/front.css" %}" type="text/css" />
 		<meta name="google-site-verification" content="G36DSP1rXXLZryW5q79Va7Oiz6mVE-1qV4myQ7hLGfs">
+        <meta name="viewport" content="initial-scale=1.0">
     </head>
     <body>
         <div id="intro">
             <p>
-                Long ago, before the World Wide Web, music reviews, political rants, and dissection of
-                television science fiction were perpetrated through grubby photocopied whatsits called
-                fanzines, zines or minicomics. I thought it would be fun to give mine a named publisher,
+                There was a time before the World Wide Web when music reviews, political rants, and dissection of
+                television science fiction were disseminated through grubby photocopied whatsits called
+                fanzines, zines, or minicomics. I thought it would be fun to give mine a named publisher,
                 and the name I chose was
             </p>
         </div>
 
-        <div id="logo">
+        <div id="logo" class="logo">
             {% if is_svg_wanted %}
             <embed src="{% static "logo/alleged.svg" %}" type="image/svg+xml" width="275" height="100"
-                    style="float: left; padding: 35px 40px 15px" alt="Alleged" />
+                    class="logo-part logo-part-alleged" alt="Alleged" />
             <embed src="{% static "logo/logo.svg" %}" type="image/svg+xml" width="150" height="150"
-                    style="float: left; padding: 0"/>
+                    class="logo-part logo-part-symbol"/>
             <embed src="{% static "logo/literature.svg" %}" type="image/svg+xml" width="375" height="100"
-                    style="float: left; padding: 35px 40px 15px" alt="Literature"/>
+                    class="logo-part logo-part-literature" alt="Literature"/>
             {% else %}
             <img src="{% static "logo/alleged-275x100.png" %}" width="275" height="100"
-                    style="float: left; padding: 35px 40px 15px" alt="Alleged" />
+                    class="logo-part logo-part-alleged" alt="Alleged" />
             <img src="{% static "logo/logo-150x150.png" %}" width="150" height="150"
-                    style="float: left; padding: 0"/>
+                    class="logo-part logo-part-symbol"/>
             <img src="{% static "logo/literature-375x100.png" %}" width="375" height="100"
-                    style="float: left; padding: 35px 40px 15px" alt="Literature"/>
+                    class="logo-part logo-part-literature" alt="Literature"/>
             {% endif %}
             <div class="after"></div>
         </div>
@@ -75,7 +76,6 @@
                     </li>
                     <li>
                         <a href="http://www.alleged.org.uk/pdc/tarot/">Alleged Tarot 2002</a>
-                        (now badly broken by changes to SVG support in browsers)
                     </li>
                 </ul>
             </div>
