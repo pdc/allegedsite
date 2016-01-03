@@ -1,4 +1,6 @@
 Title: Idea: Microstalks
+Date: 2015-12-13
+Topics: cookies idea privacy
 
 We need a measure of loss of privacy analagous to the [micromort][] to enable us to compare the cost of different ‘free’
 web services.

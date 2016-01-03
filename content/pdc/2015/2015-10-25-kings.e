@@ -1,6 +1,6 @@
 Title: Idea: King’s-to-King’s Dash
 Date: 2015-10-25
-Topics: cycling idea
+Topics: cycling idea oxford
 
 Oxford needs some charismatic bicycle races of its own, and I would like to propose the King’s-to-King’s Dash.
 
@@ -19,8 +19,8 @@ All competitors must ride their own bike, or a [Brompton folding bike hired from
 # Possible routes
 
 The point here is there are [several plausible routes][3] ([Google has found three][4]) between the two King’s, all of
-them problematic in different ways that illustrate the problems faced by city planners when designing cycle facilities.
-The essential choices are as follows:
+them problematic in different ways. The event thereby illustrates the problems faced by city planners when designing
+cycle facilities. The essential choices are as follows:
 
 * the daredevil route via highly congested Botley Road, the lushly forested expanse of [Frideswide Square][9],
   the [Death Box Junction to George Street][5], followed by the relative calm of Broad Street; or
