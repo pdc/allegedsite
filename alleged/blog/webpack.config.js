@@ -1,10 +1,10 @@
 var webpack = require("webpack");
 
 module.exports = {
-    entry: './entry-page.jsx',
+    entry: './components/entry-page.jsx',
     output: {
         filename: 'entry.js',
-        path: '../static/js',
+        path: './static/js',
     },
     module: {
         loaders: [

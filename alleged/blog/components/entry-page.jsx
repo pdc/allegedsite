@@ -1,6 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {EntryNav, EntryStore} from './entry-nav';
+
+import {EntryStore} from './entry-store';
+import {EntryNav} from './entry-nav';
 
 
 window.entryPage = function (options) {
