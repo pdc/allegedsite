@@ -38,14 +38,16 @@
 
 
 {% block trailingjs %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="{% static 'js/entry-nav.js' %}"></script>
+        <script src="{% static 'js/entry.js' %}"></script>
         <script>
-            var entryStore = new EntryStore({
+          entryPage({
+              store: {
                 data: {{ react_data_json }},
-                yearDataApi: '{% url "blog-react-api" %}',
+                yearDataApi: '{% url "blog-react-api" %}'
+              },
+              date: new Date({{ entry.published.year }}, {{ entry.published.month }} - 1, {{ entry.published.day }}),
+              element: document.getElementById('entry-nav'),
             });
-            activateEntryNav(entryStore, new Date({{ entry.published.year }}, {{ entry.published.month }} - 1, {{ entry.published.day }}), 'entry-nav');
       </script>
 {% endblock %}

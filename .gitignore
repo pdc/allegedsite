@@ -9,3 +9,4 @@ web/pdc/tarot/
 min.css
 *.d
 dev-requirements.txt
+node_modules/
