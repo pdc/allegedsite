@@ -97,10 +97,12 @@ class EntryNavYear extends React.Component {
 
         if (!isReady) {
             this.setState({appearance: LOADING});
-            this.props.entryStore.loadYearData(this.props.year, (year, yearData) => {
+            this.props.entryStore.loadYearData(this.props.year)
+            .then(({year, yearData}) => {
                 this.setState({month: yearData.months[0].month});
                 this.startTransition(EXPANDING);
             });
+            // TODO. Add catch() call.
         }
     }
 

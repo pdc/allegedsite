@@ -20,7 +20,7 @@ WEBPACK	= ./node_modules/webpack/bin/webpack.js
 
 # This says we want the outputs of components to go in static/js
 targets_$(d) = $(d)/webpack.config.WEBPACKRUN
-targets_$(d): $(d)/components/entry-page.jsx \
+$(d)/webpack.config.WEBPACKRUN: $(d)/components/entry-page.jsx \
 	$(d)/components/entry-nav.jsx \
 	$(d)/components/entry-store.js \
 	$(d)/webpack.config.js

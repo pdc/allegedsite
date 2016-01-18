@@ -21,6 +21,9 @@ module.exports = {
     plugins: [
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        }),
     ],
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
