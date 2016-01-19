@@ -1,7 +1,7 @@
 var webpack = require("webpack");
 
 module.exports = {
-    entry: './components/entry-page.jsx',
+    entry: './components/entry-page',
     output: {
         filename: 'entry.js',
         path: './static/js',
