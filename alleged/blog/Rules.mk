@@ -12,11 +12,9 @@ d := $(dir)
 dir := $(d)/static/style
 include $(dir)/Rules.mk
 
-
+WEBPACK=webpack
 
 # Local variables include the subdir in their name
-
-WEBPACK	= ./node_modules/webpack/bin/webpack.js
 
 # This says we want the outputs of components to go in static/js
 targets_$(d) = $(d)/webpack.config.WEBPACKRUN
@@ -38,7 +36,7 @@ DEPEND := $(DEPEND) $(depend_$(d))
 .SUFFIXES: .WEBPACKRUN
 
 %.WEBPACKRUN: %.js
-	P=$$(pwd); cd $(dir $<); $$P/$(WEBPACK) --config $(notdir $<) && date +%Y-%m-%dT%H:%M:%S > $(notdir $@)
+	cd $(dir $<); $(WEBPACK) --config $(notdir $<) && date +%Y-%m-%dT%H:%M:%S > $(notdir $@)
 
 
 # Pop this dir off the stack
