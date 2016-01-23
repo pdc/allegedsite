@@ -12,8 +12,7 @@ d := $(dir)
 
 # Local variables include the subdir in their name
 
-top_$(d) = $(d)/entry-nav.jsx
-targets_$(d) = $(top_$(d):.jsx=.js)
+targets_$(d) = $(d)/entry.js
 # depend_$(d) = $(top_$(d):.jsx=.d)
 
 
@@ -23,6 +22,8 @@ TARGETS := $(TARGETS) $(targets_$(d))
 CLEAN := $(CLEAN) $(targets_$(d))
 # REALCLEAN := $(REALCLEAN) $(depend_$(d))
 # DEPEND := $(DEPEND) $(depend_$(d))
+
+
 
 
 # Pop this dir off the stack
