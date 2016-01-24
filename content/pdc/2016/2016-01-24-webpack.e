@@ -3,7 +3,7 @@ Topics: webpack meta javascript babel
 Date: 2016-01-24
 
 I figured that the first step in fiddling with the JavaScript code I use on my navigation widget will be to convert it
-in to a more fashionable build system, such as Webpack.
+in to a more fashionable build system, such as Webpack. Can I reduce the bandwidth usage of my pages thereby?
 
 
 Why is Webpack?
@@ -22,21 +22,21 @@ one of these formats according to command-line options chosen by baffled program
 
 The trick with all of these is that they involve extra web requests to download the modules as they are required. This overhead is lessened with [SPDY][] or [HTTP/2][HTTP2] but it is still an overhead that delays the start of your JavaScript code.
 
-If the `require` variants are analogous to dynamic linking, [Webpack][] is the static linker: it scans the dependency
-tree of your application and bundles the modules together in to one large file. This can then be minified and compressed
-as a unit, which should get the best bang for your bandwidth buck. In addition it allows JavaScript modules to use the
-`require` function to acquire CSS style sheets. Webpack arranges for them to be appear to JavaScript runtime as another
-module, one that happens to add `style` elements to the page. This makes the code even more self-contained.
+If the `require` variants are like dynamic linking, [Webpack][] is like a static linker: it scans the dependency tree of
+your application, optionally runs transformations (like Babel), and bundles the code together in to one large file.
+This can then be minified and compressed as a unit, which should get the best bang for your bandwidth buck.
 
-Webpack also allows you to write your app in CoffeeScript + SASS or TypeScript + Less through adding loaders to the
-configuration.
+A feature of Webpack I am not using on this site yet is that it can also pack your CSS, using
+`require` statements in the JavaScript to tie them together.
+Webpack arranges for them to be appear to as another
+module, one that to add `style` elements to the page.
 
 
-Applied to my Entry Nav
+Packing Entry Nav with Webpack
 =======================
 
-The main change to support Webpack is to pull the main entry point in to its own file; this gets fed to Webpack and it
-trances dependencies from there. It ended up looking like this:
+The main change needed to exploit Webpack is to pull the main entry point in to its own file; Webpack trances
+dependencies from there. It ended up looking like this:
 
     import React from 'react';
     import {render} from 'react-dom';
@@ -49,9 +49,8 @@ trances dependencies from there. It ended up looking like this:
         render(<EntryNav entryStore={entryStore} initialDate={options.date} />, options.element);
     }
 
-In my case I am invoking it from my `make` files, and the `webpack.config.js` file lives inside the `alleged.blog`
-Python package within my Django file structure. (A standalone app or library project would have `weebpack.config.js` at
-the top level.)
+In my case I am invoking it from my `make` files, and the `webpack.config.js` lives inside the `alleged.blog`
+Python package within my Django file structure.
 
 The Webpack config file looks like this:
 
@@ -59,10 +58,9 @@ The Webpack config file looks like this:
 
     module.exports = {
         entry: './components/entry-page',
-        output: {
-            filename: 'entry.js',
-            path: './static/js',
-        },
+        resolve: {
+            extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+        }
         module: {
             loaders: [
                 {
@@ -79,30 +77,32 @@ The Webpack config file looks like this:
             new webpack.optimize.OccurenceOrderPlugin(),
             new webpack.optimize.UglifyJsPlugin({}),
         ],
-        resolve: {
-            extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
-        }
+        output: {
+            filename: 'entry.js',
+            path: './static/js',
+        },
     }
 
-I am not (yet) using the CSS loaders, since I already have a build system for the CSS.
+This basically say start with the entry page, find referenced `.js` and `.jsx` files, convert to old-type JavaScript
+with Babel, minimize with UglifyJs and write the bundle to `entry.js`.
 
-Because this module imports the React libraries, I can remove the corresponding `script` tag in the HTML.
+Because this module imports the React libraries, I can remove one of the `script` tags from the HTML.
 
 
-Future Promise (and fetch) vs jQuery
-===============
+Replacing jQuery with the Promise of the future
+=====
 
-With React being in charge of DOM manipulation, I am only using jQuery in two places:
+Since I am using React to manage manipulation of the DOM, I am only using jQuery in two places:
 
 1. for its `$.ajax` function that wraps the unpleasantness of `XMLHttpRequest` calls, and
 2. one occurrence of `$(elt).addClass` in the code for the animated transition.
 
-The second of these is just a case of writing a simple `addClass` function of my own. The first issue is best tacked by
-importing some JavaScript features from the future.
+The second of these is just a case of writing a simple `addClass` function of my own.
 
 We can replace my simple use of `$.ajax` with the futuristic new HTML5 function [`fetch`][fetch]. This
-replaces`XMLHttpRequest` hackery with a simpler function that exploits the futuristic new JavaScript concept
-[`Promise`][Promise].
+makes requests with a nicer API than `XMLHttpRequest`
+and, even better, handles waiting for the response using the futuristic new JavaScript concept of
+[promises][].
 
 The code for maybe loading the data now looks like this:
 
@@ -126,16 +126,20 @@ The code for maybe loading the data now looks like this:
                 return {year: year, yearData: obj};
             });
         }
-
         return this._promisesByYear[year];
     }
 
-The `fetch` function starts the download and returns a promise; the first `then` call arranges to parse it as JSON when
-and if it succeeds or raise an error otherwise; the second `then` takes the JSON once it is parsed, stores it, and
-returns it. By storing the promise and returning to subsequent callers we ensure the API call is made once but all the
-callers get the return value once it is ready.
+The `fetch` function starts the download and returns a promise; the
+first `then` call arranges to parse it as JSON when and if it
+succeeds or raise an error otherwise; the second `then` takes the
+JSON once it is parsed, stores it, and returns it. By returning the same
+promise to subsequent callers we ensure the HTTP request is
+made once but all the callers get the return value once it is ready.
 
-[Promises are supported natively in most browsers][1]. A polyfill is I believe supplied by `core.js` which in turn is supplied by Babel’s `babel-preset-es2015` preset, so I don’t need to do anything special to use it.
+[Promises are supported natively in most browsers][1]. A polyfill is
+I believe supplied by `core.js`, which in turn is supplied by Babel’s
+`babel-preset-es2015` preset, so I don’t need to do anything special
+to use it.
 
 The [`fetch` function is available on some browsers][2] but will need a polyfill for now.
 The neatest way to do that using Webpack is to use its `ProvidePlugIn`. The following
@@ -148,17 +152,23 @@ voodoo code added to the `webpack.config.js` does the trick:
         …
     ],
 
-This syntax is more than a little obscure, but I think it translates roughly as ‘load the module `whatwg-fetch`, import
-its global `fetch`, then use this to create a global variable named `fetch`’. This removes any need for lines like
-`import fetch from 'whatwg-fetch'` in the calling code, which is nice because both `fetch` and `Promise` will be global
-variables on browsers that support them.
+This syntax is more than a little obscure, but I think it translates
+roughly (reading right-to-left) as ‘load the module `whatwg-fetch`,
+import its global `fetch`, then use this to create a global variable
+named `fetch`’. This removes any need for lines like `import fetch
+from 'whatwg-fetch'` in the calling code, which is nice because both
+`fetch` and `Promise` will be global variables on browsers that
+support them.
 
 
-So is this less code?
+Reduction in download size
 ====================
 
-Part of the point of this—apart from moving my development practices towards the future—is to reduce the amount of
-JavaScript code downloaded to show my silly entry navigator. Is adding bundling and polyfills a win?
+Part of the point of this exercise—apart from moving my development
+practices towards the future—is to reduce the amount of JavaScript
+code downloaded to show my silly entry navigator. So the question is,
+is adding bundling and polyfills a win? Here is the table
+[from before][3], with the new version added:
 
 <table>
     <thead>
@@ -172,8 +182,8 @@ JavaScript code downloaded to show my silly entry navigator. Is adding bundling 
     </tbody>
 </table>
 
-This takes the total for the navigation code from 77.5&thinsp;KB to 57.8&thinsp;KB.
-
+This takes the total for the navigation code from 77.5&thinsp;KB to
+57.8&thinsp;KB. Not a bad reduction, and with cleaner code to boot!
 
 
   [Node]: https://nodejs.org/en/
@@ -185,6 +195,7 @@ This takes the total for the navigation code from 77.5&thinsp;KB to 57.8&thinsp;
   [HTTP2]: https://http2.github.io
   [Webpack]: http://webpack.github.io
   [fetch]: https://developers.google.com/web/updates/2015/03/introduction-to-fetch
-  [Promise]: http://www.html5rocks.com/en/tutorials/es6/promises/
+  [promises]: http://www.html5rocks.com/en/tutorials/es6/promises/
   [1]: http://caniuse.com/#search=Promise
   [2]: http://caniuse.com/#search=fetch
+  [3]: 17.html
