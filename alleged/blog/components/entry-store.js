@@ -4,7 +4,8 @@
 *
 */
 
-import Promise from 'es6-promise';
+
+/* global Promise */
 /* global fetch */
 
 

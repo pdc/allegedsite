@@ -119,11 +119,20 @@ class EntryNavYear extends React.Component {
             // We want to add a CSS class after one tick to trigger the transition.
             window.setTimeout(() => {
                 let elt = ReactDOM.findDOMNode(this);
-                $(elt).addClass('entry-nav-year-' + APPEARANCE_NAMES[appearance] + '-active');
+                this.addClass(elt, 'entry-nav-year-' + APPEARANCE_NAMES[appearance] + '-active');
                 elt.addEventListener('transitionend', this.handleTransitionEnd.bind(this), true);
                 elt.addEventListener('webkitTransitionEnd', this.handleTransitionEnd.bind(this), true);
             }, 1);
         });
+    }
+
+    addClass(elt, classesToAdd) {
+        let classes = (elt.hasAttribute('class') ? elt.getAttribute('class') : '')
+            .split(/\s+/);
+        classesToAdd = classesToAdd.split(/\s+/)
+            .filter(x => classes.indexOf(x) < 0);
+        classes = classes.concat(classesToAdd);
+        elt.setAttribute('class', classes.join(' '));
     }
 
     handleTransitionEnd(ev) {
