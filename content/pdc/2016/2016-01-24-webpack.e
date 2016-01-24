@@ -156,9 +156,9 @@ This syntax is more than a little obscure, but I think it translates
 roughly (reading right-to-left) as ‘load the module `whatwg-fetch`,
 import its global `fetch`, then use this to create a global variable
 named `fetch`’. This removes any need for lines like `import fetch
-from 'whatwg-fetch'` in the calling code, which is nice because both
-`fetch` and `Promise` will be global variables on browsers that
-support them.
+from 'whatwg-fetch'` in the calling code, which is nice because it means
+I write my code as if we were in the future where
+`fetch` and `Promise` are supported in all browsers.
 
 
 Reduction in download size
