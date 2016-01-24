@@ -198,4 +198,4 @@ This takes the total for the navigation code from 77.5&thinsp;KB to
   [promises]: http://www.html5rocks.com/en/tutorials/es6/promises/
   [1]: http://caniuse.com/#search=Promise
   [2]: http://caniuse.com/#search=fetch
-  [3]: 17.html
+  [3]: 01/17.html
