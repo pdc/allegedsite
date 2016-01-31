@@ -39,7 +39,7 @@ image, using something like this:
 
 The gist of this is that the image has a clip path set to the one in
 the `defs` section. This uses a cubic [Bézier][] (the `C` command in
-the `path`) with control points at the corners of the square (3, 3)
+the `path`) with both its control points at the corners of the square (1, 1)
 to represent on quarter, then three `S` commands to repeat this for
 the other three quarters. I can’t be bothered to work out how much
 this is or isn’t a match for a genuine superellipse: it looks good
@@ -55,21 +55,21 @@ enough for my purposes.
         <path d="M-40,0 H40 M0,-40 V40" stroke="rgba(0, 0, 0, 0.5)" stroke-width="0.5"/>
         <text x="31" y="6" text-anchor="begin" font-size="6" fill="rgba(0, 0, 0, 0.8)">1</text>
         <text x="-31" y="6" text-anchor="end" font-size="6" fill="rgba(0, 0, 0, 0.8)">&minus;1</text>
-        <text x="-1" y="-32" text-anchor="end" font-size="6" fill="rgba(0, 0, 0, 0.8)">1</text>
-        <text x="-1" y="36" text-anchor="end" font-size="6" fill="rgba(0, 0, 0, 0.8)">&minus;1</text>
+        <text x="-1" y="-32" text-anchor="end" font-size="6" fill="rgba(0, 0, 0, 0.8)">&minus;1</text>
+        <text x="-1" y="36" text-anchor="end" font-size="6" fill="rgba(0, 0, 0, 0.8)">1</text>
     </svg>
 </div>
 
-
 With modern browsers this can be embedded directly in the HTML of the
 page, which is convenient because it means I can use Django‘s
-`static` tag to get the URL of the image file correct.
+`static` tag to get the URL of the image file correct. It can also be sized
+using CSS like any other content. Very civilized.
 
-The right-sized JPEG image (96&thinsp;&times;&thinsp;96 pixels) is
-5.6&thinsp;KB (compared with 42.3&thinsp;KB). The `svg` fragment is
-slightly longer than the `img` tag it replaces, sadly, but only by a
+The right-sized JPEG image is
+5.6&thinsp;KB (compared with 42.3&thinsp;KB for the PNG). The `svg` fragment is
+slightly longer than the `img` tag it replaces, but only by a
 few hundred bytes. Overall this shaves a little more than 36&thinsp;KB
-from the first view of my blog pages.
+from the first uncached view of my blog pages.
 
 
   [superellipse]: http://www.piethein.com/page/superellipse-24/
