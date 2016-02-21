@@ -29,7 +29,7 @@ world, and want to be able to discover the others.
 ## Don’t start with URL templates
 
 Most analysts nowadays know not to start with a list of remote
-procedure calls like `getSpuoses(personID)`, and will instead write a
+procedure calls like `getCats(personID, sackNumber)`, and will instead write a
 bunch of URL patterns on the white-board, like the following:
 
     /people/{personID}/sacks/
@@ -76,9 +76,7 @@ and is fairly readable even if you don’t know it.
 
 ## Describing Kits
 
-Let’s start with the simple case: a kitten.
-Using the ellipsis to stand in for additional kitten-related properties,
-might look like this:
+Let’s start with the simple case: a kitten:
 
     interface Kit {
         name: string;
