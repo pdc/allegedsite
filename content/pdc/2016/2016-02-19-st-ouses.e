@@ -1,6 +1,6 @@
-Title: A RESTful API for Saint Ouses
+Title: A RESTful API for St Ouses
 Date: 2016-02-20
-TOpics: saint-ouses rest http json typescript
+TOpics: st-ouses rest http json typescript
 
 For no reason at all I want to describe a RESTful protocol based on HTTP + JSON for a made-up scenario.
 
@@ -11,16 +11,16 @@ As a starting point I need some information this protocol will be
 exposing. Let’s start with an untraditional riddle
 (with apologies to [St Ives][2]):
 
-> As I was going to Saint Ouses<br/>
+> As I was going to St Ouses<br/>
 > I met someone with seven spouses.<br/>
 > Every spouse had seven sacks,<br/>
 > Every sack had seven cats,<br/>
 > Every cat had seven kits.<br/>
 > Kits, cats, sacks, spouses,<br/>
-> How many were going to Saint Ouses?*
+> How many were going to St Ouses?*
 
 The idea here is we are designing a system for tracking the kits,
-cats, sacks, and people of Saint Ouses.
+cats, sacks, and people of St Ouses.
 
 For now we will assume we know about one entity in this strange
 world, and want to be able to discover the others.
@@ -44,13 +44,13 @@ The first problem is that we are not using consistent URLs. Ideally a
 given person should have a single URL: this will make it possible to
 distinguish people records by comparing URLs. As it is, if Alice, Bob
 and Charley are married then it would appear Alice’s cat sacks would
-be avaibale at three URLs (`/people/1/sacks`,
+be available at three URLs (`/people/1/sacks`,
 `/people/2/spouses/1/sacks`, `/people/3/spouses/1/sacks`, say).
 
-The second  problem is that URLs templates tempt you in to creating
-fragile protocols, with code that takes the IDs and munges existing
+The second  problem is that URLs templates tempt you in to writing
+code that takes the IDs and munges existing
 URLs to have different IDs. This locks you in to serving the data
-with these URL patterns. It also makes it hard to access the data
+with these URL patterns, and makes it hard to access the data
 generically. For a REST protocol, the actual URLs should not matter,
 because you discover them by following links between resources. This
 is great, because it allows us to create a mock server from a
@@ -65,16 +65,15 @@ This is the REST equivalent of an entity-relationship diagram.
     <img src="http://yuml.me/diagram/scruffy;dir:LR/class/[Person|name]2..n---0..n[Marriage], [Person]<>---[Sack], [Sack]<>---[Cat|name;aloofness], [Cat]<>---[Kit|name;fluffiness]" alt="(diagrm)" />
 </div>
 
-The hollow diamond indicates an aggregation that does not _own_ the
-entities it aggregates. For example, deleting a sack does not delete the cats
-that were in it.
+The hollow diamond are a UML notation that
+indicates a one-to-many association.
 
 There are various notations for describing JSON schemata;
 the [TypeScript language type system][1] is convenient for me
 and is fairly readable even if you don’t know it.
 
 
-## Describing Kits
+## Describing kits
 
 Let’s start with the simple case: a kitten:
 
@@ -90,19 +89,18 @@ First, we need to know about the cat this kitten is held by.
 
     interface Kit {
         …
-        cat: Resource;
-    }
-    interface Resource {
-        href: string;
+        cat?: {
+            href: string;
+        };
     }
 
-The reasons for using an object with an `href` attribute istead of
-having an attribute `catHref`  are (a) it will allow generic code to
+The reasons for using an object with an `href` attribute instead of
+having an attribute `catHref` are (a) it will allow generic code to
 straightforwardly identify links, and (b) it allows for the addition
-of additional link info, such as media-type.
+of additional metadata to the link, such as `mediaType`, say.
 
 Second, while this representation of the resource may be obtained in
-different ways, it should have a single canonical URL. So lets
+different ways, it should have a single canonical URL. So let’s
 include that.
 
     interface Kit {
@@ -110,24 +108,64 @@ include that.
         …
     }
 
-But now given that any of the attributes we might want to add  to
-a linked-to resource also apply to this one, we can use interface
-subclassing to shorten this definition:
+The reason for wanting a canonical URL is to make resolving partial
+URLs consistent. It also means that a `Kit` instance that arrives
+through some non-HTTP means can be used as if it had been.
 
-    interface Kit extends Resource {
-        name: string;
+The links to a parental cat is lacking sufficient information to properly display a
+link to the end user. It would be nice if the link has enough of the
+cat-specific information to display a link without further
+network requests. Since links to cats and the
+entity that represents a cat
+share a core of `href` and the information required for the link,
+we can use a single interface `Cat` to represent both:
+
+    interface Kit {
+        href: string;
         fluffiness?: number;
-        cat?: Resource;
+        cat?: Cat;
     }
 
-For example, a resource might look like this:
+    interface Cat {
+        href: string;
+        name: string;
+        aloofness? number;
+        …
+    }
+
+In this example, the optional attribute `aloofness` stands in for the
+more complete data needed to display a cat’s own page. The mandatory
+attributes are required whether it is a complete entity or
+just a link.
+
+We can use the `extends` syntax to factor out the repeated elements
+in this definition:
+
+    interface Kit extends Entity {
+        fluffiness?: number;
+        cat?: Cat;
+    }
+
+    interface Cat extends Entity {
+        name: string;
+        aloofness? number;
+        …
+    }
+
+    interface Entity {
+        href: string;
+        mediaType?: string;
+    }
+
+With this definition, a kit entity might look like this:
 
     {
         "href": "http://example.com/kits/69/",
         "name": "Maximillian Floofypants III",
         "fluffiness": 9.1,
         "cat": {
-            "href": "/cats/34/"
+            "href": "/cats/34/",
+            "name": "Deathstroke the Ultrafang"
         }
     }
 
@@ -141,7 +179,8 @@ the URL used to retrieve it. For example, suppose you request
         "name": "Tinypaws Bufflewuff",
         "fluffiness": 2,
         "cat": {
-            "href": "/cats/45/"
+            "href": "/cats/45/",
+            "name": "Peach Paws"
         }
     }
 
@@ -150,32 +189,25 @@ Then the canonical URL of the resource is `http://example.com/kits/123/`&thinsp;
 
 ## Cats and lists versus collections
 
-The other entities have one-to-many links. How are these best
-represented in JSON?
+The other entities have one-to-many relationships to represent. How
+are these best represented in JSON?
 
 
 ### Lists of kits
 
 One option is to simply provide a list (JSON array) of links:
 
-    interface Cat extends Resource {
+    interface Cat extends Entity {
         name: string;
         aloofness?: number;
-        sack?: Resource;
-        kits?: Resource[];
+        sack?: Entity;
+        kits?: Kit[];
     }
 
-This is OK so long as the number of items will never be so great you may
-want to include them in the initial representation. If the list is extensible, you
-add kits to a cat by issuing a `POST` request to the cat’s URL.
-
-We can improve its utility by requiring more information about the
-linked-to kits be included:
-
-    interface Cat extends Resource {
-        …
-        kits: Kit[];
-    }
+This is OK so long as the number of items will never be so great you
+may not want to include them in the initial representation. If the
+list is extensible, you add kits to a cat by issuing a `POST` request
+to the cat’s URL.
 
 For example:
 
@@ -185,16 +217,25 @@ For example:
         "aloofness": 4,
         "sack": "/sacks/deadbeef/",
         "kits": [
-            {"href": "/kits/99/", name": "Boppinjay"},
-            {"href": "/kits/100/", name": "Quinto"},
-            {"href": "/kits/101/", name": "Flufflewuff"}
+            {"href": "/kits/99/", "name": "Boppinjay"},
+            {"href": "/kits/100/", "name": "Quinto"},
+            {"href": "/kits/101/", "name": "Flufflewuff"}
         ]
     }
 
-By embedding of abbreviated versions of the kitten resources, we may
-be able to avoid further round trips to the server if all we want to do is
-present a bare-bones list of this cat’s kits. This is the reason for
-making many of the attributes optional.
+There is also the option of including complete resources instead of just links:
+
+    {
+        "href": "https://example.com/cats/12/",
+        "name": "Doomshadow",
+        "aloofness": 4,
+        "sack": "/sacks/deadbeef/",
+        "kits": [
+            {"href": "/kits/99/", "name": "Boppinjay", "fluffiness": 4},
+            {"href": "/kits/100/", "name": "Quinto", "fluffiness": 4},
+            {"href": "/kits/101/", "name": "Flufflewuff", "fluffiness": 4}
+        ]
+    }
 
 
 ### Kit collections
@@ -202,19 +243,19 @@ making many of the attributes optional.
 The second alternative is to give the **collection** its own URL.
 Something like this:
 
-    interface Cat extends Resource {
+    interface Cat extends Entity {
         …
         kits: Collection<Kit>;
     }
 
-    interface Collection<T> extends Resource {
+    interface Collection<T> extends Entity {
         items?: T[];
         next?: Collection<T>;
         prev?: Collection<T>;
     }
 
-We allow the server to determine how many items to include in
-the representation. The first option
+This allows greater flexibility in how many items to include.
+The first option
 is to include nothing but a link to the collection itself:
 
     {
@@ -225,7 +266,7 @@ is to include nothing but a link to the collection itself:
         }
     }
 
-The second is to include links to all the kits in the response:
+The second is to include links to all the kits:
 
     {
         "href": "https://example.com/cats/12/",
@@ -257,7 +298,15 @@ The third is to include links to the top _N_ items and a `next` link to get more
         }
     }
 
-The `next` link would return another collection object. This will be
+The `next` link would return another collection entity.
+You get its URL by resolving the partial URLs.
+First get the URL of the collection by combining
+`https://example.com/cats/12/` with `kits/` to get
+`https://example.com/cats/12/kits/`&thinsp;,
+then combine that with `page2` to
+get `https://example.com/cats/12/kits/page2`.
+
+This will be
 the same format as the `kits` object, except it can have both `prev`
 and `next` links, depending on whether there are further pages of
 kits to be had. In our example the next page is also the last one,
@@ -302,7 +351,7 @@ embed them in the parent resource).
 The format for sacks is simplest of all, at least if can assume sacks
 are only used for carrying cats.
 
-    interface Sack extends Resource {
+    interface Sack extends Entity {
         holder?: Person;
         cats: Collection<Cat>;
     }
@@ -314,7 +363,7 @@ thing in Saint Ouses. Without going in to
 we can assume the API merely needs to expose the current list
 of spouses of a person.
 
-    interface Person extends Resource {
+    interface Person extends Entity {
         name: string;
         spouses: Collection<Person>;
         sacks: Collection<Sack>;
@@ -339,10 +388,10 @@ lot more data.
 A different way to formulate this with the type definitions would be
 to define a minimal and full datatype:
 
-    interface KitLink extends Resource {
+    interface KitLink extends Link {
         name: string;
     }
-    interface KitResource extends KitLink {
+    interface KitEntity extends KitLink {
         fluffiness: number;
         cat: CatLink;
     }
@@ -369,7 +418,7 @@ that the user is likely to request next.
 I worked through this exercise to try to clarify some ideas about JSON formats.
 The most important rules I have discovered are:
 
-1. Resources, like links, always have a URL.
+1. Entities, like links, always have a URL.
 2. The URL of a resource is always in an attribute named `href`.
 3. Partial
 URLs are resolved relative to the `href` of the resources that
@@ -383,9 +432,9 @@ transformations of resources that involve rewriting URLs.)
 The URL of a resource can be used to retrieve the
 unabbreviated version of that resource.
 
-Links to other resources and embedded resources use the same base
+Links to other resources and embedded entities use the same base
 datatype. When used as a link it can be the bare minimum (probably
-just the `href` and a name field), or can be a complete resource.
+just the `href` and fields fro name and icon if any), or can be a complete resource.
 
 Collections are also resources (hence a mandatory `href`) and may
 contain `items` and links to other pages of the same collection. The
