@@ -2,6 +2,8 @@ Title: Directory-ish and file-ish URLs
 Topics: json url st-ouses
 Date: 2016-02-27
 
+A quick note on using partial URLs in my hypothetical JSON-based API.
+
 In my [sketch of a RESTful API for St Ouses][1], I used a lot of
 relative URLs ending with slashes. This is the style preferred when
 there is a database-driven web server generating the content. When
