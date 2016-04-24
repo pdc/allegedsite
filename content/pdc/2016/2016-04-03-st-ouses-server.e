@@ -19,7 +19,7 @@ The demonstrator needs three main things:
 
 - a fake source of plausible-looking JSON to consume;
 
-- controller code for retrieving the entities and keeping track of
+- model and controller code for retrieving the entities and keeping track of
   which one is displayed; and
 
 - a simple view showing information about an entity and allowing the
@@ -34,7 +34,7 @@ I wanted a cheap implementation of the HTTP
 API I outlined earlier. The easiest way to fake an HTTP API is to
 create a directory full of JSON files and point a web server at it.
 
-I wrote [a Python module][2] to generate the fake data. Once you take
+I wrote [a Python module mkfake][mkfake] to generate the fake data. Once you take
 correcting mistakes in to account, this is faster than
 creating the individual files by hand.
 
@@ -139,9 +139,9 @@ with the entity data.
 
 
   [1]: 02/19.html
-  [2]: https://github.com/pdc/st-ouses/blob/master/fake/mkfake.py
+  [mkfake]: https://github.com/pdc/st-ouses/blob/master/fake/mkfake.py
   [3]: https://en.wikipedia.org/wiki/Popular_cat_names
-  [4]: http://redux.js.org
-  [6]: https://facebook.github.io/react/
+  [Redux]: http://redux.js.org
+  [React]: https://facebook.github.io/react/
   [TDD]: http://c2.com/cgi/wiki?TestDrivenDevelopment
   [7]: https://github.com/pdc/st-ouses
