@@ -1,13 +1,13 @@
-Title: Idea: Three rules for referendums
+Title: Three rules for referendums
 Date: 2016-07-02
 Topics: politics
 
-The recent referrendum has underlined some of the problems with
+The recent referendum has underlined some of the problems with
 referendums as a way of deciding issues. Here’s my ideas for lessons we
 might learn and apply in the future.
 
-What I am discussing here isn’t applicable to the 2016 referendum: that
-has already happened.
+What I am discussing here isn’t applicable to the referendum held on 23
+June 2016: it’s too late to fix that now.
 
 
 Rule 1. Don’t have referendums insincerely
@@ -15,11 +15,12 @@ Rule 1. Don’t have referendums insincerely
 
 The odd thing about the three referendums under David Cameron’s
 premiership is that they were never intended to succeed: their purpose
-was to shut up noisy factions and reinforce the status quo. Having a
+was to  reinforce the status quo and shut up noisy factions. Having a
 referendum result in a Yes requires drastic actions be taken by a
 government that doesn’t want to do it, which turns out to be a
 disaster.
 
+The Brexit referendum was held to try to suppress the Euroscepticism tendency within the Conservative party.
 The fact that the Tory party cannot agree on the European question and
 cannot address this by splitting in to two competing parties and letting the electorate
 decide is an emergent property of the UK’s first-past-the-post,
@@ -31,22 +32,20 @@ voting reform generally.
 Rule 2. Restrict referendums to enacting specific constitutional change
 -------------------------------------------
 
-Referendums are not for decisions on minority rights (like the
-[Australian plebiscite on marriage equality][5]): these are exactly the
+What should referendums be used for?
+Not decisions on minority rights (like the
+[Australian plebiscite on marriage equality][5]) or details on taxation and spending (like in [California][6]): these are exactly the
 sort of thing parliamentary representatives are elected to vote on.
-Referednums—if they have a purpose at all—are for questions of
-constitutional change.
+As for constitutional changes, the British Parliament has enacted
+important changes in the past through having an election and then
+voting it through. So a referendum has not been considered mandatory in
+the past.
 
-THe British Parliament has enacted important constitutional change in the past
-through having an election and then voting it through. So while I think
-a referendum on such a thing makes sense, it is has not been considered
-mandatory in the past.
-
-That said, if there is going to be a referendum to decide the issue, then it
-should happen at the end of the legislative process, not that start.
-‘Make Scotland an independent country’ is a pig in a poke; ‘Activate
-the Constitution for Scotland Act (2019), making Scotland a republic
-independent of the UK’ is a known quantity.
+But assuming we do want a referendum to approve a
+constitutional change, it should come at the end of the legislative
+process, not that start. ‘Make Scotland an independent country’ is a
+pig in a poke; ‘Activate the Constitution for Scotland Act (2019),
+making Scotland a republic independent of the UK’ is a known quantity.
 
 The process would be like this:
 
@@ -57,10 +56,10 @@ The process would be like this:
 4. The BBC does an Archers storyline in which the characters discuss the ramifications of the new act.
 4. Referendum to either activate the Scotland Act or to maintain the status quo.
 
-Compared to the 2014 referendum that’s a pretty high bar. But it would
-let campaigners concentrate on arguing over concrete proposals rather
-than fairy tales told by each side, and the government would be
-campaigning sincerely for a Yes vote.
+Compared to the 2014 referendum that’s a pretty high bar to clear. But
+it would let the campaign concentrate on dissecting concrete proposals
+rather than contrasting the fairy tales told by each side. It should
+also mean the government would be campaigning sincerely for a Yes vote.
 
 
 Rule 3. Require a decisive vote
@@ -91,9 +90,9 @@ Summary
 
 My suggestions for future legislators:
 
-1. Don’t have referendums insincerely
-2. Restrict referendums to enacting specific constitutional change
-3. Require a decisive vote
+1. Don’t have referendums insincerely;
+2. Restrict referendums to enacting specific constitutional change; and
+3. Require a decisive vote.
 
 And consider the consequences of both a positive and a negative vote.
 
@@ -102,3 +101,4 @@ And consider the consequences of both a positive and a negative vote.
   [3]: https://twitter.com/tom_nuttall/status/747016797090627584
   [2]: http://www.slideshare.net/IpsosMORI/ipsos-mori-newsnight-postreferendum-research
   [5]: http://www.australianmarriageequality.org/wp-content/uploads/2015/08/AME-Fact-Sheet-Plebiscite.pdf
+  [6]: https://www.theguardian.com/commentisfree/cifamerica/2010/apr/18/general-election-2010-california
