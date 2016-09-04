@@ -173,7 +173,7 @@ In [Part II][] I discuss the invisibilty of text while fonts are downloading.
 
 
 
-  [1]: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/
+  [1]: https://docs.djangoproject.com/en/1.10/howto/static-files/
   [2]: http://en.wikipedia.org/wiki/Content_Security_Policy
   [3]: http://www.w3.org/TR/cors/
   [4]: http://tools.ietf.org/html/rfc6454
