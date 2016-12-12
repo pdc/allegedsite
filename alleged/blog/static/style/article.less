@@ -25,7 +25,9 @@ h3 {
 p {
     margin: 0 10px;
 }
-p + p {
+p + p,
+.image-right + p,
+.image-left + p {
     margin-top: 1.25em;
 }
 
@@ -196,7 +198,7 @@ p + p {
 .image-full-width-plus {
     // This image is wider than the text.
     // When there isn’t room to extend beyond the text, squash it down:
-    @media (min-width: 560px) and (max-width: 719px){
+    @media (min-width: 560px) and (max-width: 719px) {
         .constrained-to-full-width;
     }
     // When there is space, center it
