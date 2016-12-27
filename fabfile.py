@@ -71,7 +71,9 @@ def deploy():
         run('cp {0}/settings_production.py {0}/settings.py'.format(env.settings_subdir))
 
         with prefix('. /home/{0}/virtualenvs/{1}/bin/activate'.format(env.site_name, env.virtualenv)):
-            run('. ~/.nvm/nvm.sh && npm install && make')  # This makes CSS and may update requirements.txt
+            run('. ~/.nvm/nvm.sh && npm install')
+            run('. ~/.nvm/nvm.sh && npm install -g less less-plugin-clean-css')
+            run('. ~/.nvm/nvm.sh && make')  # This makes CSS and may update requirements.txt
             run('pip install -r requirements.txt')
             run('./manage.py collectstatic --noinput')
 
