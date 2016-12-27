@@ -17,8 +17,7 @@ Instruments series. The first item in the list should be labelled ‘Book
 3. _City of Glass_’, since the series designation is common to all of
 them, or   even just ‘3. _City of Glass_’ since the books’ being books
 is implied by the fact that this is a list of books in an app called
-iBooks. Instead it is labelled ‘The Mortal Instruments: Book 3. City of
-Glass’ and truncated down to uselessness.
+iBooks. Instead it is labelled ‘The Mortal Instrume…’, which is useless.
 
 Apart from the long common prefix there is the problem that the mobile
 layout is trying so hard to look like lists do on larger screens that
