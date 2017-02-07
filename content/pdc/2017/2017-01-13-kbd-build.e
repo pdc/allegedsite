@@ -10,7 +10,7 @@ To be clear, this would not be a cost-saving measure; it is only worth
 doing if your goal is the project, or you put a lot of value on being
 able to design your own physical layout.
 
-The basic requirements are
+The basic requirements are as follows:
 
 * a *plate* in to which the switches are clipped or glued,
 * the microcontroller with appropriate software,
@@ -173,6 +173,8 @@ At the time of writing about the only positive step I have taken apart
 from fiddling with the [Keyboard Layout Editor][] and reading keyboard
 forums is that I have a set of key caps on order and have acquired some
 sample switches to fiddle with while I daydream of custom keyboard layouts.
+
+
 
 
 

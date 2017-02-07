@@ -1,5 +1,5 @@
 Title: Keyboard Goals
-Topics: keyboard
+Topics: keyboard electronics diy
 Date: 2017-02-05
 
 My new hobby is building a computer keyboard (see [previous article][]
@@ -22,10 +22,11 @@ top left corner of the cap).
     <a href="https://deskthority.net/workshop-f7/beamspring-usb-controller-t6044.html" title="Beamspring USB Controller on Deskthority forum"><img src="https://webwit.nl/input/ibm_beam_spring/rojon/1.jpg" alt="(photo)" width="540"></a>
 </div>
 
-
-I am more interested in colours that I
-can imagine fitting in calmly in to the a home office or sitting room,
-rather than looking like a prop from a science-fiction video game.
+I am more interested in colours that I can imagine fitting in calmly in
+to the a home office or sitting room, rather than looking like a prop
+from a science-fiction video game. But spherical caps are really only
+available as group buys, so I am choosing amongst the options available
+rather than specifying a custom colour scheme of my own.
 
 To that end I have jumped on group buys for [Q-Series SKIDATA][] and
 [SA Dasher][]. Both of these colour-ways are inspired by
@@ -56,11 +57,24 @@ to have dedicated arrow keys—allows for a more compact design and
 reduces the amount you have to react to use the mouse.  (For work I
 have a TKL because the Eclipse IDE needs more keys.)
 
-I have opinions about keyboard layouts. I prefer the ANSI style of
-horizontal Return key as opposed to the vertical ISO style.
+I have opinions about keyboard layouts.
+
+<div class="image-left">
+    <img src="iso-uk-129x177.png" alt="" width="129" height="177">
+</div>
+
+I prefer the ANSI style of
+horizontal Return key as opposed to the vertical ISO style. I dislike the way the UK layout on PC keyboards has `@` swapped with `"` and a odd combination of `#~`.
+
+<div class="image-right">
+    <img src="backspace-150-140w.png" alt="" width="140" height="140">
+</div>
+
 I don’t
 like it when an ordinary key (such as the `\ |` key)
-is stretched to make the layout rectangular. Splitting the left shift
+is stretched to make the layout rectangular.
+
+Splitting the left shift
 key to squeeze in a key to the left of `Z` irks me, especially when it is
 paired with a gigantic right shit key that I never use. The key to the left
 of the `1 !` key should be Escape, and definitely not some random symbols
