@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="280" viewBox="0 0 54 28">
+    <defs>
+        <marker id="Triangle"
+          viewBox="0 0 10 10" refX="0" refY="5"
+          markerUnits="strokeWidth"
+          markerWidth="6" markerHeight="4"
+          orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#B0A"/>
+        </marker>
+    </defs>
+
+    <g transform="scale(1, -1) translate(0,-28)">
+        <g transform="rotate(6, 27,12)">
+            <rect x="2" y="11" width="50" height="1.5"
+                fill="#99A" stroke="none"/>
+            <rect x="6" y="6" width="42" height="1.5"
+                fill="#360" stroke="none"/>
+            <g transform="translate(10.5,12.5) scale(0.0972, 0.0909) translate(-393, -117)">
+                <path d="M388,128 L429,179 513,179
+                        530,165 537,128 543,128 543,117 537,117 537,101 543,95 533,90
+                        530,62
+                        522,62 522,31 517,31 517,62
+                        497,62 497,28 490,28 490,62
+                        476,62 476,45 471,36 449,36 445,45 445,62
+                        400,62 393,90 387,95 393,101 393,117 388,117 Z"
+                    fill="#333" stroke="none"/>
+            </g>
+            <g transform="translate(29.5,12.5) scale(0.0972, 0.0909) translate(-393, -117)">
+                <path d="M388,128 L429,179 513,179
+                        530,165 537,128 543,128 543,117 537,117 537,101 543,95 533,90
+                        530,62
+                        522,62 522,31 517,31 517,62
+                        497,62 497,28 490,28 490,62
+                        476,62 476,45 471,36 449,36 445,45 445,62
+                        400,62 393,90 387,95 393,101 393,117 388,117 Z"
+                    fill="#333" stroke="none"/>
+            </g>
+            <path d="M8.5,17.5 v1.5 l3,6 h12 l3,-6 v-1.5Z
+                M27.5,17.5 v1.5 l3,6 h12 l3,-6 v-1.5Z
+                "
+                fill="#444" stroke="none"/>
+        </g>
+        <path d="M7,10.75 V16 H3 a2.5,2.5 0 0 1 -2.5,-2.5
+                V3 M1.5,13
+                V3 a2.5,2.5 0 0 1 2.5,-2.5
+                H50 a2.5,2.5 0 0 1 2.5,2.5
+                V14 M53.5,3
+                V17 a2.5,2.5 0 0 1 -2.5,2.5
+                H46 V14.75"
+            stroke-width="1" stroke="#BA3" fill="none"/>
+    </g>
+    <path d="M46.25,6.75
+        q-4,1 -2.5,2 t-.5,1.5"
+        stroke="#B0A" stroke-width="0.25" fill="none" marker-end="url(#Triangle)"/>
+    <text font-family="Fira Sans, sans-serif" font-size="1.5"
+            stroke="none" fill="#B0A">
+        <tspan x="2.5" y="17">Plate</tspan>
+        <tspan x="6" y="22">PCB</tspan>
+        <tspan x="12" y="2.5">Key cap</tspan>
+        <tspan x="46.75" y="7">Key switch</tspan>
+    </text>
+</svg>
+
+<!--
+
+388,128 429,179 513,179
+530,165 537,128 543,128 543,117 537,117 537,101 543,95 533,90
+530,72 400,72 393,90 387,95 393,101 393,117 388,117
+
+
+t(393, 117) = (10.5, 12.5)
+
+s(537 - 393) = 14
+sy(117 - 62) = 5
+]
+-->
