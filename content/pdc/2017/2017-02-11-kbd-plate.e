@@ -40,18 +40,37 @@ the case—the keys will appear to be floating above the case.
 In this side view the plate (in orange) extends across the top of the
 case and has holes cut in to it in to which the switches are clipped.
 Because it is made of acrylic (or polycarbonate or wood—to be determined) it needs additional
-thickness to make it stiff enough. My plan is to cut only slightly
+thickness to make it stiff enough. My plan is to cut slightly
 larger holes through the additional thickness so that the switches can
 clip on to the ridge at the top of the hole. To achive this I plan to
 use the [CNC milling machine][] at [Oxford Hackspace][].
 
-The rest of the case is a hollow form and a bottom layer, which can
-both be cut using the [laser cutter][] and the
-three layers bolted together. Alternatively the plate and case sides could be
-made in one go by hollowing out a thicker slab of material.
+For the sides of the case there are two options:
+
+1. Use the [laser cutter][] to cut a rectangular ring and then stack this and the bottom layer, the whole sandwich held together with bolts through from top to bottom.
+2. Alternatively the plate and case sides could be
+made in one go by hollowing out a thicker slab of material (say 10&thinsp;mm to allow 5&thinsp;mm for the wiring).
+
+The advantage of the single-piece solution is that it should be stronger.
+
+My research on off-the-shelf over-the-internet plastic acquisition suggests two main candidates:
+
+* acrylic is available in tinted colours, so I could have a translucent orange
+  plate to show off my black-and-orange SKIDATA key caps,
+  but available in at most 5&thinsp;mm thickness.
+* polycarbonate is stronger and stiffer, and solid polycarbonate is
+  available in 10&thinsp;mm and 12&thinsp;mm thickness, but it is
+  only available in clear.
+
+With the inside surfaces all determined by the milling process, there
+is a risk that a fully transparent case would look terrible. Or it
+might show off the internal wiring in an exceptionally cool way. It is
+difficult to predict. My current leaning is towards using transparent
+orange acrylic, on the grounds that it might look interesting and if it
+looks lousy I can always paint it black!
 
 
-Risks and uncerntainties
+Risks and uncertainties
 ====
 
 The main risk here is whether the plate material will be strong enough
@@ -61,8 +80,8 @@ by drilling a test plate with variously slighly bigger or smaller holes
 to see how what fits best.
 
 The main uncertainties are (a) exactly what software I will use to
-generate the files to feed the CNC software (b) exactly what meterial
-is best, both asethetically and engineering-wise—actylic,
+generate the files to feed the CNC software (b) exactly what material
+is best, both aesthetically and engineering-wise—acrylic,
 polycarbonate, wood, etc.
 
 
