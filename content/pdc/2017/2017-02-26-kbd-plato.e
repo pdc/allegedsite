@@ -3,7 +3,8 @@ Date: 2017-02-26
 Topics: keyboard svg dxf python
 
 As part of my new hobby to build a computer keyboard, I have to draw
-the instructions for the cutting of the plate the switches are held in.
+the instructions for the cutting of the plate the switches are held in (see [previous][] post for more on
+what the plate is).
 Rather than learn how to install and use a CAD system to do this, I
 have written a Python module to do it for me.
 
@@ -42,6 +43,7 @@ give an idea of the level of detail that is or is not possible.
 The package—which is not yet in any kind of finished form—is called
 Plato and you can read the [code on GitHub][].
 
+  [previous]: 02/11.html
   [Keyboard CAD Assistant]: http://www.keyboardcad.com/
   [Keyboard Layout Editor]: http://www.keyboard-layout-editor.com/
   [swillkb Plate & Case Builder]: http://builder.swillkb.com/

@@ -2,7 +2,7 @@ Title: Plate plotting
 Topics: keyboard diy cnc
 Date: 2017-02-11
 
-My new hobby is building a computer keyboard (ssee previous articles
+My new hobby is building a computer keyboard (see previous articles
 for more about [building keyboards][] and [keyboard goals][]).
 I have ordered in components such as key caps, key switches, and a lifetime supply of 1N4148 diodes, but there is one part I have to work out how to build for myself—the plate.
 
