@@ -40,6 +40,12 @@ browser’s ususal controls. I have also made it use lines whose
 thickness corresponds to the width of the laser beam, so they should
 give an idea of the level of detail that is or is not possible.
 
+Update (2017-03-05)! Here is a combined image that shows how the layers are supposed to fit together:
+
+<div class="image-full-width">
+    <img src="x1-20170305-combined.svg" style="width: 100%" alt="(diagram)">
+</div>
+
 The package—which is not yet in any kind of finished form—is called
 Plato and you can read the [code on GitHub][].
 
