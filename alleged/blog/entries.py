@@ -74,7 +74,9 @@ class HrefsTreeprocessor(Treeprocessor):
 
 absolute_url_re = re.compile('^[a-z+-.]+:|^/')
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
-img_or_embed_re = re.compile(r'(<(?:img|embed|script)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*>)')
+img_or_embed_re = re.compile(r'(<(?:img|embed|script)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*)')
+srcset_re = re.compile(r'srcset=("[^"]*"|\'[^\']*\')([^<>]*)')
+srcset_src_re = re.compile(r'(\S*\.(?:jpg|jpeg|gif|png)) (\w+)')
 image_file_name_re = re.compile(r'.*\.(?:jpg|jpeg|gif|png)$')
 
 
@@ -99,15 +101,37 @@ def munge_url(url, more_url):
 
 def make_link_sub(usual_url, image_url):
     def sub(m):
-        original_url = m.group(2)[1:-1]
+        original_url = unquote(m.group(2))
         new_url = munge_url(image_url if image_file_name_re.match(original_url) else usual_url, original_url)
         return '%s"%s"%s' % (m.group(1), new_url, m.group(3))
+    return sub
+
+
+def unquote(x):
+    if x.startswith('"') or x.startswith("'"):
+        return x[1:-1]
+    return x
+
+
+def make_srcset_sub(image_url):
+    def sub(m):
+        srcset = unquote(m.group(1))
+        munged = srcset_src_re.sub(srcset_sub, srcset)
+        return 'srcset="%s"' % munged
+
+    def srcset_sub(m):
+        original_url = m.group(1)
+        new_url = munge_url(image_url, original_url)
+        size = m.group(2)
+        return '%s %s' % (new_url, size)
+
     return sub
 
 
 def munge_html(html, blog_url, image_url):
     html = a_re.sub(make_link_sub(blog_url, image_url), html)
     html = img_or_embed_re.sub(make_link_sub(image_url, image_url), html)
+    html = srcset_re.sub(make_srcset_sub(image_url), html)
     return html
 
 
