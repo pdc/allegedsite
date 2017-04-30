@@ -431,12 +431,12 @@ class TestEntry(TestCase, BlogTestMixin):
 
     def test_srcset_munging_img(self):
         with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
-            output.write('Title: Links!\n\nHello <img alt="world" src="x.jpg" srcset="y.jpg 100w">\n')
+            output.write('Title: Links!\n\nHello <img alt="world" src="x.jpg" srcset="y.jpg 100w" alt="x">\n')
         entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg"' +
-            ' srcset="http://localhost/~pdc/alleged.org.uk/pdc/2010/y.jpg 100w"></p>',
+            ' srcset="http://localhost/~pdc/alleged.org.uk/pdc/2010/y.jpg 100w" alt="x"></p>',
             entry.body)
 
     def test_src_munging_embed(self):

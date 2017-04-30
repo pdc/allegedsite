@@ -75,7 +75,7 @@ class HrefsTreeprocessor(Treeprocessor):
 absolute_url_re = re.compile('^[a-z+-.]+:|^/')
 a_re = re.compile(r'(<a[^<>]*\shref=)("[^"]*"|\'[^\']*\')([^<>]*>)')
 img_or_embed_re = re.compile(r'(<(?:img|embed|script)[^<>]*\ssrc=)("[^"]*"|\'[^\']*\')([^<>]*)')
-srcset_re = re.compile(r'srcset=("[^"]*"|\'[^\']*\')([^<>]*)')
+srcset_re = re.compile(r'srcset=("[^"]*"|\'[^\']*\')')
 srcset_src_re = re.compile(r'(\S*\.(?:jpg|jpeg|gif|png)) (\w+)')
 image_file_name_re = re.compile(r'.*\.(?:jpg|jpeg|gif|png)$')
 
