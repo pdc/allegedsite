@@ -63,14 +63,14 @@ There are more photos in my [Keyboard Plate album on Flickr][].
 The next step is [wiring up the matrix circuit][next].
 
 
-  [Keyboard Plate album on Flickr]: https://www.flickr.com/photos/pdc/albums/72157680961344360
-  [prev]: 02/26.html
   [2]: https://en.wikipedia.org/wiki/Vernier_scale
-  [next]: 04/17.html
-  [Hackspace]: https://oxhack.org
-  [Microsoft Visual Studio Code]: https://code.visualstudio.com
-  [GitHub Desktop]: https://desktop.github.com
-  [Python]: https://www.python.org
-  [Hobbytronics]: https://www.hobbytronics.co.uk
   [3]: https://deskthority.net/workshop-f7/brownfox-step-by-step-t6050.html
   [4]: http://imgur.com/a/qcgdF
+  [GitHub Desktop]: https://desktop.github.com
+  [Hackspace]: https://oxhack.org
+  [Hobbytronics]: https://www.hobbytronics.co.uk
+  [Keyboard Plate album on Flickr]: https://www.flickr.com/photos/pdc/albums/72157680961344360
+  [Microsoft Visual Studio Code]: https://code.visualstudio.com
+  [next]: 04/17.html
+  [prev]: 02/26.html
+  [Python]: https://www.python.org

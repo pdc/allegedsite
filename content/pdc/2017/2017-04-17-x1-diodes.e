@@ -134,10 +134,9 @@ The next bit of work is installing its brain—both soldering in the
 microprocessor board and writing the firmware (or adapting one of the free-software
 keyboard firmwares that are available).
 
-
-  [this photo]: https://www.flickr.com/photos/pdc/34185365695/in/album-72157682749119776/
-  [prev]: 04/13.html
   [2]: https://en.wikipedia.org/wiki/Vernier_scale
-  [Hackspace]: https://oxhack.org
   [3]: https://deskthority.net/workshop-f7/brownfox-step-by-step-t6050.html
   [4]: http://imgur.com/a/qcgdF
+  [Hackspace]: https://oxhack.org
+  [Hobbytronics]: https://www.hobbytronics.co.uk
+  [prev]: 04/13.html
