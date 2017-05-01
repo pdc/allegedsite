@@ -7,7 +7,7 @@ I spent part of the Easter weekend finishing of phase I of the wiring of my keyb
 
 # Rows of diodes
 
-The next step is wiring up the matrix circuit.
+The next step after [cutting the plate][prev] is wiring up the matrix circuit.
 
 The first part  of this is
 soldering a diode to one pin of each switch and soldering these in turn to
@@ -71,9 +71,9 @@ I bought myself an automatic wire-stripper. This is a great tool for this job.
 
 6. Push the piece of insulation sleeve back against the new joint. Ideally it will reach just to the point where the next didode will cross the wire.
 
-7. Repeat for all te diode–rail joints.
+7. Repeat for all te diode-to-rail joints.
 
-I have a sequence of photos showing how I did this on Flickr starting with [this photo][] of the loop.
+Here is a sequence of photos showing the loop process:
 
 <div class="image-full-width-plus">
     <a href="https://www.flickr.com/photos/pdc/34185365695/in/album-72157682749119776/">
@@ -136,12 +136,8 @@ keyboard firmwares that are available).
 
 
   [this photo]: https://www.flickr.com/photos/pdc/34185365695/in/album-72157682749119776/
-  [1]: 02/26.html
+  [prev]: 04/13.html
   [2]: https://en.wikipedia.org/wiki/Vernier_scale
   [Hackspace]: https://oxhack.org
-  [Microsoft Visual Studio Code]: https://code.visualstudio.com
-  [GitHub Desktop]: https://desktop.github.com
-  [Python]: https://www.python.org
-  [Hobbytronics]: https://www.hobbytronics.co.uk
   [3]: https://deskthority.net/workshop-f7/brownfox-step-by-step-t6050.html
   [4]: http://imgur.com/a/qcgdF

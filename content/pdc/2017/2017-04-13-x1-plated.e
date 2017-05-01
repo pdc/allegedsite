@@ -7,7 +7,7 @@ I have been making a hand-wired computer keyboard and now is as good a time as a
 
 # Plate
 
-[Previously in this saga][1] I had created software for drawing the plans for
+[Previously in this saga][prev] I had created software for drawing the plans for
 the top plate. In order to calibrate the process I added a way for it to
 generate a test piece with several switch holes, each slightly different in
 size. Nonsensically enough I neglected to bring a copy of the files with me to
@@ -60,13 +60,13 @@ There are more photos in my [Keyboard Plate album on Flickr][].
 
 # Next
 
-The next step is [wiring up the matrix circuit][3].
+The next step is [wiring up the matrix circuit][next].
 
 
   [Keyboard Plate album on Flickr]: https://www.flickr.com/photos/pdc/albums/72157680961344360
-  [1]: 02/26.html
+  [prev]: 02/26.html
   [2]: https://en.wikipedia.org/wiki/Vernier_scale
-  [3]: 04/17.html
+  [next]: 04/17.html
   [Hackspace]: https://oxhack.org
   [Microsoft Visual Studio Code]: https://code.visualstudio.com
   [GitHub Desktop]: https://desktop.github.com
