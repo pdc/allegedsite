@@ -55,18 +55,18 @@ the reason why my switches do not clip in as firmly as I would have liked.
 
 Plan is to wire it up as tightly as I can and then see whether it needs a spot of glue as well.
 
+There are more photos in my [Keyboard Plate album on Flickr][].
+
 
 # Next
 
-The next step is wiring up the matrix circuit.
+The next step is [wiring up the matrix circuit][3].
 
 
-
-
-
-
+  [Keyboard Plate album on Flickr]: https://www.flickr.com/photos/pdc/albums/72157680961344360
   [1]: 02/26.html
   [2]: https://en.wikipedia.org/wiki/Vernier_scale
+  [3]: 04/17.html
   [Hackspace]: https://oxhack.org
   [Microsoft Visual Studio Code]: https://code.visualstudio.com
   [GitHub Desktop]: https://desktop.github.com

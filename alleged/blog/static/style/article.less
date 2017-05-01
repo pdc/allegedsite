@@ -201,11 +201,11 @@ p + p,
     @media (min-width: 560px) and (max-width: 719px) {
         .constrained-to-full-width;
     }
-    // When there is space, center it
+    // When still too narrow for sidebar, center in avoiable space.
     @media (min-width: 720px) and (max-width: (@max-main + @min-aside - 1px)) {
         margin-left: -40px;
         margin-right: -40px;
-        width: 560px;
+        width: 640px;
     }
     // When there isn’t room to extend beyond the text, squash it down:
     @media (min-width: (@max-main + @min-aside)) and (max-width: (@max-main + @max-aside + @max-gap + 159px)) {
@@ -214,7 +214,7 @@ p + p,
     // When there is space, project it in to the left margin:
     @media (min-width: (@max-main + @max-aside + @max-gap + 160px)) {
         margin-left: -80px;
-        width: 560px;
+        width: 620px;
     }
 }
 
