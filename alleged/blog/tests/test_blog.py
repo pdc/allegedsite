@@ -7,7 +7,7 @@ import textwrap
 
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from mock import patch, ANY
+from unittest.mock import patch, ANY
 from xml.etree import ElementTree as ET  # noqa
 
 from alleged.blog.entries import get_entries, get_entry, get_toc, get_named_article
@@ -54,7 +54,7 @@ class TestEntry(TestCase, BlogTestMixin):
         with open(os.path.join(BASE_DIR, '2010/2010-05-08-zum.e'), 'wt') as output:
             output.write(
                 'Title: FOO\nTopics: alpha beta\n\nBAR\n\n'
-                '    Hullo\n    ≈\n    World\n\nBAZ\n'.encode('UTF-8'))
+                '    Hullo\n    ≈\n    World\n\nBAZ\n')
         entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
         e = entries[0]
         self.assertHTMLEqual('<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
@@ -220,8 +220,8 @@ class TestEntry(TestCase, BlogTestMixin):
 
         # Next and prev refer to chronology
         self.assertEqual(entries[0], entries[1].prev)
-        self.assertEqual(entries[1], entries[0].__next__)
-        self.assertEqual(None, entries[1].__next__)
+        self.assertEqual(entries[1], entries[0].next)
+        self.assertEqual(None, entries[1].next)
         self.assertEqual(None, entries[0].prev)
 
     def test_should_munge_relative_href_attribute(self):
@@ -920,8 +920,8 @@ class TestGithubJsonFromAtom(TestCase):
         self.assert_text_containing_equivalent_xml(expected, self.result['entries'][0]['html'])
 
     def assert_text_containing_equivalent_xml(self, text1, text2):
-        elt1 = ET.XML(text1.encode('UTF-8'))
-        elt2 = ET.XML(text2.encode('UTF-8'))
+        elt1 = ET.XML(text1)
+        elt2 = ET.XML(text2)
         self.assert_equivalent_elt(elt1, elt2)
 
     def assert_equivalent_elt(self, elt1, elt2):

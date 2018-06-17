@@ -15,7 +15,7 @@ from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
 from markdown.extensions.toc import TocExtension, TocTreeprocessor
-from lxml.etree import fromstring, tostring
+from lxml.etree import fromstring, tounicode
 import html.entities
 
 XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
@@ -227,33 +227,33 @@ class Entry(object):
 
     def load(self):
         with open(self.file_path, 'rb') as input:
-            text = input.read()
-        if text.startswith('<'):
-            self.load_xml(text)
+            bytes = input.read()
+        if bytes.startswith(b'<'):
+            self.load_xml(bytes.decode('UTF-8'))
         else:
-            self.load_markdown(text)
+            self.load_markdown(bytes)
         self.is_loaded = True
 
-    def load_xml(self, text):
+    def load_xml(self, content):
         """Load an entry in the old-style XML-based (or UM) format."""
-        p = text.index('<entry', 0, 200) + 6
-        if text.find('xmlns:dc', 0, 200) < 0:
-            text = '%s xmlns:dc="%s"%s' % (text[:p], XMLNS_DC, text[p:])
+        p = content.index('<entry', 0, 200) + 6
+        if content.find('xmlns:dc', 0, 200) < 0:
+            content = '%s xmlns:dc="%s"%s' % (content[:p], XMLNS_DC, content[p:])
         else:
             # Allow for misspelled DC namespace.
-            text = text.replace('xmlns:dc="http://purl.org/dc/elements/1.1"', 'xmlns:dc="%s"' % XMLNS_DC)
-        text = text.replace('xmlns="%s"' % XMLNS_UM, '', 1)
+            content = content.replace('xmlns:dc="http://purl.org/dc/elements/1.1"', 'xmlns:dc="%s"' % XMLNS_DC)
+        content = content.replace('xmlns="%s"' % XMLNS_UM, '', 1)
 
         self._tags = set()
 
-        root = fromstring(unentity(text))
+        root = fromstring(unentity(content))
         img_raw = root.get('icon')
         self._image = Image(munge_url(self.munged_image_url, img_raw))
         for e in root:
             if e.tag == 'h1' or e.tag == 'h':
                 self._title = e.text
             elif e.tag == 'body':
-                body = tostring(e)
+                body = tounicode(e)
                 if body.startswith('<?xml '):
                     body = body[39:]  # Remove unwanted XML prolog.
                 body = body_re.sub('\\1', body)
@@ -494,14 +494,14 @@ class Article(object):
 
     def __init__(self, dir_path, blog_url, image_url, year, name):
         file_path = os.path.join(dir_path, '%d/%s.html' % (year, name))
-        with open(file_path, 'rb') as in_stream:
+        with open(file_path, 'rt') as in_stream:
             text = unentity(in_stream.read())
             tree = fromstring(text)
         body_elements = tree.xpath('//html:div[@id="body"]/*', namespaces={'html': XMLNS_HTML})
         self.title = body_elements[0].text
 
         # The body is just a clot of HTML. It is not necessarily even a single element.
-        self.body = ''.join(tostring(x, method='xml') for x in body_elements[1:]).strip()
+        self.body = ''.join(tounicode(x, method='xml') for x in body_elements[1:]).strip()
 
         # The lxml library (and I assume libxml) has two output flavours.
         # One generates <img.../> and the other <img...></img>.

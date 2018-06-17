@@ -154,7 +154,7 @@ def summary_from_content(text, type='html'):
 def html_from_github_content(text):
     text = text.replace('&raquo;', '\u2019')  # Argh
     text = text.replace(r'href="/', 'href="https://github.com/')
-    xml = '<x>{0}</x>'.format(text.encode('UTF-8'))
+    xml = '<x>{0}</x>'.format(text)
     content_elt = et.XML(xml)
     for elt in content_elt:
         if elt.get('class') == 'details':
