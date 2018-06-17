@@ -741,7 +741,7 @@ class TestThisMonthList(TestCase, BlogTestMixin):
 
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'].split(';')[0])
-        obj = json.loads(response.content)
+        obj = json.loads(response.content.decode('UTF-8'))
         self.assertEqual(self.entries.get_react_year_data(2010), obj)
 
 

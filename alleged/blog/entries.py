@@ -15,7 +15,7 @@ from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
 from markdown.extensions.toc import TocExtension, TocTreeprocessor
-from lxml.etree import fromstring, tounicode
+from xml.etree.ElementTree import fromstring, tostring
 import html.entities
 
 XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
@@ -253,7 +253,7 @@ class Entry(object):
             if e.tag == 'h1' or e.tag == 'h':
                 self._title = e.text
             elif e.tag == 'body':
-                body = tounicode(e)
+                body = tostring(e, method='html', encoding='unicode')
                 if body.startswith('<?xml '):
                     body = body[39:]  # Remove unwanted XML prolog.
                 body = body_re.sub('\\1', body)
@@ -497,11 +497,14 @@ class Article(object):
         with open(file_path, 'rt') as in_stream:
             text = unentity(in_stream.read())
             tree = fromstring(text)
-        body_elements = tree.xpath('//html:div[@id="body"]/*', namespaces={'html': XMLNS_HTML})
+        body_elements = tree.findall(".//html:div[@id='body']/*", namespaces={'html': XMLNS_HTML})
         self.title = body_elements[0].text
 
         # The body is just a clot of HTML. It is not necessarily even a single element.
-        self.body = ''.join(tounicode(x, method='xml') for x in body_elements[1:]).strip()
+        self.body = ''.join(tostring(x, method='xml', encoding='unicode') for x in body_elements[1:]).strip()
+
+        # No I do not want namespace declarations since this is to be embedded in a larger page.
+        self.body = self.body.replace('<html:', '<').replace('</html:', '</').replace(' xmlns:html="http://www.w3.org/1999/xhtml"', '')
 
         # The lxml library (and I assume libxml) has two output flavours.
         # One generates <img.../> and the other <img...></img>.
