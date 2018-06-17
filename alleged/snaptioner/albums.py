@@ -17,7 +17,7 @@ from markdown import Markdown
 formatter = Markdown()
 
 
-class Image(object):
+class Image:
     # __slots__ = 'file_name', 'name', 'score', 'people', 'description', 'prev', 'next'
     def __init__(self, name, score):
         self.name = name
@@ -125,7 +125,7 @@ def _albums_iter(library_dir, album_metadata):
             pass
 
 
-class Library(object):
+class Library:
     """A collection of albums.
 
     Each album is a directory within this directory.
@@ -135,7 +135,7 @@ class Library(object):
         self.dir_name = library_dir
 
         album_metadata = {}
-        with open(os.path.join(library_dir, 'albums.csv'), 'rb') as input:
+        with open(os.path.join(library_dir, 'albums.csv'), 'r') as input:
             reader = csv.DictReader(input)
             for meta in reader:
                 album_metadata[meta['Album']] = meta
