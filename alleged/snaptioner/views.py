@@ -11,7 +11,7 @@ def render_with(template_name):
             result = func(request, *args, **kwargs)
             if isinstance(result, HttpResponse):
                 return result
-            return render_to_response(template_name, result, context_instance=RequestContext(request))
+            return render_to_response(template_name, result)
         return decorated_func
     return decorator
 
