@@ -1,16 +1,16 @@
 #
 
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import Image
 
-input = urllib.urlopen('http://ariel/~pdc/2004/shadow.png')
+input = urllib.request.urlopen('http://ariel/~pdc/2004/shadow.png')
 output = file('shadow.png', 'wb')
 output.write(input.read())
 input.close()
 output.close()
 
 im = Image.open('shadow.png')
-print im.size
+print(im.size)
 w, h = im.size
 im.save('shadow.gif')
 input.close()

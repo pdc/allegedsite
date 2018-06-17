@@ -60,7 +60,7 @@ class Entry(object):
 def update_entry(con, file_name):
     """Update the database with information about the entry in this file."""
     entry = Entry(file_name)
-    print entry.published, entry.title, entry.tags
+    print(entry.published, entry.title, entry.tags)
     c = con.cursor()
     for tag in entry.tags:
         c.execute('insert or ignore into Topics (name) values (?)', (tag,))
@@ -109,17 +109,17 @@ def main(argv=None):
     try:
         try:
             opts, args = getopt.getopt(argv[1:], 'hVv', ['help', 'version', 'verbose'])
-        except getopt.Error, err:
+        except getopt.Error as err:
             sys.exit(str(err))
 
         is_help = False
         is_verbose = False
         for flag, arg in opts:
             if flag == '-h' or flag == '--help':
-                print help_text
+                print(help_text)
                 is_help = True
             elif flag == '-V' or flag == '--version':
-                print VERSION
+                print(VERSION)
                 is_help = True
             elif flag == '-v' or flag == '--verbose':
                 is_verbose = True
@@ -129,8 +129,8 @@ def main(argv=None):
         con = sqlite3.connect(db_name)
         for file_name in args:
             if maybe_update_entry(con, file_name) and is_verbose:
-                print 'updated', file_name
-    except Usage, err:
+                print('updated', file_name)
+    except Usage as err:
         sys.exit('usage: entry_topics.py -h | -V | file_name...')
 
 

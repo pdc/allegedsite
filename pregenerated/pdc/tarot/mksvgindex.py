@@ -381,7 +381,7 @@ def emitMenu(output, is_suit, j, start_x, start_y):
             'X': str(start_x),
             'Y': str(start_y + 20 * (i / 12 + 4)),
             'FILE': 'trumps%d' % i,
-            'TEXT': u'trumps %s\u2013%s' % (rom(i), rom(min(21, i + 12 - 1))),
+            'TEXT': 'trumps %s\u2013%s' % (rom(i), rom(min(21, i + 12 - 1))),
         }
         if not is_suit and i == j:
             t = otherTempl
@@ -412,7 +412,7 @@ def doSuits():
             emitMenu(output, 1, i, 540, 370)
             output.write(templ[p + 7:])
             output.reset()
-            print 'Wrote SVG to', file_name
+            print('Wrote SVG to', file_name)
 
 
 def doTrumps():
@@ -427,14 +427,14 @@ def doTrumps():
             emitMenu(output, 0, i, 540, 370)
             output.write(templ[p + 7:])
             output.reset()
-            print 'Wrote SVG to', file_name
+            print('Wrote SVG to', file_name)
 
 
 for arg in sys.argv:
     pr = arg.split('=', 1)
     if len(pr) == 2:
         opts[pr[0]] = pr[1]
-        print pr[0], '=', pr[1]
+        print(pr[0], '=', pr[1])
     else:
         opts[pr[0]] = None
 

@@ -16,7 +16,7 @@ from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
 from markdown.extensions.toc import TocExtension, TocTreeprocessor
 from lxml.etree import fromstring, tostring
-import htmlentitydefs
+import html.entities
 
 XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
 XMLNS_HTML = 'http://www.w3.org/1999/xhtml'
@@ -33,7 +33,7 @@ entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
 
 def _unentity_sub(m):
     name = m.group(0)[1:-1]
-    code = htmlentitydefs.name2codepoint.get(name)
+    code = html.entities.name2codepoint.get(name)
     if not code:
         return '&%s;' % name
     return '&#x%X;' % code
@@ -48,7 +48,7 @@ numeric_char_ref_re = re.compile(r'\&#([0-9]+);')
 
 def _numeric_char_ref_sub(m):
     n = int(m.group(1), 10)
-    return unichr(n)
+    return chr(n)
 
 
 def expand_numeric_character_references(s):
@@ -215,7 +215,7 @@ class Entry(object):
                 else '%s%d/%02d.html#e%d%02d%02d' % (blog_url, y, mon, y, mon, d))
             self.slug = file_name[11:-2]
         else:
-            print 'Could not parse', file_name
+            print('Could not parse', file_name)
         self.is_loaded = False
 
         self.file_path = os.path.join(dir_path, file_name)
@@ -263,7 +263,7 @@ class Entry(object):
             elif e.tag == TAG_DC_SUBJECT:
                 self._tags.add(e.text)
             else:
-                print e.tag, 'unknown'
+                print(e.tag, 'unknown')
 
     def load_markdown(self, text):
         """Load entry in the new Markdown-based format
@@ -275,7 +275,7 @@ class Entry(object):
             image_url=self.munged_image_url)
         header_extension = RelativeTocExtension(baselevel=2)
         converter = Markdown(extensions=['markdown.extensions.meta', href_extension, header_extension])
-        self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
+        self._body = converter.convert(text.decode('UTF-8').replace('≈', '\u00A0'))
         self._title = ', '.join(converter.Meta.get('title', ['Untitled entry']))
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
 
@@ -454,7 +454,7 @@ class EntryList(list):
         }
 
     def get_react_data(self, entry):
-        years = self.get_by_year().keys()
+        years = list(self.get_by_year().keys())
         year = entry.published.year
         year_data = self.get_react_year_data(year)
 

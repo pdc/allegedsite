@@ -110,11 +110,8 @@ class Album(Sequence):
     def __repr__(self):
         return 'Album(%s, %s)' % (repr(os.path.dirname(self.dir_name)), repr(self.name))
 
-    def __unicode__(self):
-        return self.name
-
     def __str__(self):
-        return unicode(self).encode('utf-8')
+        return self.name
 
 
 def _albums_iter(library_dir, album_metadata):

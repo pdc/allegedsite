@@ -30,8 +30,8 @@ __author__ = "James Clarke <james@jamesclarke.info>"
 __version__ = "$Rev: 5 $"
 __date__ = "$Date: 2004-09-13 17:03:59 +0100 (Mon, 13 Sep 2004) $"
 __copyright__ = "Copyright 2004 James Clarke"
-
-from urllib import urlencode, urlopen
+from urllib.parse import urlencode
+from urllib.request import urlopen
 from xml.dom import minidom
 
 HOST = 'http://flickr.com'
@@ -65,7 +65,7 @@ class Photo(object):
         self.__comments = comments
         self.__tags = tags
 
-    
+
     #property mojo, ugly
     #make everything read only
     #TODO: maybe make title/description modifable and have the setters
@@ -89,7 +89,7 @@ class Photo(object):
     tags = property(lambda self: self._general_getattr('tags'))
     permcomment = property(lambda self: self._general_getattr('permcomment'))
     permaddmeta = property(lambda self: self._general_getattr('permaddmeta'))
-    
+
     #XXX: I don't like this bit
     #     It would be nicer if I could pass the var (self.__id) into here
     #     But since _load_properties() modifies self.__id then the var
@@ -114,7 +114,7 @@ class Photo(object):
         data = _doget(method, photo_id=self.id)
 
         self.__loaded = True
-        
+
         photo = data.rsp.photo
         self.__dateuploaded = photo.dateuploaded
 
@@ -141,7 +141,7 @@ class Photo(object):
 
     def __str__(self):
         return '<Flickr Photo %s>' % self.id
-    
+
 
     def setTags(self, tags):
         """Set the tags for current photo to list tags.
@@ -167,7 +167,7 @@ class Photo(object):
             self.tags.extend(tags)
         except TypeError:
             self.tags.append(tags)
-            
+
         self.__tags = uniq(self.tags)
 
 
@@ -179,14 +179,14 @@ class Photo(object):
             title = self.title
         if description is None:
             description = self.description
-            
+
         _doget(method, auth=True, title=title, \
                description=description, photo_id=self.id)
-        
+
         self.__title = title
         self.__description = description
 
-    
+
     def getURL(self, size='Medium', urlType='url'):
         """Retrieves a url for the photo.  (flickr.photos.getSizes)
 
@@ -199,8 +199,8 @@ class Photo(object):
         for psize in data.rsp.sizes.size:
             if psize.label == size:
                 return getattr(psize, urlType)
-        raise FlickrError, "No URL found"
-                
+        raise FlickrError("No URL found")
+
 class Photoset(object):
     """A Flickr photoset."""
 
@@ -210,7 +210,7 @@ class Photoset(object):
         self.__primary = primary
         self.__description = description
         self.__n = photos
-        
+
     id = property(lambda self: self.__id)
     title = property(lambda self: self.__title)
     description = property(lambda self: self.__description)
@@ -221,7 +221,7 @@ class Photoset(object):
 
     def __str__(self):
         return '<Flickr Photoset %s>' % self.id
-    
+
     def getPhotos(self):
         """Returns list of Photos."""
         method = 'flickr.photosets.getPhotos'
@@ -230,7 +230,7 @@ class Photoset(object):
         p = []
         for photo in photos:
             p.append(Photo(photo.id))
-        return p    
+        return p
 
     def editPhotos(self, photos, primary=None):
         """Edit the photos in this set.
@@ -242,7 +242,7 @@ class Photoset(object):
 
         if primary is None:
             primary = self.primary
-            
+
         ids = [photo.id for photo in photos]
         if primary.id not in ids:
             ids.append(primary.id)
@@ -258,8 +258,8 @@ class Photoset(object):
         photo - primary photo
         """
         if not isinstance(photo, Photo):
-            raise TypeError, "Photo expected"
-        
+            raise TypeError("Photo expected")
+
         method = 'flickr.photosets.create'
         data = _doget(method, auth=True, title=title,\
                       description=description,\
@@ -269,8 +269,8 @@ class Photoset(object):
                        photos=1, description=description)
         return set
     create = classmethod(create)
-                      
-        
+
+
 class User(object):
     """A Flickr user."""
 
@@ -305,19 +305,19 @@ class User(object):
            and not self.__loaded:
             self._load_properties()
         return getattr(self, "_%s__%s" % (self.__class__.__name__, var))
-            
+
     def _load_properties(self):
         """Load User properties from Flickr."""
         method = 'flickr.people.getInfo'
         data = _doget(method, user_id=self.__id)
 
         self.__loaded = True
-        
+
         person = data.rsp.person
 
         self.__isadmin = person.isadmin
         self.__ispro = person.ispro
-        
+
         self.__username = person.username.text
         self.__realname = person.realname.text
         self.__location = person.location.text
@@ -326,7 +326,7 @@ class User(object):
 
     def __str__(self):
         return '<Flickr User %s>' % self.id
-    
+
     def getPhotosets(self):
         """Returns a list of Photosets."""
         method = 'flickr.photosets.getList'
@@ -340,7 +340,7 @@ class User(object):
         return sets
 
 
-    
+
 #Flickr API methods
 #see api docs http://www.flickr.com/services/api/
 #for details of each param
@@ -438,10 +438,10 @@ def _doget(method, auth=False, **params):
     #print "***** do get %s" % method
 
     #convert lists to strings with ',' between items
-    for (key, value) in params.items():
+    for (key, value) in list(params.items()):
         if isinstance(value, list):
             params[key] = ','.join([item for item in value])
-        
+
     url = '%s%s/?api_key=%s&method=%s&%s'% \
           (HOST, API, API_KEY, method, urlencode(params))
     if auth:
@@ -449,12 +449,12 @@ def _doget(method, auth=False, **params):
 
     #another useful debug print statement
     #print url
-    
+
     xml = minidom.parse(urlopen(url))
     data = unmarshal(xml)
     if not data.rsp.stat == 'ok':
         msg = "ERROR [%s]: %s" % (data.rsp.err.code, data.rsp.err.msg)
-        raise FlickrError, msg
+        raise FlickrError(msg)
     return data
 
 def _parse_photo(photo):
@@ -465,7 +465,7 @@ def _parse_photo(photo):
     isfriend = photo.isfriend
     isfamily = photo.isfamily
     p = Photo(photo.id, owner=owner, title=title, ispublic=ispublic,\
-              isfriend=isfriend, isfamily=isfamily)        
+              isfriend=isfriend, isfamily=isfamily)
     return p
 
 
@@ -478,16 +478,16 @@ class Bag: pass
 def unmarshal(element):
     rc = Bag()
     if isinstance(element, minidom.Element):
-        for key in element.attributes.keys():
+        for key in list(element.attributes.keys()):
             setattr(rc, key, element.attributes[key].value)
-            
+
     childElements = [e for e in element.childNodes \
                      if isinstance(e, minidom.Element)]
     if childElements:
         for child in childElements:
             key = child.tagName
             if hasattr(rc, key):
-                if type(getattr(rc, key)) <> type([]):
+                if type(getattr(rc, key)) != type([]):
                     setattr(rc, key, [getattr(rc, key)])
                 setattr(rc, key, getattr(rc, key) + [unmarshal(child)])
             elif isinstance(child, minidom.Element) and \
@@ -510,10 +510,8 @@ def unmarshal(element):
     return rc
 
 #unique items from a list from the cookbook
-def uniq(alist):    # Fastest without order preserving
-    set = {}
-    map(set.__setitem__, alist, [])
-    return set.keys()
+def uniq(alist):
+    return list(set(alist))
 
 if __name__ == '__main__':
-    print test_echo()
+    print(test_echo())

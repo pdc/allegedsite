@@ -55,7 +55,7 @@ def backupFileAndReadAll(in_file_name, out_file_name=None):
         output = open(bakfile_name, 'wb')
         output.write(content)
         output.close()
-        print 'Wrote backup to', bakfile_name
+        print('Wrote backup to', bakfile_name)
 
     if not is_backup or out_file_name != in_file_name:
         input = open(in_file_name, 'rb')
@@ -68,13 +68,13 @@ def backupFileAndReadAll(in_file_name, out_file_name=None):
 def processFile(cmap, in_file_name, out_file_name=None):
     if not out_file_name:
         out_file_name = in_file_name
-    print in_file_name + ':'
+    print(in_file_name + ':')
     text = backupFileAndReadAll(in_file_name, out_file_name)
     colour_re = re.compile('#([a-f0-9]{6})', re.IGNORECASE)
     text = colour_re.sub(lambda m: '#' + cmap.mapColour(m.group(1)), text)
     output = open(out_file_name, 'wb')
     output.write(text)
-    print 'Wrote output to', out_file_name
+    print('Wrote output to', out_file_name)
 
 
 if __name__ == '__main__':

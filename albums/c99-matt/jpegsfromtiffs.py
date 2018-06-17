@@ -69,7 +69,7 @@ def bang(is_dry_run=True, is_verbose=True):
     for dir_name, file_name, file_path in input_file_iter():
         out_file = munge_name(dir_name, file_name)
         pipeline = [['tifftopnm', file_path], ['cjpeg', '-progressive', '-outfile', out_file]]
-        print " | ".join(' '.join(('"%s"' % w if ' ' in w else w) for w in cmd) for cmd in pipeline)
+        print(" | ".join(' '.join(('"%s"' % w if ' ' in w else w) for w in cmd) for cmd in pipeline))
         
 
 help_message = '''
@@ -88,7 +88,7 @@ def main(argv=None):
 	try:
 		try:
 			opts, args = getopt.getopt(argv[1:], "ho:vn", ["help", "output="])
-		except getopt.error, msg:
+		except getopt.error as msg:
 			raise Usage(msg)
 	
 		# option processing
@@ -104,9 +104,9 @@ def main(argv=None):
 				
 		bang(is_verbose=is_verbose, is_dry_run=is_dry_run)
 	
-	except Usage, err:
-		print >> sys.stderr, sys.argv[0].split("/")[-1] + ": " + str(err.msg)
-		print >> sys.stderr, "\t for help use --help"
+	except Usage as err:
+		print(sys.argv[0].split("/")[-1] + ": " + str(err.msg), file=sys.stderr)
+		print("\t for help use --help", file=sys.stderr)
 		return 2
 
 
