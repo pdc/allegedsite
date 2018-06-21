@@ -32,7 +32,7 @@ class TestMungeName(unittest.TestCase):
         for dir_name, file_name, file_path in input_file_iter():
             munged_name = munge_name(dir_name, file_name)
             old_file = '72dpi/%s' % munged_name.replace('.jpeg', '.jpg')
-            self.assert_(os.path.exists(old_file), '%s: not found' % old_file)
+            self.assertTrue(os.path.exists(old_file), '%s: not found' % old_file)
                 
 
     

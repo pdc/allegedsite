@@ -1,7 +1,7 @@
 # -*-coding: UTF-8-*-
 
 from xml.etree import ElementTree as et  # noqa
-from htmlentitydefs import name2codepoint
+from html.entities import name2codepoint
 import httplib2
 import re
 
@@ -127,7 +127,7 @@ named_entity_re = re.compile(r'\&(\w+);')
 
 def named_entity_sub(m):
     n = name2codepoint[m.group(1)]
-    return unichr(n)
+    return chr(n)
 
 
 break_re = re.compile(r'(?:<br ?/?>){2}|</p>')
@@ -145,16 +145,16 @@ def summary_from_content(text, type='html'):
     if type == 'html':
         m = break_re.search(text)
         if m and m.end(0) < len(text):
-            text = u'{text} …'.format(text=text[:m.start(0)])
+            text = '{text} …'.format(text=text[:m.start(0)])
         text = tag_re.sub('', text)
         text = named_entity_re.sub(named_entity_sub, text)
     return text
 
 
 def html_from_github_content(text):
-    text = text.replace(u'&raquo;', u'\u2019')  # Argh
+    text = text.replace('&raquo;', '\u2019')  # Argh
     text = text.replace(r'href="/', 'href="https://github.com/')
-    xml = '<x>{0}</x>'.format(text.encode('UTF-8'))
+    xml = '<x>{0}</x>'.format(text)
     content_elt = et.XML(xml)
     for elt in content_elt:
         if elt.get('class') == 'details':

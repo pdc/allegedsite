@@ -21,7 +21,7 @@ def bbcode_for_images(ns):
 
 
 def main():
-    print bbcode_for_images([1, 2])
+    print(bbcode_for_images([1, 2]))
 
 
 if __name__ == '__main__':

@@ -1,5 +1,4 @@
-django
+django==1.10
 httplib2
-lxml
 markdown
 pytz

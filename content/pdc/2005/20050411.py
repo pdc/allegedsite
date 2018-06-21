@@ -33,7 +33,7 @@ def checkTicket(ticket):
 def pwdencrypt(s):
     """Given a password, return a 46-byte hash mashup."""
     header = '\1\0'
-    salt = struct.pack('I', random.randint(0, 0x100000000L))
+    salt = struct.pack('I', random.randint(0, 0x100000000))
     hash1 = sha.new(s.encode('UTF-16LE') + salt).digest()
     hash2 = sha.new(s.upper().encode('UTF-16LE') + salt).digest()
     return header + salt + hash1 + hash2
@@ -45,6 +45,6 @@ def pwdhexencrypt(s):
 
 
 t = createTicket('alice')
-print t
-print checkTicket(t)
-print pwdhexencrypt('melon')
+print(t)
+print(checkTicket(t))
+print(pwdhexencrypt('melon'))

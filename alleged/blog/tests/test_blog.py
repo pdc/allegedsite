@@ -7,7 +7,7 @@ import textwrap
 
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from mock import patch, ANY
+from unittest.mock import patch, ANY
 from xml.etree import ElementTree as ET  # noqa
 
 from alleged.blog.entries import get_entries, get_entry, get_toc, get_named_article
@@ -47,17 +47,17 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(datetime(2010, 4, 17, 12, 0, 0), e.published)
         self.assertEqual('testa', e.slug)
         self.assertEqual('/masterblog/2010/04/17.html', e.href)
-        self.assert_('alpha' in e.tags)
-        self.assert_('beta' in e.tags)
+        self.assertTrue('alpha' in e.tags)
+        self.assertTrue('beta' in e.tags)
 
     def test_freskish_markdown_extension(self):
         with open(os.path.join(BASE_DIR, '2010/2010-05-08-zum.e'), 'wt') as output:
             output.write(
-                u'Title: FOO\nTopics: alpha beta\n\nBAR\n\n'
-                u'    Hullo\n    ≈\n    World\n\nBAZ\n'.encode('UTF-8'))
+                'Title: FOO\nTopics: alpha beta\n\nBAR\n\n'
+                '    Hullo\n    ≈\n    World\n\nBAZ\n')
         entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
         e = entries[0]
-        self.assertHTMLEqual(u'<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
+        self.assertHTMLEqual('<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
 
     def test_archaic(self):
         with open(os.path.join(BASE_DIR, '19970611.e'), 'wt') as output:
@@ -85,7 +85,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('CAPTION96 Photo album', e.title)
-        expected = u"""This is <a href="http://caption.org/1996/pdc/">a selection of
+        expected = """This is <a href="http://caption.org/1996/pdc/">a selection of
             images</a> collected at the <a href="http://caption.org/1996/">CAPTION96</a> comics convention (in the
             summer of 1996).
             Attentive readers will have noticed that there is almost a
@@ -125,7 +125,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('CAPTION97 photo album', e.title)
-        expected = u"""I took almost 200 pictures of small-press-comics folk
+        expected = """I took almost 200 pictures of small-press-comics folk
             at the convention
             <a href="http://caption.org/1997/">EuroCAPTION97</a>.  Here's
             <a href="http://caption.org/1997/pdc/">the finished album</a>,
@@ -137,8 +137,8 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertHTMLEqual(expected, e.body)
         self.assertEqual(datetime(1998, 4, 25, 12, 0), e.published)
         self.assertEqual('', e.slug or '')
-        self.assert_('photos' in e.tags)
-        self.assert_('caption' in e.tags)
+        self.assertTrue('photos' in e.tags)
+        self.assertTrue('caption' in e.tags)
 
     def test_h_rather_than_h1(self):
         with open(os.path.join(BASE_DIR, '2002/20021229.e'), 'wt') as output:
@@ -163,7 +163,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('Alleged Tarot: a better dial-a-reading', e.title)
-        expected = u"""<p>
+        expected = """<p>
               My <a href="/blog/tarot/">Alleged Tarot 2002</a> project has been
               stuck with an ersatz dealer for far too long (since
               <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xA0have
@@ -197,7 +197,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('Dates Dates Dates', e.title)
-        expected = u"""<p>
+        expected = """<p>
               Once again <a href="http://caption.org/picky/">the Picky Picky
               Game</a> had problems calculating dates.  Alas! that the
               Python-2.3 datetime module arived too late to carry this burden
@@ -274,7 +274,7 @@ class TestEntry(TestCase, BlogTestMixin):
         e = self.get_entry()
 
         self.assertEqual('Alleged Tarot: a better dial-a-reading', e.title)
-        expected = u"""<p>
+        expected = """<p>
             My <a href="/blog/tarot/">Alleged Tarot 2002</a> project has been
             stuck with an ersatz dealer for far too long (since
             <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xA0have
@@ -308,7 +308,7 @@ class TestEntry(TestCase, BlogTestMixin):
         e = self.get_entry()
 
         self.assertEqual('Percy Street, Page 1', e.title)
-        expected = u"""<p>
+        expected = """<p>
               If you\u2019ve been wondering why I\u2019ve not added anything
               to my site for the last few weeks, it\u2019s because I have
               been spending my spare time playing with <a href="/blog/2003/06/12.html">my
@@ -331,7 +331,7 @@ class TestEntry(TestCase, BlogTestMixin):
         e = self.get_entry()
 
         self.assertEqual('Title of entry', e.title)
-        expected = u"""
+        expected = """
             <p>
               First paragraph
             </p>
@@ -358,7 +358,7 @@ class TestEntry(TestCase, BlogTestMixin):
                     """))
         e = self.get_entry()
 
-        expected = u"""
+        expected = """
             <p>
               First paragraph
             </p>
@@ -385,7 +385,7 @@ class TestEntry(TestCase, BlogTestMixin):
                 """))
         e = self.get_entry()
 
-        expected = u"""
+        expected = """
             <p>
               First paragraph
             </p>
@@ -595,7 +595,7 @@ class TestEntry(TestCase, BlogTestMixin):
         article = get_named_article(BASE_DIR, '/blog/', '/im/', 2003, 'ancient')
         self.assertEqual('Colour graphics the hard way', article.title)
         self.assertEqual('/blog/2003/ancient.html', article.href)
-        self.assertHTMLEqual(u"""<p>
+        self.assertHTMLEqual("""<p>
             On my badly broken Linux desktop,
             the Gimp is missing its file-saving plug-ins, so it cannot save
             files except in a format I\u00A0cannot use.
@@ -622,7 +622,7 @@ class TestEntry(TestCase, BlogTestMixin):
                 </body>
                 </html>""")
         article = get_named_article(BASE_DIR, '/blog/', '/im/', 1998, 'bike')
-        expected = u"""<p class="initial">
+        expected = """<p class="initial">
             <a href="/im/1998/19980529g.jpg"><img src="/im/1998/19980529g-stamp.jpg"
                 align="right" alt="[Link to bike photo\u201422K JPEG]" width="86" height="64" border="0" /></a>
 
@@ -741,7 +741,7 @@ class TestThisMonthList(TestCase, BlogTestMixin):
 
         self.assertEqual(200, response.status_code)
         self.assertEqual('application/json', response['Content-Type'].split(';')[0])
-        obj = json.loads(response.content)
+        obj = json.loads(response.content.decode('UTF-8'))
         self.assertEqual(self.entries.get_react_year_data(2010), obj)
 
 
@@ -807,18 +807,18 @@ class TestJsonfromAtom(TestCase):
                     'published': '2010-11-21T18:08:48Z',
                     'href': 'http://damiancugley.livejournal.com/105302.html',
                     'title': 'Sister in Storage',
-                    'content': u'Mum was visiting from Malta\u2014her current home, '
-                            u'since that is where her yacht is\u2014and so naturally Saturday found her '
-                            u'and my brother and me down at Big Yellow Self-Storage to collect my sister '
-                            u'Rachel’s gear from there for transfer to the Big Yellow in Guildford, where '
-                            u'she lives. The store is all bare metal and bright yellow paint, so I took the '
-                            u'opportunity to take some photos of Mike and Rachel in this odd environment.',
+                    'content': 'Mum was visiting from Malta\u2014her current home, '
+                            'since that is where her yacht is\u2014and so naturally Saturday found her '
+                            'and my brother and me down at Big Yellow Self-Storage to collect my sister '
+                            'Rachel’s gear from there for transfer to the Big Yellow in Guildford, where '
+                            'she lives. The store is all bare metal and bright yellow paint, so I took the '
+                            'opportunity to take some photos of Mike and Rachel in this odd environment.',
                 },
                 {
                     'title': 'Family time'
                 },
                 {
-                    'title': u'Ian Cugley, 1945–2010'
+                    'title': 'Ian Cugley, 1945–2010'
                 }
             ]
         }, ndix)
@@ -920,8 +920,8 @@ class TestGithubJsonFromAtom(TestCase):
         self.assert_text_containing_equivalent_xml(expected, self.result['entries'][0]['html'])
 
     def assert_text_containing_equivalent_xml(self, text1, text2):
-        elt1 = ET.XML(text1.encode('UTF-8'))
-        elt2 = ET.XML(text2.encode('UTF-8'))
+        elt1 = ET.XML(text1)
+        elt2 = ET.XML(text2)
         self.assert_equivalent_elt(elt1, elt2)
 
     def assert_equivalent_elt(self, elt1, elt2):
@@ -943,4 +943,4 @@ class TestSummaryFromContent(TestCase):
 
     def test_summary_from_content_brbr(self):
         html = 'LiveJournal does not do paragraph tags!<br /><br />Instead they use BR tags.'
-        self.assertEqual(u'LiveJournal does not do paragraph tags! …', summary_from_content(html))
+        self.assertEqual('LiveJournal does not do paragraph tags! …', summary_from_content(html))

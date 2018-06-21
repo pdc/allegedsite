@@ -15,8 +15,8 @@ from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
 from markdown.extensions.toc import TocExtension, TocTreeprocessor
-from lxml.etree import fromstring, tostring
-import htmlentitydefs
+from xml.etree.ElementTree import fromstring, tostring
+import html.entities
 
 XMLNS_DC = 'http://purl.org/dc/elements/1.1/'
 XMLNS_HTML = 'http://www.w3.org/1999/xhtml'
@@ -33,7 +33,7 @@ entity_re = re.compile(r'\&[0-9a-zA-Z]+;')
 
 def _unentity_sub(m):
     name = m.group(0)[1:-1]
-    code = htmlentitydefs.name2codepoint.get(name)
+    code = html.entities.name2codepoint.get(name)
     if not code:
         return '&%s;' % name
     return '&#x%X;' % code
@@ -48,7 +48,7 @@ numeric_char_ref_re = re.compile(r'\&#([0-9]+);')
 
 def _numeric_char_ref_sub(m):
     n = int(m.group(1), 10)
-    return unichr(n)
+    return chr(n)
 
 
 def expand_numeric_character_references(s):
@@ -215,7 +215,7 @@ class Entry(object):
                 else '%s%d/%02d.html#e%d%02d%02d' % (blog_url, y, mon, y, mon, d))
             self.slug = file_name[11:-2]
         else:
-            print 'Could not parse', file_name
+            print('Could not parse', file_name)
         self.is_loaded = False
 
         self.file_path = os.path.join(dir_path, file_name)
@@ -227,33 +227,33 @@ class Entry(object):
 
     def load(self):
         with open(self.file_path, 'rb') as input:
-            text = input.read()
-        if text.startswith('<'):
-            self.load_xml(text)
+            bytes = input.read()
+        if bytes.startswith(b'<'):
+            self.load_xml(bytes.decode('UTF-8'))
         else:
-            self.load_markdown(text)
+            self.load_markdown(bytes)
         self.is_loaded = True
 
-    def load_xml(self, text):
+    def load_xml(self, content):
         """Load an entry in the old-style XML-based (or UM) format."""
-        p = text.index('<entry', 0, 200) + 6
-        if text.find('xmlns:dc', 0, 200) < 0:
-            text = '%s xmlns:dc="%s"%s' % (text[:p], XMLNS_DC, text[p:])
+        p = content.index('<entry', 0, 200) + 6
+        if content.find('xmlns:dc', 0, 200) < 0:
+            content = '%s xmlns:dc="%s"%s' % (content[:p], XMLNS_DC, content[p:])
         else:
             # Allow for misspelled DC namespace.
-            text = text.replace('xmlns:dc="http://purl.org/dc/elements/1.1"', 'xmlns:dc="%s"' % XMLNS_DC)
-        text = text.replace('xmlns="%s"' % XMLNS_UM, '', 1)
+            content = content.replace('xmlns:dc="http://purl.org/dc/elements/1.1"', 'xmlns:dc="%s"' % XMLNS_DC)
+        content = content.replace('xmlns="%s"' % XMLNS_UM, '', 1)
 
         self._tags = set()
 
-        root = fromstring(unentity(text))
+        root = fromstring(unentity(content))
         img_raw = root.get('icon')
         self._image = Image(munge_url(self.munged_image_url, img_raw))
         for e in root:
             if e.tag == 'h1' or e.tag == 'h':
                 self._title = e.text
             elif e.tag == 'body':
-                body = tostring(e)
+                body = tostring(e, method='html', encoding='unicode')
                 if body.startswith('<?xml '):
                     body = body[39:]  # Remove unwanted XML prolog.
                 body = body_re.sub('\\1', body)
@@ -263,7 +263,7 @@ class Entry(object):
             elif e.tag == TAG_DC_SUBJECT:
                 self._tags.add(e.text)
             else:
-                print e.tag, 'unknown'
+                print(e.tag, 'unknown')
 
     def load_markdown(self, text):
         """Load entry in the new Markdown-based format
@@ -275,7 +275,7 @@ class Entry(object):
             image_url=self.munged_image_url)
         header_extension = RelativeTocExtension(baselevel=2)
         converter = Markdown(extensions=['markdown.extensions.meta', href_extension, header_extension])
-        self._body = converter.convert(text.decode('UTF-8').replace(u'≈', u'\u00A0'))
+        self._body = converter.convert(text.decode('UTF-8').replace('≈', '\u00A0'))
         self._title = ', '.join(converter.Meta.get('title', ['Untitled entry']))
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
 
@@ -454,7 +454,7 @@ class EntryList(list):
         }
 
     def get_react_data(self, entry):
-        years = self.get_by_year().keys()
+        years = list(self.get_by_year().keys())
         year = entry.published.year
         year_data = self.get_react_year_data(year)
 
@@ -494,14 +494,17 @@ class Article(object):
 
     def __init__(self, dir_path, blog_url, image_url, year, name):
         file_path = os.path.join(dir_path, '%d/%s.html' % (year, name))
-        with open(file_path, 'rb') as in_stream:
+        with open(file_path, 'rt') as in_stream:
             text = unentity(in_stream.read())
             tree = fromstring(text)
-        body_elements = tree.xpath('//html:div[@id="body"]/*', namespaces={'html': XMLNS_HTML})
+        body_elements = tree.findall(".//html:div[@id='body']/*", namespaces={'html': XMLNS_HTML})
         self.title = body_elements[0].text
 
         # The body is just a clot of HTML. It is not necessarily even a single element.
-        self.body = ''.join(tostring(x, method='xml') for x in body_elements[1:]).strip()
+        self.body = ''.join(tostring(x, method='xml', encoding='unicode') for x in body_elements[1:]).strip()
+
+        # No I do not want namespace declarations since this is to be embedded in a larger page.
+        self.body = self.body.replace('<html:', '<').replace('</html:', '</').replace(' xmlns:html="http://www.w3.org/1999/xhtml"', '')
 
         # The lxml library (and I assume libxml) has two output flavours.
         # One generates <img.../> and the other <img...></img>.

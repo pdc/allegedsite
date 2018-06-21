@@ -93,7 +93,7 @@ class CssParser:
         return key in self.__dict__
 
     def items(self):
-        return self.__dict__.items()
+        return list(self.__dict__.items())
 
     def _startState(self, c):
         if c <= ' ' or c == ';':
@@ -132,14 +132,14 @@ def explode_css(m):
     css = CssParser(m.group(1))
     css.parse(';')
     res = ''
-    for key, val in css.items():
-        if isinstance(val, basestring) and key[0] != '_':
+    for key, val in list(css.items()):
+        if isinstance(val, str) and key[0] != '_':
             res += key + '="' + val + '" '
     return res[:-1]                     # strip trailing space
 
 
 def process_file(file_name):
-    print 'Reading', file_name
+    print('Reading', file_name)
     input = open(file_name, 'r')
     text = input.read()
     input.close()
@@ -148,13 +148,13 @@ def process_file(file_name):
     bak = open(bak_name, 'w')
     bak.write(text)
     bak.close()
-    print 'Wrote backup file to', bak_name
+    print('Wrote backup file to', bak_name)
 
     beg = text.index('<svg ') + 5
     end = text.index('>', beg + 3)
     atts = AttParser(text[beg:end])
     if 'viewBox' not in atts:
-        print 'Add viewbox.'
+        print('Add viewbox.')
         text = (
             text[:beg] + 'viewBox="0 0 '
             + atts.width + ' ' + atts.height
@@ -190,7 +190,7 @@ def process_file(file_name):
     output = open(file_name, 'w')
     output.write(text)
     output.close()
-    print 'Wrote fixed SVG to', file_name
+    print('Wrote fixed SVG to', file_name)
 
 
 if __name__ == '__main__':
@@ -203,7 +203,7 @@ if __name__ == '__main__':
             elif arg == '-xml':
                 isXmlDeclWanted = 1
             else:
-                print 'Unknown option (%s)' % arg
+                print('Unknown option (%s)' % arg)
                 sys.exit(1)
         else:
             process_file(arg)

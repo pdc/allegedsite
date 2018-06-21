@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import cStringIO
+import io
 import os
 import sys
 
@@ -17,7 +17,7 @@ class QuickAndDirtyImage:
 
     def load(self, file_name):
         """Read data from specified file."""
-        print file_name + ':'
+        print(file_name + ':')
         input = open(file_name, 'rb')
 
         magic = input.read(2)
@@ -34,8 +34,8 @@ class QuickAndDirtyImage:
 
             if magic == 'P3' and self.maxVal < 256:
                 # We must convert the graphics data from ASCII to binary.
-                ss = cStringIO.StringIO()
-                for i in xrange(0, self.width * self.height * 3):
+                ss = io.StringIO()
+                for i in range(0, self.width * self.height * 3):
                     n = self._nextNum()
                     ss.write(chr(n))
                 self.data = ss.getvalue()
@@ -88,10 +88,10 @@ def make_cmap(bad, good, cmap={}):
     """Generate a cmap dictionary from 2 images, one bad and one good."""
     xf = float(good.width) / bad.width
     yf = float(good.height) / bad.height
-    for y in xrange(0, bad.height):
+    for y in range(0, bad.height):
         # if y % 50 == 0: print y
         ygood = int(y * yf)
-        for x in xrange(0, bad.width):
+        for x in range(0, bad.width):
             xgood = int(x * xf)
             b = bad.pixel(x, y)
             g = good.pixel(xgood, ygood)
@@ -99,17 +99,17 @@ def make_cmap(bad, good, cmap={}):
                 cmap[b][g] = cmap[b].get(g, 0) + 1
             else:
                 cmap[b] = {g: 1}
-    print 'Generated CMAP with', len(cmap), 'entries.'
+    print('Generated CMAP with', len(cmap), 'entries.')
     return cmap
 
 
 def write_cmap(map, output):
     """Write the map as a CMAP file --
     one line per entry, with the bad and good colours as hexadecimal rrggbb."""
-    items = cmap.items()
+    items = list(cmap.items())
     items.sort()
     for bad, dict in items:
-        for good, cnt in dict.items():
+        for good, cnt in list(dict.items()):
             output.write('%02x%02x%02x %02X%02X%02X %d\n'
                          % (bad + good + (cnt,)))
 
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         input = open(cmapName, 'rt')
         read_cmap(input, cmap)
         input.close()
-        print 'Read', len(cmap), 'CMAP entries from', cmapName
+        print('Read', len(cmap), 'CMAP entries from', cmapName)
 
     for arg in sys.argv[1:]:
         b = arg
@@ -166,4 +166,4 @@ if __name__ == '__main__':
     output = open(cmapName, 'wt')
     write_cmap(cmap, output)
     output.close()
-    print 'Wrote CMAP to', cmapName
+    print('Wrote CMAP to', cmapName)

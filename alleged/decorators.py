@@ -28,8 +28,8 @@ def render_with(default_template_name, mimetype='text/html'):
             if isinstance(result, HttpResponse):
                 return result
             template_name = result.pop('template_name') if 'template_name' in result else default_template_name
-            template_args = result
-            return render_to_response(template_name, template_args, RequestContext(request), content_type=mimetype)
+            context = result
+            return render_to_response(template_name, context, content_type=mimetype)
         return decorated_func
     return decorator
 
