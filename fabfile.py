@@ -68,7 +68,6 @@ def deploy():
     code_dir = '/home/{0}/Sites/{0}'.format(env.site_name)
     with cd(code_dir):
         run('git pull')
-        run('cp {0}/settings_production.py {0}/settings.py'.format(env.settings_subdir))
 
         with prefix('. /home/{0}/virtualenvs/{1}/bin/activate'.format(env.site_name, env.virtualenv)):
             run('. ~/.nvm/nvm.sh && npm install')
@@ -81,4 +80,4 @@ def deploy():
             run('thmkmf -r ../web')
             run('make install')
 
-    run('touch /etc/uwsgi/emperor.d/{0}.ini'.format(env.site_name))
+    # run('touch /etc/uwsgi/emperor.d/{0}.ini'.format(env.site_name))

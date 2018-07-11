@@ -9,7 +9,7 @@ env = environ.Env(
     STATIC_URL=(str, None),
 )
 expand_path = environ.Path(__file__) - 2
-environ.Env.read_env(expand_path('.env'))
+environ.Env.read_env()
 
 DEBUG = env('DEBUG')
 TEMPLATE_DEBUG = DEBUG
