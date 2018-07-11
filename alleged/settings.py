@@ -1,23 +1,24 @@
 # Django settings for alleged project.
 
-import os
 
 import environ
 env = environ.Env(
     DEBUG=(bool, False),
     STATIC_ROOT=(str, None),
     STATIC_URL=(str, None),
+    SECRET_KEY=str,
 )
-expand_path = environ.Path(__file__) - 2
 environ.Env.read_env()
+expand_path = environ.Path(__file__) - 2
 
 DEBUG = env('DEBUG')
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [
-    'localhost:8000',
-    'alleged.org.uk',
-]
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        'localhost',
+        'alleged.org.uk',
+    ]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
@@ -95,7 +96,7 @@ CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = 'alleged'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'secret-key-value' if DEBUG else env('SECRET_KEY')
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
