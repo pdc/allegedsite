@@ -1,7 +1,6 @@
 *.pyc
 tmp.p?m
 test_blog
-settings.py
 tmp
 out.xml
 *.db
@@ -10,3 +9,4 @@ min.css
 *.d
 dev-requirements.txt
 node_modules/
+.env

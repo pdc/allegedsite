@@ -1,4 +1,2 @@
 flake8
-fabric
 pip-tools
-mock
