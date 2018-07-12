@@ -17,12 +17,18 @@ There are a few things that mean I need to rework my blog software, for various 
 
 Main things to update:
 
-* Port blog to Python&thinsp;3
+* [Porting my Blog to Python 3][part1]
+    * Port blog to Python&thinsp;3
+    * Create Python&thinsp;3 virtualenv on the server
+    * Address the issue with Fabric 1 not supprting Python&thinsp;3
+* [Store Config in the Environment][part2]
+    * Stop storing separate settings file for production: use environment instead
+* [Let’s Try Gunicorn Instead][part3]
+    * Address the issue with uWSGI not respecting Python version of virtualenv
+
+TODO:
+
 * Port blog to recent Django
-* Create Python&thinsp;3 virtualenv on the server
-* Address the issue with Fabric 1 not supprting Python&thinsp;3
-* Address the issue with uWSGI not respecting Python version of virtualenv
-* Stop storing separate settings file for production: use environment instead
 * Remove [Project Wonderful][] box (it’s already de-listed)
 * Do I want to keep the Twitter button? Add a Mastodon button?
 * Fix old photo albums
@@ -38,3 +44,6 @@ one sitting) and I will write up the steps and link to them from this page.
 
   [1]: ../2012/11/03.html
   [project wonderful]: https://www.projectwonderful.com/thanks.php
+  [part1]: 06/24.html
+  [part2]: 07/07.html
+  [part3]: 07/08.html
