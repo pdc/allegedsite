@@ -8,6 +8,8 @@ use and when building a new virtualenv it seemed like as good a time as any to
 upgrade to Python&nbsp;3 and Django 2.0. This lead to a lot of ‘adventures’
 as I discovered how well Python&nbsp;3 is or isn’t supported in my setup.
 
+Part 1 of the [Running to Stand Still][todo] series.
+
 
 ## Porting
 
@@ -77,9 +79,7 @@ fills up with nonsensical import errors.
 The solution is a story for another time.
 
 
-
-
-
+  [todo]: 06/17.html
   [1]: ../2012/11/03.html
   [project wonderful]: https://www.projectwonderful.com/thanks.php
   [Fabric]: http://www.fabfile.org
