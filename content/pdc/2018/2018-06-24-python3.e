@@ -82,4 +82,4 @@ The solution is a story for another time.
 
   [1]: ../2012/11/03.html
   [project wonderful]: https://www.projectwonderful.com/thanks.php
-  [Fabric]:
+  [Fabric]: http://www.fabfile.org

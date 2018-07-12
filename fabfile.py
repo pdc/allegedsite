@@ -74,7 +74,7 @@ def deploy():
             run('. ~/.nvm/nvm.sh && npm install -g less less-plugin-clean-css')
             run('. ~/.nvm/nvm.sh && make')  # This makes CSS and may update requirements.txt
             run('pip install -r requirements.txt')
-            run('./manage.py collectstatic --noinput')
+            run('envdir /service/alleged/env ./manage.py collectstatic --noinput')
 
         with cd('pregenerated'):
             run('thmkmf -r ../web')
