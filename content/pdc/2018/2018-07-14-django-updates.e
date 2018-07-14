@@ -1,4 +1,4 @@
-Topic: django meta
+Topics: django meta
 Title: Django Updates
 Date: 2018-07-14
 
