@@ -12,7 +12,6 @@ environ.Env.read_env()
 expand_path = environ.Path(__file__) - 2
 
 DEBUG = env('DEBUG')
-TEMPLATE_DEBUG = DEBUG
 
 if not DEBUG:
     ALLOWED_HOSTS = [
@@ -66,6 +65,7 @@ TEMPLATES = [
         'OPTIONS': {
             # ... some options here ...
         },
+        'DEBUG': DEBUG
     },
 ]
 
@@ -98,16 +98,16 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'alleged'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'secret-key-value' if DEBUG else env('SECRET_KEY')
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-)
+]
 
 ROOT_URLCONF = 'alleged.urls'
 

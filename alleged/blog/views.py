@@ -6,7 +6,7 @@ from datetime import date
 from django.utils import safestring
 from django.http import HttpResponseServerError
 from django.views.decorators.cache import cache_page
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.cache import cache
 from django.conf import settings
 

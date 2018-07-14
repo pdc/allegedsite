@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 import textwrap
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.test import TestCase
 from unittest.mock import patch, ANY
 from xml.etree import ElementTree as ET  # noqa
