@@ -63,9 +63,8 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
-            # ... some options here ...
+            'debug': DEBUG,
         },
-        'DEBUG': DEBUG
     },
 ]
 

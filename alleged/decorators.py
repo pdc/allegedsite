@@ -2,7 +2,7 @@
 
 from django.http import HttpResponse
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 import json
 
 
@@ -29,7 +29,7 @@ def render_with(default_template_name, mimetype='text/html'):
                 return result
             template_name = result.pop('template_name') if 'template_name' in result else default_template_name
             context = result
-            return render_to_response(template_name, context, content_type=mimetype)
+            return render(request, template_name, context, content_type=mimetype)
         return decorated_func
     return decorator
 

@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 from django.urls import reverse
 from alleged.snaptioner.albums import get_albums
@@ -11,7 +11,7 @@ def render_with(template_name):
             result = func(request, *args, **kwargs)
             if isinstance(result, HttpResponse):
                 return result
-            return render_to_response(template_name, result)
+            return render(request, template_name, result)
         return decorated_func
     return decorator
 
