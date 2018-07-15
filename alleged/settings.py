@@ -88,7 +88,7 @@ STATICFILES_DIRS = (
 if env('STATIC_ROOT'):
     STATIC_URL = env('STATIC_URL', default='http://static.alleged.org.uk/')
     STATIC_ROOT = env('STATIC_ROOT')  # e.g., '/home/alleged/static')
-    if False and not DEBUG:
+    if not DEBUG:
         STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 else:
     STATIC_URL = '/s/'
