@@ -43,6 +43,12 @@ expiry times because if they change their names will change.
   the stylesheet with a extra hash in the name to prevent it accidentally using a
   cached file *it is still serving the old version of the stylesheet* anyway.
 
+* You need to arrange to restart the server so it rereads the manifest,
+  otherwise it carries on serving the old files.
+
+The last is totes awks because I just made it so that restarting the server is
+ouside the powers of the `alleged` user account. I have to remember to do that
+step manually using my admin account.
 
 
 # Lessons
