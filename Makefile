@@ -11,7 +11,7 @@
 # Define compilers here
 
 LESSC=lessc
-LESSFLAGS=--no-color --strict-math=on --clean-css
+LESSFLAGS=--no-color --clean-css
 # Do not use -v as it breaks the .d file!
 
 BABEL = babel

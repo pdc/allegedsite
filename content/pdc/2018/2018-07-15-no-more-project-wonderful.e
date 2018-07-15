@@ -31,6 +31,11 @@ on my static files. So I have taken the plunge and activated
 an extra hash in their name which varies by content, so I can give them long
 expiry times because if they change their names will change.
 
+`ManifestStaticFilesStorage` is always a pain to set up because there will inevitably be some nuance of dpeloying to production that differes from your staging site no matter how many billions and billions of hours are spent creating staging servers and your production site will therefore experience a stressful period of brokenness wile you diagnise it. In this case I discovered
+
+* When the `collectstatic` post-processing hook creates the munged version of a file whose *name* contains badly encoded Unicode charaters this succeeds on my macOS development system but fails on my Ubuntu production system; and
+* As of five minutes ago version of the [Less][] compiler the deployment script installs does not write any output when you use the `--strict-math` flag but the deployment script does not know it failed so reports OK, so *after all the trouble you did to make it serve the stylesheet with a extra hash in the name to prevent it accidentally using a acached file **it is still serving the old version of the stylesheet anyway**.*
+
 
 # Lessons
 
