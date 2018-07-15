@@ -25,11 +25,13 @@ Main things to update:
     * Stop storing separate settings file for production: use environment instead
 * [Let’s Try Gunicorn Instead][part3]
     * Address the issue with uWSGI not respecting Python version of virtualenv
+* [Django Upgrade][part4]
+    * Port blog to recent Django
+* [No More Project Wonderful][part5]
+    * Remove [Project Wonderful][] box (it’s already de-listed)
 
 TODO:
 
-* Port blog to recent Django
-* Remove [Project Wonderful][] box (it’s already de-listed)
 * Do I want to keep the Twitter button? Add a Mastodon button?
 * Fix old photo albums
 * Support HTTPS and, if it is straightforward to do so, HTTP2
@@ -47,3 +49,5 @@ one sitting) and I will write up the steps and link to them from this page.
   [part1]: 06/24.html
   [part2]: 07/07.html
   [part3]: 07/08.html
+  [part4]: 07/14.html
+  [part5]: 07/15.html

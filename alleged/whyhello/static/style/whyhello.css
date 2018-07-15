@@ -111,21 +111,6 @@ nav span.sel {
     */
 }
 
-/* Comment this section out in production!
-.scrolling,
-.slideshow section {
-    background-image: url(grid-even.png);
-    background-position: 50% 50%;
-}
-
-.units-9 .scrolling,
-.units-9 .slideshow section,
-.units-15 .scrolling,
-.units-15 .slideshow section  {
-    background-image: url(grid-odd.png);
-}
-/**/
-
 .slide {
     float: left;
 }
