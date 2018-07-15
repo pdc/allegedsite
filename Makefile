@@ -33,6 +33,7 @@ include Rules.mk
 # Generic rules
 
 .less.css:
+	$(LESSC) $(LESSFLAGS) $< $@
 	$(LESSC) $(LESSFLAGS) -M $< $@ > $*.d.next && mv $*.d.next $*.d
 
 .jsx.js:
