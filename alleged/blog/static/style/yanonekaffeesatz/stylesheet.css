@@ -4,25 +4,21 @@
 
 @font-face {
 	font-family: 'YanoneKaffeesatzLtRegular';
-	src: url('yanonekaffeesatz-thin.eot');
-	src: local('☺'), url('yanonekaffeesatz-thin.woff') format('woff'), url('yanonekaffeesatz-thin.ttf') format('truetype'), url('yanonekaffeesatz-thin.svg#webfont') format('svg');
+	src: local('YanoneKaffeesatzLtRegular'), url('yanonekaffeesatz-thin.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'YanoneKaffeesatzRgRegular';
-	src: url('yanonekaffeesatz-regular.eot');
-	src: local('☺'), url('yanonekaffeesatz-regular.woff') format('woff'), url('yanonekaffeesatz-regular.ttf') format('truetype'), url('yanonekaffeesatz-regular.svg#webfont') format('svg');
+	src: local('YanoneKaffeesatzRgRegular'), url('yanonekaffeesatz-regular.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'YanoneKaffeesatzRgBold';
-	src: url('yanonekaffeesatz-bold.eot');
-	src: local('☺'), url('yanonekaffeesatz-bold.woff') format('woff'), url('yanonekaffeesatz-bold.ttf') format('truetype'), url('yanonekaffeesatz-bold.svg#webfont') format('svg');
+	src: local('YanoneKaffeesatzRgBold'), url('yanonekaffeesatz-bold.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'YanoneKaffeesatzLtRegular';
-	src: url('yanonekaffeesatz-light.eot');
-	src: local('☺'), url('yanonekaffeesatz-light.woff') format('woff'), url('yanonekaffeesatz-light.ttf') format('truetype'), url('yanonekaffeesatz-light.svg#webfont') format('svg');
+	src: local('YanoneKaffeesatzLtRegular'), url('yanonekaffeesatz-light.woff') format('woff');
 }
 

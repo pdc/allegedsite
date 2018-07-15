@@ -4,7 +4,6 @@
 
 @font-face {
 	font-family: 'WhitehallRegular';
-	src: url('whitehall.eot');
-	src: local('Whitehall'), local('Whitehall'), url('whitehall.woff') format('woff'), url('whitehall.ttf') format('truetype'), url('whitehall.svg#Whitehall') format('svg');
+	src: local('Whitehall'), local('Whitehall'), url('whitehall.woff') format('woff');
 }
 

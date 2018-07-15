@@ -4,8 +4,7 @@
 
 @font-face {
 	font-family: 'LeagueGothicRegular';
-	src: url('League_Gothic.eot');
-	src: local('League Gothic'), local('LeagueGothic'), url('League_Gothic.woff') format('woff'), url('League_Gothic.ttf') format('truetype'), url('League_Gothic.svg#LeagueGothic') format('svg');
+	src: local('League Gothic'), local('LeagueGothic'), url('League_Gothic.woff') format('woff');
 }
 
 body {

@@ -7,14 +7,12 @@
 
 @font-face {
     font-family: 'GentiumBookBasicRegular';
-    src: url('gentium/GenBkBasR.eot');
-    src: local('Gentium Book Basic'), local('GentiumBookBasic'), url('gentium/GenBkBasR.woff') format('woff'), url('gentium/GenBkBasR.ttf') format('truetype'), url('gentium/GenBkBasR.svg#GentiumBookBasic') format('svg');
+    src: local('Gentium Book Basic'), local('GentiumBookBasic'), url('gentium/GenBkBasR.woff') format('woff');
 }
 
 @font-face {
     font-family: 'GentiumBookBasicItalic';
-    src: url('gentium/GenBkBasI.eot');
-    src: local('Gentium Book Basic'), local('GentiumBookBasic-Italic'), url('gentium/GenBkBasI.woff') format('woff'), url('gentium/GenBkBasI.ttf') format('truetype'), url('gentium/GenBkBasI.svg#GentiumBookBasic-Italic') format('svg');
+    src: local('Gentium Book Basic'), local('GentiumBookBasic-Italic'), url('gentium/GenBkBasI.woff') format('woff');
 }
 
 * {
