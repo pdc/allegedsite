@@ -4,16 +4,18 @@
 .share-links {
     .contains-its-floats;
 
+    @media (min-width: (@max-main + @min-aside + 1px)) {
+        // Appears to the right of the main article.
+        // Attempt to align this with the 1st line of article (asusming headline is 1 line).
+        // Heading will have margin of 10px;
+        margin-top: (40px + 40px * 1.25 + 20px - 10px - 1px);
+        background-color: fade(@hl-clr, 10%);
+        border-top: 1px solid @hl-clr;
+    }
+
     li {
         float: left;
         margin: 10px;
     }
 
-
-    @media (min-width: (@min-ad + @min-sharing)) and (max-width: (@max-main + @min-aside)) {
-        float: left;
-        width: @min-sharing;
-        height: 114px;
-        margin-bottom: 10px;
-    }
 }

@@ -12,6 +12,7 @@
 
 LESSC=lessc
 LESSFLAGS=--no-color --strict-math=on --clean-css
+# Do not use -v as it breaks the .d file!
 
 BABEL = babel
 BABELFLAGS = --source-map inline
