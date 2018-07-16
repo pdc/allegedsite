@@ -29,11 +29,13 @@ Main things to update:
     * Port blog to recent Django
 * [No More Project Wonderful][part5]
     * Remove [Project Wonderful][] box (it’s already de-listed)
+    * Use cache-busting URLs for style files so they can have longer expiry times.
+* [Servers Need Explicit Locale][part6]
+    * Fix old photo albums
 
 TODO:
 
 * Do I want to keep the Twitter button? Add a Mastodon button?
-* Fix old photo albums
 * Support HTTPS and, if it is straightforward to do so, HTTP2
 * Redo navigation to be less annoying
 * New style sheets because why not make more work for myself
@@ -51,3 +53,4 @@ one sitting) and I will write up the steps and link to them from this page.
   [part3]: 07/08.html
   [part4]: 07/14.html
   [part5]: 07/15.html
+  [part6]: 07/16.html

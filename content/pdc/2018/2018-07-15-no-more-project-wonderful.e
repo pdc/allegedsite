@@ -72,3 +72,4 @@ position than before.
   [todo]: 06/17.html
   [1]: https://www.projectwonderful.com/thanks.php
   [2]: https://docs.djangoproject.com/en/2.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
+  [Less]: http://lesscss.org/
