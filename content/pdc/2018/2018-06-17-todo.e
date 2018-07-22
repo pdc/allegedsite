@@ -30,7 +30,7 @@ Main things to update:
 * [No More Project Wonderful][part5]
     * Remove [Project Wonderful][] box (it’s already de-listed)
     * Use cache-busting URLs for style files so they can have longer expiry times.
-* [Servers Need Explicit Locale][part6]
+* [Servers Need Locale][part6]
     * Fix old photo albums
 
 TODO:

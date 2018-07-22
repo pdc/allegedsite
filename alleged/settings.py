@@ -17,6 +17,8 @@ if not DEBUG:
     ALLOWED_HOSTS = [
         'localhost',
         'alleged.org.uk',
+        'ip4.alleged.org.uk',
+        'ip6.alleged.org.uk',
     ]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
