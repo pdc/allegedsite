@@ -13,7 +13,7 @@ There are a few things that mean I need to rework my blog software, for various 
 * It’s long past time I made this site work with HTTPS (no idea if HTTP2 an option)
 * Some parts of the site using SVG have succumbed to bit-rot
 
-## Todo List
+## Done
 
 Main things to update:
 
@@ -32,12 +32,16 @@ Main things to update:
     * Use cache-busting URLs for style files so they can have longer expiry times.
 * [Servers Need Locale][part6]
     * Fix old photo albums
+* [Let’s Encrypt with Certbot][part7]
+    * Support HTTPS-by-default
 
-TODO:
+## To do
 
+* Get other sites to work with HTTPS (some HTTP links are broken)
+* See whether it it is straightforward to uprade to HTTP2
 * Do I want to keep the Twitter button? Add a Mastodon button?
-* Support HTTPS and, if it is straightforward to do so, HTTP2
 * Redo navigation to be less annoying
+* [SVG fonts are no longer supoorted][2]
 * New style sheets because why not make more work for myself
 * Look in to relme auth, webmentions, microblogging
 * Update server to the latest Ubuntu LTS
@@ -54,3 +58,5 @@ one sitting) and I will write up the steps and link to them from this page.
   [part4]: 07/14.html
   [part5]: 07/15.html
   [part6]: 07/16.html
+  [part7]: 07/21.html
+  [2]: https://www.w3.org/TR/SVG2/changes.html#fonts

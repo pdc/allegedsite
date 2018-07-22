@@ -13,13 +13,12 @@ expand_path = environ.Path(__file__) - 2
 
 DEBUG = env('DEBUG')
 
-if not DEBUG:
-    ALLOWED_HOSTS = [
-        'localhost',
-        'alleged.org.uk',
-        'ip4.alleged.org.uk',
-        'ip6.alleged.org.uk',
-    ]
+ALLOWED_HOSTS = [
+    'localhost',
+    'alleged.org.uk',
+    'ip4.alleged.org.uk',
+    'ip6.alleged.org.uk',
+]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
