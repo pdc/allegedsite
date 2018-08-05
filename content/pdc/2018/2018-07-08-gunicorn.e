@@ -124,9 +124,15 @@ of being a broken 502 page.
 Finally I am back to square one, and ready to update my site …
 
 
+# Appendix
+
+I have created a [Gunicorn Checklist][part3a] as a separate entry.
+
+
   [todo]: 06/17.html
   [1]: ../2012/11/03.html
   [prev]: 07/07.html
+  [part3a]: 08/04.html
   [WSGI]: https://www.python.org/dev/peps/pep-0333/
   [NGINX]: http://nginx.org
   [uWSGI]: https://uwsgi-docs.readthedocs.io/en/latest/

@@ -35,7 +35,7 @@ The government delegates responsibility for areas of policy to [quango][]s; thes
 Subcontracting means fixed-price contracts to try to mitigate the RISK
 of project overruns, which entails the site being updated in big, elaborate
 releases, rather than continual small changes.
-The release is specified in a specification in [Microsoft Word][2] format, mailed back and forth as the details are thrashed out. 
+The release is specified in a specification in [Microsoft Word][2] format, mailed back and forth as the details are thrashed out.
 The
 specifications lump changes to the site’s content together with new features, which is how I end up doing text corrections alongside intricate programming jobs.
 
@@ -62,14 +62,14 @@ shipping. The copy will not have been proof-read, so new versions will
 be hastily mailed to us during the UAT period.
 
 By way of illustration, at one point I had four spreadsheets; three of
-them were named `Resource Library_21Nov2009_FINAL_rev2.xls`. By the time we had finished UAT, more or less every task had been done twice: first from the signed-off specification, then again when change requests countermanded it. 
+them were named `Resource Library_21Nov2009_FINAL_rev2.xls`. By the time we had finished UAT, more or less every task had been done twice: first from the signed-off specification, then again when change requests countermanded it.
 
 4. Why Drupal is Helpless to Help
 ===============================
 
 A complete separate server and database will be required for the staging site so that there is no RISK of changes on the staging site affecting the live site. This causes trouble because  systems like Drupal store  forum posts contributed by users in the same way as pages  provided by the site editors; we end up with two Drupal  whose databases must  be merged to make the new live site. This is incredibly finicky and fragile, and if it goes wrong, chunks of content might be destroyed.
 
-The alternative is to have a process where the developers make copious notes whenever they change settings or add content to the staging site, and then the night before the launch day, repeat these steps *without error* on the live site.  
+The alternative is to have a process where the developers make copious notes whenever they change settings or add content to the staging site, and then the night before the launch day, repeat these steps *without error* on the live site.
 In each case we have the perverse situation that after all that frenetic testing and the final sign-off of the site, we begin a deployment process that might easily wreck the whole thing.
 
 The other problem is that they do not use the CMS to edit the content.  Instead programmers are obliged to copy and paste text from Word or Excel documents for them. This is tedious and error-prone.
@@ -102,14 +102,14 @@ I can see two obvious approaches to addressing this problem:
 Option A: A New Kind Of CMS
 -----------------
 
-Invent a content-management system that better suits their process: 
+Invent a content-management system that better suits their process:
 
   - It has an explicit concept of changes coming in waves;
   - Content from all versions share the same database, with a special hostname being used to show the next version of the site;
-  - Updated code for the next version does not interfere with 
+  - Updated code for the next version does not interfere with
     the current version;
   - Content producers can draft and comment on new content in a way that requires no more effort than just mailing attachments to each other.
-  
+
   The last point is crucial, and might be achieved by  making the CMS able to parse word documents and participate in mail exchanges itself, or by creating plug-ins for Microsoft Word to co-ordinate it with an on-line database (at which point you end up reinventing SharePoint).
 
 The first approach will require a great deal of cleverness to get to work, and it entails rethinking the way the quangos   work altogether to be organized around the web first, and office paper-shuffling second. this would require concerted effort from all levels of the hierarchy to rethink office work, which might be a bit too much to expect within a short timeframe.
@@ -128,17 +128,17 @@ spreadsheets and word-processor files directly.
 
 
 This  approach is much easier to put in to practice. So much so, in fact, that I have already created my own  proof of concept called [Spreadsite][]. The idea is that deployment works by simply placing files in the right folders on the server, with no complicated database jiggery-pokery. The software examines the column headings to work out which are titles and which are keywords for navigation.
-My prototype is just a proof of concept: it displays a ‘resource library’ (a twentieth-century term for a list of links to other web sites), and includes simple navigation based on keywords.  
+My prototype is just a proof of concept: it displays a ‘resource library’ (a twentieth-century term for a list of links to other web sites), and includes simple navigation based on keywords.
 
 I this just a parody? Once I had built it—thanks to the wonders of [Django][], it took an afternoon’s work, no more—I discovered that this is actually not that bad way to edit this sort of site—I could make changes in the list of items in [Numbers][], save as CSV, and hit Reload in the browser window to check the results. Much faster than using a web form!
 
 Could this be used seriously to implement a real web site?
 The ideal would be for the Excel spreadsheet to be used *exactly* as
 supplied by the customer, thus requiring no additional work when they
-inevitably come up with an urgent replacement. 
-Using the spreadsheet verbatim have another bebefitL it would  establish firmly the
+inevitably come up with an urgent replacement.
+Using the spreadsheet verbatim have another bebefit: it would  establish firmly the
 responsibility for correct spelling, punctuation<abbr title="serial, or
-Oxford comma">,</abbr> and grammar with the customer. To make this possible would require more programming work, but less time, I suspect, than  
+Oxford comma">,</abbr> and grammar with the customer. To make this possible would require more programming work, but less time, I suspect, than
 would be spent on fighting the CMS would take.
 
 
@@ -151,4 +151,4 @@ would be spent on fighting the CMS would take.
   [2]: http://en.nothingisreal.com/wiki/Please_don't_send_me_Microsoft_Word_documents
   [Spreadsite]: http://github.com/pdc/spreadsite
   [Numbers]: http://www.apple.com/iwork/numbers/
-  [Django]: 
+  [Django]:

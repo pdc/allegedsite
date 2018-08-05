@@ -25,6 +25,7 @@ Main things to update:
     * Stop storing separate settings file for production: use environment instead
 * [Let’s Try Gunicorn Instead][part3]
     * Address the issue with uWSGI not respecting Python version of virtualenv
+    * Create a [checklist][part3a] for future migrations
 * [Django Upgrade][part4]
     * Port blog to recent Django
 * [No More Project Wonderful][part5]
@@ -34,14 +35,17 @@ Main things to update:
     * Fix old photo albums
 * [Let’s Encrypt with Certbot][part7]
     * Support HTTPS-by-default
+* [Update jeremyday.uk][part8]
+    * Split the Spreadlinks library out of Spreadsite
+    * Port all three to Django 2 and Python 3
 
 ## To do
 
-* Get other sites to work with HTTPS (some HTTP links are broken)
 * See whether it it is straightforward to uprade to HTTP2
 * Do I want to keep the Twitter button? Add a Mastodon button?
 * Redo navigation to be less annoying
 * [SVG fonts are no longer supoorted][2]
+* OTF fonts are not universally supported (not sure if they ever were)
 * New style sheets because why not make more work for myself
 * Look in to relme auth, webmentions, microblogging
 * Update server to the latest Ubuntu LTS
@@ -55,8 +59,10 @@ one sitting) and I will write up the steps and link to them from this page.
   [part1]: 06/24.html
   [part2]: 07/07.html
   [part3]: 07/08.html
+  [part3a]: 08/04.html
   [part4]: 07/14.html
   [part5]: 07/15.html
   [part6]: 07/16.html
   [part7]: 07/21.html
+  [part8]: 08/05.html
   [2]: https://www.w3.org/TR/SVG2/changes.html#fonts

@@ -1,5 +1,4 @@
-# Django settings for alleged project.
-
+"""Django settings for alleged project."""
 
 import environ
 env = environ.Env(
