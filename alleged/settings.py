@@ -14,6 +14,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = [
     'localhost',
+    'mustardseed.local',
     'alleged.org.uk',
     'ip4.alleged.org.uk',
     'ip6.alleged.org.uk',
