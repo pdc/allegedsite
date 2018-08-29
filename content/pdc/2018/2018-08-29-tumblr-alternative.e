@@ -2,7 +2,7 @@ Topics: meta tumblr
 Date: 2018-08-29
 Title: What to do about Tumblr?
 
-I am struggling to think of alternatives to using Tumbler for my link blog.
+I am struggling to think of alternatives to using Tumblr for my link blog.
 
 
 # Tumblr, Tentacle of Verizon
