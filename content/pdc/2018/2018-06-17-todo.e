@@ -41,8 +41,8 @@ Main things to update:
 
 ## To do
 
-* See whether it it is straightforward to uprade to HTTP2
 * Do I want to keep the Twitter button? Add a Mastodon button?
+* See whether it it is straightforward to uprade to HTTP2
 * Redo navigation to be less annoying
 * [SVG fonts are no longer supoorted][2]
 * OTF fonts are not universally supported (not sure if they ever were)
