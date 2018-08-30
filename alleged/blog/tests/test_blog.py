@@ -3,6 +3,8 @@
 import json
 import os
 from datetime import datetime
+import shutil
+import tempfile
 import textwrap
 
 from django.urls import reverse
@@ -15,31 +17,19 @@ from alleged.fromatom import nested_dicts_from_atom, summary_from_content
 from alleged.blog import views
 
 
-BASE_DIR = 'test_blog'
-
-
-class BlogTestMixin(object):
-    @classmethod
-    def prepare_test_blog_dir(cls):
-        if not os.path.exists(BASE_DIR):
-            os.mkdir(BASE_DIR)
-        else:
-            for y in ['1998', '2002', '2003', '2008', '2009', '2010', '2015']:
-                if not os.path.exists(os.path.join(BASE_DIR, y)):
-                    os.mkdir(os.path.join(BASE_DIR, y))
-            for subdir, subdirs, files in os.walk(BASE_DIR):
-                for file_name in files:
-                    os.unlink(os.path.join(subdir, file_name))
-
-
-class TestEntry(TestCase, BlogTestMixin):
+class TestEntry(TestCase):
     def setUp(self):
-        self.prepare_test_blog_dir()
+        self.tmp_dir = tempfile.mkdtemp()
+        for y in ['1998', '2002', '2003', '2008', '2009', '2010', '2015']:
+            os.mkdir(os.path.join(self.tmp_dir, y))
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp_dir)
 
     def test_entry_list_1(self):
-        with open(os.path.join(BASE_DIR, '2010-04-17-testa.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010-04-17-testa.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
-        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/masterblog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('FOO', e.title)
@@ -51,16 +41,16 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertTrue('beta' in e.tags)
 
     def test_freskish_markdown_extension(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-05-08-zum.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-05-08-zum.e'), 'wt') as output:
             output.write(
                 'Title: FOO\nTopics: alpha beta\n\nBAR\n\n'
                 '    Hullo\n    ≈\n    World\n\nBAZ\n')
-        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/masterblog/', '/images/')
         e = entries[0]
         self.assertHTMLEqual('<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>', e.body)
 
     def test_archaic(self):
-        with open(os.path.join(BASE_DIR, '19970611.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '19970611.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
               <entry date="19970611" icon="1997/19980529h-stamp.jpg">
                   <h1>CAPTION96 Photo album</h1>
@@ -81,7 +71,7 @@ class TestEntry(TestCase, BlogTestMixin):
                       redesigned with a less archaic  look.
                   </body>
               </entry>""")
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('CAPTION96 Photo album', e.title)
@@ -103,7 +93,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual('', e.slug or '')
 
     def test_dc_subject(self):
-        with open(os.path.join(BASE_DIR, '19980425.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '19980425.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
                 <entry date="19980425" icon="http://caption.org/img/caption94-64x64.gif">
                       <h1>CAPTION97 photo album</h1>
@@ -121,7 +111,7 @@ class TestEntry(TestCase, BlogTestMixin):
                       <dc:subject>photos</dc:subject>
                       <dc:subject>caption</dc:subject>
                 </entry>""")
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('CAPTION97 photo album', e.title)
@@ -141,7 +131,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertTrue('caption' in e.tags)
 
     def test_h_rather_than_h1(self):
-        with open(os.path.join(BASE_DIR, '2002/20021229.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2002/20021229.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
                 <entry date="20021229" icon="../tarot/x-wheel-100w.png">
                       <h>Alleged Tarot: a better dial-a-reading</h>
@@ -159,7 +149,7 @@ class TestEntry(TestCase, BlogTestMixin):
                       </body>
                       <dc:subject>tarot</dc:subject>
                 </entry>""")
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('Alleged Tarot: a better dial-a-reading', e.title)
@@ -176,7 +166,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertHTMLEqual(expected, e.body)
 
     def test_with_namespaces_supplied(self):
-        with open(os.path.join(BASE_DIR, '2003/20031228.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2003/20031228.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
                 <entry date="20031228" icon="picky-80x80.png"
                         xmlns="http://www.alleged.org.uk/2003/um" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -193,7 +183,7 @@ class TestEntry(TestCase, BlogTestMixin):
                   <dc:subject>picky</dc:subject>
                 </entry>
                 """)
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/blog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('Dates Dates Dates', e.title)
@@ -207,11 +197,11 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertHTMLEqual(expected, e.body)
 
     def test_entry_list_chron(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-03-02-foo.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-03-02-foo.e'), 'wt') as output:
             output.write('Title: FOO\n\nFoo bar baz\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-04-17-bar.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-17-bar.e'), 'wt') as output:
             output.write('Title: BAR\n\nBar baz quux\n')
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/blog/', '/images/')
         self.assertEqual(2, len(entries))
 
         # Entries are listed in forward chronological order.
@@ -225,35 +215,35 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(None, entries[0].prev)
 
     def test_should_munge_relative_href_attribute(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello [world](17.html)\n')
-        entries = get_entries(BASE_DIR, '/banko/', '/plugh/')
+        entries = get_entries(self.tmp_dir, '/banko/', '/plugh/')
         entry = entries[-1]
         self.assertEqual('<p>Hello <a href="/banko/2010/17.html">world</a></p>', entry.body)
 
     def test_should_also_munge_realative_script_src(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\n<script src="foo.js"></script>\n')
-        entries = get_entries(BASE_DIR, '/banko/', '/plugh/')
+        entries = get_entries(self.tmp_dir, '/banko/', '/plugh/')
         entry = entries[-1]
         self.assertEqual('<script src="/plugh/2010/foo.js"></script>', entry.body)
 
     def test_should_not_attempt_to_munge_inline_script(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\n<script>MAGIC</script>\n')
-        entries = get_entries(BASE_DIR, '/banko/', '/plugh/')
+        entries = get_entries(self.tmp_dir, '/banko/', '/plugh/')
         entry = entries[-1]
         self.assertEqual('<script>MAGIC</script>', entry.body)
 
     def test_when_type_attr_included_should_still_munge_script_src(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\n<script type="text/javascript" src="SCRIPT.js"></script>\n')
-        entries = get_entries(BASE_DIR, '/banko/', '/plugh/')
+        entries = get_entries(self.tmp_dir, '/banko/', '/plugh/')
         entry = entries[-1]
         self.assertEqual('<script type="text/javascript" src="/plugh/2010/SCRIPT.js"></script>', entry.body)
 
     def test_munging_xml(self):
-        with open(os.path.join(BASE_DIR, '2002/20021229.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2002/20021229.e'), 'wt') as output:
             output.write("""<!-- -*-HTML-*- -->
               <entry date="20021229" icon="../tarot/x-wheel-100w.png">
                 <h>Alleged Tarot: a better dial-a-reading</h>
@@ -288,7 +278,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual('/images/tarot/x-wheel-100w.png', e.image.src)
 
     def test_um(self):
-        with open(os.path.join(BASE_DIR, '2003/20030703.e'), 'wt') as out_stream:
+        with open(os.path.join(self.tmp_dir, '2003/20030703.e'), 'wt') as out_stream:
             out_stream.write("""<!-- -*-HTML-*- -->
                 <entry date="20030703" icon="../../2005/percy/1/1a1.jpg"
                 xmlns="http://www.alleged.org.uk/2003/um"
@@ -318,7 +308,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(set(['graphics', 'percy']), e.tags)
 
     def test_markdown(self):
-        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+        with open(os.path.join(self.tmp_dir, '2015/20150802-fictional.e'), 'wt') as out_stream:
             out_stream.write(textwrap.dedent("""\
                 Title: Title of entry
                 Topics: foo bar baz
@@ -342,7 +332,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertEqual(['foo', 'bar', 'baz'], e.tags)
 
     def test_markdown_h1_becomes_h2(self):
-        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+        with open(os.path.join(self.tmp_dir, '2015/20150802-fictional.e'), 'wt') as out_stream:
             out_stream.write(textwrap.dedent("""\
                 Title: Title of entry
                 Topics: foo bar baz
@@ -371,7 +361,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertHTMLEqual(expected, e.body)
 
     def test_markdown_toplevel_h2_remains_h2(self):
-        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+        with open(os.path.join(self.tmp_dir, '2015/20150802-fictional.e'), 'wt') as out_stream:
             out_stream.write(textwrap.dedent("""\
                 Title: Title of entry
 
@@ -398,41 +388,41 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertHTMLEqual(expected, e.body)
 
     def test_invents_title_when_none_specified(self):
-        with open(os.path.join(BASE_DIR, '2015/20150802-fictional.e'), 'wt') as out_stream:
+        with open(os.path.join(self.tmp_dir, '2015/20150802-fictional.e'), 'wt') as out_stream:
             out_stream.write('\n\nQuick notes on an entry I will finish off soon')
         e = self.get_entry()
 
         self.assertHTMLEqual('Untitled entry', e.title)
 
     def test_href_not_munging_external_link(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello [world](http://google.com/)\n')
-        entries = get_entries(BASE_DIR, '/banko/', '/plugh/')
+        entries = get_entries(self.tmp_dir, '/banko/', '/plugh/')
         entry = entries[-1]
         self.assertEqual('<p>Hello <a href="http://google.com/">world</a></p>', entry.body)
 
     def test_src_munging_img_from_markdown(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello ![world](x.jpg)\n')
-        entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
+        entries = get_entries(self.tmp_dir, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>',
             entry.body)
 
     def test_src_munging_img(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <img alt="world" src="x.jpg" />\n')
-        entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
+        entries = get_entries(self.tmp_dir, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg" /></p>',
             entry.body)
 
     def test_srcset_munging_img(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <img alt="world" src="x.jpg" srcset="y.jpg 100w" alt="x">\n')
-        entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
+        entries = get_entries(self.tmp_dir, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg"' +
@@ -440,9 +430,9 @@ class TestEntry(TestCase, BlogTestMixin):
             entry.body)
 
     def test_src_munging_embed(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <embed src="zergukk.svg" type="image/svg" />\n')
-        entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
+        entries = get_entries(self.tmp_dir, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>',
@@ -450,9 +440,9 @@ class TestEntry(TestCase, BlogTestMixin):
 
     def test_src_munging_embed_unsvgz(self):
         """When including a SVG file iwth the old-style .svgz ending, change it to .svg."""
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-links.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-links.e'), 'wt') as output:
             output.write('Title: Links!\n\nHello <embed src="zergukk.svgz" type="image/svg" />\n')
-        entries = get_entries(BASE_DIR, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
+        entries = get_entries(self.tmp_dir, '/banko/', 'http://localhost/~pdc/alleged.org.uk/pdc/')
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <embed src="http://localhost/~pdc/alleged.org.uk/pdc/2010/zergukk.svg" type="image/svg" /></p>',
@@ -460,17 +450,17 @@ class TestEntry(TestCase, BlogTestMixin):
 
     def test_find_by_tag(self):
         """Create a bunch of entries and show that you get the correct ones in the filtered list."""
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-a.e'), 'wt') as output:
             output.write('Title: A\nTopics: a b\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-21-b.e'), 'wt') as output:
             output.write('Title: B\nTOpics: b c d\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-03-07-c.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-03-07-c.e'), 'wt') as output:
             output.write('Title: C\nTopics: c d\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2009/2009-12-31-d.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2009/2009-12-31-d.e'), 'wt') as output:
             output.write('Title: D\nTopics: d\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2008/2008-07-11-e.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2008/2008-07-11-e.e'), 'wt') as output:
             output.write('Title: E\nTopics: a e\n\nHello [world](17.html)\n')
-        entries = get_entries(BASE_DIR, '/x/', '/i/')
+        entries = get_entries(self.tmp_dir, '/x/', '/i/')
         toc = get_toc(entries)
         self.assertEqual(5, len(toc))
         self.assertEqual('E', toc[0].title)
@@ -511,50 +501,50 @@ class TestEntry(TestCase, BlogTestMixin):
             for info in toc.filter(tag='e').filter(tag='a').selected_tag_infos])
 
     def test_gets_entry_image_from_header(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-17-testa.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-17-testa.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\nImage: hazmat-64.png\n\nBAR\nBAZ\n')
-        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/masterblog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('/images/2010/hazmat-64.png', e.image.src)
 
     def test_gets_default_entry_image_if_no_header(self):
-        with open(os.path.join(BASE_DIR, '2010/2010-04-17-testa.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-17-testa.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
-        entries = get_entries(BASE_DIR, '/masterblog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/masterblog/', '/images/')
         self.assertEqual(1, len(entries))
         e = entries[0]
         self.assertEqual('/images/icon-64x64.png', e.image.src)
         self.assertTrue(e.image.is_fallback)
 
     def test_entry_href_before_june_2003(self):
-        with open(os.path.join(BASE_DIR, '2003-05-17.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2003-05-17.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
-        es = get_entries(BASE_DIR, '/x/', '/i/')
+        es = get_entries(self.tmp_dir, '/x/', '/i/')
         self.assertEqual('/x/2003/05.html#e20030517', es[0].href)
 
     def test_entry_href_from_june_2003(self):
-        with open(os.path.join(BASE_DIR, '2003-06-14.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2003-06-14.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n')
-        es = get_entries(BASE_DIR, '/x/', '/i/')
+        es = get_entries(self.tmp_dir, '/x/', '/i/')
         self.assertEqual('/x/2003/06/14.html', es[0].href)
 
     def test_summary_old_style(self):
         """Old entries (before June 2003) are just a summary and may link to an article."""
-        with open(os.path.join(BASE_DIR, '2003/2003-05-17.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2003/2003-05-17.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n\nQUUX\n')
-        es = get_entries(BASE_DIR, '/x/', '/i/')
+        es = get_entries(self.tmp_dir, '/x/', '/i/')
         self.assertEqual('<p>BAR\nBAZ</p>\n<p>QUUX</p>', es[0].summary)
 
     def test_summary_new_style(self):
         """New entries are complete articles use the first paragraph as their summary."""
-        with open(os.path.join(BASE_DIR, '2003/2003-06-14.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2003/2003-06-14.e'), 'wt') as output:
             output.write('Title: FOO\nTopics: alpha beta\n\nBAR\nBAZ\n\nQUUX\n')
-        es = get_entries(BASE_DIR, '/x/', '/i/')
+        es = get_entries(self.tmp_dir, '/x/', '/i/')
         self.assertEqual('<p>BAR\nBAZ\n<a class="more" href="/x/2003/06/14.html">Read more</a></p>', es[0].summary)
 
     def test_named_article(self):
-        with open(os.path.join(BASE_DIR, '2003/ancient.html'), 'wt') as stream:
+        with open(os.path.join(self.tmp_dir, '2003/ancient.html'), 'wt') as stream:
             stream.write("""<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
             'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
             <html xmlns="http://www.w3.org/1999/xhtml">
@@ -592,7 +582,7 @@ class TestEntry(TestCase, BlogTestMixin):
                 </div>
               </body>
             </html>""")
-        article = get_named_article(BASE_DIR, '/blog/', '/im/', 2003, 'ancient')
+        article = get_named_article(self.tmp_dir, '/blog/', '/im/', 2003, 'ancient')
         self.assertEqual('Colour graphics the hard way', article.title)
         self.assertEqual('/blog/2003/ancient.html', article.href)
         self.assertHTMLEqual("""<p>
@@ -603,7 +593,7 @@ class TestEntry(TestCase, BlogTestMixin):
             <p><a href="/blog/2003/11.html#e20021125a">25 November 2002</a></p>""", article.body)
 
     def test_named_article_with_image(self):
-        with open(os.path.join(BASE_DIR, '1998/bike.html'), 'wt') as stream:
+        with open(os.path.join(self.tmp_dir, '1998/bike.html'), 'wt') as stream:
             stream.write("""<html xmlns="http://www.w3.org/1999/xhtml">
                 <head>
                 <title>Colour graphics the hard way - Alleged Literature</title>
@@ -621,7 +611,7 @@ class TestEntry(TestCase, BlogTestMixin):
                 </div>
                 </body>
                 </html>""")
-        article = get_named_article(BASE_DIR, '/blog/', '/im/', 1998, 'bike')
+        article = get_named_article(self.tmp_dir, '/blog/', '/im/', 1998, 'bike')
         expected = """<p class="initial">
             <a href="/im/1998/19980529g.jpg"><img src="/im/1998/19980529g-stamp.jpg"
                 align="right" alt="[Link to bike photo\u201422K JPEG]" width="86" height="64" border="0" /></a>
@@ -632,7 +622,7 @@ class TestEntry(TestCase, BlogTestMixin):
         self.assertHTMLEqual(expected, actual)
 
     def get_entry(self, index=-1, expected_count=1):
-        entries = get_entries(BASE_DIR, '/blog/', '/images/')
+        entries = get_entries(self.tmp_dir, '/blog/', '/images/')
         self.assertEqual(expected_count, len(entries))
         e = entries[index]
         return e
@@ -651,26 +641,29 @@ class TestEntry(TestCase, BlogTestMixin):
                     % (i, expected[beg:end], actual[beg:end], indent)))
 
 
-class TestThisMonthList(TestCase, BlogTestMixin):
+class TestThisMonthList(TestCase):
     """Create a bunch of entries and show that you get the correct ones in the this_month list."""
 
-    @classmethod
-    def setUpTestData(cls):
-        cls.prepare_test_blog_dir()
+    def setUp(self):
+        self.tmp_dir = tempfile.mkdtemp()
+        for y in ['1998', '2002', '2003', '2008', '2009', '2010', '2015']:
+            os.mkdir(os.path.join(self.tmp_dir, y))
 
-        with open(os.path.join(BASE_DIR, '2010/2010-04-18-a.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-18-a.e'), 'wt') as output:
             output.write('Title: A\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-04-21-b.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-04-21-b.e'), 'wt') as output:
             output.write('Title: B\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2010/2010-03-07-c.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2010/2010-03-07-c.e'), 'wt') as output:
             output.write('Title: C\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2009/2009-12-31-d.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2009/2009-12-31-d.e'), 'wt') as output:
             output.write('Title: D\n\nHello [world](17.html)\n')
-        with open(os.path.join(BASE_DIR, '2008/2008-07-11-e.e'), 'wt') as output:
+        with open(os.path.join(self.tmp_dir, '2008/2008-07-11-e.e'), 'wt') as output:
             output.write('Title: E\n\nHello [world](17.html)\n')
 
-    def setUp(self):
-        self.entries = get_entries(BASE_DIR, '/x/', '/i/')
+        self.entries = get_entries(self.tmp_dir, '/x/', '/i/')
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp_dir)
 
     def test_entries_sorted_by_date(self):
         self.assertEqual(['E', 'D', 'C', 'A', 'B'], [x.title for x in self.entries])
