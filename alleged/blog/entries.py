@@ -11,6 +11,7 @@ import calendar
 import os
 import re
 from datetime import datetime
+from urllib.parse import urlparse
 from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
@@ -193,7 +194,69 @@ class RelativeTocExtension(TocExtension):
     TreeProcessorClass = RelativeTocTreeprocessor
 
 
-class Image(object):
+
+
+class Silo:
+    """Social media source of links."""
+
+    silo_re = re.compile(r'^https?://(?:[\w.]+\.)?(\w+)\.\w+/')
+
+    def __init__(self, tag, label):
+        self.tag = tag
+        self.label = label
+
+    @classmethod
+    def from_url(cls, url):
+        hostname = urlparse(url).hostname
+        result = cls.known_silos.get(hostname)
+        if result:
+            return result
+        tag = tag = hostname.split('.')[-2]
+        return cls(tag, tag.title())
+
+Silo.known_silos = {
+    'octodon.social': Silo('mastodon', 'Mastodon'),
+}
+
+
+class Link:
+    """A link from an entry to some external resource."""
+
+    def __init__(self, url, rel, title=None, type=None, hreflang=None, media=None):
+        """Create an instance with this URL and rel."""
+        self.url = url
+        self.rel = rel
+        self.title = title
+        self.type = type
+        self.hreflang = hreflang
+        self.media = media
+
+        self.silo = Silo.from_url(url)
+
+
+    @classmethod
+    def parse(cls, text):
+        """Given one link specification, return a Link instance."""
+        first, *rest = text.split(';')
+        first = first.strip()
+        if not first.startswith('<') or not first.endswith('>'):
+            raise ValueError('%r: URL must be wrapped in <...>' % first)
+        url = first[1:-1]
+        kwargs = {}
+        for part in rest:
+            k, v = part.split('=', 1)
+            k = k.strip()
+            v = v.strip()
+            if v.startswith('"'):
+                if not v.endswith('"'):
+                    raise ValueError('%r: value must have matching quotes' % part)
+                v = v[1:-1]
+            kwargs[k] = v
+        rel = kwargs.pop('rel')
+        return cls(url, rel=rel, **kwargs) 
+
+
+class Image:
     def __init__(self, src, is_fallback=False):
         self.src = src
         self.is_fallback = is_fallback
@@ -202,7 +265,7 @@ class Image(object):
 body_re = re.compile(r'<body[^>]*>(.*)</body>', re.DOTALL)
 
 
-class Entry(object):
+class Entry:
     def __init__(self, root_dir_path, dir_path, file_name, blog_url, image_url):
         """Create an entry by examining the proffered file."""
         m = date_re.search(file_name)
@@ -278,6 +341,7 @@ class Entry(object):
         self._body = converter.convert(text.decode('UTF-8').replace('≈', '\u00A0'))
         self._title = ', '.join(converter.Meta.get('title', ['Untitled entry']))
         self._tags = ' '.join(converter.Meta.get('topics', [])).split()
+        self._links = [Link.parse(x) for x in converter.Meta.get('link', [])]
 
         src_list = converter.Meta.get('image')
         if src_list:
@@ -292,6 +356,12 @@ class Entry(object):
             self.load()
         return self._title
 
+    @property
+    def links(self):
+        if not self.is_loaded:
+            self.load()
+        return self._links
+    
     @property
     def body(self):
         """The body of this entry, as HTML."""
@@ -359,7 +429,7 @@ def get_entry(entries, year, month, day):
     return entry, this_month, years
 
 
-class TagInfo(object):
+class TagInfo:
     def __init__(self, tag, count=None):
         self.tag = tag
         self.count = count
@@ -481,7 +551,7 @@ def get_toc(entries):
 yet_another_re = re.compile(r'<([^<>]+\S)\s*/>')
 
 
-class Article(object):
+class Article:
     """In older entries, the entry is a summary and links to a named article.
 
     Articles were formatted using TclHTML. For the moment I am using

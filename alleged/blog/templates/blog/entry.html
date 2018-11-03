@@ -1,9 +1,17 @@
 {% extends "blog/base.html" %}
-{% load static from staticfiles %}
+{% load static %}
 
 
 {% block meta %}
-	<link rel="alternate" type="application/atom+xml" href="{% url 'blog_atom' %}" />
+	<link rel="alternate" type="application/atom+xml" href="{% url 'blog_atom' %}">
+  {% for link in entry.links %}
+    <link rel="{{ link.rel }}" href="{{ link.url }}"
+      {% if link.type %}type="{{ link.type }}"{% endif %}
+      {% if link.title %}title="{{ link.title }}"{% endif %}
+      {% if link.hreflang %}hreflang="{{ link.hreflang }}"{% endif %}
+      {% if link.media %}media="{{ link.media }}"{% endif %}
+    >
+  {% endfor %}
 {% endblock %}
 
 
@@ -16,22 +24,45 @@
 
 
 {% block aside %}
-                <div class="share-links">
-                    <h2>Share this article</h2>
-                    <ul>
-                        <li class="share-link">
-                            <a href="https://twitter.com/share?url=http://alleged.org.uk{{ entry.href }}&amp;via=damiancugley" class="twitter-share-button" data-lang="en">Tweet</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    {% if syndication_links %}
+                <div class="syndication">
+                    <h2>Boost, like, or reply to this article</h2>
+                    <p class="syndication-hint">
+                        Respond to this article on
+        {% if syndication_links|length > 1 %}
+                        one of these social networks:
+        {% else %}
+                        {{ syndication_links.0.silo.label }}:
+        {% endif %}
+                    </p>
+                    <ul class="syndication-list">
+        {% for link in syndication_links %}
+                        <li>
+                          <a href="{{ link.url }}" rel="syndication" class="u-syndication syndication-link syndication-link-{{ link.silo.tag }}">{{ link.silo.label }}</a>
                         </li>
-                        <li class="share-link">
-                          <a class="FlattrButton" style="display:none;"
-                              href="http://alleged.org.uk{{ entry.href }}"
-                              title="{{ entry.title }}"
-                              data-flattr-uid="pdc"
-                              data-flattr-button="compact">{{ entry.summary }}</a>
+        {% endfor %}
+                    </ul>
+                </div>
+    {% endif %}
+
+                <div class="share-links">
+                   <h2>Share this article</h2>
+                   <ul>
+                       <li class="share-link">
+                           <a href="https://twitter.com/intent/tweet?text={{ entry.summary }}&amp;url=http://alleged.org.uk{{ entry.href }}&amp;via=damiancugley"
+                           class="twitter-share-button" data-lang="en">Tweet</a>
+                       </li>
+                       <li class="share-link">
+                         <a class="FlattrButton" style="display:none;"
+                             href="http://alleged.org.uk{{ entry.href }}"
+                             title="{{ entry.title }}"
+                             data-flattr-uid="pdc"
+                             data-flattr-button="compact">{{ entry.summary }}</a>
                         </li>
                     </ul>
                 </div>
+
 
     {% include "blog/parts/entry-nav.div" %}
 {% endblock %}

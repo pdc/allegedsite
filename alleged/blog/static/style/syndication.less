@@ -1,0 +1,48 @@
+
+@import "defs.less";
+
+.syndication {
+    .contains-its-floats;
+
+    @media (min-width: (@max-main + @min-aside + 1px)) {
+        // Appears to the right of the main article.
+        // Attempt to align this with the 1st line of article (assuming headline is 1 line).
+        // Heading will have margin of 10px;
+        margin-top: (40px + 40px * 1.25 + 20px - 10px - 1px);
+        background-color: fade(@hl-clr, 10%);
+        border-top: 1px solid @hl-clr;
+    }
+
+    &-list {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    li {
+    }
+
+    &-link {
+        display: block;
+        padding: 0 10px;
+
+        line-height: 2em;
+        color: (darken(@hl-clr, 10%, relative));
+
+        &:hover,
+        &:active {
+            color: @hl-clr;
+            background-color: fade(@hl-clr, 10%);
+        }
+    }
+
+    &-hint {
+        margin: 5px 10px 0;
+        font-size: 13px;
+        color: fade(@lo-clr, 50%);
+    }
+}
+
+
+.mastodon-embed {
+    border-width: 0;
+}

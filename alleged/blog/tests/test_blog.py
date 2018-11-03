@@ -20,7 +20,7 @@ from alleged.blog import views
 class TestEntry(TestCase):
     def setUp(self):
         self.tmp_dir = tempfile.mkdtemp()
-        for y in ['1998', '2002', '2003', '2008', '2009', '2010', '2015']:
+        for y in ['1998', '2002', '2003', '2008', '2009', '2010', '2015', '2018']:
             os.mkdir(os.path.join(self.tmp_dir, y))
 
     def tearDown(self):
@@ -330,6 +330,21 @@ class TestEntry(TestCase):
             </p>"""
         self.assertHTMLEqual(expected, e.body)
         self.assertEqual(['foo', 'bar', 'baz'], e.tags)
+
+    def test_markdown_with_links(self):
+        with open(os.path.join(self.tmp_dir, '2018/2018-09-01-something.e'), 'wt') as output:
+            output.write(textwrap.dedent("""\
+                Link: <https://example.com/1>; rel=foo
+                Link: <https://example.com/2>; rel=bar
+
+                Content
+                """))
+        e = self.get_entry()
+
+        self.assertEqual(e.links[0].url, 'https://example.com/1')
+        self.assertEqual(e.links[0].rel, 'foo')
+        self.assertEqual(e.links[1].url, 'https://example.com/2')
+        self.assertEqual(e.links[1].rel, 'bar')
 
     def test_markdown_h1_becomes_h2(self):
         with open(os.path.join(self.tmp_dir, '2015/20150802-fictional.e'), 'wt') as out_stream:

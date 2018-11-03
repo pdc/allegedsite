@@ -19,10 +19,7 @@ env.bin_dir = '/home/alleged/bin'
 
 
 def update_requirements():
-    local(
-        "pip freeze "
-        "| egrep -v 'Fabric|pycrypto|ssh|distribute|cffi|ecdsa|greenlet|mccabe|paramiko|readline' "
-        "> requirements.txt")
+    local("pipenv lock -r > requirements.txt")
 
 
 def test():
@@ -74,7 +71,7 @@ def deploy():
             run('. ~/.nvm/nvm.sh && npm install -g less less-plugin-clean-css')
             run('. ~/.nvm/nvm.sh && make')  # This makes CSS and may update requirements.txt
             run('pip install -r requirements.txt')
-            run('envdir /service/alleged/env ./manage.py collectstatic --noinput')
+            run('envdir /service/%s/env ./manage.py collectstatic --noinput')
 
         with cd('pregenerated'):
             run('thmkmf -r ../web')

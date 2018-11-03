@@ -112,6 +112,7 @@ def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
         'this_year_months': get_year_months(entries, y),
         'react_data_json': safestring.mark_safe(json.dumps(entries.get_react_data(entry))),
         'is_index': False,
+        'syndication_links': [k for k in entry.links if k.rel == 'syndication'],
     }
 
 
