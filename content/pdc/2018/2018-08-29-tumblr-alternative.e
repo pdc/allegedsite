@@ -1,6 +1,8 @@
 Topics: meta tumblr
 Date: 2018-08-29
 Title: What to do about Tumblr?
+Link: <https://octodon.social/@pdc/100632504628324891>; rel=syndication
+Link: <https://twitter.com/damiancugley/status/1034723390379180032>; rel=syndication
 
 I am struggling to think of alternatives to using Tumblr for my link blog.
 

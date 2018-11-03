@@ -1,6 +1,6 @@
 Title: Let’s Try Gunicorn Instead
 Date: 2018-07-08
-Topics: meta gunicorn django
+Topics: meta gunicorn django deployment
 
 I have switched to Gunicorn since my attempts to make uWSGI multilingual have failed disastrously.
 

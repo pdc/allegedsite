@@ -1,6 +1,7 @@
 Title: iPhone Landscape Zoom Prevent
 Date: 2018-08-11
 Topics: css html
+Link: <https://octodon.social/@pdc/100601703924310915>; rel=syndication
 
 Writing the CSS for a responsive or mobile site and it inexplicably  zooms in
 when I turned the phone in to landscape mode. I want it to show more text when
@@ -54,6 +55,8 @@ surprise zooming on orientation change.
 
 Hopefully next time I have this problem and I search for it I will find this
 article and not one of the red herrings from 2011.
+
+
 
 
   [spreadsite.org]: https://spreadsite.org/

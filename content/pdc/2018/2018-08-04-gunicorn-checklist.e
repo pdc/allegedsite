@@ -1,10 +1,18 @@
 Title: Gunicorn Checklist
 Date: 2018-08-04
-Topics: gunicorn deploy meta
+Topics: gunicorn deployment meta
 
 Here is a summary of how I set up a new Python-3-backed server on my hobby server.
 
 An appendix to [Part 3 Let’s Try Gunicorn Instead][part3] of the [Running to Stand Still][todo] series.
+
+Earlier notes to myself:
+
+* [Recipe for Deploying with Git][2010a] (the user account and directory structure is still relevant)
+* [Deploying Django with Nginx + FastCGI][2010b] (the NGINX parts are still semi-relevant)
+* [Switching from FastCGI to uWSGI][2012] (mostly outdated now except perhaps some of the Fabric automation)
+* [Let’s Try Gunicorn Instead][part3] (the latest chapter)
+
 
 
 # On the Server as the Server Account
@@ -137,3 +145,6 @@ Where the port number in `proxy_pass` must of course match that in `/service/$SI
 
   [todo]: 06/17.html
   [part3]: 07/08.html
+  [2010a]: ../2010/02/25.html
+  [2010b]: ../2010/04/11.html
+  [2012]: ../2012/11/03.html
