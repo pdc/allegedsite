@@ -1,6 +1,8 @@
 Topic: meta syndication
 Date: 2018-11-03
 Title: Syndication Links
+Link: <https://octodon.social/@pdc/101006646972410830>; rel=syndication
+Link: <https://twitter.com/damiancugley/status/1058659319514910720>; rel=syndication
 
 I am scratching me head over  transitioning from using the Twitter button on my blog
 pages and toward some kind of IndieWeb solution with syndication link.
@@ -66,7 +68,7 @@ and then expose these links in the generated HTML as something like this:
     <a href="https://octodon.social/@pdc/100601703924310915"
         rel="syndication" class="u-syndication link-mastodon">On Mastodon</a>
 
-The `rel` attribute tells automatic processors that this is links from the
+The `rel` attribute tells automatic processors that this links from the
 canonical page of an article to to a syndicated version; the `u-syndication`
 class is used as part of the `h-entry` convention. The `link-mastodon`
 class would be used to style the link appropriately.

@@ -24,7 +24,7 @@ def update_requirements():
 
 def test():
     with settings(warn_only=True):
-        result = local('./manage.py test --keepdb --fail', capture=True)
+        result = local('pipenv run python manage.py test --keepdb --fail', capture=True)
     if result.failed and not confirm("Tests failed. Continue anyway?"):
         abort("Aborting at user request.")
 
@@ -71,7 +71,7 @@ def deploy():
             run('. ~/.nvm/nvm.sh && npm install -g less less-plugin-clean-css')
             run('. ~/.nvm/nvm.sh && make')  # This makes CSS and may update requirements.txt
             run('pip install -r requirements.txt')
-            run('envdir /service/%s/env ./manage.py collectstatic --noinput')
+            run('envdir /service/%s/env ./manage.py collectstatic --noinput' % (env.site_name,))
 
         with cd('pregenerated'):
             run('thmkmf -r ../web')
