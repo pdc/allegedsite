@@ -46,7 +46,10 @@ aside {
         width: @max-main;
     }
     @media (min-width: (@max-main + @min-aside + 1px)) {
-        .topbar-mg;
+        // Appears to the right of the main article.
+        // Attempt to align this with the 1st line of article (assuming headline is 1 line).
+        // Heading will have margin of 10px;
+        margin-top: (60px + 40px + 40px * 1.25 + 20px - 10px - 1px);
     }
     @media (min-width: (@max-main + @min-aside + 1px)) and (max-width: (@max-main + @max-aside)) {
         width: @min-aside;

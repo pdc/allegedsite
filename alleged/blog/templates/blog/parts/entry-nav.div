@@ -1,13 +1,13 @@
 
-                <nav id="entry-nav" class="entry-nav">
+                <nav class="entry-nav">
                     <h2>Other articles</h2>
                     <ul>
 
 {% with entry.prev as e %}
     {% if e %}
                         <li class="entry-nav-nextprev entry-link">
-                            <b>Older</b>
-                            <a href="{{ e.href }}" class="" rel="prev"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
+                            <b>Previous</b>
+                            <a href="{{ e.href }}" class="" rel="prev">{{ e.title }} <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j F Y"}}</time></a>
                         </li>
     {% endif %}
 {% endwith %}
@@ -15,15 +15,15 @@
 {% with entry.next as e %}
     {% if e %}
                         <li class="entry-nav-nextprev entry-link">
-                            <b>Newer</b>
-                            <a href="{{ e.href }}" class="entry-link" rel="next"><q>{{ e.title }}</q> <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j N"}}</time></a>
+                            <b>Next</b>
+                            <a href="{{ e.href }}" class="entry-link" rel="next">{{ e.title }} <time datetime="{{ e.published|date:'c'}}">{{ e.published|date:"j F Y"}}</time></a>
                         </li>
     {% endif %}
 {% endwith %}
                     </ul>
 
                     <h2>Article archive (by date)</h2>
-                    <ul>
+                    <ul id="entry-nav">
 
 {% for year_e in years %}
     {% if year_e.published.year == entry.published.year %}
