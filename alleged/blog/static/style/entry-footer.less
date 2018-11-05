@@ -2,6 +2,8 @@
 .entry-footer {
     margin: 10px 0;
     padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
 
     font-size: 13px;
     line-height: 20px;
@@ -17,7 +19,7 @@
 }
 
 .entry-date {
-    float: left;
+    margin-left: 10px;
 }
 
 .entry-date-on {
@@ -26,12 +28,13 @@
 }
 
 .entry-tag-list {
-    float: left;
     margin: 0;
     padding: 0;
+    display: flex;
+    display: contents;
+    flex-flow: row wrap;
 
     li {
-        float: left;
         margin: 0 0 0 10px;
         display: block;
     }
@@ -56,17 +59,12 @@
     }
 }
 
-.entry-permalink {
-    float: left;
-    margin: 0 0 0 10px;
+.entry-metadata-link {
+    color: (fade(@lo-clr, 50%));
+    text-decoration: inherit;
 
-    a {
-        color: (fade(@hl-clr, 50%));
-        text-decoration: inherit;
-
-        &:hover {
-            color: @hl-clr;
-        }
+    &:hover {
+        color: @hl-clr;
+        text-decoration: underline;
     }
-
 }

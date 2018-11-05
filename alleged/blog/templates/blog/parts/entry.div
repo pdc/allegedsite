@@ -1,7 +1,7 @@
 {% load static %}
 
 
-            <article class="entry">
+            <article class="entry h-entry">
 {% if entry.image and not entry.image.is_fallback %}
                 <img src="{{ entry.image.src }}" class="main-avatar" alt="" width=64 height=64>
 {% else %}
@@ -18,22 +18,26 @@
                 </svg>
 {% endif %}
 
-                <h1>{{ entry.title }}</h1>
+                <h1 class="p-name">{{ entry.title }}</h1>
 
-                <div class="entry-content">
+                <div class="entry-content e-content">
                     {{ entry.body|safe }}
                 </div>
 
                 <footer class="entry-footer">
                     <div>
-                        <time class="entry-date" datetime="{{ entry.published|date:'c' }}">{{ entry.published|date:"j F Y" }}</time>
+                        <a href="/pdc" class="p-author h-card entry-metadata-link">Damian Cugley</a>
+                    </div>
+                    <div>
+                        <a class="u-url u-uid entry-metadata-link" href="{{ entry.href }}" title="permalink">
+                            <time class="entry-date dt-published" datetime="{{ entry.published|date:'c' }}">{{ entry.published|date:"j F Y" }}</time>
+                        </a>
                     </div>
                     <ul class="entry-tag-list">
 {% for tag in entry.tags %}
                         <li><a href="{% url 'blog_tag' plus_separated_tags=tag %}">{{ tag }}</a></li>
 {% endfor %}
                     </ul>
-                    <div class="entry-permalink"><a href="{{ entry.href }}" title="permalink">#</a></div>
                 </footer>
             </article>
 

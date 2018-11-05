@@ -1,4 +1,4 @@
-Topic: meta syndication
+Topics: meta syndication twitter mastodon
 Date: 2018-11-03
 Title: Syndication Links
 Link: <https://octodon.social/@pdc/101006646972410830>; rel=syndication
