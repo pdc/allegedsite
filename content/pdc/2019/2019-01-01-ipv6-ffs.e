@@ -1,6 +1,8 @@
 Title: IPv6 Wastes More of My Time
 Date: 2019-01-01
 Topics: deployment ipv6 nginx
+Link: <https://octodon.social/@pdc/101342892299264947>; rel=syndication
+Link: <https://twitter.com/damiancugley/status/1080178965157986306>; rel=syndication
 
 Because of IPv6 I have wasted hours trying to get ooble.uk certified by Let’s Encrypt.
 
