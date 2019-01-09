@@ -1,8 +1,11 @@
 Title: Oxford Spelling on macOS
 Date: 2019-01-09
 Topics: english oxford macos
+Link: <https://octodon.social/@pdc/101388011579133569>; rel=syndication
+Link: <https://twitter.com/damiancugley/status/1083066905865404416>; rel=syndication
 
-It is possible to set up a Mac to permit Oxford spelling (organize _vs_ organise).
+After a lot of creative searching I discover it is possible to set up a Mac to
+permit  Oxford spelling (organize vs organise).
 
 
 # Oxford Spelling
