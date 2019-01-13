@@ -1,4 +1,8 @@
 Title: Testing Celeryfied Signalized Django Models
+Date: 2019-01-13
+Topics: django celery python
+Link: <https://octodon.social/@pdc/101410662261562458>; rel=syndication
+Link: <https://twitter.com/damiancugley/status/1084516463912861697>; rel=syndication
 
 Here’s a quick note about how to write tests for [Django][] models that need to
 queue [Celery][] tasks when they are created.
@@ -54,21 +58,25 @@ There is a problem with this, however.
 
 # The Problem
 
-All the automated tests worked fine but when I tried creating locator
-instances on a running server I got exceptions raised in Celery saying
-‘Locator.DoesNotExist: locator matching query does not exist’. Naturally I
-could check and see that the locator in question *did* exist. Mysterious!
+All the automated tests worked fine but when I tried creating `Locator`
+instances on a running server I got `Locator.DoesNotExist` exceptions raised
+in the Celery worker processor. Naturally I could check and see that the
+locator in question *did* exist. Mysterious!
 
-The cause was, of course, a race between Celery queuing the task and it
-attempting to retrieve the Locator entity from the database, and the
-transaction that creates the entity completing so that the entity is there to
-be retrieved.
+The cause was (of course) a race condition, in this case a race between
+
+1. Celery
+queuing the task and it in turn attempting to retrieve the Locator entity from the
+database, and
+2. the transaction that creates the entity completing so that the
+entity is there to be retrieved.
 
 
 # The Fix: transaction.on_commit
 
 If I were the perfectly logical TDD programmer I would at this point have
-rewritten the test to ensure the task is queued outside the transaction:
+rewritten the test to ensure the task is queued outside the transaction. As it
+was I didn’t think of this until later but let’s pretend I did:
 
     class TestLocator(TestCase):
         …
@@ -87,7 +95,7 @@ rewritten the test to ensure the task is queued outside the transaction:
 
 As of Django 1.9 there is a mechanism for achieving this:
 <code>[transaction.on_commit][]</code> queues a hook function to be called
-when the current transaction commits. So al lwe need is a minor change to the
+when the current transaction commits. So all we need is a minor change to the
 queue method:
 
     class Locator(models.Model):
@@ -112,10 +120,10 @@ hook immediately, so it works either way.
 The trouble is I could not get the unit tests to pass: the mock function
 `delay`  was not being called. The cause of this is that the tests are
 themselves all run within `transaction.atomic()`, so the `on_commit` hook is
-not called until after the test has completed.
+not called until after the outer transaction, thus after the test has completed.
 
 I tried various things before doing what in retrospect is the obvious fix: use
-a different TestCase subclass that does not wrap tests in a transaction. This
+a different `TestCase` subclass that does not wrap tests in a transaction. This
 is in fact its superclass <code>[TransactionTestCase][]</code>, which instead
 of using transactions to reset the database after each test, truncates the
 database tables explicitly.
@@ -124,8 +132,9 @@ database tables explicitly.
 # Lessons
 
 Everything I needed to fix this problem was nicely documented in Django’s
-excellent website where the respective features of the framework are
-described. This entry just draws together the scattered threads.
+excellent website as footnotes to the respective features of the framework.
+This entry just draws together the scattered threads so I will do it right
+first time next time.
 
 Moral: There is never a good time to not be worrying about concurrency in
 today’s crazy, messed-up world.
