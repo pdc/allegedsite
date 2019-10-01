@@ -1,0 +1,291 @@
+
+@font-face {
+    font-family: "Obviously";
+    src: url(Obviously-Regular.woff2) format(woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Obviously";
+    src: url(Obviously-Narrow_Italic.woff2) format(woff2);
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: "Obviously";
+    src: url(Obviously-Condensed_Semibold.woff2) format(woff2);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Obviously";
+    src: url(Obviously-Wide_Black.woff2) format(woff2);
+    font-weight: 900;
+}
+
+
+:root {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Obviously", sanserif;
+    font-size: 16px;
+    line-height: 1.25;
+
+    --paper: #CCC;
+    --ink: rgba(0, 0, 0, 0.8);
+
+    background-color: var(--paper);
+    color: var(--ink);
+}
+
+html,
+body {
+    margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #333;
+        --ink: rgba(255, 255, 255, 0.9);
+    }
+}
+
+h1 {
+    margin: 20px 10px 10px;
+
+    font-size: 2em;
+    font-weight: 900;
+    line-height: 1;
+}
+
+
+h1 small {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h2 {
+    margin: 20px 10px 10px;
+}
+
+@media (min-width: 640px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    .has-sidebar #middle {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+    }
+
+    #nav {
+        grid-column: 2;
+    }
+}
+
+@media (min-width: 720px) {
+    .has-sidebar #middle {
+        grid-gap: 40px;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: block;
+    margin: 0;
+}
+
+.card {
+    padding: 10px;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.album-list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 130px);
+    justify-content: center;
+    grid-gap: 20px;
+}
+
+.album-card {
+    display: grid;
+    grid-template-rows: 140px auto;
+}
+
+.album-poster {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.album-title {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+
+    margin: 5px;
+    font-family: "Obviously", serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1;
+    color: #FFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: rgba(0,0,0,0.5) 1px 2px 3px;
+}
+
+.album-title-ulc {
+    text-transform: none;
+}
+
+.album-credit {
+    font-size: 12px;
+}
+
+/* Photo lsts on album page */
+
+@media (max-width: 400px) {
+    .photo-card {
+        display: block;
+    }
+    .photo-thumbnail,
+    .photo-description,
+    .photo-people {
+        display: block;
+    }
+    .photo-description {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+}
+
+
+@media (min-width: 400px) {
+    .photo-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .photo-card {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-gap: 10px;
+    }
+
+    .photo-thumbnail {
+        grid-row: 1 / 3;
+    }
+
+    .photo-description {
+        grid-column: 2;
+    }
+
+    .photo-people {
+        grid-column: 2;
+        align-self: end;
+    }
+}
+
+
+/* Photo page */
+
+.img {
+    display: block;
+    margin: 10px;
+}
+
+.img-description {
+    margin: 10px;
+    max-width: 540px;
+}
+
+.img-people {
+    margin: 10px;
+}
+
+
+/* Sidebar nav */
+
+.nav-next-prev {
+    display: flex;
+    padding: 10px;
+}
+
+.nav-next-prev-item {
+    width: 110px;
+    height: 140px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.nav-backlink-link {
+    display: block;
+    padding: 10px;
+
+    font-size: 2em;
+    font-weight: 500;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+.nav-album-link,
+.nav-album-selected {
+    display: block;
+    padding: 5px 10px;
+}
+
+@media (max-width: 540px) {
+    .nav-album-link,
+    .nav-album-selected {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+}
+
+.nav-album-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-album-selected {
+    font-weight: inherit;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.nav-album-title {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+}
+.nav-album-metadata {
+    font-style: italic;
+    font-size: 13px;
+}
+
+/* Hover */
+
+
+.card:hover,
+.carwd:active,
+.nav-album-link:hover,
+.nav-album-link:active,
+.nav-backlink-link:hover,
+.nav-backlink-link:active {
+    background-color: rgba(128, 128, 128, 0.25);
+}

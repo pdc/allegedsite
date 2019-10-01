@@ -9,13 +9,13 @@
       <img src="{{ image.src }}" alt="" >
     </p>
     <div id="about-the-image">
-      <p id="description">
+      <p class="img-description">
         {{ image.description|safe }}
       </p>
       {% if image.people %}
       <div id="people">
         <h2>People in this photo</h2>
-        <ul class="people">
+        <ul class="img-people">
           {% for person in image.people %}
           <li>
             <i>{{ person }}</i>
@@ -30,8 +30,8 @@
 {% block localnav %}
       <div id="next-prev">
         <h2>More in this album</h2>
-        <ul>
-          <li>
+        <ul class="nav-next-prev">
+          <li class="nav-next-prev-item">
             {% if image.prev %}
             <a href="{{ image.prev.href }}" rel="prev">
               <img src="{{ image.prev.small_thumbnail_src }}" alt="Prev">
@@ -40,7 +40,7 @@
             <span>This is the first photo</span>
             {% endif %}
           </li>
-          <li>
+          <li class="nav-next-prev-item">
             {% if image.next %}
             <a href="{{ image.next.href }}" rel="next">
               <img src="{{ image.next.small_thumbnail_src }}" alt="Next">
@@ -50,13 +50,11 @@
             {% endif %}
           </li>
         </ul>
-        <p>
-          <a href="{% url 'album_detail' album_name=album.name %}">Photo list</a>
+        <p class="nav-backlink">
+          <a class="nav-backlink-link" href="{% url 'album_detail' album_name=album.name %}">Photo list</a>
         </p>
       </div>
 {% endblock %}
 
 {% block javascript %}
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="{% static "js/snaptioner.js" %}"></script>
 {% endblock %}

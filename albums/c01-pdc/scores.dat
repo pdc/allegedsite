@@ -7,7 +7,7 @@ b000.mvc-002sr:Keep:
 b001.mvc-010sr:Keep:
 b010.mvc-008sr:Discard:
 b011.mvc-013sr:Keep:
-b100.mvc-029sr:Keep:
+b100.mvc-029sr:Discard:
 d001.mvc-058sr:Keep:
 d002.mvc-059sr:Discard:
 d004.mvc-061sr:Good:

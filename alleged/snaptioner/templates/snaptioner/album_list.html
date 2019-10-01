@@ -8,11 +8,11 @@
 {% block content %}
     <ul class="album-list">
       {% for album in albums %}
-      <li>
-        <a href="{{ album.href }}">
-          <img src="{{ album.0.small_thumbnail_src }}" alt="">
-          <b>{{ album.title }}</b> 
-          <small>{{ album.photographer }}</small>
+      <li class="album-item">
+        <a href="{{ album.href }}" class="card album-card">
+          <img class="album-poster" src="{{ album.0.small_thumbnail_src }}" alt="">
+          <b class="album-title{% if album.title == 'spaceCAPTION99' %} album-title-ulc{% endif %}">{{ album.title }}</b>
+          <small class="album-credit">{{ album.photographer }}</small>
         </a>
       </li>
       {% endfor %}

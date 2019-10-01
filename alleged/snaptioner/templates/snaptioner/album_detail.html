@@ -2,16 +2,16 @@
 {% load staticfiles %}
 
 {% block title %}{{ album.title }} Album{% endblock %}
-{% block heading %}{{ album.title }} Album <small>({{ album.photographer }})</small>{% endblock %}
+{% block heading %}<span class="alum-heading">{{ album.title }} Album</span> <small>{{ album.photographer }}</small>{% endblock %}
 
 {% block content %}
     <ul class="photo-list">
       {% for image in album %}
       <li id="{{ album.name }}-{{ image.name }}">
-        <a href="{{ image.href }}">
-          <img src="{{ image.thumbnail_src }}" alt="">
-          <span class="description">{{ image.description|safe }}</span>
-          <span class="people">
+        <a href="{{ image.href }}" class="card photo-card">
+          <img class="photo-thumbnail" src="{{ image.thumbnail_src }}" alt="" >
+          <span class="photo-description">{{ image.description|safe }}</span>
+          <span class="photo-people">
             {% for person in image.people %}
             <i>{{ person }}</i>
             {% endfor %}
@@ -24,11 +24,7 @@
 
 {% block localnav %}
     {{ album.description_formatted }}
-
 {% endblock %}
 
 {% block javascript %}
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="{% static "js/jquery.masonry.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/snaptioner.js" %}"></script>
 {% endblock %}
