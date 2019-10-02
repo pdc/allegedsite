@@ -36,6 +36,7 @@
 
     --paper: #CCC;
     --ink: rgba(0, 0, 0, 0.8);
+    --tint: rgba(0, 153, 204, 0.25);
 
     background-color: var(--paper);
     color: var(--ink);
@@ -50,6 +51,7 @@ body {
     :root {
         --paper: #333;
         --ink: rgba(255, 255, 255, 0.9);
+        --tint: rgba(0, 240, 255, 0.05);
     }
 }
 
@@ -288,4 +290,5 @@ li {
 .nav-backlink-link:hover,
 .nav-backlink-link:active {
     background-color: rgba(128, 128, 128, 0.25);
+    background-color: var(--tint);
 }
