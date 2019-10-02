@@ -1,13 +1,13 @@
 
 @font-face {
     font-family: "Obviously";
-    src: url(Obviously-Regular.woff2) format(woff2);
+    src: url(Obviously-Regular.woff2) format('woff2');
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Obviously";
-    src: url(Obviously-Narrow_Italic.woff2) format(woff2);
+    src: url(Obviously-Narrow_Italic.woff2) format('woff2');
     font-weight: 400;
     font-style: italic;
 }
@@ -15,13 +15,13 @@
 
 @font-face {
     font-family: "Obviously";
-    src: url(Obviously-Condensed_Semibold.woff2) format(woff2);
+    src: url(Obviously-Condensed_Semibold.woff2) format('woff2');
     font-weight: 500;
 }
 
 @font-face {
     font-family: "Obviously";
-    src: url(Obviously-Wide_Black.woff2) format(woff2);
+    src: url(Obviously-Wide_Black.woff2) format('woff2');
     font-weight: 900;
 }
 
