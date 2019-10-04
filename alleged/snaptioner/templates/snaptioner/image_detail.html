@@ -4,6 +4,13 @@
 {% block title %}{{ image.name }} - {{ album.title }}{% endblock %}
 {% block heading %}Photo {{ image.name }} in {{ album.title }} Album{% endblock %}
 
+{% block metadata %}
+      <meta property="og:title" content="Photo {{ image.name }} in {{ album.title }} Album">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="{{ image.href }}">
+      <meta property="og:image" content="{{ image.src }}">
+{% endblock %}
+
 {% block content %}
     <p id="the-image" class="img">
       <img src="{{ image.src }}" alt="" >
