@@ -2,21 +2,27 @@
 {% load staticfiles %}
 
 {% block title %}{{ image.name }} - {{ album.title }}{% endblock %}
-{% block heading %}Photo {{ image.name }} in {{ album.title }} Album{% endblock %}
+{% block heading %}Photo {{ image.name }} in {{ album.title }} Album<small class="p-author">{{ album.photographer }}</small>{% endblock %}
 
 {% block metadata %}
+      <meta property="og:url" content="{{ image.absolute_href }}">
       <meta property="og:title" content="Photo {{ image.name }} in {{ album.title }} Album">
       <meta property="og:type" content="website">
-      <meta property="og:url" content="{{ image.href }}">
       <meta property="og:image" content="{{ image.src }}">
+      {% if image.description %}<meta property="og:description" content="{{ image.description|safe }}">{% endif %}
+      <meta property="og:locale" content="en_GB">
+      <meta property="og:site_name" conent="Alleged Literature Ancient Albums">
 {% endblock %}
 
+{% block classes %}has-sidebar h-entry{% endblock %}
+
 {% block content %}
+  <article class="e-content">
     <p id="the-image" class="img">
-      <img src="{{ image.src }}" alt="" >
+      <img src="{{ image.src }}" alt="" class="u-photo" >
     </p>
     <div id="about-the-image">
-      <p class="img-description">
+      <p class="img-description p-summary">
         {{ image.description|safe }}
       </p>
       {% if image.people %}
@@ -32,6 +38,7 @@
       </div>
       {% endif %}
     </div>
+  </article>
 {% endblock %}
 
 {% block localnav %}

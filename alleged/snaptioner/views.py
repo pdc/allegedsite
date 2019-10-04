@@ -66,6 +66,7 @@ def image_detail(request, library_dir, library_url, album_name, image_name):
             break
     else:
         raise Http404()
+    image.absolute_href = request.build_absolute_uri(image.href)
 
     return {
         'albums': sorted(albums.values(), key=lambda album: album.name),

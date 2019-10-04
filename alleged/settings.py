@@ -71,7 +71,7 @@ TEMPLATES = [
 
 
 SNAPTIONER_LIBRARY_DIR = expand_path('albums')
-SNAPTIONER_LIBRARY_URL = '//static.alleged.org.uk/albums/'
+SNAPTIONER_LIBRARY_URL = 'https://static.alleged.org.uk/albums/'
 
 BLOG_DIR = expand_path('content/pdc')
 BLOG_CACHE_ENTRIES = False
