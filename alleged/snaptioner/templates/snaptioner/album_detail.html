@@ -2,9 +2,22 @@
 {% load staticfiles %}
 
 {% block title %}{{ album.title }} Album{% endblock %}
-{% block heading %}<span class="alum-heading">{{ album.title }} Album</span> <small>{{ album.photographer }}</small>{% endblock %}
+{% block heading %}<span class="alum-heading">{{ album.title }} Album</span> <small>by <span class="h-author">{{ album.photographer }}</span></small>{% endblock %}
+
+{% block metadata %}
+      <meta property="og:url" content="{{ album.absolute_href }}">
+      <meta property="og:title" content="{{ album.title }} Album by  {{ album.photographer }}">
+      <meta property="og:type" content="website">
+  {% for image in album|slice:":4" %}
+      <meta property="og:image" content="{{ image.src }}">
+  {% endfor %}
+      {% if album.description %}<meta property="og:description" content="{{ album.description|safe }}">{% endif %}
+      <meta property="og:locale" content="en_GB">
+      <meta property="og:site_name" conent="Alleged Literature">
+{% endblock %}
 
 {% block content %}
+    <div class="album-description e-summary">{{ album.description_formatted }}</div>
     <ul class="photo-list">
       {% for image in album %}
       <li id="{{ album.name }}-{{ image.name }}">
@@ -20,10 +33,6 @@
       </li>
       {% endfor %}
     </ul>
-{% endblock %}
-
-{% block localnav %}
-    {{ album.description_formatted }}
 {% endblock %}
 
 {% block javascript %}

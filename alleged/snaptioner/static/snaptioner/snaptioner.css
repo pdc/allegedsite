@@ -36,6 +36,8 @@
 
     --paper: #CCC;
     --ink: rgba(0, 0, 0, 0.8);
+    --link-hi: rgba(51, 211, 255, 0.8);
+    --link-lo: rgb(0, 132, 168, 0.9);
     --tint: rgba(0, 153, 204, 0.25);
 
     background-color: var(--paper);
@@ -46,14 +48,16 @@ html,
 body {
     margin: 0;
 }
-
+/*
 @media (prefers-color-scheme: dark) {
     :root {
         --paper: #333;
         --ink: rgba(255, 255, 255, 0.9);
-        --tint: rgba(0, 240, 255, 0.05);
+        --link-hi: rgba(102, 221, 255, 0.9);
+        --link-lo: rgba(144, 198, 213, 1);
+        --tint: rgba(102, 221, 255, 0.05);
     }
-}
+}*/
 
 h1 {
     margin: 20px 10px 10px;
@@ -158,6 +162,28 @@ li {
 
 /* Photo lsts on album page */
 
+.album-description {
+    margin: 10px 10px 30px;
+    column-width: 24em;
+    column-gap: 1.25em;
+}
+
+.album-description p  {
+    margin: 0;
+}
+
+.album-description p+p {
+    margin-top: 10px;
+}
+
+.album-description a {
+    color: var(--link-lo);
+}
+
+.album-description a:hover,
+.album-description a:active {
+    color: var(--link-hi);
+}
 @media (max-width: 400px) {
     .photo-card {
         display: block;

@@ -113,6 +113,12 @@ class Album(Sequence):
     def __str__(self):
         return self.name
 
+    @cached_property
+    def description_formatted(self):
+        """An HTMLified version of the description field."""
+        return safestring.mark_safe(
+            formatter.convert(self.description))
+
 
 def _albums_iter(library_dir, album_metadata):
     for dir_name, subdirs, files in os.walk(library_dir):
