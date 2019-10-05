@@ -51,6 +51,7 @@ def album_list(request, library_dir, library_url):
 def album_detail(request, library_dir, library_url, album_name):
     albums = get_albums_with_hrefs(library_dir, library_url)
     album = get_album_with_srcs(library_url, albums, album_name)
+    album.absolute_href = request.build_absolute_uri(album.href)
     return {
         'albums': sorted(albums.values(), key=lambda album: album.name),
         'album': album,
