@@ -9,6 +9,7 @@ Created by Damian Cugley on 2010-03-31.
 import os
 import csv
 from collections import Sequence
+from django.urls import reverse
 from django.utils import safestring
 from django.utils.functional import cached_property
 from markdown import Markdown
@@ -19,10 +20,25 @@ formatter = Markdown()
 
 class Image:
     # __slots__ = 'file_name', 'name', 'score', 'people', 'description', 'prev', 'next'
-    def __init__(self, name, score):
+    def __init__(self, album, name, score):
         self.name = name
         self.score = score
         self.people = []
+
+        self.href = reverse('image_detail', kwargs={
+            'album_name': album.name,
+            'image_name': self.name,
+        })
+
+    def set_src(self, library_url, album, file_name):
+        self.file_name = file_name
+
+        self.src = '%s%s/%s' % (library_url, album.name, file_name)
+        self.src_sans_http = self.src.split(':', 1)[1]
+        p = self.src.rindex('.')
+        q = self.src.rindex('/')
+        self.thumbnail_src = '%s/thumbs/%s-200w.jpeg' % (self.src[:q], self.src[q + 1:p])
+        self.small_thumbnail_src = '%s/thumbs/%s-s110x140.jpeg' % (self.src[:q], self.src[q + 1:p])
 
     @cached_property
     def description_formatted(self):
@@ -32,7 +48,7 @@ class Image:
 
 
 class Album(Sequence):
-    def __init__(self, library_dir, album_name, metadata):
+    def __init__(self, library_dir, library_url, album_name, metadata):
         self.dir_name = os.path.join(library_dir, album_name)
         self.name = album_name
 
@@ -40,6 +56,7 @@ class Album(Sequence):
         self.photographer = metadata['Photographer']
         self.description = metadata['Description']
         self.old_href = metadata['URL']
+        self.href = reverse('album_detail', kwargs={'album_name': self.name})
 
         self.images = []
         self.images_by_name = {}
@@ -49,7 +66,7 @@ class Album(Sequence):
                 image_name, score, _ = line.split(':')
                 if score == 'Discard':
                     continue
-                image = Image(image_name, score)
+                image = Image(self, image_name, score)
                 self.images.append(image)
                 self.images_by_name[image.name] = image
                 p = image_name.find('-')
@@ -70,7 +87,7 @@ class Album(Sequence):
                 image_name = file_name[:p]
                 image = self.images_by_name.get(image_name)
                 if image:
-                    image.file_name = file_name
+                    image.set_src(library_url, self, file_name)
 
         with open(os.path.join(self.dir_name, 'descs.dat'), 'rt') as input:
             for line in input:
@@ -120,11 +137,11 @@ class Album(Sequence):
             formatter.convert(self.description))
 
 
-def _albums_iter(library_dir, album_metadata):
+def _albums_iter(library_dir, library_url, album_metadata):
     for dir_name, subdirs, files in os.walk(library_dir):
         if 'scores.dat' in files:
             _, album_name = os.path.split(dir_name)
-            yield Album(library_dir, album_name, album_metadata.get(album_name))
+            yield Album(library_dir, library_url, album_name, album_metadata.get(album_name))
         try:
             subdirs.remove('.xvpics')
         except ValueError:
@@ -137,7 +154,7 @@ class Library:
     Each album is a directory within this directory.
     There may be a file albums.csv that gives extra metadata.
     """
-    def __init__(self, library_dir):
+    def __init__(self, library_dir, library_url):
         self.dir_name = library_dir
 
         album_metadata = {}
@@ -146,20 +163,31 @@ class Library:
             for meta in reader:
                 album_metadata[meta['Album']] = meta
 
-        self.albums = dict((album.name, album) for album in _albums_iter(library_dir, album_metadata))
+        self.albums = dict(
+            (album.name, album)
+            for album in _albums_iter(library_dir, library_url, album_metadata))
 
 
 _libraries = {}
 
 
-def get_albums(library_dir):
+def get_library(library_dir, library_url):
+    """Load a collection of albums from directories on disk."""
     global _libraries
     library = _libraries.get(library_dir)
     if library is None:
-        library = Library(library_dir)
+        library = Library(library_dir, library_url)
         _libraries[library_dir] = library
-    return library.albums
+    return library
 
 
-def get_album(library_dir, name):
-    return get_albums(library_dir)[name]
+def get_albums(library_dir, library_url):
+    """Load the albums that are themselves directories in this directory.
+
+    Returns -- map from album name to Album instance.
+    """
+    return get_library(library_dir, library_url).albums
+
+
+def get_album(library_dir, library_url, name):
+    return get_albums(library_dir, library_url)[name]

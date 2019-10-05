@@ -48,7 +48,7 @@ html,
 body {
     margin: 0;
 }
-/*
+
 @media (prefers-color-scheme: dark) {
     :root {
         --paper: #333;
@@ -57,7 +57,7 @@ body {
         --link-lo: rgba(144, 198, 213, 1);
         --tint: rgba(102, 221, 255, 0.05);
     }
-}*/
+}
 
 h1 {
     margin: 20px 10px 10px;

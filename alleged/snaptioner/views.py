@@ -1,76 +1,37 @@
-from django.http import HttpResponse, Http404
+from django.http import Http404
 from django.shortcuts import render
-from django.template import RequestContext
-from django.urls import reverse
-from alleged.snaptioner.albums import get_albums
+
+from .albums import get_albums
 
 
-def render_with(template_name):
-    def decorator(func):
-        def decorated_func(request, *args, **kwargs):
-            result = func(request, *args, **kwargs)
-            if isinstance(result, HttpResponse):
-                return result
-            return render(request, template_name, result)
-        return decorated_func
-    return decorator
-
-
-def get_albums_with_hrefs(library_dir, library_url):
-    albums = get_albums(library_dir)
-    for album in albums.values():
-        album.href = reverse('album_detail', kwargs={'album_name': album.name})
-    return albums
-
-
-def get_album_with_srcs(library_url, albums, album_name):
-    album = albums[album_name]
-    for image in album:
-        image.href = reverse('image_detail', kwargs={'album_name': album.name, 'image_name': image.name})
-        if hasattr(image, 'file_name'):
-            image.src = '%s%s/%s' % (library_url, album.name, image.file_name)
-            image.src_sans_http = image.src[7:]
-            p = image.src.rindex('.')
-            q = image.src.rindex('/')
-            image.thumbnail_src = '%s/thumbs/%s-200w.jpeg' % (image.src[:q], image.src[q + 1:p])
-            image.small_thumbnail_src = '%s/thumbs/%s-s110x140.jpeg' % (image.src[:q], image.src[q + 1:p])
-    return album
-
-
-@render_with('snaptioner/album_list.html')
 def album_list(request, library_dir, library_url):
-    albums = get_albums_with_hrefs(library_dir, library_url)
-    for album_name in albums:
-        get_album_with_srcs(library_url, albums, album_name)
-    return {
+    albums = get_albums(library_dir, library_url)
+    return render(request, 'snaptioner/album_list.html', {
         'albums': sorted(albums.values(), key=lambda album: album.name),
-    }
+    })
 
 
-@render_with('snaptioner/album_detail.html')
 def album_detail(request, library_dir, library_url, album_name):
-    albums = get_albums_with_hrefs(library_dir, library_url)
-    album = get_album_with_srcs(library_url, albums, album_name)
+    albums = get_albums(library_dir, library_url)
+    album = albums[album_name]
     album.absolute_href = request.build_absolute_uri(album.href)
-    return {
+    return render(request, 'snaptioner/album_detail.html', {
         'albums': sorted(albums.values(), key=lambda album: album.name),
         'album': album,
-    }
+    })
 
 
-@render_with('snaptioner/image_detail.html')
 def image_detail(request, library_dir, library_url, album_name, image_name):
-    albums = get_albums_with_hrefs(library_dir, library_url)
-    album = get_album_with_srcs(library_url, albums, album_name)
-    for image in album:
-        if image.name == image_name:
-            break
-    else:
+    albums = get_albums(library_dir, library_url)
+    album = albums[album_name]
+    try:
+        image = album.images_by_name[image_name]
+    except KeyError:
         raise Http404()
     image.absolute_href = request.build_absolute_uri(image.href)
 
-    return {
+    return render(request, 'snaptioner/image_detail.html', {
         'albums': sorted(albums.values(), key=lambda album: album.name),
         'album': album,
         'image': image,
-    }
+    })
