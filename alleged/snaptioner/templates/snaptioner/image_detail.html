@@ -2,11 +2,11 @@
 {% load staticfiles %}
 
 {% block title %}{{ image.name }} - {{ album.title }}{% endblock %}
-{% block heading %}Photo {{ image.name }} in {{ album.title }} Album<small class="p-author">{{ album.photographer }}</small>{% endblock %}
+{% block heading %}Photo {{ image.name }} in {{ album.title }} Album <small>by <span class="p-author">{{ album.photographer }}</span></small>{% endblock %}
 
 {% block metadata %}
       <meta property="og:url" content="{{ image.absolute_href }}">
-      <meta property="og:title" content="Photo {{ image.name }} in {{ album.title }} Album">
+      <meta property="og:title" content="Photo {{ image.name }} in {{ album.title }} Album by {{ album.photographer }}">
       <meta property="og:type" content="website">
       <meta property="og:image" content="{{ image.src }}">
       {% if image.description %}<meta property="og:description" content="{{ image.description|safe }}">{% endif %}
