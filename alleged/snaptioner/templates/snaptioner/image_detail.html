@@ -31,7 +31,7 @@
         <ul class="img-people">
           {% for person in image.people %}
           <li>
-            <i>{{ person }}</i>
+            <a class="ln" href="{% url 'person_detail' person_code=person.code %}"><i>{{ person }}</i></a>
           </li>
           {% endfor %}
         </ul>

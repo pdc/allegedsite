@@ -6,14 +6,15 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from alleged.snaptioner.albums import get_albums, get_album
+from .albums import get_library, get_albums, get_album, Person
 
-ALBUM_DIR = 'albums'
+ALBUM_DIR, ALBUM_URL = 'albums', 'https://im.example.com/'
 
 
 class LibraryTestCase(TestCase):
     def setUp(self):
-        self.albums = get_albums(ALBUM_DIR)
+        self.library = get_library(ALBUM_DIR, ALBUM_URL)
+        self.albums = get_albums(ALBUM_DIR, ALBUM_URL)
 
     def test_count(self):
         """
@@ -23,13 +24,19 @@ class LibraryTestCase(TestCase):
 
     def test_albums_in_list_same_as_albums_got_with_get_album(self):
         for album_name, album in self.albums.items():
-            self.assertEqual(get_album(ALBUM_DIR, album_name), album)
+            self.assertEqual(get_album(ALBUM_DIR, ALBUM_URL, album_name), album)
             self.assertEqual(album_name, album.name)
+
+    def test_albums_come_from_library(self):
+        self.assertIs(self.albums, self.library.albums)
+
+    def test_has_more_than_one_action_man_photo(self):
+        self.assertGreater(len(self.library.people['action.man'].occurrences), 1)
 
 
 class AlbumTestCase(TestCase):
     def setUp(self):
-        self.album = get_album(ALBUM_DIR, 'ukwebcomix2004')
+        self.album = get_album(ALBUM_DIR, ALBUM_URL, 'ukwebcomix2004')
 
     def test_metadata(self):
         self.assertEqual('UK Web and Minicomix Thing 2004', self.album.title)
@@ -52,12 +59,15 @@ class AlbumTestCase(TestCase):
             self.album[1].description_formatted)
 
     def test_people(self):
-        self.assertEqual(['Craig Conlan', 'Jenni Scott'], self.album[3].people)
+        self.assertEqual(
+            [x.name for x in self.album[3].people],
+            ['Craig Conlan', 'Jenni Scott'],
+        )
 
 
 class AviemoreTestCase(TestCase):
     def setUp(self):
-        self.album = get_album(ALBUM_DIR, 'aviemore')
+        self.album = get_album(ALBUM_DIR, ALBUM_URL, 'aviemore')
 
     def test_len(self):
         """"We expect pictures with score=Discard to be discarded."""
@@ -82,8 +92,19 @@ class AviemoreTestCase(TestCase):
 
 class C98TestCase(TestCase):
     def setUp(self):
-        self.album = get_album(ALBUM_DIR, 'c98-matt')
+        self.album = get_album(ALBUM_DIR, ALBUM_URL, 'c98-matt')
 
     def test_len(self):
         """"We expect pictures with score=Discard to be discarded."""
         self.assertEqual(19, len(self.album))
+
+
+class PersonTestCase(TestCase):
+    def test_make_Code_smushes_names_together(self):
+        self.assertEqual(Person.make_code('Marc Almond'), 'marc.almond')
+        self.assertEqual(Person.make_code('X'), 'x')
+
+    def test_make_code_strips_punctuation(self):
+        self.assertEqual(Person.make_code("Ruth O'Reilly"), 'ruth.oreilly')
+        self.assertEqual(Person.make_code("(unknown)"), 'unknown')
+

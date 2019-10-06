@@ -3,7 +3,8 @@
 
 from django.conf.urls import url
 from django.conf import settings
-import alleged.snaptioner.views
+
+from . import views
 
 
 essential_args = {
@@ -14,9 +15,11 @@ essential_args = {
 
 urlpatterns = [
     url(r'^$',
-        alleged.snaptioner.views.album_list, essential_args, 'album_list'),
+        views.album_list, essential_args, 'album_list'),
+    url(r'^people/(?P<person_code>[a-z0-9.-]+)$',
+        views.person_detail, essential_args, 'person_detail'),
     url(r'^(?P<album_name>[a-z0-9-]+)/$',
-        alleged.snaptioner.views.album_detail, essential_args, 'album_detail'),
+        views.album_detail, essential_args, 'album_detail'),
     url(r'^(?P<album_name>[a-z0-9-]+)/(?P<image_name>[a-z0-9.-]+)$',
-        alleged.snaptioner.views.image_detail, essential_args, 'image_detail'),
+        views.image_detail, essential_args, 'image_detail'),
 ]

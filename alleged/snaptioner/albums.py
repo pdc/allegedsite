@@ -6,13 +6,14 @@ Created by Damian Cugley on 2010-03-31.
 © 2010, 2014 Damian Cugley. All rights reserved.
 """
 
-import os
-import csv
 from collections import Sequence
+import csv
 from django.urls import reverse
 from django.utils import safestring
 from django.utils.functional import cached_property
 from markdown import Markdown
+import os
+import re
 
 
 formatter = Markdown()
@@ -148,6 +149,26 @@ def _albums_iter(library_dir, library_url, album_metadata):
             pass
 
 
+PUNCT_PAT = re.compile(r'[^\w+]')
+
+
+class Person:
+    """Information about a person in one or more photos."""
+
+    def __init__(self, code, name):
+        """Create an instance with this name."""
+        self.code = code
+        self.name = name
+        self.occurrences = []
+
+    @staticmethod
+    def make_code(name):
+        return '.'.join(PUNCT_PAT.sub('', x) for x in name.split()).lower()
+
+    def __str__(self):
+        return self.name
+
+
 class Library:
     """A collection of albums.
 
@@ -166,6 +187,21 @@ class Library:
         self.albums = dict(
             (album.name, album)
             for album in _albums_iter(library_dir, library_url, album_metadata))
+
+        # Build map from person code to person with occurrences.
+        self.people = {}
+        for album in self.albums.values():
+            for image in album.images:
+                image_people = []
+                for name in image.people:
+                    code = Person.make_code(name)
+                    person = self.people.get(code)
+                    if person is None:
+                        person = self.people[code] = Person(code, name)
+                    image_people.append(person)
+                    person.occurrences.append((album, image))
+                # Replace list of names with list of Person instances.
+                image.people = image_people
 
 
 _libraries = {}

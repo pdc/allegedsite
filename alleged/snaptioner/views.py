@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 
-from .albums import get_albums
+from .albums import get_library, get_albums
 
 
 def album_list(request, library_dir, library_url):
@@ -34,4 +34,15 @@ def image_detail(request, library_dir, library_url, album_name, image_name):
         'albums': sorted(albums.values(), key=lambda album: album.name),
         'album': album,
         'image': image,
+    })
+
+
+def person_detail(request, library_dir, library_url, person_code):
+    library = get_library(library_dir, library_url)
+    person = library.people.get(person_code)
+    if not person:
+        raise Http404()
+    return render(request, 'snaptioner/person_detail.html', {
+        'albums': sorted(library.albums.values(), key=lambda album: album.name),
+        'person': person,
     })

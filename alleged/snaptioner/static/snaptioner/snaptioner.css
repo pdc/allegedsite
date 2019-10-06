@@ -176,12 +176,15 @@ li {
     margin-top: 10px;
 }
 
-.album-description a {
+.album-description a,
+.ln {
     color: var(--link-lo);
 }
 
 .album-description a:hover,
-.album-description a:active {
+.album-description a:active,
+.ln:hover,
+.ln:active {
     color: var(--link-hi);
 }
 @media (max-width: 400px) {
@@ -190,7 +193,8 @@ li {
     }
     .photo-thumbnail,
     .photo-description,
-    .photo-people {
+    .photo-people,
+    .photo-album {
         display: block;
     }
     .photo-description {
@@ -220,7 +224,8 @@ li {
         grid-column: 2;
     }
 
-    .photo-people {
+    .photo-people,
+    .photo-album {
         grid-column: 2;
         align-self: end;
     }
