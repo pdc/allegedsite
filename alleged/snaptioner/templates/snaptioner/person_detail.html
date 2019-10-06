@@ -1,0 +1,34 @@
+{% extends "snaptioner/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Photos of {{ person }}{% endblock %}
+{% block heading %}<span class="album-heading">Photos of {{ person }}</span> <small>in Ancient Albums</small>{% endblock %}
+
+{% block metadata %}
+      <meta property="og:url" content="{{ person.absolute_href }}">
+      <meta property="og:title" content="Photos of {{ person }}">
+      <meta property="og:type" content="website">
+  {% for album, image in person.occurrences|slice:":4" %}
+      <meta property="og:image" content="{{ image.src }}">
+  {% endfor %}
+      <meta property="og:locale" content="en_GB">
+      <meta property="og:site_name" conent="Alleged Literature">
+{% endblock %}
+
+{% block content %}
+    <ul class="photo-list">
+      {% for album, image in person.occurrences %}
+      <li id="{{ album.name }}-{{ image.name }}">
+        <a href="{{ image.href }}" class="card photo-card">
+          <img class="photo-thumbnail" src="{{ image.thumbnail_src }}" alt="" >
+          <span class="photo-description">{{ image.description|safe }}</span>
+          <i class="photo-album">{{ album.title }}</i>
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
