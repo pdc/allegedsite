@@ -1,6 +1,8 @@
 Title: Zlant
 Date: 2020-02-16
 Topics: keyboard electronics kit buildlog
+Link: <https://twitter.com/damiancugley/status/1229186976261300224>; rel=syndication
+Link: <https://octodon.social/@pdc/103671151150054508>; rel=syndication
 
 I built a Zlant, an eccentric staggered 40% mechanical keyboard.
 
