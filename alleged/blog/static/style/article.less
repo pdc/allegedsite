@@ -177,10 +177,11 @@ p + p,
 .image-right {
     margin: 20px 0 10px;
     padding: 0 10px;
-    word-spacing: (10px - 4px);  //I want the gap to be 10px and it seems I have to subtract the default 4px
+    // word-spacing: (10px - 4px);  //I want the gap to be 10px and it seems I have to subtract the default 4px
     .contains-its-floats;
 
     img {
+        display: block;
         margin-bottom: 10px;
     }
 
@@ -235,6 +236,11 @@ p + p,
     @media (min-width: 560px) {
         float: right;
     }
+}
+
+figcaption {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 code, tt {
