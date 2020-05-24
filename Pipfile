@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"httplib2" = "==0.11.3"
+"httplib2" = "==0.18.0"
 pytz = "==2018.4"
 Django = "==2.2.*"
 Markdown = "==2.6.11"
