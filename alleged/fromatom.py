@@ -42,7 +42,7 @@ YOUTUBE_POSTER_RE = re.compile(r"""
     ></a>
 """, re.VERBOSE)
 
-GITHUB_SNIFF_RE = re.compile("""
+GITHUB_SNIFF_RE = re.compile(r"""
     <span \s class="mega-octicon
     """, re.VERBOSE)
 

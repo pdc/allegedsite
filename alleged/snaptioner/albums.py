@@ -6,7 +6,7 @@ Created by Damian Cugley on 2010-03-31.
 © 2010, 2014 Damian Cugley. All rights reserved.
 """
 
-from collections import Sequence
+from collections.abc import Sequence
 import csv
 from django.urls import reverse
 from django.utils import safestring
