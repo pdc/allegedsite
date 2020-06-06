@@ -1,4 +1,4 @@
--i https://pypi.org/simple
+-i https://pypi.org/simple/
 alabaster==0.7.12
 asgiref==3.2.7
 babel==2.8.0
@@ -9,7 +9,7 @@ cffi==1.14.0
 chardet==3.0.4
 cryptography==2.9.2
 django-environ==0.4.5
-django==3.0.6
+django==3.0.7
 docutils==0.16
 enum34==1.1.10
 fabric==1.14.1
@@ -25,7 +25,7 @@ packaging==20.4
 paramiko==2.7.1
 pycparser==2.20
 pygments==2.6.1
-pynacl==1.3.0
+pynacl==1.4.0
 pyparsing==2.4.7
 pytz==2018.4
 releases==1.6.3
@@ -33,7 +33,7 @@ requests==2.23.0
 semantic-version==2.6.0
 six==1.15.0
 snowballstemmer==2.0.0
-sphinx==3.0.3
+sphinx==3.0.4
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
 sphinxcontrib-htmlhelp==1.0.3
@@ -42,5 +42,5 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.4
 sqlparse==0.3.1
 tabulate==0.7.5
-tqdm==4.46.0
+tqdm==4.46.1
 urllib3==1.25.9
