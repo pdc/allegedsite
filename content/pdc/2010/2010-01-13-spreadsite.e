@@ -67,7 +67,7 @@ them were named `Resource Library_21Nov2009_FINAL_rev2.xls`. By the time we had 
 4. Why Drupal is Helpless to Help
 ===============================
 
-A complete separate server and database will be required for the staging site so that there is no RISK of changes on the staging site affecting the live site. This causes trouble because  systems like Drupal store  forum posts contributed by users in the same way as pages  provided by the site editors; we end up with two Drupal  whose databases must  be merged to make the new live site. This is incredibly finicky and fragile, and if it goes wrong, chunks of content might be destroyed.
+A complete separate server and database will be required for the staging site so that there is no RISK of changes on the staging site affecting the live site. This causes trouble because  systems like Drupal store  forum posts contributed by users in the same way as pages  provided by the site editors; we end up with two Drupal sites whose databases must  be merged to make the new live site. This is incredibly finicky and fragile, and if it goes wrong, chunks of content might be destroyed.
 
 The alternative is to have a process where the developers make copious notes whenever they change settings or add content to the staging site, and then the night before the launch day, repeat these steps *without error* on the live site.
 In each case we have the perverse situation that after all that frenetic testing and the final sign-off of the site, we begin a deployment process that might easily wreck the whole thing.
@@ -75,7 +75,7 @@ In each case we have the perverse situation that after all that frenetic testing
 The other problem is that they do not use the CMS to edit the content.  Instead programmers are obliged to copy and paste text from Word or Excel documents for them. This is tedious and error-prone.
 
 To try to reduce both the tedium and the risk of careless errors, a
-programmer worth his or her salt will write a program to parse the
+programmer worth their salt will write a program to parse the
 spreadsheet and generate the CMS nodes automatically. The problem here
 is that the nature of Drupal is that information describing one page is
 scattered between a bunch of database tables. Drupal has a [hook
