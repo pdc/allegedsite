@@ -1,7 +1,7 @@
 
 .SUFFIXES: .css .less
 
-all: targets
+all: targets requirements
 
 
 # Subdirectories
@@ -16,18 +16,47 @@ dir := alleged/frontpage/static/style
 include $(dir)/Rules.mk
 
 
-# Defintiions of this built at this level
+# Defintions of this built at this level
 
-requirements_files_in=requirements.in dev-requirements.in
-requirements_files_txt=$(requirements_files_in:.in=.txt)
+
+PYTHON=poetry run python
+SITE=alleged
+PACKAGE=alleged
+HOST=$(SITE)@spreadsite.org
+VIRTUALENV=$(SITE)
+SETTINGS=$(SITE)
+SITE_DIR=/home/$(SITE)/Sites/$(PACKAGE)
+
+requirements_files_txt=requirements.txt dev-requirements.txt
 
 REALCLEAN := $(REALCLEAN) $(requirements_files_txt)
 
-requirements.txt: requirements.in
-	$(PIPCOMPILE) $< > $@
+requirements.txt: poetry.lock pyproject.toml
+	poetry export --format=requirements.txt --output=$@--without-hashes
 
-dev-requirements.txt: dev-requirements.in
-	$(PIPCOMPILE) $< > $@
+dev-requirements.txt: poetry.lock pyproject.toml
+	poetry export --format=requirements.txt --output=$@ --without-hashes --with=dev
+
+
+tests:
+	$(PYTHON) manage.py test --keep --fail
+
+
+run_home=ssh $(HOST) sh
+prefix=. /home/$(SITE)/virtualenvs/$(VIRTUALENV)/bin/activate; cd $(SITE_DIR);
+manage=$(prefix) envdir /service/$(SITE)/env ./manage.py
+
+# Push to the shared Git repo and run commands on the remote server to fetch and update.
+deploy: tests requirements.txt
+	git push
+	echo "mkdir -p static caches/django" | $(run_home)
+	echo "cd $(SITE_DIR); git pull" | $(run_home)
+	scp requirements.txt $(HOST):$(SITE_DIR)
+	echo "$(prefix) pip install -r requirements.txt" | $(run_home)
+	echo "$(manage) migrate" | $(run_home)
+	echo "$(manage) collectstatic --noinput" | $(run_home)
+# 	echo "$(prefix) django-admin compilemessages" | $(run_home)
+
 
 
 # Variables TARGETS, CLEAN, and REALCLEAN may be added to by Rules.mk fragments

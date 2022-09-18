@@ -10,6 +10,8 @@
 
 # Define compilers here
 
+PYTHON=poetry run python
+
 LESSC=lessc
 LESSFLAGS=--no-color --clean-css
 # Do not use -v as it breaks the .d file!
@@ -17,15 +19,17 @@ LESSFLAGS=--no-color --clean-css
 BABEL = babel
 BABELFLAGS = --source-map inline
 
-PIPCOMPILE=pip-compile
-
 
 # Now build up the dependency graph
 
 include Rules.mk
 
 
+
+
 # Generic rules
+
+
 
 
 .SUFFIXES: .less .css .js .jsx
