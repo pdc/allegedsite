@@ -27,16 +27,12 @@ VIRTUALENV=$(SITE)
 SETTINGS=$(SITE)
 SITE_DIR=/home/$(SITE)/Sites/$(PACKAGE)
 
-requirements_files_txt=requirements.txt dev-requirements.txt
 
-REALCLEAN := $(REALCLEAN) $(requirements_files_txt)
+
+REALCLEAN := $(REALCLEAN) requirements.txt
 
 requirements.txt: poetry.lock pyproject.toml
-	poetry export --format=requirements.txt --output=$@--without-hashes
-
-dev-requirements.txt: poetry.lock pyproject.toml
-	poetry export --format=requirements.txt --output=$@ --without-hashes --with=dev
-
+	poetry export --format=requirements.txt --output=$@ --without-hashes
 
 tests:
 	$(PYTHON) manage.py test --keep --fail
@@ -66,7 +62,7 @@ deploy: tests requirements.txt
 targets: $(TARGETS)
 
 .PHONEY: requirements
-requirements: $(requirements_files_txt)
+requirements: requirements.txt
 
 .PHONEY: clean
 clean:
