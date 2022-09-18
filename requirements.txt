@@ -18,7 +18,7 @@ idna==2.9
 imagesize==1.2.0
 invocations==1.4.0
 invoke==1.4.1
-jinja2==2.11.2
+jinja2==2.11.3
 markdown==2.6.11
 markupsafe==1.1.1
 packaging==20.4
