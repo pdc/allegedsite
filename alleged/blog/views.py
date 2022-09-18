@@ -68,10 +68,10 @@ def get_toc(blog_dir, blog_url, image_url):
 
 def get_named_article(blog_dir, blog_url, image_url, year, name):
     article_key = "blog:%s,%d,%s" % (blog_dir, year, name)
-    entries = cache.get(article_key)
-    if not entries:
+    article = cache.get(article_key)
+    if not article:
         article = get_named_article_uncached(blog_dir, blog_url, image_url, year, name)
-        # cache.set(blog_key, article)
+        cache.set(article_key, article)
     return article
 
 
@@ -176,16 +176,14 @@ def filtered_by_tag(request, blog_dir, blog_url, image_url, plus_separated_tags)
 
 @render_with("blog/named_article.html")
 def named_article(request, blog_dir, blog_url, image_url, year, name):
-    y = year and int(year)
-    article = get_named_article(blog_dir, blog_url, image_url, y, name)
-    entries = get_entries_cached(
-        blog_dir, blog_url, image_url
-    )  # Needed for archive navigation
-    entry, this_month, years = get_entry(entries, y, None, None)
+    article = get_named_article(blog_dir, blog_url, image_url, year, name)
+    # Needed for archive navigation:
+    entries = get_entries_cached(blog_dir, blog_url, image_url)
+    entry, this_month, years = get_entry(entries, year, None, None)
     return {
         "article": article,
         "years": years,
-        "this_year_months": get_year_months(entries, y),
+        "this_year_months": get_year_months(entries, year),
     }
 
 
