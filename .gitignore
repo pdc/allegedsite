@@ -11,3 +11,4 @@ dev-requirements.txt
 node_modules/
 .env
 .DS_Store
+requirements.txt
