@@ -1,5 +1,5 @@
 {% extends "snaptioner/base.html" %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title %}{{ image.name }} - {{ album.title }}{% endblock %}
 {% block heading %}Photo {{ image.name }} in {{ album.title }} Album <small>by <span class="p-author">{{ album.photographer }}</span></small>{% endblock %}
