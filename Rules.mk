@@ -50,7 +50,7 @@ deploy: tests requirements.txt
 	scp requirements.txt $(HOST):$(SITE_DIR)
 	echo "$(prefix) pip install -r requirements.txt" | $(run_home)
 	echo "$(manage) migrate" | $(run_home)
-	echo "$(manage) collectstatic --noinput" | $(run_home)
+	echo "$(manage) collectstatic --noinput --ignore Rules.mk" | $(run_home)
 # 	echo "$(prefix) django-admin compilemessages" | $(run_home)
 	echo Might need to run sudo pdc@spreadsite.org and then sudo svc -h /service/$(SITE)
 
