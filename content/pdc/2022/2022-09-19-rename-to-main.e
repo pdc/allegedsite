@@ -1,6 +1,7 @@
 Title: Changing the default branch from master to main in Git
 Date: 2022-09-19
 Topics: git gilab github
+Link: <https://octodon.social/@pdc/109024480888972204>; rel=syndication
 
 There are various reasons why one might want to rename the default branch of a Git repo from _master_ to _main_. Here’s a quick reminder to myself of how.
 
