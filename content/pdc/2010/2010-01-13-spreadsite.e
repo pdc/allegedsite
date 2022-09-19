@@ -88,7 +88,7 @@ more entertaining (to me) than copying and pasting the documents by
 hand, it also had the advantage that I could replay it against the live
 database to do the deployment much more reliably than it would have been
 if I had done it by hand. While in this case there was a happy ending,
-it wasmuch more work than would have been required with a simpler
+it was much more work than would have been required with a simpler
 (not-CMS) web server.
 
 The upshot of all this is that the content-management system cannot help much with updating the site, and can even get in the way.
@@ -136,7 +136,7 @@ Could this be used seriously to implement a real web site?
 The ideal would be for the Excel spreadsheet to be used *exactly* as
 supplied by the customer, thus requiring no additional work when they
 inevitably come up with an urgent replacement.
-Using the spreadsheet verbatim have another bebefit: it would  establish firmly the
+Using the spreadsheet verbatim have another benefit: it would  establish firmly the
 responsibility for correct spelling, punctuation<abbr title="serial, or
 Oxford comma">,</abbr> and grammar with the customer. To make this possible would require more programming work, but less time, I suspect, than
 would be spent on fighting the CMS would take.
