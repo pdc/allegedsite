@@ -231,11 +231,25 @@ templ = """<?xml version="1.0"?>
 """
 
 
-SVG = 'http://www.w3.org/2000/svg'
-XLINK = 'http://www.w3.org/1999/xlink'
-rankNames = ['ace', 'two', 'three', 'four', 'five', 'six', 'seven',
-                    'eight', 'nine', 'ten', 'page', 'knight', 'queen', 'king']
-suitNames = ['wands', 'cups', 'swords', 'coins']
+SVG = "http://www.w3.org/2000/svg"
+XLINK = "http://www.w3.org/1999/xlink"
+rankNames = [
+    "ace",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "page",
+    "knight",
+    "queen",
+    "king",
+]
+suitNames = ["wands", "cups", "swords", "coins"]
 trumpsNames = [
     "0-fool",
     "i-magician",
@@ -262,22 +276,21 @@ trumpsNames = [
 ]
 trumpsTitles = {}
 for n in trumpsNames:
-    xs = n.split('-')
-    trumpsTitles[n] = xs[0].upper() + '. The ' + xs[1].title()
-trumpsTitles.update({
-    'viii-justice': 'VIII. Justice',
-    'x-wheel': 'X. The Wheel of Fortune',
-    'xi-strength': 'XI. Strength',
-    'xii-hanged': 'XII. The Hanged Man',
-    'xiii-death': 'XIII. Death',
-    'xiiii-temperance': 'XIIII. Temperance',
-    'xx-judgement': 'XX. Judgement',
-})
+    xs = n.split("-")
+    trumpsTitles[n] = xs[0].upper() + ". The " + xs[1].title()
+trumpsTitles.update(
+    {
+        "viii-justice": "VIII. Justice",
+        "x-wheel": "X. The Wheel of Fortune",
+        "xi-strength": "XI. Strength",
+        "xii-hanged": "XII. The Hanged Man",
+        "xiii-death": "XIII. Death",
+        "xiiii-temperance": "XIIII. Temperance",
+        "xx-judgement": "XX. Judgement",
+    }
+)
 
-opts = {
-    'base': 'http://www.alleged.org.uk/pdc/tarot/',
-    'dir': 'F:/tarot'
-}
+opts = {"base": "http://www.alleged.org.uk/pdc/tarot/", "dir": "F:/tarot"}
 
 cardAdvX = 130
 cardAdvY = 170
@@ -288,7 +301,8 @@ def dictSub(dict, m):
     key = m.group(0)[1:-1]
     return dict[key]
 
-atRe = re.compile(r'@[A-Z]+@')
+
+atRe = re.compile(r"@[A-Z]+@")
 
 cardTempl = """
     <a id="templ" xlink:show="new" xlink:href="@BASE@@CARD@-card3.svg">
@@ -311,18 +325,18 @@ def emitSuitCards(output, suit, start_x, start_y):
     """Emit SVG for all the cards of the specified suit."""
     for i in range(1, 15):
         dict = {
-            'BASE': '',  # opts['base'],
-            'SUIT': suitNames[suit],
+            "BASE": "",  # opts['base'],
+            "SUIT": suitNames[suit],
         }
-        dict['TEXT'] = rankNames[i - 1] + ' of ' + suitNames[suit]
+        dict["TEXT"] = rankNames[i - 1] + " of " + suitNames[suit]
         x = start_x + (i - 1) % cardsPerRow * cardAdvX
         y = start_y + (i - 1) / cardsPerRow * cardAdvY
-        dict['TRANSFORM'] = 'translate(%d,%d)' % (x, y)
+        dict["TRANSFORM"] = "translate(%d,%d)" % (x, y)
         if 1 < i and i < 10:
-            dict['N'] = str(i)
+            dict["N"] = str(i)
         else:
-            dict['N'] = rankNames[i - 1]
-        dict['CARD'] = suitNames[suit] + '-' + dict['N']
+            dict["N"] = rankNames[i - 1]
+        dict["CARD"] = suitNames[suit] + "-" + dict["N"]
         text = atRe.sub(lambda m, d=dict: dictSub(d, m), cardTempl)
         output.write(text)
 
@@ -330,13 +344,14 @@ def emitSuitCards(output, suit, start_x, start_y):
 def emitTrumps(output, beg, end, start_x, start_y):
     """Emit SVG for trums cards [beg:end]."""
     for i in range(beg, end):
-        dict = {'BASE': '', 'CARD': trumpsNames[i]}
-        dict['TEXT'] = trumpsTitles[trumpsNames[i]].lower()
+        dict = {"BASE": "", "CARD": trumpsNames[i]}
+        dict["TEXT"] = trumpsTitles[trumpsNames[i]].lower()
         x = start_x + (i - beg) % cardsPerRow * cardAdvX
         y = start_y + (i - beg) / cardsPerRow * cardAdvY
-        dict['TRANSFORM'] = 'translate(%d,%d)' % (x, y)
+        dict["TRANSFORM"] = "translate(%d,%d)" % (x, y)
         text = atRe.sub(lambda m, d=dict: dictSub(d, m), cardTempl)
         output.write(text)
+
 
 linkTempl = """
     <a xlink:href="@BASE@@FILE@.svg">
@@ -364,11 +379,11 @@ def emitMenu(output, is_suit, j, start_x, start_y):
     """Generate the links to other suits' index pages."""
     for i in range(4):
         dict = {
-            'BASE': '',  # opts['base'],
-            'X': str(start_x),
-            'Y': str(start_y + 20 * i),
-            'FILE': suitNames[i],
-            'TEXT': suitNames[i],
+            "BASE": "",  # opts['base'],
+            "X": str(start_x),
+            "Y": str(start_y + 20 * i),
+            "FILE": suitNames[i],
+            "TEXT": suitNames[i],
         }
         if is_suit and i == j:
             t = otherTempl
@@ -377,11 +392,11 @@ def emitMenu(output, is_suit, j, start_x, start_y):
         output.write(atRe.sub(lambda m, d=dict: dictSub(d, m), t))
     for i in range(0, 22, 12):
         dict = {
-            'BASE': '',  #: opts['base'],
-            'X': str(start_x),
-            'Y': str(start_y + 20 * (i / 12 + 4)),
-            'FILE': 'trumps%d' % i,
-            'TEXT': 'trumps %s\u2013%s' % (rom(i), rom(min(21, i + 12 - 1))),
+            "BASE": "",  #: opts['base'],
+            "X": str(start_x),
+            "Y": str(start_y + 20 * (i / 12 + 4)),
+            "FILE": "trumps%d" % i,
+            "TEXT": "trumps %s\u2013%s" % (rom(i), rom(min(21, i + 12 - 1))),
         }
         if not is_suit and i == j:
             t = otherTempl
@@ -396,45 +411,45 @@ def rom(n):
     Forming roman numerals using IIII instead of IV,
     one of the affectations of the Allegd Tarot."""
     if n == 0:
-        return '0'
-    t, n = 'x' * (n / 10), n % 10
-    return t + 'v' * (n / 5) + 'i' * (n % 5)
+        return "0"
+    t, n = "x" * (n / 10), n % 10
+    return t + "v" * (n / 5) + "i" * (n % 5)
 
 
 def doSuits():
-    p = templ.find('@CARDS@')
+    p = templ.find("@CARDS@")
     for i in range(4):
-        file_name = suitNames[i] + '.svg'
-        with open(opts['dir'] + '/' + file_name, 'wb') as strm:
-            output = codecs.lookup('utf-8')[3](strm)
+        file_name = suitNames[i] + ".svg"
+        with open(opts["dir"] + "/" + file_name, "wb") as strm:
+            output = codecs.lookup("utf-8")[3](strm)
             output.write(templ[:p])
             emitSuitCards(output, i, 3, 4)
             emitMenu(output, 1, i, 540, 370)
-            output.write(templ[p + 7:])
+            output.write(templ[p + 7 :])
             output.reset()
-            print('Wrote SVG to', file_name)
+            print("Wrote SVG to", file_name)
 
 
 def doTrumps():
-    p = templ.find('@CARDS@')
+    p = templ.find("@CARDS@")
     chunk = 12
     for i in range(0, 22, chunk):
-        file_name = ('trumps%d' % i) + '.svg'
-        with open(opts['dir'] + '/' + file_name, 'wb') as strm:
-            output = codecs.lookup('utf-8')[3](strm)
+        file_name = ("trumps%d" % i) + ".svg"
+        with open(opts["dir"] + "/" + file_name, "wb") as strm:
+            output = codecs.lookup("utf-8")[3](strm)
             output.write(templ[:p])
             emitTrumps(output, i, min(i + chunk, 22), 3, 4)
             emitMenu(output, 0, i, 540, 370)
-            output.write(templ[p + 7:])
+            output.write(templ[p + 7 :])
             output.reset()
-            print('Wrote SVG to', file_name)
+            print("Wrote SVG to", file_name)
 
 
 for arg in sys.argv:
-    pr = arg.split('=', 1)
+    pr = arg.split("=", 1)
     if len(pr) == 2:
         opts[pr[0]] = pr[1]
-        print(pr[0], '=', pr[1])
+        print(pr[0], "=", pr[1])
     else:
         opts[pr[0]] = None
 

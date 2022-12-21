@@ -37,7 +37,6 @@ requirements.txt: poetry.lock pyproject.toml
 tests:
 	$(PYTHON) manage.py test --keep --fail
 
-
 run_home=ssh $(HOST) sh
 prefix=. /home/$(SITE)/virtualenvs/$(VIRTUALENV)/bin/activate; cd $(SITE_DIR);
 manage=$(prefix) envdir /service/$(SITE)/env ./manage.py

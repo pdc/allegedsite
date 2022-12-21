@@ -10,7 +10,8 @@ def rfc3339(value):
 
     ASSUMES UTC TIME ZONE.
     """
-    x = value.strftime('%Y-%m-%dT%H:%M:%S+00:00')
+    x = value.strftime("%Y-%m-%dT%H:%M:%S+00:00")
     return x
 
-register.filter('unentity', unentity)
+
+register.filter("unentity", unentity)

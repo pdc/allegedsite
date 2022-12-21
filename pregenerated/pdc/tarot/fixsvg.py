@@ -6,11 +6,11 @@
 import re
 import sys
 
-standalone = 'yes'                      # not sure what effect this should have
-ns = 'http://www.w3.org/2000/svg'
-ns2 = 'http://www.w3.org/1999/xlink'
-public = '-//W3C//DTD SVG 20010904//EN'
-system = 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'
+standalone = "yes"  # not sure what effect this should have
+ns = "http://www.w3.org/2000/svg"
+ns2 = "http://www.w3.org/1999/xlink"
+public = "-//W3C//DTD SVG 20010904//EN"
+system = "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
 
 isXmlDeclWanted = 0
 isDoctypeWanted = 0
@@ -19,7 +19,8 @@ isCssMungingWanted = 1
 
 class AttParser:
     """Parse th attributes of an object."""
-    def __init__(self, text=''):
+
+    def __init__(self, text=""):
         self._next = self._startState  # this represents the state of the FSM
         if text:
             self.parse(text)
@@ -33,23 +34,23 @@ class AttParser:
         return key in self.__dict__
 
     def _startState(self, c):
-        if c <= ' ':
+        if c <= " ":
             return self._startState
         self._key = c
         return self._keyState
 
     def _keyState(self, c):
         """Expecting rest of key."""
-        if c == '=':
+        if c == "=":
             return self._eqState
-        elif c <= ' ':
+        elif c <= " ":
             return self._spEqState
         self._key += c
         return self._keyState
 
     def _spEqState(self, c):
         """Expecting space followed by ="""
-        if c == '=':
+        if c == "=":
             return self._eqState
         # It must be a space then...
         return self._spEqState
@@ -58,10 +59,10 @@ class AttParser:
         """Expecting space followed by ' or quote."""
         if c == '"' or c == "'":
             self._quote = c
-            self._value = ''
+            self._value = ""
             return self._quotState
         elif c == "'":
-            self._value = ''
+            self._value = ""
             return self._aposState
         # It must be a space, then.
         return self._eqState
@@ -80,7 +81,8 @@ class AttParser:
 
 class CssParser:
     """Ditto for CSS data. Very simplistic, does not decompose values."""
-    def __init__(self, text=''):
+
+    def __init__(self, text=""):
         self._next = self._startState
         if text:
             self.parse(text)
@@ -96,29 +98,29 @@ class CssParser:
         return list(self.__dict__.items())
 
     def _startState(self, c):
-        if c <= ' ' or c == ';':
+        if c <= " " or c == ";":
             return self._startState
         self._key = c
         return self._keyState
 
     def _keyState(self, c):
-        if c == ':':
-            self._value = ''
+        if c == ":":
+            self._value = ""
             return self._valueState
-        elif c <= ' ':
+        elif c <= " ":
             return self._spValueState
         self._key += c
         return self._keyState
 
     def _spValueState(self, c):
-        if c == ':':
-            self._value = ''
+        if c == ":":
+            self._value = ""
             return self._valueState
         # It must be space!
         return self._spValueState
 
     def _valueState(self, c):
-        if c == ';':
+        if c == ";":
             self.__dict__[self._key] = self._value
             del self._key
             del self._value
@@ -130,38 +132,43 @@ class CssParser:
 def explode_css(m):
     """Given a regular expression match object, convert style to atts"""
     css = CssParser(m.group(1))
-    css.parse(';')
-    res = ''
+    css.parse(";")
+    res = ""
     for key, val in list(css.items()):
-        if isinstance(val, str) and key[0] != '_':
+        if isinstance(val, str) and key[0] != "_":
             res += key + '="' + val + '" '
-    return res[:-1]                     # strip trailing space
+    return res[:-1]  # strip trailing space
 
 
 def process_file(file_name):
-    print('Reading', file_name)
-    input = open(file_name, 'r')
+    print("Reading", file_name)
+    input = open(file_name, "r")
     text = input.read()
     input.close()
 
-    bak_name = file_name + '~'
-    bak = open(bak_name, 'w')
+    bak_name = file_name + "~"
+    bak = open(bak_name, "w")
     bak.write(text)
     bak.close()
-    print('Wrote backup file to', bak_name)
+    print("Wrote backup file to", bak_name)
 
-    beg = text.index('<svg ') + 5
-    end = text.index('>', beg + 3)
+    beg = text.index("<svg ") + 5
+    end = text.index(">", beg + 3)
     atts = AttParser(text[beg:end])
-    if 'viewBox' not in atts:
-        print('Add viewbox.')
+    if "viewBox" not in atts:
+        print("Add viewbox.")
         text = (
-            text[:beg] + 'viewBox="0 0 '
-            + atts.width + ' ' + atts.height
-            + '"\n\t' + text[beg:])
-    if 'xmlns:xlink' not in atts:
+            text[:beg]
+            + 'viewBox="0 0 '
+            + atts.width
+            + " "
+            + atts.height
+            + '"\n\t'
+            + text[beg:]
+        )
+    if "xmlns:xlink" not in atts:
         text = text[:beg] + 'xmlns:xlink="' + ns2 + '"\n\t' + text[beg:]
-    if 'xmlns' not in atts:
+    if "xmlns" not in atts:
         text = text[:beg] + 'xmlns="' + ns + '"\n\t' + text[beg:]
 
     if isCssMungingWanted:
@@ -169,41 +176,39 @@ def process_file(file_name):
 
     beg = 0
 
-    pos = text.find('<!DOCTYPE')
+    pos = text.find("<!DOCTYPE")
     if pos > 0:
-        pos = text.index('>', pos + 9) + 1
-    elif text[:6] == '<?xml ':
-        pos = text.index('?>') + 2
+        pos = text.index(">", pos + 9) + 1
+    elif text[:6] == "<?xml ":
+        pos = text.index("?>") + 2
     else:
         pos = 0
 
-    tx = ''
+    tx = ""
     if isXmlDeclWanted:
         tx += '<?xml version="1.0" standalone="' + standalone + '"?>\n'
     if isDoctypeWanted:
-        tx += (
-            '<!DOCTYPE svg PUBLIC "' + public + '"\n'
-            '    "' + system + '">\n')
+        tx += '<!DOCTYPE svg PUBLIC "' + public + '"\n' '    "' + system + '">\n'
 
     text = tx + text[pos:].strip()
 
-    output = open(file_name, 'w')
+    output = open(file_name, "w")
     output.write(text)
     output.close()
-    print('Wrote fixed SVG to', file_name)
+    print("Wrote fixed SVG to", file_name)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     for arg in sys.argv[1:]:
-        if arg[0] == '-':
-            if arg == '-explode_css':
+        if arg[0] == "-":
+            if arg == "-explode_css":
                 isCssMungingWanted = 1
-            elif arg == '-doctype':
+            elif arg == "-doctype":
                 isDoctypeWanted = 1
-            elif arg == '-xml':
+            elif arg == "-xml":
                 isXmlDeclWanted = 1
             else:
-                print('Unknown option (%s)' % arg)
+                print("Unknown option (%s)" % arg)
                 sys.exit(1)
         else:
             process_file(arg)

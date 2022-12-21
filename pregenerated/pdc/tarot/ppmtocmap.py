@@ -12,18 +12,19 @@ simple map from RGB triplets in the 'bad' colours to the 'good' colours."""
 
 class QuickAndDirtyImage:
     """Represents a PPM file. It must be in raw mode!"""
+
     def __init__(self, file_name):
         self.load(file_name)
 
     def load(self, file_name):
         """Read data from specified file."""
-        print(file_name + ':')
-        input = open(file_name, 'rb')
+        print(file_name + ":")
+        input = open(file_name, "rb")
 
         magic = input.read(2)
-        if magic == 'P6' or magic == 'P3':
-            self.data = input.read()        # everything except the P6
-            self.pos = 1                    # skip 1st whitespace character
+        if magic == "P6" or magic == "P3":
+            self.data = input.read()  # everything except the P6
+            self.pos = 1  # skip 1st whitespace character
             self.width = self._nextNum()
             self.height = self._nextNum()
             self.maxVal = self._nextNum()
@@ -32,7 +33,7 @@ class QuickAndDirtyImage:
             else:
                 self.pixel = self._pixel2
 
-            if magic == 'P3' and self.maxVal < 256:
+            if magic == "P3" and self.maxVal < 256:
                 # We must convert the graphics data from ASCII to binary.
                 ss = io.StringIO()
                 for i in range(0, self.width * self.height * 3):
@@ -55,22 +56,22 @@ class QuickAndDirtyImage:
         d = self.data
         l = len(d)
         p = self.pos
-        while (d[p] <= ' ' or d[p] == '#') and p < l:
-            if d[p] == '#':
+        while (d[p] <= " " or d[p] == "#") and p < l:
+            if d[p] == "#":
                 # Skip all of the comment.
                 p = p + 1
-                while d[p] != '\n' and p < l:
+                while d[p] != "\n" and p < l:
                     p = p + 1
             p = p + 1
 
         beg = p
-        while d[p] in '0123456789' and p < l:
+        while d[p] in "0123456789" and p < l:
             p = p + 1
         # pos points to first character that isn't a dight.
         val = int(d[beg:p])
 
         # Now skip the whitespace char following the number.
-        assert p == l or d[p] <= ' '
+        assert p == l or d[p] <= " "
         self.pos = p + 1
 
         return val
@@ -81,7 +82,7 @@ class QuickAndDirtyImage:
         off = self.pos + (y * self.width + x) * 3
         assert off + 3 <= len(self.data)
 
-        return tuple(map(ord, self.data[off:off + 3]))
+        return tuple(map(ord, self.data[off : off + 3]))
 
 
 def make_cmap(bad, good, cmap={}):
@@ -99,7 +100,7 @@ def make_cmap(bad, good, cmap={}):
                 cmap[b][g] = cmap[b].get(g, 0) + 1
             else:
                 cmap[b] = {g: 1}
-    print('Generated CMAP with', len(cmap), 'entries.')
+    print("Generated CMAP with", len(cmap), "entries.")
     return cmap
 
 
@@ -110,8 +111,7 @@ def write_cmap(map, output):
     items.sort()
     for bad, dict in items:
         for good, cnt in list(dict.items()):
-            output.write('%02x%02x%02x %02X%02X%02X %d\n'
-                         % (bad + good + (cnt,)))
+            output.write("%02x%02x%02x %02X%02X%02X %d\n" % (bad + good + (cnt,)))
 
 
 def rrggbb_to_rgb(rrggbb):
@@ -124,7 +124,7 @@ def rrggbb_to_rgb(rrggbb):
 def read_cmap(input, map):
     """Read in a CMAP file."""
     for line in input.readlines():
-        pos = line.find('#')
+        pos = line.find("#")
         if pos >= 0:
             line = line[:pos]
         line = line.strip()
@@ -142,28 +142,28 @@ def read_cmap(input, map):
                 map[bad][good] += cnt
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # dir = 'F:\\tarot'
-    dir = '.'
+    dir = "."
 
     cmap = {}
-    cmapName = os.path.join(dir, 'tmp.cmap')
+    cmapName = os.path.join(dir, "tmp.cmap")
     if os.path.exists(cmapName):
-        input = open(cmapName, 'rt')
+        input = open(cmapName, "rt")
         read_cmap(input, cmap)
         input.close()
-        print('Read', len(cmap), 'CMAP entries from', cmapName)
+        print("Read", len(cmap), "CMAP entries from", cmapName)
 
     for arg in sys.argv[1:]:
         b = arg
-        if arg[-4:] == '.ppm':
+        if arg[-4:] == ".ppm":
             b = arg[:-4]
-        bad = QuickAndDirtyImage(os.path.join(dir, b + '.sk.ppm'))
-        good = QuickAndDirtyImage(os.path.join(dir, b + '.ppm'))
+        bad = QuickAndDirtyImage(os.path.join(dir, b + ".sk.ppm"))
+        good = QuickAndDirtyImage(os.path.join(dir, b + ".ppm"))
         cmap = make_cmap(bad, good, cmap)
 
-    cmapName = os.path.join(dir, 'tmp.cmap')
-    output = open(cmapName, 'wt')
+    cmapName = os.path.join(dir, "tmp.cmap")
+    output = open(cmapName, "wt")
     write_cmap(cmap, output)
     output.close()
-    print('Wrote CMAP to', cmapName)
+    print("Wrote CMAP to", cmapName)

@@ -6,7 +6,7 @@ from django.shortcuts import render
 import json
 
 
-def render_with(default_template_name, mimetype='text/html'):
+def render_with(default_template_name, mimetype="text/html"):
     """Decorator for request handlers.
 
     The decorated function returns a dict of template args.
@@ -22,15 +22,22 @@ def render_with(default_template_name, mimetype='text/html'):
         Either a dictionary of template args,
         or an HttpResponse obejct to return verbatim.
     """
+
     def decorator(func):
         def decorated_func(request, *args, **kwargs):
             result = func(request, *args, **kwargs)
             if isinstance(result, HttpResponse):
                 return result
-            template_name = result.pop('template_name') if 'template_name' in result else default_template_name
+            template_name = (
+                result.pop("template_name")
+                if "template_name" in result
+                else default_template_name
+            )
             context = result
             return render(request, template_name, context, content_type=mimetype)
+
         return decorated_func
+
     return decorator
 
 
@@ -42,10 +49,12 @@ def render_json(view):
     If the function being decorated returns an HttpResponse subclass
     instead, that is returned unchanged.
     """
+
     def decorated_view(request, *args, **kwargs):
         resp = view(request, *args, **kwargs)
         if isinstance(resp, HttpResponse):
             return resp
         data = json.dumps(resp)
-        return HttpResponse(data, content_type='application/json; charset=UTF-8')
+        return HttpResponse(data, content_type="application/json; charset=UTF-8")
+
     return decorated_view
