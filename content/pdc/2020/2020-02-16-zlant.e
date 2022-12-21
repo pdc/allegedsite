@@ -154,7 +154,7 @@ one must just memorize the positions. So far I can more or less type things
 but I need to concentrate, and the are occasional pauses as I try to remember
 an obscure combo. Some punctuation is doubly obscure: to get an apostrophe on
 an Apple system you type Alt + Shift + `]`, and `]` is Lower + `;` , so `’` is
-Shift + Alt + Lower + `;` . 
+Shift + Alt + Lower + `;` .
 
 The one thing that perhaps unexpectedly does not cause difficulty  is the
 tiny space bar—just 2 u wide rather than the conventional 6.25 u or 7 u. I was
@@ -165,8 +165,6 @@ The second thing is the white on mint colour scheme. It’s pretty and has a
 nice retro vibe, but in dim light is it is a little tricky seeing which key is
 which. It is not really that much of an issue though, unless I get excited
 about typing something complicated before breakfast.
-
-
 
 
 
@@ -181,7 +179,6 @@ about typing something complicated before breakfast.
   [MT3 /dev/tty]: https://matt3o.com/about-mt3-profile-and-devtty-set/
   [fancy keyboard cases]: https://kbdfans.com/collections/case
   [or whatever]: https://kbdfans.com/collections/case/products/60-bamboo-case
-
   [the circuit is not as complicated as all that]: http://blog.komar.be/how-to-make-a-keyboard-the-matrix/
   [dinky little microcontroller]: https://keeb.io/products/postage-board-usb-c-controller-board-for-handwiring
   [several ready-made PCBs]: https://kbdfans.com/collections/pcb
