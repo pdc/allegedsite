@@ -26,15 +26,11 @@ export class EntryStore {
     }
 
     getYears() {
-        let years = [];
-        for (let y = this.data.minYear; y <= this.data.maxYear; ++y) {
-            years.push(y);
-        }
-        return years;
+        return Object.keys(this.data.years).sort();
     }
 
     checkYearDataReady(year) {
-        return 'years' in this.data && year in this.data.years;
+        return this.data.years && this.data.years[year];
     }
 
     getYearData(year) {

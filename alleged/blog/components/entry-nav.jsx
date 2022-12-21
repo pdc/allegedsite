@@ -58,7 +58,6 @@ class EntryNavYear extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-
         const isReady = this.props.entryStore.checkYearDataReady(this.props.year);
         let month = this.props.month;
         if (!month && isReady) {
@@ -194,7 +193,7 @@ export class EntryNav extends React.Component {
         const yearComponents = years.map(y => (
             <EntryNavYear key={y}
                     year={y} month={this.state.month} day={this.state.day}
-                    isActive={y === this.state.year}
+                    isActive={y == this.state.year}
                     onYearActivate={this.handleYearActivate.bind(this)}
                     entryStore={this.props.entryStore} />));
         return (
