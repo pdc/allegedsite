@@ -8,7 +8,7 @@ processing. Here’s how I deploy Celery on my Ubuntu server.
 
 # First Install Your RabbitMQ
 
-[Celery][] is a task queue, oroginally for Django, and then for any Python app,
+[Celery][] is a task queue, orginally for Django, and then for any Python app,
 and now in principle usable from any programming language. It needs to queue
 tasks reliably and one way to do that is with an Advanced Message Queuing
 Protocol ([AMQP][]) server such as [RabbitMQ][].
@@ -21,7 +21,7 @@ RabbitMQ from the Bintray repository run by JFrog.  The main gotchas were
     while to find; and
 
 2. For some reason I had an ‘Erlang cookie’ that did not match the
-    server’s—perhaps because of previous attemots at installing RabbitMQ—but
+    server’s—perhaps because of previous attempts at installing RabbitMQ—but
     this was easily fixed by copying the correct one:
 
         rm ~/.erlang.cookie
