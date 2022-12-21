@@ -849,9 +849,7 @@ class TestThisMonthList(TestCase):
         react_data = self.entries.get_react_data(entry)
 
         expected = {
-            "minYear": 2008,
-            "maxYear": 2010,
-            "years": {2010: ANY},
+            "years": {2008: None, 2009: None, 2010: ANY},
         }
         self.assertEqual(expected, react_data)
 
