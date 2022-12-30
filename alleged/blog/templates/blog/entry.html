@@ -1,6 +1,10 @@
 {% extends "blog/base.html" %}
 {% load static %}
 
+{% block morestyle %}
+    <link rel=stylesheet href="{% static 'style/nav2022.css' %}">
+{% endblock %}
+
 
 {% block meta %}
 	<link rel="alternate" type="application/atom+xml" href="{% url 'blog_atom' %}">
@@ -19,7 +23,7 @@
 
 
 {% block main %}
-    {% include "blog/parts/entry.div" %}
+    {% include "blog/parts/entry.div.html" %}
 {% endblock %}
 
 
@@ -57,20 +61,13 @@
                 </div>
 
 
-    {% include "blog/parts/entry-nav.div" %}
+                <nav>
+                    <h2>Article navigator</h2>
+    {% include "blog/parts/entry-nav.div.html" %}
+                </nav>
 {% endblock %}
 
 
 {% block trailingjs %}
-        <script src="{% static 'js/entry.js' %}"></script>
-        <script>
-          entryPage({
-              store: {
-                data: {{ react_data_json }},
-                yearDataApi: '{% url "blog-react-api" %}'
-              },
-              date: new Date({{ entry.published.year }}, {{ entry.published.month }} - 1, {{ entry.published.day }}),
-              element: document.getElementById('entry-nav'),
-            });
-      </script>
+    <script type=module src="{% static 'js/nav2022.js' %}"></script>
 {% endblock %}

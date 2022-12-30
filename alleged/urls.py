@@ -41,6 +41,18 @@ urlpatterns = [
         include(
             [
                 path(
+                    "",
+                    alleged.blog.views.year_nav_view,
+                    blog_args,
+                    name="blog_year",
+                ),
+                path(
+                    "nav",
+                    alleged.blog.views.entries_year_nav,
+                    blog_args,
+                    name="blog_year_nav",
+                ),
+                path(
                     "<int:month>/<int:day>.html",
                     alleged.blog.views.entry_view,
                     blog_args,
@@ -53,6 +65,12 @@ urlpatterns = [
                     "blog_month",
                 ),
                 path(
+                    "<int:month>/",
+                    alleged.blog.views.month_entries,
+                    blog_args,
+                    "blog_month",
+                ),
+                path(
                     "<slug:name>.html",
                     alleged.blog.views.named_article,
                     blog_args,
@@ -60,12 +78,6 @@ urlpatterns = [
                 ),
             ]
         ),
-    ),
-    path(
-        "pdc/react.json",
-        alleged.blog.views.react_api,
-        blog_args,
-        name="blog-react-api",
     ),
     path("pdc/feeds/articles", alleged.blog.views.atom, blog_args, name="blog_atom"),
     path(

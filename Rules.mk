@@ -6,7 +6,7 @@ all: targets requirements
 
 # Subdirectories
 
-dir := alleged/blog
+dir := alleged/blog/static/style
 include $(dir)/Rules.mk
 
 dir := alleged/whyhello/static/style

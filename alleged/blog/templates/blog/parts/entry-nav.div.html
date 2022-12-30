@@ -1,0 +1,11 @@
+{% for year_nav in nav.years %}
+    {% if not year_nav.months %}
+                    <details class="nav2022" data-nav="{% url 'blog_year_nav' year=year_nav.year %}">
+                        <summary><a href="{% url 'blog_year' year=year_nav.year %}">{{ year_nav.year }}</a></summary>
+                    </details>
+    {% else %}
+        {% include 'blog/parts/entry-nav-year.part.html' %}
+    {% endif %}
+{% endfor %}
+
+

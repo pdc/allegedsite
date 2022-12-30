@@ -1,0 +1,26 @@
+                    <details class="nav2022"{% if year_nav.open %} open{% endif %}>
+                        <summary>{{ year_nav.year }}</summary>
+{% for month_nav in year_nav.months %}
+                        <details{% if month_nav.open %} open{% endif %}>
+                            <summary>{{ month_nav.label }}</summary>
+                            <ul>
+    {% for entry_nav in month_nav.entries %}
+                                <li>
+        {% if entry_nav.isActive %}
+                                    <strong>
+        {% else %}
+                                    <a href="{{ entry_nav.href }}">
+        {% endif %}
+                                        <time datetime="{{ year_nav.year }}-{{ month_nav.month|stringformat:'02d' }}-{{ entry_nav.day|stringformat:'02d' }}">{{ entry_nav.day }}</time>
+                                        {{ entry_nav.title }}
+        {% if entry_nav.isActive %}
+                                    </strong>
+        {% else %}
+                                    </a>
+        {% endif %}
+                                </li>
+    {% endfor %}
+                            </ul>
+                        </details>
+{% endfor %}
+                    </details>

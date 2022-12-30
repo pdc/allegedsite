@@ -1,5 +1,11 @@
 {% extends "blog/base.html" %}
+{% load static %}
+
 {% block title %}{{ entry.published|date:"F Y" }} - Alleged Articles{% endblock %}
+
+{% block morestyle %}
+    <link rel=stylesheet href="{% static 'style/nav2022.css' %}">
+{% endblock %}
 
 {% block main %}
         <div class="archive-listing-section">
@@ -28,55 +34,26 @@
 
   {% block aside %}
 
-                <nav id="entry-nav" class="entry-nav">
-                    <h2>Other Months</h2>
-                    <ul>
-    {% with prev as e %}
-        {% if e %}
-                        <li class="entry-nav-nextprev">
-                            <b>Older</b>
-                            <a href="{% url 'blog_month' year=e.published|date:'Y' month=e.published|date:'m' %}" rel="prev">{{ e.published|date:"F Y"}}</a>
-                        </li>
-        {% endif %}
-    {% endwith %}
-    {% with next as e %}
-        {% if e %}
-                        <li class="entry-nav-nextprev">
-                            <b>Newer</b>
-                            <a href="{% url 'blog_month' year=e.published|date:'Y' month=e.published|date:'m' %}" rel="next">{{ e.published|date:"F Y"}}</a>
-                        </li>
-        {% endif %}
-    {% endwith %}
-                    </ul>
+                <nav >
+                    <h2>Month navigator</h2>
 
-    {% if years %}
-                    <h2>Article Archive by Month</h2>
-                    <ul>
 
-        {% for e in years %}
-            {% if e.published.year == entry.published.year %}
-                        <li class="entry-nav-year-active">
-                            <b>{{ entry.published|date:"Y" }}</b>
-                            <ul>
-                {% for month, e in this_year_months %}
-                    {% if month == entry.published.month %}
-                                <li class="entry-nav-month-active">
-                                    <b>{{ e.published|date:"F" }}</b>
-                                </li>
-                    {% else %}
-                                <li class="entry-nav-month">
-                                    <a href="{% url 'blog_month' year=e.published|date:'Y' month=e.published|date:'m' %}">{{ e.published|date:"N" }}</a>
-                                </li>
-                    {% endif %}
-                {% endfor %}
-                            </ul>
+    {% for year_nav in nav.years %}
+                    <details{% if year_nav.open %} open{% endif %} class="nav2022">
+                        <summary>{{ year_nav.year }}</summary>
+                        <ul>
+        {% for month_nav in year_nav.months %}
+                            <li>
+            {% if month_nav.open %}
+                                <strong>{{ month_nav.label }}</strong>
             {% else %}
-                        <li class="entry-nav-year">
-                            <a href="{% url 'blog_month' year=e.published|date:"Y" month=e.published|date:"m" %}">{{ e.published|date:"Y"}}</a>
-                        </li>
+                                <a href="{% url 'blog_month' year=year_nav.year month=month_nav.month %}">{{ month_nav.label }}</a>
             {% endif %}
+                            </li>
         {% endfor %}
-		  </ul>
-    {% endif %}
-      </div>
+                    </details>
+    {% endfor %}
+
+
+                </nav>
 {% endblock %}

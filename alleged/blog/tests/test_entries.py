@@ -1,8 +1,10 @@
 # Encoding: UTF-8
 
+from dataclasses import asdict
+from datetime import datetime
 import json
 import os
-from datetime import datetime
+import pathlib
 import shutil
 import tempfile
 import textwrap
@@ -12,7 +14,15 @@ from django.test import TestCase
 from unittest.mock import patch, ANY
 from xml.etree import ElementTree as ET  # noqa
 
-from alleged.blog.entries import get_entries, get_entry, get_toc, get_named_article
+from alleged.blog.entries import (
+    get_entries,
+    get_entry,
+    get_toc,
+    get_named_article,
+    NavYear,
+    NavMonth,
+    NavEntry,
+)
 from alleged.fromatom import nested_dicts_from_atom, summary_from_content
 from alleged.blog import views
 
@@ -822,54 +832,146 @@ class TestThisMonthList(TestCase):
         self.assertEqual(["D"], [x.title for x in by_year[2009]])
         self.assertEqual(["E"], [x.title for x in by_year[2008]])
 
-    def test_year_data_for_react(self):
-        year_data = self.entries.get_react_year_data(2010)
 
-        expected = {
-            "months": [
-                {
-                    "label": "March",
-                    "month": 3,
-                    "entries": [{"title": "C", "day": 7, "href": ANY}],
-                },
-                {
-                    "label": "April",
-                    "month": 4,
-                    "entries": [
-                        {"title": "A", "day": 18, "href": ANY},
-                        {"title": "B", "day": 21, "href": ANY},
+class TestGetNav(TestCase):
+    def setUp(self):
+        # Generate 3 years, each with 3 months with 3 entries.
+        self.tmp_dir = pathlib.Path(tempfile.mkdtemp())
+        for i, y in enumerate(["2020", "2021", "2022"]):
+            next_letter = ord("A")
+            (self.tmp_dir / y).mkdir()
+
+            for m in 2, 7, 11:
+                for d in [3, 5, 17]:
+                    t = f"{1+i}{chr(next_letter)}"
+                    next_letter += 1
+                    if next_letter == ord("I"):
+                        next_letter += 1
+                    dt = f"{y}-{m:02d}-{d:02d}"
+                    p = self.tmp_dir / f"{y}/{dt}-{t}.e"
+                    p.write_text(f"Title: {t}\nDate: {dt}\n\nText {t}")
+
+        # TODO In the following line we should be able to pass a path rather than a str:
+        self.entries = get_entries(str(self.tmp_dir), "/x/", "/i/")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp_dir)
+
+    def test_year_nav_is_reverse_chronological(self):
+        result = self.entries.get_year_nav(2022)
+
+        expected = NavYear(
+            2022,
+            [
+                NavMonth(
+                    11,
+                    "November",
+                    [
+                        NavEntry(17, "3J", ANY),
+                        NavEntry(5, "3H", ANY),
+                        NavEntry(3, "3G", ANY),
                     ],
-                },
-            ]
-        }
-        self.assertEqual(expected, year_data)
+                ),
+                NavMonth(
+                    7,
+                    "July",
+                    [
+                        NavEntry(17, "3F", ANY),
+                        NavEntry(5, "3E", ANY),
+                        NavEntry(3, "3D", ANY),
+                    ],
+                ),
+                NavMonth(
+                    2,
+                    "February",
+                    [
+                        NavEntry(17, "3C", ANY),
+                        NavEntry(5, "3B", ANY),
+                        NavEntry(3, "3A", ANY),
+                    ],
+                ),
+            ],
+        )
+        self.assertEqual(result, expected)
 
-    def test_react_data_for_entry(self):
-        entry, this_month, years = get_entry(self.entries, 2010, 4, 18)
-        react_data = self.entries.get_react_data(entry)
+    def test_nav_for_entry_is_reverse_chronological(self):
+        entry, this_month, years = get_entry(self.entries, 2022, 7, 5)
+        result = self.entries.get_nav_for_entry(entry)
 
-        expected = {
-            "years": {2008: None, 2009: None, 2010: ANY},
-        }
-        self.assertEqual(expected, react_data)
+        # Then years are in reverse order
+        self.assertEqual([x.year for x in result.years], [2022, 2021, 2020])
 
-        expected2 = self.entries.get_react_year_data(2010)
-        expected2["months"][1]["entries"][0]["isActive"] = True
-        self.assertEqual(expected2, react_data["years"][2010])
+        # Then 2022 entry is filled in and has isActive=True for the entry:
+        expected = self.entries.get_year_nav(2022)
+        expected.months[1].entries[1].isActive = True
+        expected.open = expected.months[1].open = True
+        self.assertEqual(result.years[0], expected)
 
-    def test_react_year_api(self):
-        path = reverse("blog-react-api")
+    def test_opens_prev_listed_month_to_ensure_prev_entry_visible(self):
+        # When creating nav fior the first-listed (i.e., latest) entry in July:
+        entry, this_month, years = get_entry(self.entries, 2022, 7, 17)
+        result = self.entries.get_nav_for_entry(entry)
+
+        # Then November is open as well (to show the prev-listed, i.e., later entry).
+        self.assertTrue(result.years[0].months[0].open)
+
+    def test_opens_prev_listed_year_to_ensure_prev_entry_visible(self):
+        # When creating nav for the first-listed (i.e., latest) entry in 2nd-listed year:
+        entry, this_month, years = get_entry(self.entries, 2021, 11, 17)
+        result = self.entries.get_nav_for_entry(entry)
+
+        # Then last-listed entry of prev-listed year is also open.
+        self.assertTrue(result.years[0].months[-1].open)
+
+    def test_doesnt_open_prev_listed_month_if_there_is_none(self):
+        # When creating nav for the first-listed (i.e., latest) entry in first-listed year:
+        entry, this_month, years = get_entry(self.entries, 2022, 11, 17)
+        self.entries.get_nav_for_entry(entry)
+
+        # Then it does not raise an exception trying to open the previous year
+
+    def test_opens_next_listed_month_to_ensure_next_entry_visible(self):
+        # When creating nav for the last-listed (i.e., earliest) entry in July:
+        entry, this_month, years = get_entry(self.entries, 2022, 7, 3)
+        result = self.entries.get_nav_for_entry(entry)
+
+        # Then February is open as well (to show the next-listed, i.e., earlier entry).
+        self.assertTrue(result.years[0].months[2].open)
+
+    def test_opens_next_listed_year_to_ensure_next_entry_visible(self):
+        # When creating nav for the last-listed (i.e., earliest) entry in penultimate-listed year:
+        entry, this_month, years = get_entry(self.entries, 2021, 2, 3)
+        result = self.entries.get_nav_for_entry(entry)
+
+        # Then first-listed entry of next-listed year is also open.
+        self.assertTrue(result.years[2].months[0].open)
+
+    def test_doesnt_open_next_listed_month_if_there_is_none(self):
+        # When creating nav for the last-listed (i.e., eariest) entry in last-listed year:
+        entry, this_month, years = get_entry(self.entries, 2020, 2, 3)
+        self.entries.get_nav_for_entry(entry)
+
+        # Then it does not raise an exception trying to open the next-listed year
+
+    def test_get_nav_for_year_includes_all_years_and_opens_current_year(self):
+        result = self.entries.get_nav_for_year(2022)
+
+        # Then all years loaded:
+        self.assertTrue(all(x.months for x in result.years))
+        # And specified year is openned:
+        self.assertTrue(result.years[0].open)
+        self.assertTrue(all(x.open for x in result.years[0].months))
+
+    def test_year_nav_view(self):
         with patch.object(
             views,
             "get_entries_cached",
             lambda blog_dir, blog_url, image_url: self.entries,
         ):
-            response = self.client.get(path + "?year=2010")
+            response = self.client.get(reverse("blog_year_nav", kwargs={"year": 2022}))
 
         self.assertEqual(200, response.status_code)
-        self.assertEqual("application/json", response["Content-Type"].split(";")[0])
-        obj = json.loads(response.content.decode("UTF-8"))
-        self.assertEqual(self.entries.get_react_year_data(2010), obj)
+        self.assertEqual(response.context["year_nav"].year, 2022)
 
 
 FIXTURE_DIR = os.path.join(os.path.dirname(__file__), "test_data")

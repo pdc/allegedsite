@@ -8,6 +8,7 @@ Created by Damian Cugley on 2010-04-17.
 """
 
 import calendar
+from dataclasses import dataclass
 import os
 import re
 from datetime import datetime
@@ -16,6 +17,7 @@ from markdown import Markdown, Extension
 from markdown.treeprocessors import Treeprocessor
 from markdown.postprocessors import Postprocessor
 from markdown.extensions.toc import TocExtension, TocTreeprocessor
+from typing import List
 from xml.etree.ElementTree import fromstring, tostring
 import html.entities
 
@@ -462,28 +464,46 @@ def get_entry(entries, year, month, day):
     return entry, this_month, years
 
 
+@dataclass(order=True)
 class TagInfo:
-    def __init__(self, tag, count=None):
-        self.tag = tag
-        self.count = count
+    tag: str
+    count: int = None
 
-    def __lt__(self, other):
-        return self.tag < other.tag
 
-    def __gt__(self, other):
-        return self.tag > other.tag
+@dataclass
+class NavEntry:
+    day: int
+    title: str
+    href: str
+    isActive: bool = False
 
-    def __le__(self, other):
-        return self.tag <= other.tag
 
-    def __ge__(self, other):
-        return self.tag >= other.tag
+@dataclass
+class NavMonth:
+    month: int
+    label: str
+    entries: List[NavEntry]
+    open: bool = False
 
-    def __eq__(self, other):
-        return self.tag == other.tag
+    @property
+    def count(self):
+        return len(self.entries)
 
-    def __ne__(self, other):
-        return self.tag != other.tag
+
+@dataclass
+class NavYear:
+    year: int
+    months: List[NavMonth] | None
+    open: bool = False
+
+    @property
+    def count(self):
+        return sum(x.count for x in self.months)
+
+
+@dataclass
+class Nav:
+    years: List[NavYear]
 
 
 class EntryList(list):
@@ -526,54 +546,101 @@ class EntryList(list):
         ]
         return new_list
 
-    def get_react_year_data(self, year):
-        month_datas = []
+    def get_month_nav(self, month, entries):
+        return NavMonth(
+            month,
+            calendar.month_name[month],
+            [NavEntry(x.published.day, x.title, x.href) for x in entries],
+        )
+
+    def get_year_nav(self, year):
+        months = []
         month = None
         beg = None
-        year_entries = self.get_by_year()[year]
-
-        def get_month_data(month, xs):
-            return {
-                "month": month,
-                "label": calendar.month_name[month],
-                "entries": [
-                    {
-                        "day": x.published.day,
-                        "title": x.title,
-                        "href": x.href,
-                    }
-                    for x in xs
-                ],
-            }
+        year_entries = self.get_by_year()[year][:]
+        year_entries.reverse()
 
         for i, entry in enumerate(year_entries):
             if entry.published.month != month:
                 if month:
-                    month_datas.append(get_month_data(month, year_entries[beg:i]))
+                    months.append(self.get_month_nav(month, year_entries[beg:i]))
                 beg = i
                 month = entry.published.month
         if beg < len(year_entries):
-            month_datas.append(get_month_data(month, year_entries[beg:]))
+            months.append(self.get_month_nav(month, year_entries[beg:]))
 
-        return {
-            "months": month_datas,
-        }
+        return NavYear(year, months)
 
-    def get_react_data(self, entry):
-        years = sorted(self.get_by_year().keys())
+    def get_nav_for_year(self, year):
+        years = sorted(self.get_by_year().keys(), reverse=True)
+        result = Nav([self.get_year_nav(y) for y in years])
+
+        year_nav = result.years[years.index(year)]
+        year_nav.open = True
+        for month_nav in year_nav.months:
+            month_nav.open = True
+
+        return result
+
+    def get_nav_for_month(self, year, month):
+        years = sorted(self.get_by_year().keys(), reverse=True)
+        result = Nav([self.get_year_nav(y) for y in years])
+
+        year_nav = result.years[years.index(year)]
+        year_nav.open = True
+        for month_nav in year_nav.months:
+            if month_nav.month == month:
+                month_nav.open = True
+
+        return result
+
+    def get_nav_for_entry(self, entry):
+        years = sorted(self.get_by_year().keys(), reverse=True)
+
+        # Start with blanks for all years apart from the current year:
         year = entry.published.year
-        year_data = self.get_react_year_data(year)
+        i_y = years.index(year)
+        year_nav = self.get_year_nav(year)
+        result = Nav([year_nav if y == year else NavYear(y, None) for y in years])
 
-        for month_data in year_data["months"]:
-            if month_data["month"] == entry.published.month:
-                for entry_data in month_data["entries"]:
-                    if entry_data["day"] == entry.published.day:
-                        entry_data["isActive"] = True
+        # Find current entry:
+        for i_m, month_nav in enumerate(year_nav.months):
+            if month_nav.month == entry.published.month:
+                for i_e, nav_entry in enumerate(month_nav.entries):
+                    if nav_entry.day == entry.published.day:
                         break
+                break
+        else:
+            return result
 
-        return {
-            "years": {y: year_data if y == year else None for y in years},
-        }
+        # Mark current entry as active and open up month & year to make it visible.
+        nav_entry.isActive = True
+        # Ensure this item visible.
+        month_nav.open = year_nav.open = True
+
+        # Also want prev and next entries visible.
+        if i_e == 0:
+            # Want to also show prev month
+            if i_m > 0:
+                year_nav.months[i_m - 1].open = True
+            elif i_y > 0:
+                # Prev month is in prev year
+                prev_year_nav = self.get_year_nav(years[i_y - 1])
+                result.years[i_y - 1] = prev_year_nav
+                prev_year_nav.open = True
+                prev_year_nav.months[-1].open = True
+        if i_e + 1 == len(month_nav.entries):
+            # Also want to show next month
+            if i_m + 1 < len(year_nav.months):
+                year_nav.months[i_m + 1].open = True
+            elif i_y + 1 < len(years):
+                # Next month is in next year
+                next_year_nav = self.get_year_nav(years[i_y + 1])
+                result.years[i_y + 1] = next_year_nav
+                next_year_nav.open = True
+                next_year_nav.months[0].open = True
+
+        return result
 
 
 def get_toc(entries):

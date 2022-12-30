@@ -17,11 +17,14 @@
 
 {% block content %}
     <section id="flow">
-        {% include "blog/parts/entry.div" %}
+        {% include "blog/parts/entry.div.html" %}
     </section>
 
-    {% include "blog/parts/project-wonderful.div" %}
-    {% include "blog/parts/entry-nav.div" %}
+    <nav>
+        <h2>Article navigator</h2>
+
+        {% include "blog/parts/entry-nav.div.html" %}
+    </nav>
 
     <aside id="exits">
         <h2>Elsewhere</h2>

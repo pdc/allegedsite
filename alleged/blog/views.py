@@ -1,9 +1,8 @@
 # Encoding: UTF-8
 
-import json
+from dataclasses import asdict
 from datetime import date
 
-from django.utils import safestring
 from django.http import HttpResponseServerError
 from django.views.decorators.cache import cache_page
 from django.urls import reverse
@@ -88,17 +87,17 @@ def get_year_months(entries, y):
     return sorted(this_year_months.items())
 
 
-@render_with("blog/index.html")
-def index_view(request, blog_dir, blog_url, image_url):
+@render_with("blog/year_nav.html")
+def year_nav_view(request, blog_dir, blog_url, image_url, year):
     entries = get_entries_cached(blog_dir, blog_url, image_url)
-    entry, this_month, years = get_entry(entries, None, None, None)
+    year_nav = entries.get_year_nav(year)
+    year_nav.open = True
+    for month_nav in year_nav.months:
+        month_nav.open = True
+    years = sorted(set(x.published.year for x in entries), reverse=True)
     return {
-        "entries": entries,
-        "entry": entry,
-        "this_month": this_month,
+        "year_nav": year_nav,
         "years": years,
-        "this_year_months": get_year_months(entries, entry.published.year),
-        "is_index": True,
     }
 
 
@@ -111,29 +110,28 @@ def entry_view(request, blog_dir, blog_url, image_url, year, month, day):
         "entries": entries,
         "entry": entry,
         "this_month": this_month,
-        "years": years,
+        "years": years,  # Can we deprecate this?
+        "nav": asdict(entries.get_nav_for_entry(entry)),
         "this_year_months": get_year_months(entries, year),
-        "react_data_json": safestring.mark_safe(
-            json.dumps(entries.get_react_data(entry))
-        ),
         "is_index": False,
         "syndication_links": [k for k in entry.links if k.rel == "syndication"],
     }
 
 
 @cache_page(1800)
-@render_json
-def react_api(request, blog_dir, blog_url, image_url):
+@render_with("blog/parts/entry-nav-year.part.html")
+def entries_year_nav(request, blog_dir, blog_url, image_url, year):
     entries = get_entries_cached(blog_dir, blog_url, image_url)
-    year = int(request.GET.get("year", 0), 10)
-    data = entries.get_react_year_data(year)
-    return data
+    data = entries.get_year_nav(year)
+    data.open = data.months[0].open = True
+    return {"year_nav": (data)}
 
 
 @render_with("blog/month_entries.html")
-def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None):
+def month_entries(request, blog_dir, blog_url, image_url, year, month):
     entries = get_entries_cached(blog_dir, blog_url, image_url)
     entry, this_month, years = get_entry(entries, year, month, None)
+    nav = entries.get_nav_for_month(year, month)
 
     return {
         "entry": entry,
@@ -142,6 +140,7 @@ def month_entries(request, blog_dir, blog_url, image_url, year=None, month=None)
         "prev": this_month[0].prev,
         "next": this_month[-1].next,
         "years": years,
+        "nav": nav,
         "this_year_months": get_year_months(entries, year),
     }
 

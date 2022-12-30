@@ -1,0 +1,62 @@
+/* New Nav style */
+
+:root {
+    --ink: rgba(0,0,0,0.75);
+    --hl: #B0A;
+    --hl-dimmed: #830077;
+    --hl-dimmer: #4b0044;
+    --hl-bg: #f8e6f7;
+}
+
+details {
+    --nav2022-indent: 1.06em;  /* Measured! */
+
+    padding-left: var(--nav2022-indent);
+    color: var(--ink);
+}
+
+summary {
+    margin-top: 0.25em;
+    text-indent: calc(-1 * var(--nav2022-indent));
+}
+
+.nav2022 {
+    margin: 0.25em 10px;
+}
+
+.nav2022 a {
+    text-decoration: none;
+}
+
+.nav2022 a:link {
+    color: var(--hl-dimmed);
+}
+
+.nav2022 a:visited {
+    color: var(--hl-dimmer);
+}
+
+.nav2022 a:hover,
+.nav2022 a:active {
+    color: var(--hl);
+    text-decoration: underline;
+}
+
+.nav2022 strong {
+    background-color: var(--hl-bg);
+}
+
+.nav2022 li>a,
+.nav2022 li>strong {
+    padding: 0.125em 0;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.nav2022 time {
+    margin-right: 0.5em;
+    width: 1em;
+
+    font-weight: 500;
+    text-align: right;
+}
