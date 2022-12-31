@@ -1,6 +1,8 @@
 Title: New Article Navigator
 Date: 2022-12-31
 Topics: meta
+Link: <https://octodon.social/@pdc/109608271895340263>; rel=syndication
+Link: <https://twitter.com/damiancugley/status/1609164807634051074>; rel=syndication
 
 A [few years back][1] I created an interactive article navigator as an
 exercise in learning React. I thought I’d see what it was like doing it over
