@@ -51,13 +51,23 @@ are shown or not, a UI convention dating back to the 1980s.
 No JavaScript
 required, and accessible via default.
 
+The resulting design looks like this:
+
+
+<a href="nav-2022.png"><img src="nav-2022.png" alt="(screensot)" longdesc="#nav-22-desc" style="width: 300px; height: 355px"></a>
+
+
+<p id="nav-22-desc">
+The years are listed in reverse chronological order, with disclosure triangles. The current article’s year is open to show a list of months indented under the year. The current article’s month is open and shows articles, of which the current one is highlighted with a tinted background.
+</p>
+
 There are a couple of complications.
 
-1. First, I want the current entry to be
+1. When the list is first displayed, I want the current entry to be
 visible and highlighted, and the previous and next entries (if any) to be visible.
 This requires making the year and month elements containing them open by default.
 
-2. The second complication is that I wanted the details of the closed elements
+2. I wanted the details of the closed elements
 to be loaded lazily, so that the entire site index is not needlessly included
 in every page view.
 
