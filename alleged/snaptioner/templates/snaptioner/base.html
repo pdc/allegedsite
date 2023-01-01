@@ -27,7 +27,7 @@
           <ul>
             {% for other in albums %}
             <li>
-              {% ifequal other.name album.name %}
+              {% if other.name == album.name %}
               <strong class="nav-album-selected">
                 <b class="nav-album-title">{{ album.title }}</b>
                 <span class="nav-album-metadata">{{ album|length }} photos by {{ album.photographer }}</span>
@@ -37,7 +37,7 @@
                 <b class="nav-album-title">{{ other.title }}</b>
                 <span class="nav-album-metadata">{{ other|length }} photos by  {{ other.photographer }}</span>
               </a>
-              {% endifequal %}
+              {% endif %}
             </li>
             {% endfor %}
           </ul>

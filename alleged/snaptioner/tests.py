@@ -6,6 +6,7 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.urls import reverse
 from .albums import get_library, get_albums, get_album, Person
 
 ALBUM_DIR, ALBUM_URL = "albums", "https://im.example.com/"
@@ -109,3 +110,33 @@ class PersonTestCase(TestCase):
     def test_make_code_strips_punctuation(self):
         self.assertEqual(Person.make_code("Ruth O'Reilly"), "ruth.oreilly")
         self.assertEqual(Person.make_code("(unknown)"), "unknown")
+
+
+class SmokeTest(TestCase):
+    def test_index(self):
+        res = self.client.get(reverse("album_list"))
+
+        self.assertEqual(res.status_code, 200)
+
+    def test_album_detail(self):
+        res = self.client.get(
+            reverse("album_detail", kwargs={"album_name": "20040208"})
+        )
+
+        self.assertEqual(res.status_code, 200)
+
+    def test_image_detail(self):
+        res = self.client.get(
+            reverse(
+                "image_detail", kwargs={"album_name": "20040208", "image_name": "sv10"}
+            )
+        )
+
+        self.assertEqual(res.status_code, 200)
+
+    def test_person_detail(self):
+        res = self.client.get(
+            reverse("person_detail", kwargs={"person_code": "jeremy.dennis"})
+        )
+
+        self.assertEqual(res.status_code, 200)
