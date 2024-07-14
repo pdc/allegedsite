@@ -1,6 +1,7 @@
 Title: Counting votes
 Topics: voting politics
 Date: 2024-07-14
+Link: <https://octodon.social/@pdc/112784797069926009>; rel=syndication
 
 I was one of the guest observers at the election count on the evening of
 4 July 2024 and it was interesting seeing the process in action in detail.
