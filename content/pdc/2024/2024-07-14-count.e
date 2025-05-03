@@ -9,9 +9,9 @@ I was one of the guest observers at the election count on the evening of
 # Process
 
 The room—in this case the main hall of the Town Hall, with its plaster
-mouldings and columnades down the sides—is divided in to an inner secure area
+mouldings and colonnades down the sides—is divided in to an inner secure area
 where the counters and officials are, and a restricted area around the sides
-where the observers can go. Observers  and counters face each other accross a
+where the observers can go. Observers  and counters face each other across a
 double row of tables. There were eight teams of four counters.
 
 ## Verification
@@ -36,7 +36,7 @@ Once the total number of votes is agreed they start sorting ballots in to
 plastic in-trays labelled with the surnames of candidates. This is again done
 with different teams working in parallel on different  batches of ballots. In
 our case, Oxford East being a safe Labour constituency, the outcome is pretty
-obvious at this stage just from the physical size of the stacks of paper. 
+obvious at this stage just from the physical size of the stacks of paper.
 
 Party agents continue watching them like hawks, the main objective in this
 stage being to spot one of your candidate’s votes being erroneously added to
