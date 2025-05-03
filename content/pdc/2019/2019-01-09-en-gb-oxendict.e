@@ -56,7 +56,7 @@ going to be more trouble than it’s worth?
 But then a breakthrough.
 I was writing a version of this entry which discussed the spell-checking software.
 There are several software libraries for spell-checking, with confusing
-relationships between them.  [Hunspell][] is used by LibreOffice, OpenOffice,
+relationships between them.  [Hunspell][] is used by LibreOffice, Apache OpenOffice,
 web browsers like Chrome and Safari, and macOS.
 Chasing links starting from its GitHub page I found a [collection of
 dictionaries][] that includes an `en_GB` dictionary updated (by Marco A.G. Pinto) as recently as
@@ -76,22 +76,26 @@ and all three words are accepted as correctly spelled.
 
 This solution is unsatisfactory in that it took me half a day of googling and
 more background technical knowledge that the average writer should be expected
-to need to implement this solution.  I would also have preferred to be able to
+to need to implement this solution.  <del>I would also have preferred to be able to
 specify a more strict _en-GB-oxendict_ spelling that would reject _organise_
-in favour of _organize_.
+in favour of _organize_.</del>
+
+* **Update (2025-05-03)** I have since discovered these dictionaries now [hosted
+on GitHub] and come in three flavours: _-ise_ + _-ize_, _-ise_ only (the usual one),
+and _-ize_ only. They are, still, mostly maintained by one person, in the usual
+open-source software fashion.
 
 
-
-  [language tag]: https://en.wikipedia.org/wiki/IETF_language_tag
-  [rumours]: https://bugs.documentfoundation.org/show_bug.cgi?id=100462
-  [Oxford Spelling]: https://en.wikipedia.org/wiki/Oxford_spelling
-  [IANA registry]: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
-  [United Nations]: http://dd.dgacm.org/editorialmanual/ed-guidelines/style/spelling.htm
-  [this exchange]: https://apple.stackexchange.com/questions/21429/uk-spelling-dictionary-teach-os-x-all-ize-spellings
-  [Oxford Dictionaries]: https://en.oxforddictionaries.com/definition/retcon
-  [_rationalize_]: https://en.oxforddictionaries.com/definition/rationalize
-  [_defence_]: https://en.oxforddictionaries.com/definition/defence
-  [long-forgotten OpenOffice bug]: https://bz.apache.org/ooo/show_bug.cgi?id=51093
-  [Hunspell]: http://hunspell.github.io
-  [collection of dictionaries]: https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/
-
+[language tag]: https://en.wikipedia.org/wiki/IETF_language_tag
+[rumours]: https://bugs.documentfoundation.org/show_bug.cgi?id=100462
+[Oxford Spelling]: https://en.wikipedia.org/wiki/Oxford_spelling
+[IANA registry]: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+[United Nations]: http://dd.dgacm.org/editorialmanual/ed-guidelines/style/spelling.htm
+[this exchange]: https://apple.stackexchange.com/questions/21429/uk-spelling-dictionary-teach-os-x-all-ize-spellings
+[Oxford Dictionaries]: https://en.oxforddictionaries.com/definition/retcon
+[_rationalize_]: https://en.oxforddictionaries.com/definition/rationalize
+[_defence_]: https://en.oxforddictionaries.com/definition/defence
+[long-forgotten OpenOffice bug]: https://bz.apache.org/ooo/show_bug.cgi?id=51093
+[Hunspell]: http://hunspell.github.io
+[collection of dictionaries]: https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/
+[hosted on GitHub]: https://github.com/marcoagpinto/aoo-mozilla-en-dict
