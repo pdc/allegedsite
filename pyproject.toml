@@ -4,6 +4,10 @@ version = "0.1.0"
 description = "Alleged Site"
 authors = ["Damian Cugley <pdc@alleged.org.uk>"]
 readme = "README.md"
+package-mode = false
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.9"
 
 [tool.poetry.dependencies]
 python = "^3.9"
