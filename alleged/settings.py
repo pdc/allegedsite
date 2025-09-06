@@ -80,7 +80,7 @@ SNAPTIONER_LIBRARY_URL = "https://static.alleged.org.uk/albums/"
 BLOG_DIR = expand_path("content/pdc")
 BLOG_CACHE_ENTRIES = False
 
-HTTPLIB2_CACHE_DIR = "/Users/pdc/Library/Caches/allegedsite-http"
+HTTPLIB2_CACHE_DIR = env("HTTPLIB2_CACHE_DIR")
 FLICKR_ATOM_URL = "http://api.flickr.com/services/feeds/photos_public.gne?id=14145351@N00&lang=en-us&format=atom"
 LIVEJOURNAL_ATOM_URL = "http://damiancugley.livejournal.com/data/atom"
 YOUTUBE_ATOM_URL = "http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?alt=atom&v=2&orderby=published"
@@ -100,6 +100,7 @@ else:
 
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = "alleged"
+CACHES = {"default": env.cache(default="locmemcache:")}
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = "secret-key-value" if DEBUG else env("SECRET_KEY")
