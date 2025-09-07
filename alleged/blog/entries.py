@@ -1,25 +1,26 @@
 #!/usr/bin/env python
-# encoding: utf-8
 """
 entries.py
 
 Created by Damian Cugley on 2010-04-17.
-© 2010, 2012, 2015 Damian Cugley.
+© 2010, 2012, 2015, 2025 Damian Cugley.
 """
 
 import calendar
-from dataclasses import dataclass
+import html.entities
 import os
 import re
+from dataclasses import dataclass
 from datetime import datetime
-from urllib.parse import urlparse
-from markdown import Markdown, Extension
-from markdown.treeprocessors import Treeprocessor
-from markdown.postprocessors import Postprocessor
-from markdown.extensions.toc import TocExtension, TocTreeprocessor
+from pathlib import Path
 from typing import List
+from urllib.parse import urlparse
 from xml.etree.ElementTree import fromstring, tostring
-import html.entities
+
+from markdown import Extension, Markdown
+from markdown.extensions.toc import TocExtension, TocTreeprocessor
+from markdown.postprocessors import Postprocessor
+from markdown.treeprocessors import Treeprocessor
 
 XMLNS_DC = "http://purl.org/dc/elements/1.1/"
 XMLNS_HTML = "http://www.w3.org/1999/xhtml"
@@ -280,7 +281,15 @@ body_re = re.compile(r"<body[^>]*>(.*)</body>", re.DOTALL)
 
 class Entry:
     def __init__(self, root_dir_path, dir_path, file_name, blog_url, image_url):
-        """Create an entry by examining the proffered file."""
+        """Create an entry by examining the proffered file.
+
+        Arguments --
+            root_dir_path – the origin of the blog on disk
+            dir_path – contains the blog file
+            file_name – names blog file within dir_path
+            blog_url – base of blog paths, corresponding to root_dir_path
+            image_url – base of image URLs
+        """
         m = date_re.search(file_name)
         if m:
             y, mon, d = int(m.group(1), 10), int(m.group(2), 10), int(m.group(3), 10)
@@ -295,12 +304,14 @@ class Entry:
             print("Could not parse", file_name)
         self.is_loaded = False
 
-        self.file_path = os.path.join(dir_path, file_name)
+        dir_path = Path(dir_path)
+        self.file_path = dir_path / file_name
         self.blog_url = blog_url
         self.image_url = blog_url
 
-        self.munged_blog_url = blog_url + dir_path[len(root_dir_path) + 1 :] + "/"
-        self.munged_image_url = image_url + dir_path[len(root_dir_path) + 1 :] + "/"
+        relative_path = dir_path.relative_to(root_dir_path)
+        self.munged_blog_url = f"{blog_url}{relative_path}/"
+        self.munged_image_url = f"{image_url}{relative_path}/"
 
     def load(self):
         with open(self.file_path, "rb") as input:
@@ -358,7 +369,7 @@ class Entry:
         converter = Markdown(
             extensions=["markdown.extensions.meta", href_extension, header_extension]
         )
-        self._body = converter.convert(text.decode("UTF-8").replace("≈", "\u00A0"))
+        self._body = converter.convert(text.decode("UTF-8").replace("≈", "\u00a0"))
         self._title = ", ".join(converter.Meta.get("title", ["Untitled entry"]))
         self._tags = " ".join(converter.Meta.get("topics", [])).split()
         self._links = [Link.parse(x) for x in converter.Meta.get("link", [])]
@@ -397,10 +408,7 @@ class Entry:
         if self.published > MUNGE_TRANSITION_DATE:
             pos = summary.find("</p>")
             if pos >= 0:
-                summary = (
-                    summary[:pos]
-                    + '\n<a class="more" href="%s">Read more</a></p>' % self.href
-                )
+                summary = f'{summary[:pos]}\n<a class="more" href="{self.href}">Read more</a></p>'
         return summary
 
     @property

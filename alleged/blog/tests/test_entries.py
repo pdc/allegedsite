@@ -1,30 +1,26 @@
-# Encoding: UTF-8
-
-from dataclasses import asdict
-from datetime import datetime
-import json
 import os
 import pathlib
 import shutil
 import tempfile
 import textwrap
-
-from django.urls import reverse
-from django.test import TestCase
-from unittest.mock import patch, ANY
+from datetime import datetime
+from unittest.mock import ANY, patch
 from xml.etree import ElementTree as ET  # noqa
 
+from django.test import TestCase
+from django.urls import reverse
+
+from alleged.blog import views
 from alleged.blog.entries import (
+    NavEntry,
+    NavMonth,
+    NavYear,
     get_entries,
     get_entry,
-    get_toc,
     get_named_article,
-    NavYear,
-    NavMonth,
-    NavEntry,
+    get_toc,
 )
 from alleged.fromatom import nested_dicts_from_atom, summary_from_content
-from alleged.blog import views
 
 
 class TestEntry(TestCase):
@@ -59,7 +55,7 @@ class TestEntry(TestCase):
         entries = get_entries(self.tmp_dir, "/masterblog/", "/images/")
         e = entries[0]
         self.assertHTMLEqual(
-            "<p>BAR</p>\n<pre><code>Hullo\n\xA0\nWorld\n</code></pre>\n<p>BAZ</p>",
+            "<p>BAR</p>\n<pre><code>Hullo\n\xa0\nWorld\n</code></pre>\n<p>BAZ</p>",
             e.body,
         )
 
@@ -97,7 +93,7 @@ class TestEntry(TestCase):
             Attentive readers will have noticed that there is almost a
             year-long gap between the con and the photo album.  This is partly
             explained by the amount a manual labour involved in scanning all
-            those 7\xD75 photos on my none-too-fast scanner and moving the
+            those 7\xd75 photos on my none-too-fast scanner and moving the
             files from the Mac with the scanner to the Linux box with all my
             web site stuff on.
             <strong>Update:</strong>
@@ -176,7 +172,7 @@ class TestEntry(TestCase):
         expected = """<p>
               My <a href="/blog/tarot/">Alleged Tarot 2002</a> project has been
               stuck with an ersatz dealer for far too long (since
-              <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xA0have
+              <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xa0have
               now added to the <a href="/blog/tarot/aboutDealer.html">JavaScript
               used for the dealer</a> so it takes a question and converts that
               to a seed number, rather than requiring the querent to supply
@@ -306,7 +302,7 @@ class TestEntry(TestCase):
         expected = """<p>
             My <a href="/blog/tarot/">Alleged Tarot 2002</a> project has been
             stuck with an ersatz dealer for far too long (since
-            <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xA0have
+            <a href="/blog/2002/08.html#e20020809">August</a>, in fact).  I\xa0have
             now added to the <a href="/blog/tarot/aboutDealer.html">JavaScript
             used for the dealer</a> so it takes a question and converts that
             to a seed number, rather than requiring the querent to supply
@@ -528,7 +524,7 @@ class TestEntry(TestCase):
         entry = entries[-1]
         self.assertEqual(
             '<p>Hello <img alt="world" src="http://localhost/~pdc/alleged.org.uk/pdc/2010/x.jpg"'
-            + ' srcset="http://localhost/~pdc/alleged.org.uk/pdc/2010/y.jpg 100w" alt="x"></p>',
+            ' srcset="http://localhost/~pdc/alleged.org.uk/pdc/2010/y.jpg 100w" alt="x"></p>',
             entry.body,
         )
 
@@ -723,7 +719,7 @@ class TestEntry(TestCase):
             """<p>
             On my badly broken Linux desktop,
             the Gimp is missing its file-saving plug-ins, so it cannot save
-            files except in a format I\u00A0cannot use.
+            files except in a format I\u00a0cannot use.
             </p>
             <p><a href="/blog/2003/11.html#e20021125a">25 November 2002</a></p>""",
             article.body,
@@ -843,7 +839,7 @@ class TestGetNav(TestCase):
 
             for m in 2, 7, 11:
                 for d in [3, 5, 17]:
-                    t = f"{1+i}{chr(next_letter)}"
+                    t = f"{1 + i}{chr(next_letter)}"
                     next_letter += 1
                     if next_letter == ord("I"):
                         next_letter += 1

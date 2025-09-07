@@ -3,7 +3,7 @@ tmp.p?m
 test_blog
 tmp
 out.xml
-*.db
+*.sqlite3
 web/pdc/tarot/
 min.css
 *.d

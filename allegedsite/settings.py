@@ -1,26 +1,25 @@
 """Django settings for alleged project."""
 
+from pathlib import Path
 import environ
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 env = environ.Env(
     DEBUG=(bool, False),
     STATIC_ROOT=(str, None),
     STATIC_URL=(str, None),
     SECRET_KEY=str,
+    ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1", "::1"]),
 )
-environ.Env.read_env()
-expand_path = environ.Path(__file__) - 2
+environ.Env.read_env(BASE_DIR / ".env")
 
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "mustardseed.local",
-    "alleged.org.uk",
-    "ip4.alleged.org.uk",
-    "ip6.alleged.org.uk",
-]
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
@@ -31,7 +30,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    "default": env.db(default="sqlite:///%s" % expand_path("a.db")),
+    "default": env.db(default=f"sqlite:///{(BASE_DIR / "db.sqlite3")}"),
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -74,10 +73,10 @@ TEMPLATES = [
 ]
 
 
-SNAPTIONER_LIBRARY_DIR = expand_path("albums")
+SNAPTIONER_LIBRARY_DIR = BASE_DIR / "albums"
 SNAPTIONER_LIBRARY_URL = "https://static.alleged.org.uk/albums/"
 
-BLOG_DIR = expand_path("content/pdc")
+BLOG_DIR = BASE_DIR / "content/pdc"
 BLOG_CACHE_ENTRIES = False
 
 HTTPLIB2_CACHE_DIR = env("HTTPLIB2_CACHE_DIR")
@@ -86,7 +85,9 @@ LIVEJOURNAL_ATOM_URL = "http://damiancugley.livejournal.com/data/atom"
 YOUTUBE_ATOM_URL = "http://gdata.youtube.com/feeds/base/users/damiancugley/uploads?alt=atom&v=2&orderby=published"
 GITHUB_ATOM_URL = "https://github.com/pdc.atom"
 
-STATICFILES_DIRS = (expand_path("static"),)
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 if env("STATIC_ROOT"):
     STATIC_URL = env("STATIC_URL", default="http://static.alleged.org.uk/")
@@ -116,7 +117,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "alleged.urls"
+ROOT_URLCONF = "allegedsite.urls"
 
 INSTALLED_APPS = (
     "django.contrib.auth",
