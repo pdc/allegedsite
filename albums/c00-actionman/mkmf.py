@@ -1,4 +1,6 @@
-import os, glob, string
+import glob
+import os
+import string
 
 mfBody = """
 .SUFFIXES:\t.png .jpg

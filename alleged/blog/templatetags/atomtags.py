@@ -1,4 +1,5 @@
 from django import template
+
 from alleged.blog.entries import unentity
 
 register = template.Library()

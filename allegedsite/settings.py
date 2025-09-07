@@ -1,8 +1,8 @@
 """Django settings for alleged project."""
 
 from pathlib import Path
-import environ
 
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    "default": env.db(default=f"sqlite:///{(BASE_DIR / "db.sqlite3")}"),
+    "default": env.db(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'),
 }
 
 # Local time zone for this installation. Choices can be found here:

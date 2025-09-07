@@ -1,12 +1,9 @@
-# -*-coding: UTF-8-*-
-
-from xml.etree import ElementTree as et  # noqa
-from html.entities import name2codepoint
-import httplib2
 import re
+from html.entities import name2codepoint
+from xml.etree import ElementTree as et  # noqa
 
+import httplib2
 from django.conf import settings
-
 
 ATOM = "http://www.w3.org/2005/Atom"
 ATOM_FEED = "{http://www.w3.org/2005/Atom}feed"
@@ -115,7 +112,7 @@ def entry_from_element(entry_elt):
             m = FLICKR_IMAGE_RE.search(text)
             if m:
                 flickr_ids = m.groupdict()
-                for (rel, letter) in (("square", "s"), ("thumbnail", "t")):
+                for rel, letter in (("square", "s"), ("thumbnail", "t")):
                     flickr_ids["letter"] = letter
                     entry[rel] = {
                         "href": "http://farm{farmID}.staticflickr.com/{serverID}/{id}_{secret}_{letter}.jpg".format(

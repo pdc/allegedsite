@@ -1,12 +1,13 @@
 #! /usr/bin/env python
 # -*-python-*-
 
-import sys
-import urllib
-import re
 import codecs
-import time
 import getopt
+import re
+import sys
+import time
+import urllib
+
 
 class Usage(Exception):
     def __init__(self, msg):

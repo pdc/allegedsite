@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-
-
-from django.urls import path, re_path, include
 from django.conf import settings
+from django.urls import include, path, re_path
+
+import alleged.blog.views
 import alleged.frontpage.views
 import alleged.whyhello.views
-import alleged.blog.views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -106,7 +104,7 @@ urlpatterns = [
     ),
     path("pdc/from/youtube", alleged.blog.views.from_youtube, {}, name="from_youtube"),
     path("pdc/from/github", alleged.blog.views.from_github, {}, name="from_github"),
-    path("albums/", include("alleged.snaptioner.urls"))
+    path("albums/", include("alleged.snaptioner.urls")),
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),

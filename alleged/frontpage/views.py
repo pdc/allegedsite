@@ -1,5 +1,3 @@
-# -*-coding: UTF-8-*-
-
 from alleged.decorators import render_with
 
 

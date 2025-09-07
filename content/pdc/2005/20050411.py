@@ -1,9 +1,10 @@
 import binascii
-import md5
 import random
-import sha
 import struct
 import time
+
+import md5
+import sha
 
 userSecrets = {"alice": "12345678", "bob": "23456789"}
 

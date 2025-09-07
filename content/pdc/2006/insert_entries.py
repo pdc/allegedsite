@@ -6,14 +6,14 @@ pdc 2006-10-27
 
 """
 
+import datetime
+import email
+import getopt
 import os
 import re
 import sqlite3
-import time
-import getopt
 import sys
-import email
-import datetime
+import time
 
 VERSION = "1.0 (pdc 2006-10-26)"
 
@@ -140,7 +140,7 @@ def main(argv=None):
         for file_name in args:
             if maybe_update_entry(con, file_name) and is_verbose:
                 print("updated", file_name)
-    except Usage as err:
+    except Usage:
         sys.exit("usage: entry_topics.py -h | -V | file_name...")
 
 

@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 
-from .albums import get_library, get_albums
+from .albums import get_albums, get_library
 
 
 def album_list(request, library_dir, library_url):

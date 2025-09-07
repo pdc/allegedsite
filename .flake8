@@ -1,0 +1,4 @@
+[flake8]
+; Let Black be in charge of formatting:
+extend_ignore = E203,E501,W503
+exclude = .git,.poetry,pregenerated,content/pdc/2004/flickr.py,albums

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# encoding: utf-8
 """
 jpegsfromtiffs.py
 
@@ -7,10 +6,10 @@ Created by Damian Cugley on 2010-04-10.
 Copyright (c) 2010 __MyCompanyName__. All rights reserved.
 """
 
-import sys
 import getopt
-import re
 import os
+import re
+import sys
 
 TIFF_DIR = "150dpi TIFFs"
 

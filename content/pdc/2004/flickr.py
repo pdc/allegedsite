@@ -382,6 +382,7 @@ class User(object):
 # see api docs http://www.flickr.com/services/api/
 # for details of each param
 
+
 # XXX: Could just use photo.tags (as you'd already have Photo object)
 def tags_getListPhoto(id):
     method = "flickr.tags.getListPhoto"
@@ -499,7 +500,7 @@ def _doget(method, auth=False, **params):
     # print "***** do get %s" % method
 
     # convert lists to strings with ',' between items
-    for (key, value) in list(params.items()):
+    for key, value in list(params.items()):
         if isinstance(value, list):
             params[key] = ",".join([item for item in value])
 
@@ -562,7 +563,7 @@ def unmarshal(element):
         for child in childElements:
             key = child.tagName
             if hasattr(rc, key):
-                if type(getattr(rc, key)) != type([]):
+                if not isinstance(getattr(rc, key), list):
                     setattr(rc, key, [getattr(rc, key)])
                 setattr(rc, key, getattr(rc, key) + [unmarshal(child)])
             elif isinstance(child, minidom.Element) and (child.tagName == "Details"):

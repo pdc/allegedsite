@@ -2,8 +2,8 @@
 Time-stamp: <pdc 2004-05-26>
 """
 
-import sys
 import math
+import sys
 
 PAGE_WIDTH = 297.0 - 2 * 7.5
 PAGE_HEIGHT = 210.0 - 2 * 7.5

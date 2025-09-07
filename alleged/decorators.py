@@ -1,9 +1,7 @@
-# -*-coding: UTF-8-*-
+import json
 
 from django.http import HttpResponse
-from django.template import RequestContext
 from django.shortcuts import render
-import json
 
 
 def render_with(default_template_name, mimetype="text/html"):

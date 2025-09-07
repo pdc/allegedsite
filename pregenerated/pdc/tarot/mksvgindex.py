@@ -6,9 +6,9 @@ These are intended to work in browsers like Batik,
 which understand static SVG and links, but lack JavaScript and SMIL support.
 """
 
-import sys
-import re
 import codecs
+import re
+import sys
 
 templ = """<?xml version="1.0"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"

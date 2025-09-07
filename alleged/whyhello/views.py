@@ -1,8 +1,6 @@
-# -*-coding: UTF-8-*-
-
-from alleged.decorators import render_with
 from alleged.blog.entries import get_entry
 from alleged.blog.views import get_entries_cached
+from alleged.decorators import render_with
 
 
 @render_with("whyhello/im.html")

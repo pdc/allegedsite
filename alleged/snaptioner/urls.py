@@ -1,11 +1,7 @@
-# -*- coding: utf-8 -*-
-
-
-from django.urls import path, register_converter
 from django.conf import settings
+from django.urls import path, register_converter
 
 from . import views
-
 
 essential_args = {
     "library_dir": settings.SNAPTIONER_LIBRARY_DIR,

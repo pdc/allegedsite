@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# encoding: utf-8
 """
 test_mkthumb.py
 
@@ -8,6 +7,7 @@ Copyright (c) 2010 __MyCompanyName__. All rights reserved.
 """
 
 import unittest
+
 from mkthumb import *
 
 

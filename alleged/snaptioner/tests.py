@@ -7,7 +7,8 @@ Replace these with more appropriate tests for your application.
 
 from django.test import TestCase
 from django.urls import reverse
-from .albums import get_library, get_albums, get_album, Person
+
+from .albums import Person, get_album, get_albums, get_library
 
 ALBUM_DIR, ALBUM_URL = "albums", "https://im.example.com/"
 

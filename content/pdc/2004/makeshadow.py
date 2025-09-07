@@ -1,10 +1,9 @@
-#
+import urllib.request
 
-import urllib.request, urllib.parse, urllib.error
 import Image
 
 input = urllib.request.urlopen("http://ariel/~pdc/2004/shadow.png")
-output = file("shadow.png", "wb")
+output = open("shadow.png", "wb")
 output.write(input.read())
 input.close()
 output.close()

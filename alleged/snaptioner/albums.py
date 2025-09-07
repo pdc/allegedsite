@@ -1,4 +1,3 @@
-# encoding: utf-8
 """
 albums.py -- routines for reading lists of photos in a legacy format
 
@@ -6,15 +5,15 @@ Created by Damian Cugley on 2010-03-31.
 © 2010, 2014 Damian Cugley. All rights reserved.
 """
 
-from collections.abc import Sequence
 import csv
+import os
+import re
+from collections.abc import Sequence
+
 from django.urls import reverse
 from django.utils import safestring
 from django.utils.functional import cached_property
 from markdown import Markdown
-import os
-import re
-
 
 formatter = Markdown()
 
@@ -220,7 +219,6 @@ _libraries = {}
 
 def get_library(library_dir, library_url):
     """Load a collection of albums from directories on disk."""
-    global _libraries
     library = _libraries.get(library_dir)
     if library is None:
         library = Library(library_dir, library_url)

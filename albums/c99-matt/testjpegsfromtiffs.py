@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# encoding: utf-8
 """
 testjpegsfromtiffs.py
 
@@ -7,9 +6,10 @@ Created by Damian Cugley on 2010-04-10.
 Copyright (c) 2010 __MyCompanyName__. All rights reserved.
 """
 
-import unittest
-from jpegsfromtiffs import *
 import os
+import unittest
+
+from jpegsfromtiffs import *
 
 
 class TestMungeName(unittest.TestCase):

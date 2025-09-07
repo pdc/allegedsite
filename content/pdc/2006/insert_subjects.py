@@ -4,7 +4,6 @@ pdc 2006-10-27
 
 """
 
-
 import sqlite3
 
 subjects_file = "../2003/subjects.data"

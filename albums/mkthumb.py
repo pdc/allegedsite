@@ -2,10 +2,11 @@
 
 """While I wait for inspiration on how to get PIL to work on Mac OS X, make thumnails using PBMPlus and libjpeg"""
 
-from subprocess import Popen, PIPE
-import re
+import getopt
 import os
-import getopt, sys
+import re
+import sys
+from subprocess import PIPE, Popen
 
 jpeg_dimens_re = re.compile(
     r"JPEG image is (?P<w>[0-9]+)w \* (?P<h>[0-9]+)h, (?P<color_components>[0-9]+) color components, (?P<bits_per_sample>[0-9]+) bits per sample"
@@ -52,11 +53,7 @@ def thumbnail_file_name(file_name, dir_name, dimens, meet_or_slice):
         s = (
             "%dh" % h
             if w <= 1
-            else "%dw" % w
-            if h <= 1
-            else "l%d" % w
-            if w == h
-            else "l%dx%d" % (w, h)
+            else "%dw" % w if h <= 1 else "l%d" % w if w == h else "l%dx%d" % (w, h)
         )
     else:
         p = "" if meet_or_slice == "meet" else meet_or_slice[0]

@@ -1,22 +1,18 @@
-# Encoding: UTF-8
-
 from dataclasses import asdict
 from datetime import date
 
-from django.http import HttpResponseServerError
-from django.views.decorators.cache import cache_page
-from django.urls import reverse
-from django.core.cache import cache
 from django.conf import settings
+from django.core.cache import cache
+from django.http import HttpResponseServerError
+from django.urls import reverse
+from django.views.decorators.cache import cache_page
 
-from alleged.decorators import render_with, render_json
-from alleged.blog.entries import (
-    get_entries as get_entries_uncached,
-    get_entry,
-    get_toc as get_toc_uncached,
-    get_named_article as get_named_article_uncached,
-)
-from alleged.fromatom import get_flickr, get_livejournal, get_youtube, get_github
+from alleged.blog.entries import get_entries as get_entries_uncached
+from alleged.blog.entries import get_entry
+from alleged.blog.entries import get_named_article as get_named_article_uncached
+from alleged.blog.entries import get_toc as get_toc_uncached
+from alleged.decorators import render_json, render_with
+from alleged.fromatom import get_flickr, get_github, get_livejournal, get_youtube
 
 
 def add_hrefs(entries):
@@ -205,7 +201,6 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
       (which is the most-recent page in the paged-feed pages).
     """
     entries = get_entries_cached(blog_dir, blog_url, image_url)
-
     # Just to be tricky:
     # • Positive pages are archive pages, counting up from earliest page.
     # • Negative pages are paged-feed pages, counting down from -1 being the second-most-recent.
@@ -213,11 +208,12 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     #   (which is the most-recent page in the paged-feed pages).
     if page_no is not None:
         page_no = int(page_no)
-    subset = (
-        entries[(page_no - 1) * ATOM_PAGE_SIZE : page_no * ATOM_PAGE_SIZE]
-        if page_no
-        else entries[-ATOM_PAGE_SIZE:]
-    )
+    if page_no:
+        start = (page_no - 1) * ATOM_PAGE_SIZE
+        end = page_no * ATOM_PAGE_SIZE
+        subset = entries[start:end]
+    else:
+        subset = entries[-ATOM_PAGE_SIZE:]
     subset.reverse()
 
     context_data = {
@@ -234,28 +230,30 @@ def atom(request, blog_dir, blog_url, image_url, page_no=None):
     prev_page_no = (
         (1 + (len(entries) - 1) // ATOM_PAGE_SIZE)
         if page_no is None
-        else (page_no - 1)
-        if page_no > 1
-        else (page_no + 1)
-        if page_no < 1
-        else None
+        else (page_no - 1) if page_no > 1 else (page_no + 1) if page_no < 1 else None
     )
     next_page_no = (
         -1
         if page_no is None
-        else (page_no + 1)
-        if page_no > 0 and page_no * ATOM_PAGE_SIZE < len(entries)
-        else (page_no - 1)
-        if page_no < 0 and (page_no - 1) * ATOM_PAGE_SIZE + len(entries) > 0
-        else None
+        else (
+            (page_no + 1)
+            if page_no > 0 and page_no * ATOM_PAGE_SIZE < len(entries)
+            else (
+                (page_no - 1)
+                if page_no < 0 and (page_no - 1) * ATOM_PAGE_SIZE + len(entries) > 0
+                else None
+            )
+        )
     )
 
     links = [
         (
             "self",
-            reverse("blog_atom_archive", kwargs={"page_no": page_no})
-            if page_no
-            else reverse("blog_atom"),
+            (
+                reverse("blog_atom_archive", kwargs={"page_no": page_no})
+                if page_no
+                else reverse("blog_atom")
+            ),
         ),
     ]
     if page_no:
