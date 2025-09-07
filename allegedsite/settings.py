@@ -90,14 +90,23 @@ STATICFILES_DIRS = [
 ]
 
 if env("STATIC_ROOT"):
-    STATIC_URL = env("STATIC_URL", default="http://static.alleged.org.uk/")
-    STATIC_ROOT = env("STATIC_ROOT")  # e.g., '/home/alleged/static')
-    if not DEBUG:
-        STATICFILES_STORAGE = (
-            "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
-        )
+    STATIC_URL = env("STATIC_URL")  # https://static.alleged.org.uk/
+    STATIC_ROOT = env("STATIC_ROOT")  # /home/alleged/static
 else:
-    STATIC_URL = "/s/"
+    STATIC_URL = "/static/"
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": (
+            "django.contrib.staticfiles.storage.StaticFilesStorage"
+            if DEBUG
+            else "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+        ),
+    },
+}
 
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = "alleged"
