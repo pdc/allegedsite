@@ -50,6 +50,35 @@ Test Gunicorn:
     env $(cat $ENV) /home/alleged/venv/bin/gunicorn allegedsite.wsgi
 
 
+Turn it on
+
+    systemctl enable --now gunicorn@alleged.socket
+
+Test the socket works  again
+
+    sudo -u www-data curl --unix-socket /run/alleged.sock http
+
+(WIll get a 400 from Django because it does not have corret allowed host.)
+
+Edit DNS entries on Gandi
+
+In the new-asite-2025 project, Update gen_django_conf, generate conf, copyt to server:
+
+    scp out/alleged.conf root@mismiy.dev:/etc/nginx/sites-available
+
+Onm the server,. link this in to sites-enmabled
+
+Test
+
+    curl -HHost:alleged.org.uk http://localhost
+
+Update `get_certbot_command`
+
+
+
+
+
+
 TODO
 
 Swtich from Markdown library to one that is CommonMark-compliant.

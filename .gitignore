@@ -5,7 +5,6 @@ tmp
 out.xml
 *.sqlite3
 web/pdc/tarot/
-min.css
 *.d
 dev-requirements.txt
 node_modules/

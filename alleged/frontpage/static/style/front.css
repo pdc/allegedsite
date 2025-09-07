@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #FFF;
+  color: #442;
+
+  font-family: "Neue Haas Grotesk", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+}
+
+#intro p {
+  margin: 1.25em 10px;
+}
+
+.after {
+  clear: both;
+}
+
+
+#content p {
+  margin: 0 10px 1.25em;
+}
+
+#content li {
+  margin: 0.625em 10px 0.625em 30px;
+}
+
+#content h2 {
+  font-size: 1em;
+
+  margin: 1.25em 10px 0.625em;
+}
+
+
+#hide-svg {
+  clear: both;
+  padding: 1.25em 0 0;
+}
+
+#hide-svg p {
+  margin-right: 10px;
+  margin-left: 10px;
+
+  font-size: 13px;
+}
+
+.logo {
+  line-height: 1;
+}
+
+/* Height breakpoints. */
+
+
+@media (max-height: 479px) {
+
+  #intro,
+  .logo,
+  #content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-height: 480px) {
+
+  #intro,
+  .logo,
+  #content {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+}
+
+
+/* Back in the days when 960 was a considered a lot of pixels. */
+
+@media (min-width: 960px) {
+
+  #intro,
+  .logo,
+  #content {
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #hide-svg {
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .logo-part-alleged {
+    float: left;
+    padding: 35px 40px 15px;
+  }
+
+  .logo-part-symbol {
+    float: left;
+    padding: 0;
+  }
+
+  .logo-part-literature {
+    float: left;
+    padding: 35px 40px 15px;
+  }
+}
+
+
+@media (min-width: calc(2 * 320px)) {
+  #content .one-third {
+    width: 320px;
+    float: left;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 959px) {
+  .logo {
+    text-align: center;
+  }
+
+  .logo-part {
+    display: inline-block;
+    vertical-align: middle;
+    height: auto;
+  }
+
+  .logo-part-alleged {
+    width: calc(100% * (275 / 960));
+  }
+
+  .logo-part-symbol {
+    width: calc(100% * (150 / 960));
+    margin: 0 10px;
+  }
+
+  .logo-part-literature {
+    width: calc(100% * (375 / 960));
+  }
+}
+
+@media (max-width: 479px) {
+  .logo {
+    text-align: center;
+  }
+
+  .logo-part {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    height: auto;
+  }
+
+  .logo-part-alleged {
+    width: (percentage(275 / 480));
+  }
+
+  .logo-part-symbol {
+    width: (percentage(150 / 480));
+  }
+
+  .logo-part-literature {
+    width: (percentage(375 / 480));
+    margin-top: 10px;
+  }
+
+}
