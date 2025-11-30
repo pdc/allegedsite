@@ -9,8 +9,6 @@ all: targets requirements
 dir := alleged/blog/static/style
 include $(dir)/Rules.mk
 
-dir := alleged/whyhello/static/style
-include $(dir)/Rules.mk
 
 # Defintions of this built at this level
 

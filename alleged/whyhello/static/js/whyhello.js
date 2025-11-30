@@ -20,55 +20,7 @@ $(function () {
         return text.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
     }
 
-    var twitterLink = $('#twitter-link'),
-        twitterItem =  twitterLink.parents('li').eq(0);
-    var u = twitterLink.attr('href');
-    u = 'http://search.twitter.com/search.json?q=from:' + u.replace(/^.*\//, '');
-   twitterItem.addClass('loading');
-    $.ajax({
-        url: u,
-        dataType: 'jsonp',
-        success: function (data, textStatus, request) {
-            twitterItem.removeClass('loading');
-            var tweetCount = 0;
-            for (var i in data.results) {
-                var className = 'twitter';
-                var tweet = data.results[i];
-                var isReply = (tweet.text.substr(0, 1) == '@'),
-                    isRetweet = (tweet.text.substr(0, 3) == 'RT ');
-                if (isReply || isRetweet) {
-                    // Skip replies since they don’t usually make sense in isolation.
-                    continue;
-                }
-                var m = /(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d\d?) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d\d:\d\d:\d\d) \+0000/.exec(tweet.created_at)
-                var mon = (monthAbbrs.indexOf(m[3]) + 4) / 4;
-                var when = m[4] + '-' + pad2(mon) + '-' + pad2(m[2]) + 'T' + m[5];
-                var whenFormatted = m[2] + ' ' + monthAbbrevs[mon - 1] /* + ' ' + m[4] */;
-                var articleElt = $('<p>').attr({
-                    'class': className,
-                    'data-date': when
-                });
-                $('<img>').attr({
-                    'src': tweet.profile_image_url,
-                    'alt': ''
-                }).appendTo(articleElt);
-                $('<p>').appendTo(articleElt).text(unentity(tweet.text));
 
-                var details = $('<small>').appendTo(twitterItem);
-                $('<a>').attr({
-                    href: 'http://twitter.com/' + (isRetweet ? other : 'damiancugley') + '/status/' + tweet.id,
-                    title: when
-                }).text(whenFormatted + ' ').append('<b>#</b>').appendTo(details);
-
-                twitterItem.append(articleElt);
-
-                if (++tweetCount >= maxTweets) {
-                    break;
-                }
-            }
-            checkSliderHeight();
-        }
-    });
 
     // Now someting similar for Flickr
     var u = '/pdc/from/flickr';
@@ -161,27 +113,27 @@ $(function () {
         return detailsElt;
     }
 
-    addItemsFromAtom('#livejournal-link', '/pdc/from/livejournal', maxLivejournal,
-        function (entry) {
-            var date = entry.published;
-            var articleElt = $('<article>').attr({
-                'data-date': date,
-                'data-id': entry.id
-            });
+    // addItemsFromAtom('#livejournal-link', '/pdc/from/livejournal', maxLivejournal,
+    //     function (entry) {
+    //         var date = entry.published;
+    //         var articleElt = $('<article>').attr({
+    //             'data-date': date,
+    //             'data-id': entry.id
+    //         });
 
-            var headingElt = $('<h4>').appendTo(articleElt);
-            var linkElt = $('<a>').attr({
-                href: entry.href,
-            }).text(entry.title || entry.content.substr(0, 64));
-            linkElt.appendTo(headingElt);
+    //         var headingElt = $('<h4>').appendTo(articleElt);
+    //         var linkElt = $('<a>').attr({
+    //             href: entry.href,
+    //         }).text(entry.title || entry.content.substr(0, 64));
+    //         linkElt.appendTo(headingElt);
 
-            var contentElt = $('<p>').appendTo(articleElt);
-            contentElt.text(entry.content)
+    //         var contentElt = $('<p>').appendTo(articleElt);
+    //         contentElt.text(entry.content)
 
-            return articleElt;
-        },
-        clickableDateFromEntry
-    );
+    //         return articleElt;
+    //     },
+    //     clickableDateFromEntry
+    // );
 
     addItemsFromAtom('#github-link', '/pdc/from/github', maxGithub,
         function (entry) {
@@ -222,7 +174,7 @@ $(function () {
 
         // Find selected slide, if any:
         var selectedID = $('#main section').eq(0).attr('id');
-        var  m = /^#slide-(.*)$/.exec(location.hash);
+        var m = /^#slide-(.*)$/.exec(location.hash);
         if (m) {
             var selectedID = m[1];
         }
@@ -230,7 +182,7 @@ $(function () {
         $('#main')
             .removeClass('scrolling')
             .addClass('has-slideshow');
-        var slideCount =  $('#main section')
+        var slideCount = $('#main section')
             .wrapAll('<div class="slideshow">')
             .wrap('<div class="slide">')
             .size();
@@ -287,7 +239,7 @@ $(function () {
                     location.hash = '#slide-' + selectedID;
 
                     selectedIndex = slide.attr('data-slide-index');
-                    slider.animate({left:  -selectedIndex * slideWidth}, {duration: 300});
+                    slider.animate({ left: -selectedIndex * slideWidth }, { duration: 300 });
                     $('span.sel', navBar).removeClass('sel');
                     $(this).addClass('sel');
 

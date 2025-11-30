@@ -1,7 +1,8 @@
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.template.response import TemplateResponse
+from django.http import JsonResponse
 
 
 def render_with(default_template_name, mimetype="text/html"):
@@ -18,7 +19,7 @@ def render_with(default_template_name, mimetype="text/html"):
 
     Returns --
         Either a dictionary of template args,
-        or an HttpResponse obejct to return verbatim.
+        or an HttpResponse object to return verbatim.
     """
 
     def decorator(func):
@@ -32,7 +33,9 @@ def render_with(default_template_name, mimetype="text/html"):
                 else default_template_name
             )
             context = result
-            return render(request, template_name, context, content_type=mimetype)
+            return TemplateResponse(
+                request, template_name, context, content_type=mimetype
+            )
 
         return decorated_func
 
@@ -52,7 +55,6 @@ def render_json(view):
         resp = view(request, *args, **kwargs)
         if isinstance(resp, HttpResponse):
             return resp
-        data = json.dumps(resp)
-        return HttpResponse(data, content_type="application/json; charset=UTF-8")
+        return JsonResponse(resp)
 
     return decorated_view

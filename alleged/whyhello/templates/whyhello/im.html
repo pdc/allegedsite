@@ -6,27 +6,8 @@
         <meta charset="UTF-8">
         <title>Damian Cugley</title>
         <meta name="author" content="Damian Cugley">
-
-        <!--[if lt IE 9]>
-             <script src="html5shiv.js"></script>
-        <![endif]-->
         <meta name="viewport" content="initial-scale=1.0">
-        <script type="text/javascript">
-            WebFontConfig = {
-                google: { families: [
-                        'Fira+Sans:300,400,700:latin' ] }
-            };
-            (function() {
-                var wf = document.createElement('script');
-                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                wf.type = 'text/javascript';
-                wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
-        </script>
-        <link href="{% static 'style/redhello.css' %}"  rel="stylesheet" type="text/css">
+        <link href="{% static 'style/mmdxxv.css' %}"  rel="stylesheet" type="text/css">
 
         <link rel="openid.server" href="http://www.livejournal.com/openid/server.bml" />
         <link rel="openid.delegate" href="http://damiancugley.livejournal.com/" />
@@ -42,11 +23,6 @@
                 <div class="about-intro">
                     <p>
                         I am an Australian web developer living and working in Oxford, England.
-                    </p>
-                </div>
-                <div class="about-latest">
-                    <p>
-                         I love creating web sites that are both beautiful and useful.
                     </p>
                 </div>
             </section>
@@ -93,23 +69,19 @@
                     <ul>
                         <li>
                             <p>
-                                <a href="http://caption.org/">CAPTION</a> is Oxford’s annual comics convention, and I designed and built its website from 1997–2013.
+                                <a href="https://github.com/pdc/linotak">Linotak</a> is a a link-note-taking web server.
+                                In other words, it is for publishing a series of short plain-text notes that link to
+                                interesting and cool things on the web.
                             </p>
                         </li>
                         <li>
                             <p>
-                                <a href="http://jigsawr.org/">Jigsawr</a> is an instant virtual jigsaw creator, originally
-                                created as a entry in a 10K website contest.
+                                <a href="https://mismiy.dev/">Mismiy</a> is a barebones static-site generator using Markdown and Mustache.
                             </p>
                         </li>
                         <li>
                             <p>
                                 <a href="http://morseless.me.uk/">Morseless</a> is a simple translator for Morse code originally inspired by <a href="http://www.mspaintadventures.com/?s=6&p=005172">Serenity in Homestuck</a>!
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <a href="http://kanbo.me.uk/">Kanbo</a> is a proof-of-concept task board for agile project management.
                             </p>
                         </li>
                     </ul>
@@ -123,6 +95,11 @@
                 </div>
                 <div class="latest">
                     <ul class="external-list">
+                        <li class="external">
+                            <h3>
+                                Links on <a id="ooble-link" class="lnk" href="https://pdc.ooble.uk/">Damian’s notes</a>
+                            </h3>
+                        </li>
                         <li class="external">
                             <h3>
                                 Code on <a id="github-link" class="lnk" href="http://github.com/pdc">GitHub</a>
@@ -139,22 +116,12 @@
                         </li>
                         <li class="external">
                             <h3>
-                                Toots on <a id="mastodon-link" rel="me" class="lnk" href="https://octodon.social/@pdc">Octodon.social (a Mastodon server)</a>
+                                Old links on <a id="tumblr-link" rel="me" class="lnk" href="http://pdc.tumblr.com/">Tumblr</a>
                             </h3>
                         </li>
                         <li class="external">
                             <h3>
-                                Tweets on <a id="twitter-link" rel="me" class="lnk" href="http://twitter.com/damiancugley">Twitter</a>
-                            </h3>
-                        </li>
-                        <li class="external">
-                            <h3>
-                                Links on <a id="tumblr-link" rel="me" class="lnk" href="http://pdc.tumblr.com/">Tumblr</a>
-                            </h3>
-                        </li>
-                        <li class="external">
-                            <h3>
-                                Old diary on <a id="livejournal-link" rel="me" class="lnk" href="http://damiancugley.livejournal.com/">LiveJournal</a>
+                                Old journal on <a id="livejournal-link" rel="me" class="lnk" href="http://damiancugley.livejournal.com/">LiveJournal</a>
                             </h3>
                         </li>
                     </ul>
@@ -163,7 +130,5 @@
                 </aside>
             </section>
         </div>
-        <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
-        {# <script type="text/javascript" src="{% static 'js/whyhello.js' %}"></script> #}
     </body>
 </html>

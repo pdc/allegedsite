@@ -102,8 +102,21 @@ urlpatterns = [
         alleged.blog.views.from_livejournal,
         name="from_livejournal",
     ),
-    path("pdc/from/youtube", alleged.blog.views.from_youtube, {}, name="from_youtube"),
-    path("pdc/from/github", alleged.blog.views.from_github, {}, name="from_github"),
+    path(
+        "pdc/from/youtube",
+        alleged.blog.views.from_youtube,
+        name="from_youtube",
+    ),
+    path(
+        "pdc/from/github",
+        alleged.blog.views.from_github,
+        name="from_github",
+    ),
+    path(
+        "pdc/from/livejournal.html",
+        alleged.whyhello.views.livejournal_snippet,
+        name="livejournal_snippet",
+    ),
     path("albums/", include("alleged.snaptioner.urls")),
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:

@@ -1,0 +1,7 @@
+{% for entry in entries %}
+<article data-lj="{{entry.id}}">
+    <h4><a href="{{entry.href}}">{{entry.title}}</a></h4>
+    <time datetime="{{entry.published|date:'c'}}">{{entry.published|date:"j F Y"}}</time>
+    <p>{{entry.content}}</p>
+</article>
+{% endfor %}
