@@ -1,12 +1,26 @@
 Title: Django sites on a shared server
 Date: 2025-08-23
-Topics: debian django deployment admin
+Topics: debian django deployment admin gunicorn nginx systemd
 
 When I am creating toy web sites I start with Django by default, so as to avoid
 wasting time and energy researching the minutae of the myriad alternatives
 before deciding which one to use. As a result, my recreational server has a lot
 of tiny Django sites.
 Here is how I am setting them up on my new server.
+
+
+## New server
+
+I wanted to be able to make some improvements to the Django app that powers
+the Ooble web site but I could not conveniently install old enough software on
+my new M4 MacBook Air to match what was on my server, which was stuck on
+a 32-bit Linux distro which is no longer maintained.
+
+By the time I have replaced my operating system with a 64-bite distro and reinstalled
+all the packages I use I might as well build a new server. So I am using
+this as an opportunity to rethink how I deploy my recreational web sites.
+I have also switched from American-owned [Akami] (formerly [Linode]) to a German provider
+[Hetzner].
 
 
 ## What we need
@@ -28,7 +42,7 @@ until every code change requires fifty trips to CI to build and redeploy the doz
 microservices that comprise your todo-list application. I am not bothering with
 containerizing my own Django sites.
 
-Changes from before:
+## Changes from before:
 
 In [2010] I used Nginx talking to an implementation Flup of a
 prootocol named FastCGI. Also it seems I compiled Nginx from source.
@@ -308,11 +322,14 @@ pages, and (2) if it would be better to have the static files Gzipped on disc an
 served with `gzip_static on`. Most of my files are so small compression will make little
 odds so it is not in any way an urgent bit of optimization.
 
-[Why all websites should use HTTPS]: https://letsencrypt.org/docs/why-all-https/
+
+
 [12-Factor config]: https://www.12factor.net/config
 [2010]: ../2010/04/11
 [2012]: ../2012/05/08
 [2018]: ../2018/06/17
+[Akami]: https://www.akamai.com
+[Certbot]: https://certbot.eff.org
 [Choose an open source license]: https://choosealicense.com/licenses/gpl-3.0/
 [Creating custom unit files]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/using_systemd_unit_files_to_customize_and_optimize_your_system/working-with-systemd-unit-files#creating-custom-unit-files
 [D. J. Bernstein]: https://cr.yp.to/djb.html
@@ -321,14 +338,15 @@ odds so it is not in any way an urgent bit of optimization.
 [django-environ]: https://django-environ.readthedocs.io/en/latest/
 [Django]: https://www.djangoproject.com
 [Gunicorn]: https://docs.gunicorn.org/en/latest/deploy.html
+[Hetzner]: https://www.hetzner.com
+[Let’s Encrypt]: https://letsencrypt.org
+[Linode]: https://www.linode.com
 [Morseless]: ../2012/12/18
 [Morseless]: https://morseless.me.uk/
 [November 2012]: ../2012/11/03
-[Poetry]: https://python-poetry.org
 [Poetry]: https://python-poetry.org
 [settings.py]: https://github.com/pdc/morseless/blob/main/morselesssite/settings.py
 [Systemd]: https://systemd.io
 [uWSGI]: https://uwsgi.readthedocs.io/
 [virtual environment]: https://docs.python.org/3/library/venv.html
-[Let’s Encrypt]: https://letsencrypt.org
-[Certbot]: https://certbot.eff.org
+[Why all websites should use HTTPS]: https://letsencrypt.org/docs/why-all-https/
