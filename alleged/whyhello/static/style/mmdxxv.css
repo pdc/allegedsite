@@ -142,6 +142,24 @@ article {
     & footer {
         font-size: 0.85em;
         margin: 1lh 1rem 1lh;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    & .entry-tag-list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: end;
+        gap: 1em;
+
+        & li {
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
     }
 }
 
@@ -165,6 +183,10 @@ article {
         &:nth-child(25) {
             grid-column: 2;
 
+        }
+
+        &:nth-child(26) {
+            grid-column: 4;
         }
     }
 
@@ -229,7 +251,6 @@ article {
     #main {
         grid-template-columns: maxc-content minmax(18em, 36em) maxc-content minmax(18em, 36em);
     }
-
 
     section:nth-child(even) {
         grid-column: 1 / span 2;
